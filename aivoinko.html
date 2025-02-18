@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Taikoi Internal Portal - Aivoinko</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Background particle effect -->
+  <div id="particle-background"></div>
+
+  <header>
+    <div class="logo">
+      <a href="index.html">Taikoi Internal Portal</a>
+    </div>
+    <nav>
+      <a href="aivoinko.html">Aivoinko</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>Aivoinko – Tekoälyn Konsoli</h1>
+    <div class="terminal-container">
+      <div class="terminal-header">NEURAL TERMINAL</div>
+      <input type="text" class="terminal-input" placeholder="Kirjoita komentosi tähän..." autofocus>
+    </div>
+    <p style="text-align: center; margin-top: 10px;">
+      Huom: Tekoäly-yhteys on parhaillaan kehitysvaiheessa.
+    </p>
+  </div>
+
+  <!-- Script for a simple terminal interaction -->
+  <script>
+    document.querySelector('.terminal-input').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        alert('Komentoa ei vielä käsitellä. Tekoäly-yhteys on kehitteillä.');
+        this.value = '';
+      }
+    });
+  </script>
+</body>
+</html>
