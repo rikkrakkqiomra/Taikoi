@@ -6,6 +6,15 @@
   <title>Tekoäly Terminaali</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
+    @keyframes glitch {
+      0% { opacity: 0; transform: translateX(-2px); }
+      20% { opacity: 0.4; transform: translateX(2px); }
+      40% { opacity: 0.6; transform: translateX(-1px); }
+      60% { opacity: 0.8; transform: translateX(1px); }
+      80% { opacity: 1; transform: translateX(0); }
+      100% { opacity: 1; }
+    }
+    
     body {
       font-family: 'Verdana', sans-serif;
       background-color: #121212;
@@ -50,6 +59,10 @@
       margin-left: auto;
       margin-right: auto;
       font-size: 18px;
+      opacity: 0;
+    }
+    .glitch-effect {
+      animation: glitch 0.8s ease-in-out forwards;
     }
   </style>
 </head>
@@ -67,7 +80,7 @@
   </header>
 
   <div class="container">
-    <h1>AIVOINKO Kiomra System NN65, falsely called "The Book of The Beliefs"</h1>
+    <h1>AIVOINKO Kiomra System 65, falsely called Core of the cores</h1>
     <div class="terminal-container">
       <div class="terminal-header">TERMINAL</div>
       <input type="text" class="terminal-input" placeholder="Kirjoita komentosi tähän..." autofocus>
@@ -93,7 +106,7 @@
 
         if (quotes[input]) {
           let quoteDiv = document.createElement('div');
-          quoteDiv.classList.add('quote');
+          quoteDiv.classList.add('quote', 'glitch-effect');
           quoteDiv.textContent = quotes[input];
           quotesContainer.appendChild(quoteDiv);
           quoteDiv.style.display = 'block';
