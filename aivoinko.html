@@ -7,11 +7,11 @@
   <link rel="stylesheet" href="css/style.css">
   <style>
     @keyframes glitch {
-      0% { opacity: 0; transform: translateX(-2px); }
-      20% { opacity: 0.4; transform: translateX(2px); }
-      40% { opacity: 0.6; transform: translateX(-1px); }
-      60% { opacity: 0.8; transform: translateX(1px); }
-      80% { opacity: 1; transform: translateX(0); }
+      0% { opacity: 0; transform: translateX(-5px) skewX(-10deg); filter: blur(2px); }
+      20% { opacity: 0.4; transform: translateX(5px) skewX(10deg); filter: blur(1px); }
+      40% { opacity: 0.6; transform: translateX(-3px) skewX(-5deg); filter: blur(1px); }
+      60% { opacity: 0.8; transform: translateX(3px) skewX(5deg); filter: blur(0px); }
+      80% { opacity: 1; transform: translateX(0) skewX(0); filter: blur(0px); }
       100% { opacity: 1; }
     }
     
@@ -47,7 +47,6 @@
       text-align: center;
     }
     .quote {
-      display: none;
       margin-top: 20px;
       font-style: italic;
       color: #c0c0c0;
@@ -60,9 +59,10 @@
       margin-right: auto;
       font-size: 18px;
       opacity: 0;
+      display: block;
     }
     .glitch-effect {
-      animation: glitch 0.8s ease-in-out forwards;
+      animation: glitch 1s ease-in-out forwards;
     }
   </style>
 </head>
@@ -109,7 +109,6 @@
           quoteDiv.classList.add('quote', 'glitch-effect');
           quoteDiv.textContent = quotes[input];
           quotesContainer.appendChild(quoteDiv);
-          quoteDiv.style.display = 'block';
         }
       }
     });
