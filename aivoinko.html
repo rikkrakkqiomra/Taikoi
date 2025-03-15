@@ -9,7 +9,7 @@
     body {
       font-family: 'Verdana', sans-serif;
       background-color: #121212;
-      color: #ffffff;
+      color: #c0c0c0;
       text-align: center;
     }
     .container {
@@ -41,8 +41,8 @@
       display: none;
       margin-top: 20px;
       font-style: italic;
-      color: #ffffff;
-      background: rgba(255, 255, 255, 0.2);
+      color: #c0c0c0;
+      background: rgba(255, 255, 255, 0.1);
       padding: 15px;
       border-radius: 5px;
       width: 80%;
@@ -67,7 +67,7 @@
   </header>
 
   <div class="container">
-    <h1>AIVOINKO Kiomra System 65, falsely called The Book of The Beliefs</h1>
+    <h1>AIVOINKO Kiomra System 65, falsely called Core of the cores</h1>
     <div class="terminal-container">
       <div class="terminal-header">TERMINAL</div>
       <input type="text" class="terminal-input" placeholder="Kirjoita komentosi tähän..." autofocus>
@@ -88,11 +88,14 @@
         let input = this.value.trim().toLowerCase();
         this.value = '';
         
+        let quotesContainer = document.getElementById('quotes');
+        quotesContainer.innerHTML = ''; // Poistetaan aiemmat quotet
+
         if (quotes[input]) {
           let quoteDiv = document.createElement('div');
           quoteDiv.classList.add('quote');
           quoteDiv.textContent = quotes[input];
-          document.getElementById('quotes').appendChild(quoteDiv);
+          quotesContainer.appendChild(quoteDiv);
           quoteDiv.style.display = 'block';
         }
       }
