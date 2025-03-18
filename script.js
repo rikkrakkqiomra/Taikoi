@@ -37,22 +37,26 @@ document.addEventListener("DOMContentLoaded", function () {
             output.style.color = "#00ff00";
             output.style.fontWeight = "bold";
 
-            if (quotes[input]) {
-                let quoteDiv = document.createElement("div");
-                quoteDiv.classList.add("quote");
-                quoteDiv.textContent = quotes[input];
-                quotesContainer.appendChild(quoteDiv);
-                quoteDiv.style.opacity = 0;
-                setTimeout(() => (quoteDiv.style.opacity = 1), 100);
-            } else {
-                let errorDiv = document.createElement("div");
-                errorDiv.classList.add("quote");
-                errorDiv.textContent = `Tuntematon komento: '${input}'. Kokeile 'help'.`;
-                errorDiv.style.color = "red";
-                quotesContainer.appendChild(errorDiv);
-                errorDiv.style.opacity = 0;
-                setTimeout(() => (errorDiv.style.opacity = 1), 100);
-            }
+if (quotes[input]) {
+    let quoteDiv = document.createElement("div");
+    quoteDiv.classList.add("quote");
+    quoteDiv.textContent = quotes[input];
+    quotesContainer.appendChild(quoteDiv);
+    
+    setTimeout(() => {
+        quoteDiv.classList.add("show");
+    }, 50);
+} else {
+    let errorDiv = document.createElement("div");
+    errorDiv.classList.add("quote");
+    errorDiv.textContent = "Ei löytynyt vastausta.";
+    quotesContainer.appendChild(errorDiv);
+    
+    setTimeout(() => {
+        errorDiv.classList.add("show");
+    }, 50);
+}
+
             
             terminalContainer.appendChild(output);
             terminalContainer.scrollTop = terminalContainer.scrollHeight;
