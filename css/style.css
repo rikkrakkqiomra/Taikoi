@@ -72,17 +72,29 @@ nav a {
   margin-top: 20px;
   font-style: italic;
   color: #4E342E;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.3);
   padding: 15px;
   border-radius: 5px;
   width: 80%;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   opacity: 0;
-  transition: opacity 0.5s;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  border: 2px solid rgba(78, 52, 46, 0.8);
+  transition: opacity 0.5s, transform 0.5s;
+  transform: scale(0.9);
 }
+
+.quote.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
 
 /* Partikkeliefekti */
 #particle-background {
