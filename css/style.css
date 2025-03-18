@@ -1,111 +1,103 @@
-/* Reset & basic styling */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+/* style.css */
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  /* Taustaksi tähtiharmaa, miltei hopeinen: */
-  background: linear-gradient(135deg, #dcdcdc, #f0f0f0);
-  color: #333;
-  line-height: 1.6;
-  min-height: 100vh;
-  position: relative;
+  background: linear-gradient(to right, #D2B48C, #F5DEB3);
+  font-family: Arial, sans-serif;
+  color: #4E342E;
+  margin: 0;
+  padding: 0;
+  text-align: center;
 }
 
-/* Animated star-particle background (placeholder image) */
+header {
+  background: rgba(78, 52, 46, 0.9);
+  padding: 15px;
+  color: white;
+}
+
+header .logo a {
+  font-size: 24px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 18px;
+}
+
+.container {
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.text-container {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 15px;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: auto;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.terminal-container {
+  background: #222;
+  padding: 20px;
+  border-radius: 5px;
+  display: inline-block;
+  width: 80%;
+  max-width: 600px;
+}
+
+.terminal-header {
+  font-weight: bold;
+  color: #00ff00;
+}
+
+.terminal-input {
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  color: #00ff00;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.quote {
+  margin-top: 20px;
+  font-style: italic;
+  color: #4E342E;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 15px;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 18px;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+
+/* Partikkeliefekti */
 #particle-background {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
-  background: url('particles.png') repeat;
-  opacity: 0.3;
-  animation: float 20s linear infinite;
-}
-@keyframes float {
-  from { transform: translateY(0); }
-  to { transform: translateY(-1000px); }
+  pointer-events: none;
 }
 
-/* Header & Navigation */
-header {
-  background: rgba(255, 255, 255, 0.8);
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-header .logo a {
-  font-size: 1.2em;
-  text-decoration: none;
-  color: #333;
-}
-nav a {
-  text-decoration: none;
-  color: #333;
-  margin: 0 10px;
-  padding: 8px 16px;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-}
-nav a:hover {
-  background-color: #ccc;
-}
-
-/* Container for page content */
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: 20px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-/* Terminal Page Styling */
-.terminal-container {
-  background: #000;
-  color: #0f0;
-  font-family: 'Courier New', monospace;
-  padding: 20px;
-  border-radius: 8px;
-  margin: 20px auto;
-  max-width: 800px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-}
-.terminal-header {
-  font-size: 1.2em;
-  margin-bottom: 10px;
-}
-.terminal-input {
-  width: 100%;
-  background: #000;
-  color: #0f0;
-  border: none;
-  outline: none;
-  font-family: inherit;
-  font-size: 1em;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .container {
-    width: 95%;
-    padding: 15px;
-  }
-  nav {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-  nav a {
-    margin: 5px 0;
-  }
+.particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
 }
