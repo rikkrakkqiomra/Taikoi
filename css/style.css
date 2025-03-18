@@ -13,21 +13,83 @@ header {
   background: linear-gradient(to right, #FFD700, #DAA520);
   padding: 15px;
   color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: fadeInSlide 1s forwards ease-out;
+}
+
+header .logo {
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 20px;
+  opacity: 0;
+  transform: translateX(-50px);
+  animation: slideInLeft 1s forwards ease-out 0.2s;
 }
 
 header .logo a {
-  font-size: 24px;
   color: white;
   text-decoration: none;
-  font-weight: bold;
+}
+
+nav {
+  display: flex;
+  gap: 30px; /* Lisää tilaa navigointilinkkien väliin */
+  margin-right: 20px;
+  opacity: 0;
+  transform: translateX(50px);
+  animation: slideInRight 1s forwards ease-out 0.5s;
 }
 
 nav a {
   color: white;
   text-decoration: none;
-  margin: 0 15px;
   font-size: 18px;
+  font-weight: bold;
+  transition: color 0.3s;
 }
+
+nav a:hover {
+  color: #ffcc00; /* Hover-efekti */
+}
+
+/* Animaatioille keyframes */
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 
 .container {
   margin-top: 20px;
