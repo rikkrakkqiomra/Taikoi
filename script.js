@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Lisätään terminaalin toiminnallisuus
     const terminalInput = document.querySelector(".terminal-input");
     const quotesContainer = document.getElementById("quotes");
+    const terminalContainer = document.querySelector(".terminal-container");
 
     if (!terminalInput) {
         console.error("Virhe: .terminal-input ei löydy! Varmista, että HTML sisältää tämän elementin.");
@@ -32,6 +33,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             quotesContainer.innerHTML = "";
 
+            const output = document.createElement("p");
+            output.style.color = "#00ff00";
+            output.style.fontWeight = "bold";
+
             if (quotes[input]) {
                 let quoteDiv = document.createElement("div");
                 quoteDiv.classList.add("quote");
@@ -42,12 +47,15 @@ document.addEventListener("DOMContentLoaded", function () {
             } else {
                 let errorDiv = document.createElement("div");
                 errorDiv.classList.add("quote");
-                errorDiv.textContent = "Ei löytynyt vastausta.";
+                errorDiv.textContent = `Tuntematon komento: '${input}'. Kokeile 'help'.`;
+                errorDiv.style.color = "red";
                 quotesContainer.appendChild(errorDiv);
                 errorDiv.style.opacity = 0;
                 setTimeout(() => (errorDiv.style.opacity = 1), 100);
             }
+            
+            terminalContainer.appendChild(output);
+            terminalContainer.scrollTop = terminalContainer.scrollHeight;
         }
     });
 });
-
