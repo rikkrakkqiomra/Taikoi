@@ -46,6 +46,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const terminalInput = document.querySelector(".terminal-input");
     const quotesContainer = document.getElementById("quotes");
     
+    const quotes = {
+        "imagination": "Einstein — 'Imagination is more important than knowledge. For knowledge is limited, whereas imagination embraces the entire world, stimulating progress, giving birth to evolution.'",
+        "growth": "Friedrich Nietzsche — 'One must be a sea, to receive a polluted stream without becoming impure.'"
+    };
+    
     terminalInput.addEventListener("keypress", function (e) {
         if (e.key === "Enter") {
             e.preventDefault();
@@ -53,10 +58,6 @@ document.addEventListener("DOMContentLoaded", function () {
             this.value = "";
             
             quotesContainer.innerHTML = "";
-            const quotes = {
-                "innovaatio": "'Innovaatio syntyy tarpeesta ja uteliaisuudesta.'",
-                "tekoäly": "'Tekoäly ei korvaa ihmistä, vaan auttaa ihmistä kehittymään.'"
-            };
             
             if (quotes[input]) {
                 let quoteDiv = document.createElement("div");
@@ -65,6 +66,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 quotesContainer.appendChild(quoteDiv);
                 quoteDiv.style.opacity = 0;
                 setTimeout(() => (quoteDiv.style.opacity = 1), 100);
+            } else {
+                let errorDiv = document.createElement("div");
+                errorDiv.classList.add("quote");
+                errorDiv.textContent = "Ei löytynyt vastausta.";
+                quotesContainer.appendChild(errorDiv);
+                errorDiv.style.opacity = 0;
+                setTimeout(() => (errorDiv.style.opacity = 1), 100);
             }
         }
     });
