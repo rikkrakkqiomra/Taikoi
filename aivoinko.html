@@ -17,6 +17,11 @@
       font-style: italic;
       color: #4E342E;
     }
+    .intro-box img {
+      width: 100%;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
     .terminal-container {
       background: #2b2b2b;
       padding: 20px;
@@ -26,7 +31,7 @@
       margin: 20px auto;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       font-family: "Courier New", monospace;
-      color: #FFD700; /* Kultainen teksti */
+      color: #FFD700;
     }
     .terminal-header {
       font-weight: bold;
@@ -45,12 +50,13 @@
       font-size: 16px;
       outline: none;
     }
-    .quote {
-      font-style: italic;
-      padding: 10px;
-      margin-top: 10px;
-      border-left: 3px solid #FFD700;
-      color: #FFD700;
+    .gallery-image {
+      display: block;
+      max-width: 600px;
+      width: 100%;
+      margin: 20px auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
   </style>
 </head>
@@ -72,12 +78,16 @@
     
     <div class="intro-box">
       <p>"Ajaton, rajaton ja kuolematon mielikuvitus ilmestyksenä kiinnostaa, hiilessä kuin piissä. Tulen taidepuolelta, joten olen halunnut luoda mitä tahansa maailmoja ja esityksiä, visioita koneälyn kanssa kollaboraationa."</p>
+      <img src="root-image.jpg" alt="Projektin juuri kuva">
     </div>
     
     <div class="terminal-container">
       <div class="terminal-header">Kiomra-terminaali</div>
       <input type="text" class="terminal-input" placeholder="Kirjoita komentosi tähän..." autofocus>
     </div>
+
+    <img src="blast.png" alt="Projektin juuri kuva" class="gallery-image">
+    
     <div id="quotes"></div>
   </div>
   <script src="script.js"></script>
