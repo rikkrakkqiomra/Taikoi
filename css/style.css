@@ -7,6 +7,7 @@ body {
   margin: 0;
   padding: 0;
   text-align: center;
+  overflow-x: hidden;
 }
 
 header {
@@ -19,6 +20,7 @@ header {
   opacity: 0;
   transform: translateY(-30px);
   animation: fadeInSlide 1s forwards ease-out;
+  flex-wrap: wrap;
 }
 
 header .logo {
@@ -37,8 +39,10 @@ header .logo a {
 
 nav {
   display: flex;
-  gap: 30px; /* Lisää tilaa navigointilinkkien väliin */
+  flex-wrap: wrap;
+  gap: 15px;
   margin-right: 20px;
+  justify-content: center;
   opacity: 0;
   transform: translateX(50px);
   animation: slideInRight 1s forwards ease-out 0.5s;
@@ -53,10 +57,28 @@ nav a {
 }
 
 nav a:hover {
-  color: #ffcc00; /* Hover-efekti */
+  color: #ffcc00;
 }
 
-/* Animaatioille keyframes */
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav {
+    flex-direction: column;
+    margin-right: 0;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .logo {
+    margin-left: 0;
+    margin-bottom: 10px;
+  }
+}
+
 @keyframes fadeInSlide {
   from {
     opacity: 0;
@@ -89,7 +111,6 @@ nav a:hover {
     transform: translateX(0);
   }
 }
-
 
 .container {
   margin-top: 20px;
@@ -157,8 +178,6 @@ nav a:hover {
   transform: scale(1);
 }
 
-
-/* Partikkeliefekti */
 #particle-background {
   position: fixed;
   top: 0;
