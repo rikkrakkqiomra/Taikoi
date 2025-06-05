@@ -1,3 +1,4 @@
+/* ===== Perusasetukset ===== */
 :root {
   --clr-bg-dark: #0d0d0d;
   --clr-gold:   #d4af37;
@@ -6,67 +7,54 @@
   --anim-speed: 450ms;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: system-ui, sans-serif;
   background-color: var(--clr-beige);
   color: var(--clr-bg-dark);
   line-height: 1.6;
   min-height: 100dvh;
-  margin: 0;
 }
 
-/* ===== Header ===== */
+/* ======= Header ======= */
 .site-header {
   position: relative;
   background-color: var(--clr-bg-dark);
   color: var(--clr-gold);
-  padding: var(--space) var(--space) calc(var(--space) * 3);
+  padding: calc(var(--space) * 2) var(--space);
   text-transform: uppercase;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
-/* Logokuva-yläosa */
-.logo-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: var(--space);
-}
-
-.logo-img {
-  max-width: 200px;
-  height: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
-}
-
-/* Kolmio alareunassa */
+/*  Alareunan kolmio  */
 .site-header::after {
   content: "";
   position: absolute;
   left: 50%;
-  bottom: 0;
-  translate: -50% 100%;
+  bottom: -24px;               /* kolmion korkeus */
+  translate: -50% 0;
   width: 0;
   height: 0;
   border-left: 24px solid transparent;
   border-right: 24px solid transparent;
-  border-top: 24px solid var(--clr-bg-dark);
+  border-top: 24px solid var(--clr-bg-dark);  /* värillinen kärki */
+  pointer-events: none;
 }
 
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
-  max-width: 1024px;
-  padding-inline: var(--space);
   gap: var(--space);
 }
 
-/* Logo-teksti */
+/* ====== Logo ====== */
 .logo {
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -74,7 +62,7 @@ body {
   white-space: nowrap;
 }
 
-/* Navigaatio */
+/* ===== Navigaatio ===== */
 .main-nav ul {
   list-style: none;
   display: flex;
@@ -86,15 +74,19 @@ body {
   font-size: clamp(0.9rem, 2.5vw, 1rem);
   text-decoration: none;
   color: var(--clr-gold);
+
+  /*  Lähtötilanteessa y-suunnassa hiukan ylhäällä ja läpinäkyvä */
   opacity: 0;
   transform: translateY(-20px);
   animation: slideIn var(--anim-speed) ease-out forwards;
 }
 
+/*  Stagger-animointi: jokaiselle linkille eri viive  */
 .nav-link:nth-child(1) { animation-delay: 100ms; }
 .nav-link:nth-child(2) { animation-delay: 200ms; }
 .nav-link:nth-child(3) { animation-delay: 300ms; }
 
+/*  Hover-efekti  */
 .nav-link::after {
   content: "";
   position: absolute;
@@ -107,6 +99,7 @@ body {
 }
 .nav-link:hover::after { transform: scaleX(1); }
 
+/* ===== Animaatio-keyframes ===== */
 @keyframes slideIn {
   to {
     opacity: 1;
@@ -114,7 +107,7 @@ body {
   }
 }
 
-/* Hero */
+/* ======= Hero-osio ======= */
 .hero {
   padding: calc(var(--space) * 6) var(--space) calc(var(--space) * 8);
   text-align: center;
@@ -131,3 +124,4 @@ body {
   max-width: 60ch;
   margin-inline: auto;
 }
+
