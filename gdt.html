@@ -3,31 +3,35 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GDT – Sivu 2</title>
+  <title>…</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="subpage">
-  <header class="site-header collapsed">
+
+  <!-- Muokattu header alisivuille: poisto vanhasta, lisäys Main + muille linkeille -->
+  <header class="site-header collapsed" id="siteHeader">
     <div class="header-inner">
+      <!-- Vasemmalla: Main-linkki pääsivulle -->
+      <nav class="home-nav">
+        <ul>
+          <li><a href="index.html" class="nav-link">Main</a></li>
+        </ul>
+      </nav>
 
-      <!-- (Valinnainen) logo säilyy täällä -->
-      <div class="logo-container">
-        <!-- <img src="logo.svg" alt="GDT-logo" /> -->
-      </div>
-
-      <!-- Kolmion muotoinen kotilinkki -->
-      <a href="index.html" class="triangle-link" aria-label="Home">Home</a>
-
+      <!-- Oikealla: muut alisivulinkit vaakatasossa -->
       <nav class="main-nav">
         <ul>
-          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="gdt.html"             class="nav-link">GDT</a></li>
+          <li><a href="contact.html"         class="nav-link">Contact</a></li>
+          <li><a href="intelligentleman.html" class="nav-link">Intelligentleman</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main class="site-main" style="display:grid;place-items:center;min-height:70vh;">
-    <h1>Sivu 2 yo</h1>
+    <h1>…</h1>
+    <!-- Sivun sisältöä… -->
   </main>
 
   <script src="script.js"></script>
