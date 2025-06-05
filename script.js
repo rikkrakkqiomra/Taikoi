@@ -1,40 +1,18 @@
-/**
- * Gold Digger Technologies – headerin liukuanimaatio
- * --------------------------------------------------
- *  • Etusivu (index.html): header romahtaa ylös, kun hero-osio poistuu näkyvistä.
- *  • Alisivut (class="subpage"): header on kaadettuna HTML-tasolla ja
- *    liukuu alas heti sivun latauduttua.
- */
 document.addEventListener('DOMContentLoaded', () => {
-  const header = document.querySelector('.site-header');
-  const isSubpage = document.body.classList.contains('subpage');
+  const header   = document.querySelector('.site-header');
+  const navLinks = document.querySelectorAll('.main-nav a');
+  const isHome =
+      location.pathname.endsWith('index.html') ||
+      location.pathname === '/' ||
+      location.pathname === '';
 
-  /* --- Alisivut: avaa header pehmeästi ----------- */
-  if (isSubpage) {
-    // Lyhyt viive varmistaa, että CSS-transition aktivoituu.
-    requestAnimationFrame(() => header.classList.remove('collapsed'));
-    return; // Ei tarvita scroll-logiikkaa alisivuilla
-  }
-
-  /* --- Etusivu: romahda ylös kun hero katoaa ----- */
-  const hero = document.querySelector('.hero');
-  if (!hero) return;
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        // Kun hero ei ole näkyvissä, header saa 'collapsed'-luokan
-        header.classList.toggle('collapsed', !entry.isIntersecting);
-      });
-    },
-    { threshold: 0 }
-  );
-
-  observer.observe(hero);
-});
-
-
-
+if (sessionStorage.getItem('headerCollapsed') === 'true' && isHome) {
+  header.classList.add('collapsed');
+  requestAnimationFrame(() => {
+    setTimeout(() => header.classList.remove('collapsed'), 50);
+  });
+  sessionStorage.removeItem('headerCollapsed');
+}
   
 
   if (sessionStorage.getItem('headerCollapsed') === 'true' &&
