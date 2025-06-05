@@ -36,7 +36,7 @@ body {
 
 /* Collapsed state leaves only the arrow visible */
 .site-header.collapsed {
-  transform: translateY(calc(-100% + 24px));
+  transform: translateY(calc(-60% + 24px));
   padding-top: 0;
   padding-bottom: 0;
 }
