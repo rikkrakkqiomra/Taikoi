@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GDT – Gold Digger Technologies</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Gold Digger Technologies — GDT</title>
+  <link rel="stylesheet" href="styles.css" /> <!-- :contentReference[oaicite:0]{index=0} -->
   <script src="script.js" defer></script>
 </head>
 <body class="subpage">
-  <!-- ===== Header (kopioitu index.html:stä) ===== -->
-  <header class="site-header">
+  <!-- Header sama kuin index.html, mutta lisätään "collapsed" heti luokaksi -->
+  <header class="site-header collapsed">
     <div class="logo-container">
       <img src="loko.png" alt="Gold Digger Technologies logo" class="logo-img" />
     </div>
@@ -20,9 +20,9 @@
       </div>
       <nav class="main-nav">
         <ul>
-          <li><a href="index.html" class="nav-link">Etusivu</a></li>
-          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <!-- Nykyiselle sivulle linkki voi olla disabled tai aktiivinen jos haluaa -->
           <li><a href="gdt.html" class="nav-link">GDT</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
           <li><a href="intelligentleman.html" class="nav-link">Intelligentleman</a></li>
         </ul>
       </nav>
@@ -30,12 +30,10 @@
   </header>
 
   <main class="site-main">
-    <!-- ===== GDT-alisivun sisältö ===== -->
     <section class="hero">
+      <!-- Voit halutessasi lisätä otsikon, esim. <h1>GDT</h1> -->
       <h1>GDT</h1>
-      <p>
-        Olemme mekuvastomme kanssa GDT, emme kaihda tekoälyä, mutta haukumme sitä lohkoketjumme kautta.
-      </p>
+      <p>Olemme mekuvastomme kanssa GDT, emme kaihda tekoälyä, mutta haukumme sitä lohkoketjumme kautta.</p>
     </section>
   </main>
 </body>
