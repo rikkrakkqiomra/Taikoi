@@ -48,9 +48,20 @@ body {
 }
 
 /* Kolmio nousee ylös samassa tahdissa */
-.site-header.collapsed::after {
-  translate: -50% 0%;
+.site-header::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 50vw solid transparent;
+  border-right: 50vw solid transparent;
+  border-top: 20px solid white;
+  transition: translate var(--anim-speed) ease-out;
+  cursor: pointer;
+  z-index: 10;
 }
+
 
 
 /* Logokuva-yläosa */
