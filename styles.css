@@ -34,7 +34,7 @@ body {
 
 /* Korjattu: Collapsed-tila vie koko headerin ylös – vain 24px-korkuinen kolmio jää näkyviin */
 .site-header.collapsed {
-  transform: translateY(calc(-100% + 24px));
+  transform: translateY(calc(-80% + 24px));
   padding-top: 0;
   padding-bottom: 0;
 }
