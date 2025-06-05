@@ -1,7 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
   const header   = document.querySelector('.site-header');
   const navLinks = document.querySelectorAll('.main-nav a');
+  const isHome =
+      location.pathname.endsWith('index.html') ||
+      location.pathname === '/' ||
+      location.pathname === '';
 
+if (sessionStorage.getItem('headerCollapsed') === 'true' && isHome) {
+  header.classList.add('collapsed');
+  requestAnimationFrame(() => {
+    setTimeout(() => header.classList.remove('collapsed'), 50);
+  });
+  sessionStorage.removeItem('headerCollapsed');
+}
+  
 
   if (sessionStorage.getItem('headerCollapsed') === 'true' &&
       location.pathname.endsWith('index.html')) {
