@@ -28,15 +28,15 @@ body {
   flex-direction: column;
   align-items: center;
 
-  /* New: smooth slide-up /seelikkäs slide-down */
+  /* smooth slide-up / slide-down */
   transition: transform var(--anim-speed) ease-in-out,
               padding   var(--anim-speed) ease-in-out;
   transform: translateY(0);
 }
 
-/* Collapsed state leaves only the arrowi visible */
+/* Collapsed state leaves only the arrow visible — muutettu 100% → 50% */
 .site-header.collapsed {
-  transform: translateY(calc(-100% + 24px));
+  transform: translateY(calc(-50% + 24px));
   padding-top: 0;
   padding-bottom: 0;
 }
@@ -59,7 +59,7 @@ body.subpage .site-header.collapsed { transition: none; }
   filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
 }
 
-/* Kolmio alareunassa d*/
+/* Kolmio alareunassa */
 .site-header::after {
   content: "";
   position: absolute;
@@ -164,4 +164,3 @@ body.subpage .site-header.collapsed { transition: none; }
 
   .main-nav ul li { margin-bottom: 0.5rem; }
 }
-
