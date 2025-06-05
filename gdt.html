@@ -3,22 +3,59 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>…</title>
+  <title>GDT – Alisivu</title>
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ------------------------------------------------------------------
+       Ainoastaan GDT-alisivulla: supistetun headerin sisältö pinottuna
+       ------------------------------------------------------------------ */
+    /* Kun header on collapsed-tilassa, pinotaan navit päällekkäin */
+    .site-header.collapsed .header-inner {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    /* Supistetun headerin “Main”-linkkiä ei muuteta (on jo navina ylhäällä) */
+
+    /* Supistetun headerin muut linkit vaakatasoon */
+    .site-header.collapsed .main-nav ul {
+      display: flex;
+      flex-direction: row;
+      gap: 1rem;
+      padding: 0;
+      margin: 0;
+    }
+    .site-header.collapsed .main-nav ul li {
+      list-style: none;
+    }
+
+    /* Pieni säätö linkkien kokoihin mobiilissa */
+    @media (max-width: 600px) {
+      .site-header.collapsed .nav-link {
+        font-size: 1rem;
+        opacity: 1 !important; /* Näytetään suoraan ilman animaatio-efektiä */
+        transform: translateY(0) !important;
+      }
+      /* Poistetaan mahdolliset marginaalit, jotka tulevat muissa media-kyselyissä */
+      .site-header.collapsed .header-inner {
+        padding: 0.5rem 0;
+      }
+    }
+  </style>
 </head>
 <body class="subpage">
 
-  <!-- Muokattu header alisivuille: poisto vanhasta, lisäys Main + muille linkeille -->
+  <!-- Muokattu header alisivuille: Main ylhäällä, muut vaakatasossa supistetussa tilassa -->
   <header class="site-header collapsed" id="siteHeader">
     <div class="header-inner">
-      <!-- Vasemmalla: Main-linkki pääsivulle -->
+      <!-- Ylin: Main-linkki pääsivulle -->
       <nav class="home-nav">
         <ul>
           <li><a href="index.html" class="nav-link">Main</a></li>
         </ul>
       </nav>
 
-      <!-- Oikealla: muut alisivulinkit vaakatasossa -->
+      <!-- Alapuolella: muut alisivulinkit vaakatasossa -->
       <nav class="main-nav">
         <ul>
           <li><a href="gdt.html"             class="nav-link">GDT</a></li>
@@ -29,8 +66,8 @@
     </div>
   </header>
 
-  <main class="site-main" style="display:grid;place-items:center;min-height:70vh;">
-    <h1>…</h1>
+  <main class="site-main" style="display: grid; place-items: center; min-height: 70vh;">
+    <h1>GDT-alisivu</h1>
     <!-- Sivun sisältöä… -->
   </main>
 
