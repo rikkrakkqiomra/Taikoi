@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gold Digger Technologies</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+  <div class="logo-container">
+    <img src="loko.png" alt="Gold Digger Technologies logo" class="logo-img" />
+  </div>
+
+  <div class="header-inner">
+    <div class="branding">
+      <div class="logo">GOLD DIGGER TECHNOLOGIES</div>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="gdt.html" class="nav-link">GDT</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        <li><a href="intelligentleman.html" class="nav-link">Intelligentleman</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+  <main class="site-main">
+    <section class="hero">
+      <h1>Tervetuloa Gold Digger Technologies-sivuille</h1>
+      <p>Rakennamme älykkäitä, lean-periaatteen mukaisia ratkaisuja.</p>
+    </section>
+  </main>
+</body>
+</html>
