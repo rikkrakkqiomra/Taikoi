@@ -28,13 +28,13 @@ body {
   flex-direction: column;
   align-items: center;
 
-  /* New: smooth slide-up / slide-down */
+  /* New: smooth slide-up /seelikkäs slide-down */
   transition: transform var(--anim-speed) ease-in-out,
               padding   var(--anim-speed) ease-in-out;
   transform: translateY(0);
 }
 
-/* Collapsed state leaves only the arrow visible */
+/* Collapsed state leaves only the arrowi visible */
 .site-header.collapsed {
   transform: translateY(calc(-60% + 24px));
   padding-top: 0;
@@ -59,7 +59,7 @@ body.subpage .site-header.collapsed { transition: none; }
   filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
 }
 
-/* Kolmio alareunassa */
+/* Kolmio alareunassa d*/
 .site-header::after {
   content: "";
   position: absolute;
