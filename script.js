@@ -1,38 +1,38 @@
-/* Header animation controller
-   References original markup in index.html lines 10-24 :contentReference[oaicite:1]{index=1} */
-
 document.addEventListener('DOMContentLoaded', () => {
   const header   = document.querySelector('.site-header');
-  const navLinks = document.querySelectorAll('.main-nav a');
+  const navLinks = document.querySelectorAll('.main-nav a, .triangle-link');
 
-  /* If we just came from a sub-page, expand the header smoothly */
-  if (sessionStorage.getItem('headerCollapsed') === 'true' &&
-      location.pathname.endsWith('index.html')) {
-    header.classList.add('collapsed');
+  /* ——— Paluu kotisivulle, laajenna header ——— */
+  if (sessionStorage.getItem('headerCollapsed') === 'true'
+      && location.pathname.endsWith('index.html')) {
+
+    header.classList.add('collapsed');                // käynnistä tilassa ylhäällä
     requestAnimationFrame(() => {
-      setTimeout(() => header.classList.remove('collapsed'), 50);
+      setTimeout(() => header.classList.remove('collapsed'), 40); // liuʼuta alas
     });
     sessionStorage.removeItem('headerCollapsed');
   }
 
-  /* Intercept clicks that go to other HTML pages */
+  /* ——— Linkkipainallus: supista ja odota animaatio ——— */
   navLinks.forEach(link => {
     const target = link.getAttribute('href');
-    if (target && target.endsWith('.html') && !target.includes('#')) {
-      link.addEventListener('click', evt => {
-        if (target === location.pathname.split('/').pop()) return;
-        evt.preventDefault();
-        header.classList.add('collapsed');
-        sessionStorage.setItem('headerCollapsed', 'true');
+    if (!target || !target.endsWith('.html')) return;
 
-        /* Wait for the CSS transition before navigation */
-        const speed = parseFloat(
-          getComputedStyle(document.documentElement)
-            .getPropertyValue('--anim-speed')
-        ) || 450;
-        setTimeout(() => (location.href = target), speed);
-      });
-    }
+    link.addEventListener('click', evt => {
+      // jos jo tällä sivulla → älä animoi
+      if (target === location.pathname.split('/').pop()) return;
+
+      evt.preventDefault();
+      header.classList.add('collapsed');
+      sessionStorage.setItem('headerCollapsed', 'true');
+
+      /* odota vain transform-animaatio */
+      const onEnd = e => {
+        if (e.propertyName !== 'transform') return;
+        header.removeEventListener('transitionend', onEnd);
+        location.href = target;
+      };
+      header.addEventListener('transitionend', onEnd, { once: true });
+    });
   });
 });
-
