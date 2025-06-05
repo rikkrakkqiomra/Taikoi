@@ -1,51 +1,66 @@
-/* ---------- Perusmuuttujat ---------- */
+/* Updated header animation
+   Based on original styles.css lines 45-57 :contentReference[oaicite:0]{index=0} */
 :root {
   --clr-bg-dark: #0d0d0d;
-  --clr-gold:    #d4af37;
-  --clr-beige:   #f2e9dc;
+  --clr-gold:   #d4af37;
+  --clr-beige:  #f2e9dc;
   --space: 1rem;
-  --anim-speed: 900ms;          /* <— pitempi kesto */
+  --anim-speed: 450ms;
 }
 
-/* ---------- Rungon perus ---------- */
-body{
+body {
   font-family: system-ui, sans-serif;
-  background:  var(--clr-beige);
-  color:       var(--clr-bg-dark);
+  background-color: var(--clr-beige);
+  color: var(--clr-bg-dark);
   line-height: 1.6;
-  margin: 0;
   min-height: 100dvh;
+  margin: 0;
 }
 
-/* ---------- Header ---------- */
-.site-header{
+/* ===== Header ===== */
+.site-header {
   position: relative;
-  background: var(--clr-bg-dark);
+  background-color: var(--clr-bg-dark);
   color: var(--clr-gold);
-  padding: var(--space) var(--space) calc(var(--space)*3);
+  padding: var(--space) var(--space) calc(var(--space) * 3);
   text-transform: uppercase;
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  /* sujuva liuku */
+  /* New: smooth slide-up / slide-down */
   transition: transform var(--anim-speed) ease-in-out,
               padding   var(--anim-speed) ease-in-out;
   transform: translateY(0);
 }
 
-/* supistettuna – jätä kolmio näkyviin */
-.site-header.collapsed{
+/* Collapsed state leaves only the arrow visible */
+.site-header.collapsed {
   transform: translateY(calc(-100% + 24px));
   padding-top: 0;
   padding-bottom: 0;
 }
 
-/* estä vilkkuminen sivulatauksessa */
-body.subpage .site-header.collapsed{ transition: none; }
+/* Prevent flash on sub-pages that load already collapsed */
+body.subpage .site-header.collapsed { transition: none; }
 
-/* ---------- Kolmio ---------- */
-.site-header::after{
+/* Logokuva-yläosa */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: var(--space);
+}
+
+.logo-img {
+  max-width: 200px;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
+}
+
+/* Kolmio alareunassa */
+.site-header::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -58,59 +73,95 @@ body.subpage .site-header.collapsed{ transition: none; }
   border-top: 24px solid var(--clr-bg-dark);
 }
 
-/* klikkialue nuolen päällä */
-.triangle-link{
-  position: absolute;
-  left: 50%;
-  bottom: -24px;
-  width: 48px;
-  height: 24px;
-  transform: translateX(-50%);
-  text-indent: -9999px; /* piilota teksti */
-}
-
-/* ---------- Header-sisältö ---------- */
-.header-inner{
+.header-inner {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  gap: var(--space);
+  justify-content: space-between;
   width: 100%;
   max-width: 1024px;
   padding-inline: var(--space);
+  gap: var(--space);
 }
 
-.logo{ font-weight:700; letter-spacing:.08em; font-size:clamp(1rem,3vw,1.2rem); }
-
-.main-nav ul{ list-style:none; display:flex; gap:calc(var(--space)*1.5); }
-
-.nav-link{
-  position:relative; color:var(--clr-gold); text-decoration:none;
-  font-size:clamp(.9rem,2.5vw,1rem);
-  opacity:0; transform:translateY(-20px);
-  animation:slideIn var(--anim-speed) ease-out forwards;
+/* Logo-teksti */
+.logo {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  font-size: clamp(1rem, 3vw, 1.2rem);
+  white-space: nowrap;
 }
-.nav-link:nth-child(1){ animation-delay:120ms }
-.nav-link:nth-child(2){ animation-delay:240ms }
-.nav-link:nth-child(3){ animation-delay:360ms }
 
-.nav-link::after{
-  content:""; position:absolute; inset:100% 0 0 0; height:2px;
-  background:var(--clr-gold); transform:scaleX(0); transform-origin:left;
-  transition:transform 250ms ease-out;
+/* Navigaatio */
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: calc(var(--space) * 1.5);
 }
-.nav-link:hover::after{ transform:scaleX(1) }
 
-@keyframes slideIn{ to{ opacity:1; transform:translateY(0) } }
-
-/* ---------- Hero ---------- */
-.hero{ padding:calc(var(--space)*6) var(--space) calc(var(--space)*8); text-align:center; }
-.hero h1{ font-size:clamp(1.8rem,4vw,2.4rem); margin-bottom:var(--space); }
-.hero p{ font-size:clamp(1rem,2.5vw,1.1rem); max-width:60ch; margin-inline:auto; }
-
-/* ---------- Mobiili ---------- */
-@media(max-width:600px){
-  .header-inner{ flex-direction:column; text-align:center }
-  .main-nav ul{ flex-direction:column; align-items:center; padding:0 }
-  .main-nav li{ margin-bottom:.5rem }
+.nav-link {
+  position: relative;
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
+  text-decoration: none;
+  color: var(--clr-gold);
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: slideIn var(--anim-speed) ease-out forwards;
 }
+
+.nav-link:nth-child(1) { animation-delay: 100ms; }
+.nav-link:nth-child(2) { animation-delay: 200ms; }
+.nav-link:nth-child(3) { animation-delay: 300ms; }
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  inset: 100% 0 0 0;
+  height: 2px;
+  background: var(--clr-gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 250ms ease-out;
+}
+.nav-link:hover::after { transform: scaleX(1); }
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Hero */
+.hero {
+  padding: calc(var(--space) * 6) var(--space) calc(var(--space) * 8);
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  margin-bottom: var(--space);
+  color: var(--clr-bg-dark);
+}
+
+.hero p {
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  max-width: 60ch;
+  margin-inline: auto;
+}
+
+@media (max-width: 600px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+
+  .main-nav ul li { margin-bottom: 0.5rem; }
+}
+
