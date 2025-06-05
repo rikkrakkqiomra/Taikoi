@@ -32,24 +32,31 @@ body {
   transform: translateY(0);
 }
 
-/* Korjattu: Collapsed-tila vie koko headerin ylös – vain 24px-korkuinen kolmio jää näkyviin */
+/* Kun headerin luokassa on .collapsed, siirrä koko header (pois lukien 24px-kolmio). */
 .site-header.collapsed {
   transform: translateY(calc(-100% + 24px));
   padding-top: 0;
   padding-bottom: 0;
+  /* Transition jää perintönä entisenä, jotta pääsivulla animaatio pyörii normaalisti */
 }
 
-/* Alisivuilla (body.subpage) halutaan, että header.collapsed EI liiku ylös, vaan linkit ovat koko ajan näkyvissä. */
+/* ================================================================= */
+/*  Tämä sääntö OVERRIDAA välittömästi edellisen,                 */
+/*  kun body:ssä on luokka "subpage".  Käytä NÄIN JÄRJESTÄYTYMÄLLÄ: */
+/* ================================================================= */
+
+/* Alisivuilla ei haluta siirtoa ylös; transform ja transition poistetaan kokonaan. */
 body.subpage .site-header.collapsed {
-  /* Ei siirtoa ylös, eikä animaatiota alisivuilla */
-  transform: translateY(0);
-  transition: none;
-  /* Poistetaan ylimääräinen padding, koska alisivulla headerissä ei ole logoa */
+  transform: none !important;
+  transition: none !important;
   padding-top: 0;
   padding-bottom: 0;
 }
 
-/* Logokuva-yläosa (ei näy alisivuilla, jos HTML:ssä ei ole .logo-containeria) */
+/* ================================================================= */
+/*  ================================================================= */
+
+/* Logokuva-yläosa */
 .logo-container {
   display: flex;
   justify-content: center;
@@ -172,14 +179,13 @@ body.subpage .site-header.collapsed {
     margin-bottom: 0.5rem;
   }
 
-  /* Alisivun supistetussa tilassa mobiilissa linkit ovat koko ajan näkyvissä */
+  /* Alisivulla linkit näkyvät heti (ei fadea ja ei siirtoa) */
   body.subpage .site-header.collapsed .nav-link {
     font-size: 1rem;
-    opacity: 1 !important; /* näkyy ilman fade‐efektiä */
+    opacity: 1 !important;
     transform: translateY(0) !important;
   }
   body.subpage .site-header.collapsed .header-inner {
     padding: 0.5rem 0;
   }
 }
-
