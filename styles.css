@@ -37,6 +37,7 @@ body {
   padding-bottom: 0;
 }
 
+/* ===== Tekaristataniastm ===== */
 body.subpage .site-header.collapsed { transition: none; }
 
 .logo-container {
