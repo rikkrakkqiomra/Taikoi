@@ -32,7 +32,7 @@ body {
 }
 
 .site-header.collapsed {
-  transform: translateY(calc(-70%));
+  transform: translateY(calc(-60%));
   padding-top: 0;
   padding-bottom: 0;
 }
