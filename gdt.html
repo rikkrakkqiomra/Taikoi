@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GDT – Alisivu</title>
   <link rel="stylesheet" href="styles.css" />
+  <script src="script.js"></script>
   <style>
+    /* Alisivuilla halutaan header kolmen linkin vaakarivinä heti supistettuna */
     .site-header.collapsed .header-inner {
       flex-direction: column;
       align-items: center;
       text-align: center;
     }
-    /* Supistetun headerin muut linkit vaakatasoon */
     .site-header.collapsed .main-nav ul {
       display: flex;
       flex-direction: row;
@@ -22,15 +23,12 @@
     .site-header.collapsed .main-nav ul li {
       list-style: none;
     }
-
-    /* Pieni säätö linkkien kokoihin mobiilissa */
     @media (max-width: 600px) {
       .site-header.collapsed .nav-link {
         font-size: 1rem;
-        opacity: 1 !important; /* Näytetään suoraan ilman animaatio-efektiä */
+        opacity: 1 !important;
         transform: translateY(0) !important;
       }
-      /* Poistetaan mahdolliset marginaalit, jotka tulevat muissa media-kyselyissä */
       .site-header.collapsed .header-inner {
         padding: 0.5rem 0;
       }
@@ -38,8 +36,6 @@
   </style>
 </head>
 <body class="subpage">
-
-  <!-- Muokattu header alisivuille: pelkästään kolme linkkiä vaakatasossa supistetussa tilassa -->
   <header class="site-header collapsed" id="siteHeader">
     <div class="header-inner">
       <nav class="main-nav">
@@ -56,7 +52,5 @@
     <h1>GDT-alisivu</h1>
     <!-- Sivun sisältöä… -->
   </main>
-
-  <script src="script.js"></script>
 </body>
 </html>
