@@ -39,12 +39,17 @@ body {
   padding-bottom: 0;
 }
 
-/* Estetään vilkkuminen alisivuilla, joissa header on jo valmiiksi supistettu */
+/* Alisivuilla (body.subpage) halutaan, että header.collapsed EI liiku ylös, vaan linkit ovat koko ajan näkyvissä. */
 body.subpage .site-header.collapsed {
+  /* Ei siirtoa ylös, eikä animaatiota alisivuilla */
+  transform: translateY(0);
   transition: none;
+  /* Poistetaan ylimääräinen padding, koska alisivulla headerissä ei ole logoa */
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
-/* Logokuva-yläosa */
+/* Logokuva-yläosa (ei näy alisivuilla, jos HTML:ssä ei ole .logo-containeria) */
 .logo-container {
   display: flex;
   justify-content: center;
@@ -167,13 +172,13 @@ body.subpage .site-header.collapsed {
     margin-bottom: 0.5rem;
   }
 
-  /* Alisivun supistetun linkkiasetelman korjaus mobiilissa */
-  .site-header.collapsed .nav-link {
+  /* Alisivun supistetussa tilassa mobiilissa linkit ovat koko ajan näkyvissä */
+  body.subpage .site-header.collapsed .nav-link {
     font-size: 1rem;
-    opacity: 1 !important; /* vähän isompi fontti ja ei fade‐efektiä */
+    opacity: 1 !important; /* näkyy ilman fade‐efektiä */
     transform: translateY(0) !important;
   }
-  .site-header.collapsed .header-inner {
+  body.subpage .site-header.collapsed .header-inner {
     padding: 0.5rem 0;
   }
 }
