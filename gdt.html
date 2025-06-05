@@ -11,8 +11,6 @@
       align-items: center;
       text-align: center;
     }
-    /* Supistetun headerin “Main”-linkkiä ei muuteta (on jo navina ylhäällä) */
-
     /* Supistetun headerin muut linkit vaakatasoon */
     .site-header.collapsed .main-nav ul {
       display: flex;
@@ -41,19 +39,12 @@
 </head>
 <body class="subpage">
 
-  <!-- Muokattu header alisivuille: Main ylhäällä, muut vaakatasossa supistetussa tilassa -->
+  <!-- Muokattu header alisivuille: pelkästään kolme linkkiä vaakatasossa supistetussa tilassa -->
   <header class="site-header collapsed" id="siteHeader">
     <div class="header-inner">
-      <!-- Ylin: Main-linkki pääsivulle -->
-      <nav class="home-nav">
-        <ul>
-          <li><a href="index.html" class="nav-link">Main</a></li>
-        </ul>
-      </nav>
-
-      <!-- Alapuolella: muut alisivulinkit vaakatasossa -->
       <nav class="main-nav">
         <ul>
+          <li><a href="index.html" class="nav-link">Home</a></li>
           <li><a href="contact.html" class="nav-link">Contact</a></li>
           <li><a href="intelligentleman.html" class="nav-link">Intelligentleman</a></li>
         </ul>
