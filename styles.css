@@ -1,5 +1,3 @@
-/* Updated header animation
-   Based on original styles.css lines 45-57 :contentReference[oaicite:0]{index=0} */
 :root {
   --clr-bg-dark: #0d0d0d;
   --clr-gold:   #d4af37;
@@ -34,15 +32,17 @@ body {
   transform: translateY(0);
 }
 
-/* Collapsed state leaves only the arrow visible — muutettu 100% → 50% */
+/* Korjattu: Collapsed-tila vie koko headerin ylös – vain 24px-korkuinen kolmio jää näkyviin */
 .site-header.collapsed {
-  transform: translateY(calc(-50% + 24px));
+  transform: translateY(calc(-100% + 24px));
   padding-top: 0;
   padding-bottom: 0;
 }
 
-/* Prevent flash on sub-pages that load already collapsed */
-body.subpage .site-header.collapsed { transition: none; }
+/* Estetään vilkkuminen alisivuilla, joissa header on jo valmiiksi supistettu */
+body.subpage .site-header.collapsed {
+  transition: none;
+}
 
 /* Logokuva-yläosa */
 .logo-container {
@@ -149,6 +149,7 @@ body.subpage .site-header.collapsed { transition: none; }
   margin-inline: auto;
 }
 
+/* Mobile-first: pedi header‐ ja nav-asettelu pienillä näytöillä */
 @media (max-width: 600px) {
   .header-inner {
     flex-direction: column;
@@ -162,5 +163,18 @@ body.subpage .site-header.collapsed { transition: none; }
     padding: 0;
   }
 
-  .main-nav ul li { margin-bottom: 0.5rem; }
+  .main-nav ul li {
+    margin-bottom: 0.5rem;
+  }
+
+  /* Alisivun supistetun linkkiasetelman korjaus mobiilissa */
+  .site-header.collapsed .nav-link {
+    font-size: 1rem;
+    opacity: 1 !important; /* vähän isompi fontti ja ei fade‐efektiä */
+    transform: translateY(0) !important;
+  }
+  .site-header.collapsed .header-inner {
+    padding: 0.5rem 0;
+  }
 }
+
