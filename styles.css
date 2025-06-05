@@ -15,7 +15,7 @@ body {
   margin: 0;
 }
 
-/* ===== Header ===== */
+/* ===== Headeri ===== */
 .site-header {
   position: relative;
   background-color: var(--clr-bg-dark);
@@ -122,13 +122,11 @@ body.subpage .site-header.collapsed { transition: none; }
   }
 }
 
-/* ===== Hero ===== */
 .hero {
   padding: calc(var(--space) * 6) var(--space) calc(var(--space) * 8);
   text-align: center;
 }
 
-/* Muutettu näin, jotta subpage-teksti alkaa alemmas suhteessa headeriin */
 body.subpage .hero {
   padding-top: calc(var(--space) * 6);
 }
