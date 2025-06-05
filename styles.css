@@ -26,26 +26,18 @@ body {
   flex-direction: column;
   align-items: center;
 
-  /* smooth slide-up / slide-down */
   transition: transform var(--anim-speed) ease-in-out,
               padding   var(--anim-speed) ease-in-out;
   transform: translateY(0);
 }
 
-/* Kun headerin luokassa on .collapsed, siirrä koko header (pois lukien 24px-kolmio). */
 .site-header.collapsed {
   transform: translateY(calc(-100% + 24px));
   padding-top: 0;
   padding-bottom: 0;
-  /* Transition jää perintönä entisenä, jotta pääsivulla animaatio pyörii normaalisti */
+
 }
 
-/* ================================================================= */
-/*  Tämä sääntö OVERRIDAA välittömästi edellisen,                 */
-/*  kun body:ssä on luokka "subpage".  Käytä NÄIN JÄRJESTÄYTYMÄLLÄ: */
-/* ================================================================= */
-
-/* Alisivuilla ei haluta siirtoa ylös; transform ja transition poistetaan kokonaan. */
 body.subpage .site-header.collapsed {
   transform: none !important;
   transition: none !important;
@@ -53,10 +45,6 @@ body.subpage .site-header.collapsed {
   padding-bottom: 0;
 }
 
-/* ================================================================= */
-/*  ================================================================= */
-
-/* Logokuva-yläosa */
 .logo-container {
   display: flex;
   justify-content: center;
@@ -71,7 +59,6 @@ body.subpage .site-header.collapsed {
   filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
 }
 
-/* Kolmio alareunassa */
 .site-header::after {
   content: "";
   position: absolute;
@@ -95,7 +82,6 @@ body.subpage .site-header.collapsed {
   gap: var(--space);
 }
 
-/* Logo-teksti */
 .logo {
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -103,7 +89,6 @@ body.subpage .site-header.collapsed {
   white-space: nowrap;
 }
 
-/* Navigaatio */
 .main-nav ul {
   list-style: none;
   display: flex;
@@ -143,7 +128,6 @@ body.subpage .site-header.collapsed {
   }
 }
 
-/* Hero */
 .hero {
   padding: calc(var(--space) * 6) var(--space) calc(var(--space) * 8);
   text-align: center;
@@ -161,7 +145,6 @@ body.subpage .site-header.collapsed {
   margin-inline: auto;
 }
 
-/* Mobile-first: pedi header‐ ja nav-asettelu pienillä näytöillä */
 @media (max-width: 600px) {
   .header-inner {
     flex-direction: column;
@@ -178,8 +161,6 @@ body.subpage .site-header.collapsed {
   .main-nav ul li {
     margin-bottom: 0.5rem;
   }
-
-  /* Alisivulla linkit näkyvät heti (ei fadea ja ei siirtoa) */
   body.subpage .site-header.collapsed .nav-link {
     font-size: 1rem;
     opacity: 1 !important;
