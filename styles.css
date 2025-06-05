@@ -1,58 +1,50 @@
-/* ===== Perusmuuttujat ===== */
+/* Updated header animation
+   Based on original styles.css lines 45-57 :contentReference[oaicite:0]{index=0} */
 :root {
   --clr-bg-dark: #0d0d0d;
-  --clr-gold:    #d4af37;
-  --clr-beige:   #f2e9dc;
+  --clr-gold:   #d4af37;
+  --clr-beige:  #f2e9dc;
   --space: 1rem;
   --anim-speed: 450ms;
-  --triangle: 24px;               /* kolmion korkeus */
 }
-
-*,
-*::before,
-*::after { box-sizing: border-box; }
 
 body {
   font-family: system-ui, sans-serif;
-  background: var(--clr-beige);
+  background-color: var(--clr-beige);
   color: var(--clr-bg-dark);
-  margin: 0;
   line-height: 1.6;
   min-height: 100dvh;
+  margin: 0;
 }
 
 /* ===== Header ===== */
 .site-header {
-  position: sticky;       /* pysyy yläreunassa myös scrollissa */
-  top: 0;
-  z-index: 10;
-  background: var(--clr-bg-dark);
+  position: relative;
+  background-color: var(--clr-bg-dark);
   color: var(--clr-gold);
-  padding: var(--space) var(--space) calc(var(--space)*3);
+  padding: var(--space) var(--space) calc(var(--space) * 3);
   text-transform: uppercase;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  /* New: smooth slide-up / slide-down */
+  transition: transform var(--anim-speed) ease-in-out,
+              padding   var(--anim-speed) ease-in-out;
   transform: translateY(0);
-  transition: transform var(--anim-speed) ease-in-out;
 }
 
-/* Kolmio (aina näkyvissä) */
-.site-header::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: 0;
-  translate: -50% 100%;
-  width: 0;
-  height: 0;
-  border-left: var(--triangle) solid transparent;
-  border-right: var(--triangle) solid transparent;
-  border-top: var(--triangle) solid var(--clr-bg-dark);
-  pointer-events: none;           /* varsinainen klikkaus otetaan JS:llä koko headerista */
+/* Collapsed state leaves only the arrow visible */
+.site-header.collapsed {
+  transform: translateY(calc(-100% + 24px));
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
-/* ===== Headerin sisäosat ===== */
+/* Prevent flash on sub-pages that load already collapsed */
+body.subpage .site-header.collapsed { transition: none; }
+
+/* Logokuva-yläosa */
 .logo-container {
   display: flex;
   justify-content: center;
@@ -63,38 +55,52 @@ body {
 .logo-img {
   max-width: 200px;
   height: auto;
-  filter: drop-shadow(0 0 4px rgba(0,0,0,.5));
+  object-fit: contain;
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
+}
+
+/* Kolmio alareunassa */
+.site-header::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  translate: -50% 100%;
+  width: 0;
+  height: 0;
+  border-left: 24px solid transparent;
+  border-right: 24px solid transparent;
+  border-top: 24px solid var(--clr-bg-dark);
 }
 
 .header-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space);
   width: 100%;
   max-width: 1024px;
   padding-inline: var(--space);
+  gap: var(--space);
 }
 
+/* Logo-teksti */
 .logo {
   font-weight: 700;
-  letter-spacing: .08em;
+  letter-spacing: 0.08em;
   font-size: clamp(1rem, 3vw, 1.2rem);
   white-space: nowrap;
 }
 
-/* ===== Navigaatio ===== */
+/* Navigaatio */
 .main-nav ul {
   list-style: none;
   display: flex;
-  gap: calc(var(--space)*1.5);
-  margin: 0;
-  padding: 0;
+  gap: calc(var(--space) * 1.5);
 }
 
 .nav-link {
   position: relative;
-  font-size: clamp(.9rem, 2.5vw, 1rem);
+  font-size: clamp(0.9rem, 2.5vw, 1rem);
   text-decoration: none;
   color: var(--clr-gold);
   opacity: 0;
@@ -119,34 +125,43 @@ body {
 .nav-link:hover::after { transform: scaleX(1); }
 
 @keyframes slideIn {
-  to { opacity: 1; transform: translateY(0); }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-/* ===== Hero ===== */
+/* Hero */
 .hero {
-  padding: calc(var(--space)*6) var(--space) calc(var(--space)*8);
+  padding: calc(var(--space) * 6) var(--space) calc(var(--space) * 8);
   text-align: center;
 }
-.hero h1   { font-size: clamp(1.8rem, 4vw, 2.4rem); margin-bottom: var(--space); }
-.hero p    { font-size: clamp(1rem, 2.5vw, 1.1rem); max-width: 60ch; margin-inline:auto; }
 
-/* ===== Header-tilat ===== */
-.site-header.collapsed {
-  transform: translateY(calc(-100% + var(--triangle)));
+.hero h1 {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  margin-bottom: var(--space);
+  color: var(--clr-bg-dark);
 }
 
-.site-header.entering {
-  transform: translateY(-100%);
+.hero p {
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  max-width: 60ch;
+  margin-inline: auto;
 }
 
-.site-header.entering.show {
-  transform: translateY(0);
-}
+@media (max-width: 600px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 
-/* ===== Responsiivisuus ===== */
-@media (max-width:600px){
-  .header-inner { flex-direction: column; text-align:center; }
-  .main-nav ul  { flex-direction: column; align-items:center; }
-  .main-nav ul li { margin-bottom:.5rem; }
+  .main-nav ul {
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+
+  .main-nav ul li { margin-bottom: 0.5rem; }
 }
 
