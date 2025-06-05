@@ -1,10 +1,7 @@
-// script.js
-
 document.addEventListener('DOMContentLoaded', () => {
   const header   = document.querySelector('.site-header');
   const navLinks = document.querySelectorAll('.main-nav a');
 
-  // Jos käyttäjä tulee takaisin index-sivulle, suoritetaan laskostunut tilan purku
   if (
     sessionStorage.getItem('headerCollapsed') === 'true' &&
     location.pathname.endsWith('index.html')
@@ -20,14 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
     link.addEventListener('click', (evt) => {
       const target = link.getAttribute('href');
 
-      // Jos ollaan jo halutulla sivulla, ei tehdä mitään
       if (location.pathname.endsWith(target)) {
         return;
       }
 
       evt.preventDefault();
 
-      // Jos navigoidaan takaisin index.html:ään, skipataan nykyisen sivun collapsing-animointi
       if (target === 'index.html') {
         sessionStorage.setItem('headerCollapsed', 'true');
       } else {
