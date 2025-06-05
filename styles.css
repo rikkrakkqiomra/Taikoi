@@ -1,10 +1,4 @@
-:root {
-  --clr-bg-dark: #0d0d0d;
-  --clr-gold:   #d4af37;
-  --clr-beige:  #f2e9dc;
-  --space: 1rem;
-  --anim-speed: 450ms;
-}
+/* ... aiemmat :root ja reset säilyvät ennallaan ... */
 
 body {
   font-family: system-ui, sans-serif;
@@ -27,7 +21,6 @@ body {
   align-items: center;
 }
 
-/* Logokuva-yläosa */
 .logo-container {
   display: flex;
   justify-content: center;
@@ -36,13 +29,13 @@ body {
 }
 
 .logo-img {
-  max-width: 200px;
+  max-width: min(200px, 40vw);
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
 }
 
-/* Kolmio alareunassa */
+/* Kolmio */
 .site-header::after {
   content: "";
   position: absolute;
@@ -56,8 +49,10 @@ body {
   border-top: 24px solid var(--clr-bg-dark);
 }
 
+/* Headerin sisältö: logo & nav */
 .header-inner {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   width: 100%;
@@ -66,7 +61,7 @@ body {
   gap: var(--space);
 }
 
-/* Logo-teksti */
+/* Tekstilogo */
 .logo {
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -78,7 +73,9 @@ body {
 .main-nav ul {
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   gap: calc(var(--space) * 1.5);
+  padding-top: 0.5rem;
 }
 
 .nav-link {
@@ -121,13 +118,35 @@ body {
 }
 
 .hero h1 {
-  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-size: clamp(1.5rem, 5vw, 2.4rem);
   margin-bottom: var(--space);
   color: var(--clr-bg-dark);
 }
 
 .hero p {
-  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  font-size: clamp(1rem, 3vw, 1.1rem);
   max-width: 60ch;
   margin-inline: auto;
+}
+
+/* ===== Mobiilivarmistukset (pienet näytöt alle 500px) ===== */
+@media (max-width: 500px) {
+  .header-inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .main-nav ul {
+    justify-content: center;
+  }
+
+  .logo-img {
+    max-width: 50vw;
+  }
+
+  .logo {
+    text-align: center;
+    font-size: 1rem;
+  }
 }
