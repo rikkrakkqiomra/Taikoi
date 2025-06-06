@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
 if (sessionStorage.getItem('headerCollapsed') === 'true' && isHome) {
   header.classList.add('collapsed');
   requestAnimationFrame(() => {
+    void header.offsetWidth; // Pakotettu piirto
     setTimeout(() => header.classList.remove('collapsed'), 50);
   });
   sessionStorage.removeItem('headerCollapsed');
