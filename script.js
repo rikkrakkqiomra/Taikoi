@@ -1,17 +1,26 @@
 document.addEventListener('DOMContentLoaded', () => {
-  const header   = document.querySelector('.site-header');
-  const navLinks = document.querySelectorAll('.main-nav a');
-  const isHome =
-      location.pathname.endsWith('index.html') ||
-      location.pathname === '/' ||
-      location.pathname === '';
+  const header = document.querySelector('.site-header');
+  const logoImg = document.querySelector('.logo-img');
 
-if (sessionStorage.getItem('headerCollapsed') === 'true' && isHome) {
-  header.classList.add('collapsed');
-  requestAnimationFrame(() => {
-    void header.offsetWidth; // Pakotettu piirto
-    setTimeout(() => header.classList.remove('collapsed'), 50);
-  });
+  if (header.classList.contains('collapsed')) {
+    const startTransition = () => {
+      // Force style flush
+      void header.offsetWidth;
+      setTimeout(() => {
+        header.classList.remove('collapsed');
+      }, 50);
+    };
+
+    // Jos kuva on jo ladattu (esim. välimuistista)
+    if (logoImg.complete) {
+      startTransition();
+    } else {
+      // Muuten odotetaan, että kuva latautuu
+      logoImg.addEventListener('load', startTransition);
+    }
+  }
+});
+
   sessionStorage.removeItem('headerCollapsed');
 }
   
