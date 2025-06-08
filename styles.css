@@ -136,7 +136,7 @@ body.subpage .site-header.collapsed { transition: none; }
 }
 
 body.subpage main.site-main {
-  margin-top: calc(var(--space) * -8); /* DIDIDID */
+  margin-top: calc(var(--space) * -12); /* DIDIDID */
 }
 
 
