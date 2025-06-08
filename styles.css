@@ -135,8 +135,8 @@ body.subpage .site-header.collapsed { transition: none; }
   text-align: center;
 }
 
-body.subpage .hero {
-  padding-top: calc(var(--space) * 8);
+body.subpage main.site-main {
+  margin-top: calc(var(--space) * -3); /* testaa -2 tai -4 tarvittaessa */
 }
 
 
