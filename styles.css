@@ -131,7 +131,7 @@ body.subpage .site-header.collapsed { transition: none; }
 }
 
 .hero {
-  padding: calc(var(--space) * 6) var(--space) calc(var(--space) * 8);
+  padding: calc(var(--space) * 5) var(--space) calc(var(--space) * 8);
   text-align: center;
 }
 
