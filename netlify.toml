@@ -1,0 +1,94 @@
+[build]
+  publish = "."
+
+[[redirects]]
+  from = "/en/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/de/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/fr/*"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/de"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/fr"
+  to = "/index.html"
+  status = 200
+
+# Handle direct access to language-specific pages
+[[redirects]]
+  from = "/en/contact.html"
+  to = "/contact.html"
+  status = 200
+
+[[redirects]]
+  from = "/de/contact.html"
+  to = "/contact.html"
+  status = 200
+
+[[redirects]]
+  from = "/fr/contact.html"
+  to = "/contact.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/gdt.html"
+  to = "/gdt.html"
+  status = 200
+
+[[redirects]]
+  from = "/de/gdt.html"
+  to = "/gdt.html"
+  status = 200
+
+[[redirects]]
+  from = "/fr/gdt.html"
+  to = "/gdt.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/intelligentleman.html"
+  to = "/intelligentleman.html"
+  status = 200
+
+[[redirects]]
+  from = "/de/intelligentleman.html"
+  to = "/intelligentleman.html"
+  status = 200
+
+[[redirects]]
+  from = "/fr/intelligentleman.html"
+  to = "/intelligentleman.html"
+  status = 200
+
+# Headers for better caching
+[[headers]]
+  for = "*.json"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=86400" 
