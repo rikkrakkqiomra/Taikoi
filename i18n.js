@@ -10,8 +10,9 @@ class I18n {
   }
 
   init() {
+    console.log('Initializing i18n with language:', this.currentLang);
+    this.setupLanguageSwitcher(); // Set up switcher first
     this.loadTranslations();
-    this.setupLanguageSwitcher();
     this.updateHreflangTags();
     this.translatePage();
   }
@@ -106,38 +107,58 @@ class I18n {
   }
 
   setupLanguageSwitcher() {
-    // Create language switcher if it doesn't exist
-    if (!document.querySelector('.language-switcher')) {
-      const switcher = document.createElement('div');
-      switcher.className = 'language-switcher';
-      
-      this.supportedLanguages.forEach(lang => {
-        const langBtn = document.createElement('button');
-        langBtn.className = `lang-btn ${lang === this.currentLang ? 'active' : ''}`;
-        langBtn.innerHTML = this.getLanguageFlag(lang);
-        langBtn.setAttribute('title', this.getLanguageName(lang));
-        langBtn.addEventListener('click', () => this.switchLanguage(lang));
-        switcher.appendChild(langBtn);
-      });
-
-      // Insert into header - try multiple possible locations
-      const header = document.querySelector('.site-header');
-      if (header) {
-        header.appendChild(switcher);
-      } else {
-        // Fallback: insert at the beginning of body
-        document.body.insertBefore(switcher, document.body.firstChild);
-      }
+    console.log('Setting up language switcher...');
+    
+    // Remove any existing switcher first
+    const existingSwitcher = document.querySelector('.language-switcher');
+    if (existingSwitcher) {
+      existingSwitcher.remove();
     }
     
-    // Ensure switcher is visible by checking after a short delay
-    setTimeout(() => {
-      const existingSwitcher = document.querySelector('.language-switcher');
-      if (!existingSwitcher) {
-        console.log('Language switcher not found, recreating...');
-        this.setupLanguageSwitcher();
-      }
-    }, 200);
+    const switcher = document.createElement('div');
+    switcher.className = 'language-switcher';
+    switcher.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 8px;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 8px;
+      border-radius: 8px;
+      backdrop-filter: blur(10px);
+    `;
+    
+    this.supportedLanguages.forEach(lang => {
+      const langBtn = document.createElement('button');
+      langBtn.className = `lang-btn ${lang === this.currentLang ? 'active' : ''}`;
+      langBtn.innerHTML = this.getLanguageFlag(lang);
+      langBtn.setAttribute('title', this.getLanguageName(lang));
+      langBtn.style.cssText = `
+        background: transparent;
+        border: 2px solid #FFD700;
+        color: #FFD700;
+        padding: 8px;
+        font-size: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border-radius: 6px;
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+      `;
+      
+      langBtn.addEventListener('click', () => this.switchLanguage(lang));
+      switcher.appendChild(langBtn);
+    });
+
+    // Always append to body to ensure it's visible
+    document.body.appendChild(switcher);
+    console.log('Language switcher created and appended to body');
   }
 
   getLanguageFlag(lang) {
@@ -226,8 +247,14 @@ class I18n {
 
 // Initialize i18n when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-  // Small delay to ensure all elements are loaded
-  setTimeout(() => {
-    window.i18n = new I18n();
-  }, 100);
-}); 
+  console.log('DOM loaded, initializing i18n...');
+  window.i18n = new I18n();
+});
+
+// Also try to initialize immediately if DOM is already loaded
+if (document.readyState === 'loading') {
+  console.log('DOM still loading, waiting...');
+} else {
+  console.log('DOM already loaded, initializing i18n immediately...');
+  window.i18n = new I18n();
+} 
