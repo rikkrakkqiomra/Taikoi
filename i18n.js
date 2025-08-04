@@ -114,17 +114,40 @@ class I18n {
       this.supportedLanguages.forEach(lang => {
         const langBtn = document.createElement('button');
         langBtn.className = `lang-btn ${lang === this.currentLang ? 'active' : ''}`;
-        langBtn.textContent = this.getLanguageName(lang);
+        langBtn.innerHTML = this.getLanguageFlag(lang);
+        langBtn.setAttribute('title', this.getLanguageName(lang));
         langBtn.addEventListener('click', () => this.switchLanguage(lang));
         switcher.appendChild(langBtn);
       });
 
-      // Insert into header
+      // Insert into header - try multiple possible locations
       const header = document.querySelector('.site-header');
       if (header) {
         header.appendChild(switcher);
+      } else {
+        // Fallback: insert at the beginning of body
+        document.body.insertBefore(switcher, document.body.firstChild);
       }
     }
+    
+    // Ensure switcher is visible by checking after a short delay
+    setTimeout(() => {
+      const existingSwitcher = document.querySelector('.language-switcher');
+      if (!existingSwitcher) {
+        console.log('Language switcher not found, recreating...');
+        this.setupLanguageSwitcher();
+      }
+    }, 200);
+  }
+
+  getLanguageFlag(lang) {
+    const flags = {
+      'fi': '🇫🇮',
+      'en': '🇺🇸',
+      'de': '🇩🇪',
+      'fr': '🇫🇷'
+    };
+    return flags[lang] || lang;
   }
 
   getLanguageName(lang) {
@@ -203,5 +226,8 @@ class I18n {
 
 // Initialize i18n when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-  window.i18n = new I18n();
+  // Small delay to ensure all elements are loaded
+  setTimeout(() => {
+    window.i18n = new I18n();
+  }, 100);
 }); 
