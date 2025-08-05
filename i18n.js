@@ -1,10 +1,10 @@
 // i18n Framework for Gold Digger Technologies
 class I18n {
   constructor() {
-    this.currentLang = this.getStoredLanguage() || this.detectLanguage();
-    this.translations = {};
     this.supportedLanguages = ['fi', 'en', 'de', 'fr'];
     this.defaultLanguage = 'fi';
+    this.translations = {};
+    this.currentLang = this.getStoredLanguage() || this.detectLanguage();
     
     // Initialize asynchronously
     this.init().catch(error => {
