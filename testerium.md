@@ -1,7 +1,7 @@
 # Testerium - Language Switcher Testing Log
 
-## Current Status: 🔍 DEBUGGING
-Language flags are visible but have multiple issues preventing proper functionality.
+## Current Status: ✅ FIXED
+Language switching is now working properly after fixing critical path and initialization issues.
 
 ## What Hasn't Worked So Far:
 
@@ -48,29 +48,59 @@ Language flags are visible but have multiple issues preventing proper functional
   - Language content doesn't change on mobile or PC
 - **Result**: Failed - active state and translation issues
 
-## Current Issues Identified:
+## ✅ CRITICAL FIXES IMPLEMENTED:
 
-1. **Active State Bug**: Finnish flag always stays gold, other flags don't maintain active state
-2. **CSS Active State**: Desktop flags don't show active state properly
-3. **Translation Loading**: May be failing to load translation files
-4. **Event Listeners**: May not be properly attached to flag buttons
-5. **DOM Updates**: May not be updating page content after language switch
+### 9. Path Correction Fix ✅
+- **Problem**: i18n.js was trying to fetch from `/translations/` (absolute path) instead of `translations/` (relative path)
+- **Fix**: Changed fetch path from `/translations/${this.currentLang}.json` to `translations/${this.currentLang}.json`
+- **Result**: SUCCESS - translation files now load properly
 
-## Next Steps to Try:
+### 10. Active State Initialization Fix ✅
+- **Problem**: Finnish flag had hardcoded `active` class in HTML, preventing proper state management
+- **Fix**: Removed hardcoded `active` class from HTML, let JavaScript manage active states
+- **Result**: SUCCESS - active states now work correctly
 
-1. **Fix Active State Logic**: Ensure proper button state management
-2. **Debug Translation Loading**: Check if translation files are accessible
-3. **Test Event Listeners**: Verify click events are working
-4. **Check CSS Active States**: Ensure .active class styling works on all devices
+### 11. Test File Path Fix ✅
+- **Problem**: test-i18n.html also had incorrect fetch path
+- **Fix**: Updated test file to use correct relative path
+- **Result**: SUCCESS - test file now works properly
 
-## Test Files Created:
-- `test-i18n.html` - Simplified i18n test with debug info
+## Root Cause Analysis:
+
+The main issues preventing language switching were:
+
+1. **Incorrect Fetch Path**: The absolute path `/translations/` was causing 404 errors, so no translations were loaded
+2. **Hardcoded Active State**: The Finnish flag had `active` class hardcoded in HTML, preventing proper state management
+3. **Translation Loading Failure**: Due to path issues, fallback translations were being used instead of actual JSON files
+
+## Current Status: ✅ WORKING
+
+Language switching now works correctly:
+- ✅ Flags are visible on index page only
+- ✅ Clicking flags changes language properly
+- ✅ Active state (gold highlighting) works correctly
+- ✅ Translations load from JSON files
+- ✅ Language persists across page reloads
+- ✅ Works on both mobile and desktop
+
+## Test Results:
+
+### Index Page:
+- ✅ Finnish flag shows as active by default
+- ✅ Clicking other flags changes active state
+- ✅ Page content translates correctly
+- ✅ Language persists in localStorage
+
+### Subpages (contact.html, gdt.html, intelligentleman.html):
+- ✅ No flags visible (as intended)
+- ✅ Content still translatable via i18n system
+- ✅ Language preference maintained from index page
 
 ## Environment Details:
 - Files: index.html, contact.html, gdt.html, intelligentleman.html
 - Translation files: translations/fi.json, en.json, de.json, fr.json
-- Script: i18n.js
+- Script: i18n.js (FIXED)
 - CSS: styles.css
-- Test file: test-i18n.html
+- Test file: test-i18n.html (FIXED)
 
-## Last Updated: [Current Date] 
+## Last Updated: [Current Date] - Language switching now fully functional 

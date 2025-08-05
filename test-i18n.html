@@ -60,7 +60,7 @@
 </head>
 <body>
   <div class="language-switcher">
-    <button class="lang-btn active" data-lang="fi" title="Suomi">🇫🇮</button>
+    <button class="lang-btn" data-lang="fi" title="Suomi">🇫🇮</button>
     <button class="lang-btn" data-lang="en" title="English">🇺🇸</button>
     <button class="lang-btn" data-lang="de" title="Deutsch">🇩🇪</button>
     <button class="lang-btn" data-lang="fr" title="Français">🇫🇷</button>
@@ -107,7 +107,7 @@
       async loadTranslations() {
         try {
           console.log('Loading translations for:', this.currentLang);
-          const response = await fetch(`/translations/${this.currentLang}.json`);
+          const response = await fetch(`translations/${this.currentLang}.json`);
           console.log('Response status:', response.status);
           
           if (!response.ok) {
