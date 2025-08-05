@@ -6,13 +6,17 @@ class I18n {
     this.supportedLanguages = ['fi', 'en', 'de', 'fr'];
     this.defaultLanguage = 'fi';
     
-    this.init();
+    // Initialize asynchronously
+    this.init().catch(error => {
+      console.error('Failed to initialize i18n:', error);
+    });
   }
 
-  init() {
+  async init() {
     console.log('Initializing i18n with language:', this.currentLang);
     this.setupLanguageSwitcher(); // Set up switcher first
-    this.loadTranslations();
+    await this.loadTranslations();
+    this.testTranslations(); // Test translations
     this.updateHreflangTags();
     this.translatePage();
   }
@@ -44,17 +48,29 @@ class I18n {
   }
 
   async loadTranslations() {
+    console.log('Loading translations for language:', this.currentLang);
     try {
       const response = await fetch(`/translations/${this.currentLang}.json`);
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      }
       this.translations = await response.json();
+      console.log('Successfully loaded translations for', this.currentLang);
     } catch (error) {
-      console.warn(`Failed to load translations for ${this.currentLang}, using fallback`);
+      console.warn(`Failed to load translations for ${this.currentLang}:`, error);
       // Load default language as fallback
       try {
+        console.log('Loading fallback translations for', this.defaultLanguage);
         const fallbackResponse = await fetch(`/translations/${this.defaultLanguage}.json`);
+        if (!fallbackResponse.ok) {
+          throw new Error(`HTTP ${fallbackResponse.status}: ${fallbackResponse.statusText}`);
+        }
         this.translations = await fallbackResponse.json();
+        console.log('Successfully loaded fallback translations');
       } catch (fallbackError) {
-        console.error('Failed to load any translations');
+        console.error('Failed to load any translations:', fallbackError);
+        // Set empty translations to prevent errors
+        this.translations = {};
       }
     }
   }
@@ -70,11 +86,25 @@ class I18n {
     return text;
   }
 
+  // Test method to verify translations are working
+  testTranslations() {
+    console.log('=== Translation Test ===');
+    console.log('Current language:', this.currentLang);
+    console.log('Available keys:', Object.keys(this.translations));
+    console.log('Sample translation (site_title):', this.translate('site_title'));
+    console.log('Sample translation (hero_title):', this.translate('hero_title'));
+    console.log('=======================');
+  }
+
   translatePage() {
+    console.log('Translating page with language:', this.currentLang);
+    console.log('Available translations:', Object.keys(this.translations));
+    
     // Translate all elements with data-i18n attribute
     document.querySelectorAll('[data-i18n]').forEach(element => {
       const key = element.getAttribute('data-i18n');
       const translated = this.translate(key);
+      console.log(`Translating ${key}: "${element.textContent}" -> "${translated}"`);
       
       if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
         element.placeholder = translated;
@@ -120,7 +150,13 @@ class I18n {
     const langButtons = switcher.querySelectorAll('.lang-btn');
     langButtons.forEach(btn => {
       const lang = btn.getAttribute('data-lang');
-      btn.addEventListener('click', () => this.switchLanguage(lang));
+      btn.addEventListener('click', async () => {
+        try {
+          await this.switchLanguage(lang);
+        } catch (error) {
+          console.error('Failed to switch language:', error);
+        }
+      });
     });
     
     // Update active state based on current language
@@ -161,9 +197,14 @@ class I18n {
     return names[lang] || lang;
   }
 
-  switchLanguage(newLang) {
-    if (newLang === this.currentLang) return;
+  async switchLanguage(newLang) {
+    if (newLang === this.currentLang) {
+      console.log('Language already set to', newLang);
+      return;
+    }
 
+    console.log('Switching language from', this.currentLang, 'to', newLang);
+    
     this.currentLang = newLang;
     this.setStoredLanguage(newLang);
     
@@ -174,13 +215,19 @@ class I18n {
     const currentPath = window.location.pathname;
     const newPath = this.updatePathForLanguage(currentPath, newLang);
     
+    console.log('Current path:', currentPath, 'New path:', newPath);
+    
     if (newPath !== currentPath) {
+      console.log('Redirecting to:', newPath);
       window.location.href = newPath;
     } else {
-      this.loadTranslations().then(() => {
-        this.translatePage();
-        this.updateHreflangTags();
-      });
+      console.log('Loading new translations for:', newLang);
+      // Load new translations and update page
+      await this.loadTranslations();
+      this.testTranslations(); // Test new translations
+      this.translatePage();
+      this.updateHreflangTags();
+      console.log('Language switch completed');
     }
   }
 
