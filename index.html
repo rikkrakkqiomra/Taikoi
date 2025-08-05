@@ -15,53 +15,54 @@
       transition: all 0.3s ease;
     }
     
-    .logo-container::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border: 2px solid transparent;
-      border-radius: 12px;
-      background: linear-gradient(45deg, 
-        transparent 0%, 
-        rgba(255, 215, 0, 0.1) 25%, 
-        rgba(255, 215, 0, 0.3) 50%, 
-        rgba(255, 215, 0, 0.1) 75%, 
-        transparent 100%);
-      background-size: 200% 200%;
-      animation: glitter 3s ease-in-out infinite;
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
+         .logo-container::before {
+       content: '';
+       position: absolute;
+       top: 0;
+       left: 0;
+       right: 0;
+       bottom: 0;
+       border: 2px solid rgba(255, 215, 0, 0.6);
+       border-radius: 12px;
+       background: linear-gradient(45deg, 
+         transparent 0%, 
+         rgba(255, 215, 0, 0.2) 25%, 
+         rgba(255, 215, 0, 0.5) 50%, 
+         rgba(255, 215, 0, 0.2) 75%, 
+         transparent 100%);
+       background-size: 200% 200%;
+       animation: glitter 2s ease-in-out infinite;
+       opacity: 1;
+       box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+     }
     
-    .logo-container.glitter::before {
-      opacity: 1;
-    }
-    
-    @keyframes glitter {
-      0% {
-        background-position: 0% 0%;
-        transform: scale(1);
-      }
-      25% {
-        background-position: 100% 0%;
-        transform: scale(1.02);
-      }
-      50% {
-        background-position: 100% 100%;
-        transform: scale(1);
-      }
-      75% {
-        background-position: 0% 100%;
-        transform: scale(1.02);
-      }
-      100% {
-        background-position: 0% 0%;
-        transform: scale(1);
-      }
-    }
+         @keyframes glitter {
+       0% {
+         background-position: 0% 0%;
+         transform: scale(1);
+         box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+       }
+       25% {
+         background-position: 100% 0%;
+         transform: scale(1.05);
+         box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+       }
+       50% {
+         background-position: 100% 100%;
+         transform: scale(1);
+         box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+       }
+       75% {
+         background-position: 0% 100%;
+         transform: scale(1.05);
+         box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+       }
+       100% {
+         background-position: 0% 0%;
+         transform: scale(1);
+         box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+       }
+     }
     
     .logo-img {
       position: relative;
@@ -156,22 +157,15 @@
   </style>
   <script src="i18n.js"></script>
   <script src="script.js" defer></script>
-  <script>
-    // Logo glitter effect
-    document.addEventListener('DOMContentLoaded', function() {
-      const logoContainer = document.querySelector('.logo-container');
-      
-      // Add glitter class after a short delay for better visual impact
-      setTimeout(() => {
-        logoContainer.classList.add('glitter');
-        
-        // Remove glitter class after animation completes (optional)
-        setTimeout(() => {
-          logoContainer.classList.remove('glitter');
-        }, 6000); // Remove after 6 seconds (2 complete cycles)
-      }, 500);
-    });
-  </script>
+     <script>
+     // Logo glitter effect - always active
+     document.addEventListener('DOMContentLoaded', function() {
+       const logoContainer = document.querySelector('.logo-container');
+       
+       // Add glitter class immediately - frame stays permanently
+       logoContainer.classList.add('glitter');
+     });
+   </script>
 </head>
 <body>
 <header class="site-header">
