@@ -209,5 +209,13 @@
       <p data-i18n="hero_cta">Jos organisaatiosi haluaa muuttua todelliseksi luottamuksen ja arvon kultakaivokseksi, olemme valmiita integroimaan GDT teknologian takuuvarmasti infrastruktuuriinne.</p>
     </section>
   </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.i18n && typeof window.i18n.setupLanguageSwitcher === 'function') {
+        window.i18n.setupLanguageSwitcher();
+      }
+    });
+  </script>
 </body>
 </html>
