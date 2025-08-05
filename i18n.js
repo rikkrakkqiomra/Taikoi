@@ -109,56 +109,36 @@ class I18n {
   setupLanguageSwitcher() {
     console.log('Setting up language switcher...');
     
-    // Remove any existing switcher first
-    const existingSwitcher = document.querySelector('.language-switcher');
-    if (existingSwitcher) {
-      existingSwitcher.remove();
+    // Find existing language switcher
+    const switcher = document.querySelector('.language-switcher');
+    if (!switcher) {
+      console.error('Language switcher not found in HTML');
+      return;
     }
     
-    const switcher = document.createElement('div');
-    switcher.className = 'language-switcher';
-    switcher.style.cssText = `
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      display: flex;
-      gap: 8px;
-      z-index: 9999;
-      background: rgba(0, 0, 0, 0.8);
-      padding: 8px;
-      border-radius: 8px;
-      backdrop-filter: blur(10px);
-    `;
-    
-    this.supportedLanguages.forEach(lang => {
-      const langBtn = document.createElement('button');
-      langBtn.className = `lang-btn ${lang === this.currentLang ? 'active' : ''}`;
-      langBtn.innerHTML = this.getLanguageFlag(lang);
-      langBtn.setAttribute('title', this.getLanguageName(lang));
-      langBtn.style.cssText = `
-        background: transparent;
-        border: 2px solid #FFD700;
-        color: #FFD700;
-        padding: 8px;
-        font-size: 20px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border-radius: 6px;
-        min-width: 44px;
-        min-height: 44px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        line-height: 1;
-      `;
-      
-      langBtn.addEventListener('click', () => this.switchLanguage(lang));
-      switcher.appendChild(langBtn);
+    // Add event listeners to existing buttons
+    const langButtons = switcher.querySelectorAll('.lang-btn');
+    langButtons.forEach(btn => {
+      const lang = btn.getAttribute('data-lang');
+      btn.addEventListener('click', () => this.switchLanguage(lang));
     });
-
-    // Always append to body to ensure it's visible
-    document.body.appendChild(switcher);
-    console.log('Language switcher created and appended to body');
+    
+    // Update active state based on current language
+    this.updateLanguageSwitcherState();
+    
+    console.log('Language switcher setup complete');
+  }
+  
+  updateLanguageSwitcherState() {
+    const langButtons = document.querySelectorAll('.lang-btn');
+    langButtons.forEach(btn => {
+      const lang = btn.getAttribute('data-lang');
+      if (lang === this.currentLang) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
   }
 
   getLanguageFlag(lang) {
@@ -186,6 +166,9 @@ class I18n {
 
     this.currentLang = newLang;
     this.setStoredLanguage(newLang);
+    
+    // Update language switcher state
+    this.updateLanguageSwitcherState();
     
     // Update URL
     const currentPath = window.location.pathname;
