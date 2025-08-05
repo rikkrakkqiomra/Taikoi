@@ -1,15 +1,29 @@
 // i18n Framework for Gold Digger Technologies
 class I18n {
   constructor() {
-    this.supportedLanguages = ['fi', 'en', 'de', 'fr'];
-    this.defaultLanguage = 'fi';
-    this.translations = {};
-    this.currentLang = this.getStoredLanguage() || this.detectLanguage();
-    
-    // Initialize asynchronously
-    this.init().catch(error => {
-      console.error('Failed to initialize i18n:', error);
-    });
+    try {
+      console.log('Initializing I18n constructor...');
+      this.supportedLanguages = ['fi', 'en', 'de', 'fr'];
+      this.defaultLanguage = 'fi';
+      this.translations = {};
+      this.isReady = false;
+      
+      console.log('Getting stored or detected language...');
+      this.currentLang = this.getStoredLanguage() || this.detectLanguage();
+      console.log('Selected language:', this.currentLang);
+      
+      // Initialize asynchronously
+      this.init().catch(error => {
+        console.error('Failed to initialize i18n:', error);
+      });
+    } catch (error) {
+      console.error('Error in I18n constructor:', error);
+      // Fallback initialization
+      this.supportedLanguages = ['fi', 'en', 'de', 'fr'];
+      this.defaultLanguage = 'fi';
+      this.currentLang = 'fi';
+      this.translations = {};
+    }
   }
 
   async init() {
@@ -18,6 +32,16 @@ class I18n {
     await this.loadTranslations();
     this.translatePage();
     this.updateHreflangTags();
+    
+    // Notify other scripts that i18n is ready
+    this.isReady = true;
+    if (typeof window.onI18nReady === 'function') {
+      window.onI18nReady();
+    }
+    
+    // Dispatch custom event
+    window.dispatchEvent(new CustomEvent('i18nReady', { detail: { i18n: this } }));
+    console.log('i18n initialization complete');
   }
 
   getStoredLanguage() {
@@ -29,6 +53,12 @@ class I18n {
   }
 
   detectLanguage() {
+    // Ensure supportedLanguages is defined
+    if (!this.supportedLanguages || !Array.isArray(this.supportedLanguages)) {
+      console.warn('supportedLanguages not properly initialized, using default');
+      return this.defaultLanguage || 'fi';
+    }
+
     // Check URL path first
     const pathLang = this.getLanguageFromPath();
     if (pathLang && this.supportedLanguages.includes(pathLang)) {
@@ -183,9 +213,20 @@ class I18n {
     
     // Add event listeners to existing buttons
     const langButtons = switcher.querySelectorAll('.lang-btn');
-    langButtons.forEach(btn => {
+    console.log('Found language buttons:', langButtons.length);
+    
+    langButtons.forEach((btn, index) => {
       const lang = btn.getAttribute('data-lang');
-      btn.addEventListener('click', async () => {
+      console.log(`Setting up button ${index}: ${lang}`);
+      
+      // Remove any existing event listeners by cloning the button
+      const newBtn = btn.cloneNode(true);
+      btn.parentNode.replaceChild(newBtn, btn);
+      
+      // Add fresh event listener
+      newBtn.addEventListener('click', async (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         console.log('Language button clicked:', lang);
         try {
           await this.switchLanguage(lang);
@@ -246,6 +287,12 @@ class I18n {
     const currentPath = window.location.pathname;
     const cleanPath = currentPath.replace(/^\/[a-z]{2}\//, '/') || '/';
     
+    // Ensure supportedLanguages is defined
+    if (!this.supportedLanguages || !Array.isArray(this.supportedLanguages)) {
+      console.warn('supportedLanguages not available for hreflang tags');
+      return;
+    }
+    
     this.supportedLanguages.forEach(lang => {
       const link = document.createElement('link');
       link.rel = 'alternate';
@@ -269,16 +316,22 @@ class I18n {
   }
 }
 
-// Initialize i18n when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('DOM loaded, initializing i18n...');
+// Initialize i18n - ensure it only happens once
+function initializeI18n() {
+  if (window.i18n) {
+    console.log('i18n already initialized, skipping...');
+    return;
+  }
+  
+  console.log('Initializing i18n...');
   window.i18n = new I18n();
-});
+}
 
-// Also try to initialize immediately if DOM is already loaded
+// Initialize when DOM is ready
 if (document.readyState === 'loading') {
   console.log('DOM still loading, waiting...');
+  document.addEventListener('DOMContentLoaded', initializeI18n);
 } else {
   console.log('DOM already loaded, initializing i18n immediately...');
-  window.i18n = new I18n();
+  initializeI18n();
 } 

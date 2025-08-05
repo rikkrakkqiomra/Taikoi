@@ -54,16 +54,25 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Update navigation links to include language prefixes
-  if (window.i18n) {
-    navLinks.forEach(link => {
-      const href = link.getAttribute('href');
-      if (href && !href.startsWith('http') && !href.startsWith('#')) {
-        const currentLang = window.i18n.currentLang;
-        const langPrefix = currentLang === 'fi' ? '' : `/${currentLang}`;
-        const newHref = href.startsWith('/') ? href : `${langPrefix}/${href}`;
-        link.setAttribute('href', newHref);
-      }
-    });
+  function updateNavigationLinks() {
+    if (window.i18n && window.i18n.isReady) {
+      navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && !href.startsWith('http') && !href.startsWith('#')) {
+          const currentLang = window.i18n.currentLang;
+          const langPrefix = currentLang === 'fi' ? '' : `/${currentLang}`;
+          const newHref = href.startsWith('/') ? href : `${langPrefix}/${href}`;
+          link.setAttribute('href', newHref);
+        }
+      });
+      console.log('Navigation links updated for language:', window.i18n.currentLang);
+    }
   }
+
+  // Try to update navigation links immediately if i18n is already ready
+  updateNavigationLinks();
+  
+  // Also listen for i18n ready event in case it's not ready yet
+  window.addEventListener('i18nReady', updateNavigationLinks);
 });
 
