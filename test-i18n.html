@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>i18n Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #1a1a1a;
+      color: #FFD700;
+    }
+    .language-switcher {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 8px;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.8);
+      padding: 8px;
+      border-radius: 8px;
+    }
+    .lang-btn {
+      background: transparent;
+      border: 2px solid #FFD700;
+      color: #FFD700;
+      padding: 8px;
+      font-size: 20px;
+      cursor: pointer;
+      border-radius: 6px;
+      min-width: 44px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lang-btn:hover {
+      background: #FFD700;
+      color: #1a1a1a;
+    }
+    .lang-btn.active {
+      background: #FFD700;
+      color: #1a1a1a;
+    }
+    .test-content {
+      margin-top: 100px;
+      text-align: center;
+    }
+    .debug-info {
+      margin-top: 20px;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div class="language-switcher">
+    <button class="lang-btn active" data-lang="fi" title="Suomi">🇫🇮</button>
+    <button class="lang-btn" data-lang="en" title="English">🇺🇸</button>
+    <button class="lang-btn" data-lang="de" title="Deutsch">🇩🇪</button>
+    <button class="lang-btn" data-lang="fr" title="Français">🇫🇷</button>
+  </div>
+
+  <div class="test-content">
+    <h1 data-i18n="hero_title">Täysi varmennettavuus. Hallinnoitavuus. Modulaarisuus.</h1>
+    <p data-i18n="hero_welcome">Tervetuloa aikakauteen, jossa tekoäly ei vain toimi – vaan toimii oikein:</p>
+    <p data-i18n="hero_description">Gold Digger Technologies tuottaa suoraviivaisia ja valmiita hybridiratkaisuja...</p>
+  </div>
+
+  <div class="debug-info" id="debug-info">
+    Debug info will appear here...
+  </div>
+
+  <script>
+    // Simple i18n test
+    class SimpleI18n {
+      constructor() {
+        this.currentLang = 'fi';
+        this.translations = {};
+        this.supportedLanguages = ['fi', 'en', 'de', 'fr'];
+        this.init();
+      }
+
+      async init() {
+        this.setupLanguageSwitcher();
+        await this.loadTranslations();
+        this.translatePage();
+        this.updateDebugInfo();
+      }
+
+      setupLanguageSwitcher() {
+        const langButtons = document.querySelectorAll('.lang-btn');
+        langButtons.forEach(btn => {
+          const lang = btn.getAttribute('data-lang');
+          btn.addEventListener('click', () => {
+            console.log('Button clicked for language:', lang);
+            this.switchLanguage(lang);
+          });
+        });
+      }
+
+      async loadTranslations() {
+        try {
+          console.log('Loading translations for:', this.currentLang);
+          const response = await fetch(`/translations/${this.currentLang}.json`);
+          console.log('Response status:', response.status);
+          
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+          }
+          
+          this.translations = await response.json();
+          console.log('Loaded translations:', Object.keys(this.translations));
+        } catch (error) {
+          console.error('Failed to load translations:', error);
+          this.translations = {};
+        }
+      }
+
+      translate(key) {
+        return this.translations[key] || key;
+      }
+
+      translatePage() {
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+          const key = element.getAttribute('data-i18n');
+          const translated = this.translate(key);
+          console.log(`Translating ${key}: "${element.textContent}" -> "${translated}"`);
+          element.textContent = translated;
+        });
+      }
+
+      async switchLanguage(newLang) {
+        console.log('Switching to language:', newLang);
+        this.currentLang = newLang;
+        
+        // Update button states
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+          const lang = btn.getAttribute('data-lang');
+          if (lang === newLang) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+        
+        await this.loadTranslations();
+        this.translatePage();
+        this.updateDebugInfo();
+      }
+
+      updateDebugInfo() {
+        const debugInfo = document.getElementById('debug-info');
+        debugInfo.innerHTML = `
+          <strong>Current Language:</strong> ${this.currentLang}<br>
+          <strong>Available Translations:</strong> ${Object.keys(this.translations).join(', ')}<br>
+          <strong>Sample Translation (hero_title):</strong> ${this.translate('hero_title')}<br>
+          <strong>Time:</strong> ${new Date().toLocaleTimeString()}
+        `;
+      }
+    }
+
+    // Initialize when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('DOM loaded, initializing SimpleI18n...');
+      window.simpleI18n = new SimpleI18n();
+    });
+  </script>
+</body>
+</html> 

@@ -14,11 +14,10 @@ class I18n {
 
   async init() {
     console.log('Initializing i18n with language:', this.currentLang);
-    this.setupLanguageSwitcher(); // Set up switcher first
+    this.setupLanguageSwitcher();
     await this.loadTranslations();
-    this.testTranslations(); // Test translations
-    this.updateHreflangTags();
     this.translatePage();
+    this.updateHreflangTags();
   }
 
   getStoredLanguage() {
@@ -51,11 +50,15 @@ class I18n {
     console.log('Loading translations for language:', this.currentLang);
     try {
       const response = await fetch(`/translations/${this.currentLang}.json`);
+      console.log('Response status:', response.status);
+      
       if (!response.ok) {
         throw new Error(`HTTP ${response.status}: ${response.statusText}`);
       }
+      
       this.translations = await response.json();
       console.log('Successfully loaded translations for', this.currentLang);
+      console.log('Available keys:', Object.keys(this.translations));
     } catch (error) {
       console.warn(`Failed to load translations for ${this.currentLang}:`, error);
       // Load default language as fallback
@@ -69,7 +72,6 @@ class I18n {
         console.log('Successfully loaded fallback translations');
       } catch (fallbackError) {
         console.error('Failed to load any translations:', fallbackError);
-        // Set empty translations to prevent errors
         this.translations = {};
       }
     }
@@ -86,19 +88,8 @@ class I18n {
     return text;
   }
 
-  // Test method to verify translations are working
-  testTranslations() {
-    console.log('=== Translation Test ===');
-    console.log('Current language:', this.currentLang);
-    console.log('Available keys:', Object.keys(this.translations));
-    console.log('Sample translation (site_title):', this.translate('site_title'));
-    console.log('Sample translation (hero_title):', this.translate('hero_title'));
-    console.log('=======================');
-  }
-
   translatePage() {
     console.log('Translating page with language:', this.currentLang);
-    console.log('Available translations:', Object.keys(this.translations));
     
     // Translate all elements with data-i18n attribute
     document.querySelectorAll('[data-i18n]').forEach(element => {
@@ -151,6 +142,7 @@ class I18n {
     langButtons.forEach(btn => {
       const lang = btn.getAttribute('data-lang');
       btn.addEventListener('click', async () => {
+        console.log('Language button clicked:', lang);
         try {
           await this.switchLanguage(lang);
         } catch (error) {
@@ -177,26 +169,6 @@ class I18n {
     });
   }
 
-  getLanguageFlag(lang) {
-    const flags = {
-      'fi': '🇫🇮',
-      'en': '🇺🇸',
-      'de': '🇩🇪',
-      'fr': '🇫🇷'
-    };
-    return flags[lang] || lang;
-  }
-
-  getLanguageName(lang) {
-    const names = {
-      'fi': 'Suomi',
-      'en': 'English',
-      'de': 'Deutsch',
-      'fr': 'Français'
-    };
-    return names[lang] || lang;
-  }
-
   async switchLanguage(newLang) {
     if (newLang === this.currentLang) {
       console.log('Language already set to', newLang);
@@ -211,37 +183,12 @@ class I18n {
     // Update language switcher state
     this.updateLanguageSwitcherState();
     
-    // Update URL
-    const currentPath = window.location.pathname;
-    const newPath = this.updatePathForLanguage(currentPath, newLang);
+    // Load new translations and update page (simplified - no URL changes for now)
+    await this.loadTranslations();
+    this.translatePage();
+    this.updateHreflangTags();
     
-    console.log('Current path:', currentPath, 'New path:', newPath);
-    
-    if (newPath !== currentPath) {
-      console.log('Redirecting to:', newPath);
-      window.location.href = newPath;
-    } else {
-      console.log('Loading new translations for:', newLang);
-      // Load new translations and update page
-      await this.loadTranslations();
-      this.testTranslations(); // Test new translations
-      this.translatePage();
-      this.updateHreflangTags();
-      console.log('Language switch completed');
-    }
-  }
-
-  updatePathForLanguage(path, lang) {
-    // Remove existing language prefix
-    let cleanPath = path.replace(/^\/[a-z]{2}\//, '/');
-    if (cleanPath === '/') cleanPath = '';
-    
-    // Add new language prefix (except for default language)
-    if (lang === this.defaultLanguage) {
-      return cleanPath || '/';
-    } else {
-      return `/${lang}${cleanPath}`;
-    }
+    console.log('Language switch completed');
   }
 
   updateHreflangTags() {
