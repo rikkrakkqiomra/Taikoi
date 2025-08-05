@@ -61,20 +61,64 @@ class I18n {
       console.log('Available keys:', Object.keys(this.translations));
     } catch (error) {
       console.warn(`Failed to load translations for ${this.currentLang}:`, error);
-      // Load default language as fallback
-      try {
-        console.log('Loading fallback translations for', this.defaultLanguage);
-        const fallbackResponse = await fetch(`/translations/${this.defaultLanguage}.json`);
-        if (!fallbackResponse.ok) {
-          throw new Error(`HTTP ${fallbackResponse.status}: ${fallbackResponse.statusText}`);
-        }
-        this.translations = await fallbackResponse.json();
-        console.log('Successfully loaded fallback translations');
-      } catch (fallbackError) {
-        console.error('Failed to load any translations:', fallbackError);
-        this.translations = {};
+      
+      // Fallback to hardcoded translations for testing
+      console.log('Using fallback hardcoded translations');
+      this.translations = this.getFallbackTranslations(this.currentLang);
+      
+      if (Object.keys(this.translations).length === 0) {
+        console.error('No fallback translations available');
+      } else {
+        console.log('Fallback translations loaded:', Object.keys(this.translations));
       }
     }
+  }
+
+  getFallbackTranslations(lang) {
+    const fallbackTranslations = {
+      'fi': {
+        'site_title': 'Gold Digger Technologies',
+        'hero_title': 'Täysi varmennettavuus. Hallinnoitavuus. Modulaarisuus.',
+        'hero_welcome': 'Tervetuloa aikakauteen, jossa tekoäly ei vain toimi – vaan toimii oikein:',
+        'hero_description': 'Gold Digger Technologies tuottaa suoraviivaisia ja valmiita hybridiratkaisuja...',
+        'hero_cta': 'Jos organisaatiosi haluaa muuttua todelliseksi luottamuksen ja arvon kultakaivokseksi...',
+        'nav_gdt': 'GDT',
+        'nav_contact': 'Yhteystiedot',
+        'nav_research': 'Tutkimus'
+      },
+      'en': {
+        'site_title': 'Gold Digger Technologies',
+        'hero_title': 'Complete verifiability. Manageability. Modularity.',
+        'hero_welcome': 'Welcome to an era where artificial intelligence doesn\'t just work – it works correctly:',
+        'hero_description': 'Gold Digger Technologies produces straightforward and ready hybrid solutions...',
+        'hero_cta': 'If your organization wants to become a true gold mine of trust and value...',
+        'nav_gdt': 'GDT',
+        'nav_contact': 'Contact',
+        'nav_research': 'Research'
+      },
+      'de': {
+        'site_title': 'Gold Digger Technologies',
+        'hero_title': 'Vollständige Überprüfbarkeit. Verwaltbarkeit. Modularität.',
+        'hero_welcome': 'Willkommen in einer Ära, in der künstliche Intelligenz nicht nur funktioniert – sondern richtig funktioniert:',
+        'hero_description': 'Gold Digger Technologies produziert direkte und fertige Hybridlösungen...',
+        'hero_cta': 'Wenn Ihre Organisation zu einer echten Goldmine des Vertrauens werden möchte...',
+        'nav_gdt': 'GDT',
+        'nav_contact': 'Kontakt',
+        'nav_research': 'Forschung'
+      },
+      'fr': {
+        'site_title': 'Gold Digger Technologies',
+        'hero_title': 'Vérifiabilité complète. Gestion. Modularité.',
+        'hero_welcome': 'Bienvenue dans une ère où l\'intelligence artificielle ne fonctionne pas seulement – mais fonctionne correctement:',
+        'hero_description': 'Gold Digger Technologies produit des solutions hybrides directes et prêtes...',
+        'hero_cta': 'Si votre organisation veut devenir une vraie mine d\'or de confiance...',
+        'nav_gdt': 'GDT',
+        'nav_contact': 'Contact',
+        'nav_research': 'Recherche'
+      }
+    };
+    
+    return fallbackTranslations[lang] || {};
   }
 
   translate(key, params = {}) {
@@ -158,13 +202,16 @@ class I18n {
   }
   
   updateLanguageSwitcherState() {
+    console.log('Updating language switcher state for language:', this.currentLang);
     const langButtons = document.querySelectorAll('.lang-btn');
     langButtons.forEach(btn => {
       const lang = btn.getAttribute('data-lang');
       if (lang === this.currentLang) {
         btn.classList.add('active');
+        console.log('Set active state for:', lang);
       } else {
         btn.classList.remove('active');
+        console.log('Removed active state for:', lang);
       }
     });
   }

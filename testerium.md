@@ -1,7 +1,7 @@
 # Testerium - Language Switcher Testing Log
 
-## Current Status: 🔍 TESTING
-Created simplified test file to isolate the language switching issue.
+## Current Status: 🔍 DEBUGGING
+Language flags are visible but have multiple issues preventing proper functionality.
 
 ## What Hasn't Worked So Far:
 
@@ -40,19 +40,28 @@ Created simplified test file to isolate the language switching issue.
 - **Purpose**: Isolate the issue from complex URL handling and async operations
 - **Status**: Testing in progress
 
+### 8. Simplified i18n.js Implementation ❌
+- **Attempt**: Removed complex URL handling, simplified switchLanguage()
+- **Issue**: Multiple problems identified:
+  - Finnish flag always stays active (gold)
+  - Desktop flags don't stay gold when clicked
+  - Language content doesn't change on mobile or PC
+- **Result**: Failed - active state and translation issues
+
 ## Current Issues Identified:
 
-1. **Translation Loading**: May be failing to load translation files
-2. **Event Listeners**: May not be properly attached to flag buttons
-3. **URL Handling**: May not be handling language prefixes correctly
-4. **DOM Updates**: May not be updating page content after language switch
+1. **Active State Bug**: Finnish flag always stays gold, other flags don't maintain active state
+2. **CSS Active State**: Desktop flags don't show active state properly
+3. **Translation Loading**: May be failing to load translation files
+4. **Event Listeners**: May not be properly attached to flag buttons
+5. **DOM Updates**: May not be updating page content after language switch
 
 ## Next Steps to Try:
 
-1. **Test Simplified Version**: Use test-i18n.html to verify basic functionality
-2. **Check Translation File Access**: Verify if translation files are accessible via HTTP
-3. **Test Event Listeners**: Ensure click events are properly attached
-4. **Debug Translation Loading**: Check if fetch requests are working
+1. **Fix Active State Logic**: Ensure proper button state management
+2. **Debug Translation Loading**: Check if translation files are accessible
+3. **Test Event Listeners**: Verify click events are working
+4. **Check CSS Active States**: Ensure .active class styling works on all devices
 
 ## Test Files Created:
 - `test-i18n.html` - Simplified i18n test with debug info
