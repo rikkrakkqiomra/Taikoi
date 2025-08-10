@@ -199,6 +199,14 @@ class I18n {
         metaDesc.setAttribute('content', this.translate(descKey));
       }
     }
+
+    // Update HTML lang attribute
+    if (document.documentElement) {
+      document.documentElement.setAttribute('lang', this.currentLang);
+    }
+
+    // Update Open Graph and Twitter tags
+    this.updateSeoTags();
   }
 
   setupLanguageSwitcher() {
@@ -313,6 +321,143 @@ class I18n {
     xDefault.hreflang = 'x-default';
     xDefault.href = `${window.location.origin}${cleanPath}`;
     document.head.appendChild(xDefault);
+  }
+
+  updateSeoTags() {
+    // Map language to standard locale for OG
+    const ogLocaleMap = {
+      fi: 'fi_FI',
+      en: 'en_US',
+      de: 'de_DE',
+      fr: 'fr_FR'
+    };
+
+    const cleanPath = (window.location.pathname || '/').replace(/^\/[a-z]{2}\//, '/') || '/';
+    const canonicalUrl = this.currentLang === this.defaultLanguage
+      ? `${window.location.origin}${cleanPath}`
+      : `${window.location.origin}/${this.currentLang}${cleanPath}`;
+
+    // canonical
+    let canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.setAttribute('rel', 'canonical');
+      document.head.appendChild(canonical);
+    }
+    canonical.setAttribute('href', canonicalUrl);
+
+    // og:url
+    let ogUrl = document.querySelector('meta[property="og:url"]');
+    if (!ogUrl) {
+      ogUrl = document.createElement('meta');
+      ogUrl.setAttribute('property', 'og:url');
+      document.head.appendChild(ogUrl);
+    }
+    ogUrl.setAttribute('content', canonicalUrl);
+
+    // og:locale
+    let ogLocale = document.querySelector('meta[property="og:locale"]');
+    if (!ogLocale) {
+      ogLocale = document.createElement('meta');
+      ogLocale.setAttribute('property', 'og:locale');
+      document.head.appendChild(ogLocale);
+    }
+    ogLocale.setAttribute('content', ogLocaleMap[this.currentLang] || 'en_US');
+
+    // og:site_name
+    let ogSiteName = document.querySelector('meta[property="og:site_name"]');
+    if (!ogSiteName) {
+      ogSiteName = document.createElement('meta');
+      ogSiteName.setAttribute('property', 'og:site_name');
+      document.head.appendChild(ogSiteName);
+    }
+    ogSiteName.setAttribute('content', this.translate('site_title'));
+
+    // og:type
+    let ogType = document.querySelector('meta[property="og:type"]');
+    if (!ogType) {
+      ogType = document.createElement('meta');
+      ogType.setAttribute('property', 'og:type');
+      document.head.appendChild(ogType);
+    }
+    ogType.setAttribute('content', 'website');
+
+    // og:title from current document.title
+    let ogTitle = document.querySelector('meta[property="og:title"]');
+    if (!ogTitle) {
+      ogTitle = document.createElement('meta');
+      ogTitle.setAttribute('property', 'og:title');
+      document.head.appendChild(ogTitle);
+    }
+    ogTitle.setAttribute('content', document.title || this.translate('site_title'));
+
+    // og:description from data-i18n on meta tag if present
+    let ogDesc = document.querySelector('meta[property="og:description"]');
+    if (!ogDesc) {
+      ogDesc = document.createElement('meta');
+      ogDesc.setAttribute('property', 'og:description');
+      document.head.appendChild(ogDesc);
+    }
+    const ogDescKeySource = document.querySelector('meta[name="description"][data-i18n]');
+    if (ogDescKeySource) {
+      const key = ogDescKeySource.getAttribute('data-i18n');
+      ogDesc.setAttribute('content', this.translate(key));
+    }
+
+    // og:image (use site logo as default)
+    let ogImage = document.querySelector('meta[property="og:image"]');
+    if (!ogImage) {
+      ogImage = document.createElement('meta');
+      ogImage.setAttribute('property', 'og:image');
+      document.head.appendChild(ogImage);
+    }
+    const imageUrl = `${window.location.origin}/loko.png`;
+    ogImage.setAttribute('content', imageUrl);
+
+    // og:image:alt from logo_alt
+    let ogImageAlt = document.querySelector('meta[property="og:image:alt"]');
+    if (!ogImageAlt) {
+      ogImageAlt = document.createElement('meta');
+      ogImageAlt.setAttribute('property', 'og:image:alt');
+      document.head.appendChild(ogImageAlt);
+    }
+    ogImageAlt.setAttribute('content', this.translate('logo_alt'));
+
+    // Twitter card
+    let twCard = document.querySelector('meta[name="twitter:card"]');
+    if (!twCard) {
+      twCard = document.createElement('meta');
+      twCard.setAttribute('name', 'twitter:card');
+      document.head.appendChild(twCard);
+    }
+    twCard.setAttribute('content', 'summary_large_image');
+
+    let twTitle = document.querySelector('meta[name="twitter:title"]');
+    if (!twTitle) {
+      twTitle = document.createElement('meta');
+      twTitle.setAttribute('name', 'twitter:title');
+      document.head.appendChild(twTitle);
+    }
+    twTitle.setAttribute('content', document.title || this.translate('site_title'));
+
+    let twDesc = document.querySelector('meta[name="twitter:description"]');
+    if (!twDesc) {
+      twDesc = document.createElement('meta');
+      twDesc.setAttribute('name', 'twitter:description');
+      document.head.appendChild(twDesc);
+    }
+    if (ogDescKeySource) {
+      const key = ogDescKeySource.getAttribute('data-i18n');
+      twDesc.setAttribute('content', this.translate(key));
+    }
+
+    let twImage = document.querySelector('meta[name="twitter:image"]');
+    if (!twImage) {
+      twImage = document.createElement('meta');
+      twImage.setAttribute('name', 'twitter:image');
+      document.head.appendChild(twImage);
+    }
+    twImage.setAttribute('content', imageUrl);
   }
 }
 

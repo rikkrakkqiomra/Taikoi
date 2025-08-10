@@ -1,5 +1,10 @@
 # Gold Digger Technologies - Internationalized Website
 
+git add .
+git commit -m "grok yritys" 
+git push origin main
+
+
 This website has been enhanced with comprehensive internationalization (i18n) support for multiple languages.
 
 ## Features Implemented
