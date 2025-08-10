@@ -425,6 +425,7 @@ class I18n {
       ogImage.setAttribute('property', 'og:image');
       document.head.appendChild(ogImage);
     }
+    // Use PNG for social previews to avoid missing asset issues (bots may not execute JS)
     const imageUrl = `${window.location.origin}/loko.png`;
     ogImage.setAttribute('content', imageUrl);
 
