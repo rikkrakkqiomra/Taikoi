@@ -31,18 +31,15 @@ class I18n {
 
     // Ensure URL uses language-prefixed structure (e.g., /fi/..., /en/...)
     try {
-      if (window.location.protocol === 'file:') {
-        // Skip URL enforcement on file:// for local testing
-        throw new Error('Skip prefix enforcement on file protocol');
-      }
-      const path = window.location.pathname || '/';
-      const hasLangPrefix = /^\/[a-z]{2}(?:\/|$)/.test(path);
-      const cleanPath = path.replace(/^\/[a-z]{2}(?:\/|$)/, '/');
-      if (!hasLangPrefix) {
-        const target = `/${this.currentLang}${cleanPath}`;
-        // Use replace to avoid back navigation loop
-        window.location.replace(target);
-        return; // Stop further init; page will reload
+      if (window.location.protocol !== 'file:') {
+        const path = window.location.pathname || '/';
+        const hasLangPrefix = /^\/[a-z]{2}(?:\/|$)/.test(path);
+        const cleanPath = path.replace(/^\/[a-z]{2}(?:\/|$)/, '/');
+        if (!hasLangPrefix) {
+          const target = `/${this.currentLang}${cleanPath}`;
+          // Update URL without reload for better UX and to avoid mobile Firefox issues
+          window.history.replaceState(null, '', target);
+        }
       }
     } catch (e) {
       console.warn('Failed to enforce language-prefixed URL structure:', e);
@@ -299,13 +296,26 @@ class I18n {
     // Update language switcher state
     this.updateLanguageSwitcherState();
     
-    // Navigate to URL with language prefix while preserving path
+    // Update URL with language prefix while preserving path (no reload)
     const currentPath = window.location.pathname || '/';
-    const cleanPath = currentPath.replace(/^\/[a-z]{2}\//, '/');
-    const targetUrl = newLang === this.defaultLanguage
-      ? `${window.location.origin}${cleanPath}`
-      : `${window.location.origin}/${newLang}${cleanPath}`;
-    window.location.href = targetUrl;
+    const cleanPath = currentPath.replace(/^\/[a-z]{2}(?:\/|$)/, '/');
+    const targetPath = newLang === this.defaultLanguage ? cleanPath : `/${newLang}${cleanPath}`;
+    try {
+      window.history.replaceState(null, '', targetPath);
+    } catch (_) {
+      // Fallback if History API fails: still attempt hard navigation
+      window.location.href = `${window.location.origin}${targetPath}`;
+      return;
+    }
+
+    // Reload translations and update page
+    await this.loadTranslations();
+    this.translatePage();
+    this.updateHreflangTags();
+
+    // Notify listeners (e.g., to refresh nav links)
+    window.dispatchEvent(new CustomEvent('i18nReady', { detail: { i18n: this } }));
+    console.log('Language switch completed (URL updated without reload)');
   }
 
   updateHreflangTags() {
