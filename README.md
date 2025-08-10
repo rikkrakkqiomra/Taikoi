@@ -1,7 +1,7 @@
 # Gold Digger Technologies - Internationalized Website
 
 git add .
-git commit -m "grok yritys" 
+git commit -m "gpt 5 testcorea" 
 git push origin main
 
 

@@ -45,9 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Navigate to target with language support
       setTimeout(() => {
-        const currentLang = window.i18n ? window.i18n.currentLang : 'fi';
-        const langPrefix = currentLang === 'fi' ? '' : `/${currentLang}`;
-        const targetPath = target.startsWith('/') ? target : `${langPrefix}/${target}`;
+         const currentLang = window.i18n ? window.i18n.currentLang : 'fi';
+         const langPrefix = currentLang === 'fi' ? '/fi' : `/${currentLang}`;
+         const targetPath = target.startsWith('/') ? target : `${langPrefix}/${target}`;
         location.href = targetPath;
       }, speed);
     });
@@ -57,13 +57,13 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateNavigationLinks() {
     if (window.i18n && window.i18n.isReady) {
       navLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        if (href && !href.startsWith('http') && !href.startsWith('#')) {
-          const currentLang = window.i18n.currentLang;
-          const langPrefix = currentLang === 'fi' ? '' : `/${currentLang}`;
-          const newHref = href.startsWith('/') ? href : `${langPrefix}/${href}`;
-          link.setAttribute('href', newHref);
-        }
+         const href = link.getAttribute('href');
+         if (href && !href.startsWith('http') && !href.startsWith('#')) {
+           const currentLang = window.i18n.currentLang;
+           const langPrefix = currentLang === 'fi' ? '/fi' : `/${currentLang}`;
+           const newHref = href.startsWith('/') ? href : `${langPrefix}/${href}`;
+           link.setAttribute('href', newHref);
+         }
       });
       console.log('Navigation links updated for language:', window.i18n.currentLang);
     }

@@ -28,6 +28,21 @@ class I18n {
 
   async init() {
     console.log('Initializing i18n with language:', this.currentLang);
+
+    // Ensure URL uses language-prefixed structure (e.g., /fi/..., /en/...)
+    try {
+      const path = window.location.pathname || '/';
+      const hasLangPrefix = /^\/[a-z]{2}(?:\/|$)/.test(path);
+      const cleanPath = path.replace(/^\/[a-z]{2}(?:\/|$)/, '/');
+      if (!hasLangPrefix) {
+        const target = `/${this.currentLang}${cleanPath}`;
+        // Use replace to avoid back navigation loop
+        window.location.replace(target);
+        return; // Stop further init; page will reload
+      }
+    } catch (e) {
+      console.warn('Failed to enforce language-prefixed URL structure:', e);
+    }
     this.setupLanguageSwitcher();
     await this.loadTranslations();
     this.translatePage();
@@ -71,15 +86,15 @@ class I18n {
   }
 
   getLanguageFromPath() {
-    const path = window.location.pathname;
-    const langMatch = path.match(/^\/([a-z]{2})\//);
+    const path = window.location.pathname || '/';
+    const langMatch = path.match(/^\/([a-z]{2})(?:\/|$)/);
     return langMatch ? langMatch[1] : null;
   }
 
   async loadTranslations() {
     console.log('Loading translations for language:', this.currentLang);
     try {
-      const response = await fetch(`translations/${this.currentLang}.json`);
+      const response = await fetch(`/translations/${this.currentLang}.json`);
       console.log('Response status:', response.status);
       
       if (!response.ok) {
@@ -279,12 +294,13 @@ class I18n {
     // Update language switcher state
     this.updateLanguageSwitcherState();
     
-    // Load new translations and update page (simplified - no URL changes for now)
-    await this.loadTranslations();
-    this.translatePage();
-    this.updateHreflangTags();
-    
-    console.log('Language switch completed');
+    // Navigate to URL with language prefix while preserving path
+    const currentPath = window.location.pathname || '/';
+    const cleanPath = currentPath.replace(/^\/[a-z]{2}\//, '/');
+    const targetUrl = newLang === this.defaultLanguage
+      ? `${window.location.origin}${cleanPath}`
+      : `${window.location.origin}/${newLang}${cleanPath}`;
+    window.location.href = targetUrl;
   }
 
   updateHreflangTags() {
@@ -292,8 +308,8 @@ class I18n {
     document.querySelectorAll('link[rel="alternate"][hreflang]').forEach(tag => tag.remove());
     
     // Add new hreflang tags
-    const currentPath = window.location.pathname;
-    const cleanPath = currentPath.replace(/^\/[a-z]{2}\//, '/') || '/';
+    const currentPath = window.location.pathname || '/';
+    const cleanPath = currentPath.replace(/^\/[a-z]{2}(?:\/|$)/, '/') || '/';
     
     // Ensure supportedLanguages is defined
     if (!this.supportedLanguages || !Array.isArray(this.supportedLanguages)) {
@@ -305,12 +321,7 @@ class I18n {
       const link = document.createElement('link');
       link.rel = 'alternate';
       link.hreflang = lang;
-      
-      if (lang === this.defaultLanguage) {
-        link.href = `${window.location.origin}${cleanPath}`;
-      } else {
-        link.href = `${window.location.origin}/${lang}${cleanPath}`;
-      }
+      link.href = `${window.location.origin}/${lang}${cleanPath}`;
       
       document.head.appendChild(link);
     });
@@ -332,10 +343,8 @@ class I18n {
       fr: 'fr_FR'
     };
 
-    const cleanPath = (window.location.pathname || '/').replace(/^\/[a-z]{2}\//, '/') || '/';
-    const canonicalUrl = this.currentLang === this.defaultLanguage
-      ? `${window.location.origin}${cleanPath}`
-      : `${window.location.origin}/${this.currentLang}${cleanPath}`;
+    const cleanPath = (window.location.pathname || '/').replace(/^\/[a-z]{2}(?:\/|$)/, '/') || '/';
+    const canonicalUrl = `${window.location.origin}/${this.currentLang}${cleanPath}`;
 
     // canonical
     let canonical = document.querySelector('link[rel="canonical"]');
