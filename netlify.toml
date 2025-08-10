@@ -1,45 +1,84 @@
 [build]
   publish = "."
 
+# Language-prefixed page rewrites (ensure specific pages resolve correctly)
+[[redirects]]
+  from = "/:lang/contact"
+  to = "/contact.html"
+  status = 200
+
+[[redirects]]
+  from = "/:lang/gdt"
+  to = "/gdt.html"
+  status = 200
+
+[[redirects]]
+  from = "/:lang/intelligentleman"
+  to = "/intelligentleman.html"
+  status = 200
+
+[[redirects]]
+  from = "/:lang/contact.html"
+  to = "/contact.html"
+  status = 200
+
+[[redirects]]
+  from = "/:lang/gdt.html"
+  to = "/gdt.html"
+  status = 200
+
+[[redirects]]
+  from = "/:lang/intelligentleman.html"
+  to = "/intelligentleman.html"
+  status = 200
+
 [[redirects]]
   from = "/en/*"
   to = "/index.html"
   status = 200
+  force = true
 
 [[redirects]]
   from = "/de/*"
   to = "/index.html"
   status = 200
+  force = true
 
 [[redirects]]
   from = "/fr/*"
   to = "/index.html"
   status = 200
+  force = true
 
 [[redirects]]
   from = "/fi/*"
   to = "/index.html"
   status = 200
+  force = true
 
 [[redirects]]
   from = "/en"
   to = "/index.html"
   status = 200
+  force = true
 
 [[redirects]]
   from = "/de"
   to = "/index.html"
   status = 200
+  force = true
 
 [[redirects]]
   from = "/fr"
   to = "/index.html"
   status = 200
+  force = true
 
 [[redirects]]
   from = "/fi"
   to = "/index.html"
   status = 200
+  force = true
 
 # Handle direct access to language-specific pages
 [[redirects]]

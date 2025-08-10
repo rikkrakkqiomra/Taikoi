@@ -349,7 +349,7 @@ class I18n {
     };
 
     const cleanPath = (window.location.pathname || '/').replace(/^\/[a-z]{2}(?:\/|$)/, '/') || '/';
-    const canonicalUrl = `${window.location.origin}/${this.currentLang}${cleanPath}`;
+    const canonicalUrl = `${window.location.origin}/${this.currentLang}${cleanPath}`.replace(/\/$/, '/');
 
     // canonical
     let canonical = document.querySelector('link[rel="canonical"]');
