@@ -45,9 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Navigate to target with language support
       setTimeout(() => {
-         const currentLang = window.i18n ? window.i18n.currentLang : 'fi';
-         const langPrefix = currentLang === 'fi' ? '/fi' : `/${currentLang}`;
-         const targetPath = target.startsWith('/') ? target : `${langPrefix}/${target}`;
+        const isFile = window.location.protocol === 'file:';
+        const currentLang = window.i18n ? window.i18n.currentLang : 'fi';
+        const langPrefix = isFile ? '' : (currentLang === 'fi' ? '/fi' : `/${currentLang}`);
+        const targetPath = target.startsWith('/') || isFile ? target : `${langPrefix}/${target}`;
         location.href = targetPath;
       }, speed);
     });
@@ -58,12 +59,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.i18n && window.i18n.isReady) {
       navLinks.forEach(link => {
          const href = link.getAttribute('href');
-         if (href && !href.startsWith('http') && !href.startsWith('#')) {
-           const currentLang = window.i18n.currentLang;
-           const langPrefix = currentLang === 'fi' ? '/fi' : `/${currentLang}`;
-           const newHref = href.startsWith('/') ? href : `${langPrefix}/${href}`;
-           link.setAttribute('href', newHref);
-         }
+        const isFile = window.location.protocol === 'file:';
+        if (href && !href.startsWith('http') && !href.startsWith('#')) {
+          if (isFile) {
+            // Keep local relative links unchanged when testing via file://
+            return;
+          }
+          const currentLang = window.i18n.currentLang;
+          const langPrefix = currentLang === 'fi' ? '/fi' : `/${currentLang}`;
+          const newHref = href.startsWith('/') ? href : `${langPrefix}/${href}`;
+          link.setAttribute('href', newHref);
+        }
       });
       console.log('Navigation links updated for language:', window.i18n.currentLang);
     }

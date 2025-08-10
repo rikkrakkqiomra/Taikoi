@@ -31,6 +31,10 @@ class I18n {
 
     // Ensure URL uses language-prefixed structure (e.g., /fi/..., /en/...)
     try {
+      if (window.location.protocol === 'file:') {
+        // Skip URL enforcement on file:// for local testing
+        throw new Error('Skip prefix enforcement on file protocol');
+      }
       const path = window.location.pathname || '/';
       const hasLangPrefix = /^\/[a-z]{2}(?:\/|$)/.test(path);
       const cleanPath = path.replace(/^\/[a-z]{2}(?:\/|$)/, '/');
@@ -94,7 +98,8 @@ class I18n {
   async loadTranslations() {
     console.log('Loading translations for language:', this.currentLang);
     try {
-      const response = await fetch(`/translations/${this.currentLang}.json`);
+      const basePath = window.location.protocol === 'file:' ? 'translations' : '/translations';
+      const response = await fetch(`${basePath}/${this.currentLang}.json`);
       console.log('Response status:', response.status);
       
       if (!response.ok) {

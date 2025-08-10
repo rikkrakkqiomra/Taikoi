@@ -79,7 +79,8 @@ class I18n {
   async loadTranslations() {
     console.log('Loading translations for language:', this.currentLang);
     try {
-      const response = await fetch(`/translations/${this.currentLang}.json`);
+      const basePath = window.location.protocol === 'file:' ? 'translations' : '/translations';
+      const response = await fetch(`${basePath}/${this.currentLang}.json`);
       console.log('Response status:', response.status);
       
       if (!response.ok) {
