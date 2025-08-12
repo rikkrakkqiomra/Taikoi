@@ -1,7 +1,7 @@
 # Gold Digger Technologies - Internationalized Website
 
 git add .
-git commit -m "gpt 5 testcorea" 
+git commit -m "gpt5high header" 
 git push origin main
 
 
