@@ -12,7 +12,6 @@ body {
   color: var(--clr-bg-dark);
   line-height: 1.6;
   min-height: 100dvh;
-  min-height: calc(var(--vh, 1vh) * 100);
   margin: 0;
 }
 
@@ -27,14 +26,21 @@ body {
   flex-direction: column;
   align-items: center;
 
-  transition: transform var(--anim-speed) ease-in-out;
+  transition: transform var(--anim-speed) ease-in-out,
+              padding   var(--anim-speed) ease-in-out;
   transform: translateY(0);
-  will-change: transform;
-  backface-visibility: hidden;
+}
+
+@media (min-width: 601px) {
+  .site-header.collapsed {
+    transform: translateY(calc(-80%)) !important;
+  }
 }
 
 .site-header.collapsed {
-  transform: translateY(calc(-1 * var(--header-collapse-offset, 240px)));
+  transform: translateY(calc(-60%));
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 /* ===== Tekaristataniastm ===== */
@@ -88,6 +94,7 @@ body.subpage .site-header.collapsed { transition: none; }
   background: rgba(0, 0, 0, 0.8);
   padding: 0.5rem;
   border-radius: 8px;
+  backdrop-filter: blur(10px);
 }
 
 .lang-btn {
@@ -99,13 +106,12 @@ body.subpage .site-header.collapsed { transition: none; }
   cursor: pointer;
   transition: all 0.3s ease;
   border-radius: 6px;
-  width: 44px;
-  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
   line-height: 1;
-  will-change: transform, opacity;
 }
 
 .lang-btn:hover {
@@ -131,8 +137,8 @@ body.subpage .site-header.collapsed { transition: none; }
   
   .lang-btn {
     font-size: 1.2rem;
-    width: 36px;
-    height: 36px;
+    min-width: 36px;
+    min-height: 36px;
     padding: 0.25rem;
   }
 }
@@ -190,7 +196,7 @@ body.subpage .site-header.collapsed { transition: none; }
 }
 
 body.subpage main.site-main {
-  margin-top: calc(-1 * var(--header-collapse-offset, 240px));
+  margin-top: calc(var(--space) * -14); /* DIDIDID */
 }
 
 

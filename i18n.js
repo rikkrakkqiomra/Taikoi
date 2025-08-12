@@ -274,11 +274,9 @@ class I18n {
       const lang = btn.getAttribute('data-lang');
       if (lang === this.currentLang) {
         btn.classList.add('active');
-        btn.setAttribute('aria-pressed', 'true');
         console.log('Set active state for:', lang);
       } else {
         btn.classList.remove('active');
-        btn.setAttribute('aria-pressed', 'false');
         console.log('Removed active state for:', lang);
       }
     });

@@ -71,6 +71,53 @@
       border-radius: 8px;
     }
     
+    /* Language Switcher Styles */
+    .language-switcher {
+      position: absolute;
+      top: var(--space);
+      right: var(--space);
+      display: flex;
+      gap: 0.5rem;
+      z-index: 1000;
+    }
+    
+    .lang-btn {
+      background: transparent;
+      border: 2px solid var(--clr-gold);
+      color: var(--clr-gold);
+      padding: 0.5rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-radius: 6px;
+      min-width: 40px;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    
+    .lang-btn:hover {
+      background: var(--clr-gold);
+      color: var(--clr-bg-dark);
+      transform: scale(1.1);
+    }
+    
+    .lang-btn.active {
+      background: var(--clr-gold) !important;
+      color: var(--clr-bg-dark) !important;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+      transform: scale(1.05);
+      border-color: var(--clr-gold);
+    }
+    
+    .lang-btn.active:hover {
+      background: var(--clr-gold) !important;
+      color: var(--clr-bg-dark) !important;
+      transform: scale(1.1);
+    }
+    
     @media (max-width: 600px) {
       .site-header {
         flex-direction: column;
@@ -80,6 +127,13 @@
       
       .logo-container {
         order: 1;
+      }
+      
+      .language-switcher {
+        order: 2;
+        position: static;
+        margin: 0;
+        justify-content: center;
       }
       
       .header-inner {
@@ -142,10 +196,10 @@
   
   <!-- Language Switcher -->
   <div class="language-switcher">
-    <button class="lang-btn" data-lang="fi" title="Suomi" aria-pressed="false" aria-label="Switch language to Finnish">🇫🇮</button>
-    <button class="lang-btn" data-lang="en" title="English" aria-pressed="false" aria-label="Switch language to English">🇺🇸</button>
-    <button class="lang-btn" data-lang="de" title="Deutsch" aria-pressed="false" aria-label="Switch language to German">🇩🇪</button>
-    <button class="lang-btn" data-lang="fr" title="Français" aria-pressed="false" aria-label="Switch language to French">🇫🇷</button>
+    <button class="lang-btn" data-lang="fi" title="Suomi">🇫🇮</button>
+    <button class="lang-btn" data-lang="en" title="English">🇺🇸</button>
+    <button class="lang-btn" data-lang="de" title="Deutsch">🇩🇪</button>
+    <button class="lang-btn" data-lang="fr" title="Français">🇫🇷</button>
   </div>
 </header>
 
