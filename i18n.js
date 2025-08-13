@@ -274,11 +274,9 @@ class I18n {
       const lang = btn.getAttribute('data-lang');
       if (lang === this.currentLang) {
         btn.classList.add('active');
-        btn.setAttribute('aria-pressed', 'true');
         console.log('Set active state for:', lang);
       } else {
         btn.classList.remove('active');
-        btn.setAttribute('aria-pressed', 'false');
         console.log('Removed active state for:', lang);
       }
     });
@@ -485,24 +483,6 @@ class I18n {
       document.head.appendChild(twImage);
     }
     twImage.setAttribute('content', imageUrl);
-
-    // Structured data (JSON-LD)
-    let ldJson = document.querySelector('script[type="application/ld+json"][data-generated="i18n"]');
-    if (!ldJson) {
-      ldJson = document.createElement('script');
-      ldJson.type = 'application/ld+json';
-      ldJson.setAttribute('data-generated', 'i18n');
-      document.head.appendChild(ldJson);
-    }
-    const organizationLd = {
-      '@context': 'https://schema.org',
-      '@type': 'Organization',
-      'name': this.translate('site_title'),
-      'url': window.location.origin,
-      'logo': `${window.location.origin}/loko.png`,
-      'inLanguage': this.currentLang
-    };
-    ldJson.textContent = JSON.stringify(organizationLd);
   }
 }
 

@@ -6,35 +6,186 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" data-i18n="meta_home_description" content="Gold Digger Technologies rakentaa lohkoketjuun perustuvaa tekoälyalustaa, jonka ytimessä ovat varmennettavuus, sääntelykelpoisuus ja tietoturva." />
   <title data-i18n="site_title">Gold Digger Technologies</title>
-  <link rel="canonical" href="/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Gold Digger Technologies" />
-  <meta property="og:title" content="Gold Digger Technologies" />
-  <meta property="og:description" content="Gold Digger Technologies rakentaa lohkoketjuun perustuvaa tekoälyalustaa, jonka ytimessä ovat varmennettavuus, sääntelykelpoisuus ja tietoturva." />
-  <meta property="og:image" content="/loko.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Gold Digger Technologies" />
-  <meta name="twitter:description" content="Gold Digger Technologies rakentaa lohkoketjuun perustuvaa tekoälyalustaa, jonka ytimessä ovat varmennettavuus, sääntelykelpoisuus ja tietoturva." />
-  <meta name="twitter:image" content="/loko.png" />
-  <link rel="preload" href="/styles.css" as="style" />
   <link rel="stylesheet" href="/styles.css" />
   <link rel="preload" as="image" href="/loko.png" />
-  <link rel="preload" href="/translations/fi.json" as="fetch" crossorigin="anonymous" />
-  <script src="/i18n.js?v=1" defer></script>
+  <style>
+    /* Logo Glitter Frame */
+    .logo-container {
+      position: relative;
+      padding: 8px;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+    
+    .logo-container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 2px solid transparent;
+      border-radius: 12px;
+      background: linear-gradient(45deg, 
+        transparent 0%, 
+        rgba(255, 215, 0, 0.1) 25%, 
+        rgba(255, 215, 0, 0.3) 50%, 
+        rgba(255, 215, 0, 0.1) 75%, 
+        transparent 100%);
+      background-size: 200% 200%;
+      animation: glitter 3s ease-in-out infinite;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    
+    .logo-container.glitter::before {
+      opacity: 1;
+    }
+    
+    @keyframes glitter {
+      0% {
+        background-position: 0% 0%;
+        transform: scale(1);
+      }
+      25% {
+        background-position: 100% 0%;
+        transform: scale(1.02);
+      }
+      50% {
+        background-position: 100% 100%;
+        transform: scale(1);
+      }
+      75% {
+        background-position: 0% 100%;
+        transform: scale(1.02);
+      }
+      100% {
+        background-position: 0% 0%;
+        transform: scale(1);
+      }
+    }
+    
+    .logo-img {
+      position: relative;
+      z-index: 1;
+      border-radius: 8px;
+    }
+    
+    /* Language Switcher Styles */
+    .language-switcher {
+      position: absolute;
+      top: var(--space);
+      right: var(--space);
+      display: flex;
+      gap: 0.5rem;
+      z-index: 1000;
+    }
+    
+    .lang-btn {
+      background: transparent;
+      border: 2px solid var(--clr-gold);
+      color: var(--clr-gold);
+      padding: 0.5rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-radius: 6px;
+      min-width: 40px;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    
+    .lang-btn:hover {
+      background: var(--clr-gold);
+      color: var(--clr-bg-dark);
+      transform: scale(1.1);
+    }
+    
+    .lang-btn.active {
+      background: var(--clr-gold) !important;
+      color: var(--clr-bg-dark) !important;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+      transform: scale(1.05);
+      border-color: var(--clr-gold);
+    }
+    
+    .lang-btn.active:hover {
+      background: var(--clr-gold) !important;
+      color: var(--clr-bg-dark) !important;
+      transform: scale(1.1);
+    }
+    
+    @media (max-width: 600px) {
+      .site-header {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space);
+      }
+      
+      .logo-container {
+        order: 1;
+      }
+      
+      .language-switcher {
+        order: 2;
+        position: static;
+        margin: 0;
+        justify-content: center;
+      }
+      
+      .header-inner {
+        order: 3;
+        width: 100%;
+        text-align: center;
+      }
+      
+      .lang-btn {
+        font-size: 1rem;
+        min-width: 36px;
+        min-height: 36px;
+        padding: 0.25rem;
+      }
+      
+      .lang-btn.active {
+        background: var(--clr-gold) !important;
+        color: var(--clr-bg-dark) !important;
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+      }
+    }
+  </style>
+  <script src="/i18n.js?v=1"></script>
   <script src="/script.js" defer></script>
+  <script>
+    // Logo glitter effect
+    document.addEventListener('DOMContentLoaded', function() {
+      const logoContainer = document.querySelector('.logo-container');
+      
+      // Add glitter class after a short delay for better visual impact
+      setTimeout(() => {
+        logoContainer.classList.add('glitter');
+        
+        // Remove glitter class after animation completes (optional)
+        setTimeout(() => {
+          logoContainer.classList.remove('glitter');
+        }, 6000); // Remove after 6 seconds (2 complete cycles)
+      }, 500);
+    });
+  </script>
 </head>
 <body>
-<a href="#main" class="skip-link">Skip to content</a>
 <header class="site-header">
   <div class="logo-container">
-    <img src="/loko.png" alt="Gold Digger Technologies logo" class="logo-img" data-i18n-alt="logo_alt" width="200" height="200" decoding="async" fetchpriority="high" />
+    <img src="/loko.png" alt="Gold Digger Technologies logo" class="logo-img" data-i18n-alt="logo_alt" width="200" height="200" />
   </div>
 
   <div class="header-inner">
     <div class="branding">
       <div class="logo">GOLD DIGGER TECHNOLOGIES</div>
     </div>
-    <nav class="main-nav" aria-label="Primary">
+    <nav class="main-nav">
       <ul>
         <li><a href="gdt.html" class="nav-link" data-i18n="nav_gdt">GDT</a></li>
         <li><a href="contact.html" class="nav-link" data-i18n="nav_contact">Contact</a></li>
@@ -44,15 +195,15 @@
   </div>
   
   <!-- Language Switcher -->
-  <div class="language-switcher" aria-label="Language switcher">
-    <button class="lang-btn" data-lang="fi" title="Suomi" aria-label="Switch language to Finnish">🇫🇮</button>
-    <button class="lang-btn" data-lang="en" title="English" aria-label="Switch language to English">🇺🇸</button>
-    <button class="lang-btn" data-lang="de" title="Deutsch" aria-label="Sprache auf Deutsch umstellen">🇩🇪</button>
-    <button class="lang-btn" data-lang="fr" title="Français" aria-label="Changer la langue en français">🇫🇷</button>
+  <div class="language-switcher">
+    <button class="lang-btn" data-lang="fi" title="Suomi">🇫🇮</button>
+    <button class="lang-btn" data-lang="en" title="English">🇺🇸</button>
+    <button class="lang-btn" data-lang="de" title="Deutsch">🇩🇪</button>
+    <button class="lang-btn" data-lang="fr" title="Français">🇫🇷</button>
   </div>
 </header>
 
-  <main id="main" class="site-main">
+  <main class="site-main">
     <section class="hero">
       <h1 data-i18n="hero_title">Täysi varmennettavuus. Hallinnoitavuus. Modulaarisuus. Tekoälyn uusi GDT lohkoketju-standardi.</h1>
       <p data-i18n="hero_welcome">Tervetuloa aikakauteen, jossa tekoäly ei vain toimi – vaan toimii oikein:</p>
@@ -61,5 +212,12 @@
     </section>
   </main>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.i18n && typeof window.i18n.setupLanguageSwitcher === 'function') {
+        window.i18n.setupLanguageSwitcher();
+      }
+    });
+  </script>
 </body>
 </html>
