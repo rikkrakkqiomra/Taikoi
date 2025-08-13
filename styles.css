@@ -113,7 +113,7 @@ body.subpage .site-header.collapsed { transition: none; }
   content: "";
   position: absolute;
   left: 50%;
-  bottom: 0;
+  bottom: -1px;
   transform: translate(-50%, 100%);
   width: 0;
   height: 0;
