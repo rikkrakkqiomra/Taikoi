@@ -47,10 +47,66 @@ body {
 body.subpage .site-header.collapsed { transition: none; }
 
 .logo-container {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: var(--space);
+  padding: 16px;
+  border-radius: 20px;
+}
+
+/* Thick orbiting glitter ring */
+.logo-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 12px; /* ring thickness */
+  background:
+    radial-gradient(3px 3px at 12% 18%, rgba(255,255,255,0.95), transparent 60%),
+    radial-gradient(2.5px 2.5px at 28% 10%, rgba(212,175,55,0.95), transparent 60%),
+    radial-gradient(2px 2px at 40% 22%, rgba(255,255,255,0.85), transparent 60%),
+    radial-gradient(3px 3px at 58% 14%, rgba(255,215,0,0.95), transparent 60%),
+    radial-gradient(2px 2px at 72% 20%, rgba(255,255,255,0.9), transparent 60%),
+    radial-gradient(2.5px 2.5px at 86% 32%, rgba(212,175,55,0.95), transparent 60%),
+    radial-gradient(2px 2px at 90% 58%, rgba(255,255,255,0.85), transparent 60%),
+    radial-gradient(3px 3px at 78% 74%, rgba(255,215,0,0.95), transparent 60%),
+    radial-gradient(2px 2px at 62% 84%, rgba(255,255,255,0.85), transparent 60%),
+    radial-gradient(2.5px 2.5px at 38% 88%, rgba(212,175,55,0.95), transparent 60%),
+    radial-gradient(2px 2px at 22% 76%, rgba(255,255,255,0.85), transparent 60%),
+    radial-gradient(3px 3px at 10% 58%, rgba(255,215,0,0.95), transparent 60%);
+  /* Cutout center to form a frame */
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  box-shadow:
+    0 0 40px rgba(212,175,55,0.35),
+    0 0 10px rgba(255,255,255,0.25) inset;
+  transform: rotate(0turn);
+  animation: orbit 18s linear infinite, twinkle 2.6s ease-in-out infinite alternate;
+  opacity: 1;
+  pointer-events: none;
+}
+
+/* Soft golden halo */
+.logo-container::after {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  border-radius: inherit;
+  background:
+    radial-gradient(28px 28px at 15% 20%, rgba(255, 215, 0, 0.2), transparent 60%),
+    radial-gradient(24px 24px at 85% 30%, rgba(255, 255, 255, 0.22), transparent 60%),
+    radial-gradient(22px 22px at 25% 85%, rgba(212, 175, 55, 0.2), transparent 60%),
+    radial-gradient(26px 26px at 80% 80%, rgba(255, 255, 255, 0.18), transparent 60%);
+  filter: blur(7px);
+  opacity: 1;
+  pointer-events: none;
 }
 
 .logo-img {
@@ -58,6 +114,10 @@ body.subpage .site-header.collapsed { transition: none; }
   height: auto;
   object-fit: contain;
   filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.5));
+  border-radius: 12px;              /* rounded corners tight to image */
+  box-shadow:
+    0 0 0 3px var(--clr-gold),     /* permanent gold outline */
+    0 0 14px rgba(212,175,55,0.45);/* subtle gold glow */
 }
 
 .site-header::after {

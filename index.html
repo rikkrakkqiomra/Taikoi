@@ -9,32 +9,34 @@
   <link rel="stylesheet" href="/styles.css" />
   <link rel="preload" as="image" href="/loko.png" />
   <style>
-    /* Logo Glitter Frame – v2: Sparkle Ring */
+    /* Logo Glitter Frame – v3: Thick orbiting sparkles + permanent inner gold stroke */
     .logo-container {
       position: relative;
-      padding: 10px;
-      border-radius: 18px;
+      padding: 16px;
+      border-radius: 20px;
       transition: all 0.3s ease;
     }
 
-    /* Gradient sparkle ring */
+    /* Thicker glitter ring made of orbiting sparkles */
     .logo-container::before {
       content: '';
       position: absolute;
       inset: 0;
       border-radius: inherit;
-      padding: 3px; /* ring thickness */
+      padding: 12px; /* glitter ring thickness */
       background:
-        conic-gradient(from 0deg at 50% 50%,
-          rgba(255,255,255,0.85) 0%,
-          rgba(212,175,55,0.9) 12%,
-          rgba(255,255,255,0.6) 25%,
-          rgba(212,175,55,0.9) 37%,
-          rgba(255,255,255,0.85) 50%,
-          rgba(212,175,55,0.9) 62%,
-          rgba(255,255,255,0.6) 75%,
-          rgba(212,175,55,0.9) 87%,
-          rgba(255,255,255,0.85) 100%);
+        radial-gradient(3px 3px at 12% 18%, rgba(255,255,255,0.95), transparent 60%),
+        radial-gradient(2.5px 2.5px at 28% 10%, rgba(212,175,55,0.95), transparent 60%),
+        radial-gradient(2px 2px at 40% 22%, rgba(255,255,255,0.85), transparent 60%),
+        radial-gradient(3px 3px at 58% 14%, rgba(255,215,0,0.95), transparent 60%),
+        radial-gradient(2px 2px at 72% 20%, rgba(255,255,255,0.9), transparent 60%),
+        radial-gradient(2.5px 2.5px at 86% 32%, rgba(212,175,55,0.95), transparent 60%),
+        radial-gradient(2px 2px at 90% 58%, rgba(255,255,255,0.85), transparent 60%),
+        radial-gradient(3px 3px at 78% 74%, rgba(255,215,0,0.95), transparent 60%),
+        radial-gradient(2px 2px at 62% 84%, rgba(255,255,255,0.85), transparent 60%),
+        radial-gradient(2.5px 2.5px at 38% 88%, rgba(212,175,55,0.95), transparent 60%),
+        radial-gradient(2px 2px at 22% 76%, rgba(255,255,255,0.85), transparent 60%),
+        radial-gradient(3px 3px at 10% 58%, rgba(255,215,0,0.95), transparent 60%);
       /* Cutout center to form a frame */
       mask:
         linear-gradient(#000 0 0) content-box,
@@ -45,45 +47,44 @@
       -webkit-mask-composite: xor;
               mask-composite: exclude;
       box-shadow:
-        0 0 30px rgba(212,175,55,0.25),
-        0 0 8px rgba(255,255,255,0.2) inset;
+        0 0 40px rgba(212,175,55,0.35),
+        0 0 10px rgba(255,255,255,0.25) inset;
       transform: rotate(0turn);
-      animation: sparkle-spin 10s linear infinite;
-      opacity: 0;
-      transition: opacity 0.6s ease;
+      animation: orbit 18s linear infinite, twinkle 2.6s ease-in-out infinite alternate;
+      opacity: 1;
       pointer-events: none;
     }
 
-    /* Soft golden corner glow */
+    /* Soft golden halo around the ring */
     .logo-container::after {
       content: '';
       position: absolute;
-      inset: -8px;
+      inset: -10px;
       border-radius: inherit;
       background:
-        radial-gradient(24px 24px at 15% 20%, rgba(255, 215, 0, 0.18), transparent 60%),
-        radial-gradient(20px 20px at 85% 30%, rgba(255, 255, 255, 0.20), transparent 60%),
-        radial-gradient(18px 18px at 25% 85%, rgba(212, 175, 55, 0.18), transparent 60%),
-        radial-gradient(22px 22px at 80% 80%, rgba(255, 255, 255, 0.16), transparent 60%);
-      filter: blur(6px);
-      opacity: 0;
-      transition: opacity 0.6s ease;
+        radial-gradient(28px 28px at 15% 20%, rgba(255, 215, 0, 0.2), transparent 60%),
+        radial-gradient(24px 24px at 85% 30%, rgba(255, 255, 255, 0.22), transparent 60%),
+        radial-gradient(22px 22px at 25% 85%, rgba(212, 175, 55, 0.2), transparent 60%),
+        radial-gradient(26px 26px at 80% 80%, rgba(255, 255, 255, 0.18), transparent 60%);
+      filter: blur(7px);
+      opacity: 1;
       pointer-events: none;
     }
 
-    .logo-container.glitter::before,
-    .logo-container.glitter::after {
-      opacity: 1;
-    }
-
-    @keyframes sparkle-spin {
-      to { transform: rotate(1turn); }
+    @keyframes orbit { to { transform: rotate(1turn); } }
+    @keyframes twinkle {
+      0%   { filter: brightness(1) saturate(1.1); }
+      50%  { filter: brightness(1.25) saturate(1.35); }
+      100% { filter: brightness(1.05) saturate(1.2); }
     }
 
     .logo-img {
       position: relative;
       z-index: 1;
-      border-radius: 8px;
+      border-radius: 12px;
+      box-shadow:
+        0 0 0 3px var(--clr-gold),
+        0 0 14px rgba(212,175,55,0.45);
     }
     
     /* Language Switcher Styles */
@@ -173,22 +174,6 @@
   </style>
   <script src="/i18n.js?v=1"></script>
   <script src="/script.js" defer></script>
-  <script>
-    // Logo glitter effect
-    document.addEventListener('DOMContentLoaded', function() {
-      const logoContainer = document.querySelector('.logo-container');
-      
-      // Add glitter class after a short delay for better visual impact
-      setTimeout(() => {
-        logoContainer.classList.add('glitter');
-        
-        // Remove glitter class after animation completes (optional)
-        setTimeout(() => {
-          logoContainer.classList.remove('glitter');
-        }, 6000); // Remove after 6 seconds (2 complete cycles)
-      }, 500);
-    });
-  </script>
 </head>
 <body>
 <header class="site-header">
