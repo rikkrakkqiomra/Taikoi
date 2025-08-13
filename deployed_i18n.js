@@ -3,7 +3,7 @@ class I18n {
   constructor() {
     try {
       console.log('Initializing I18n constructor...');
-      this.supportedLanguages = ['fi', 'en', 'de', 'fr', 'es', 'nl', 'pl', 'it', 'pt', 'el', 'et', 'lv', 'lt', 'hr', 'sk', 'sl', 'ga', 'mt', 'lb', 'sv'];
+      this.supportedLanguages = ['fi', 'en', 'de', 'fr', 'es', 'nl', 'pl'];
       this.defaultLanguage = 'fi';
       this.translations = {};
       this.isReady = false;
@@ -19,7 +19,7 @@ class I18n {
     } catch (error) {
       console.error('Error in I18n constructor:', error);
       // Fallback initialization
-      this.supportedLanguages = ['fi', 'en', 'de', 'fr', 'es', 'nl', 'pl', 'it', 'pt', 'el', 'et', 'lv', 'lt', 'hr', 'sk', 'sl', 'ga', 'mt', 'lb', 'sv'];
+      this.supportedLanguages = ['fi', 'en', 'de', 'fr', 'es', 'nl', 'pl'];
       this.defaultLanguage = 'fi';
       this.currentLang = 'fi';
       this.translations = {};
