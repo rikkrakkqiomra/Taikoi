@@ -1,0 +1,49 @@
+{
+  "site_title": "Gold Digger Technologies",
+  "contact_title": "Gold Digger Technologies — Contatti",
+  "gdt_title": "Gold Digger Technologies — GDT",
+  "research_title": "Gold Digger Technologies — Ricerca",
+  
+  "nav_gdt": "GDT",
+  "nav_contact": "Contatti",
+  "nav_research": "Ricerca",
+  "nav_main": "Home",
+  
+  "hero_title": "Verificabilità completa. Gestibilità. Modularità. Il nuovo standard blockchain GDT per l'intelligenza artificiale.",
+  "hero_welcome": "Benvenuti in un'era in cui l'intelligenza artificiale non solo funziona – funziona correttamente:",
+  "hero_description": "Gold Digger Technologies realizza soluzioni ibride dirette e pronte all'uso per accelerare i processi della strategia dei dati della vostra azienda, come l'attivazione della capacità regolatoria automatica dell'IA e l'abilitazione di un'interazione ciber‑sicura e verificata con i modelli di IA moderni. Ci concentriamo tecnicamente sull'intersezione tra blockchain e IA, di cui ci si può fidare senza timori in termini di regolamentazione o accuratezza. La priorità della nostra IA è la precisione e la verificabilità: l'obiettivo principale è rimanere all'avanguardia tecnologica con un'affidabilità assoluta.",
+  "hero_cta": "Se la vostra organizzazione desidera diventare una vera miniera d'oro di fiducia e valore, siamo pronti a integrare la tecnologia GDT con assoluta certezza nella vostra infrastruttura.",
+  
+  "contact_heading": "Contattaci",
+  "form_name": "Nome",
+  "form_email": "E‑mail *",
+  "form_phone": "Telefono",
+  "form_message": "In che modo Gold Digger può aiutarvi?",
+  "form_submit": "Invia",
+  "privacy_text": "Gold Digger utilizza le informazioni fornite per contattarvi in merito ai nostri contenuti essenziali, prodotti e servizi. Potete annullare l'iscrizione in qualsiasi momento. Per ulteriori informazioni consultate la nostra",
+  "privacy_link": "Informativa sulla privacy",
+  
+  "logo_alt": "Logo Gold Digger Technologies",
+  
+  "gdt_heading": "GDT",
+  "gdt_quote": "\"Se gli USA innovano, la Cina copia e l'UE regola, noi abbiamo costruito ciò con cui si regola poi in modo appropriato, corretto – e in una volta sola.\"",
+  "gdt_description": "Immaginate un mondo in cui la conformità normativa non sia un incubo manuale e una voce di costo da implementare a posteriori, bensì una caratteristica implementata automaticamente e senza soluzione di continuità nella tecnologia stessa. Stiamo costruendo la piattaforma che rende tutto ciò realtà – una piattaforma di IA basata su blockchain e pronta per la tracciabilità, che offre la conformità normativa come punto di partenza, non come componente aggiuntiva.",
+  "gdt_security": "Sicurezza e tracciabilità integrate nella catena GDT.",
+  "gdt_platform": "Dimenticate i sistemi patchwork e le responsabilità poco chiare. La nostra piattaforma offre una soluzione completa:",
+  "gdt_features": "Tracciabilità completa by design – niente più decisioni perse o funzioni di IA inspiegabili. Niente fughe di dati, niente segreti svelati all'IA. IA logicamente innestata nei dati desiderati – prompt dei modelli, decisioni e fonti dati tracciabili al secondo. Dati d'uso e registro operativo sigillati crittograficamente – proteggete voi stessi e i vostri clienti da abusi comprovati.",
+  "gdt_ai_heading": "IA che comprende la regolamentazione – e agisce di conseguenza",
+  "gdt_ai_features": "Agisce come agente di compliance – monitora e guida le operazioni applicative nell'ambito degli obblighi legali. Abilita una soluzione regolatoria all‑in‑one (ad es. GDPR, MiCA, AI Act).",
+  "gdt_tools": "🛠️ \"Regolazione chiavi in mano\" – niente eserciti di consulenti, offriamo un pacchetto completo che include gestione, prontezza regolatoria e IA moderna perfettamente integrate.",
+  "gdt_infrastructure": "Siamo l'infrastruttura di cui la regolamentazione dell'UE ha bisogno.",
+  "gdt_strength": "Se la forza dell'UE è la regolamentazione, il nostro compito è farne una forza anche nella competizione tecnologica.",
+  "gdt_cta": "Come cliente o investitore, costruite il futuro in cui l'IA non infrange le regole – ma le attua.",
+  
+  "research_heading": "Intelligentleman",
+  "research_description": "Agente cognitivo supra‑euristico che sincronizza la pipeline di dati continuo‑topologica al calcolo sul bordo frattale, catalizzando un algoritmo di singolarità pseudo‑randomizzato che apre le porte a un metaverso speculativo di IA tridimensionale.",
+  "meta_home_description": "Gold Digger Technologies costruisce una piattaforma di IA basata su blockchain, focalizzata su verificabilità, conformità e sicurezza.",
+  "meta_contact_description": "Contattate Gold Digger Technologies per discutere di IA, infrastruttura pronta alla conformità e partnership.",
+  "meta_gdt_description": "GDT: piattaforma di IA basata su blockchain, pronta per l'audit, con conformità e sicurezza integrate.",
+  "meta_research_description": "Intelligentleman: ricerca alla frontiera tra IA, cognizione e infrastruttura decentralizzata."
+}
+
+

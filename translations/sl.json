@@ -1,0 +1,49 @@
+{
+  "site_title": "Gold Digger Technologies",
+  "contact_title": "Gold Digger Technologies — Kontakt",
+  "gdt_title": "Gold Digger Technologies — GDT",
+  "research_title": "Gold Digger Technologies — Raziskave",
+  
+  "nav_gdt": "GDT",
+  "nav_contact": "Kontakt",
+  "nav_research": "Raziskave",
+  "nav_main": "Domov",
+  
+  "hero_title": "Popolna preverljivost. Upravljivost. Modularnost. Novi GDT blockchain standard za umetno inteligenco.",
+  "hero_welcome": "Dobrodošli v dobi, ko umetna inteligenca ne le deluje – deluje pravilno:",
+  "hero_description": "Gold Digger Technologies ustvarja neposredne in pripravljene hibridne rešitve za pospešitev procesov vaše podatkovne strategije, kot so aktivacija samodejne regulativne sposobnosti UI in omogočanje preverjene, kibernetsko varne interakcije z modernimi modeli UI. Tehnično se osredotočamo na stičišče med blockchainom in UI, ki mu je mogoče zaupati brez strahu glede regulative ali točnosti. Prednost naše UI je natančnost in preverljivost – ključno je ostati na tehnološkem čelu z absolutno zanesljivostjo.",
+  "hero_cta": "Če želi vaša organizacija postati prava zlata jama zaupanja in vrednosti, smo pripravljeni z zagotovilom integrirati tehnologijo GDT v vašo infrastrukturo.",
+  
+  "contact_heading": "Kontaktirajte nas",
+  "form_name": "Ime",
+  "form_email": "E‑pošta *",
+  "form_phone": "Telefon",
+  "form_message": "Kako vam lahko Gold Digger pomaga?",
+  "form_submit": "Pošlji",
+  "privacy_text": "Gold Digger uporablja informacije, ki jih posredujete, da vas kontaktira glede našega ključnega sadržaja, izdelkov in storitev. Naročnino lahko kadar koli prekličete. Za več informacij glejte naše",
+  "privacy_link": "Politike zasebnosti",
+  
+  "logo_alt": "Logotip Gold Digger Technologies",
+  
+  "gdt_heading": "GDT",
+  "gdt_quote": "\"Če ZDA inovirajo, Kitajska kopira in EU regulira, smo mi zgradili tisto, s čimer se nato regulira pravilno, korektno – in naenkrat.\"",
+  "gdt_description": "Predstavljajte si svet, v katerem regulativna skladnost ni ročna nočna mora in stroškovna postavka, ki se jo uvaja naknadno, ampak funkcionalnost, ki je samodejno in brezhibno implementirana v samo tehnologijo. Gradimo platformo, ki to uresničuje – na blockchainu temelječo platformo UI, pripravljeno na audit trail, ki ponuja skladnost kot izhodišče, ne kot dodatek.",
+  "gdt_security": "Varnost in sledljivost vgrajeni v verigo GDT.",
+  "gdt_platform": "Pozabite na krpanke sistemov in nejasne odgovornosti. Naša platforma ponuja celovito rešitev:",
+  "gdt_features": "Popoln audit trail po zasnovi – ni več izgubljenih odločitev ali nepojasnjenih funkcij UI. Brez uhajanja podatkov, brez skrivnosti razkritih UI. Logično v želene podatke vgrajena UI – pozivi modelov, odločitve in viri podatkov sledljivi do sekunde. Podatki o uporabi in operativni dnevnik kriptografsko zapečateni – zaščitite sebe in svoje stranke pred dokazano zlorabo.",
+  "gdt_ai_heading": "UI, ki razume regulativo – in ravna v skladu z njo",
+  "gdt_ai_features": "Deluje kot agent za skladnost – nadzira in usmerja delovanje aplikacij v okviru zakonskih obveznosti. Omogoča all‑in‑one regulativno rešitev (npr. GDPR, MiCA, AI Act).",
+  "gdt_tools": "🛠️ \"Regulacija na ključ\" – brez armad svetovalcev, ponujamo celovit paket, ki vključuje upravljanje, pripravljenost na regulativo in moderno UI brezšivno.",
+  "gdt_infrastructure": "Smo infrastruktura, ki jo potrebuje regulativa EU.",
+  "gdt_strength": "Če je moč EU regulativa, je naša naloga, da to postane moč tudi v tehnološki konkurenci.",
+  "gdt_cta": "Kot stranka ali investitor gradite prihodnost, v kateri UI ne krši pravil – ampak jih uresničuje.",
+  
+  "research_heading": "Intelligentleman",
+  "research_description": "Supra‑heuristični kognitivni agent sinhronizira kontinuo‑topološki podatkovni cevovod s fraktalno‑robno računalništvom, katalizira psevdonaključni algoritem singularnosti, ki odpira vrata v tridimenzionalni spekulativni UI metavesolje.",
+  "meta_home_description": "Gold Digger Technologies gradi na blockchainu temelječo platformo UI s fokusom na preverljivost, skladnost in varnost.",
+  "meta_contact_description": "Kontaktirajte Gold Digger Technologies za pogovor o UI, infrastrukturi pripravljeni na skladnost in partnerstvih.",
+  "meta_gdt_description": "GDT: platforma UI na osnovi blockchaina, pripravljena na audit trail, z vgrajeno skladnostjo in varnostjo.",
+  "meta_research_description": "Intelligentleman: raziskave na stičišču UI, kognicije in decentralizirane infrastrukture."
+}
+
+

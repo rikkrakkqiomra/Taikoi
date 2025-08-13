@@ -1,0 +1,49 @@
+{
+  "site_title": "Gold Digger Technologies",
+  "contact_title": "Gold Digger Technologies — Kontakti",
+  "gdt_title": "Gold Digger Technologies — GDT",
+  "research_title": "Gold Digger Technologies — Pētījumi",
+  
+  "nav_gdt": "GDT",
+  "nav_contact": "Kontakti",
+  "nav_research": "Pētījumi",
+  "nav_main": "Sākums",
+  
+  "hero_title": "Pilnīga pārbaudāmība. Pārvaldāmība. Modularitāte. Jaunais GDT blokķēdes standarts mākslīgajam intelektam.",
+  "hero_welcome": "Laipni lūgti laikmetā, kurā mākslīgais intelekts ne tikai darbojas – tas darbojas pareizi:",
+  "hero_description": "Gold Digger Technologies izstrādā tiešus un gatavus hibrīdrisinājumus, lai paātrinātu jūsu uzņēmuma datu stratēģijas procesus, piemēram, aktivizētu MI automātisku regulatīvo spēju un nodrošinātu pārbaudītu, kiberdrošu mijiedarbību ar mūsdienīgiem MI modeļiem. Tehniski koncentrējamies uz blokķēdes un MI krustpunktu, kam var uzticēties bez bailēm par regulējumu vai precizitāti. Mūsu MI prioritāte ir precizitāte un pārbaudāmība – galvenais ir saglabāt tehnoloģisko priekšgalu ar absolūtu uzticamību.",
+  "hero_cta": "Ja jūsu organizācija vēlas kļūt par īstu uzticības un vērtības zelta raktuvi, mēs esam gatavi ar pilnīgu drošību integrēt GDT tehnoloģiju jūsu infrastruktūrā.",
+  
+  "contact_heading": "Sazinieties ar mums",
+  "form_name": "Vārds",
+  "form_email": "E‑pasts *",
+  "form_phone": "Tālrunis",
+  "form_message": "Kā Gold Digger var jums palīdzēt?",
+  "form_submit": "Iesniegt",
+  "privacy_text": "Gold Digger izmanto jūsu sniegto informāciju, lai sazinātos ar jums par mūsu būtisko saturu, produktiem un pakalpojumiem. Jūs varat jebkurā laikā atteikties no abonementa. Plašāku informāciju skatiet mūsu",
+  "privacy_link": "Privātuma politiku",
+  
+  "logo_alt": "Gold Digger Technologies logotips",
+  
+  "gdt_heading": "GDT",
+  "gdt_quote": "\"Ja ASV inovē, Ķīna kopē un ES regulē, mēs uzbūvējām to, ar ko pēc tam regulē pareizi, korekti – un uzreiz.\"",
+  "gdt_description": "Iedomājieties pasauli, kurā normatīvā atbilstība nav manuāls murgs un izmaksu pozīcija, kas jāīsteno pēc fakta, bet gan funkcija, kas tiek ieviesta automātiski un nevainojami pašā tehnoloģijā. Mēs veidojam platformu, kas to padara par realitāti – auditēšanas pēdām gatavu, uz blokķēdi balstītu MI platformu, kas piedāvā atbilstību kā sākuma punktu, nevis papildinājumu.",
+  "gdt_security": "Drošība un izsekojamība iebūvēta GDT ķēdē.",
+  "gdt_platform": "Aizmirstiet ielāpu sistēmas un neskaidras atbildības. Mūsu platforma piedāvā pilnīgu risinājumu:",
+  "gdt_features": "Pilnīga auditācijas izsekojamība pēc noklusējuma – vairs nekādu pazudušu lēmumu vai neizskaidrotu MI funkciju. Nav datu noplūžu, nav MI atklātu noslēpumu. Loģiski vēlamajos datos iegulta MI – modeļu norādes, lēmumi un datu avoti izsekojami līdz sekundei. Izmantošanas dati un darbības žurnāls kriptogrāfiski aizzīmogoti – aizsargājiet sevi un savus klientus no pierādāmas ļaunprātīgas izmantošanas.",
+  "gdt_ai_heading": "MI, kas saprot regulējumu – un rīkojas atbilstoši",
+  "gdt_ai_features": "Darbos kā atbilstības aģents – uzrauga un vada lietotņu darbību tiesisko pienākumu ietvaros. Nodrošina visaptverošu regulatīvo risinājumu (piem., GDPR, MiCA, AI Act).",
+  "gdt_tools": "🛠️ \"Regulējums gatavs lietošanai\" – nekādu konsultantu armiju, mēs piedāvājam pilnu pakotni ar vadību, regulatīvo gatavību un modernu MI nevainojami.",
+  "gdt_infrastructure": "Mēs esam tā infrastruktūra, kas nepieciešama ES regulējumam.",
+  "gdt_strength": "Ja ES stiprā puse ir regulējums, mūsu uzdevums ir padarīt to par stipro pusi arī tehnoloģiskajā konkurencē.",
+  "gdt_cta": "Kā klients vai investors veidojiet nākotni, kur MI nepārkāpj noteikumus – bet tos īsteno.",
+  
+  "research_heading": "Intelligentleman",
+  "research_description": "Supra‑heuristisks kognitīvs aģents sinhronizē nepārtraukti‑topoloģisku datu cauruļvadu ar fraktālās malas skaitļošanu, katalizējot pseido‑randomizētu singularitātes algoritmu, kas atver vārtus trīsdimensiju MI spekulatīvajā metaversā.",
+  "meta_home_description": "Gold Digger Technologies veido uz blokķēdes balstītu MI platformu ar fokusu uz pārbaudāmību, atbilstību un drošību.",
+  "meta_contact_description": "Sazinieties ar Gold Digger Technologies, lai apspriestu MI, atbilstībai gatavu infrastruktūru un partnerības.",
+  "meta_gdt_description": "GDT: uz blokķēdes balstīta MI platforma, gatava auditācijas izsekojamībai ar iebūvētu atbilstību un drošību.",
+  "meta_research_description": "Intelligentleman: pētījumi MI, kognīcijas un decentralizētās infrastruktūras saskares punktā."
+}
+
+

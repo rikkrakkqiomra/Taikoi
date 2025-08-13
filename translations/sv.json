@@ -1,0 +1,49 @@
+{
+  "site_title": "Gold Digger Technologies",
+  "contact_title": "Gold Digger Technologies — Kontakt",
+  "gdt_title": "Gold Digger Technologies — GDT",
+  "research_title": "Gold Digger Technologies — Forskning",
+  
+  "nav_gdt": "GDT",
+  "nav_contact": "Kontakt",
+  "nav_research": "Forskning",
+  "nav_main": "Hem",
+  
+  "hero_title": "Full verifierbarhet. Hanterbarhet. Modularitet. Den nya GDT‑blockkedjestandarden för artificiell intelligens.",
+  "hero_welcome": "Välkommen till en era där artificiell intelligens inte bara fungerar – den fungerar korrekt:",
+  "hero_description": "Gold Digger Technologies tar fram direkta och färdiga hybridlösningar för att accelerera din organisations datastrategiska processer, såsom att aktivera AI:s automatiska regleringsförmåga och möjliggöra verifierad, cybersäker interaktion med moderna AI‑modeller. Vi fokuserar tekniskt på skärningspunkten mellan blockkedja och AI, som man kan lita på utan rädsla för reglering eller noggrannhet. Vår AI:s prioritet är precision och verifierbarhet – det viktigaste är att ligga i teknologisk framkant med absolut tillförlitlighet.",
+  "hero_cta": "Om din organisation vill bli en verklig guldgruva av förtroende och värde är vi redo att integrera GDT‑teknologin med full säkerhet i er infrastruktur.",
+  
+  "contact_heading": "Kontakta oss",
+  "form_name": "Namn",
+  "form_email": "E‑post *",
+  "form_phone": "Telefon",
+  "form_message": "Hur kan Gold Digger hjälpa dig?",
+  "form_submit": "Skicka",
+  "privacy_text": "Gold Digger använder den information du lämnar för att kontakta dig om vårt väsentliga innehåll, våra produkter och tjänster. Du kan avsluta prenumerationen när som helst. Mer information finns i vår",
+  "privacy_link": "Integritetspolicy",
+  
+  "logo_alt": "Gold Digger Technologies logotyp",
+  
+  "gdt_heading": "GDT",
+  "gdt_quote": "\"Om USA innoverar, Kina kopierar och EU reglerar, byggde vi det som sedan reglerar korrekt, riktigt – och på en gång.\"",
+  "gdt_description": "Föreställ dig en värld där regelefterlevnad inte är en manuell mardröm och kostnadspost som måste implementeras i efterhand, utan en funktion som implementeras automatiskt och sömlöst i tekniken själv. Vi bygger plattformen som gör detta till verklighet – en blockkedjebaserad AI‑plattform, redo för audit trail, som erbjuder regelefterlevnad som utgångspunkt, inte som tillägg.",
+  "gdt_security": "Säkerhet och spårbarhet inbyggt i GDT‑kedjan.",
+  "gdt_platform": "Glöm lapptäckesystem och oklara ansvar. Vår plattform erbjuder en helhetslösning:",
+  "gdt_features": "Fullständig audit trail enligt design – inga fler förlorade beslut eller oförklarliga AI‑funktioner. Inga dataläckor, inga hemligheter som läcker till AI. Logiskt inbäddad AI i önskad data – modellpromptar, beslut och datakällor spårbara ned på sekunden. Användningsdata och driftlogg kryptografiskt förseglade – skydda dig själv och dina kunder mot styrkt missbruk.",
+  "gdt_ai_heading": "AI som förstår reglering – och agerar därefter",
+  "gdt_ai_features": "Fungerar som regelefterlevnadsagent – övervakar och vägleder applikationsdrift inom rättsliga skyldigheter. Möjliggör en allt‑i‑ett‑regleringslösning (t.ex. GDPR, MiCA, AI Act).",
+  "gdt_tools": "🛠️ \"Reglering nyckelfärdig\" – inga konsultarméer, vi erbjuder ett komplett paket inklusive styrning, regulatorisk beredskap och modern AI sömlöst.",
+  "gdt_infrastructure": "Vi är den infrastruktur som EU:s reglering behöver.",
+  "gdt_strength": "Om EU:s styrka är reglering är vår uppgift att göra den till en styrka även i den teknologiska konkurrensen.",
+  "gdt_cta": "Som kund eller investerare, bygg framtiden där AI inte bryter mot reglerna – utan genomför dem.",
+  
+  "research_heading": "Intelligentleman",
+  "research_description": "Supra‑heuristisk kognitiv agent synkroniserar en continuo‑topologisk datapipeline med fractal‑edge‑beräkning, katalyserar en pseudo‑randomiserad singularitetsalgoritm som öppnar portar till ett tredimensionellt spekulativt AI‑metaversum.",
+  "meta_home_description": "Gold Digger Technologies bygger en blockkedjebaserad AI‑plattform med fokus på verifierbarhet, compliance och säkerhet.",
+  "meta_contact_description": "Kontakta Gold Digger Technologies för att diskutera AI, compliance‑redo infrastruktur och partnerskap.",
+  "meta_gdt_description": "GDT: en audit‑trail‑redo blockkedjebaserad AI‑plattform med inbyggd compliance och säkerhet.",
+  "meta_research_description": "Intelligentleman: forskning i gränslandet mellan AI, kognition och decentraliserad infrastruktur."
+}
+
+

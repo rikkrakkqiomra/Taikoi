@@ -3,7 +3,7 @@ class I18n {
   constructor() {
     try {
       console.log('Initializing I18n constructor...');
-      this.supportedLanguages = ['fi', 'en', 'de', 'fr', 'es', 'nl', 'pl'];
+      this.supportedLanguages = ['fi', 'en', 'de', 'fr', 'es', 'nl', 'pl', 'it', 'pt', 'el', 'et', 'lv', 'lt', 'hr', 'sk', 'sl', 'ga', 'mt', 'lb', 'sv'];
       this.defaultLanguage = 'fi';
       this.translations = {};
       this.isReady = false;
@@ -19,7 +19,7 @@ class I18n {
     } catch (error) {
       console.error('Error in I18n constructor:', error);
       // Fallback initialization
-      this.supportedLanguages = ['fi', 'en', 'de', 'fr', 'es', 'nl', 'pl'];
+      this.supportedLanguages = ['fi', 'en', 'de', 'fr', 'es', 'nl', 'pl', 'it', 'pt', 'el', 'et', 'lv', 'lt', 'hr', 'sk', 'sl', 'ga', 'mt', 'lb', 'sv'];
       this.defaultLanguage = 'fi';
       this.currentLang = 'fi';
       this.translations = {};
@@ -266,8 +266,29 @@ class I18n {
       return;
     }
     
-    // Add event listeners to existing buttons
-    const langButtons = switcher.querySelectorAll('.lang-btn');
+    // Dropdown toggle (white flag with question mark)
+    const moreBtn = switcher.querySelector('.lang-more');
+    const dropdown = switcher.querySelector('.lang-dropdown');
+    if (moreBtn && dropdown) {
+      const toggleDropdown = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropdown.classList.toggle('open');
+      };
+      const closeDropdown = (e) => {
+        if (!switcher.contains(e.target)) {
+          dropdown.classList.remove('open');
+        }
+      };
+      // Replace to remove stale listeners
+      const newMoreBtn = moreBtn.cloneNode(true);
+      moreBtn.parentNode.replaceChild(newMoreBtn, moreBtn);
+      newMoreBtn.addEventListener('click', toggleDropdown);
+      document.addEventListener('click', closeDropdown);
+    }
+
+    // Add event listeners to existing language buttons (with data-lang)
+    const langButtons = switcher.querySelectorAll('.lang-btn[data-lang]');
     console.log('Found language buttons:', langButtons.length);
     
     langButtons.forEach((btn, index) => {
@@ -299,7 +320,7 @@ class I18n {
   
   updateLanguageSwitcherState() {
     console.log('Updating language switcher state for language:', this.currentLang);
-    const langButtons = document.querySelectorAll('.lang-btn');
+    const langButtons = document.querySelectorAll('.lang-btn[data-lang]');
     langButtons.forEach(btn => {
       const lang = btn.getAttribute('data-lang');
       if (lang === this.currentLang) {
@@ -388,7 +409,20 @@ class I18n {
       fr: 'fr_FR',
       es: 'es_ES',
       nl: 'nl_NL',
-      pl: 'pl_PL'
+      pl: 'pl_PL',
+      it: 'it_IT',
+      pt: 'pt_PT',
+      el: 'el_GR',
+      et: 'et_EE',
+      lv: 'lv_LV',
+      lt: 'lt_LT',
+      hr: 'hr_HR',
+      sk: 'sk_SK',
+      sl: 'sl_SI',
+      ga: 'ga_IE',
+      mt: 'mt_MT',
+      lb: 'lb_LU',
+      sv: 'sv_SE'
     };
 
     const cleanPath = (window.location.pathname || '/').replace(/^\/[a-z]{2}(?:\/|$)/, '/') || '/';

@@ -103,6 +103,40 @@
       color: var(--clr-bg-dark) !important;
       transform: scale(1.1);
     }
+
+    /* Extended language dropdown */
+    .lang-more-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+    .lang-more {
+      background: #fff;
+      color: #000;
+      border-color: var(--clr-gold);
+    }
+    .lang-dropdown {
+      position: absolute;
+      top: 110%;
+      right: 0;
+      background: rgba(0,0,0,0.95);
+      border: 1px solid var(--clr-gold);
+      border-radius: 8px;
+      padding: 8px;
+      display: none;
+      min-width: 220px;
+      max-height: 60vh;
+      overflow: auto;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.4);
+    }
+    .lang-dropdown.open { display: block; }
+    .lang-dropdown .lang-btn {
+      width: 100%;
+      justify-content: flex-start;
+      gap: 8px;
+      font-size: 0.95rem;
+      padding: 6px 8px;
+      border-width: 1px;
+    }
     
     @media (max-width: 600px) {
       .site-header {
@@ -121,6 +155,7 @@
         margin: 0;
         justify-content: center;
       }
+      .lang-dropdown { right: auto; left: 0; }
       
       .header-inner {
         order: 3;
@@ -183,6 +218,24 @@
     <button class="lang-btn" data-lang="es" title="Español">🇪🇸</button>
     <button class="lang-btn" data-lang="nl" title="Nederlands">🇳🇱</button>
     <button class="lang-btn" data-lang="pl" title="Polski">🇵🇱</button>
+    <div class="lang-more-wrapper">
+      <button class="lang-btn lang-more" title="More languages">🏳️‍⚪?</button>
+      <div class="lang-dropdown">
+        <button class="lang-btn" data-lang="it" title="Italiano">🇮🇹 Italiano</button>
+        <button class="lang-btn" data-lang="pt" title="Português">🇵🇹 Português</button>
+        <button class="lang-btn" data-lang="el" title="Ελληνικά">🇬🇷 Ελληνικά</button>
+        <button class="lang-btn" data-lang="et" title="Eesti">🇪🇪 Eesti</button>
+        <button class="lang-btn" data-lang="lv" title="Latviešu">🇱🇻 Latviešu</button>
+        <button class="lang-btn" data-lang="lt" title="Lietuvių">🇱🇹 Lietuvių</button>
+        <button class="lang-btn" data-lang="hr" title="Hrvatski">🇭🇷 Hrvatski</button>
+        <button class="lang-btn" data-lang="sk" title="Slovenčina">🇸🇰 Slovenčina</button>
+        <button class="lang-btn" data-lang="sl" title="Slovenščina">🇸🇮 Slovenščina</button>
+        <button class="lang-btn" data-lang="ga" title="Gaeilge">🇮🇪 Gaeilge</button>
+        <button class="lang-btn" data-lang="mt" title="Malti">🇲🇹 Malti</button>
+        <button class="lang-btn" data-lang="lb" title="Lëtzebuergesch">🇱🇺 Lëtzebuergesch</button>
+        <button class="lang-btn" data-lang="sv" title="Svenska">🇸🇪 Svenska</button>
+      </div>
+    </div>
   </div>
 </header>
 
