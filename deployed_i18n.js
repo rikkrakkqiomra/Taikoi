@@ -3,7 +3,7 @@ class I18n {
   constructor() {
     try {
       console.log('Initializing I18n constructor...');
-      this.supportedLanguages = ['fi', 'en', 'de', 'fr'];
+      this.supportedLanguages = ['fi', 'en', 'de', 'fr', 'es', 'nl', 'pl'];
       this.defaultLanguage = 'fi';
       this.translations = {};
       this.isReady = false;
@@ -19,7 +19,7 @@ class I18n {
     } catch (error) {
       console.error('Error in I18n constructor:', error);
       // Fallback initialization
-      this.supportedLanguages = ['fi', 'en', 'de', 'fr'];
+      this.supportedLanguages = ['fi', 'en', 'de', 'fr', 'es', 'nl', 'pl'];
       this.defaultLanguage = 'fi';
       this.currentLang = 'fi';
       this.translations = {};
@@ -146,6 +146,36 @@ class I18n {
         'nav_gdt': 'GDT',
         'nav_contact': 'Contact',
         'nav_research': 'Recherche'
+      },
+      'es': {
+        'site_title': 'Gold Digger Technologies',
+        'hero_title': 'Verificabilidad total. Gestionabilidad. Modularidad.',
+        'hero_welcome': 'Bienvenido a una era en la que la inteligencia artificial no solo funciona – funciona correctamente:',
+        'hero_description': 'Gold Digger Technologies desarrolla soluciones híbridas directas y listas...',
+        'hero_cta': 'Si su organización quiere convertirse en una verdadera mina de oro de confianza...',
+        'nav_gdt': 'GDT',
+        'nav_contact': 'Contacto',
+        'nav_research': 'Investigación'
+      },
+      'nl': {
+        'site_title': 'Gold Digger Technologies',
+        'hero_title': 'Volledige verifieerbaarheid. Beheerbaarheid. Modulariteit.',
+        'hero_welcome': 'Welkom in een tijdperk waarin kunstmatige intelligentie niet alleen werkt – maar correct werkt:',
+        'hero_description': 'Gold Digger Technologies ontwikkelt directe, kant-en-klare hybride oplossingen...',
+        'hero_cta': 'Als uw organisatie een ware goudmijn van vertrouwen en waarde wil worden...',
+        'nav_gdt': 'GDT',
+        'nav_contact': 'Contact',
+        'nav_research': 'Onderzoek'
+      },
+      'pl': {
+        'site_title': 'Gold Digger Technologies',
+        'hero_title': 'Pełna weryfikowalność. Zarządzalność. Modularność.',
+        'hero_welcome': 'Witamy w erze, w której sztuczna inteligencja nie tylko działa — działa poprawnie:',
+        'hero_description': 'Gold Digger Technologies tworzy bezpośrednie, gotowe do użycia rozwiązania hybrydowe...',
+        'hero_cta': 'Jeśli Twoja organizacja chce stać się prawdziwą kopalnią zaufania i wartości...',
+        'nav_gdt': 'GDT',
+        'nav_contact': 'Kontakt',
+        'nav_research': 'Badania'
       }
     };
     

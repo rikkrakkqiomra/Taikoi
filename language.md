@@ -2,7 +2,7 @@
 
 ## Overview
 
-The website uses a custom JavaScript-based internationalization (i18n) system that supports four languages: Finnish (fi), English (en), German (de), and French (fr). The system is designed to provide seamless language switching without page reloads while maintaining user preferences across sessions.
+The website uses a custom JavaScript-based internationalization (i18n) system that supports seven languages: Finnish (fi), English (en), German (de), French (fr), Spanish (es), Dutch (nl), and Polish (pl). The system is designed to provide seamless language switching without page reloads while maintaining user preferences across sessions.
 
 ## Architecture
 
@@ -19,6 +19,9 @@ The website uses a custom JavaScript-based internationalization (i18n) system th
 - 🇺🇸 **English (en)**
 - 🇩🇪 **German (de)**
 - 🇫🇷 **French (fr)**
+- 🇪🇸 **Spanish (es)**
+- 🇳🇱 **Dutch (nl)**
+- 🇵🇱 **Polish (pl)**
 
 ## Translation Pipeline
 
@@ -52,6 +55,9 @@ Translation files are stored as JSON in the `/translations/` directory:
 - `translations/en.json` - English translations  
 - `translations/de.json` - German translations
 - `translations/fr.json` - French translations
+- `translations/es.json` - Spanish translations
+- `translations/nl.json` - Dutch translations
+- `translations/pl.json` - Polish translations
 
 ### 3. HTML Markup System
 

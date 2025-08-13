@@ -16,10 +16,13 @@ This website has been enhanced with comprehensive internationalization (i18n) su
 - **Language Persistence**: User's language choice is remembered using localStorage
 
 ### 🌍 Supported Languages
-- **Finnish (fi)** - Default language, no URL prefix
+- **Finnish (fi)** - URL prefix: `/fi/`
 - **English (en)** - URL prefix: `/en/`
 - **German (de)** - URL prefix: `/de/`
 - **French (fr)** - URL prefix: `/fr/`
+- **Spanish (es)** - URL prefix: `/es/`
+- **Dutch (nl)** - URL prefix: `/nl/`
+- **Polish (pl)** - URL prefix: `/pl/`
 
 ### 🔧 How It Works
 
@@ -30,10 +33,13 @@ This website has been enhanced with comprehensive internationalization (i18n) su
 4. **Default**: Falls back to Finnish (default language)
 
 #### URL Structure
-- Finnish (default): `https://yoursite.com/` or `https://yoursite.com/index.html`
+- Finnish: `https://yoursite.com/fi/` or `https://yoursite.com/fi/index.html`
 - English: `https://yoursite.com/en/` or `https://yoursite.com/en/index.html`
 - German: `https://yoursite.com/de/` or `https://yoursite.com/de/index.html`
 - French: `https://yoursite.com/fr/` or `https://yoursite.com/fr/index.html`
+- Spanish: `https://yoursite.com/es/` or `https://yoursite.com/es/index.html`
+- Dutch: `https://yoursite.com/nl/` or `https://yoursite.com/nl/index.html`
+- Polish: `https://yoursite.com/pl/` or `https://yoursite.com/pl/index.html`
 
 #### Language Switcher
 - Located in the top-right corner of the header

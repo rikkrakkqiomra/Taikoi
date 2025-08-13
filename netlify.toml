@@ -39,7 +39,19 @@
   force = true
 
 [[redirects]]
+  from = "/es/*"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/de/*"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/nl/*"
   to = "/index.html"
   status = 200
   force = true
@@ -57,13 +69,31 @@
   force = true
 
 [[redirects]]
+  from = "/pl/*"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/en"
   to = "/index.html"
   status = 200
   force = true
 
 [[redirects]]
+  from = "/es"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/de"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/nl"
   to = "/index.html"
   status = 200
   force = true
@@ -80,9 +110,20 @@
   status = 200
   force = true
 
+[[redirects]]
+  from = "/pl"
+  to = "/index.html"
+  status = 200
+  force = true
+
 # Handle direct access to language-specific pages
 [[redirects]]
   from = "/en/contact.html"
+  to = "/contact.html"
+  status = 200
+
+[[redirects]]
+  from = "/es/contact.html"
   to = "/contact.html"
   status = 200
 
@@ -92,7 +133,17 @@
   status = 200
 
 [[redirects]]
+  from = "/nl/contact.html"
+  to = "/contact.html"
+  status = 200
+
+[[redirects]]
   from = "/fr/contact.html"
+  to = "/contact.html"
+  status = 200
+
+[[redirects]]
+  from = "/pl/contact.html"
   to = "/contact.html"
   status = 200
 
@@ -102,7 +153,17 @@
   status = 200
 
 [[redirects]]
+  from = "/es/gdt.html"
+  to = "/gdt.html"
+  status = 200
+
+[[redirects]]
   from = "/de/gdt.html"
+  to = "/gdt.html"
+  status = 200
+
+[[redirects]]
+  from = "/nl/gdt.html"
   to = "/gdt.html"
   status = 200
 
@@ -112,7 +173,17 @@
   status = 200
 
 [[redirects]]
+  from = "/pl/gdt.html"
+  to = "/gdt.html"
+  status = 200
+
+[[redirects]]
   from = "/en/intelligentleman.html"
+  to = "/intelligentleman.html"
+  status = 200
+
+[[redirects]]
+  from = "/es/intelligentleman.html"
   to = "/intelligentleman.html"
   status = 200
 
@@ -122,7 +193,17 @@
   status = 200
 
 [[redirects]]
+  from = "/nl/intelligentleman.html"
+  to = "/intelligentleman.html"
+  status = 200
+
+[[redirects]]
   from = "/fr/intelligentleman.html"
+  to = "/intelligentleman.html"
+  status = 200
+
+[[redirects]]
+  from = "/pl/intelligentleman.html"
   to = "/intelligentleman.html"
   status = 200
 

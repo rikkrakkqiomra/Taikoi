@@ -1,0 +1,49 @@
+{
+  "site_title": "Gold Digger Technologies",
+  "contact_title": "Gold Digger Technologies — Kontakt",
+  "gdt_title": "Gold Digger Technologies — GDT",
+  "research_title": "Gold Digger Technologies — Badania",
+  
+  "nav_gdt": "GDT",
+  "nav_contact": "Kontakt",
+  "nav_research": "Badania",
+  "nav_main": "Strona główna",
+  
+  "hero_title": "Pełna weryfikowalność. Zarządzalność. Modularność. Nowy standard blockchain GDT dla sztucznej inteligencji.",
+  "hero_welcome": "Witamy w erze, w której sztuczna inteligencja nie tylko działa — działa poprawnie:",
+  "hero_description": "Gold Digger Technologies tworzy bezpośrednie i gotowe rozwiązania hybrydowe przyspieszające procesy strategii danych w Twojej firmie, takie jak aktywacja automatycznej zdolności regulacyjnej AI oraz umożliwienie zweryfikowanej, cyber‑bezpiecznej interakcji z nowoczesnymi modelami AI. Skupiamy się technicznie na przecięciu blockchainu i AI, któremu można ufać bez obaw o regulacje czy dokładność. Priorytetem naszej AI jest precyzja i weryfikowalność — kluczowe jest pozostawanie na technologicznym czele w zakresie absolutnej niezawodności.",
+  "hero_cta": "Jeśli Twoja organizacja chce stać się prawdziwą kopalnią zaufania i wartości, jesteśmy gotowi bezbłędnie zintegrować technologię GDT z Twoją infrastrukturą.",
+  
+  "contact_heading": "Skontaktuj się z nami",
+  "form_name": "Imię i nazwisko",
+  "form_email": "E‑mail *",
+  "form_phone": "Telefon",
+  "form_message": "W czym Gold Digger może Ci pomóc?",
+  "form_submit": "Wyślij",
+  "privacy_text": "Gold Digger wykorzystuje przekazane przez Ciebie informacje, aby kontaktować się z Tobą w sprawie naszych kluczowych treści, produktów i usług. Subskrypcję możesz anulować w dowolnym momencie. Więcej informacji znajdziesz w naszej",
+  "privacy_link": "Polityce prywatności",
+  
+  "logo_alt": "Logo Gold Digger Technologies",
+  
+  "gdt_heading": "GDT",
+  "gdt_quote": "\"Jeśli USA tworzą innowacje, Chiny kopiują, a UE reguluje, my zbudowaliśmy to, dzięki czemu reguluje się właściwie, poprawnie — i za jednym razem.\"",
+  "gdt_description": "Wyobraź sobie świat, w którym zgodność regulacyjna nie jest ręcznym koszmarem i pozycją kosztów wdrażaną po fakcie, lecz funkcją automatycznie i płynnie zaimplementowaną w samej technologii. Budujemy platformę, która to umożliwia — gotową do audytu, opartą na blockchainie platformę AI, oferującą zgodność jako punkt wyjścia, a nie dodatek.",
+  "gdt_security": "Bezpieczeństwo i możliwość śledzenia wbudowane w łańcuch GDT.",
+  "gdt_platform": "Zapomnij o systemach sklejanych z łat i niejasnych odpowiedzialnościach. Nasza platforma oferuje kompletne rozwiązanie:",
+  "gdt_features": "Pełny dziennik audytu z założenia — koniec z zaginionymi decyzjami czy niewyjaśnionymi funkcjami AI. Brak wycieków danych, brak wyciekających do AI tajemnic. Logicznie osadzona w pożądanych danych AI — podpowiedzi modeli, decyzje i źródła danych możliwe do prześledzenia co do sekundy. Dane użycia i dziennik operacji kryptograficznie zapieczętowane — chroń siebie i swoich klientów przed udowodnionymi nadużyciami.",
+  "gdt_ai_heading": "AI, która rozumie regulacje — i działa zgodnie z nimi",
+  "gdt_ai_features": "Działa jako agent zgodności — monitoruje i prowadzi działanie aplikacji w ramach obowiązków prawnych. Umożliwia rozwiązanie regulacyjne typu all‑in‑one (np. RODO, MiCA, AI Act).",
+  "gdt_tools": "🛠️ \"Regulacja pod klucz\" — żadnej armii konsultantów, oferujemy kompletny pakiet obejmujący zarządzanie, gotowość regulacyjną oraz nowoczesną AI, płynnie zintegrowane.",
+  "gdt_infrastructure": "Jesteśmy infrastrukturą, której potrzebują regulacje UE.",
+  "gdt_strength": "Jeśli siłą UE jest regulacja, naszym zadaniem jest uczynić z niej atut także w konkurencji technologicznej.",
+  "gdt_cta": "Jako klient lub inwestor współtwórz przyszłość, w której AI nie łamie zasad — lecz je realizuje.",
+  
+  "research_heading": "Intelligentleman",
+  "research_description": "Supra‑heurystyczny agent poznawczy synchronizuje ciągło‑topologiczny potok danych z obliczeniami na krawędzi fraktalnej, katalizując pseudolosowy algorytm osobliwości, który otwiera bramy do trójwymiarowego spekulatywnego metawersum AI.",
+  "meta_home_description": "Gold Digger Technologies buduje platformę AI opartą na blockchainie, skoncentrowaną na weryfikowalności, zgodności i bezpieczeństwie.",
+  "meta_contact_description": "Skontaktuj się z Gold Digger Technologies, aby porozmawiać o AI, infrastrukturze gotowej na zgodność i partnerstwach.",
+  "meta_gdt_description": "GDT: platforma AI oparta na blockchainie, gotowa do audytu, z wbudowaną zgodnością i bezpieczeństwem.",
+  "meta_research_description": "Intelligentleman: badania na styku AI, kognicji i zdecentralizowanej infrastruktury."
+}
+
+
