@@ -80,5 +80,22 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Also listen for i18n ready event in case it's not ready yet
   window.addEventListener('i18nReady', updateNavigationLinks);
+
+  // Ensure header state is corrected when returning via browser back/forward (BFCache)
+  const handlePageRestore = (evt) => {
+    if (!isHome()) return;
+    const navEntries = performance && performance.getEntriesByType ? performance.getEntriesByType('navigation') : null;
+    const navType = navEntries && navEntries[0] ? navEntries[0].type : '';
+    const isBackOrBFCache = (evt && evt.persisted) || navType === 'back_forward';
+    if (!isBackOrBFCache) return;
+    // Start from collapsed (if not already), then expand to trigger the slide
+    if (!header.classList.contains('collapsed')) {
+      header.classList.add('collapsed');
+      void header.offsetWidth;
+    }
+    setTimeout(() => header.classList.remove('collapsed'), 50);
+  };
+  window.addEventListener('pageshow', handlePageRestore);
+  window.addEventListener('popstate', () => handlePageRestore({ persisted: true }));
 });
 
