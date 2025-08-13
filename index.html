@@ -9,62 +9,77 @@
   <link rel="stylesheet" href="/styles.css" />
   <link rel="preload" as="image" href="/loko.png" />
   <style>
-    /* Logo Glitter Frame */
+    /* Logo Glitter Frame – v2: Sparkle Ring */
     .logo-container {
       position: relative;
-      padding: 8px;
-      border-radius: 12px;
+      padding: 10px;
+      border-radius: 18px;
       transition: all 0.3s ease;
     }
-    
+
+    /* Gradient sparkle ring */
     .logo-container::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      border: 2px solid transparent;
-      border-radius: 12px;
-      background: linear-gradient(45deg, 
-        transparent 0%, 
-        rgba(255, 215, 0, 0.1) 25%, 
-        rgba(255, 215, 0, 0.3) 50%, 
-        rgba(255, 215, 0, 0.1) 75%, 
-        transparent 100%);
-      background-size: 200% 200%;
-      animation: glitter 3s ease-in-out infinite;
+      inset: 0;
+      border-radius: inherit;
+      padding: 3px; /* ring thickness */
+      background:
+        conic-gradient(from 0deg at 50% 50%,
+          rgba(255,255,255,0.85) 0%,
+          rgba(212,175,55,0.9) 12%,
+          rgba(255,255,255,0.6) 25%,
+          rgba(212,175,55,0.9) 37%,
+          rgba(255,255,255,0.85) 50%,
+          rgba(212,175,55,0.9) 62%,
+          rgba(255,255,255,0.6) 75%,
+          rgba(212,175,55,0.9) 87%,
+          rgba(255,255,255,0.85) 100%);
+      /* Cutout center to form a frame */
+      mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+              mask-composite: exclude;
+      box-shadow:
+        0 0 30px rgba(212,175,55,0.25),
+        0 0 8px rgba(255,255,255,0.2) inset;
+      transform: rotate(0turn);
+      animation: sparkle-spin 10s linear infinite;
       opacity: 0;
-      transition: opacity 0.5s ease;
+      transition: opacity 0.6s ease;
+      pointer-events: none;
     }
-    
-    .logo-container.glitter::before {
+
+    /* Soft golden corner glow */
+    .logo-container::after {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: inherit;
+      background:
+        radial-gradient(24px 24px at 15% 20%, rgba(255, 215, 0, 0.18), transparent 60%),
+        radial-gradient(20px 20px at 85% 30%, rgba(255, 255, 255, 0.20), transparent 60%),
+        radial-gradient(18px 18px at 25% 85%, rgba(212, 175, 55, 0.18), transparent 60%),
+        radial-gradient(22px 22px at 80% 80%, rgba(255, 255, 255, 0.16), transparent 60%);
+      filter: blur(6px);
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      pointer-events: none;
+    }
+
+    .logo-container.glitter::before,
+    .logo-container.glitter::after {
       opacity: 1;
     }
-    
-    @keyframes glitter {
-      0% {
-        background-position: 0% 0%;
-        transform: scale(1);
-      }
-      25% {
-        background-position: 100% 0%;
-        transform: scale(1.02);
-      }
-      50% {
-        background-position: 100% 100%;
-        transform: scale(1);
-      }
-      75% {
-        background-position: 0% 100%;
-        transform: scale(1.02);
-      }
-      100% {
-        background-position: 0% 0%;
-        transform: scale(1);
-      }
+
+    @keyframes sparkle-spin {
+      to { transform: rotate(1turn); }
     }
-    
+
     .logo-img {
       position: relative;
       z-index: 1;
