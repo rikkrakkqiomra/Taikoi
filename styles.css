@@ -29,6 +29,8 @@ body {
   transition: transform var(--anim-speed) ease-in-out,
               padding   var(--anim-speed) ease-in-out;
   transform: translateY(0);
+  backface-visibility: hidden;
+  will-change: transform, padding;
 }
 
 @media (min-width: 601px) {
@@ -113,13 +115,15 @@ body.subpage .site-header.collapsed { transition: none; }
   content: "";
   position: absolute;
   left: 50%;
-  bottom: -1px;
-  transform: translate(-50%, 100%);
-  width: 0;
-  height: 0;
-  border-left: 24px solid transparent;
-  border-right: 24px solid transparent;
-  border-top: 24px solid var(--clr-bg-dark);
+  top: 100%;
+  transform: translateX(-50%);
+  margin-top: -2px; /* forced overlap to kill subpixel seam */
+  width: 48px;
+  height: 24px;
+  background: var(--clr-bg-dark);
+  -webkit-clip-path: polygon(50% 100%, 0 0, 100% 0);
+          clip-path: polygon(50% 100%, 0 0, 100% 0);
+  backface-visibility: hidden;
 }
 
 .header-inner {
