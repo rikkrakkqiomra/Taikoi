@@ -51,6 +51,39 @@ body {
 /* ===== Tekaristataniastm ===== */
 body.subpage .site-header.collapsed { transition: none; }
 
+/* Explicit play-in animation for home restore/back nav */
+@media (max-width: 600px) {
+  .site-header.play-expand {
+    animation: header-expand-mobile var(--anim-speed) ease-in-out both;
+  }
+  @keyframes header-expand-mobile {
+    from {
+      transform: translateY(-60%);
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+}
+
+@media (min-width: 601px) {
+  .site-header.play-expand {
+    animation: header-expand-desktop var(--anim-speed) ease-in-out both;
+  }
+  @keyframes header-expand-desktop {
+    from {
+      transform: translateY(-80%);
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+}
+
 .logo-container {
   position: relative;
   display: flex;

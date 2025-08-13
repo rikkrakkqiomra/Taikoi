@@ -82,25 +82,41 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('i18nReady', updateNavigationLinks);
 
   // Ensure header state is corrected when returning via browser back/forward (BFCache)
-  const handlePageRestore = (evt) => {
-    if (!isHome()) return;
-    const navEntries = performance && performance.getEntriesByType ? performance.getEntriesByType('navigation') : null;
-    const navType = navEntries && navEntries[0] ? navEntries[0].type : '';
-    const isBackOrBFCache = (evt && evt.persisted) || navType === 'back_forward' || document.visibilityState === 'visible';
-    if (!isBackOrBFCache) return;
-
-    // Robust reset-and-animate: remove transitions, force collapsed, then restore transitions and expand
+  const playHomeExpand = () => {
+    // Reset and then explicitly play expand animation class
     header.classList.add('no-transition');
     header.classList.add('collapsed');
+    header.classList.remove('play-expand');
     void header.offsetWidth;
     header.classList.remove('no-transition');
+    // Next frame, trigger explicit animation class which animates from collapsed to open
     requestAnimationFrame(() => {
+      header.classList.add('play-expand');
+      // Ensure final state is clean
       setTimeout(() => {
         header.classList.remove('collapsed');
-      }, 30);
+        header.classList.remove('play-expand');
+      }, parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--anim-speed')) || 650);
     });
   };
+
+  const handlePageRestore = (evt) => {
+    if (!isHome()) return;
+    const shouldPlay = header.classList.contains('collapsed') || sessionStorage.getItem('headerCollapsed') === 'true' || (evt && evt.persisted === true);
+    if (!shouldPlay) return;
+    // Clear the flag if present to avoid double triggers on manual refresh
+    if (sessionStorage.getItem('headerCollapsed') === 'true') {
+      sessionStorage.removeItem('headerCollapsed');
+    }
+    playHomeExpand();
+  };
+
   window.addEventListener('pageshow', handlePageRestore);
   window.addEventListener('popstate', () => handlePageRestore({ persisted: true }));
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && isHome()) {
+      playHomeExpand();
+    }
+  });
 });
 
