@@ -86,14 +86,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!isHome()) return;
     const navEntries = performance && performance.getEntriesByType ? performance.getEntriesByType('navigation') : null;
     const navType = navEntries && navEntries[0] ? navEntries[0].type : '';
-    const isBackOrBFCache = (evt && evt.persisted) || navType === 'back_forward';
+    const isBackOrBFCache = (evt && evt.persisted) || navType === 'back_forward' || document.visibilityState === 'visible';
     if (!isBackOrBFCache) return;
-    // Start from collapsed (if not already), then expand to trigger the slide
-    if (!header.classList.contains('collapsed')) {
-      header.classList.add('collapsed');
-      void header.offsetWidth;
-    }
-    setTimeout(() => header.classList.remove('collapsed'), 50);
+
+    // Robust reset-and-animate: remove transitions, force collapsed, then restore transitions and expand
+    header.classList.add('no-transition');
+    header.classList.add('collapsed');
+    void header.offsetWidth;
+    header.classList.remove('no-transition');
+    requestAnimationFrame(() => {
+      setTimeout(() => {
+        header.classList.remove('collapsed');
+      }, 30);
+    });
   };
   window.addEventListener('pageshow', handlePageRestore);
   window.addEventListener('popstate', () => handlePageRestore({ persisted: true }));

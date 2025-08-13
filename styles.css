@@ -31,6 +31,11 @@ body {
   transform: translateY(0);
 }
 
+/* Helper to disable transitions when resetting state */
+.site-header.no-transition {
+  transition: none !important;
+}
+
 @media (min-width: 601px) {
   .site-header.collapsed {
     transform: translateY(calc(-80%)) !important;
