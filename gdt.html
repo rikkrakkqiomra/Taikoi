@@ -5,13 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" data-i18n="meta_gdt_description" content="GDT: audit trail -valmis lohkoketjupohjainen tekoälyalusta, jossa sääntely ja tietoturva ovat sisäänrakennettuja." />
   <title data-i18n="gdt_title">Gold Digger Technologies — GDT</title>
+  <link rel="preload" href="/styles.css" as="style" />
+  <link rel="preload" href="/styles.css" as="style" />
   <link rel="stylesheet" href="/styles.css" />
   <link rel="preload" as="image" href="/loko.png" />
 
-  <script src="/i18n.js?v=1"></script>
+  <script src="/i18n.js?v=1" defer></script>
   <script src="/script.js" defer></script>
 </head>
 <body class="subpage">
+  <a href="#main" class="skip-link">Skip to content</a>
 
   <header class="site-header collapsed">
     <div class="logo-container">
@@ -22,7 +25,7 @@
       <div class="branding">
         <div class="logo">GOLD DIGGER TECHNOLOGIES</div>
       </div>
-      <nav class="main-nav">
+    <nav class="main-nav" aria-label="Primary">
         <ul>
           <li><a href="index.html" class="nav-link" data-i18n="nav_main">Main</a></li>
           <li><a href="contact.html" class="nav-link" data-i18n="nav_contact">Contact Us</a></li>
@@ -30,9 +33,17 @@
         </ul>
       </nav>
     </div>
+    
+    <!-- Language Switcher -->
+    <div class="language-switcher" aria-label="Language switcher">
+      <button class="lang-btn" data-lang="fi" title="Suomi" aria-label="Switch language to Finnish">🇫🇮</button>
+      <button class="lang-btn" data-lang="en" title="English" aria-label="Switch language to English">🇺🇸</button>
+      <button class="lang-btn" data-lang="de" title="Deutsch" aria-label="Sprache auf Deutsch umstellen">🇩🇪</button>
+      <button class="lang-btn" data-lang="fr" title="Français" aria-label="Changer la langue en français">🇫🇷</button>
+    </div>
   </header>
 
-  <main class="site-main">
+  <main id="main" class="site-main">
     <section class="hero">
       <h1 data-i18n="gdt_heading">GDT</h1>
       <p data-i18n="gdt_quote">"Jos USA innovoi, Kiina kopioi ja EU reguloi, me rakensimme sen, millä reguloidaan sitten kunnolla, oikein – ja kerralla."</p>

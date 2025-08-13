@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const header = document.querySelector('.site-header');
   const navLinks = document.querySelectorAll('.main-nav a');
+  const logoContainer = document.querySelector('.logo-container');
   
   // Check if current page is home (considering language prefixes)
   const isHome = () => {
@@ -54,6 +55,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Logo glitter effect (moved from inline script)
+  if (logoContainer) {
+    const enableGlitter = () => {
+      logoContainer.classList.add('glitter');
+      setTimeout(() => logoContainer.classList.remove('glitter'), 6000);
+    };
+
+    // Respect reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (!prefersReducedMotion.matches) {
+      setTimeout(enableGlitter, 500);
+    }
+  }
+
   // Update navigation links to include language prefixes
   function updateNavigationLinks() {
     if (window.i18n && window.i18n.isReady) {
@@ -75,10 +90,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Set aria-current on the active navigation link for accessibility
+  function updateActiveNavLink() {
+    const path = window.location.pathname || '/';
+    const cleanPath = path.replace(/^\/[a-z]{2}(?:\/|$)/, '/');
+    navLinks.forEach(link => {
+      try {
+        const linkPath = new URL(link.href, window.location.origin).pathname.replace(/^\/[a-z]{2}(?:\/|$)/, '/');
+        if (linkPath === cleanPath) {
+          link.setAttribute('aria-current', 'page');
+        } else {
+          link.removeAttribute('aria-current');
+        }
+      } catch (_) {
+        // ignore invalid URLs
+      }
+    });
+  }
+
   // Try to update navigation links immediately if i18n is already ready
   updateNavigationLinks();
+  updateActiveNavLink();
   
   // Also listen for i18n ready event in case it's not ready yet
-  window.addEventListener('i18nReady', updateNavigationLinks);
+  window.addEventListener('i18nReady', () => {
+    updateNavigationLinks();
+    updateActiveNavLink();
+  });
 });
 
