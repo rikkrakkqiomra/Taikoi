@@ -115,15 +115,48 @@ body.subpage .site-header.collapsed { transition: none; }
   content: "";
   position: absolute;
   left: 50%;
-  top: 100%;
-  transform: translateX(-50%);
-  margin-top: -2px; /* forced overlap to kill subpixel seam */
+  bottom: 0;
+  transform: translateX(-50%) translateY(100%);
   width: 48px;
   height: 24px;
   background: var(--clr-bg-dark);
   -webkit-clip-path: polygon(50% 100%, 0 0, 100% 0);
           clip-path: polygon(50% 100%, 0 0, 100% 0);
   backface-visibility: hidden;
+  will-change: transform;
+  /* Ensure triangle renders consistently across browsers */
+  -webkit-transform: translateX(-50%) translateY(100%);
+  -moz-transform: translateX(-50%) translateY(100%);
+  -ms-transform: translateX(-50%) translateY(100%);
+  /* Force pixel perfect rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Prevent subpixel issues */
+  transform-origin: center center;
+  -webkit-transform-origin: center center;
+  /* Ensure proper z-layering */
+  z-index: 1;
+}
+
+/* Firefox-specific fixes for triangle positioning */
+@-moz-document url-prefix() {
+  .site-header::after {
+    /* Ensure triangle is visible in Firefox */
+    transform: translateX(-50%) translateY(calc(100% + 1px));
+    -moz-transform: translateX(-50%) translateY(calc(100% + 1px));
+  }
+}
+
+/* Mobile-specific triangle fixes */
+@media (max-width: 600px) {
+  .site-header::after {
+    /* Ensure triangle is properly positioned on mobile */
+    transform: translateX(-50%) translateY(calc(100% + 0.5px));
+    -webkit-transform: translateX(-50%) translateY(calc(100% + 0.5px));
+    /* Slightly larger triangle for better mobile visibility */
+    width: 52px;
+    height: 26px;
+  }
 }
 
 .header-inner {
