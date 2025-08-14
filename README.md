@@ -1,7 +1,7 @@
 # Gold Digger Technologies - Internationalized Website
 
 git add .
-git commit -m "4sonnet footer chromebrave opti" 
+git commit -m "4sonnet footer chromemobiili viimeinen opti" 
 git push origin main
 
 
