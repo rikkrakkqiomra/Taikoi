@@ -155,14 +155,13 @@ body.subpage .site-header.collapsed { transition: none; }
   content: "";
   position: absolute;
   left: 50%;
-  top: 100%;
+  bottom: 0;
   transform: translateX(-50%);
-  margin-top: -2px;
-  width: 0;
-  height: 0;
-  border-left: 24px solid transparent;
-  border-right: 24px solid transparent;
-  border-top: 24px solid var(--clr-bg-dark);
+  width: 48px;
+  height: 24px;
+  background: var(--clr-bg-dark);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+  z-index: 10;
 }
 
 .header-inner {
