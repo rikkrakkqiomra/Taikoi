@@ -25,6 +25,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 10; /* ensure header + triangle render above following content on all browsers */
 
   transition: transform var(--anim-speed) ease-in-out,
               padding   var(--anim-speed) ease-in-out;
@@ -115,14 +116,14 @@ body.subpage .site-header.collapsed { transition: none; }
   content: "";
   position: absolute;
   left: 50%;
-  top: 100%;
+  top: calc(100% - 1px); /* slight overlap to avoid subpixel seam in all engines */
   transform: translateX(-50%);
-  margin-top: -2px; /* forced overlap to kill subpixel seam */
-  width: 48px;
-  height: 24px;
-  background: var(--clr-bg-dark);
-  -webkit-clip-path: polygon(50% 100%, 0 0, 100% 0);
-          clip-path: polygon(50% 100%, 0 0, 100% 0);
+  width: 0;
+  height: 0;
+  border-left: 24px solid transparent;
+  border-right: 24px solid transparent;
+  border-top: 24px solid var(--clr-bg-dark);
+  pointer-events: none;
   backface-visibility: hidden;
 }
 
