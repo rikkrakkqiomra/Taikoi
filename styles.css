@@ -155,7 +155,7 @@ body.subpage .site-header.collapsed { transition: none; }
   content: "";
   position: absolute;
   left: 50%;
-  bottom: 0;
+  bottom: -1px;
   transform: translateX(-50%);
   width: 48px;
   height: 24px;
