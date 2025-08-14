@@ -81,7 +81,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // Also listen for i18n ready event in case it's not ready yet
   window.addEventListener('i18nReady', updateNavigationLinks);
 
-  // Ensure header state is corrected when returning via browser back/forward (BFCache)
+  // Check if header is visually collapsed by inspecting computed transform
+  const isHeaderVisuallyCollapsed = () => {
+    const computedStyle = getComputedStyle(header);
+    const transform = computedStyle.transform;
+    // Check if translateY is not 0 (indicating header is moved up)
+    return transform && transform !== 'none' && transform.includes('translateY') && !transform.includes('translateY(0px)');
+  };
+
+  // Robust header expand animation
   const playHomeExpand = () => {
     // Reset and then explicitly play expand animation class
     header.classList.add('no-transition');
@@ -100,23 +108,48 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   };
 
+  // More inclusive detection for back navigation and stuck header states
   const handlePageRestore = (evt) => {
     if (!isHome()) return;
-    const shouldPlay = header.classList.contains('collapsed') || sessionStorage.getItem('headerCollapsed') === 'true' || (evt && evt.persisted === true);
+    
+    // More inclusive conditions: trigger if any of these are true
+    const shouldPlay = 
+      header.classList.contains('collapsed') || 
+      sessionStorage.getItem('headerCollapsed') === 'true' || 
+      isHeaderVisuallyCollapsed() ||  // NEW: Check actual visual state
+      (evt && evt.persisted === true);
+    
     if (!shouldPlay) return;
-    // Clear the flag if present to avoid double triggers on manual refresh
+    
+    // Clear the flag to avoid double triggers
     if (sessionStorage.getItem('headerCollapsed') === 'true') {
       sessionStorage.removeItem('headerCollapsed');
     }
     playHomeExpand();
   };
 
-  window.addEventListener('pageshow', handlePageRestore);
-  window.addEventListener('popstate', () => handlePageRestore({ persisted: true }));
-  document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'visible' && isHome()) {
+  // Fallback checker for stuck headers (runs periodically)
+  const checkStuckHeader = () => {
+    if (isHome() && isHeaderVisuallyCollapsed()) {
+      console.log('Detected stuck header, triggering expand animation');
       playHomeExpand();
     }
+  };
+
+  // Multiple event listeners to catch different navigation scenarios
+  window.addEventListener('pageshow', handlePageRestore);
+  window.addEventListener('popstate', () => handlePageRestore({ persisted: true }));
+  window.addEventListener('focus', () => {
+    if (isHome()) setTimeout(checkStuckHeader, 100);
   });
+  
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible' && isHome()) {
+      setTimeout(checkStuckHeader, 100);
+    }
+  });
+
+  // Additional fallback: check for stuck header after DOM is ready
+  setTimeout(checkStuckHeader, 500);
 });
 

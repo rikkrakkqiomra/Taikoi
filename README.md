@@ -1,7 +1,7 @@
 # Gold Digger Technologies - Internationalized Website
 
 git add .
-git commit -m "4sonnet footer" 
+git commit -m "4sonnet headeranimation" 
 git push origin main
 
 
