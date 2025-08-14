@@ -1,7 +1,7 @@
 # Gold Digger Technologies - Internationalized Website
 
 git add .
-git commit -m "gpt5high header uudet kielet" 
+git commit -m "4sonnet footer" 
 git push origin main
 
 

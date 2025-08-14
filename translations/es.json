@@ -43,7 +43,19 @@
   "meta_home_description": "Gold Digger Technologies construye una plataforma de IA basada en blockchain centrada en la verificabilidad, el cumplimiento y la seguridad.",
   "meta_contact_description": "Póngase en contacto con Gold Digger Technologies para hablar sobre IA, infraestructura preparada para el cumplimiento y alianzas.",
   "meta_gdt_description": "GDT: plataforma de IA basada en blockchain, preparada para auditoría, con cumplimiento y seguridad integrados.",
-  "meta_research_description": "Intelligentleman: investigación en la frontera de la IA, la cognición y la infraestructura descentralizada."
+  "meta_research_description": "Intelligentleman: investigación en la frontera de la IA, la cognición y la infraestructura descentralizada.",
+  
+  "copyright": "© {{year}} Gold Digger Technologies",
+  "privacy": "Privacidad",
+  "legal": "Legal y regulatorio",
+  "legal_compliance": "Cumplimiento",
+  "legal_terms": "Términos del servicio",
+  "legal_filings": "Declaraciones regulatorias",
+  "dnsmi": "No vender mi información",
+  "cookies": "Preferencias de cookies",
+  "partners_investors": "Buscamos socios e inversores",
+  "contact_us": "Contáctanos",
+  "linkedin": "LinkedIn",
+  "x": "X"
 }
-
 

@@ -43,7 +43,19 @@
   "meta_home_description": "Gold Digger Technologies bouwt een blockchain‑gebaseerd AI‑platform met focus op verifieerbaarheid, compliance en veiligheid.",
   "meta_contact_description": "Neem contact op met Gold Digger Technologies om te spreken over AI, compliance‑klare infrastructuur en partnerschappen.",
   "meta_gdt_description": "GDT: een blockchain‑gebaseerd AI‑platform, audit‑trail‑klaar, met ingebouwde compliance en veiligheid.",
-  "meta_research_description": "Intelligentleman: onderzoek op het grensvlak van AI, cognitie en gedecentraliseerde infrastructuur."
+  "meta_research_description": "Intelligentleman: onderzoek op het grensvlak van AI, cognitie en gedecentraliseerde infrastructuur.",
+  
+  "copyright": "© {{year}} Gold Digger Technologies",
+  "privacy": "Privacy",
+  "legal": "Juridisch en regelgeving",
+  "legal_compliance": "Compliance",
+  "legal_terms": "Servicevoorwaarden",
+  "legal_filings": "Regelgevende indieningen",
+  "dnsmi": "Verkoop mijn gegevens niet",
+  "cookies": "Cookie-voorkeuren",
+  "partners_investors": "Wij zoeken partners en investeerders",
+  "contact_us": "Neem contact op",
+  "linkedin": "LinkedIn",
+  "x": "X"
 }
-
 

@@ -215,7 +215,16 @@ class I18n {
     // Translate all elements with data-i18n attribute
     document.querySelectorAll('[data-i18n]').forEach(element => {
       const key = element.getAttribute('data-i18n');
-      const translated = this.translate(key);
+      
+      // Handle special case for copyright with year
+      let translated;
+      if (key === 'copyright') {
+        const currentYear = new Date().getFullYear();
+        translated = this.translate(key, { year: currentYear });
+      } else {
+        translated = this.translate(key);
+      }
+      
       console.log(`Translating ${key}: "${element.textContent}" -> "${translated}"`);
       
       if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
