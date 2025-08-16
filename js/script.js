@@ -349,60 +349,147 @@ if (window.NodeList && !NodeList.prototype.forEach) {
     init();
   }
 
-  // Header behavior management for sliding animation
-  function setupHeaderBehavior() {
-    var header = document.querySelector('header');
-    var body = document.body;
-    var currentPath = window.location.pathname;
+  // Enhanced Header Animation Controller
+  function HeaderAnimationController() {
+    this.header = document.querySelector('header');
+    this.body = document.body;
+    this.isAnimating = false;
+    this.currentState = this.detectPageType();
     
-    // Determine if we're on homepage or subpage
-    var isHomepage = currentPath === '/' || 
-                     currentPath === '/index.html' || 
-                     currentPath.match(/^\/(en|de|fr)\/(index\.html)?$/);
+    this.init();
+  }
+  
+  HeaderAnimationController.prototype.detectPageType = function() {
+    var path = window.location.pathname;
+    var isHomepage = path === '/' || 
+                    path === '/index.html' || 
+                    path.match(/^\/(en|de|fr)\/(index\.html)?$/);
+    return isHomepage ? 'homepage' : 'subpage';
+  };
+  
+  HeaderAnimationController.prototype.transitionToState = function(targetState) {
+    if (this.isAnimating || this.currentState === targetState) return Promise.resolve();
     
-    if (!isHomepage) {
-      // Add subpage class to body for CSS targeting
-      body.classList.add('subpage');
-      // Apply compressed header immediately on sub-pages
-      if (header) {
-        header.classList.add('compressed');
-      }
+    this.isAnimating = true;
+    
+    // Add transition class
+    this.header.classList.add('transitioning');
+    
+    var promise;
+    if (targetState === 'subpage') {
+      promise = this.compressHeader();
     } else {
-      // Ensure homepage shows full header
-      body.classList.remove('subpage');
-      if (header) {
-        header.classList.remove('compressed');
-      }
+      promise = this.expandHeader();
     }
-
-    // Add click event listeners to navigation links for smooth transitions
+    
+    var self = this;
+    return promise.then(function() {
+      self.currentState = targetState;
+      self.isAnimating = false;
+      self.header.classList.remove('transitioning');
+    });
+  };
+  
+  HeaderAnimationController.prototype.compressHeader = function() {
+    var self = this;
+    var logoImage = this.header.querySelector('.logo-image');
+    
+    // Phase 1: Fade out logo
+    if (logoImage) {
+      logoImage.style.transition = 'all 0.3s ease-out';
+      logoImage.style.opacity = '0';
+    }
+    
+    return new Promise(function(resolve) {
+      setTimeout(function() {
+        // Phase 2: Slide header up and compress
+        self.header.classList.add('compressed');
+        self.body.classList.add('subpage');
+        
+        setTimeout(resolve, 300);
+      }, 300);
+    });
+  };
+  
+  HeaderAnimationController.prototype.expandHeader = function() {
+    var self = this;
+    var logoImage = this.header.querySelector('.logo-image');
+    
+    // Phase 1: Expand header and slide down
+    this.header.classList.remove('compressed');
+    this.body.classList.remove('subpage');
+    
+    return new Promise(function(resolve) {
+      setTimeout(function() {
+        // Phase 2: Fade in logo
+        if (logoImage) {
+          logoImage.style.opacity = '1';
+        }
+        
+        setTimeout(resolve, 300);
+      }, 300);
+    });
+  };
+  
+  HeaderAnimationController.prototype.handleNavigation = function(event) {
+    var href = event.target.getAttribute('href');
+    if (!href || href.startsWith('http') || href.startsWith('#') || href.startsWith('mailto:')) return;
+    
+    var targetState = this.getStateFromHref(href);
+    this.transitionToState(targetState);
+  };
+  
+  HeaderAnimationController.prototype.getStateFromHref = function(href) {
+    var isHomepage = href === 'index.html' || 
+                    href === '/' ||
+                    href.match(/\/(en|de|fr)\/index\.html$/);
+    return isHomepage ? 'homepage' : 'subpage';
+  };
+  
+  HeaderAnimationController.prototype.setupScrollBehavior = function() {
+    var self = this;
+    var lastScrollY = window.scrollY;
+    
+    window.addEventListener('scroll', function() {
+      var currentScrollY = window.scrollY;
+      
+      if (currentScrollY > 100) {
+        self.header.classList.add('scrolled');
+      } else {
+        self.header.classList.remove('scrolled');
+      }
+      
+      lastScrollY = currentScrollY;
+    }, { passive: true });
+  };
+  
+  HeaderAnimationController.prototype.init = function() {
+    var self = this;
+    
+    // Set initial state
+    this.transitionToState(this.currentState);
+    
+    // Setup scroll behavior
+    this.setupScrollBehavior();
+    
+    // Add navigation listeners
     var navLinks = document.querySelectorAll('nav a, .logo a');
     for (var i = 0; i < navLinks.length; i++) {
       navLinks[i].addEventListener('click', function(e) {
-        var href = this.getAttribute('href');
-        var isExternalOrHash = href.startsWith('http') || href.startsWith('#') || href.startsWith('mailto:');
-        
-        if (!isExternalOrHash && header) {
-          // Add transition class for smooth animation
-          header.style.transition = 'all 0.5s ease-in-out';
-          
-          // Determine target page type
-          var targetIsHomepage = href === 'index.html' || 
-                                href === '/' ||
-                                href.match(/\/(en|de|fr)\/index\.html$/);
-          
-          if (!targetIsHomepage) {
-            // Going to subpage - compress header
-            header.classList.add('compressed');
-            body.classList.add('subpage');
-          } else {
-            // Going to homepage - expand header
-            header.classList.remove('compressed');
-            body.classList.remove('subpage');
-          }
-        }
+        self.handleNavigation(e);
       });
     }
+    
+    // Handle browser back/forward
+    window.addEventListener('popstate', function() {
+      var newState = self.detectPageType();
+      self.transitionToState(newState);
+    });
+  };
+  
+  // Legacy function for backward compatibility
+  function setupHeaderBehavior() {
+    return new HeaderAnimationController();
   }
 
   // Optional terminal/interactions if present on page
