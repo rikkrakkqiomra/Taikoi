@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Aivoinko AI-galleria: Luovuuden ja teknologian yhdistelmä. AI-generoituja taideteoksia, visioita ja koneälyn kanssa luotuja maailmoja.">
+  <meta name="keywords" content="AI-taide, generatiivinen taide, tekoälytaide, AI-galleria, koneäly, visuaalinen suunnittelu, digitaalitaide">
+  <meta name="author" content="Riku Korpiaho, Aivoinko">
+  <meta name="robots" content="index, follow">
+  
+  <title>AI-Galleria | Aivoinko - Tekoälyn ja luovuuden yhdistelmä</title>
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://aivoinko.netlify.app/aivoinko.html">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="AI-Galleria | Aivoinko - Tekoälyn ja luovuuden yhdistelmä">
+  <meta property="og:description" content="Ajaton, rajaton ja kuolematon mielikuvitus. AI-generoituja taideteoksia ja visioita koneälyn kanssa kollaboraationa.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aivoinko.netlify.app/aivoinko.html">
+  <meta property="og:image" content="https://aivoinko.netlify.app/blast.png">
+  
+  <!-- JSON-LD Structured Data for Gallery -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    "name": "Aivoinko AI-Galleria",
+    "description": "AI-generoituja taideteoksia ja visioita luovuuden ja teknologian yhdistelmänä",
+    "url": "https://aivoinko.netlify.app/aivoinko.html",
+    "creator": {
+      "@type": "Person",
+      "name": "Riku Korpiaho"
+    },
+    "mainEntity": [
+      {
+        "@type": "VisualArtwork",
+        "name": "AI-generoitu taidevisio",
+        "image": "https://aivoinko.netlify.app/root-image.jpg",
+        "description": "Luovuuden ja teknologian yhdistelmä AI-generoidussa taiteessa"
+      },
+      {
+        "@type": "VisualArtwork", 
+        "name": "Energiapurkauksen visualisointi",
+        "image": "https://aivoinko.netlify.app/blast.png",
+        "description": "AI-taideteos energiapurkauksen visuaalisesta ilmentymästä"
+      }
+    ]
+  }
+  </script>
+  
+  <link rel="preload" href="/css/style.css" as="style">
+  <link rel="stylesheet" href="/css/style.css">
+  <style>
+    .intro-box { background: #f4f4f4; padding: 20px; border-radius: 10px; text-align: center; max-width: 600px; margin: 20px auto; box-shadow: 0 4px 8px rgba(0,0,0,0.1); font-style: italic; color: #4E342E; }
+    .intro-box img { width: 100%; border-radius: 10px; margin-top: 10px; }
+    .terminal-container { background: #2b2b2b; padding: 20px; border-radius: 10px; text-align: left; max-width: 600px; margin: 20px auto; box-shadow: 0 4px 8px rgba(0,0,0,0.1); font-family: "Courier New", monospace; color: #FFD700; }
+    .terminal-header { font-weight: bold; color: #FFD700; text-transform: uppercase; text-align: center; margin-bottom: 10px; }
+    .terminal-input { width: 100%; padding: 10px; border: none; background: #1a1a1a; color: #FFD700; font-family: "Courier New", monospace; font-size: 16px; outline: none; }
+    .gallery-image { display: block; max-width: 600px; width: 100%; margin: 20px auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+  </style>
+</head>
+<body>
+  <div id="particle-background"></div>
+
+  <header>
+    <div class="logo">
+      <a href="index.html" data-nav="home">Aivoinko</a>
+    </div>
+    <nav>
+      <a href="aivoinko.html" data-nav="gallery" data-i18n="navGallery">Galleria</a>
+      <a href="contact.html" data-nav="contact" data-i18n="navContact">Kontakti</a>
+      <a href="documents.html" data-nav="documents" data-i18n="navDocuments">Dokumentit</a>
+    </nav>
+    <div id="lang-switcher" class="lang-switcher"></div>
+  </header>
+
+  <main class="container">
+    <header>
+      <h1 data-i18n="navGallery">AI-Galleria</h1>
+      <p class="gallery-subtitle">Tekoälyn ja luovuuden yhdistelmä</p>
+    </header>
+
+    <section class="intro-box">
+      <h2>Taiteellinen visio</h2>
+      <p>"Ajaton, rajaton ja kuolematon mielikuvitus ilmestyksenä kiinnostaa, hiilessä kuin piissä. Tulen taidepuolelta, joten olen halunnut luoda mitä tahansa maailmoja ja esityksiä, visioita koneälyn kanssa kollaboraationa."</p>
+      <figure>
+        <img src="root-image.jpg" alt="AI-generoitu taidevisio, joka esittää luovuuden ja teknologian yhdistelmää - abstrakti digitaaliteos tummansinisillä ja kultaisilla sävyillä" loading="lazy" decoding="async" width="600" height="400">
+        <figcaption>AI-generoitu taidevisio: Luovuuden ja teknologian symbioosi</figcaption>
+      </figure>
+    </section>
+
+    <section class="terminal-container" role="application" aria-label="Interaktiivinen terminaali">
+      <h2 class="terminal-header">Kiomra-terminaali</h2>
+      <p class="terminal-description">Interaktiivinen terminaali inspiraatiota varten</p>
+      <label for="terminal-input" class="sr-only">Kirjoita komento terminaaliin</label>
+      <input type="text" id="terminal-input" class="terminal-input" placeholder="Kirjoita komentosi tähän..." autofocus aria-describedby="terminal-instructions">
+      <div id="terminal-instructions" class="sr-only">Kirjoita 'imagination' tai 'growth' saadaksesi inspirationaalisia sitaatteja</div>
+    </section>
+
+    <section class="gallery-section">
+      <h2>Energia ja liike</h2>
+      <figure>
+        <img src="blast.png" alt="AI-taideteos energiapurkauksen visualisoinnista - dynaaminen abstrakti kuva kirkkailla väreillä ja liikkeellä" class="gallery-image" loading="lazy" decoding="async" width="600" height="400">
+        <figcaption>Energiapurkauksen visuaalinen ilmentymä AI-taiteessa</figcaption>
+      </figure>
+    </section>
+
+    <section class="gallery-navigation">
+      <h3>Tutustu myös</h3>
+      <nav aria-label="Gallerian navigointi">
+        <ul>
+          <li><a href="index.html" title="Palaa Aivoinko etusivulle">← Takaisin etusivulle</a></li>
+          <li><a href="contact.html" title="Ota yhteyttä Aivoinko tiimiin">Ota yhteyttä konsultaatiota varten</a></li>
+          <li><a href="documents.html" title="Lataa Aivoinko dokumentteja">Lue lisää dokumenteista</a></li>
+        </ul>
+      </nav>
+    </section>
+
+    <div id="quotes" role="region" aria-live="polite" aria-label="Terminaalin tuloste"></div>
+  </main>
+
+  <script src="/js/script.js" defer></script>
+</body>
+</html>
+
+

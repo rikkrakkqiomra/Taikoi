@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Finnish (default) pages -->
+  <url>
+    <loc>https://aivoinko.netlify.app/</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://aivoinko.netlify.app/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aivoinko.netlify.app/en/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://aivoinko.netlify.app/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aivoinko.netlify.app/fr/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aivoinko.netlify.app/" />
+    <image:image>
+      <image:loc>https://aivoinko.netlify.app/AiiAold.jpg</image:loc>
+      <image:title>Aivoinko teknologia arkkitehtuuri</image:title>
+      <image:caption>AI ja ML teknologia arkkitehtuurikuvaus</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://aivoinko.netlify.app/aivoinko.html</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://aivoinko.netlify.app/aivoinko.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aivoinko.netlify.app/en/aivoinko.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://aivoinko.netlify.app/de/aivoinko.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aivoinko.netlify.app/fr/aivoinko.html" />
+    <image:image>
+      <image:loc>https://aivoinko.netlify.app/blast.png</image:loc>
+      <image:title>AI-generoitu taideteos</image:title>
+      <image:caption>Luova AI-taideteos energiapurkauksen visualisoinnista</image:caption>
+    </image:image>
+  </url>
+  
+  <url>
+    <loc>https://aivoinko.netlify.app/contact.html</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://aivoinko.netlify.app/contact.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aivoinko.netlify.app/en/contact.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://aivoinko.netlify.app/de/contact.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aivoinko.netlify.app/fr/contact.html" />
+  </url>
+  
+  <url>
+    <loc>https://aivoinko.netlify.app/documents.html</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://aivoinko.netlify.app/documents.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aivoinko.netlify.app/en/documents.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://aivoinko.netlify.app/de/documents.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aivoinko.netlify.app/fr/documents.html" />
+  </url>
+
+  <!-- English pages -->
+  <url>
+    <loc>https://aivoinko.netlify.app/en/</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://aivoinko.netlify.app/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aivoinko.netlify.app/en/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://aivoinko.netlify.app/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aivoinko.netlify.app/fr/" />
+  </url>
+  
+  <url>
+    <loc>https://aivoinko.netlify.app/en/aivoinko.html</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://aivoinko.netlify.app/aivoinko.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aivoinko.netlify.app/en/aivoinko.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://aivoinko.netlify.app/de/aivoinko.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aivoinko.netlify.app/fr/aivoinko.html" />
+  </url>
+  
+  <url>
+    <loc>https://aivoinko.netlify.app/en/contact.html</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://aivoinko.netlify.app/contact.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aivoinko.netlify.app/en/contact.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://aivoinko.netlify.app/de/contact.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aivoinko.netlify.app/fr/contact.html" />
+  </url>
+  
+  <url>
+    <loc>https://aivoinko.netlify.app/en/documents.html</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://aivoinko.netlify.app/documents.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aivoinko.netlify.app/en/documents.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://aivoinko.netlify.app/de/documents.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aivoinko.netlify.app/fr/documents.html" />
+  </url>
+
+  <!-- German pages -->
+  <url>
+    <loc>https://aivoinko.netlify.app/de/</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://aivoinko.netlify.app/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aivoinko.netlify.app/en/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://aivoinko.netlify.app/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aivoinko.netlify.app/fr/" />
+  </url>
+  
+  <url>
+    <loc>https://aivoinko.netlify.app/de/aivoinko.html</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://aivoinko.netlify.app/aivoinko.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aivoinko.netlify.app/en/aivoinko.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://aivoinko.netlify.app/de/aivoinko.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aivoinko.netlify.app/fr/aivoinko.html" />
+  </url>
+  
+  <url>
+    <loc>https://aivoinko.netlify.app/de/contact.html</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://aivoinko.netlify.app/contact.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aivoinko.netlify.app/en/contact.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://aivoinko.netlify.app/de/contact.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aivoinko.netlify.app/fr/contact.html" />
+  </url>
+  
+  <url>
+    <loc>https://aivoinko.netlify.app/de/documents.html</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://aivoinko.netlify.app/documents.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aivoinko.netlify.app/en/documents.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://aivoinko.netlify.app/de/documents.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aivoinko.netlify.app/fr/documents.html" />
+  </url>
+
+  <!-- French pages -->
+  <url>
+    <loc>https://aivoinko.netlify.app/fr/</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://aivoinko.netlify.app/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aivoinko.netlify.app/en/" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://aivoinko.netlify.app/de/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aivoinko.netlify.app/fr/" />
+  </url>
+  
+  <url>
+    <loc>https://aivoinko.netlify.app/fr/aivoinko.html</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://aivoinko.netlify.app/aivoinko.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aivoinko.netlify.app/en/aivoinko.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://aivoinko.netlify.app/de/aivoinko.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aivoinko.netlify.app/fr/aivoinko.html" />
+  </url>
+  
+  <url>
+    <loc>https://aivoinko.netlify.app/fr/contact.html</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://aivoinko.netlify.app/contact.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aivoinko.netlify.app/en/contact.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://aivoinko.netlify.app/de/contact.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aivoinko.netlify.app/fr/contact.html" />
+  </url>
+  
+  <url>
+    <loc>https://aivoinko.netlify.app/fr/documents.html</loc>
+    <lastmod>2024-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://aivoinko.netlify.app/documents.html" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://aivoinko.netlify.app/en/documents.html" />
+    <xhtml:link rel="alternate" hreflang="de" href="https://aivoinko.netlify.app/de/documents.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://aivoinko.netlify.app/fr/documents.html" />
+  </url>
+
+</urlset>

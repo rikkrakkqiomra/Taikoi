@@ -1,264 +1,153 @@
-
 <!DOCTYPE html>
 <html lang="fi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" data-i18n="meta_home_description" content="Gold Digger Technologies rakentaa lohkoketjuun perustuvaa tekoälyalustaa, jonka ytimessä ovat varmennettavuus, sääntelykelpoisuus ja tietoturva." />
-  <title data-i18n="site_title">Gold Digger Technologies</title>
-  <link rel="stylesheet" href="/styles.css" />
-  <link rel="preload" as="image" href="/loko.png" />
-  <style>
-    /* Logo Glitter Frame – v3: Thick orbiting sparkles + permanent inner gold stroke */
-    .logo-container {
-      position: relative;
-      padding: 16px;
-      border-radius: 20px;
-      transition: all 0.3s ease;
-    }
-
-    /* Ephemeral glitter that extends from the permanent outline */
-    .logo-container::before {
-      content: '';
-      position: absolute;
-      inset: 4px; /* pull closer to the image edge */
-      border-radius: 16px;
-      border: 3px solid transparent; /* aligns with the permanent 3px outline */
-      background:
-        linear-gradient(135deg,
-          rgba(255,255,255,0) 0%,
-          rgba(255,215,0,0.95) 50%,
-          rgba(255,255,255,0) 100%) border-box,
-        radial-gradient(6px 6px at 20% 30%, rgba(255,255,255,0.7), transparent 60%),
-        radial-gradient(4px 4px at 80% 70%, rgba(212,175,55,0.7), transparent 60%);
-      background-size: 200% 200%, auto, auto;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 600ms ease;
-    }
-
-    .logo-container.glitter::before {
-      opacity: 1;
-      animation: border-shimmer 2.8s ease-in-out 2;
-    }
-
-    @keyframes border-shimmer {
-      0%   { background-position: 0% 0%; filter: brightness(1) saturate(1); }
-      50%  { background-position: 100% 100%; filter: brightness(1.3) saturate(1.2); }
-      100% { background-position: 0% 0%; filter: brightness(1.1) saturate(1.05); }
-    }
-
-    .logo-img {
-      position: relative;
-      z-index: 1;
-      border-radius: 12px;
-      box-shadow:
-        0 0 0 3px var(--clr-gold),
-        0 0 14px rgba(212,175,55,0.45);
-    }
-    
-    /* Language Switcher Styles */
-    .language-switcher {
-      position: absolute;
-      top: var(--space);
-      right: var(--space);
-      display: flex;
-      gap: 0.5rem;
-      z-index: 1000;
-    }
-    
-    .lang-btn {
-      background: transparent;
-      border: 2px solid var(--clr-gold);
-      color: var(--clr-gold);
-      padding: 0.5rem;
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border-radius: 6px;
-      min-width: 40px;
-      min-height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      line-height: 1;
-    }
-    
-    .lang-btn:hover {
-      background: var(--clr-gold);
-      color: var(--clr-bg-dark);
-      transform: scale(1.1);
-    }
-    
-    .lang-btn.active {
-      background: var(--clr-gold) !important;
-      color: var(--clr-bg-dark) !important;
-      box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
-      transform: scale(1.05);
-      border-color: var(--clr-gold);
-    }
-    
-    .lang-btn.active:hover {
-      background: var(--clr-gold) !important;
-      color: var(--clr-bg-dark) !important;
-      transform: scale(1.1);
-    }
-    
-    @media (max-width: 600px) {
-      .site-header {
-        flex-direction: column;
-        align-items: center;
-        gap: var(--space);
-      }
-      
-      .logo-container {
-        order: 1;
-      }
-      
-      .language-switcher {
-        order: 2;
-        position: static;
-        margin: 0;
-        justify-content: center;
-      }
-      
-      .header-inner {
-        order: 3;
-        width: 100%;
-        text-align: center;
-      }
-      
-      .lang-btn {
-        font-size: 1rem;
-        min-width: 36px;
-        min-height: 36px;
-        padding: 0.25rem;
-      }
-      
-      .lang-btn.active {
-        background: var(--clr-gold) !important;
-        color: var(--clr-bg-dark) !important;
-        box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Aivoinko tarjoaa LLM/ML/AI/NN/RAG tekoälyratkaisuja. Erikoistunut lääketieteelliseen informatiikkaan, neurotieteeseen ja generatiiviseen tekoälyyn.">
+  <meta name="keywords" content="tekoäly, AI, ML, koneoppiminen, neurotiede, lääketiede, RAG, LLM, konsultointi">
+  <meta name="author" content="Riku Korpiaho, Aivoinko">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#FFD700">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Aivoinko - Innovaatioiden Ytimessä">
+  <meta property="og:description" content="LLM/ML/AI/NN/RAG tekoälyratkaisuja tarjoava yritys. Erikoistunut lääketieteelliseen informatiikkaan ja generatiiviseen tekoälyyn.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://aivoinko.netlify.app/">
+  <meta property="og:image" content="https://aivoinko.netlify.app/AiiAold.jpg">
+  <meta property="og:locale" content="fi_FI">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Aivoinko - Innovaatioiden Ytimessä">
+  <meta name="twitter:description" content="LLM/ML/AI/NN/RAG tekoälyratkaisuja tarjoava yritys.">
+  <meta name="twitter:image" content="https://aivoinko.netlify.app/AiiAold.jpg">
+  
+  <title>Aivoinko - Tekoäly ja AI-konsultointi | LLM, ML, NN, RAG ratkaisut</title>
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://aivoinko.netlify.app/">
+  
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Aivoinko",
+    "url": "https://aivoinko.netlify.app",
+    "logo": "https://aivoinko.netlify.app/AiiAold.jpg",
+    "description": "Aivoinko tarjoaa LLM/ML/AI/NN/RAG tekoälyratkaisuja. Erikoistunut lääketieteelliseen informatiikkaan, neurotieteeseen ja generatiiviseen tekoälyyn.",
+    "founder": {
+      "@type": "Person",
+      "name": "Riku Korpiaho",
+      "jobTitle": "Pääarkkitehti",
+      "description": "Erikoistunut lääketieteelliseen informatiikkaan, neurotieteeseen ja generatiiviseen tekoälyyn"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+358-40-505-6974",
+      "email": "aivoinko@gmail.com",
+      "contactType": "customer service",
+      "availableLanguage": ["Finnish", "English", "German", "French"]
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Vesilahti",
+      "addressCountry": "FI"
+    },
+    "sameAs": [
+      "https://www.deviantart.com/rikkrakk",
+      "https://www.etsy.com/fi-en/shop/Qiomra"
+    ],
+    "offers": {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "AI ja tekoäly konsultointi",
+        "description": "Täydellinen tekoälystrategia yrityksille, ML/AI/NN/RAG implementointi"
       }
     }
-  </style>
-  <script src="/i18n.js?v=1"></script>
-  <script src="/script.js" defer></script>
-  <script>
-    // Trigger a brief glitter on load
-    document.addEventListener('DOMContentLoaded', function() {
-      const logoContainer = document.querySelector('.logo-container');
-      setTimeout(() => {
-        logoContainer.classList.add('glitter');
-        setTimeout(() => logoContainer.classList.remove('glitter'), 3200);
-      }, 400);
-    });
+  }
   </script>
+  
+  <!-- Critical CSS and Resource Hints -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="preload" href="/css/style.css" as="style">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" as="style" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preload" as="image" href="AiiAold.jpg" fetchpriority="high">
+  <style>
+    .social-container { background: #f4f4f4; padding: 20px; border-radius: 10px; text-align: center; max-width: 400px; margin: 20px auto; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+    .social-links-box { display: flex; justify-content: center; gap: 20px; margin-top: 10px; }
+    .social-icon { font-size: 30px; color: #333; transition: color .3s ease; }
+    .social-icon:hover { color: #0077b5; }
+  </style>
 </head>
 <body>
-<header class="site-header">
-  <div class="logo-container">
-    <img src="/loko.png" alt="Gold Digger Technologies logo" class="logo-img" data-i18n-alt="logo_alt" width="200" height="200" />
-  </div>
+  <div id="particle-background"></div>
 
-  <div class="header-inner">
-    <div class="branding">
-      <div class="logo">GOLD DIGGER TECHNOLOGIES</div>
+  <header>
+    <div class="logo">
+      <a href="index.html" data-nav="home">Aivoinko</a>
     </div>
-    <nav class="main-nav">
-      <ul>
-        <li><a href="gdt.html" class="nav-link" data-i18n="nav_gdt">GDT</a></li>
-        <li><a href="contact.html" class="nav-link" data-i18n="nav_contact">Contact</a></li>
-        <li><a href="intelligentleman.html" class="nav-link" data-i18n="nav_research">Research</a></li>
-      </ul>
+    <nav>
+      <a href="aivoinko.html" data-nav="gallery" data-i18n="navGallery">Galleria</a>
+      <a href="contact.html" data-nav="contact" data-i18n="navContact">Kontakti</a>
+      <a href="documents.html" data-nav="documents" data-i18n="navDocuments">Dokumentit</a>
     </nav>
-  </div>
-  
-  <!-- Language Switcher -->
-  <div class="language-switcher">
-    <button class="lang-btn" data-lang="fi" title="Suomi">🇫🇮</button>
-    <button class="lang-btn" data-lang="en" title="English">🇺🇸</button>
-    <button class="lang-btn" data-lang="de" title="Deutsch">🇩🇪</button>
-    <button class="lang-btn" data-lang="fr" title="Français">🇫🇷</button>
-    <button class="lang-btn" data-lang="es" title="Español">🇪🇸</button>
-    <button class="lang-btn" data-lang="nl" title="Nederlands">🇳🇱</button>
-    <button class="lang-btn" data-lang="pl" title="Polski">🇵🇱</button>
-  </div>
-</header>
+    <div id="lang-switcher" class="lang-switcher"></div>
+  </header>
 
-  <main class="site-main">
-    <section class="hero">
-      <h1 data-i18n="hero_title">Täysi varmennettavuus. Hallinnoitavuus. Modulaarisuus. Tekoälyn uusi GDT lohkoketju-standardi.</h1>
-      <p data-i18n="hero_welcome">Tervetuloa aikakauteen, jossa tekoäly ei vain toimi – vaan toimii oikein:</p>
-      <p data-i18n="hero_description">Gold Digger Technologies tuottaa suoraviivaisia ja valmiita hybridiratkaisuja nopeuttaakseen yrityksen datastrategian prosesseja, kuten aktivoimalla tekoälyn automaattinen säätelyvalmius ja mahdollistamalla varmennetun kyberturvallisen interaktion moderneilla tekoälymalleilla. Olemme teknisesti keskittyneet lohkoketjun ja tekoälyn risteykseen, joihin voidaan luottaa ilman pelkoa sääntelystä tai tarkkuudesta. Tekoälymme prioriteetti on tarkkuus ja varmennettavuus - pääasia on pysyä teknologisena keihäänkärkenä absoluuttisessa luotettavuudessa.</p>
-      <p data-i18n="hero_cta">Jos organisaatiosi haluaa muuttua todelliseksi luottamuksen ja arvon kultakaivokseksi, olemme valmiita integroimaan GDT teknologian takuuvarmasti infrastruktuuriinne.</p>
+  <main class="container">
+    <h1 data-i18n="homeHeadline">Aivoinko - Innovaatioiden Ytimessä</h1>
+
+    <section class="image-container">
+      <img src="AiiAold.jpg" alt="Aivoinko teknologia arkkitehtuuri kuvaus" decoding="async" fetchpriority="high" width="600" height="400">
+    </section>
+
+    <section class="text-container">
+      <h2>Tekoäly ja AI-konsultointi</h2>
+      <p data-i18n="homeLead1"><strong>LLM/ML/AI/NN/RAG all in one</strong> -ratkaisuja tarjoava yritys nimeltä <strong>Aivoinko</strong>. Riku Korpiaho on pääarkkitehti ja erikoistunut lääketieteelliseen informatiikkaan, neurotieteeseen ja generatiiviseen tekoälyyn. Ota yhteyttä jos haluat toimintaasi varten täydellisen tekoälystrategian. Visuaalisen puolen tuotteita voit selata <a href="aivoinko.html" title="Aivoinko galleria - AI-generoituja taideteoksia">galleriasta</a>, tuotetaan korttipakkoja tai kokonaisia yrityksen visuaalisen ilmeen uudistuksia.</p>
+      
+      <h3>Ilmainen konsultointi</h3>
+      <p data-i18n="homeLead2">Ota yhteyttä vaikkapa suoraan soittamalla. Konsultointi ja kartoitus ovat lähtökohtaisesti ilmaisia.</p>
+      
+      <h3>Yhteystiedot</h3>
+      <p>
+        <a href="mailto:aivoinko@gmail.com" aria-label="Lähetä sähköposti osoitteeseen aivoinko@gmail.com" title="Lähetä sähköpostia Aivoinkolle">aivoinko@gmail.com</a><br>
+        <a href="tel:+358405056974" title="Soita Aivoinkolle">+358 40 505 6974</a>
+      </p>
+      
+      <nav aria-label="Pääsisältö">
+        <h3>Palvelumme</h3>
+        <ul>
+          <li><a href="aivoinko.html" title="AI-galleria ja visuaaliset työt">🎨 AI-galleria ja visuaaliset työt</a></li>
+          <li><a href="contact.html" title="Ota yhteyttä Aivoinko tiimiin">📞 Ota yhteyttä</a></li>
+          <li><a href="documents.html" title="Lataa Aivoinko dokumentteja">📄 Dokumentit ja raportit</a></li>
+        </ul>
+      </nav>
     </section>
   </main>
 
-  <footer class="site-footer" role="contentinfo" aria-label="Site footer">
-    <div class="footer-container">
-      
-      <!-- Contact & Business Section -->
-      <section class="footer-section" aria-labelledby="footer-contact">
-        <h2 id="footer-contact" data-i18n="contact_us">Contact us</h2>
-        <div class="footer-contact-links">
-          <a href="contact.html" data-i18n="contact_us">Contact us</a>
-          <a href="contact.html" data-i18n="partners_investors">We are seeking partners and investors</a>
-        </div>
-        <div class="footer-copyright">
-          <span data-i18n="copyright" data-i18n-year="true">© 2024 Gold Digger Technologies</span>
-        </div>
-      </section>
-
-      <!-- Legal & Regulatory Section -->
-      <nav class="footer-section" aria-labelledby="footer-legal">
-        <h2 id="footer-legal" data-i18n="legal">Legal & Regulatory</h2>
-        <ul class="footer-links">
-          <li><a href="#" data-i18n="privacy">Privacy</a></li>
-          <li><a href="#" data-i18n="legal_compliance">Compliance</a></li>
-          <li><a href="#" data-i18n="legal_terms">Terms of Service</a></li>
-          <li><a href="#" data-i18n="legal_filings">Regulatory Filings</a></li>
-          <li><a href="#" data-i18n="dnsmi">Do Not Sell My Info</a></li>
-          <li><a href="#" data-i18n="cookies">Cookie Preferences</a></li>
-        </ul>
-      </nav>
-
-      <!-- Social Media Section -->
-      <section class="footer-section" aria-labelledby="footer-social">
-        <h2 id="footer-social" data-i18n="social_media">Social Media</h2>
-        <div class="social-links">
-          <a href="https://linkedin.com/company/golddiggertech" 
-             class="social-link" 
-             target="_blank" 
-             rel="noopener noreferrer"
-             aria-label="LinkedIn">
-            <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img">
-              <title data-i18n="linkedin">LinkedIn</title>
-              <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7 0h3.8v2.2h.1c.5-1 1.7-2.2 3.6-2.2 3.8 0 4.5 2.5 4.5 5.7V24h-4v-7.3c0-1.7 0-3.9-2.4-3.9s-2.8 1.9-2.8 3.8V24h-4V8z"/>
-            </svg>
-          </a>
-          <a href="https://x.com/golddiggertech" 
-             class="social-link" 
-             target="_blank" 
-             rel="noopener noreferrer"
-             aria-label="X">
-            <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img">
-              <title data-i18n="x">X</title>
-              <path d="M18.244 2H21l-6.5 7.43L22 22h-6.844l-4.77-6.22L4.8 22H2l7.07-8.08L2 2h6.844l4.39 5.78L18.244 2zm-1.2 18h1.96L7.03 4H5.07l11.974 16z"/>
-            </svg>
-          </a>
-        </div>
-      </section>
-      
+  <footer>
+    <div class="social-container">
+      <h2 data-i18n="followUs">Seuraa meitä</h2>
+      <div class="social-links-box">
+        <a href="https://www.deviantart.com/rikkrakk" target="_blank" rel="noopener" class="social-icon" aria-label="DeviantArt">
+          <i class="fa-brands fa-deviantart"></i>
+        </a>
+        <a href="https://www.etsy.com/fi-en/shop/Qiomra" target="_blank" rel="noopener" class="social-icon" aria-label="Etsy">
+          <i class="fa-brands fa-etsy"></i>
+        </a>
+      </div>
     </div>
   </footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      if (window.i18n && typeof window.i18n.setupLanguageSwitcher === 'function') {
-        window.i18n.setupLanguageSwitcher();
-      }
-    });
-  </script>
+  <script src="/js/script.js" defer></script>
 </body>
 </html>
+
+
