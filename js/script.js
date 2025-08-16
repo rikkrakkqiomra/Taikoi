@@ -339,6 +339,7 @@ if (window.NodeList && !NodeList.prototype.forEach) {
     updateHreflang(pageSlug);
     // persist default if none
     localStorage.setItem('lang', lang);
+    setupHeaderBehavior();
     setupTerminal();
   }
 
@@ -346,6 +347,62 @@ if (window.NodeList && !NodeList.prototype.forEach) {
     document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
+  }
+
+  // Header behavior management for sliding animation
+  function setupHeaderBehavior() {
+    var header = document.querySelector('header');
+    var body = document.body;
+    var currentPath = window.location.pathname;
+    
+    // Determine if we're on homepage or subpage
+    var isHomepage = currentPath === '/' || 
+                     currentPath === '/index.html' || 
+                     currentPath.match(/^\/(en|de|fr)\/(index\.html)?$/);
+    
+    if (!isHomepage) {
+      // Add subpage class to body for CSS targeting
+      body.classList.add('subpage');
+      // Apply compressed header immediately on sub-pages
+      if (header) {
+        header.classList.add('compressed');
+      }
+    } else {
+      // Ensure homepage shows full header
+      body.classList.remove('subpage');
+      if (header) {
+        header.classList.remove('compressed');
+      }
+    }
+
+    // Add click event listeners to navigation links for smooth transitions
+    var navLinks = document.querySelectorAll('nav a, .logo a');
+    for (var i = 0; i < navLinks.length; i++) {
+      navLinks[i].addEventListener('click', function(e) {
+        var href = this.getAttribute('href');
+        var isExternalOrHash = href.startsWith('http') || href.startsWith('#') || href.startsWith('mailto:');
+        
+        if (!isExternalOrHash && header) {
+          // Add transition class for smooth animation
+          header.style.transition = 'all 0.5s ease-in-out';
+          
+          // Determine target page type
+          var targetIsHomepage = href === 'index.html' || 
+                                href === '/' ||
+                                href.match(/\/(en|de|fr)\/index\.html$/);
+          
+          if (!targetIsHomepage) {
+            // Going to subpage - compress header
+            header.classList.add('compressed');
+            body.classList.add('subpage');
+          } else {
+            // Going to homepage - expand header
+            header.classList.remove('compressed');
+            body.classList.remove('subpage');
+          }
+        }
+      });
+    }
   }
 
   // Optional terminal/interactions if present on page
