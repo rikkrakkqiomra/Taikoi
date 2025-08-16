@@ -340,7 +340,6 @@ if (window.NodeList && !NodeList.prototype.forEach) {
     // persist default if none
     localStorage.setItem('lang', lang);
     setupTerminal();
-    setupHeaderScroll();
   }
 
   if (document.readyState === 'loading') {
@@ -391,91 +390,6 @@ if (window.NodeList && !NodeList.prototype.forEach) {
         terminalContainer.scrollTop = terminalContainer.scrollHeight;
       }
     });
-  }
-
-  // Header scroll animation for mobile
-  function setupHeaderScroll() {
-    var header = document.querySelector('header');
-    if (!header) return;
-
-    var lastScrollY = window.scrollY || window.pageYOffset || 0;
-    var scrollThreshold = 80; // Start collapsing after 80px scroll
-    var isCollapsed = false;
-    var ticking = false;
-
-    function isMobile() {
-      return window.innerWidth <= 768;
-    }
-
-    function updateHeader() {
-      var currentScrollY = window.scrollY || window.pageYOffset || 0;
-      
-      // Only apply on mobile and if we're on the index page
-      if (!isMobile()) {
-        if (header.classList.contains('header-collapsed')) {
-          header.classList.remove('header-collapsed');
-          isCollapsed = false;
-        }
-        return;
-      }
-      
-      // Check if we're on index page (root or index.html)
-      var currentPath = window.location.pathname.replace(/\\\\/g, "/");
-      var isIndexPage = currentPath === "/" || 
-                       currentPath === "/index.html" ||
-                       currentPath.match(/^\/(en|de|fr)\/?(index\.html)?$/);
-      
-      if (!isIndexPage) {
-        return;
-      }
-
-      var scrollDirection = currentScrollY > lastScrollY ? 'down' : 'up';
-      var shouldCollapse = currentScrollY > scrollThreshold && scrollDirection === 'down';
-      
-      if (shouldCollapse && !isCollapsed) {
-        header.classList.add('header-collapsed');
-        isCollapsed = true;
-      } else if (scrollDirection === 'up' && isCollapsed && currentScrollY < scrollThreshold * 0.7) {
-        header.classList.remove('header-collapsed');
-        isCollapsed = false;
-      }
-
-      lastScrollY = currentScrollY;
-    }
-
-    function requestTick() {
-      if (!ticking) {
-        requestAnimationFrame(updateHeader);
-        ticking = true;
-      }
-    }
-
-    function onScroll() {
-      requestTick();
-      ticking = false;
-    }
-
-    // Use passive event listener for better performance
-    if (window.addEventListener) {
-      window.addEventListener('scroll', onScroll, { passive: true });
-    } else {
-      // IE8 fallback
-      window.attachEvent('onscroll', onScroll);
-    }
-
-    // Handle window resize
-    function onResize() {
-      if (!isMobile() && header.classList.contains('header-collapsed')) {
-        header.classList.remove('header-collapsed');
-        isCollapsed = false;
-      }
-    }
-
-    if (window.addEventListener) {
-      window.addEventListener('resize', onResize, { passive: true });
-    } else {
-      window.attachEvent('onresize', onResize);
-    }
   }
 })();
 
