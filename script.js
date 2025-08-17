@@ -290,25 +290,74 @@
 	function initMenuToggle() {
 		const toggle = document.getElementById('menuToggle');
 		const nav = document.getElementById('primaryNav');
+		const header = document.querySelector('.site-header');
 		if (!toggle || !nav) return;
-		toggle.addEventListener('click', () => {
-			const expanded = toggle.getAttribute('aria-expanded') === 'true';
-			toggle.setAttribute('aria-expanded', String(!expanded));
-			nav.setAttribute('data-open', String(!expanded));
-			if (!expanded) {
-				// focus the first link when opened
+
+		// Helper: open/close with animation state so CSS transition can run on close
+		function setMenuOpenState(open) {
+			toggle.setAttribute('aria-expanded', String(open));
+			// Update accessible label
+			toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+			nav.setAttribute('aria-hidden', String(!open));
+			if (open) {
+				nav.setAttribute('data-open', 'true');
+				nav.removeAttribute('data-animating');
+				// Nudge header to visually sink a bit as menu opens
+				header && header.setAttribute('data-menu-open', 'true');
 				const firstLink = nav.querySelector('a');
 				if (firstLink) firstLink.focus();
+			} else {
+				// Mark animating to keep element visible during height transition
+				nav.setAttribute('data-animating', 'true');
+				nav.setAttribute('data-open', 'false');
+				// Remove header shift after the transition ends
+				const onEnd = (e) => {
+					if (!e || e.target !== nav || e.propertyName !== 'max-height') return;
+					nav.removeAttribute('data-animating');
+					nav.removeEventListener('transitionend', onEnd);
+					header && header.removeAttribute('data-menu-open');
+				};
+				nav.addEventListener('transitionend', onEnd);
 			}
+		}
+
+		toggle.addEventListener('click', () => {
+			const expanded = toggle.getAttribute('aria-expanded') === 'true';
+			setMenuOpenState(!expanded);
 		});
 
 		// Close the mobile menu when a navigation link is activated
 		nav.addEventListener('click', (event) => {
 			const link = event.target && event.target.closest && event.target.closest('a');
 			if (!link) return;
-			toggle.setAttribute('aria-expanded', 'false');
-			nav.setAttribute('data-open', 'false');
+			setMenuOpenState(false);
 		});
+
+		// Close on Escape
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+				setMenuOpenState(false);
+				toggle.focus();
+			}
+		});
+
+		// Ensure consistent state when switching to desktop layout
+		try {
+			const mq = window.matchMedia('(min-width: 640px)');
+			const handleMQ = () => {
+				if (mq.matches) {
+					// Desktop: clear mobile open states and shifts
+					header && header.removeAttribute('data-menu-open');
+					nav.removeAttribute('data-open');
+					nav.removeAttribute('data-animating');
+					nav.removeAttribute('aria-hidden');
+					toggle.setAttribute('aria-expanded', 'false');
+					toggle.setAttribute('aria-label', 'Open menu');
+				}
+			};
+			mq.addEventListener ? mq.addEventListener('change', handleMQ) : mq.addListener(handleMQ);
+			handleMQ();
+		} catch (_) { /* ignore */ }
 	}
 
 	function initLanguageCards() {
