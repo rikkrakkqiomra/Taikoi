@@ -37,7 +37,7 @@
 				legal: 'Aivoinko uses the information you provide to contact you about relevant content, products, and services. You may unsubscribe at any time. For more information, read our Privacy Policy.',
 				submit: 'Submit'
 			},
-			footer: { copyright: '(c) Aivoinko Machine Metaphysics' },
+			footer: { copyright: '(c) Aivoinko Machine Metaphysics', follow: 'Follow us' },
 			languages: { fi: 'Suomi', es: 'Español', nl: 'Nederlands', en: 'English', de: 'Deutsch', fr: 'Français' },
 			a11y: { logoAlt: 'Aivoinko logo' }
 		},
@@ -58,7 +58,7 @@
 				legal: 'Aivoinko käyttää antamiasi tietoja ottaakseen sinuun yhteyttä ajankohtaisesta sisällöstä, tuotteista ja palveluista. Voit perua viestinnän milloin tahansa. Lisätietoja saat tietosuojakäytännöstämme.',
 				submit: 'Lähetä'
 			},
-			footer: { copyright: '(c) Aivoinko Machine Metaphysics' },
+			footer: { copyright: '(c) Aivoinko Machine Metaphysics', follow: 'Seuraa meitä' },
 			languages: { fi: 'Suomi', es: 'Español', nl: 'Nederlands', en: 'English', de: 'Deutsch', fr: 'Français' },
 			a11y: { logoAlt: 'Aivoinko-logo' }
 		},
@@ -79,7 +79,7 @@
 				legal: 'Aivoinko utiliza la información que nos proporciona para contactar con usted sobre contenido, productos y servicios relevantes. Puede darse de baja en cualquier momento.',
 				submit: 'Enviar'
 			},
-			footer: { copyright: '(c) Aivoinko Machine Metaphysics' },
+			footer: { copyright: '(c) Aivoinko Machine Metaphysics', follow: 'Síguenos' },
 			languages: { fi: 'Suomi', es: 'Español', nl: 'Nederlands', en: 'English', de: 'Deutsch', fr: 'Français' },
 			a11y: { logoAlt: 'Logotipo de Aivoinko' }
 		},
@@ -100,7 +100,7 @@
 				legal: 'Aivoinko gebruikt de door u verstrekte informatie om contact met u op te nemen over relevante inhoud, producten en diensten. U kunt zich op elk moment afmelden.',
 				submit: 'Versturen'
 			},
-			footer: { copyright: '(c) Aivoinko Machine Metaphysics' },
+			footer: { copyright: '(c) Aivoinko Machine Metaphysics', follow: 'Volg ons' },
 			languages: { fi: 'Suomi', es: 'Español', nl: 'Nederlands', en: 'English', de: 'Deutsch', fr: 'Français' },
 			a11y: { logoAlt: 'Aivoinko-logo' }
 		},
@@ -121,7 +121,7 @@
 				legal: 'Aivoinko verwendet Ihre Angaben, um Sie zu relevanten Inhalten, Produkten und Services zu kontaktieren. Eine Abmeldung ist jederzeit möglich.',
 				submit: 'Senden'
 			},
-			footer: { copyright: '(c) Aivoinko Machine Metaphysics' },
+			footer: { copyright: '(c) Aivoinko Machine Metaphysics', follow: 'Folgen Sie uns' },
 			languages: { fi: 'Suomi', es: 'Español', nl: 'Nederlands', en: 'English', de: 'Deutsch', fr: 'Français' },
 			a11y: { logoAlt: 'Aivoinko-Logo' }
 		},
@@ -142,7 +142,7 @@
 				legal: "Aivoinko utilise les informations fournies pour vous contacter à propos de contenus, produits et services pertinents. Vous pouvez vous désabonner à tout moment.",
 				submit: 'Envoyer'
 			},
-			footer: { copyright: '(c) Aivoinko Machine Metaphysics' },
+			footer: { copyright: '(c) Aivoinko Machine Metaphysics', follow: 'Suivez-nous' },
 			languages: { fi: 'Suomi', es: 'Español', nl: 'Nederlands', en: 'English', de: 'Deutsch', fr: 'Français' },
 			a11y: { logoAlt: 'Logo Aivoinko' }
 		}

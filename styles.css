@@ -221,6 +221,69 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 }
 .site-footer .container { padding: var(--space-2) 0; text-align: center; }
 
+/* Expanded footer layout */
+.footer-grid {
+	display: grid;
+	gap: var(--space-4);
+	align-items: center;
+	justify-items: center;
+}
+
+.footer-copy { opacity: 0.9; }
+
+.footer-heading {
+	margin: 0;
+	font-size: var(--fs-1);
+	color: #fff;
+}
+
+.footer-social { display: grid; gap: var(--space-3); }
+
+.social-links {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	gap: var(--space-6);
+	align-items: center;
+	justify-content: center;
+}
+
+.social-link {
+	display: inline-grid;
+	place-items: center;
+	width: 56px;
+	height: 56px;
+	border-radius: 12px;
+	background: rgba(255,255,255,0.06);
+	border: 1px solid var(--color-border);
+	box-shadow: var(--elev-1);
+	color: #e5e5e5;
+	font-weight: 800;
+	letter-spacing: 0.02em;
+	transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease, color 120ms ease;
+}
+.social-link:hover, .social-link:focus-visible {
+	transform: translateY(-1px);
+	box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+	background: rgba(255,255,255,0.12);
+	color: #fff;
+}
+.social-link .icon { font-size: 1.5rem; line-height: 1; }
+
+/* Brand-specific accents (subtle) */
+.social-link.da { border-color: #50e3c2; }
+.social-link.etsy { border-color: #f1641e; }
+.social-link.linkedin { border-color: #0a66c2; }
+
+@media (min-width: 720px) {
+	.footer-grid {
+		grid-template-columns: 1fr auto 1fr;
+		justify-items: start;
+	}
+	.footer-social { justify-self: end; }
+}
+
 /* Responsive */
 @media (min-width: 640px) {
 	.header-row { grid-template-columns: 1fr 1fr 1fr; }
