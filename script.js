@@ -329,6 +329,37 @@
 			window.scrollTo(0, 0);
 			document.documentElement.style.scrollBehavior = '';
 		});
+
+		// Katana/glitter effect trigger on load and when returning to top
+		const brand = document.querySelector('.brand');
+		if (brand) {
+			const trigger = () => {
+				brand.classList.remove('katana-run');
+				// Force reflow to restart animation
+				void brand.offsetWidth;
+				brand.classList.add('katana-run');
+			};
+
+			// On first paint after image is ready enough
+			const logoEl = document.getElementById('brandLogo');
+			if (logoEl && (logoEl.complete || logoEl.naturalWidth)) {
+				setTimeout(trigger, 120);
+			} else if (logoEl) {
+				logoEl.addEventListener('load', () => setTimeout(trigger, 120), { once: true });
+			}
+
+			// When user scrolls down and returns to near-top, retrigger once per return
+			let lastWasAwayFromTop = false;
+			window.addEventListener('scroll', () => {
+				const y = window.scrollY || window.pageYOffset;
+				if (y > 120) {
+					lastWasAwayFromTop = true;
+				} else if (y < 20 && lastWasAwayFromTop) {
+					lastWasAwayFromTop = false;
+					trigger();
+				}
+			}, { passive: true });
+		}
 	}
 
 	if (document.readyState === 'loading') {
