@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aivoinko — Machine Metaphysics</title>
+    <meta name="description" content="Machine Metaphysics for Human-Centered AI. A minimal, fast, accessible static template with i18n and hash-based routing." />
+    <meta name="theme-color" content="#1b120a" />
+    <link rel="canonical" href="/" />
+
+    <!-- Early CSP to align with server headers (see netlify.toml). No inline scripts/styles required. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; upgrade-insecure-requests; img-src 'self' data:; script-src 'self'; style-src 'self'; connect-src 'self'" />
+
+    <!-- Preload the hero/logo image (LCP candidate). Place the file at assets/AiiAold.jpg on deploy. -->
+    <link rel="preload" as="image" href="assets/AiiAold.jpg" />
+
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+
+    <header class="site-header" role="banner">
+      <div class="header-row container">
+        <div class="site-title" aria-label="Site title">Aivoinko</div>
+
+        <button id="menuToggle" class="menu-toggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Open menu">Menu</button>
+
+        <nav id="primaryNav" class="primary-nav" aria-label="Primary">
+          <ul class="nav-list">
+            <li><a id="nav-research" href="#research" data-i18n="nav.research">Research</a></li>
+            <li><a id="nav-contact"  href="#contact"  data-i18n="nav.contact">Contact</a></li>
+            <li><a id="nav-vision"   href="#vision"   data-i18n="nav.vision">Vision</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Brand/logo visually integrated within the header area -->
+      <div class="brand" aria-hidden="false">
+        <!-- Note: Place the logo file at assets/AiiAold.jpg -->
+        <img
+          id="brandLogo"
+          src="assets/AiiAold.jpg"
+          width="200"
+          height="200"
+          decoding="async"
+          fetchpriority="high"
+          alt="Aivoinko logo"
+        />
+      </div>
+    </header>
+
+    <main id="main-content" class="site-main container" role="main">
+      <section class="language-select" aria-labelledby="languageHeading">
+        <h2 id="languageHeading" class="visually-hidden">Choose language</h2>
+        <div class="lang-cards" role="group" aria-label="Language selection">
+          <button class="lang-card" type="button" data-lang="fi" aria-pressed="false">Suomi</button>
+          <button class="lang-card" type="button" data-lang="es" aria-pressed="false">Español</button>
+          <button class="lang-card" type="button" data-lang="nl" aria-pressed="false">Nederlands</button>
+          <button class="lang-card" type="button" data-lang="en" aria-pressed="true">English</button>
+          <button class="lang-card" type="button" data-lang="de" aria-pressed="false">Deutsch</button>
+          <button class="lang-card" type="button" data-lang="fr" aria-pressed="false">Français</button>
+        </div>
+      </section>
+
+      <p id="heroTagline" class="hero-tagline" aria-live="polite" data-i18n="hero.tagline">Machine Metaphysics for Human-Centered AI</p>
+
+      <!-- Routed sections: one visible at a time -->
+      <section id="section-research" class="section-card content-section" data-route="research">
+        <h2 id="heading-research" data-i18n="research.title" tabindex="-1">Research</h2>
+        <p data-i18n="research.body">This is a sandbox area for research notes and experiments.</p>
+      </section>
+
+      <section id="section-contact" class="section-card content-section" data-route="contact" hidden aria-hidden="true">
+        <h2 id="heading-contact" data-i18n="contact.title" tabindex="-1">Contact</h2>
+        <p data-i18n="contact.body">This is a sandbox area for quick contact details and inquiries.</p>
+      </section>
+
+      <section id="section-vision" class="section-card content-section" data-route="vision" hidden aria-hidden="true">
+        <h2 id="heading-vision" data-i18n="vision.title" tabindex="-1">Vision</h2>
+        <p data-i18n="vision.body">This is a sandbox area to outline long-term vision and principles.</p>
+      </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <small data-i18n="footer.copyright">(c) Aivoinko Machine Metaphysics</small>
+      </div>
+    </footer>
+
+    <noscript>
+      <div class="no-script container">This site works best with JavaScript enabled for language switching and routing. Content remains accessible without it.</div>
+    </noscript>
+  </body>
+  </html>
+
+
