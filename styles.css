@@ -163,42 +163,59 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 	filter: saturate(0.95) contrast(1.02);
 }
 
-/* Katana-like shimmer frame around the logo */
+/* Whirlwind-style shimmer frame around the logo */
 .logo-frame {
 	position: relative;
 	display: inline-block;
 	border-radius: 24px;
 	overflow: hidden; /* clip the shimmer to the logo shape */
 }
+.logo-frame::before,
 .logo-frame::after {
 	content: '';
 	position: absolute;
-	top: -40%;
-	left: -30%;
-	width: 40%;
-	height: 180%;
-	background:
-		linear-gradient(120deg,
-			transparent 40%,
-			rgba(255,255,255,0.85) 50%,
-			rgba(200,220,255,0.28) 54%,
-			transparent 60%
-		);
+	left: 50%;
+	top: 50%;
+	border-radius: 50%;
+	opacity: 0;
+	will-change: transform, opacity;
 	mix-blend-mode: screen;
-	opacity: 0.95;
-	filter: blur(0.3px);
-	transform: translateX(-140%) skewX(-18deg);
-	will-change: transform;
 	pointer-events: none;
 }
-.logo-frame.shimmer-on::after {
-	animation: katana-shine 1100ms ease-out 1 both;
+.logo-frame::before {
+	width: 200%;
+	height: 200%;
+	background: conic-gradient(
+		from 0deg,
+		transparent 0 300deg,
+		rgba(255,255,255,0.55) 312deg,
+		rgba(200,220,255,0.22) 330deg,
+		transparent 360deg
+	);
+	filter: blur(1.6px);
+	transform: translate(-50%, -50%) rotate(-220deg);
 }
+.logo-frame::after {
+	width: 160%;
+	height: 160%;
+	background: conic-gradient(
+		from -10deg,
+		transparent 0 310deg,
+		rgba(255,255,255,0.9) 322deg,
+		rgba(210,230,255,0.35) 336deg,
+		transparent 360deg
+	);
+	filter: blur(0.9px) saturate(1.1);
+	transform: translate(-50%, -50%) rotate(-240deg);
+}
+.logo-frame.shimmer-on::before { animation: whirl-spin 600ms cubic-bezier(0.18, 0.56, 0.24, 1) 1 both; }
+.logo-frame.shimmer-on::after { animation: whirl-spin 600ms cubic-bezier(0.18, 0.56, 0.24, 1) 40ms 1 both; }
 
-@keyframes katana-shine {
-	0%   { transform: translateX(-140%) skewX(-18deg); }
-	60%  { transform: translateX(40%) skewX(-18deg); }
-	100% { transform: translateX(160%) skewX(-18deg); }
+@keyframes whirl-spin {
+	0%   { opacity: 0; transform: translate(-50%, -50%) rotate(-240deg) scale(1); }
+	10%  { opacity: 1; }
+	70%  { opacity: 1; }
+	100% { opacity: 0; transform: translate(-50%, -50%) rotate(420deg) scale(1); }
 }
 
 /* Language cards */
