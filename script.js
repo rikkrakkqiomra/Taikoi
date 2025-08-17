@@ -24,61 +24,121 @@
 			nav: { research: 'Research', contact: 'Contact', vision: 'Vision' },
 			hero: { tagline: 'Machine Metaphysics for Human-Centered AI' },
 			research: { title: 'Research', body: 'This is a sandbox area for research notes and experiments.' },
-			contact: { title: 'Contact', body: 'This is a sandbox area for quick contact details and inquiries.' },
+			contact: { 
+				title: 'Contact', 
+				intro: 'Get in touch with us – let\'s discuss AI, regulatory-ready infrastructure, and partnerships.' 
+			},
 			vision: { title: 'Vision', body: 'This is a sandbox area to outline long-term vision and principles.' },
 			footer: { copyright: '(c) Aivoinko Machine Metaphysics' },
 			languages: { fi: 'Suomi', es: 'Español', nl: 'Nederlands', en: 'English', de: 'Deutsch', fr: 'Français' },
-			a11y: { logoAlt: 'Aivoinko logo' }
+			a11y: { logoAlt: 'Aivoinko logo' },
+			form_name: 'Name',
+			form_email: 'Email *',
+			form_phone: 'Phone',
+			form_message: 'What can Aivoinko help you with?',
+			form_submit: 'Submit',
+			privacy_text: 'We use the information you provide to contact you about our relevant content, products, and services. You can unsubscribe at any time. For more information, see our',
+			privacy_link: 'Privacy Policy'
 		},
 		fi: {
 			nav: { research: 'Tutkimus', contact: 'Yhteys', vision: 'Visio' },
 			hero: { tagline: 'Koneen metafysiikkaa ihmiskeskeiselle tekoälylle' },
 			research: { title: 'Tutkimus', body: 'Tämä on hiekkalaatikkoalue muistiinpanoille ja kokeiluille.' },
-			contact: { title: 'Yhteys', body: 'Tämä on hiekkalaatikkoalue yhteystiedoille ja tiedusteluille.' },
+			contact: { 
+				title: 'Yhteys', 
+				intro: 'Ota yhteyttä – keskustellaan tekoälystä, sääntelyvalmiista infrastruktuurista ja kumppanuuksista.' 
+			},
 			vision: { title: 'Visio', body: 'Tämä on hiekkalaatikkoalue pitkän aikavälin periaatteille.' },
 			footer: { copyright: '(c) Aivoinko Machine Metaphysics' },
 			languages: { fi: 'Suomi', es: 'Español', nl: 'Nederlands', en: 'English', de: 'Deutsch', fr: 'Français' },
-			a11y: { logoAlt: 'Aivoinko-logo' }
+			a11y: { logoAlt: 'Aivoinko-logo' },
+			form_name: 'Nimi',
+			form_email: 'Sähköposti *',
+			form_phone: 'Puhelin',
+			form_message: 'Miten Aivoinko voi auttaa sinua?',
+			form_submit: 'Lähetä',
+			privacy_text: 'Käytämme antamiasi tietoja ottaaksemme yhteyttä sinuun olennaisesta sisällöstämme, tuotteistamme ja palveluistamme. Voit perua tilauksen milloin tahansa. Lisätietoja löytyy',
+			privacy_link: 'Tietosuojakäytännöstä'
 		},
 		es: {
 			nav: { research: 'Investigación', contact: 'Contacto', vision: 'Visión' },
 			hero: { tagline: 'Metafísica de la máquina para una IA centrada en el ser humano' },
 			research: { title: 'Investigación', body: 'Un área de pruebas para notas y experimentos.' },
-			contact: { title: 'Contacto', body: 'Un área de pruebas para datos de contacto y consultas.' },
+			contact: { 
+				title: 'Contacto', 
+				intro: 'Ponte en contacto con nosotros: hablemos sobre IA, infraestructura regulatoria y alianzas.' 
+			},
 			vision: { title: 'Visión', body: 'Un área de pruebas para la visión y los principios a largo plazo.' },
 			footer: { copyright: '(c) Aivoinko Machine Metaphysics' },
 			languages: { fi: 'Suomi', es: 'Español', nl: 'Nederlands', en: 'English', de: 'Deutsch', fr: 'Français' },
-			a11y: { logoAlt: 'Logotipo de Aivoinko' }
+			a11y: { logoAlt: 'Logotipo de Aivoinko' },
+			form_name: 'Nombre',
+			form_email: 'Email *',
+			form_phone: 'Teléfono',
+			form_message: '¿Cómo puede ayudarte Aivoinko?',
+			form_submit: 'Enviar',
+			privacy_text: 'Utilizamos la información que proporcionas para contactarte sobre nuestro contenido, productos y servicios relevantes. Puedes cancelar la suscripción en cualquier momento. Para más información, consulta nuestra',
+			privacy_link: 'Política de Privacidad'
 		},
 		nl: {
 			nav: { research: 'Onderzoek', contact: 'Contact', vision: 'Visie' },
 			hero: { tagline: 'Machine-metafysica voor mensgerichte AI' },
 			research: { title: 'Onderzoek', body: 'Een sandbox voor notities en experimenten.' },
-			contact: { title: 'Contact', body: 'Een sandbox voor contactgegevens en vragen.' },
+			contact: { 
+				title: 'Contact', 
+				intro: 'Neem contact met ons op – laten we praten over AI, regulatoire infrastructuur en partnerschappen.' 
+			},
 			vision: { title: 'Visie', body: 'Een sandbox om lange termijn visie en principes te schetsen.' },
 			footer: { copyright: '(c) Aivoinko Machine Metaphysics' },
 			languages: { fi: 'Suomi', es: 'Español', nl: 'Nederlands', en: 'English', de: 'Deutsch', fr: 'Français' },
-			a11y: { logoAlt: 'Aivoinko-logo' }
+			a11y: { logoAlt: 'Aivoinko-logo' },
+			form_name: 'Naam',
+			form_email: 'Email *',
+			form_phone: 'Telefoon',
+			form_message: 'Hoe kan Aivoinko je helpen?',
+			form_submit: 'Versturen',
+			privacy_text: 'We gebruiken de informatie die je verstrekt om contact met je op te nemen over onze relevante content, producten en diensten. Je kunt je op elk moment uitschrijven. Voor meer informatie, zie ons',
+			privacy_link: 'Privacybeleid'
 		},
 		de: {
 			nav: { research: 'Forschung', contact: 'Kontakt', vision: 'Vision' },
 			hero: { tagline: 'Maschinenmetaphysik für menschenzentrierte KI' },
 			research: { title: 'Forschung', body: 'Ein Sandbox-Bereich für Notizen und Experimente.' },
-			contact: { title: 'Kontakt', body: 'Ein Sandbox-Bereich für Kontaktdaten und Anfragen.' },
+			contact: { 
+				title: 'Kontakt', 
+				intro: 'Kontaktieren Sie uns – sprechen wir über KI, regulierungsgerechte Infrastruktur und Partnerschaften.' 
+			},
 			vision: { title: 'Vision', body: 'Ein Sandbox-Bereich für langfristige Vision und Prinzipien.' },
 			footer: { copyright: '(c) Aivoinko Machine Metaphysics' },
 			languages: { fi: 'Suomi', es: 'Español', nl: 'Nederlands', en: 'English', de: 'Deutsch', fr: 'Français' },
-			a11y: { logoAlt: 'Aivoinko-Logo' }
+			a11y: { logoAlt: 'Aivoinko-Logo' },
+			form_name: 'Name',
+			form_email: 'E-Mail *',
+			form_phone: 'Telefon',
+			form_message: 'Wie kann Aivoinko Ihnen helfen?',
+			form_submit: 'Senden',
+			privacy_text: 'Wir verwenden die von Ihnen bereitgestellten Informationen, um Sie über unsere relevanten Inhalte, Produkte und Dienstleistungen zu kontaktieren. Sie können sich jederzeit abmelden. Weitere Informationen finden Sie in unserer',
+			privacy_link: 'Datenschutzrichtlinie'
 		},
 		fr: {
 			nav: { research: 'Recherche', contact: 'Contact', vision: 'Vision' },
-			hero: { tagline: 'Métaphysique de la machine pour une IA centrée sur l’humain' },
+			hero: { tagline: 'Métaphysique de la machine pour une IA centrée sur l'humain' },
 			research: { title: 'Recherche', body: 'Une zone bac à sable pour notes et expériences.' },
-			contact: { title: 'Contact', body: 'Une zone bac à sable pour les coordonnées et demandes.' },
+			contact: { 
+				title: 'Contact', 
+				intro: 'Contactez-nous – parlons d\'IA, d\'infrastructure réglementaire et de partenariats.' 
+			},
 			vision: { title: 'Vision', body: 'Une zone bac à sable pour la vision et les principes à long terme.' },
 			footer: { copyright: '(c) Aivoinko Machine Metaphysics' },
 			languages: { fi: 'Suomi', es: 'Español', nl: 'Nederlands', en: 'English', de: 'Deutsch', fr: 'Français' },
-			a11y: { logoAlt: 'Logo Aivoinko' }
+			a11y: { logoAlt: 'Logo Aivoinko' },
+			form_name: 'Nom',
+			form_email: 'Email *',
+			form_phone: 'Téléphone',
+			form_message: 'Comment Aivoinko peut-il vous aider ?',
+			form_submit: 'Envoyer',
+			privacy_text: 'Nous utilisons les informations que vous fournissez pour vous contacter au sujet de notre contenu, de nos produits et services pertinents. Vous pouvez vous désabonner à tout moment. Pour plus d\'informations, consultez notre',
+			privacy_link: 'Politique de confidentialité'
 		}
 	};
 
@@ -183,16 +243,27 @@
 			if (isActive) { a.setAttribute('aria-current', 'page'); }
 			else { a.removeAttribute('aria-current'); }
 		});
-		// Focus the section heading for accessibility without scrolling the page down
+		
+		// Smooth scroll to the section and focus the heading
+		const targetSection = document.getElementById(`section-${target}`);
 		const heading = document.getElementById(`heading-${target}`);
-		if (heading) { heading.focus({ preventScroll: true }); }
-
-		// Always keep the viewport at the top after routing to avoid hiding the logo
-		requestAnimationFrame(() => {
-			document.documentElement.style.scrollBehavior = 'auto';
-			window.scrollTo(0, 0);
-			document.documentElement.style.scrollBehavior = '';
-		});
+		
+		if (targetSection && heading) {
+			// Ensure smooth scrolling is enabled
+			document.documentElement.style.scrollBehavior = 'smooth';
+			
+			// Scroll to the section with a small offset to account for header
+			const sectionTop = targetSection.offsetTop - 20;
+			window.scrollTo({
+				top: sectionTop,
+				behavior: 'smooth'
+			});
+			
+			// Focus the heading after scroll completes
+			setTimeout(() => {
+				heading.focus({ preventScroll: true });
+			}, 600);
+		}
 	}
 
 	function initRouter() {

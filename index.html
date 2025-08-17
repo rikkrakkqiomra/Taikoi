@@ -9,12 +9,13 @@
     <link rel="canonical" href="/" />
 
     <!-- Early CSP to align with server headers (see netlify.toml). No inline scripts/styles required. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; upgrade-insecure-requests; img-src 'self' data:; script-src 'self'; style-src 'self'; connect-src 'self'" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self' https://www.google.com; form-action 'self'; upgrade-insecure-requests; img-src 'self' data:; script-src 'self' https://www.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://www.gstatic.com; connect-src 'self' https://www.google.com" />
 
     <!-- Preload the hero/logo image (LCP candidate). Place the file at assets/AiiAold.jpg on deploy. -->
     <link rel="preload" as="image" href="assets/AiiAold.jpg" />
 
     <link rel="stylesheet" href="styles.css" />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <script src="script.js" defer></script>
   </head>
   <body>
@@ -71,9 +72,34 @@
         <p data-i18n="research.body">This is a sandbox area for research notes and experiments.</p>
       </section>
 
-      <section id="section-contact" class="section-card content-section" data-route="contact" hidden aria-hidden="true">
+      <section id="section-contact" class="section-card content-section contact-section" data-route="contact" hidden aria-hidden="true">
         <h2 id="heading-contact" data-i18n="contact.title" tabindex="-1">Contact</h2>
-        <p data-i18n="contact.body">This is a sandbox area for quick contact details and inquiries.</p>
+        <p data-i18n="contact.intro" class="contact-intro">Get in touch with us – let's discuss AI, regulatory-ready infrastructure, and partnerships.</p>
+        
+        <form action="/send-contact" method="POST" class="contact-form">
+          <div class="form-row">
+            <input type="text" name="name" data-i18n="form_name" placeholder="Name" required class="form-input">
+          </div>
+          <div class="form-row two-cols">
+            <input type="email" name="email" data-i18n="form_email" placeholder="Email *" required class="form-input">
+            <input type="tel" name="phone" data-i18n="form_phone" placeholder="Phone" class="form-input">
+          </div>
+          <div class="form-row">
+            <textarea name="message" data-i18n="form_message" placeholder="What can Aivoinko help you with?" rows="6" required class="form-textarea"></textarea>
+          </div>
+          <p class="privacy-text">
+            <span data-i18n="privacy_text">We use the information you provide to contact you about our relevant content, products, and services. You can unsubscribe at any time. For more information, see our</span> <a href="/privacy.html" data-i18n="privacy_link" class="privacy-link">Privacy Policy</a>.
+          </p>
+          <div class="form-row recaptcha">
+            <div class="g-recaptcha" data-sitekey="YOUR_RECAPTCHA_SITE_KEY"></div>
+          </div>
+          <button type="submit" class="btn-submit">
+            <span data-i18n="form_submit">Submit</span>
+            <svg class="submit-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M8 1L15 8L8 15M15 8H1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </form>
       </section>
 
       <section id="section-vision" class="section-card content-section" data-route="vision" hidden aria-hidden="true">
