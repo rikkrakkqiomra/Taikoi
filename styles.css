@@ -144,6 +144,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .nav-list a {
 	display: block; padding: var(--space-3) var(--space-4);
 	border-bottom: 1px solid var(--color-border);
+	color: #8a2be2;
 }
 .nav-list li:last-child a { border-bottom: none; }
 .nav-list a:hover, .nav-list a:focus-visible { background: rgba(255,255,255,0.08); }
@@ -207,7 +208,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .section-card h2 {
 	margin-top: 0;
 	font-size: var(--fs-2);
-	color: #fff;
+	color: #8a2be2;
 }
 .section-card p { margin: var(--space-3) 0 0 0; }
 
