@@ -254,9 +254,9 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 	height: 56px;
 	border-radius: 12px;
 	background: rgba(255,255,255,0.06);
-	border: 1px solid var(--color-border);
+	border: 2px solid #e9e2d6;
 	box-shadow: var(--elev-1);
-	color: #e5e5e5;
+	color: var(--color-text-muted);
 	transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease, color 120ms ease;
 }
 .social-icon i { font-size: 1.65rem; }
@@ -266,9 +266,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 	background: rgba(255,255,255,0.12);
 	color: #fff;
 }
-.social-icon[href*="deviantart"] { border-color: #50e3c2; }
-.social-icon[href*="etsy"] { border-color: #f1641e; }
-.social-icon[href*="linkedin"] { border-color: #0a66c2; }
+/* Unified color, no brand-specific accents */
 
 .social-links {
 	list-style: none;
