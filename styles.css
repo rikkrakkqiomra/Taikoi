@@ -149,7 +149,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .nav-list a:hover, .nav-list a:focus-visible { background: rgba(255,255,255,0.08); }
 
 /* Brand/logo anchored under header */
-.brand { display: grid; place-items: center; margin-top: var(--space-6); position: relative; }
+.brand { display: grid; place-items: center; margin-top: var(--space-6); }
 #brandLogo {
 	width: 200px; height: 200px;
 	object-fit: cover;
@@ -159,100 +159,6 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 		0 0 0 6px rgba(212, 175, 55, 0.15),
 		0 8px 22px rgba(0,0,0,0.35);
 	filter: saturate(0.95) contrast(1.02);
-}
-
-/* Katana slash + silver glitter overlay */
-.katana-overlay {
-	position: absolute;
-	inset: 0;
-	display: grid;
-	place-items: center;
-	pointer-events: none;
-	z-index: 2;
-}
-
-.katana-overlay::before,
-.katana-overlay::after {
-	content: '';
-	position: absolute;
-	inset: 0;
-}
-
-/* The katana light band sweeping across */
-.katana-overlay::before {
-	transform: translateX(-140%) rotate(18deg);
-	background:
-		linear-gradient(
-			90deg,
-			rgba(255,255,255,0) 0%,
-			rgba(255,255,255,0) 38%,
-			rgba(255,255,255,0.85) 48%,
-			rgba(230,230,230,0.9) 50%,
-			rgba(200,200,200,0.75) 53%,
-			rgba(255,255,255,0.85) 56%,
-			rgba(255,255,255,0) 66%,
-			rgba(255,255,255,0) 100%
-		);
-	filter: blur(0.6px) drop-shadow(0 0 10px rgba(255,255,255,0.4)) drop-shadow(0 0 22px rgba(212,175,55,0.25));
-	mix-blend-mode: screen;
-	opacity: 0;
-}
-
-/* Silver glitter ring around the logo */
-.katana-overlay::after {
-	--ring-thickness: 14px;
-	background:
-		conic-gradient(
-			from 0deg,
-			rgba(255,255,255,0.0) 0deg,
-			rgba(245,245,245,0.75) 20deg,
-			rgba(200,200,200,0.65) 50deg,
-			rgba(255,255,255,0.9) 90deg,
-			rgba(220,220,220,0.65) 120deg,
-			rgba(255,255,255,0.8) 180deg,
-			rgba(210,210,210,0.6) 230deg,
-			rgba(255,255,255,0.9) 280deg,
-			rgba(240,240,240,0.7) 320deg,
-			rgba(255,255,255,0.0) 360deg
-		);
-	/* Carve into a ring hugging the logo frame */
-	-webkit-mask:
-		radial-gradient(closest-side, transparent calc(100% - 22px), #000 calc(100% - 16px));
-	        mask:
-		radial-gradient(closest-side, transparent calc(100% - 22px), #000 calc(100% - 16px));
-	filter: blur(0.5px) drop-shadow(0 0 10px rgba(255,255,255,0.35));
-	opacity: 0;
-}
-
-.brand.katana-run .katana-overlay::before {
-	animation: katanaSlash 900ms cubic-bezier(0.12, 0.62, 0.12, 1.0) both;
-}
-
-.brand.katana-run .katana-overlay::after {
-	animation: ringSpin 1100ms linear both;
-}
-
-@keyframes katanaSlash {
-	0% {
-		opacity: 0;
-		transform: translateX(-140%) rotate(18deg);
-	}
-	10% { opacity: 1; }
-	45% {
-		transform: translateX(0%) rotate(18deg);
-		opacity: 1;
-	}
-	100% {
-		transform: translateX(140%) rotate(18deg);
-		opacity: 0;
-	}
-}
-
-@keyframes ringSpin {
-	0% { transform: rotate(0turn); opacity: 0; }
-	10% { opacity: 1; }
-	75% { opacity: 1; }
-	100% { transform: rotate(1.2turn); opacity: 0; }
 }
 
 /* Language cards */
