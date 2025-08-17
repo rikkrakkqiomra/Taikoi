@@ -24,8 +24,19 @@
 			nav: { research: 'Research', contact: 'Contact', vision: 'Vision' },
 			hero: { tagline: 'Machine Metaphysics for Human-Centered AI' },
 			research: { title: 'Research', body: 'This is a sandbox area for research notes and experiments.' },
-			contact: { title: 'Contact', body: 'This is a sandbox area for quick contact details and inquiries.' },
 			vision: { title: 'Vision', body: 'This is a sandbox area to outline long-term vision and principles.' },
+			contactForm: {
+				heading: 'How can we help you?',
+				labels: { name: 'Name', email: 'Email *', phone: 'Phone', message: 'What can Aivoinko help you with?' },
+				placeholders: {
+					name: 'Your full name',
+					email: 'you@domain.com',
+					phone: 'Optional',
+					message: 'Tell us briefly about your question'
+				},
+				legal: 'Aivoinko uses the information you provide to contact you about relevant content, products, and services. You may unsubscribe at any time. For more information, read our Privacy Policy.',
+				submit: 'Submit'
+			},
 			footer: { copyright: '(c) Aivoinko Machine Metaphysics' },
 			languages: { fi: 'Suomi', es: 'Español', nl: 'Nederlands', en: 'English', de: 'Deutsch', fr: 'Français' },
 			a11y: { logoAlt: 'Aivoinko logo' }
@@ -34,8 +45,19 @@
 			nav: { research: 'Tutkimus', contact: 'Yhteys', vision: 'Visio' },
 			hero: { tagline: 'Koneen metafysiikkaa ihmiskeskeiselle tekoälylle' },
 			research: { title: 'Tutkimus', body: 'Tämä on hiekkalaatikkoalue muistiinpanoille ja kokeiluille.' },
-			contact: { title: 'Yhteys', body: 'Tämä on hiekkalaatikkoalue yhteystiedoille ja tiedusteluille.' },
 			vision: { title: 'Visio', body: 'Tämä on hiekkalaatikkoalue pitkän aikavälin periaatteille.' },
+			contactForm: {
+				heading: 'Kuinka voimme auttaa?',
+				labels: { name: 'Nimi', email: 'Sähköposti *', phone: 'Puhelin', message: 'Missä Aivoinko voi auttaa?' },
+				placeholders: {
+					name: 'Koko nimesi',
+					email: 'sinä@domain.com',
+					phone: 'Valinnainen',
+					message: 'Kerro lyhyesti tarpeestasi'
+				},
+				legal: 'Aivoinko käyttää antamiasi tietoja ottaakseen sinuun yhteyttä ajankohtaisesta sisällöstä, tuotteista ja palveluista. Voit perua viestinnän milloin tahansa. Lisätietoja saat tietosuojakäytännöstämme.',
+				submit: 'Lähetä'
+			},
 			footer: { copyright: '(c) Aivoinko Machine Metaphysics' },
 			languages: { fi: 'Suomi', es: 'Español', nl: 'Nederlands', en: 'English', de: 'Deutsch', fr: 'Français' },
 			a11y: { logoAlt: 'Aivoinko-logo' }
@@ -44,8 +66,19 @@
 			nav: { research: 'Investigación', contact: 'Contacto', vision: 'Visión' },
 			hero: { tagline: 'Metafísica de la máquina para una IA centrada en el ser humano' },
 			research: { title: 'Investigación', body: 'Un área de pruebas para notas y experimentos.' },
-			contact: { title: 'Contacto', body: 'Un área de pruebas para datos de contacto y consultas.' },
 			vision: { title: 'Visión', body: 'Un área de pruebas para la visión y los principios a largo plazo.' },
+			contactForm: {
+				heading: '¿Cómo podemos ayudarle?',
+				labels: { name: 'Nombre', email: 'Correo *', phone: 'Teléfono', message: '¿En qué puede ayudarle Aivoinko?' },
+				placeholders: {
+					name: 'Su nombre completo',
+					email: 'usted@dominio.com',
+					phone: 'Opcional',
+					message: 'Cuéntenos brevemente su consulta'
+				},
+				legal: 'Aivoinko utiliza la información que nos proporciona para contactar con usted sobre contenido, productos y servicios relevantes. Puede darse de baja en cualquier momento.',
+				submit: 'Enviar'
+			},
 			footer: { copyright: '(c) Aivoinko Machine Metaphysics' },
 			languages: { fi: 'Suomi', es: 'Español', nl: 'Nederlands', en: 'English', de: 'Deutsch', fr: 'Français' },
 			a11y: { logoAlt: 'Logotipo de Aivoinko' }
@@ -54,8 +87,19 @@
 			nav: { research: 'Onderzoek', contact: 'Contact', vision: 'Visie' },
 			hero: { tagline: 'Machine-metafysica voor mensgerichte AI' },
 			research: { title: 'Onderzoek', body: 'Een sandbox voor notities en experimenten.' },
-			contact: { title: 'Contact', body: 'Een sandbox voor contactgegevens en vragen.' },
 			vision: { title: 'Visie', body: 'Een sandbox om lange termijn visie en principes te schetsen.' },
+			contactForm: {
+				heading: 'Hoe kunnen we helpen?',
+				labels: { name: 'Naam', email: 'E-mail *', phone: 'Telefoon', message: 'Waarmee kan Aivoinko helpen?' },
+				placeholders: {
+					name: 'Uw volledige naam',
+					email: 'u@domein.com',
+					phone: 'Optioneel',
+					message: 'Beschrijf kort uw vraag'
+				},
+				legal: 'Aivoinko gebruikt de door u verstrekte informatie om contact met u op te nemen over relevante inhoud, producten en diensten. U kunt zich op elk moment afmelden.',
+				submit: 'Versturen'
+			},
 			footer: { copyright: '(c) Aivoinko Machine Metaphysics' },
 			languages: { fi: 'Suomi', es: 'Español', nl: 'Nederlands', en: 'English', de: 'Deutsch', fr: 'Français' },
 			a11y: { logoAlt: 'Aivoinko-logo' }
@@ -64,8 +108,19 @@
 			nav: { research: 'Forschung', contact: 'Kontakt', vision: 'Vision' },
 			hero: { tagline: 'Maschinenmetaphysik für menschenzentrierte KI' },
 			research: { title: 'Forschung', body: 'Ein Sandbox-Bereich für Notizen und Experimente.' },
-			contact: { title: 'Kontakt', body: 'Ein Sandbox-Bereich für Kontaktdaten und Anfragen.' },
 			vision: { title: 'Vision', body: 'Ein Sandbox-Bereich für langfristige Vision und Prinzipien.' },
+			contactForm: {
+				heading: 'Wie können wir helfen?',
+				labels: { name: 'Name', email: 'E-Mail *', phone: 'Telefon', message: 'Wobei kann Aivoinko helfen?' },
+				placeholders: {
+					name: 'Ihr vollständiger Name',
+					email: 'sie@domain.de',
+					phone: 'Optional',
+					message: 'Beschreiben Sie kurz Ihr Anliegen'
+				},
+				legal: 'Aivoinko verwendet Ihre Angaben, um Sie zu relevanten Inhalten, Produkten und Services zu kontaktieren. Eine Abmeldung ist jederzeit möglich.',
+				submit: 'Senden'
+			},
 			footer: { copyright: '(c) Aivoinko Machine Metaphysics' },
 			languages: { fi: 'Suomi', es: 'Español', nl: 'Nederlands', en: 'English', de: 'Deutsch', fr: 'Français' },
 			a11y: { logoAlt: 'Aivoinko-Logo' }
@@ -74,8 +129,19 @@
 			nav: { research: 'Recherche', contact: 'Contact', vision: 'Vision' },
 			hero: { tagline: 'Métaphysique de la machine pour une IA centrée sur l’humain' },
 			research: { title: 'Recherche', body: 'Une zone bac à sable pour notes et expériences.' },
-			contact: { title: 'Contact', body: 'Une zone bac à sable pour les coordonnées et demandes.' },
 			vision: { title: 'Vision', body: 'Une zone bac à sable pour la vision et les principes à long terme.' },
+			contactForm: {
+				heading: 'Comment pouvons-nous vous aider ?',
+				labels: { name: 'Nom', email: 'E-mail *', phone: 'Téléphone', message: 'En quoi Aivoinko peut-il vous aider ?' },
+				placeholders: {
+					name: 'Votre nom complet',
+					email: 'vous@domaine.com',
+					phone: 'Optionnel',
+					message: 'Expliquez brièvement votre demande'
+				},
+				legal: "Aivoinko utilise les informations fournies pour vous contacter à propos de contenus, produits et services pertinents. Vous pouvez vous désabonner à tout moment.",
+				submit: 'Envoyer'
+			},
 			footer: { copyright: '(c) Aivoinko Machine Metaphysics' },
 			languages: { fi: 'Suomi', es: 'Español', nl: 'Nederlands', en: 'English', de: 'Deutsch', fr: 'Français' },
 			a11y: { logoAlt: 'Logo Aivoinko' }
@@ -118,6 +184,15 @@
 			const text = getFromPath(dict, path);
 			if (typeof text === 'string') {
 				el.textContent = text;
+			}
+		});
+
+		// Update placeholders where data-i18n-placeholder is set
+		document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
+			const key = el.getAttribute('data-i18n-placeholder');
+			const value = getFromPath(dict, key);
+			if (typeof value === 'string') {
+				el.setAttribute('placeholder', value);
 			}
 		});
 

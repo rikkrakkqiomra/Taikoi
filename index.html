@@ -72,8 +72,45 @@
       </section>
 
       <section id="section-contact" class="section-card content-section" data-route="contact" hidden aria-hidden="true">
-        <h2 id="heading-contact" data-i18n="contact.title" tabindex="-1">Contact</h2>
-        <p data-i18n="contact.body">This is a sandbox area for quick contact details and inquiries.</p>
+        <h2 id="heading-contact" data-i18n="contactForm.heading" tabindex="-1">How can we help you?</h2>
+
+        <form class="contact-form" name="contact" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="contact" />
+          <p class="visually-hidden">
+            <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+          </p>
+
+          <div class="form-grid">
+            <div class="form-field span-2">
+              <label for="name" data-i18n="contactForm.labels.name">Name</label>
+              <input id="name" name="name" type="text" autocomplete="name" data-i18n-placeholder="contactForm.placeholders.name" />
+            </div>
+
+            <div class="form-field">
+              <label for="email" data-i18n="contactForm.labels.email">Email *</label>
+              <input id="email" name="email" type="email" required autocomplete="email" data-i18n-placeholder="contactForm.placeholders.email" />
+            </div>
+
+            <div class="form-field">
+              <label for="phone" data-i18n="contactForm.labels.phone">Phone</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" data-i18n-placeholder="contactForm.placeholders.phone" />
+            </div>
+
+            <div class="form-field span-2">
+              <label for="message" data-i18n="contactForm.labels.message">What can Aivoinko help you with?</label>
+              <textarea id="message" name="message" rows="6" data-i18n-placeholder="contactForm.placeholders.message"></textarea>
+            </div>
+          </div>
+
+          <p class="contact-legal" data-i18n="contactForm.legal">Aivoinko uses the information you provide to contact you about relevant content, products, and services. You may unsubscribe at any time. For more information, read our Privacy Policy.</p>
+
+          <div class="form-actions">
+            <button class="btn-cta" type="submit">
+              <span data-i18n="contactForm.submit">Submit</span>
+              <span class="btn-cta-arrow" aria-hidden="true">↗</span>
+            </button>
+          </div>
+        </form>
       </section>
 
       <section id="section-vision" class="section-card content-section" data-route="vision" hidden aria-hidden="true">
