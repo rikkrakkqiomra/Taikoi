@@ -332,9 +332,6 @@
 		initLanguageCards();
 		initRouter();
 
-		// Katana-like shimmer trigger on load and when scrolled back to top
-		initLogoShimmer();
-
 		// Ensure we start from the very top on first paint only when no route is active
 		const hasInitialRoute = !!sanitizeHash(window.location.hash);
 		if (!hasInitialRoute) {
@@ -351,37 +348,5 @@
 		init();
 	}
 })();
-
-// --- Katana shimmer logic ---
-function initLogoShimmer() {
-	const frame = document.querySelector('.logo-frame');
-	if (!frame) return;
-
-	const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-	if (prefersReduced) return; // respect reduced motion
-
-	const run = () => {
-		frame.classList.remove('shimmer-on');
-		// force reflow to restart animation
-		// eslint-disable-next-line no-unused-expressions
-		void frame.offsetWidth;
-		frame.classList.add('shimmer-on');
-	};
-
-	// Fire once shortly after first paint
-	window.requestAnimationFrame(() => setTimeout(run, 120));
-
-	// Re-fire when user scrolls back close to the very top
-	let ticking = false;
-	window.addEventListener('scroll', () => {
-		if (ticking) return;
-		ticking = true;
-		window.requestAnimationFrame(() => {
-			const atTop = window.scrollY <= 10;
-			if (atTop) run();
-			ticking = false;
-		});
-	}, { passive: true });
-}
 
 
