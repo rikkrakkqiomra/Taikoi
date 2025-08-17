@@ -239,6 +239,37 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 
 .footer-social { display: grid; gap: var(--space-3); }
 
+/* New social block using Font Awesome */
+.social-container { display: grid; gap: var(--space-3); }
+.social-links-box {
+	display: flex;
+	gap: var(--space-6);
+	align-items: center;
+	justify-content: center;
+}
+.social-icon {
+	display: inline-grid;
+	place-items: center;
+	width: 56px;
+	height: 56px;
+	border-radius: 12px;
+	background: rgba(255,255,255,0.06);
+	border: 1px solid var(--color-border);
+	box-shadow: var(--elev-1);
+	color: #e5e5e5;
+	transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease, color 120ms ease;
+}
+.social-icon i { font-size: 1.65rem; }
+.social-icon:hover, .social-icon:focus-visible {
+	transform: translateY(-1px);
+	box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+	background: rgba(255,255,255,0.12);
+	color: #fff;
+}
+.social-icon[href*="deviantart"] { border-color: #50e3c2; }
+.social-icon[href*="etsy"] { border-color: #f1641e; }
+.social-icon[href*="linkedin"] { border-color: #0a66c2; }
+
 .social-links {
 	list-style: none;
 	margin: 0;
@@ -282,6 +313,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 		justify-items: start;
 	}
 	.footer-social { justify-self: end; }
+	.social-container { justify-self: end; }
 }
 
 /* Responsive */

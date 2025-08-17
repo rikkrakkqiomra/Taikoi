@@ -9,12 +9,13 @@
     <link rel="canonical" href="/" />
 
     <!-- Early CSP to align with server headers (see netlify.toml). No inline scripts/styles required. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; upgrade-insecure-requests; img-src 'self' data:; script-src 'self'; style-src 'self'; connect-src 'self'" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; upgrade-insecure-requests; img-src 'self' data:; script-src 'self'; style-src 'self' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self'" />
 
     <!-- Preload the hero/logo image (LCP candidate). Place the file at assets/AiiAold.jpg on deploy. -->
     <link rel="preload" as="image" href="assets/AiiAold.jpg" />
 
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="script.js" defer></script>
   </head>
   <body>
@@ -123,26 +124,20 @@
       <div class="container footer-grid">
         <small class="footer-copy" data-i18n="footer.copyright">(c) Aivoinko Machine Metaphysics</small>
 
-        <nav class="footer-social" aria-label="Social links">
-          <h3 class="footer-heading" data-i18n="footer.follow">Follow us</h3>
-          <ul class="social-links" role="list">
-            <li>
-              <a class="social-link da" href="https://www.deviantart.com/rikkrakk/gallery#content" target="_blank" rel="me noopener noreferrer" aria-label="DeviantArt">
-                <span class="icon" aria-hidden="true">DA</span>
-              </a>
-            </li>
-            <li>
-              <a class="social-link etsy" href="https://www.etsy.com/fi-en/shop/Qiomra" target="_blank" rel="me noopener noreferrer" aria-label="Etsy">
-                <span class="icon" aria-hidden="true">E</span>
-              </a>
-            </li>
-            <li>
-              <a class="social-link linkedin" href="https://fi.linkedin.com/in/riku-korpiaho-a465bb251" target="_blank" rel="me noopener noreferrer" aria-label="LinkedIn">
-                <span class="icon" aria-hidden="true">in</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
+        <div class="social-container" aria-label="Social links">
+          <h2 class="footer-heading" data-i18n="footer.follow">Seuraa meitä</h2>
+          <div class="social-links-box">
+            <a href="https://www.deviantart.com/rikkrakk/gallery#content" target="_blank" rel="me noopener noreferrer" class="social-icon" aria-label="DeviantArt">
+              <i class="fa-brands fa-deviantart" aria-hidden="true"></i>
+            </a>
+            <a href="https://www.etsy.com/fi-en/shop/Qiomra" target="_blank" rel="me noopener noreferrer" class="social-icon" aria-label="Etsy">
+              <i class="fa-brands fa-etsy" aria-hidden="true"></i>
+            </a>
+            <a href="https://fi.linkedin.com/in/riku-korpiaho-a465bb251" target="_blank" rel="me noopener noreferrer" class="social-icon" aria-label="LinkedIn">
+              <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
       </div>
     </footer>
 
