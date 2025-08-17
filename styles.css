@@ -16,6 +16,7 @@
 	--color-border: rgba(255, 255, 255, 0.16);
 	--color-shadow: rgba(0, 0, 0, 0.25);
 	--color-focus: #ffcc66;
+	--color-accent-violet: #bf00ff; /* bright violet */
 
 	/* Spacing scale (rem) */
 	--space-0: 0;
@@ -144,6 +145,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .nav-list a {
 	display: block; padding: var(--space-3) var(--space-4);
 	border-bottom: 1px solid var(--color-border);
+	color: var(--color-accent-violet);
 }
 .nav-list li:last-child a { border-bottom: none; }
 .nav-list a:hover, .nav-list a:focus-visible { background: rgba(255,255,255,0.08); }
@@ -204,10 +206,11 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 	box-shadow: var(--elev-1);
 	padding: var(--space-6);
 }
+
 .section-card h2 {
 	margin-top: 0;
 	font-size: var(--fs-2);
-	color: #fff;
+	color: var(--color-accent-violet);
 }
 .section-card p { margin: var(--space-3) 0 0 0; }
 
