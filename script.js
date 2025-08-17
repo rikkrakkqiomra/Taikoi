@@ -8,6 +8,13 @@
 (function () {
 	'use strict';
 
+	// Ensure the browser doesn't restore scroll on reload/back-forward
+	try {
+		if ('scrollRestoration' in history) {
+			history.scrollRestoration = 'manual';
+		}
+	} catch (_) { /* ignore */ }
+
 	/**
 	 * Translations dictionary
 	 * Keys: en, fi, es, nl, de, fr
@@ -145,7 +152,25 @@
 
 	function navigate(hashRaw) {
 		const route = sanitizeHash(hashRaw);
-		const target = route || 'research';
+
+		// If there is no valid route, keep all subpages closed and stay at the very top
+		if (!route) {
+			document.querySelectorAll('.content-section').forEach((section) => {
+				section.hidden = true;
+				section.setAttribute('aria-hidden', 'true');
+			});
+			document.querySelectorAll('.primary-nav a').forEach((a) => a.removeAttribute('aria-current'));
+			// Force viewport to the very top without smooth behavior
+			requestAnimationFrame(() => {
+				document.documentElement.style.scrollBehavior = 'auto';
+				window.scrollTo(0, 0);
+				// restore author style
+				document.documentElement.style.scrollBehavior = '';
+			});
+			return;
+		}
+
+		const target = route;
 		// Toggle sections visibility
 		document.querySelectorAll('.content-section').forEach((section) => {
 			const isMatch = section.getAttribute('data-route') === target;
@@ -158,13 +183,21 @@
 			if (isActive) { a.setAttribute('aria-current', 'page'); }
 			else { a.removeAttribute('aria-current'); }
 		});
-		// Focus the section heading for accessibility when navigating via keyboard
+		// Focus the section heading for accessibility without scrolling the page down
 		const heading = document.getElementById(`heading-${target}`);
-		if (heading) { heading.focus({ preventScroll: false }); }
+		if (heading) { heading.focus({ preventScroll: true }); }
+
+		// Always keep the viewport at the top after routing to avoid hiding the logo
+		requestAnimationFrame(() => {
+			document.documentElement.style.scrollBehavior = 'auto';
+			window.scrollTo(0, 0);
+			document.documentElement.style.scrollBehavior = '';
+		});
 	}
 
 	function initRouter() {
-		navigate(window.location.hash || '#research');
+		// Do not auto-open any subpage; only navigate if a valid hash is present
+		navigate(window.location.hash);
 		window.addEventListener('hashchange', () => navigate(window.location.hash));
 	}
 
@@ -214,6 +247,13 @@
 		initMenuToggle();
 		initLanguageCards();
 		initRouter();
+
+		// Ensure we start from the very top on first paint
+		requestAnimationFrame(() => {
+			document.documentElement.style.scrollBehavior = 'auto';
+			window.scrollTo(0, 0);
+			document.documentElement.style.scrollBehavior = '';
+		});
 	}
 
 	if (document.readyState === 'loading') {
