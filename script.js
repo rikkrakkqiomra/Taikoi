@@ -235,12 +235,10 @@
 				section.setAttribute('aria-hidden', 'true');
 			});
 			document.querySelectorAll('.primary-nav a').forEach((a) => a.removeAttribute('aria-current'));
-			// Force viewport to the very top without smooth behavior
+			// Return to the very top, smoothly when allowed
 			requestAnimationFrame(() => {
-				document.documentElement.style.scrollBehavior = 'auto';
-				window.scrollTo(0, 0);
-				// restore author style
-				document.documentElement.style.scrollBehavior = '';
+				const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+				window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
 			});
 			return;
 		}
@@ -262,11 +260,14 @@
 		const heading = document.getElementById(`heading-${target}`);
 		if (heading) { heading.focus({ preventScroll: true }); }
 
-		// Always keep the viewport at the top after routing to avoid hiding the logo
+		// Smoothly scroll to the start of the selected content section
 		requestAnimationFrame(() => {
-			document.documentElement.style.scrollBehavior = 'auto';
-			window.scrollTo(0, 0);
-			document.documentElement.style.scrollBehavior = '';
+			const section = document.querySelector(`section[data-route="${target}"]`);
+			if (!section) return;
+			const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+			const offset = 12; // small visual breathing room
+			const top = Math.max(0, section.getBoundingClientRect().top + window.pageYOffset - offset);
+			window.scrollTo({ top, behavior: prefersReduced ? 'auto' : 'smooth' });
 		});
 	}
 
@@ -289,6 +290,14 @@
 				const firstLink = nav.querySelector('a');
 				if (firstLink) firstLink.focus();
 			}
+		});
+
+		// Close the mobile menu when a navigation link is activated
+		nav.addEventListener('click', (event) => {
+			const link = event.target && event.target.closest && event.target.closest('a');
+			if (!link) return;
+			toggle.setAttribute('aria-expanded', 'false');
+			nav.setAttribute('data-open', 'false');
 		});
 	}
 
@@ -323,12 +332,14 @@
 		initLanguageCards();
 		initRouter();
 
-		// Ensure we start from the very top on first paint
-		requestAnimationFrame(() => {
-			document.documentElement.style.scrollBehavior = 'auto';
-			window.scrollTo(0, 0);
-			document.documentElement.style.scrollBehavior = '';
-		});
+		// Ensure we start from the very top on first paint only when no route is active
+		const hasInitialRoute = !!sanitizeHash(window.location.hash);
+		if (!hasInitialRoute) {
+			requestAnimationFrame(() => {
+				const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+				window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+			});
+		}
 	}
 
 	if (document.readyState === 'loading') {
