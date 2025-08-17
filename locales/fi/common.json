@@ -1,0 +1,40 @@
+{
+  "nav": {
+    "research": "Tutkimus",
+    "contact": "Yhteystiedot",
+    "vision": "Visio"
+  },
+  "hero": {
+    "tagline": "Tutkimme tekoälyn ja ihmistietoisuuden risteyskohtaa",
+    "cta": "Tutustu Lisää"
+  },
+  "languages": {
+    "choose": "Valitse Kieli",
+    "finnish": "Suomi",
+    "spanish": "Espanja",
+    "dutch": "Hollanti",
+    "english": "Englanti",
+    "german": "Saksa",
+    "french": "Ranska"
+  },
+  "pages": {
+    "research": {
+      "title": "Tutkimus",
+      "subtitle": "Edistämme tekoälyn etiikkaa ja tietoisuustutkimusta",
+      "content": "Tutkimuksemme keskittyy tekoälyn eettisiin vaikutuksiin ja tutkii koneoppimisen ja ihmistietoisuuden välisiä rajoja. Selvitämme, miten tekoälyjärjestelmät voidaan suunnitella kunnioittamaan inhimillisiä arvoja samalla kun viedään eteenpäin sitä, mitä koneet voivat ymmärtää ja luoda."
+    },
+    "contact": {
+      "title": "Yhteystiedot",
+      "subtitle": "Ota yhteyttä tiimiimme",
+      "content": "Ota yhteyttä keskustellaksesi yhteistyöstä, tutkimusmahdollisuuksista tai saadaksesi lisätietoja työstämme tekoälytietoisuuden ja konemetafysiikan parissa. Tervetullemme keskusteluun tutkijoiden, etiikan asiantuntijoiden ja kaikkien tekoälyn tulevaisuudesta kiinnostuneiden kanssa."
+    },
+    "vision": {
+      "title": "Visio",
+      "subtitle": "Tekoälytietoisuuden tulevaisuus",
+      "content": "Näemme tulevaisuuden, jossa tekoäly ja ihmistietoisuus elävät harmoniassa. Tehtävämme on kehittää viitekehyksiä konetietoisuuden ymmärtämiseksi varmistaen samalla, että tekoälyn kehitys pysyy linjassa inhimillisen kukoistuksen ja eettisten periaatteiden kanssa."
+    }
+  },
+  "footer": {
+    "copyright": "(c) Aivoinko Machine Metaphysics"
+  }
+}

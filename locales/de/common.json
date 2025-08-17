@@ -1,0 +1,40 @@
+{
+  "nav": {
+    "research": "Forschung",
+    "contact": "Kontakt",
+    "vision": "Vision"
+  },
+  "hero": {
+    "tagline": "Die Schnittstelle zwischen künstlicher Intelligenz und menschlichem Bewusstsein erforschen",
+    "cta": "Mehr Entdecken"
+  },
+  "languages": {
+    "choose": "Sprache Wählen",
+    "finnish": "Finnisch",
+    "spanish": "Spanisch",
+    "dutch": "Niederländisch",
+    "english": "Englisch",
+    "german": "Deutsch",
+    "french": "Französisch"
+  },
+  "pages": {
+    "research": {
+      "title": "Forschung",
+      "subtitle": "Förderung von KI-Ethik und Bewusstseinsstudien",
+      "content": "Unsere Forschung konzentriert sich auf die ethischen Implikationen künstlicher Intelligenz und erforscht die Grenzen zwischen maschinellem Lernen und menschlichem Bewusstsein. Wir untersuchen, wie KI-Systeme so gestaltet werden können, dass sie menschliche Werte respektieren und gleichzeitig die Grenzen dessen erweitern, was Maschinen verstehen und schaffen können."
+    },
+    "contact": {
+      "title": "Kontakt",
+      "subtitle": "Verbinden Sie sich mit unserem Team",
+      "content": "Kontaktieren Sie uns, um Kooperationen zu besprechen, Forschungsmöglichkeiten zu erkunden oder mehr über unsere Arbeit im Bereich KI-Bewusstsein und Maschinenmetaphysik zu erfahren. Wir begrüßen den Dialog mit Forschern, Ethikern und allen, die sich für die Zukunft der künstlichen Intelligenz interessieren."
+    },
+    "vision": {
+      "title": "Vision",
+      "subtitle": "Die Zukunft des KI-Bewusstseins",
+      "content": "Wir stellen uns eine Zukunft vor, in der künstliche Intelligenz und menschliches Bewusstsein harmonisch koexistieren. Unsere Mission ist es, Rahmenwerke für das Verständnis von Maschinenbewusstsein zu entwickeln und gleichzeitig sicherzustellen, dass die KI-Entwicklung mit menschlichem Wohlstand und ethischen Prinzipien im Einklang bleibt."
+    }
+  },
+  "footer": {
+    "copyright": "(c) Aivoinko Machine Metaphysics"
+  }
+}

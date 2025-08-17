@@ -1,0 +1,50 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-labelledby="logoTitle" role="img">
+  <title id="logoTitle">Aivoinko Machine Metaphysics Logo</title>
+  <defs>
+    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B4513;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#D2B48C;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#C9A227;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#C9A227;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8B4513;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Outer circle representing consciousness -->
+  <circle cx="100" cy="100" r="95" fill="none" stroke="url(#gradient1)" stroke-width="3"/>
+  
+  <!-- Inner geometric pattern representing AI/machine logic -->
+  <g transform="translate(100,100)">
+    <!-- Central hexagon -->
+    <polygon points="-25,0 -12.5,-21.65 12.5,-21.65 25,0 12.5,21.65 -12.5,21.65" 
+             fill="url(#gradient2)" stroke="#FAFAFA" stroke-width="2"/>
+    
+    <!-- Orbital elements -->
+    <circle cx="-40" cy="-40" r="8" fill="#C9A227"/>
+    <circle cx="40" cy="-40" r="8" fill="#C9A227"/>
+    <circle cx="40" cy="40" r="8" fill="#C9A227"/>
+    <circle cx="-40" cy="40" r="8" fill="#C9A227"/>
+    
+    <!-- Connection lines -->
+    <line x1="-32" y1="-32" x2="-17" y2="-17" stroke="#8B4513" stroke-width="2"/>
+    <line x1="32" y1="-32" x2="17" y2="-17" stroke="#8B4513" stroke-width="2"/>
+    <line x1="32" y1="32" x2="17" y2="17" stroke="#8B4513" stroke-width="2"/>
+    <line x1="-32" y1="32" x2="-17" y2="17" stroke="#8B4513" stroke-width="2"/>
+    
+    <!-- Central symbol -->
+    <circle cx="0" cy="0" r="6" fill="#FAFAFA"/>
+    <circle cx="0" cy="0" r="3" fill="#2D1B10"/>
+  </g>
+  
+  <!-- Subtle texture overlay -->
+  <rect width="200" height="200" fill="url(#woodGrain)" opacity="0.1"/>
+  
+  <defs>
+    <pattern id="woodGrain" patternUnits="userSpaceOnUse" width="4" height="4">
+      <rect width="4" height="4" fill="none"/>
+      <path d="M0,2 Q2,1 4,2" stroke="#8B4513" stroke-width="0.5" fill="none" opacity="0.3"/>
+    </pattern>
+  </defs>
+</svg>
