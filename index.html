@@ -36,33 +36,37 @@
         </nav>
       </div>
 
-      <!-- Brand/logo visually integrated within the header area -->
-      <div class="brand" aria-hidden="false">
-        <!-- Note: Place the logo file at assets/AiiAold.jpg -->
-        <img
-          id="brandLogo"
-          src="assets/AiiAold.jpg"
-          width="200"
-          height="200"
-          decoding="async"
-          fetchpriority="high"
-          alt="Aivoinko logo"
-        />
+      <!-- Brand/logo with language flags split 3+3 around it -->
+      <div class="brand-language container" aria-label="Language selection around logo">
+        <div class="lang-flags-col left" role="group" aria-label="Choose language">
+          <button class="lang-flag" type="button" data-lang="fi" aria-pressed="false" aria-label="Suomi">🇫🇮</button>
+          <button class="lang-flag" type="button" data-lang="es" aria-pressed="false" aria-label="Español">🇪🇸</button>
+          <button class="lang-flag" type="button" data-lang="nl" aria-pressed="false" aria-label="Nederlands">🇳🇱</button>
+        </div>
+
+        <div class="brand" aria-hidden="false">
+          <!-- Note: Place the logo file at assets/AiiAold.jpg -->
+          <img
+            id="brandLogo"
+            src="assets/AiiAold.jpg"
+            width="200"
+            height="200"
+            decoding="async"
+            fetchpriority="high"
+            alt="Aivoinko logo"
+          />
+        </div>
+
+        <div class="lang-flags-col right" role="group" aria-label="Choose language">
+          <button class="lang-flag" type="button" data-lang="en" aria-pressed="true" aria-label="English">🇬🇧</button>
+          <button class="lang-flag" type="button" data-lang="de" aria-pressed="false" aria-label="Deutsch">🇩🇪</button>
+          <button class="lang-flag" type="button" data-lang="fr" aria-pressed="false" aria-label="Français">🇫🇷</button>
+        </div>
       </div>
     </header>
 
     <main id="main-content" class="site-main container" role="main">
-      <section class="language-select" aria-labelledby="languageHeading">
-        <h2 id="languageHeading" class="visually-hidden">Choose language</h2>
-        <div class="lang-cards" role="group" aria-label="Language selection">
-          <button class="lang-card" type="button" data-lang="fi" aria-pressed="false">Suomi</button>
-          <button class="lang-card" type="button" data-lang="es" aria-pressed="false">Español</button>
-          <button class="lang-card" type="button" data-lang="nl" aria-pressed="false">Nederlands</button>
-          <button class="lang-card" type="button" data-lang="en" aria-pressed="true">English</button>
-          <button class="lang-card" type="button" data-lang="de" aria-pressed="false">Deutsch</button>
-          <button class="lang-card" type="button" data-lang="fr" aria-pressed="false">Français</button>
-        </div>
-      </section>
+      
 
       <p id="heroTagline" class="hero-tagline" aria-live="polite" data-i18n="hero.tagline">Timeless, boundless mind as revelation is compelling, in carbon as in silicon. Let's master them at once. I am a Finnish multi‑tool, focused mainly on biomedical engineering and human–AI interaction. So far I love most experimental AI systems and brand cults. "Aivoinko Machine Metaphysics" is the all‑in‑one choice to benefit efficiently from the crown jewel of modern science. Aivoinko teaches how to work with AI holistically. Aivoinko ends the bullshit.</p>
 

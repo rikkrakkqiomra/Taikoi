@@ -202,6 +202,16 @@
 			const label = dict.languages && dict.languages[code];
 			if (label) btn.textContent = label;
 		});
+
+		// Update flag buttons a11y labels and titles
+		document.querySelectorAll('.lang-flag').forEach((btn) => {
+			const code = btn.getAttribute('data-lang');
+			const label = dict.languages && dict.languages[code];
+			if (label) {
+				btn.setAttribute('aria-label', label);
+				btn.setAttribute('title', label);
+			}
+		});
 	}
 
 	/** Helper to safely get nested object value by a.b.c path */
@@ -211,7 +221,7 @@
 
 	/** Update aria-pressed state on language cards */
 	function updateLangCardPressedState(activeLang) {
-		document.querySelectorAll('.lang-card').forEach((btn) => {
+		document.querySelectorAll('.lang-card, .lang-flag').forEach((btn) => {
 			btn.setAttribute('aria-pressed', String(btn.dataset.lang === activeLang));
 		});
 	}
@@ -302,7 +312,7 @@
 	}
 
 	function initLanguageCards() {
-		document.querySelectorAll('.lang-card').forEach((btn) => {
+		document.querySelectorAll('.lang-card, .lang-flag').forEach((btn) => {
 			btn.addEventListener('click', () => {
 				const lang = btn.getAttribute('data-lang');
 				setLanguage(lang);
