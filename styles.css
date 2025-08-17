@@ -247,75 +247,60 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 }
 
 .contact-form {
-	max-width: 700px;
+	max-width: 600px;
 	margin: 0 auto;
 	opacity: 0;
 	animation: fadeInUp 0.8s ease-out 0.4s both;
 }
 
 .form-row {
-	margin-bottom: var(--space-8);
+	margin-bottom: var(--space-5);
 }
 
 .form-row.two-cols {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	gap: var(--space-6);
+	gap: var(--space-4);
 }
 
 .form-input,
 .form-textarea {
 	width: 100%;
-	padding: var(--space-5) var(--space-4);
-	background: rgba(90, 60, 35, 0.3);
-	border: 2px solid rgba(212, 175, 55, 0.2);
+	padding: var(--space-4);
+	background: rgba(255, 255, 255, 0.08);
+	border: 2px solid var(--color-border);
 	border-radius: var(--radius-md);
 	color: var(--color-text);
 	font-family: var(--font-sans);
 	font-size: var(--fs-0);
 	transition: all 0.3s ease;
-	backdrop-filter: blur(8px);
-	box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-	min-height: 56px;
-}
-
-.form-input:hover {
-	border-color: rgba(212, 175, 55, 0.3);
-	background: rgba(90, 60, 35, 0.4);
 }
 
 .form-input::placeholder,
 .form-textarea::placeholder {
-	color: rgba(230, 221, 207, 0.6);
-	opacity: 1;
-	font-weight: 400;
+	color: var(--color-text-muted);
+	opacity: 0.7;
 }
 
 .form-input:focus,
 .form-textarea:focus {
 	outline: none;
 	border-color: var(--color-gold);
-	background: rgba(90, 60, 35, 0.5);
-	box-shadow: 
-		inset 0 2px 4px rgba(0, 0, 0, 0.1),
-		0 0 0 4px rgba(212, 175, 55, 0.15),
-		0 4px 12px rgba(212, 175, 55, 0.1);
-	transform: translateY(-2px);
+	background: rgba(255, 255, 255, 0.12);
+	box-shadow: 0 0 0 4px rgba(212, 175, 55, 0.15);
+	transform: translateY(-1px);
 }
 
 .form-textarea {
 	resize: vertical;
-	min-height: 140px;
-	line-height: 1.6;
+	min-height: 120px;
 }
 
 .privacy-text {
 	font-size: 0.875rem;
 	color: var(--color-text-muted);
-	line-height: 1.6;
-	margin: var(--space-6) 0;
-	text-align: center;
-	opacity: 0.9;
+	line-height: 1.5;
+	margin: var(--space-4) 0;
 }
 
 .privacy-link {
@@ -331,35 +316,26 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .recaptcha {
 	display: flex;
 	justify-content: center;
-	margin: var(--space-8) 0;
-}
-
-.form-row.submit-row {
-	margin-bottom: var(--space-4);
-	margin-top: var(--space-8);
-	display: flex;
-	justify-content: center;
+	margin: var(--space-6) 0;
 }
 
 .btn-submit {
-	max-width: 200px;
-	width: auto;
-	padding: var(--space-5) var(--space-8);
+	width: 100%;
+	padding: var(--space-4) var(--space-6);
 	background: linear-gradient(135deg, var(--color-gold), #b8941f);
 	color: #1b1b1b;
 	border: none;
-	border-radius: var(--radius-lg);
+	border-radius: var(--radius-md);
 	font-weight: 700;
-	font-size: var(--fs-1);
+	font-size: var(--fs-0);
 	cursor: pointer;
 	transition: all 0.3s ease;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	gap: var(--space-3);
+	gap: var(--space-2);
 	position: relative;
 	overflow: hidden;
-	box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
 }
 
 .btn-submit::before {
@@ -374,8 +350,8 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 }
 
 .btn-submit:hover {
-	transform: translateY(-3px);
-	box-shadow: 0 8px 30px rgba(212, 175, 55, 0.4);
+	transform: translateY(-2px);
+	box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
 	background: linear-gradient(135deg, #ffcc66, var(--color-gold));
 }
 
@@ -448,46 +424,15 @@ html {
 	transform: translateY(0);
 }
 
-/* Form focus effects */
-.form-input:focus-within,
-.form-textarea:focus-within {
-	border-color: var(--color-gold);
-	background: rgba(90, 60, 35, 0.5);
-}
-
-/* Add subtle borders and visual separation */
-.contact-section {
-	border: 1px solid rgba(212, 175, 55, 0.1);
-}
-
-.form-row + .form-row {
-	position: relative;
-}
-
-.form-row + .form-row::before {
-	content: '';
-	position: absolute;
-	top: calc(-1 * var(--space-4));
-	left: 0;
-	right: 0;
-	height: 1px;
-	background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
-}
-
 /* Mobile responsiveness for contact form */
 @media (max-width: 640px) {
 	.form-row.two-cols {
 		grid-template-columns: 1fr;
-		gap: var(--space-4);
+		gap: var(--space-3);
 	}
 	
 	.contact-form {
 		padding: 0 var(--space-2);
-	}
-	
-	.btn-submit {
-		padding: var(--space-4) var(--space-6);
-		font-size: var(--fs-0);
 	}
 }
 
