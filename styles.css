@@ -141,6 +141,8 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 	border: 1px solid var(--color-border);
 	border-radius: var(--radius-md);
 	box-shadow: var(--elev-1);
+	justify-self: end;
+	width: 180px; /* narrower than 200px logo, wider than Menu button */
 	/* Animated disclosure (no inline styles; CSP-friendly) */
 	overflow: hidden;
 	max-height: 0;
@@ -400,6 +402,7 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 		box-shadow: none;
 		margin-top: 0;
 		display: block;
+		width: auto;
 		/* Reset animated state for desktop */
 		max-height: none;
 		opacity: 1;
