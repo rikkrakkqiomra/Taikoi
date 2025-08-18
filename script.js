@@ -21,10 +21,10 @@
 	 */
 	const translations = {
 		en: {
-			nav: { research: 'Research', contact: 'Contact', vision: 'Vision' },
+			nav: { research: 'Research', contact: 'Contact Us', vision: 'Services' },
 			hero: { tagline: 'Timeless, boundless mind as revelation is compelling, in carbon as in silicon. Let\'s master them at once. I am a Finnish multi‑tool, focused mainly on biomedical engineering and human–AI interaction. So far I love most experimental AI systems and brand cults. "Aivoinko Machine Metaphysics" is the all‑in‑one choice to benefit efficiently from the crown jewel of modern science. Aivoinko teaches how to work with AI holistically. Aivoinko ends the bullshit.' },
 			research: { title: 'Research', body: 'This is a sandbox area for research notes and experiments.' },
-			vision: { title: 'Vision', body: 'This is a sandbox area to outline long-term vision and principles.' },
+			vision: { title: 'Services', body: 'This is a sandbox area to outline long-term vision and principles.' },
 			contactForm: {
 				heading: 'How can we help you?',
 				labels: { name: 'Name', email: 'Email *', phone: 'Phone', message: 'What can Aivoinko help you with?' },
@@ -42,10 +42,10 @@
 			a11y: { logoAlt: 'Aivoinko logo' }
 		},
 		fi: {
-			nav: { research: 'Tutkimus', contact: 'Yhteys', vision: 'Visio' },
+			nav: { research: 'Tutkimus', contact: 'Ota yhteyttä', vision: 'Palvelut' },
 			hero: { tagline: 'Ajaton, rajaton mieli ilmestyksenä kiinnostaa, hiilessä kuin piissä. Otetaan ne haltuun kerralla. Olen suomalainen monitoimikone, keskittynyt pääosin biolääketieteen tekniikkaan ja ihmis–AI‑interaktioon. Rakastan tähän mennessä eniten kokeellisia tekoälyjärjestelmiä ja brändikultteja. "Aivoinko Machine Metaphysics" on all‑in‑one valinta hyötyä tehokkaasti modernin tieteen kruunjalokivestä. Aivoinko opettaa, miten tekoälyn kanssa toimitaan kokonaisvaltaisesti. Aivoinko lopettaa paskanjauhannan.' },
 			research: { title: 'Tutkimus', body: 'Tämä on hiekkalaatikkoalue muistiinpanoille ja kokeiluille.' },
-			vision: { title: 'Visio', body: 'Tämä on hiekkalaatikkoalue pitkän aikavälin periaatteille.' },
+			vision: { title: 'Palvelut', body: 'Tämä on hiekkalaatikkoalue pitkän aikavälin periaatteille.' },
 			contactForm: {
 				heading: 'Kuinka voimme auttaa?',
 				labels: { name: 'Nimi', email: 'Sähköposti *', phone: 'Puhelin', message: 'Missä Aivoinko voi auttaa?' },
@@ -63,10 +63,10 @@
 			a11y: { logoAlt: 'Aivoinko-logo' }
 		},
 		es: {
-			nav: { research: 'Investigación', contact: 'Contacto', vision: 'Visión' },
+			nav: { research: 'Investigación', contact: 'Contáctenos', vision: 'Servicios' },
 			hero: { tagline: 'La mente intemporal y sin límites como revelación fascina, en carbono como en silicio. Tomémoslas bajo control de una vez. Soy una multiherramienta finlandesa, centrada principalmente en la ingeniería biomédica y la interacción humano‑IA. Hasta ahora me encantan sobre todo los sistemas de IA experimentales y los cultos de marca. «Aivoinko Machine Metaphysics» es la opción todo‑en‑uno para beneficiarse con eficacia de la joya de la corona de la ciencia moderna. Aivoinko enseña a trabajar con la IA de forma holística. Aivoinko pone fin a las tonterías.' },
 			research: { title: 'Investigación', body: 'Un área de pruebas para notas y experimentos.' },
-			vision: { title: 'Visión', body: 'Un área de pruebas para la visión y los principios a largo plazo.' },
+			vision: { title: 'Servicios', body: 'Un área de pruebas para la visión y los principios a largo plazo.' },
 			contactForm: {
 				heading: '¿Cómo podemos ayudarle?',
 				labels: { name: 'Nombre', email: 'Correo *', phone: 'Teléfono', message: '¿En qué puede ayudarle Aivoinko?' },
@@ -84,10 +84,10 @@
 			a11y: { logoAlt: 'Logotipo de Aivoinko' }
 		},
 		nl: {
-			nav: { research: 'Onderzoek', contact: 'Contact', vision: 'Visie' },
+			nav: { research: 'Onderzoek', contact: 'Neem contact op', vision: 'Diensten' },
 			hero: { tagline: 'Tijdeloze, grenzeloze geest als openbaring boeit, in koolstof én in silicium. Laten we ze in één keer beheersen. Ik ben een Finse multitool, vooral gericht op biomedische techniek en mens‑AI‑interactie. Tot nu toe houd ik het meest van experimentele AI‑systemen en merkcultussen. ‘Aivoinko Machine Metaphysics’ is de alles‑in‑één keuze om efficiënt te profiteren van het kroonjuweel van de moderne wetenschap. Aivoinko leert hoe je holistisch met AI werkt. Aivoinko maakt een einde aan de onzin.' },
 			research: { title: 'Onderzoek', body: 'Een sandbox voor notities en experimenten.' },
-			vision: { title: 'Visie', body: 'Een sandbox om lange termijn visie en principes te schetsen.' },
+			vision: { title: 'Diensten', body: 'Een sandbox om lange termijn visie en principes te schetsen.' },
 			contactForm: {
 				heading: 'Hoe kunnen we helpen?',
 				labels: { name: 'Naam', email: 'E-mail *', phone: 'Telefoon', message: 'Waarmee kan Aivoinko helpen?' },
@@ -105,10 +105,10 @@
 			a11y: { logoAlt: 'Aivoinko-logo' }
 		},
 		de: {
-			nav: { research: 'Forschung', contact: 'Kontakt', vision: 'Vision' },
+			nav: { research: 'Forschung', contact: 'Kontaktieren Sie uns', vision: 'Leistungen' },
 			hero: { tagline: 'Zeitloser, grenzenloser Geist als Offenbarung fasziniert – in Kohlenstoff wie in Silizium. Nehmen wir beides auf einmal in die Hand. Ich bin ein finnisches Multitool, hauptsächlich fokussiert auf Biomedizintechnik und Mensch‑KI‑Interaktion. Am meisten liebe ich bislang experimentelle KI‑Systeme und Markenkulte. „Aivoinko Machine Metaphysics“ ist die All‑in‑One‑Wahl, um effizient vom Kronjuwel der modernen Wissenschaft zu profitieren. Aivoinko lehrt, wie man ganzheitlich mit KI arbeitet. Aivoinko beendet den Bullshit.' },
 			research: { title: 'Forschung', body: 'Ein Sandbox-Bereich für Notizen und Experimente.' },
-			vision: { title: 'Vision', body: 'Ein Sandbox-Bereich für langfristige Vision und Prinzipien.' },
+			vision: { title: 'Leistungen', body: 'Ein Sandbox-Bereich für langfristige Vision und Prinzipien.' },
 			contactForm: {
 				heading: 'Wie können wir helfen?',
 				labels: { name: 'Name', email: 'E-Mail *', phone: 'Telefon', message: 'Wobei kann Aivoinko helfen?' },
@@ -126,10 +126,10 @@
 			a11y: { logoAlt: 'Aivoinko-Logo' }
 		},
 		fr: {
-			nav: { research: 'Recherche', contact: 'Contact', vision: 'Vision' },
+			nav: { research: 'Recherche', contact: 'Contactez‑nous', vision: 'Services' },
 			hero: { tagline: 'Un esprit intemporel et sans limites, comme une révélation, fascine – dans le carbone comme dans le silicium. Prenons‑les en main d’un seul coup. Je suis un outil polyvalent finlandais, principalement axé sur le génie biomédical et l’interaction humain‑IA. Jusqu’ici, j’aime surtout les systèmes d’IA expérimentaux et les cultes de marque. « Aivoinko Machine Metaphysics » est le choix tout‑en‑un pour profiter efficacement du joyau de la science moderne. Aivoinko enseigne comment travailler avec l’IA de manière holistique. Aivoinko met fin aux conneries.' },
 			research: { title: 'Recherche', body: 'Une zone bac à sable pour notes et expériences.' },
-			vision: { title: 'Vision', body: 'Une zone bac à sable pour la vision et les principes à long terme.' },
+			vision: { title: 'Services', body: 'Une zone bac à sable pour la vision et les principes à long terme.' },
 			contactForm: {
 				heading: 'Comment pouvons-nous vous aider ?',
 				labels: { name: 'Nom', email: 'E-mail *', phone: 'Téléphone', message: 'En quoi Aivoinko peut-il vous aider ?' },
