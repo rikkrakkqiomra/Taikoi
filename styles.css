@@ -215,9 +215,9 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .lang-flag {
 	display: inline-grid;
 	place-items: center;
-	width: 36px;
-	height: 36px;
-	border-radius: 999px;
+	width: 42px;
+	height: 28px;
+	border-radius: 0;
 	background: rgba(255,255,255,0.06);
 	border: 2px solid #e9e2d6;
 	box-shadow: var(--elev-1);
@@ -233,8 +233,8 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .lang-flag[aria-pressed="true"] { outline: 2px solid var(--color-gold); outline-offset: 2px; }
 
 @media (max-width: 399px) {
-	/* Slightly shrink flags on very small screens */
-	.lang-flag { width: 32px; height: 32px; font-size: 0.95rem; }
+	/* Slightly shrink flags on very small screens (keep rectangular shape) */
+	.lang-flag { width: 36px; height: 24px; font-size: 0.95rem; }
 }
 
 /* Language cards */
