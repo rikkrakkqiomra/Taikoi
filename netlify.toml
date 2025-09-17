@@ -1,24 +1,230 @@
-# Netlify configuration for a static, secure site
-
 [build]
   publish = "."
 
+# Language-prefixed page rewrites (ensure specific pages resolve correctly)
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/:lang/contact"
+  to = "/contact.html"
   status = 200
 
+[[redirects]]
+  from = "/:lang/gdt"
+  to = "/gdt.html"
+  status = 200
+
+[[redirects]]
+  from = "/:lang/intelligentleman"
+  to = "/intelligentleman.html"
+  status = 200
+
+[[redirects]]
+  from = "/:lang/contact.html"
+  to = "/contact.html"
+  status = 200
+
+[[redirects]]
+  from = "/:lang/gdt.html"
+  to = "/gdt.html"
+  status = 200
+
+[[redirects]]
+  from = "/:lang/intelligentleman.html"
+  to = "/intelligentleman.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/*"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/es/*"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/de/*"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/nl/*"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/fr/*"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/fi/*"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/pl/*"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/en"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/es"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/de"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/nl"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/fr"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/fi"
+  to = "/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/pl"
+  to = "/index.html"
+  status = 200
+  force = true
+
+# Handle direct access to language-specific pages
+[[redirects]]
+  from = "/en/contact.html"
+  to = "/contact.html"
+  status = 200
+
+[[redirects]]
+  from = "/es/contact.html"
+  to = "/contact.html"
+  status = 200
+
+[[redirects]]
+  from = "/de/contact.html"
+  to = "/contact.html"
+  status = 200
+
+[[redirects]]
+  from = "/nl/contact.html"
+  to = "/contact.html"
+  status = 200
+
+[[redirects]]
+  from = "/fr/contact.html"
+  to = "/contact.html"
+  status = 200
+
+[[redirects]]
+  from = "/pl/contact.html"
+  to = "/contact.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/gdt.html"
+  to = "/gdt.html"
+  status = 200
+
+[[redirects]]
+  from = "/es/gdt.html"
+  to = "/gdt.html"
+  status = 200
+
+[[redirects]]
+  from = "/de/gdt.html"
+  to = "/gdt.html"
+  status = 200
+
+[[redirects]]
+  from = "/nl/gdt.html"
+  to = "/gdt.html"
+  status = 200
+
+[[redirects]]
+  from = "/fr/gdt.html"
+  to = "/gdt.html"
+  status = 200
+
+[[redirects]]
+  from = "/pl/gdt.html"
+  to = "/gdt.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/intelligentleman.html"
+  to = "/intelligentleman.html"
+  status = 200
+
+[[redirects]]
+  from = "/es/intelligentleman.html"
+  to = "/intelligentleman.html"
+  status = 200
+
+[[redirects]]
+  from = "/de/intelligentleman.html"
+  to = "/intelligentleman.html"
+  status = 200
+
+[[redirects]]
+  from = "/nl/intelligentleman.html"
+  to = "/intelligentleman.html"
+  status = 200
+
+[[redirects]]
+  from = "/fr/intelligentleman.html"
+  to = "/intelligentleman.html"
+  status = 200
+
+[[redirects]]
+  from = "/pl/intelligentleman.html"
+  to = "/intelligentleman.html"
+  status = 200
+
+# Headers for better caching
 [[headers]]
-  for = "/*"
+  for = "*.json"
   [headers.values]
-    # Security Headers
-    Content-Security-Policy = "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; upgrade-insecure-requests; img-src 'self' data:; script-src 'self'; style-src 'self' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self'"
-    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
-    X-Content-Type-Options = "nosniff"
-    X-Frame-Options = "SAMEORIGIN"
-    Referrer-Policy = "no-referrer-when-downgrade"
-    Permissions-Policy = "accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), cross-origin-isolated=(), display-capture=(), document-domain=(), encrypted-media=(), fullscreen=*, geolocation=(), gyroscope=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=*, publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), web-share=(), xr-spatial-tracking=()"
-    # Caching
-    Cache-Control = "public, max-age=600"
+    Cache-Control = "public, max-age=3600"
 
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
 
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=86400" 
+
+# Cache images aggressively with immutable fingerprints (adjust if using file hashing)
+[[headers]]
+  for = "*.{png,jpg,jpeg,webp,avif,svg,gif,ico}"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

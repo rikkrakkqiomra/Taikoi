@@ -1,154 +1,264 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Aivoinko — Machine Metaphysics</title>
-    <meta name="description" content="Machine Metaphysics for Human-Centered AI. A minimal, fast, accessible static template with i18n and hash-based routing." />
-    <meta name="theme-color" content="#1b120a" />
-    <link rel="canonical" href="/" />
 
-    <!-- Early CSP to align with server headers (see netlify.toml). No inline scripts/styles required. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'self'; form-action 'self'; upgrade-insecure-requests; img-src 'self' data:; script-src 'self'; style-src 'self' https://cdnjs.cloudflare.com; font-src 'self' https://cdnjs.cloudflare.com; connect-src 'self'" />
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" data-i18n="meta_home_description" content="Gold Digger Technologies rakentaa lohkoketjuun perustuvaa tekoälyalustaa, jonka ytimessä ovat varmennettavuus, sääntelykelpoisuus ja tietoturva." />
+  <title data-i18n="site_title">Gold Digger Technologies</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <link rel="preload" as="image" href="/loko.png" />
+  <style>
+    /* Logo Glitter Frame – v3: Thick orbiting sparkles + permanent inner gold stroke */
+    .logo-container {
+      position: relative;
+      padding: 16px;
+      border-radius: 20px;
+      transition: all 0.3s ease;
+    }
 
-    <!-- Preload the hero/logo image (LCP candidate). Place the file at assets/AiiAold.jpg on deploy. -->
-    <link rel="preload" as="image" href="assets/AiiAold.jpg" />
+    /* Ephemeral glitter that extends from the permanent outline */
+    .logo-container::before {
+      content: '';
+      position: absolute;
+      inset: 4px; /* pull closer to the image edge */
+      border-radius: 16px;
+      border: 3px solid transparent; /* aligns with the permanent 3px outline */
+      background:
+        linear-gradient(135deg,
+          rgba(255,255,255,0) 0%,
+          rgba(255,215,0,0.95) 50%,
+          rgba(255,255,255,0) 100%) border-box,
+        radial-gradient(6px 6px at 20% 30%, rgba(255,255,255,0.7), transparent 60%),
+        radial-gradient(4px 4px at 80% 70%, rgba(212,175,55,0.7), transparent 60%);
+      background-size: 200% 200%, auto, auto;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 600ms ease;
+    }
 
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="script.js" defer></script>
-  </head>
-  <body>
-    <a class="skip-link" href="#main-content">Skip to content</a>
+    .logo-container.glitter::before {
+      opacity: 1;
+      animation: border-shimmer 2.8s ease-in-out 2;
+    }
 
-    <header class="site-header" role="banner">
-      <div class="header-row container">
-        <div class="site-title" aria-label="Site title">Aivoinko</div>
+    @keyframes border-shimmer {
+      0%   { background-position: 0% 0%; filter: brightness(1) saturate(1); }
+      50%  { background-position: 100% 100%; filter: brightness(1.3) saturate(1.2); }
+      100% { background-position: 0% 0%; filter: brightness(1.1) saturate(1.05); }
+    }
 
-        <button id="menuToggle" class="menu-toggle" type="button" aria-expanded="false" aria-controls="primaryNav" aria-label="Open menu">Menu</button>
-
-        <nav id="primaryNav" class="primary-nav" aria-label="Primary">
-          <ul class="nav-list">
-            <li><a id="nav-research" href="#research" data-i18n="nav.research">Research</a></li>
-            <li><a id="nav-contact"  href="#contact"  data-i18n="nav.contact">Contact Us</a></li>
-            <li><a id="nav-vision"   href="#vision"   data-i18n="nav.vision">Services</a></li>
-          </ul>
-        </nav>
-      </div>
-
-      <!-- Brand/logo with language flags split 3+3 around it -->
-      <div class="brand-language container" aria-label="Language selection around logo">
-        <div class="lang-flags-col left" role="group" aria-label="Choose language">
-          <button class="lang-flag" type="button" data-lang="fi" aria-pressed="false" aria-label="Suomi">🇫🇮</button>
-          <button class="lang-flag" type="button" data-lang="es" aria-pressed="false" aria-label="Español">🇪🇸</button>
-          <button class="lang-flag" type="button" data-lang="nl" aria-pressed="false" aria-label="Nederlands">🇳🇱</button>
-        </div>
-
-        <div class="brand" aria-hidden="false">
-          <!-- Note: Place the logo file at assets/AiiAold.jpg -->
-          <img
-            id="brandLogo"
-            src="assets/AiiAold.jpg"
-            width="200"
-            height="200"
-            decoding="async"
-            fetchpriority="high"
-            alt="Aivoinko logo"
-          />
-        </div>
-
-        <div class="lang-flags-col right" role="group" aria-label="Choose language">
-          <button class="lang-flag" type="button" data-lang="en" aria-pressed="true" aria-label="English">🇬🇧</button>
-          <button class="lang-flag" type="button" data-lang="de" aria-pressed="false" aria-label="Deutsch">🇩🇪</button>
-          <button class="lang-flag" type="button" data-lang="fr" aria-pressed="false" aria-label="Français">🇫🇷</button>
-        </div>
-      </div>
-    </header>
-
-    <main id="main-content" class="site-main container" role="main">
+    .logo-img {
+      position: relative;
+      z-index: 1;
+      border-radius: 12px;
+      box-shadow:
+        0 0 0 3px var(--clr-gold),
+        0 0 14px rgba(212,175,55,0.45);
+    }
+    
+    /* Language Switcher Styles */
+    .language-switcher {
+      position: absolute;
+      top: var(--space);
+      right: var(--space);
+      display: flex;
+      gap: 0.5rem;
+      z-index: 1000;
+    }
+    
+    .lang-btn {
+      background: transparent;
+      border: 2px solid var(--clr-gold);
+      color: var(--clr-gold);
+      padding: 0.5rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-radius: 6px;
+      min-width: 40px;
+      min-height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    
+    .lang-btn:hover {
+      background: var(--clr-gold);
+      color: var(--clr-bg-dark);
+      transform: scale(1.1);
+    }
+    
+    .lang-btn.active {
+      background: var(--clr-gold) !important;
+      color: var(--clr-bg-dark) !important;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+      transform: scale(1.05);
+      border-color: var(--clr-gold);
+    }
+    
+    .lang-btn.active:hover {
+      background: var(--clr-gold) !important;
+      color: var(--clr-bg-dark) !important;
+      transform: scale(1.1);
+    }
+    
+    @media (max-width: 600px) {
+      .site-header {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--space);
+      }
       
+      .logo-container {
+        order: 1;
+      }
+      
+      .language-switcher {
+        order: 2;
+        position: static;
+        margin: 0;
+        justify-content: center;
+      }
+      
+      .header-inner {
+        order: 3;
+        width: 100%;
+        text-align: center;
+      }
+      
+      .lang-btn {
+        font-size: 1rem;
+        min-width: 36px;
+        min-height: 36px;
+        padding: 0.25rem;
+      }
+      
+      .lang-btn.active {
+        background: var(--clr-gold) !important;
+        color: var(--clr-bg-dark) !important;
+        box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+      }
+    }
+  </style>
+  <script src="/i18n.js?v=1"></script>
+  <script src="/script.js" defer></script>
+  <script>
+    // Trigger a brief glitter on load
+    document.addEventListener('DOMContentLoaded', function() {
+      const logoContainer = document.querySelector('.logo-container');
+      setTimeout(() => {
+        logoContainer.classList.add('glitter');
+        setTimeout(() => logoContainer.classList.remove('glitter'), 3200);
+      }, 400);
+    });
+  </script>
+</head>
+<body>
+<header class="site-header">
+  <div class="logo-container">
+    <img src="/loko.png" alt="Gold Digger Technologies logo" class="logo-img" data-i18n-alt="logo_alt" width="200" height="200" />
+  </div>
 
-      <p id="heroTagline" class="hero-tagline" aria-live="polite" data-i18n="hero.tagline">Timeless, boundless mind as revelation is compelling, in carbon as in silicon. Let's master them at once. I am a Finnish multi‑tool, focused mainly on biomedical engineering and human–AI interaction. So far I love most experimental AI systems and brand cults. "Aivoinko Machine Metaphysics" is the all‑in‑one choice to benefit efficiently from the crown jewel of modern science. Aivoinko teaches how to work with AI holistically. Aivoinko ends the bullshit.</p>
+  <div class="header-inner">
+    <div class="branding">
+      <div class="logo">GOLD DIGGER TECHNOLOGIES</div>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="gdt.html" class="nav-link" data-i18n="nav_gdt">GDT</a></li>
+        <li><a href="contact.html" class="nav-link" data-i18n="nav_contact">Contact</a></li>
+        <li><a href="intelligentleman.html" class="nav-link" data-i18n="nav_research">Research</a></li>
+      </ul>
+    </nav>
+  </div>
+  
+  <!-- Language Switcher -->
+  <div class="language-switcher">
+    <button class="lang-btn" data-lang="fi" title="Suomi">🇫🇮</button>
+    <button class="lang-btn" data-lang="en" title="English">🇺🇸</button>
+    <button class="lang-btn" data-lang="de" title="Deutsch">🇩🇪</button>
+    <button class="lang-btn" data-lang="fr" title="Français">🇫🇷</button>
+    <button class="lang-btn" data-lang="es" title="Español">🇪🇸</button>
+    <button class="lang-btn" data-lang="nl" title="Nederlands">🇳🇱</button>
+    <button class="lang-btn" data-lang="pl" title="Polski">🇵🇱</button>
+  </div>
+</header>
 
-      <!-- Routed sections: hidden by default; one visible at a time when selected from menu -->
-      <section id="section-research" class="section-card content-section" data-route="research" hidden aria-hidden="true">
-        <h2 id="heading-research" data-i18n="research.title" tabindex="-1">Research</h2>
-        <p data-i18n="research.body">This is a sandbox area for research notes and experiments.</p>
-      </section>
+  <main class="site-main">
+    <section class="hero">
+      <h1 data-i18n="hero_title">Täysi varmennettavuus. Hallinnoitavuus. Modulaarisuus. Tekoälyn uusi GDT lohkoketju-standardi.</h1>
+      <p data-i18n="hero_welcome">Tervetuloa aikakauteen, jossa tekoäly ei vain toimi – vaan toimii oikein:</p>
+      <p data-i18n="hero_description">Gold Digger Technologies tuottaa suoraviivaisia ja valmiita hybridiratkaisuja nopeuttaakseen yrityksen datastrategian prosesseja, kuten aktivoimalla tekoälyn automaattinen säätelyvalmius ja mahdollistamalla varmennetun kyberturvallisen interaktion moderneilla tekoälymalleilla. Olemme teknisesti keskittyneet lohkoketjun ja tekoälyn risteykseen, joihin voidaan luottaa ilman pelkoa sääntelystä tai tarkkuudesta. Tekoälymme prioriteetti on tarkkuus ja varmennettavuus - pääasia on pysyä teknologisena keihäänkärkenä absoluuttisessa luotettavuudessa.</p>
+      <p data-i18n="hero_cta">Jos organisaatiosi haluaa muuttua todelliseksi luottamuksen ja arvon kultakaivokseksi, olemme valmiita integroimaan GDT teknologian takuuvarmasti infrastruktuuriinne.</p>
+    </section>
+  </main>
 
-      <section id="section-contact" class="section-card content-section" data-route="contact" hidden aria-hidden="true">
-        <h2 id="heading-contact" data-i18n="contactForm.heading" tabindex="-1">How can we help you?</h2>
-
-        <form class="contact-form" name="contact" method="POST" action="/" data-netlify="true" data-netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="contact" />
-          <p class="visually-hidden">
-            <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
-          </p>
-
-          <div class="form-grid">
-            <div class="form-field span-2">
-              <label for="name" data-i18n="contactForm.labels.name">Name</label>
-              <input id="name" name="name" type="text" autocomplete="name" data-i18n-placeholder="contactForm.placeholders.name" />
-            </div>
-
-            <div class="form-field">
-              <label for="email" data-i18n="contactForm.labels.email">Email *</label>
-              <input id="email" name="email" type="email" required autocomplete="email" data-i18n-placeholder="contactForm.placeholders.email" />
-            </div>
-
-            <div class="form-field">
-              <label for="phone" data-i18n="contactForm.labels.phone">Phone</label>
-              <input id="phone" name="phone" type="tel" autocomplete="tel" data-i18n-placeholder="contactForm.placeholders.phone" />
-            </div>
-
-            <div class="form-field span-2">
-              <label for="message" data-i18n="contactForm.labels.message">What can Aivoinko help you with?</label>
-              <textarea id="message" name="message" rows="6" data-i18n-placeholder="contactForm.placeholders.message"></textarea>
-            </div>
-          </div>
-
-          <p class="contact-legal" data-i18n="contactForm.legal">Aivoinko uses the information you provide to contact you about relevant content, products, and services. You may unsubscribe at any time. For more information, read our Privacy Policy.</p>
-
-          <div class="form-actions">
-            <button class="btn-cta" type="submit">
-              <span data-i18n="contactForm.submit">Submit</span>
-              <span class="btn-cta-arrow" aria-hidden="true">↗</span>
-            </button>
-          </div>
-        </form>
-      </section>
-
-      <section id="section-vision" class="section-card content-section" data-route="vision" hidden aria-hidden="true">
-        <h2 id="heading-vision" data-i18n="vision.title" tabindex="-1">Services</h2>
-        <p data-i18n="vision.body">This is a sandbox area to outline long-term vision and principles.</p>
-      </section>
-    </main>
-
-    <footer class="site-footer" role="contentinfo">
-      <div class="container footer-grid">
-        <small class="footer-copy" data-i18n="footer.copyright">(c) Aivoinko Machine Metaphysics</small>
-
-        <div class="social-container" aria-label="Social links">
-          <h2 class="footer-heading" data-i18n="footer.follow">Seuraa meitä</h2>
-          <div class="social-links-box">
-            <a href="https://www.deviantart.com/rikkrakk/gallery#content" target="_blank" rel="me noopener noreferrer" class="social-icon" aria-label="DeviantArt">
-              <i class="fa-brands fa-deviantart" aria-hidden="true"></i>
-            </a>
-            <a href="https://www.etsy.com/fi-en/shop/Qiomra" target="_blank" rel="me noopener noreferrer" class="social-icon" aria-label="Etsy">
-              <i class="fa-brands fa-etsy" aria-hidden="true"></i>
-            </a>
-            <a href="https://fi.linkedin.com/in/riku-korpiaho-a465bb251" target="_blank" rel="me noopener noreferrer" class="social-icon" aria-label="LinkedIn">
-              <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
-            </a>
-          </div>
+  <footer class="site-footer" role="contentinfo" aria-label="Site footer">
+    <div class="footer-container">
+      
+      <!-- Contact & Business Section -->
+      <section class="footer-section" aria-labelledby="footer-contact">
+        <h2 id="footer-contact" data-i18n="contact_us">Contact us</h2>
+        <div class="footer-contact-links">
+          <a href="contact.html" data-i18n="contact_us">Contact us</a>
+          <a href="contact.html" data-i18n="partners_investors">We are seeking partners and investors</a>
         </div>
-      </div>
-    </footer>
+        <div class="footer-copyright">
+          <span data-i18n="copyright" data-i18n-year="true">© 2024 Gold Digger Technologies</span>
+        </div>
+      </section>
 
-    <noscript>
-      <div class="no-script container">This site works best with JavaScript enabled for language switching and routing. Content remains accessible without it.</div>
-    </noscript>
-  </body>
-  </html>
+      <!-- Legal & Regulatory Section -->
+      <nav class="footer-section" aria-labelledby="footer-legal">
+        <h2 id="footer-legal" data-i18n="legal">Legal & Regulatory</h2>
+        <ul class="footer-links">
+          <li><a href="#" data-i18n="privacy">Privacy</a></li>
+          <li><a href="#" data-i18n="legal_compliance">Compliance</a></li>
+          <li><a href="#" data-i18n="legal_terms">Terms of Service</a></li>
+          <li><a href="#" data-i18n="legal_filings">Regulatory Filings</a></li>
+          <li><a href="#" data-i18n="dnsmi">Do Not Sell My Info</a></li>
+          <li><a href="#" data-i18n="cookies">Cookie Preferences</a></li>
+        </ul>
+      </nav>
 
+      <!-- Social Media Section -->
+      <section class="footer-section" aria-labelledby="footer-social">
+        <h2 id="footer-social" data-i18n="social_media">Social Media</h2>
+        <div class="social-links">
+          <a href="https://linkedin.com/company/golddiggertech" 
+             class="social-link" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             aria-label="LinkedIn">
+            <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img">
+              <title data-i18n="linkedin">LinkedIn</title>
+              <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7 0h3.8v2.2h.1c.5-1 1.7-2.2 3.6-2.2 3.8 0 4.5 2.5 4.5 5.7V24h-4v-7.3c0-1.7 0-3.9-2.4-3.9s-2.8 1.9-2.8 3.8V24h-4V8z"/>
+            </svg>
+          </a>
+          <a href="https://x.com/golddiggertech" 
+             class="social-link" 
+             target="_blank" 
+             rel="noopener noreferrer"
+             aria-label="X">
+            <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img">
+              <title data-i18n="x">X</title>
+              <path d="M18.244 2H21l-6.5 7.43L22 22h-6.844l-4.77-6.22L4.8 22H2l7.07-8.08L2 2h6.844l4.39 5.78L18.244 2zm-1.2 18h1.96L7.03 4H5.07l11.974 16z"/>
+            </svg>
+          </a>
+        </div>
+      </section>
+      
+    </div>
+  </footer>
 
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      if (window.i18n && typeof window.i18n.setupLanguageSwitcher === 'function') {
+        window.i18n.setupLanguageSwitcher();
+      }
+    });
+  </script>
+</body>
+</html>
