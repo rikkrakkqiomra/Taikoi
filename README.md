@@ -1,149 +1,52 @@
-# Gold Digger Technologies - Internationalized Website
+# Aivoinko Aurinko Reality Simulator
 
-git add .
-git commit -m "4sonnet triangeli" 
-git push origin main
+A stunning, interactive 3D simulation of the Solar System, built with **Three.js** and **HTML5 Canvas**. This project features procedural texture generation, realistic orbital mechanics, and a premium Sci-Fi aesthetic.
 
+![Aivoinko Aurinko](https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.jpg)
 
-This website has been enhanced with comprehensive internationalization (i18n) support for multiple languages.
+## 🌌 Features
 
-## Features Implemented
+### 🔭 Interactive 3D Simulation
+- **Full Solar System**: Includes the Sun, Mercury, Venus, Earth, Mars, Jupiter, Saturn (with rings), Uranus, and Neptune.
+- **Realistic Orbits**: Planets orbit at relative speeds and distances.
+- **Procedural Textures**: All planet textures are generated programmatically using the HTML5 Canvas API—no external image assets required for planets.
+- **"Eye of the Brain" Sun**: A unique, glowing sun visualization featuring a custom "Eye" texture with a procedural fallback.
 
-### ✅ Technical Implementation
-- **i18n Framework**: Custom JavaScript-based internationalization system
-- **Language-specific URL Structure**: URLs like `/en/`, `/de/`, `/fr/`, `/fi/` (Finnish is default, no prefix)
-- **Hreflang Tags**: Proper SEO implementation with language alternatives
-- **Language Persistence**: User's language choice is remembered using localStorage
+### 🎮 Interactive Experience
+- **Desktop**: Hover over planets to reveal detailed scientific data (Mass, Diameter, Temperature) via Sci-Fi tooltips.
+- **Mobile**: Optimized "Tap-to-Show" interaction. Tap a planet to lock the tooltip; tap empty space to dismiss.
+- **Controls**: Zoom, pan, and rotate the camera freely around the solar system.
 
-### 🌍 Supported Languages
-- **Finnish (fi)** - URL prefix: `/fi/`
-- **English (en)** - URL prefix: `/en/`
-- **German (de)** - URL prefix: `/de/`
-- **French (fr)** - URL prefix: `/fr/`
-- **Spanish (es)** - URL prefix: `/es/`
-- **Dutch (nl)** - URL prefix: `/nl/`
-- **Polish (pl)** - URL prefix: `/pl/`
+### 🎨 Visuals & UI
+- **Glassmorphism UI**: Sleek, modern header and footer with frosted glass effects.
+- **Cinematic Lighting**: Dynamic point lighting from the Sun and ambient starlight.
+- **Starfield Background**: A procedurally generated 3D starfield adds depth and immersion.
+- **Responsive Design**: Seamlessly adapts to desktop and mobile screens.
 
-### 🔧 How It Works
+## 🛠️ Technologies
 
-#### Language Detection
-1. **URL Path**: First checks for language code in URL path
-2. **Stored Preference**: Falls back to user's previously selected language
-3. **Browser Language**: Uses browser's preferred language if supported
-4. **Default**: Falls back to Finnish (default language)
+- **Three.js**: For 3D rendering and scene management.
+- **HTML5 Canvas API**: For procedural texture generation.
+- **Vanilla JavaScript**: Core logic and interaction handling.
+- **CSS3**: For the Glassmorphism UI and animations.
+- **Google Fonts**: 'Orbitron' and 'Rajdhani' for typography.
 
-#### URL Structure
-- Finnish: `https://yoursite.com/fi/` or `https://yoursite.com/fi/index.html`
-- English: `https://yoursite.com/en/` or `https://yoursite.com/en/index.html`
-- German: `https://yoursite.com/de/` or `https://yoursite.com/de/index.html`
-- French: `https://yoursite.com/fr/` or `https://yoursite.com/fr/index.html`
-- Spanish: `https://yoursite.com/es/` or `https://yoursite.com/es/index.html`
-- Dutch: `https://yoursite.com/nl/` or `https://yoursite.com/nl/index.html`
-- Polish: `https://yoursite.com/pl/` or `https://yoursite.com/pl/index.html`
+## 🚀 Getting Started
 
-#### Language Switcher
-- Located in the top-right corner of the header
-- Shows all supported languages with the current language highlighted
-- Click any language to switch immediately
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/rikkrakkqiomra/Taikoi.git
+    ```
+2.  Open `index.html` in your web browser.
+    - *Note*: For the best experience (and to avoid CORS issues with the local Sun image), run it via a local server (e.g., VS Code Live Server or `python -m http.server`).
 
-### 📁 File Structure
+## 📱 Mobile Optimization
 
-```
-├── i18n.js                    # Main i18n framework
-├── translations/              # Translation files
-│   ├── fi.json               # Finnish translations
-│   ├── en.json               # English translations
-│   ├── de.json               # German translations
-│   └── fr.json               # French translations
-├── netlify.toml              # Netlify configuration for URL routing
-├── index.html                # Home page (updated with i18n)
-├── contact.html              # Contact page (updated with i18n)
-├── gdt.html                  # GDT page (updated with i18n)
-├── intelligentleman.html     # Research page (updated with i18n)
-├── script.js                 # Updated navigation with i18n support
-└── styles.css                # Updated with language switcher styles
-```
+The simulation is fully optimized for mobile devices:
+- **Performance**: Rendering resolution is capped to prevent overheating.
+- **Interaction**: Touch-friendly "Tap-to-Show" tooltips.
+- **Speed**: Planet orbits are slowed down on mobile for easier interaction.
 
-### 🎨 UI Components
+## 📄 License
 
-#### Language Switcher
-- Positioned in the top-right corner of the header
-- Responsive design (moves to center on mobile)
-- Gold accent color matching the site theme
-- Active language is highlighted
-
-#### Navigation
-- All navigation links automatically include language prefixes
-- Seamless navigation between pages in the same language
-- Maintains user's language preference across page visits
-
-### 🔍 SEO Features
-
-#### Hreflang Tags
-Automatically generated for each page:
-```html
-<link rel="alternate" hreflang="fi" href="https://yoursite.com/">
-<link rel="alternate" hreflang="en" href="https://yoursite.com/en/">
-<link rel="alternate" hreflang="de" href="https://yoursite.com/de/">
-<link rel="alternate" hreflang="fr" href="https://yoursite.com/fr/">
-<link rel="alternate" hreflang="x-default" href="https://yoursite.com/">
-```
-
-### 🚀 Deployment
-
-#### Netlify Configuration
-The `netlify.toml` file includes:
-- URL redirects for language-specific paths
-- Proper routing for all language variants
-- Caching headers for optimal performance
-
-#### Local Development
-1. Serve the files using any static file server
-2. The i18n system works without server-side processing
-3. Translation files are loaded dynamically via fetch API
-
-### 📝 Adding New Content
-
-To add new translatable content:
-
-1. **Add translation keys** to all language files in `translations/`
-2. **Add data-i18n attributes** to HTML elements:
-   ```html
-   <h1 data-i18n="new_heading">Default Text</h1>
-   <p data-i18n="new_paragraph">Default paragraph text</p>
-   ```
-3. **For form placeholders**:
-   ```html
-   <input type="text" data-i18n="form_field" placeholder="Default placeholder">
-   ```
-4. **For alt attributes**:
-   ```html
-   <img src="image.jpg" data-i18n-alt="image_description" alt="Default alt text">
-   ```
-
-### 🔧 Customization
-
-#### Adding New Languages
-1. Create a new translation file: `translations/[lang].json`
-2. Add the language code to the `supportedLanguages` array in `i18n.js`
-3. Add the language name to the `getLanguageName()` function
-4. Update `netlify.toml` with new redirect rules
-
-#### Modifying Language Detection
-Edit the `detectLanguage()` method in `i18n.js` to change the detection priority.
-
-### 🎯 Browser Support
-- Modern browsers with ES6+ support
-- LocalStorage for language persistence
-- Fetch API for loading translations
-- CSS Grid and Flexbox for responsive design
-
-### 📊 Performance
-- Translation files are cached by the browser
-- Minimal JavaScript overhead
-- No server-side processing required
-- Optimized for static hosting
-
----
-
-**Note**: This implementation provides a complete internationalization solution that works seamlessly with static hosting platforms like Netlify, while maintaining excellent SEO practices and user experience. 
+This project is open-source and available under the MIT License.

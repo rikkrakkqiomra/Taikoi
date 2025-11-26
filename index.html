@@ -855,7 +855,11 @@
         tooltip.style.display = 'block';
 
         // Update Position
-        const vector = activePlanet.mesh.position.clone();
+        // CRITICAL FIX: Update matrices to ensure projection uses the latest camera/object transforms
+        camera.updateMatrixWorld();
+        activePlanet.mesh.updateMatrixWorld();
+
+        const vector = new THREE.Vector3();
         activePlanet.mesh.getWorldPosition(vector);
         vector.project(camera);
 
