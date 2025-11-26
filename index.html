@@ -307,7 +307,7 @@
     scene.fog = new THREE.FogExp2(0x000000, 0.002); // Subtle depth cue
 
     const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(0, 40, 80);
+    camera.position.set(0, 60, 140); // Zoomed out further
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
@@ -321,10 +321,10 @@
     controls.maxDistance = 200;
 
     // --- Lighting ---
-    const ambientLight = new THREE.AmbientLight(0x333333); // Soft background light
+    const ambientLight = new THREE.AmbientLight(0x555555); // Slightly brighter background light
     scene.add(ambientLight);
 
-    const sunLight = new THREE.PointLight(0xffffff, 2, 300);
+    const sunLight = new THREE.PointLight(0xffffff, 3, 400); // Brighter sun
     sunLight.position.set(0, 0, 0);
     scene.add(sunLight);
 
