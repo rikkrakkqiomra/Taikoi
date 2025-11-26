@@ -4,13 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Galactic Explorer - 3D Solar System</title>
+  <title>Aivoinko Aurinko Reality Simulator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap"
+    rel="stylesheet">
   <style>
     :root {
-      --glass-bg: rgba(255, 255, 255, 0.05);
-      --glass-border: rgba(255, 255, 255, 0.1);
+      --glass-bg: rgba(0, 0, 0, 0.3);
+      --glass-border: rgba(255, 255, 255, 0.15);
       --text-color: #ffffff;
       --accent-color: #00f3ff;
+      --silver-gradient: linear-gradient(to bottom, #ffffff 0%, #c0c0c0 50%, #8a8a8a 100%);
     }
 
     * {
@@ -23,7 +29,7 @@
       margin: 0;
       overflow: hidden;
       background-color: #000;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Rajdhani', sans-serif;
       color: var(--text-color);
     }
 
@@ -50,26 +56,166 @@
       left: 50%;
       transform: translateX(-50%);
       z-index: 10;
-      padding: 15px 40px;
-      border-radius: 50px;
+      width: 90%;
+      max-width: 1200px;
+      padding: 20px 40px;
+      border-radius: 15px;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      pointer-events: none;
-      /* Let clicks pass through to canvas if needed, but usually header is small */
+      pointer-events: auto;
+      /* Allow clicking links */
+    }
+
+    /* Desktop Layout */
+    @media (min-width: 768px) {
+      header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    .logo-container {
+      text-align: center;
     }
 
     h1 {
-      font-size: 1.5rem;
-      letter-spacing: 4px;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 900;
       text-transform: uppercase;
-      font-weight: 300;
+      letter-spacing: 2px;
+      margin-bottom: 5px;
+
+      /* Silver Gradient Text */
+      background: var(--silver-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+
+      text-shadow: 0 0 20px rgba(192, 192, 192, 0.5);
+
+      /* Flash Animation */
+      opacity: 0;
+      animation: flashEntry 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      animation-delay: 0.5s;
+    }
+
+    h2.subtitle {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.9rem;
+      letter-spacing: 4px;
+      color: #aaa;
+      text-transform: uppercase;
+      margin-top: -5px;
+
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+      animation-delay: 1.2s;
+    }
+
+    nav {
+      display: flex;
+      gap: 30px;
+      margin-top: 15px;
+    }
+
+    @media (min-width: 768px) {
+      nav {
+        margin-top: 0;
+      }
+    }
+
+    nav a {
+      font-family: 'Orbitron', sans-serif;
+      text-decoration: none;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      position: relative;
+      padding: 5px 0;
+      transition: color 0.3s;
+
+      opacity: 0;
+      animation: slideIn 0.8s ease forwards;
+    }
+
+    nav a:nth-child(1) {
+      animation-delay: 1.5s;
+    }
+
+    nav a:nth-child(2) {
+      animation-delay: 1.7s;
+    }
+
+    nav a:hover {
+      color: var(--accent-color);
       text-shadow: 0 0 10px var(--accent-color);
     }
 
-    h1 span {
-      font-weight: 700;
-      color: var(--accent-color);
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-color);
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Animations */
+    @keyframes flashEntry {
+      0% {
+        opacity: 0;
+        transform: scale(1.1);
+        filter: blur(10px);
+      }
+
+      10% {
+        opacity: 1;
+        filter: blur(0);
+      }
+
+      20% {
+        opacity: 0.5;
+      }
+
+      30% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     footer {
@@ -220,7 +366,14 @@
   </div>
 
   <header class="glass">
-    <h1>Galactic <span>Explorer</span></h1>
+    <div class="logo-container">
+      <h1>Aivoinko</h1>
+      <h2 class="subtitle">Aurinko Reality Simulator</h2>
+    </div>
+    <nav>
+      <a href="#">Pure Systems</a>
+      <a href="#">DIY Realities</a>
+    </nav>
   </header>
 
   <div id="canvas-container"></div>
