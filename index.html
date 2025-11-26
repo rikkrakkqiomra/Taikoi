@@ -155,26 +155,28 @@
 
     #tooltip-line {
       position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 100px;
+      top: 0;
+      left: 0;
+      width: 60px;
       height: 2px;
       background: var(--accent-color);
-      transform-origin: right bottom;
+      transform-origin: 0 50%;
       transform: rotate(-45deg);
+      box-shadow: 0 0 5px var(--accent-color);
     }
 
     #tooltip-content {
       position: absolute;
-      bottom: 70px;
-      /* Adjust based on line length/angle */
-      left: 70px;
+      bottom: 42px;
+      /* 60 * sin(45) approx 42.4 */
+      left: 42px;
+      /* 60 * cos(45) approx 42.4 */
       width: 250px;
       padding: 15px;
-      background: rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.85);
       border: 1px solid var(--accent-color);
-      border-radius: 5px;
-      box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+      border-radius: 0 5px 5px 5px;
+      box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
       color: #fff;
       font-size: 0.9rem;
     }
