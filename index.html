@@ -407,10 +407,10 @@
 
     // --- Configuration ---
     const SCENE_CONFIG = {
-      sunRadius: 5,
-      orbitScale: 10, // Multiplier for distance to make it fit but look good
-      planetScale: 1, // Multiplier for planet size
-      speedScale: 0.5,
+      sunRadius: 16,
+      // Reduce speed on mobile (screen width < 768px)
+      speedScale: window.innerWidth < 768 ? 0.2 : 1.0,
+      textureQuality: 1.0
     };
 
     // --- Texture Generation ---
@@ -564,15 +564,34 @@
     controls.minDistance = 10;
     controls.maxDistance = 600; // Increased to allow further zoom out
 
-    // --- Raycaster Setup ---
+    // --- Interaction Logic (Raycaster) ---
     const raycaster = new THREE.Raycaster();
     const mouse = new THREE.Vector2();
     let hoveredPlanet = null;
 
-    window.addEventListener('mousemove', (event) => {
-      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-    });
+    function onPointerMove(event) {
+      // Handle both mouse and touch events
+      let clientX, clientY;
+
+      if (event.changedTouches && event.changedTouches.length > 0) {
+        clientX = event.changedTouches[0].clientX;
+        clientY = event.changedTouches[0].clientY;
+      } else {
+        clientX = event.clientX;
+        clientY = event.clientY;
+      }
+
+      // Calculate mouse position in normalized device coordinates (-1 to +1)
+      mouse.x = (clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(clientY / window.innerHeight) * 2 + 1;
+
+      // On mobile, we might want to trigger the raycast immediately here or in render loop
+      // For simplicity, we update 'mouse' and let the render loop handle the raycasting
+    }
+
+    window.addEventListener('mousemove', onPointerMove, false);
+    window.addEventListener('touchstart', onPointerMove, false); // Add touch support
+    window.addEventListener('touchmove', onPointerMove, false); // Allow dragging to update hover if needed
 
     const tooltip = document.getElementById('tooltip');
     const planetNameEl = document.getElementById('planet-name');
