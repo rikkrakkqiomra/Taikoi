@@ -554,7 +554,8 @@
 
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
+    // PERFORMANCE FIX: Cap pixel ratio to 2 to prevent overheating on high-DPI screens
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     container.appendChild(renderer.domElement);
 
     const controls = new OrbitControls(camera, renderer.domElement);
@@ -590,18 +591,63 @@
     // --- Objects ---
 
     // 1. Sun
-    const textureLoader = new THREE.TextureLoader();
-    const sunTexture = textureLoader.load('AiiAold.jpg');
+    // Procedural Fallback for "Eye of the Brain" in case image fails or for performance
+    function createSunTexture() {
+      const canvas = document.createElement('canvas');
+      canvas.width = 512;
+      canvas.height = 512;
+      const ctx = canvas.getContext('2d');
 
-    const sunGeometry = new THREE.SphereGeometry(SCENE_CONFIG.sunRadius, 64, 64);
+      // Background
+      const grad = ctx.createRadialGradient(256, 256, 20, 256, 256, 256);
+      grad.addColorStop(0, '#ffaa00');
+      grad.addColorStop(0.5, '#ff4400');
+      grad.addColorStop(1, '#550000');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, 512, 512);
+
+      // "Brain/Eye" details
+      ctx.strokeStyle = 'rgba(255, 200, 200, 0.5)';
+      ctx.lineWidth = 2;
+      for (let i = 0; i < 50; i++) {
+        ctx.beginPath();
+        ctx.moveTo(Math.random() * 512, Math.random() * 512);
+        ctx.bezierCurveTo(Math.random() * 512, Math.random() * 512, Math.random() * 512, Math.random() * 512, Math.random() * 512, Math.random() * 512);
+        ctx.stroke();
+      }
+
+      // Pupil
+      ctx.fillStyle = 'rgba(0,0,0,0.8)';
+      ctx.beginPath();
+      ctx.arc(256, 256, 60, 0, Math.PI * 2);
+      ctx.fill();
+
+      return new THREE.CanvasTexture(canvas);
+    }
+
+    const textureLoader = new THREE.TextureLoader();
+    const sunGeometry = new THREE.SphereGeometry(SCENE_CONFIG.sunRadius, 48, 48); // Reduced segments slightly for perf
     const sunMaterial = new THREE.MeshBasicMaterial({
-      map: sunTexture,
-      color: 0xFFFFFF, // White to let texture colors show true, or tint if needed
+      color: 0xFFFFFF,
       transparent: true,
-      opacity: 0.85,
+      opacity: 0.9,
       side: THREE.DoubleSide
     });
     const sun = new THREE.Mesh(sunGeometry, sunMaterial);
+
+    // Attempt to load image, fallback to procedural if it fails (common in local file:// execution)
+    textureLoader.load('AiiAold.jpg',
+      (texture) => {
+        sun.material.map = texture;
+        sun.material.needsUpdate = true;
+      },
+      undefined,
+      (err) => {
+        console.warn("Sun texture failed to load (likely CORS if local). Using procedural fallback.");
+        sun.material.map = createSunTexture();
+        sun.material.needsUpdate = true;
+      }
+    );
 
     // Sun Glow (Fake Bloom using Sprite)
     const canvas = document.createElement('canvas');
