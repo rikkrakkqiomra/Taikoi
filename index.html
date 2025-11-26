@@ -1,264 +1,399 @@
-
 <!DOCTYPE html>
-<html lang="fi">
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" data-i18n="meta_home_description" content="Gold Digger Technologies rakentaa lohkoketjuun perustuvaa tekoälyalustaa, jonka ytimessä ovat varmennettavuus, sääntelykelpoisuus ja tietoturva." />
-  <title data-i18n="site_title">Gold Digger Technologies</title>
-  <link rel="stylesheet" href="/styles.css" />
-  <link rel="preload" as="image" href="/loko.png" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galactic Explorer - 3D Solar System</title>
   <style>
-    /* Logo Glitter Frame – v3: Thick orbiting sparkles + permanent inner gold stroke */
-    .logo-container {
-      position: relative;
-      padding: 16px;
-      border-radius: 20px;
-      transition: all 0.3s ease;
+    :root {
+      --glass-bg: rgba(255, 255, 255, 0.05);
+      --glass-border: rgba(255, 255, 255, 0.1);
+      --text-color: #ffffff;
+      --accent-color: #00f3ff;
     }
 
-    /* Ephemeral glitter that extends from the permanent outline */
-    .logo-container::before {
-      content: '';
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: #000;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: var(--text-color);
+    }
+
+    #canvas-container {
       position: absolute;
-      inset: 4px; /* pull closer to the image edge */
-      border-radius: 16px;
-      border: 3px solid transparent; /* aligns with the permanent 3px outline */
-      background:
-        linear-gradient(135deg,
-          rgba(255,255,255,0) 0%,
-          rgba(255,215,0,0.95) 50%,
-          rgba(255,255,255,0) 100%) border-box,
-        radial-gradient(6px 6px at 20% 30%, rgba(255,255,255,0.7), transparent 60%),
-        radial-gradient(4px 4px at 80% 70%, rgba(212,175,55,0.7), transparent 60%);
-      background-size: 200% 200%, auto, auto;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 600ms ease;
-    }
-
-    .logo-container.glitter::before {
-      opacity: 1;
-      animation: border-shimmer 2.8s ease-in-out 2;
-    }
-
-    @keyframes border-shimmer {
-      0%   { background-position: 0% 0%; filter: brightness(1) saturate(1); }
-      50%  { background-position: 100% 100%; filter: brightness(1.3) saturate(1.2); }
-      100% { background-position: 0% 0%; filter: brightness(1.1) saturate(1.05); }
-    }
-
-    .logo-img {
-      position: relative;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
       z-index: 1;
-      border-radius: 12px;
-      box-shadow:
-        0 0 0 3px var(--clr-gold),
-        0 0 14px rgba(212,175,55,0.45);
     }
-    
-    /* Language Switcher Styles */
-    .language-switcher {
-      position: absolute;
-      top: var(--space);
-      right: var(--space);
-      display: flex;
-      gap: 0.5rem;
-      z-index: 1000;
+
+    .glass {
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     }
-    
-    .lang-btn {
-      background: transparent;
-      border: 2px solid var(--clr-gold);
-      color: var(--clr-gold);
-      padding: 0.5rem;
-      font-size: 1.2rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      border-radius: 6px;
-      min-width: 40px;
-      min-height: 40px;
+
+    header {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      padding: 15px 40px;
+      border-radius: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
-      line-height: 1;
+      pointer-events: none;
+      /* Let clicks pass through to canvas if needed, but usually header is small */
     }
-    
-    .lang-btn:hover {
-      background: var(--clr-gold);
-      color: var(--clr-bg-dark);
-      transform: scale(1.1);
+
+    h1 {
+      font-size: 1.5rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-weight: 300;
+      text-shadow: 0 0 10px var(--accent-color);
     }
-    
-    .lang-btn.active {
-      background: var(--clr-gold) !important;
-      color: var(--clr-bg-dark) !important;
-      box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
-      transform: scale(1.05);
-      border-color: var(--clr-gold);
+
+    h1 span {
+      font-weight: 700;
+      color: var(--accent-color);
     }
-    
-    .lang-btn.active:hover {
-      background: var(--clr-gold) !important;
-      color: var(--clr-bg-dark) !important;
-      transform: scale(1.1);
+
+    footer {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      padding: 10px 30px;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      display: flex;
+      gap: 20px;
+      pointer-events: none;
     }
-    
-    @media (max-width: 600px) {
-      .site-header {
-        flex-direction: column;
-        align-items: center;
-        gap: var(--space);
+
+    .status-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background-color: #0f0;
+      border-radius: 50%;
+      box-shadow: 0 0 5px #0f0;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        opacity: 1;
       }
-      
-      .logo-container {
-        order: 1;
+
+      50% {
+        opacity: 0.5;
       }
-      
-      .language-switcher {
-        order: 2;
-        position: static;
-        margin: 0;
-        justify-content: center;
+
+      100% {
+        opacity: 1;
       }
-      
-      .header-inner {
-        order: 3;
-        width: 100%;
-        text-align: center;
-      }
-      
-      .lang-btn {
-        font-size: 1rem;
-        min-width: 36px;
-        min-height: 36px;
-        padding: 0.25rem;
-      }
-      
-      .lang-btn.active {
-        background: var(--clr-gold) !important;
-        color: var(--clr-bg-dark) !important;
-        box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+    }
+
+    /* Loading overlay */
+    #loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 1s ease;
+    }
+
+    .loader {
+      width: 50px;
+      height: 50px;
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: var(--accent-color);
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
       }
     }
   </style>
-  <script src="/i18n.js?v=1"></script>
-  <script src="/script.js" defer></script>
-  <script>
-    // Trigger a brief glitter on load
-    document.addEventListener('DOMContentLoaded', function() {
-      const logoContainer = document.querySelector('.logo-container');
-      setTimeout(() => {
-        logoContainer.classList.add('glitter');
-        setTimeout(() => logoContainer.classList.remove('glitter'), 3200);
-      }, 400);
-    });
-  </script>
 </head>
+
 <body>
-<header class="site-header">
-  <div class="logo-container">
-    <img src="/loko.png" alt="Gold Digger Technologies logo" class="logo-img" data-i18n-alt="logo_alt" width="200" height="200" />
+
+  <div id="loading">
+    <div class="loader"></div>
   </div>
 
-  <div class="header-inner">
-    <div class="branding">
-      <div class="logo">GOLD DIGGER TECHNOLOGIES</div>
+  <header class="glass">
+    <h1>Galactic <span>Explorer</span></h1>
+  </header>
+
+  <div id="canvas-container"></div>
+
+  <footer class="glass">
+    <div class="status-item">
+      <div class="dot"></div>
+      <span>System Online</span>
     </div>
-    <nav class="main-nav">
-      <ul>
-        <li><a href="gdt.html" class="nav-link" data-i18n="nav_gdt">GDT</a></li>
-        <li><a href="contact.html" class="nav-link" data-i18n="nav_contact">Contact</a></li>
-        <li><a href="intelligentleman.html" class="nav-link" data-i18n="nav_research">Research</a></li>
-      </ul>
-    </nav>
-  </div>
-  
-  <!-- Language Switcher -->
-  <div class="language-switcher">
-    <button class="lang-btn" data-lang="fi" title="Suomi">🇫🇮</button>
-    <button class="lang-btn" data-lang="en" title="English">🇺🇸</button>
-    <button class="lang-btn" data-lang="de" title="Deutsch">🇩🇪</button>
-    <button class="lang-btn" data-lang="fr" title="Français">🇫🇷</button>
-    <button class="lang-btn" data-lang="es" title="Español">🇪🇸</button>
-    <button class="lang-btn" data-lang="nl" title="Nederlands">🇳🇱</button>
-    <button class="lang-btn" data-lang="pl" title="Polski">🇵🇱</button>
-  </div>
-</header>
-
-  <main class="site-main">
-    <section class="hero">
-      <h1 data-i18n="hero_title">Täysi varmennettavuus. Hallinnoitavuus. Modulaarisuus. Tekoälyn uusi GDT lohkoketju-standardi.</h1>
-      <p data-i18n="hero_welcome">Tervetuloa aikakauteen, jossa tekoäly ei vain toimi – vaan toimii oikein:</p>
-      <p data-i18n="hero_description">Gold Digger Technologies tuottaa suoraviivaisia ja valmiita hybridiratkaisuja nopeuttaakseen yrityksen datastrategian prosesseja, kuten aktivoimalla tekoälyn automaattinen säätelyvalmius ja mahdollistamalla varmennetun kyberturvallisen interaktion moderneilla tekoälymalleilla. Olemme teknisesti keskittyneet lohkoketjun ja tekoälyn risteykseen, joihin voidaan luottaa ilman pelkoa sääntelystä tai tarkkuudesta. Tekoälymme prioriteetti on tarkkuus ja varmennettavuus - pääasia on pysyä teknologisena keihäänkärkenä absoluuttisessa luotettavuudessa.</p>
-      <p data-i18n="hero_cta">Jos organisaatiosi haluaa muuttua todelliseksi luottamuksen ja arvon kultakaivokseksi, olemme valmiita integroimaan GDT teknologian takuuvarmasti infrastruktuuriinne.</p>
-    </section>
-  </main>
-
-  <footer class="site-footer" role="contentinfo" aria-label="Site footer">
-    <div class="footer-container">
-      
-      <!-- Contact & Business Section -->
-      <section class="footer-section" aria-labelledby="footer-contact">
-        <h2 id="footer-contact" data-i18n="contact_us">Contact us</h2>
-        <div class="footer-contact-links">
-          <a href="contact.html" data-i18n="contact_us">Contact us</a>
-          <a href="contact.html" data-i18n="partners_investors">We are seeking partners and investors</a>
-        </div>
-        <div class="footer-copyright">
-          <span data-i18n="copyright" data-i18n-year="true">© 2024 Gold Digger Technologies</span>
-        </div>
-      </section>
-
-      <!-- Legal & Regulatory Section -->
-      <nav class="footer-section" aria-labelledby="footer-legal">
-        <h2 id="footer-legal" data-i18n="legal">Legal & Regulatory</h2>
-        <ul class="footer-links">
-          <li><a href="#" data-i18n="privacy">Privacy</a></li>
-          <li><a href="#" data-i18n="legal_compliance">Compliance</a></li>
-          <li><a href="#" data-i18n="legal_terms">Terms of Service</a></li>
-          <li><a href="#" data-i18n="legal_filings">Regulatory Filings</a></li>
-          <li><a href="#" data-i18n="dnsmi">Do Not Sell My Info</a></li>
-          <li><a href="#" data-i18n="cookies">Cookie Preferences</a></li>
-        </ul>
-      </nav>
-
-      <!-- Social Media Section -->
-      <section class="footer-section" aria-labelledby="footer-social">
-        <h2 id="footer-social" data-i18n="social_media">Social Media</h2>
-        <div class="social-links">
-          <a href="https://linkedin.com/company/golddiggertech" 
-             class="social-link" 
-             target="_blank" 
-             rel="noopener noreferrer"
-             aria-label="LinkedIn">
-            <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img">
-              <title data-i18n="linkedin">LinkedIn</title>
-              <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8h4V24h-4V8zm7 0h3.8v2.2h.1c.5-1 1.7-2.2 3.6-2.2 3.8 0 4.5 2.5 4.5 5.7V24h-4v-7.3c0-1.7 0-3.9-2.4-3.9s-2.8 1.9-2.8 3.8V24h-4V8z"/>
-            </svg>
-          </a>
-          <a href="https://x.com/golddiggertech" 
-             class="social-link" 
-             target="_blank" 
-             rel="noopener noreferrer"
-             aria-label="X">
-            <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img">
-              <title data-i18n="x">X</title>
-              <path d="M18.244 2H21l-6.5 7.43L22 22h-6.844l-4.77-6.22L4.8 22H2l7.07-8.08L2 2h6.844l4.39 5.78L18.244 2zm-1.2 18h1.96L7.03 4H5.07l11.974 16z"/>
-            </svg>
-          </a>
-        </div>
-      </section>
-      
+    <div class="status-item">
+      <span>Speed: 1x</span>
+    </div>
+    <div class="status-item">
+      <span>Drag to Rotate &bull; Scroll to Zoom</span>
     </div>
   </footer>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      if (window.i18n && typeof window.i18n.setupLanguageSwitcher === 'function') {
-        window.i18n.setupLanguageSwitcher();
-      }
+  <!-- Import Map for Three.js -->
+  <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+
+  <script type="module">
+    import * as THREE from 'three';
+    import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+    // --- Configuration ---
+    const SCENE_CONFIG = {
+      sunRadius: 5,
+      orbitScale: 10, // Multiplier for distance to make it fit but look good
+      planetScale: 1, // Multiplier for planet size
+      speedScale: 0.5,
+    };
+
+    // Planet Data (Relative sizes and distances are approximated for visual appeal, not 1:1 scientific accuracy)
+    const PLANETS = [
+      { name: "Mercury", radius: 0.8, distance: 10, speed: 4.1, color: 0xA5A5A5 },
+      { name: "Venus", radius: 1.5, distance: 15, speed: 1.6, color: 0xE3BB76 },
+      { name: "Earth", radius: 1.6, distance: 22, speed: 1.0, color: 0x22A6F3 },
+      { name: "Mars", radius: 0.9, distance: 30, speed: 0.53, color: 0xDD4C22 },
+      { name: "Jupiter", radius: 3.5, distance: 45, speed: 0.08, color: 0xD6A566 },
+      { name: "Saturn", radius: 3.0, distance: 65, speed: 0.03, color: 0xF4D03F, hasRings: true },
+      { name: "Uranus", radius: 2.0, distance: 85, speed: 0.01, color: 0xACE5EE },
+      { name: "Neptune", radius: 1.9, distance: 100, speed: 0.006, color: 0x3F54BA }
+    ];
+
+    // --- Setup ---
+    const container = document.getElementById('canvas-container');
+    const scene = new THREE.Scene();
+    scene.fog = new THREE.FogExp2(0x000000, 0.002); // Subtle depth cue
+
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 40, 80);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    container.appendChild(renderer.domElement);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.minDistance = 10;
+    controls.maxDistance = 200;
+
+    // --- Lighting ---
+    const ambientLight = new THREE.AmbientLight(0x333333); // Soft background light
+    scene.add(ambientLight);
+
+    const sunLight = new THREE.PointLight(0xffffff, 2, 300);
+    sunLight.position.set(0, 0, 0);
+    scene.add(sunLight);
+
+    // --- Objects ---
+
+    // 1. Sun
+    const sunGeometry = new THREE.SphereGeometry(SCENE_CONFIG.sunRadius, 32, 32);
+    const sunMaterial = new THREE.MeshBasicMaterial({
+      color: 0xFFD700,
+      transparent: true,
+      opacity: 0.9
     });
+    const sun = new THREE.Mesh(sunGeometry, sunMaterial);
+
+    // Sun Glow (Fake Bloom using Sprite)
+    const canvas = document.createElement('canvas');
+    canvas.width = 128;
+    canvas.height = 128;
+    const context = canvas.getContext('2d');
+    const gradient = context.createRadialGradient(64, 64, 0, 64, 64, 64);
+    gradient.addColorStop(0, 'rgba(255, 215, 0, 0.8)');
+    gradient.addColorStop(0.2, 'rgba(255, 100, 0, 0.4)');
+    gradient.addColorStop(0.5, 'rgba(255, 50, 0, 0.1)');
+    gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    context.fillStyle = gradient;
+    context.fillRect(0, 0, 128, 128);
+
+    const glowTexture = new THREE.CanvasTexture(canvas);
+    const glowMaterial = new THREE.SpriteMaterial({ map: glowTexture, blending: THREE.AdditiveBlending });
+    const sunGlow = new THREE.Sprite(glowMaterial);
+    sunGlow.scale.set(SCENE_CONFIG.sunRadius * 6, SCENE_CONFIG.sunRadius * 6, 1);
+    sun.add(sunGlow);
+
+    scene.add(sun);
+
+    // 2. Starfield Background
+    const starsGeometry = new THREE.BufferGeometry();
+    const starsCount = 5000;
+    const posArray = new Float32Array(starsCount * 3);
+
+    for (let i = 0; i < starsCount * 3; i++) {
+      posArray[i] = (Math.random() - 0.5) * 500; // Spread stars wide
+    }
+
+    starsGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    const starsMaterial = new THREE.PointsMaterial({
+      size: 0.2,
+      color: 0xffffff,
+      transparent: true,
+      opacity: 0.8,
+    });
+    const starMesh = new THREE.Points(starsGeometry, starsMaterial);
+    scene.add(starMesh);
+
+    // 3. Planets
+    const planetMeshes = [];
+    const orbitLines = [];
+
+    PLANETS.forEach(data => {
+      // Group to hold planet and handle rotation/orbit
+      const orbitGroup = new THREE.Group();
+      scene.add(orbitGroup);
+
+      // Orbit Path (Visual Line)
+      const orbitCurve = new THREE.EllipseCurve(
+        0, 0,            // ax, aY
+        data.distance, data.distance, // xRadius, yRadius
+        0, 2 * Math.PI,  // aStartAngle, aEndAngle
+        false,           // aClockwise
+        0                // aRotation
+      );
+      const points = orbitCurve.getPoints(100);
+      const geometry = new THREE.BufferGeometry().setFromPoints(points);
+      const material = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.15 });
+      const orbitLine = new THREE.LineLoop(geometry, material);
+      orbitLine.rotation.x = Math.PI / 2; // Lay flat on XZ plane
+      scene.add(orbitLine);
+
+      // Planet Mesh
+      const planetGeometry = new THREE.SphereGeometry(data.radius, 32, 32);
+      const planetMaterial = new THREE.MeshStandardMaterial({
+        color: data.color,
+        roughness: 0.7,
+        metalness: 0.1
+      });
+      const planet = new THREE.Mesh(planetGeometry, planetMaterial);
+
+      // Initial Position
+      planet.position.x = data.distance;
+
+      // Add to group? No, we'll animate position directly to avoid nested rotation complexity for now, 
+      // or we can rotate the group. Let's rotate the group for orbit, and planet for axis.
+      // Actually, rotating the group is easier for circular orbits.
+
+      // Create a pivot object for the orbit
+      const pivot = new THREE.Object3D();
+      pivot.rotation.y = Math.random() * Math.PI * 2; // Random start angle
+      scene.add(pivot);
+      pivot.add(planet);
+
+      // Saturn Rings
+      if (data.hasRings) {
+        const ringGeometry = new THREE.RingGeometry(data.radius * 1.4, data.radius * 2.2, 32);
+        const ringMaterial = new THREE.MeshBasicMaterial({
+          color: 0xA09070,
+          side: THREE.DoubleSide,
+          transparent: true,
+          opacity: 0.6
+        });
+        const ring = new THREE.Mesh(ringGeometry, ringMaterial);
+        ring.rotation.x = Math.PI / 2;
+        ring.rotation.y = 0.2; // Tilt
+        planet.add(ring);
+      }
+
+      planetMeshes.push({
+        mesh: planet,
+        pivot: pivot,
+        speed: data.speed * SCENE_CONFIG.speedScale,
+        selfRotationSpeed: 0.01 + Math.random() * 0.02
+      });
+    });
+
+    // --- Animation Loop ---
+    function animate() {
+      requestAnimationFrame(animate);
+
+      // Rotate Sun
+      sun.rotation.y += 0.002;
+
+      // Rotate Stars (slowly)
+      starMesh.rotation.y -= 0.0002;
+
+      // Animate Planets
+      planetMeshes.forEach(obj => {
+        // Orbit
+        obj.pivot.rotation.y += obj.speed * 0.01;
+
+        // Self Rotation
+        obj.mesh.rotation.y += obj.selfRotationSpeed;
+      });
+
+      controls.update();
+      renderer.render(scene, camera);
+    }
+
+    // --- Resize Handler ---
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Start
+    animate();
+
+    // Remove loading screen
+    setTimeout(() => {
+      const loader = document.getElementById('loading');
+      loader.style.opacity = '0';
+      setTimeout(() => loader.remove(), 1000);
+    }, 1000);
+
   </script>
 </body>
+
 </html>
