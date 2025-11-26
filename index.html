@@ -144,6 +144,60 @@
         transform: rotate(360deg);
       }
     }
+
+    /* Tooltip */
+    #tooltip {
+      position: absolute;
+      display: none;
+      pointer-events: none;
+      z-index: 20;
+    }
+
+    #tooltip-line {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 100px;
+      height: 2px;
+      background: var(--accent-color);
+      transform-origin: right bottom;
+      transform: rotate(-45deg);
+    }
+
+    #tooltip-content {
+      position: absolute;
+      bottom: 70px;
+      /* Adjust based on line length/angle */
+      left: 70px;
+      width: 250px;
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid var(--accent-color);
+      border-radius: 5px;
+      box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+      color: #fff;
+      font-size: 0.9rem;
+    }
+
+    #tooltip-content h2 {
+      margin-bottom: 5px;
+      color: var(--accent-color);
+      font-size: 1.2rem;
+      text-transform: uppercase;
+    }
+
+    .data-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 3px;
+      font-size: 0.85rem;
+      color: #ccc;
+    }
+
+    .data-value {
+      color: #fff;
+      font-weight: bold;
+    }
   </style>
 </head>
 
@@ -151,6 +205,16 @@
 
   <div id="loading">
     <div class="loader"></div>
+  </div>
+
+  <div id="tooltip">
+    <div id="tooltip-line"></div>
+    <div id="tooltip-content">
+      <h2 id="planet-name">Planet</h2>
+      <div class="data-row"><span>Mass:</span> <span id="planet-mass" class="data-value"></span></div>
+      <div class="data-row"><span>Diameter:</span> <span id="planet-diameter" class="data-value"></span></div>
+      <div class="data-row"><span>Temp:</span> <span id="planet-temp" class="data-value"></span></div>
+    </div>
   </div>
 
   <header class="glass">
@@ -291,14 +355,38 @@
 
     // Planet Data (Relative sizes and distances are approximated for visual appeal, not 1:1 scientific accuracy)
     const PLANETS = [
-      { name: "Mercury", radius: 0.8, distance: 10, speed: 4.1, type: 'rocky', colors: ['#A5A5A5', '#808080', '#D3D3D3'] },
-      { name: "Venus", radius: 1.5, distance: 15, speed: 1.6, type: 'gas', colors: ['#E3BB76', '#D4AF37', '#C2B280'] }, // Venus looks like gas due to atmosphere
-      { name: "Earth", radius: 1.6, distance: 22, speed: 1.0, type: 'earth', colors: ['#1E90FF', '#228B22', '#FFFFFF'] },
-      { name: "Mars", radius: 0.9, distance: 30, speed: 0.53, type: 'rocky', colors: ['#DD4C22', '#B22222', '#CD5C5C'] },
-      { name: "Jupiter", radius: 3.5, distance: 45, speed: 0.08, type: 'gas', colors: ['#D6A566', '#8B4513', '#F4A460', '#DEB887'] },
-      { name: "Saturn", radius: 3.0, distance: 65, speed: 0.03, type: 'gas', colors: ['#F4D03F', '#DAA520', '#EEE8AA'], hasRings: true },
-      { name: "Uranus", radius: 2.0, distance: 85, speed: 0.01, type: 'gas', colors: ['#ACE5EE', '#00CED1', '#40E0D0'] },
-      { name: "Neptune", radius: 1.9, distance: 100, speed: 0.006, type: 'gas', colors: ['#3F54BA', '#4169E1', '#000080'] }
+      {
+        name: "Mercury", radius: 0.8, distance: 10, speed: 4.1, type: 'rocky', colors: ['#A5A5A5', '#808080', '#D3D3D3'],
+        mass: "3.30 × 10^23 kg", diameter: "4,879 km", temp: "167 °C"
+      },
+      {
+        name: "Venus", radius: 1.5, distance: 15, speed: 1.6, type: 'gas', colors: ['#E3BB76', '#D4AF37', '#C2B280'],
+        mass: "4.87 × 10^24 kg", diameter: "12,104 km", temp: "464 °C"
+      },
+      {
+        name: "Earth", radius: 1.6, distance: 22, speed: 1.0, type: 'earth', colors: ['#1E90FF', '#228B22', '#FFFFFF'],
+        mass: "5.97 × 10^24 kg", diameter: "12,742 km", temp: "15 °C"
+      },
+      {
+        name: "Mars", radius: 0.9, distance: 30, speed: 0.53, type: 'rocky', colors: ['#DD4C22', '#B22222', '#CD5C5C'],
+        mass: "6.39 × 10^23 kg", diameter: "6,779 km", temp: "-65 °C"
+      },
+      {
+        name: "Jupiter", radius: 3.5, distance: 45, speed: 0.08, type: 'gas', colors: ['#D6A566', '#8B4513', '#F4A460', '#DEB887'],
+        mass: "1.90 × 10^27 kg", diameter: "139,820 km", temp: "-110 °C"
+      },
+      {
+        name: "Saturn", radius: 3.0, distance: 65, speed: 0.03, type: 'gas', colors: ['#F4D03F', '#DAA520', '#EEE8AA'], hasRings: true,
+        mass: "5.68 × 10^26 kg", diameter: "116,460 km", temp: "-140 °C"
+      },
+      {
+        name: "Uranus", radius: 2.0, distance: 85, speed: 0.01, type: 'gas', colors: ['#ACE5EE', '#00CED1', '#40E0D0'],
+        mass: "8.68 × 10^25 kg", diameter: "50,724 km", temp: "-195 °C"
+      },
+      {
+        name: "Neptune", radius: 1.9, distance: 100, speed: 0.006, type: 'gas', colors: ['#3F54BA', '#4169E1', '#000080'],
+        mass: "1.02 × 10^26 kg", diameter: "49,244 km", temp: "-200 °C"
+      }
     ];
 
     // --- Setup ---
@@ -319,6 +407,22 @@
     controls.dampingFactor = 0.05;
     controls.minDistance = 10;
     controls.maxDistance = 200;
+
+    // --- Raycaster Setup ---
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+    let hoveredPlanet = null;
+
+    window.addEventListener('mousemove', (event) => {
+      mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+      mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    });
+
+    const tooltip = document.getElementById('tooltip');
+    const planetNameEl = document.getElementById('planet-name');
+    const planetMassEl = document.getElementById('planet-mass');
+    const planetDiameterEl = document.getElementById('planet-diameter');
+    const planetTempEl = document.getElementById('planet-temp');
 
     // --- Lighting ---
     const ambientLight = new THREE.AmbientLight(0x555555); // Slightly brighter background light
@@ -450,7 +554,8 @@
         mesh: planet,
         pivot: pivot,
         speed: data.speed * SCENE_CONFIG.speedScale,
-        selfRotationSpeed: 0.01 + Math.random() * 0.02
+        selfRotationSpeed: 0.01 + Math.random() * 0.02,
+        data: data // Store data for tooltip
       });
     });
 
@@ -474,6 +579,49 @@
       });
 
       controls.update();
+
+      // --- Raycasting ---
+      raycaster.setFromCamera(mouse, camera);
+      const intersects = raycaster.intersectObjects(planetMeshes.map(p => p.mesh));
+
+      if (intersects.length > 0) {
+        const object = intersects[0].object;
+        // Find the planet data object associated with this mesh
+        const planetObj = planetMeshes.find(p => p.mesh === object);
+
+        if (planetObj) {
+          hoveredPlanet = planetObj;
+          document.body.style.cursor = 'pointer';
+
+          // Update Tooltip Content
+          planetNameEl.textContent = planetObj.data.name;
+          planetMassEl.textContent = planetObj.data.mass;
+          planetDiameterEl.textContent = planetObj.data.diameter;
+          planetTempEl.textContent = planetObj.data.temp;
+
+          tooltip.style.display = 'block';
+        }
+      } else {
+        hoveredPlanet = null;
+        document.body.style.cursor = 'default';
+        tooltip.style.display = 'none';
+      }
+
+      // Update Tooltip Position (if visible)
+      if (hoveredPlanet) {
+        const vector = hoveredPlanet.mesh.position.clone();
+        // We need to get world position because the planet is inside a pivot group
+        hoveredPlanet.mesh.getWorldPosition(vector);
+
+        vector.project(camera);
+
+        const x = (vector.x * .5 + .5) * window.innerWidth;
+        const y = (-(vector.y * .5) + .5) * window.innerHeight;
+
+        tooltip.style.left = `${x}px`;
+        tooltip.style.top = `${y}px`;
+      }
+
       renderer.render(scene, camera);
     }
 
