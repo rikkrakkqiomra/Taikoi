@@ -591,14 +591,14 @@
     // --- Objects ---
 
     // 1. Sun
-    // A. Sun Surface (Rotating Sphere) - Procedural Gradient/Noise
-    function createSunSurfaceTexture() {
+    // Procedural Fallback for "Eye of the Brain" in case image fails or for performance
+    function createSunTexture() {
       const canvas = document.createElement('canvas');
       canvas.width = 512;
       canvas.height = 512;
       const ctx = canvas.getContext('2d');
 
-      // Background Gradient
+      // Background
       const grad = ctx.createRadialGradient(256, 256, 20, 256, 256, 256);
       grad.addColorStop(0, '#ffaa00');
       grad.addColorStop(0.5, '#ff4400');
@@ -606,79 +606,47 @@
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, 512, 512);
 
-      // Noise/Turbulence
-      ctx.fillStyle = 'rgba(255, 255, 0, 0.1)';
-      for (let i = 0; i < 2000; i++) {
-        const x = Math.random() * 512;
-        const y = Math.random() * 512;
-        const size = Math.random() * 3;
-        ctx.beginPath();
-        ctx.arc(x, y, size, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      return new THREE.CanvasTexture(canvas);
-    }
-
-    const sunGeometry = new THREE.SphereGeometry(SCENE_CONFIG.sunRadius, 48, 48);
-    const sunMaterial = new THREE.MeshBasicMaterial({
-      map: createSunSurfaceTexture(),
-      color: 0xFFFFFF,
-      transparent: true,
-      opacity: 0.9
-    });
-    const sun = new THREE.Mesh(sunGeometry, sunMaterial);
-    scene.add(sun);
-
-    // B. Logo (Eye of the Brain) - Billboard Sprite (Always faces camera)
-    // Procedural Fallback for Logo
-    function createLogoFallbackTexture() {
-      const canvas = document.createElement('canvas');
-      canvas.width = 512;
-      canvas.height = 512;
-      const ctx = canvas.getContext('2d');
-
-      // Clear background (transparent)
-      ctx.clearRect(0, 0, 512, 512);
-
       // "Brain/Eye" details
-      ctx.strokeStyle = 'rgba(255, 200, 200, 0.8)';
-      ctx.lineWidth = 3;
+      ctx.strokeStyle = 'rgba(255, 200, 200, 0.5)';
+      ctx.lineWidth = 2;
       for (let i = 0; i < 50; i++) {
         ctx.beginPath();
-        ctx.moveTo(256 + (Math.random() - 0.5) * 300, 256 + (Math.random() - 0.5) * 300);
-        ctx.bezierCurveTo(Math.random() * 512, Math.random() * 512, Math.random() * 512, Math.random() * 512, 256, 256);
+        ctx.moveTo(Math.random() * 512, Math.random() * 512);
+        ctx.bezierCurveTo(Math.random() * 512, Math.random() * 512, Math.random() * 512, Math.random() * 512, Math.random() * 512, Math.random() * 512);
         ctx.stroke();
       }
 
       // Pupil
-      ctx.fillStyle = 'rgba(0,0,0,0.9)';
+      ctx.fillStyle = 'rgba(0,0,0,0.8)';
       ctx.beginPath();
-      ctx.arc(256, 256, 80, 0, Math.PI * 2);
+      ctx.arc(256, 256, 60, 0, Math.PI * 2);
       ctx.fill();
 
       return new THREE.CanvasTexture(canvas);
     }
 
-    const textureLoader = new THREE.TextureLoader(); // Keep textureLoader here or move it up if not already there
-    const logoMaterial = new THREE.SpriteMaterial({
-      map: createLogoFallbackTexture(), // Initial fallback
+    const textureLoader = new THREE.TextureLoader();
+    const sunGeometry = new THREE.SphereGeometry(SCENE_CONFIG.sunRadius, 48, 48); // Reduced segments slightly for perf
+    const sunMaterial = new THREE.MeshBasicMaterial({
+      color: 0xFFFFFF,
       transparent: true,
       opacity: 0.9,
-      blending: THREE.NormalBlending // Normal blending to show the logo clearly over the sun
+      side: THREE.DoubleSide
     });
-    const logoSprite = new THREE.Sprite(logoMaterial);
-    logoSprite.scale.set(SCENE_CONFIG.sunRadius * 2.2, SCENE_CONFIG.sunRadius * 2.2, 1); // Slightly larger than sun
-    scene.add(logoSprite);
+    const sun = new THREE.Mesh(sunGeometry, sunMaterial);
+    scene.add(sun);
 
-    // Load actual texture
+    // Attempt to load image, fallback to procedural if it fails (common in local file:// execution)
     textureLoader.load('AiiAold.jpg',
       (texture) => {
-        logoMaterial.map = texture;
-        logoMaterial.needsUpdate = true;
+        sun.material.map = texture;
+        sun.material.needsUpdate = true;
       },
       undefined,
       (err) => {
-        console.warn("Logo texture failed to load. Using fallback.");
+        console.warn("Sun texture failed to load (likely CORS if local). Using procedural fallback.");
+        sun.material.map = createSunTexture();
+        sun.material.needsUpdate = true;
       }
     );
 
