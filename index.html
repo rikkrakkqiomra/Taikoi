@@ -258,7 +258,12 @@
     context.fillRect(0, 0, 128, 128);
 
     const glowTexture = new THREE.CanvasTexture(canvas);
-    const glowMaterial = new THREE.SpriteMaterial({ map: glowTexture, blending: THREE.AdditiveBlending });
+    const glowMaterial = new THREE.SpriteMaterial({
+      map: glowTexture,
+      blending: THREE.AdditiveBlending,
+      transparent: true,
+      depthWrite: false
+    });
     const sunGlow = new THREE.Sprite(glowMaterial);
     sunGlow.scale.set(SCENE_CONFIG.sunRadius * 6, SCENE_CONFIG.sunRadius * 6, 1);
     sun.add(sunGlow);
