@@ -189,6 +189,46 @@
         // Start entry animation
         entryLoop();
 
+        // --- Exit Animation ---
+        function exitAnimation() {
+            // Prevent double clicks
+            header.style.pointerEvents = 'none';
+
+            const startTime = Date.now();
+            const duration = 1000; // 1 second
+
+            function exitLoop() {
+                const elapsed = Date.now() - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+
+                // Easing: Cubic In (starts slow, ends fast)
+                const ease = progress * progress * progress;
+
+                // Scale down 1 -> 0
+                const scale = 1 - ease;
+                scene.scale.set(scale, scale, scale);
+
+                // Spin effect (reverse of entry)
+                scene.rotation.z = ease * 1.0;
+
+                // Fade out UI
+                header.style.opacity = 1 - ease;
+                content.style.opacity = 1 - ease;
+
+                if (progress < 1) {
+                    requestAnimationFrame(exitLoop);
+                } else {
+                    // Navigate back
+                    window.location.href = 'index.html';
+                }
+            }
+            exitLoop();
+        }
+
+        // Make header clickable for exit
+        header.style.cursor = 'pointer';
+        header.addEventListener('click', exitAnimation);
+
         // --- Animation Loop ---
         function animate() {
             requestAnimationFrame(animate);

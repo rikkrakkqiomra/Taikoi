@@ -905,6 +905,60 @@
 
     // --- Transition Animation ---
     let isTransitioning = false;
+
+    // Entry Animation (Expand from Brain)
+    function entryAnimation() {
+      const header = document.querySelector('header');
+      const footer = document.querySelector('footer');
+
+      // Reset UI visibility
+      if (header) {
+        header.style.opacity = '0';
+        header.style.transition = 'opacity 1.5s ease';
+      }
+      if (footer) {
+        footer.style.opacity = '0';
+        footer.style.transition = 'opacity 1.5s ease';
+      }
+
+      // Initial State
+      scene.scale.set(0.001, 0.001, 0.001);
+
+      const startTime = Date.now();
+      const duration = 1500;
+
+      function entryLoop() {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        // Easing: Cubic Out
+        const ease = 1 - Math.pow(1 - progress, 3);
+
+        scene.scale.set(ease, ease, ease);
+        scene.rotation.z = (1 - ease) * -0.5; // Slight reverse spin
+
+        if (progress < 1) {
+          requestAnimationFrame(entryLoop);
+        } else {
+          scene.scale.set(1, 1, 1);
+          scene.rotation.z = 0;
+
+          if (header) header.style.opacity = '1';
+          if (footer) footer.style.opacity = '1';
+        }
+      }
+      entryLoop();
+    }
+
+    // Handle Page Show (bfcache restore)
+    window.addEventListener('pageshow', (event) => {
+      // If persisted (from bfcache) or just normal load, ensure we reset
+      isTransitioning = false;
+
+      // Always run entry animation to ensure smooth arrival/return
+      entryAnimation();
+    });
+
     function startTransition() {
       if (isTransitioning) return;
       isTransitioning = true;
