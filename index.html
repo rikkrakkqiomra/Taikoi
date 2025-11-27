@@ -666,341 +666,394 @@
 
     // Mobile: Tap Logic
     if (isMobile) {
-      const sunLight = new THREE.PointLight(0xffffff, 3, 400); // Brighter sun
-      sunLight.position.set(0, 0, 0);
-      scene.add(sunLight);
+      window.addEventListener('touchstart', (event) => {
+        if (event.touches.length > 0) {
+          const touch = event.touches[0];
+          mouse.x = (touch.clientX / window.innerWidth) * 2 - 1;
+          mouse.y = -(touch.clientY / window.innerHeight) * 2 + 1;
 
-      // --- Objects ---
-
-      // 1. Sun
-      // Procedural Fallback for "Eye of the Brain" in case image fails or for performance
-      function createSunTexture() {
-        const canvas = document.createElement('canvas');
-        canvas.width = 512;
-        canvas.height = 512;
-        const context = canvas.getContext('2d');
-
-        // Background
-        const grad = context.createRadialGradient(256, 256, 20, 256, 256, 256);
-        grad.addColorStop(0, '#ffaa00');
-        grad.addColorStop(0.5, '#ff4400');
-        grad.addColorStop(1, '#550000');
-        context.fillStyle = grad;
-        context.fillRect(0, 0, 512, 512);
-
-        // "Brain/Eye" details
-        context.strokeStyle = 'rgba(255, 200, 200, 0.5)';
-        context.lineWidth = 2;
-        for (let i = 0; i < 50; i++) {
-          context.beginPath();
-          context.moveTo(Math.random() * 512, Math.random() * 512);
-          context.bezierCurveTo(Math.random() * 512, Math.random() * 512, Math.random() * 512, Math.random() * 512, Math.random() * 512, Math.random() * 512);
-          context.stroke();
-        }
-
-        // Pupil
-        context.fillStyle = 'rgba(0,0,0,0.8)';
-        context.beginPath();
-        context.arc(256, 256, 60, 0, Math.PI * 2);
-        context.fill();
-
-        return new THREE.CanvasTexture(canvas);
-      }
-
-      const textureLoader = new THREE.TextureLoader();
-      const sunGeometry = new THREE.SphereGeometry(SCENE_CONFIG.sunRadius, 48, 48); // Reduced segments slightly for perf
-      const sunMaterial = new THREE.MeshBasicMaterial({
-        color: 0xFFFFFF,
-        transparent: true,
-        opacity: 0.9,
-        side: THREE.DoubleSide
-      });
-      const sun = new THREE.Mesh(sunGeometry, sunMaterial);
-      scene.add(sun);
-
-      // Attempt to load image, fallback to procedural if it fails (common in local file:// execution)
-      textureLoader.load('AiiAold.jpg',
-        (texture) => {
-          sun.material.map = texture;
-          sun.material.needsUpdate = true;
-        },
-        undefined,
-        (err) => {
-          console.warn("Sun texture failed to load (likely CORS if local). Using procedural fallback.");
-          sun.material.map = createSunTexture();
-          sun.material.needsUpdate = true;
-        }
-      );
-
-      // Sun Glow (Fake Bloom)
-      const canvas = document.createElement('canvas');
-      canvas.width = 128;
-      canvas.height = 128;
-      const context = canvas.getContext('2d');
-      const gradient = context.createRadialGradient(64, 64, 0, 64, 64, 64);
-      gradient.addColorStop(0, 'rgba(255, 215, 0, 0.8)');
-      gradient.addColorStop(0.2, 'rgba(255, 100, 0, 0.4)');
-      gradient.addColorStop(0.5, 'rgba(255, 50, 0, 0.1)');
-      gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
-      context.fillStyle = gradient;
-      context.fillRect(0, 0, 128, 128);
-
-      const glowTexture = new THREE.CanvasTexture(canvas);
-      const glowMaterial = new THREE.SpriteMaterial({
-        map: glowTexture,
-        blending: THREE.AdditiveBlending,
-        transparent: true,
-        depthWrite: false
-      });
-      const sunGlow = new THREE.Sprite(glowMaterial);
-      sunGlow.scale.set(SCENE_CONFIG.sunRadius * 6, SCENE_CONFIG.sunRadius * 6, 1);
-      sun.add(sunGlow);
-
-      scene.add(sun);
-
-      // 2. Starfield Background
-      const starsGeometry = new THREE.BufferGeometry();
-      const starsCount = 5000;
-      const posArray = new Float32Array(starsCount * 3);
-
-      for (let i = 0; i < starsCount * 3; i++) {
-        posArray[i] = (Math.random() - 0.5) * 500; // Spread stars wide
-      }
-
-      starsGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-      const starsMaterial = new THREE.PointsMaterial({
-        size: 0.2,
-        color: 0xffffff,
-        transparent: true,
-        opacity: 0.8,
-      });
-      const starMesh = new THREE.Points(starsGeometry, starsMaterial);
-      scene.add(starMesh);
-
-      // 3. Planets
-      const planetMeshes = [];
-      const orbitLines = [];
-
-      PLANETS.forEach(data => {
-        // Group to hold planet and handle rotation/orbit
-        const orbitGroup = new THREE.Group();
-        scene.add(orbitGroup);
-
-        // Orbit Path (Visual Line)
-        const orbitCurve = new THREE.EllipseCurve(
-          0, 0,            // ax, aY
-          data.distance, data.distance, // xRadius, yRadius
-          0, 2 * Math.PI,  // aStartAngle, aEndAngle
-          false,           // aClockwise
-          0                // aRotation
-        );
-        const points = orbitCurve.getPoints(100);
-        const geometry = new THREE.BufferGeometry().setFromPoints(points);
-        const material = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.15 });
-        const orbitLine = new THREE.LineLoop(geometry, material);
-        orbitLine.rotation.x = Math.PI / 2; // Lay flat on XZ plane
-        scene.add(orbitLine);
-
-        // Planet Mesh
-        const planetGeometry = new THREE.SphereGeometry(data.radius, 64, 64); // Higher detail
-        const texture = createPlanetTexture(data.type, data.colors);
-        const planetMaterial = new THREE.MeshStandardMaterial({
-          map: texture,
-          roughness: data.type === 'gas' ? 0.4 : 0.8,
-          metalness: data.type === 'earth' ? 0.2 : 0.1
-        });
-        const planet = new THREE.Mesh(planetGeometry, planetMaterial);
-
-        // Initial Position
-        planet.position.x = data.distance;
-
-        // Add to group? No, we'll animate position directly to avoid nested rotation complexity for now, 
-        // or we can rotate the group. Let's rotate the group for orbit, and planet for axis.
-        // Actually, rotating the group is easier for circular orbits.
-
-        // Create a pivot object for the orbit
-        const pivot = new THREE.Object3D();
-        pivot.rotation.y = Math.random() * Math.PI * 2; // Random start angle
-        scene.add(pivot);
-        pivot.add(planet);
-
-        // Saturn Rings
-        let ring = null;
-        if (data.hasRings) {
-          const ringGeometry = new THREE.RingGeometry(data.radius * 1.4, data.radius * 2.2, 32);
-          const ringMaterial = new THREE.MeshBasicMaterial({
-            color: 0xA09070,
-            side: THREE.DoubleSide,
-            transparent: true,
-            opacity: 0.6
-          });
-          ring = new THREE.Mesh(ringGeometry, ringMaterial);
-          ring.rotation.x = Math.PI / 2;
-          ring.rotation.y = 0.2; // Tilt
-          planet.add(ring);
-        }
-
-        planetMeshes.push({
-          mesh: planet,
-          pivot: pivot,
-          speed: data.speed * SCENE_CONFIG.speedScale,
-          selfRotationSpeed: 0.01 + Math.random() * 0.02,
-          data: data, // Store data for tooltip
-          ring: ring // Store ring reference
-        });
-      });
-
-      // --- Transition Animation ---
-      let isTransitioning = false;
-      function startTransition() {
-        if (isTransitioning) return;
-        isTransitioning = true;
-
-        // Hide UI
-        const header = document.querySelector('header');
-        const footer = document.querySelector('footer');
-        const tooltip = document.getElementById('tooltip');
-
-        if (header) {
-          header.style.transition = 'opacity 0.5s ease';
-          header.style.opacity = '0';
-        }
-        if (footer) {
-          footer.style.transition = 'opacity 0.5s ease';
-          footer.style.opacity = '0';
-        }
-        if (tooltip) tooltip.style.display = 'none';
-
-        // Animation Loop
-        const startTime = Date.now();
-        const duration = 1000; // 1 second for the suck effect
-
-        function transitionLoop() {
-          const elapsed = Date.now() - startTime;
-          const progress = Math.min(elapsed / duration, 1);
-
-          // Easing: Cubic In (starts slow, ends fast)
-          const ease = progress * progress * progress;
-
-          // Scale down to almost zero
-          const scale = 1 - ease;
-          scene.scale.set(scale, scale, scale);
-
-          // Rotate scene/camera for vortex effect
-          scene.rotation.z += 0.05 * ease;
-
-          if (progress < 1) {
-            requestAnimationFrame(transitionLoop);
-          } else {
-            // Navigate
-            window.location.href = 'brain.html';
-          }
-        }
-        transitionLoop();
-      }
-
-      // --- Animation Loop ---
-      function animate() {
-        requestAnimationFrame(animate);
-
-        // Rotate Sun
-        sun.rotation.y += 0.002;
-
-        // Rotate Stars (slowly)
-        starMesh.rotation.y -= 0.0002;
-
-        // Animate Planets
-        planetMeshes.forEach(obj => {
-          // Orbit
-          obj.pivot.rotation.y += obj.speed * 0.01 * speedMultiplier; // Apply speedMultiplier
-
-          // Self Rotation
-          obj.mesh.rotation.y += obj.selfRotationSpeed;
-        });
-
-        controls.update();
-
-        // --- Raycasting & Tooltip Update ---
-
-        // Desktop: Continuous Raycast for Hover
-        if (!isMobile) {
+          // Perform Raycast immediately on tap
           raycaster.setFromCamera(mouse, camera);
 
-          let cursor = 'default';
-          activePlanet = null;
-
-          // Check Sun Hover
+          // Check for Sun interaction first
           const sunIntersects = raycaster.intersectObject(sun);
           if (sunIntersects.length > 0) {
-            cursor = 'pointer';
+            startTransition();
+            return;
           }
 
-          // Check Planet Hover
           const intersects = raycaster.intersectObjects(planetMeshes.map(p => p.mesh));
+
           if (intersects.length > 0) {
             const object = intersects[0].object;
             const planetObj = planetMeshes.find(p => p.mesh === object);
             if (planetObj) {
-              activePlanet = planetObj;
-              cursor = 'pointer';
+              activePlanet = planetObj; // Select planet
             }
+          } else {
+            activePlanet = null; // Deselect if tapping empty space
           }
-
-          document.body.style.cursor = cursor;
         }
+      }, { passive: false });
+    } else {
+      // Desktop Click Logic for Sun
+      window.addEventListener('click', (event) => {
+        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
-        // Display Tooltip if we have an active planet
-        if (activePlanet) {
-          // Update Content
-          planetNameEl.textContent = activePlanet.data.name;
-          planetMassEl.textContent = activePlanet.data.mass;
-          planetDiameterEl.textContent = activePlanet.data.diameter;
-          planetTempEl.textContent = activePlanet.data.temp;
-
-          tooltip.style.display = 'block';
-
-          // Update Position
-          // CRITICAL FIX: Update matrices to ensure projection uses the latest camera/object transforms
-          camera.updateMatrixWorld();
-          activePlanet.mesh.updateMatrixWorld();
-
-          const vector = new THREE.Vector3();
-          activePlanet.mesh.getWorldPosition(vector);
-          vector.project(camera);
-
-          let x = (vector.x * .5 + .5) * window.innerWidth;
-          let y = (-(vector.y * .5) + .5) * window.innerHeight;
-
-          // Clamp to screen bounds (prevent overflow)
-          const padding = 10;
-          x = Math.max(padding, Math.min(window.innerWidth - padding, x));
-          y = Math.max(padding, Math.min(window.innerHeight - padding, y));
-
-          tooltip.style.left = `${x}px`;
-          tooltip.style.top = `${y}px`;
-        } else {
-          tooltip.style.display = 'none';
+        raycaster.setFromCamera(mouse, camera);
+        const sunIntersects = raycaster.intersectObject(sun);
+        if (sunIntersects.length > 0) {
+          startTransition();
         }
+      });
+    }
 
-        renderer.render(scene, camera);
+    const tooltip = document.getElementById('tooltip');
+    const planetNameEl = document.getElementById('planet-name');
+    const planetMassEl = document.getElementById('planet-mass');
+    const planetDiameterEl = document.getElementById('planet-diameter');
+    const planetTempEl = document.getElementById('planet-temp');
+
+    // --- Lighting ---
+    const ambientLight = new THREE.AmbientLight(0x555555); // Slightly brighter background light
+    scene.add(ambientLight);
+
+    const sunLight = new THREE.PointLight(0xffffff, 3, 400); // Brighter sun
+    sunLight.position.set(0, 0, 0);
+    scene.add(sunLight);
+
+    // --- Objects ---
+
+    // 1. Sun
+    // Procedural Fallback for "Eye of the Brain" in case image fails or for performance
+    function createSunTexture() {
+      const canvas = document.createElement('canvas');
+      canvas.width = 512;
+      canvas.height = 512;
+      const context = canvas.getContext('2d');
+
+      // Background
+      const grad = context.createRadialGradient(256, 256, 20, 256, 256, 256);
+      grad.addColorStop(0, '#ffaa00');
+      grad.addColorStop(0.5, '#ff4400');
+      grad.addColorStop(1, '#550000');
+      context.fillStyle = grad;
+      context.fillRect(0, 0, 512, 512);
+
+      // "Brain/Eye" details
+      context.strokeStyle = 'rgba(255, 200, 200, 0.5)';
+      context.lineWidth = 2;
+      for (let i = 0; i < 50; i++) {
+        context.beginPath();
+        context.moveTo(Math.random() * 512, Math.random() * 512);
+        context.bezierCurveTo(Math.random() * 512, Math.random() * 512, Math.random() * 512, Math.random() * 512, Math.random() * 512, Math.random() * 512);
+        context.stroke();
       }
 
-      // --- Resize Handler ---
-      window.addEventListener('resize', () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
+      // Pupil
+      context.fillStyle = 'rgba(0,0,0,0.8)';
+      context.beginPath();
+      context.arc(256, 256, 60, 0, Math.PI * 2);
+      context.fill();
+
+      return new THREE.CanvasTexture(canvas);
+    }
+
+    const textureLoader = new THREE.TextureLoader();
+    const sunGeometry = new THREE.SphereGeometry(SCENE_CONFIG.sunRadius, 48, 48); // Reduced segments slightly for perf
+    const sunMaterial = new THREE.MeshBasicMaterial({
+      color: 0xFFFFFF,
+      transparent: true,
+      opacity: 0.9,
+      side: THREE.DoubleSide
+    });
+    const sun = new THREE.Mesh(sunGeometry, sunMaterial);
+    scene.add(sun);
+
+    // Attempt to load image, fallback to procedural if it fails (common in local file:// execution)
+    textureLoader.load('AiiAold.jpg',
+      (texture) => {
+        sun.material.map = texture;
+        sun.material.needsUpdate = true;
+      },
+      undefined,
+      (err) => {
+        console.warn("Sun texture failed to load (likely CORS if local). Using procedural fallback.");
+        sun.material.map = createSunTexture();
+        sun.material.needsUpdate = true;
+      }
+    );
+
+    // Sun Glow (Fake Bloom)
+    const canvas = document.createElement('canvas');
+    canvas.width = 128;
+    canvas.height = 128;
+    const context = canvas.getContext('2d');
+    const gradient = context.createRadialGradient(64, 64, 0, 64, 64, 64);
+    gradient.addColorStop(0, 'rgba(255, 215, 0, 0.8)');
+    gradient.addColorStop(0.2, 'rgba(255, 100, 0, 0.4)');
+    gradient.addColorStop(0.5, 'rgba(255, 50, 0, 0.1)');
+    gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    context.fillStyle = gradient;
+    context.fillRect(0, 0, 128, 128);
+
+    const glowTexture = new THREE.CanvasTexture(canvas);
+    const glowMaterial = new THREE.SpriteMaterial({
+      map: glowTexture,
+      blending: THREE.AdditiveBlending,
+      transparent: true,
+      depthWrite: false
+    });
+    const sunGlow = new THREE.Sprite(glowMaterial);
+    sunGlow.scale.set(SCENE_CONFIG.sunRadius * 6, SCENE_CONFIG.sunRadius * 6, 1);
+    sun.add(sunGlow);
+
+    scene.add(sun);
+
+    // 2. Starfield Background
+    const starsGeometry = new THREE.BufferGeometry();
+    const starsCount = 5000;
+    const posArray = new Float32Array(starsCount * 3);
+
+    for (let i = 0; i < starsCount * 3; i++) {
+      posArray[i] = (Math.random() - 0.5) * 500; // Spread stars wide
+    }
+
+    starsGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    const starsMaterial = new THREE.PointsMaterial({
+      size: 0.2,
+      color: 0xffffff,
+      transparent: true,
+      opacity: 0.8,
+    });
+    const starMesh = new THREE.Points(starsGeometry, starsMaterial);
+    scene.add(starMesh);
+
+    // 3. Planets
+    const planetMeshes = [];
+    const orbitLines = [];
+
+    PLANETS.forEach(data => {
+      // Group to hold planet and handle rotation/orbit
+      const orbitGroup = new THREE.Group();
+      scene.add(orbitGroup);
+
+      // Orbit Path (Visual Line)
+      const orbitCurve = new THREE.EllipseCurve(
+        0, 0,            // ax, aY
+        data.distance, data.distance, // xRadius, yRadius
+        0, 2 * Math.PI,  // aStartAngle, aEndAngle
+        false,           // aClockwise
+        0                // aRotation
+      );
+      const points = orbitCurve.getPoints(100);
+      const geometry = new THREE.BufferGeometry().setFromPoints(points);
+      const material = new THREE.LineBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.15 });
+      const orbitLine = new THREE.LineLoop(geometry, material);
+      orbitLine.rotation.x = Math.PI / 2; // Lay flat on XZ plane
+      scene.add(orbitLine);
+
+      // Planet Mesh
+      const planetGeometry = new THREE.SphereGeometry(data.radius, 64, 64); // Higher detail
+      const texture = createPlanetTexture(data.type, data.colors);
+      const planetMaterial = new THREE.MeshStandardMaterial({
+        map: texture,
+        roughness: data.type === 'gas' ? 0.4 : 0.8,
+        metalness: data.type === 'earth' ? 0.2 : 0.1
+      });
+      const planet = new THREE.Mesh(planetGeometry, planetMaterial);
+
+      // Initial Position
+      planet.position.x = data.distance;
+
+      // Add to group? No, we'll animate position directly to avoid nested rotation complexity for now, 
+      // or we can rotate the group. Let's rotate the group for orbit, and planet for axis.
+      // Actually, rotating the group is easier for circular orbits.
+
+      // Create a pivot object for the orbit
+      const pivot = new THREE.Object3D();
+      pivot.rotation.y = Math.random() * Math.PI * 2; // Random start angle
+      scene.add(pivot);
+      pivot.add(planet);
+
+      // Saturn Rings
+      let ring = null;
+      if (data.hasRings) {
+        const ringGeometry = new THREE.RingGeometry(data.radius * 1.4, data.radius * 2.2, 32);
+        const ringMaterial = new THREE.MeshBasicMaterial({
+          color: 0xA09070,
+          side: THREE.DoubleSide,
+          transparent: true,
+          opacity: 0.6
+        });
+        ring = new THREE.Mesh(ringGeometry, ringMaterial);
+        ring.rotation.x = Math.PI / 2;
+        ring.rotation.y = 0.2; // Tilt
+        planet.add(ring);
+      }
+
+      planetMeshes.push({
+        mesh: planet,
+        pivot: pivot,
+        speed: data.speed * SCENE_CONFIG.speedScale,
+        selfRotationSpeed: 0.01 + Math.random() * 0.02,
+        data: data, // Store data for tooltip
+        ring: ring // Store ring reference
+      });
+    });
+
+    // --- Transition Animation ---
+    let isTransitioning = false;
+    function startTransition() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+
+      // Hide UI
+      const header = document.querySelector('header');
+      const footer = document.querySelector('footer');
+      const tooltip = document.getElementById('tooltip');
+
+      if (header) {
+        header.style.transition = 'opacity 0.5s ease';
+        header.style.opacity = '0';
+      }
+      if (footer) {
+        footer.style.transition = 'opacity 0.5s ease';
+        footer.style.opacity = '0';
+      }
+      if (tooltip) tooltip.style.display = 'none';
+
+      // Animation Loop
+      const startTime = Date.now();
+      const duration = 1000; // 1 second for the suck effect
+
+      function transitionLoop() {
+        const elapsed = Date.now() - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        // Easing: Cubic In (starts slow, ends fast)
+        const ease = progress * progress * progress;
+
+        // Scale down to almost zero
+        const scale = 1 - ease;
+        scene.scale.set(scale, scale, scale);
+
+        // Rotate scene/camera for vortex effect
+        scene.rotation.z += 0.05 * ease;
+
+        if (progress < 1) {
+          requestAnimationFrame(transitionLoop);
+        } else {
+          // Navigate
+          window.location.href = 'brain.html';
+        }
+      }
+      transitionLoop();
+    }
+
+    // --- Animation Loop ---
+    function animate() {
+      requestAnimationFrame(animate);
+
+      // Rotate Sun
+      sun.rotation.y += 0.002;
+
+      // Rotate Stars (slowly)
+      starMesh.rotation.y -= 0.0002;
+
+      // Animate Planets
+      planetMeshes.forEach(obj => {
+        // Orbit
+        obj.pivot.rotation.y += obj.speed * 0.01 * speedMultiplier; // Apply speedMultiplier
+
+        // Self Rotation
+        obj.mesh.rotation.y += obj.selfRotationSpeed;
       });
 
-      // Start
-      animate();
+      controls.update();
 
-      // Remove loading screen
-      setTimeout(() => {
-        const loader = document.getElementById('loading');
-        loader.style.opacity = '0';
-        setTimeout(() => loader.remove(), 1000);
-      }, 1000);
+      // --- Raycasting & Tooltip Update ---
+
+      // Desktop: Continuous Raycast for Hover
+      if (!isMobile) {
+        raycaster.setFromCamera(mouse, camera);
+
+        let cursor = 'default';
+        activePlanet = null;
+
+        // Check Sun Hover
+        const sunIntersects = raycaster.intersectObject(sun);
+        if (sunIntersects.length > 0) {
+          cursor = 'pointer';
+        }
+
+        // Check Planet Hover
+        const intersects = raycaster.intersectObjects(planetMeshes.map(p => p.mesh));
+        if (intersects.length > 0) {
+          const object = intersects[0].object;
+          const planetObj = planetMeshes.find(p => p.mesh === object);
+          if (planetObj) {
+            activePlanet = planetObj;
+            cursor = 'pointer';
+          }
+        }
+
+        document.body.style.cursor = cursor;
+      }
+
+      // Display Tooltip if we have an active planet
+      if (activePlanet) {
+        // Update Content
+        planetNameEl.textContent = activePlanet.data.name;
+        planetMassEl.textContent = activePlanet.data.mass;
+        planetDiameterEl.textContent = activePlanet.data.diameter;
+        planetTempEl.textContent = activePlanet.data.temp;
+
+        tooltip.style.display = 'block';
+
+        // Update Position
+        // CRITICAL FIX: Update matrices to ensure projection uses the latest camera/object transforms
+        camera.updateMatrixWorld();
+        activePlanet.mesh.updateMatrixWorld();
+
+        const vector = new THREE.Vector3();
+        activePlanet.mesh.getWorldPosition(vector);
+        vector.project(camera);
+
+        let x = (vector.x * .5 + .5) * window.innerWidth;
+        let y = (-(vector.y * .5) + .5) * window.innerHeight;
+
+        // Clamp to screen bounds (prevent overflow)
+        const padding = 10;
+        x = Math.max(padding, Math.min(window.innerWidth - padding, x));
+        y = Math.max(padding, Math.min(window.innerHeight - padding, y));
+
+        tooltip.style.left = `${x}px`;
+        tooltip.style.top = `${y}px`;
+      } else {
+        tooltip.style.display = 'none';
+      }
+
+      renderer.render(scene, camera);
+    }
+
+    // --- Resize Handler ---
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // Start
+    animate();
+
+    // Remove loading screen
+    setTimeout(() => {
+      const loader = document.getElementById('loading');
+      loader.style.opacity = '0';
+      setTimeout(() => loader.remove(), 1000);
+    }, 1000);
 
   </script>
 </body>
