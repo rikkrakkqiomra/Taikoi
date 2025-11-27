@@ -607,6 +607,8 @@
     controls.dampingFactor = 0.05;
     controls.minDistance = 10;
     controls.maxDistance = 600; // Increased to allow further zoom out
+    controls.enablePan = false; // Disable panning to keep sun centered
+    controls.target.set(0, 0, 0); // Explicitly lock target to sun
 
     // --- Raycaster Setup ---
     const raycaster = new THREE.Raycaster();
