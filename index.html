@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Aivoinko Aurinko Reality Simulator</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -221,6 +221,8 @@
     footer {
       position: fixed;
       bottom: 20px;
+      bottom: env(safe-area-inset-bottom, 20px);
+      /* Handle iPhone home bar */
       left: 50%;
       transform: translateX(-50%);
       z-index: 10;
@@ -230,6 +232,43 @@
       display: flex;
       gap: 20px;
       pointer-events: none;
+      width: 90%;
+      /* Ensure it doesn't overflow on small screens */
+      max-width: 600px;
+      justify-content: center;
+      white-space: nowrap;
+      /* Prevent text wrapping issues */
+    }
+
+    /* Mobile-specific adjustments */
+    @media (max-width: 768px) {
+      header {
+        width: 95%;
+        padding: 15px 20px;
+      }
+
+      footer {
+        padding: 8px 15px;
+        font-size: 0.75rem;
+        gap: 10px;
+        width: 95%;
+      }
+
+      /* Hide non-essential footer items on very small screens if needed, 
+           but user said "footer disappears", so let's try to keep it visible 
+           by ensuring high z-index and proper bottom spacing */
+
+      /* Ensure tooltip doesn't cause overflow */
+      #tooltip {
+        max-width: 200px;
+        /* Smaller tooltip on mobile */
+      }
+
+      #tooltip-content {
+        width: 180px;
+        left: 20px;
+        bottom: 20px;
+      }
     }
 
     .status-item {
@@ -863,8 +902,13 @@
         activePlanet.mesh.getWorldPosition(vector);
         vector.project(camera);
 
-        const x = (vector.x * .5 + .5) * window.innerWidth;
-        const y = (-(vector.y * .5) + .5) * window.innerHeight;
+        let x = (vector.x * .5 + .5) * window.innerWidth;
+        let y = (-(vector.y * .5) + .5) * window.innerHeight;
+
+        // Clamp to screen bounds (prevent overflow)
+        const padding = 10;
+        x = Math.max(padding, Math.min(window.innerWidth - padding, x));
+        y = Math.max(padding, Math.min(window.innerHeight - padding, y));
 
         tooltip.style.left = `${x}px`;
         tooltip.style.top = `${y}px`;
