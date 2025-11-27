@@ -635,6 +635,14 @@
 
           // Perform Raycast immediately on tap
           raycaster.setFromCamera(mouse, camera);
+
+          // Check for Sun interaction first
+          const sunIntersects = raycaster.intersectObject(sun);
+          if (sunIntersects.length > 0) {
+            window.location.href = 'brain.html';
+            return;
+          }
+
           const intersects = raycaster.intersectObjects(planetMeshes.map(p => p.mesh));
 
           if (intersects.length > 0) {
@@ -648,6 +656,18 @@
           }
         }
       }, { passive: false });
+    } else {
+      // Desktop Click Logic for Sun
+      window.addEventListener('click', (event) => {
+        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+        raycaster.setFromCamera(mouse, camera);
+        const sunIntersects = raycaster.intersectObject(sun);
+        if (sunIntersects.length > 0) {
+          window.location.href = 'brain.html';
+        }
+      });
     }
 
     const tooltip = document.getElementById('tooltip');
@@ -870,55 +890,65 @@
       // Desktop: Continuous Raycast for Hover
       if (!isMobile) {
         raycaster.setFromCamera(mouse, camera);
-        const intersects = raycaster.intersectObjects(planetMeshes.map(p => p.mesh));
 
+        let cursor = 'default';
+        activePlanet = null;
+
+        // Check Sun Hover
+        const sunIntersects = raycaster.intersectObject(sun);
+        if (sunIntersects.length > 0) {
+          cursor = 'pointer';
+        }
+
+        // Check Planet Hover
+        const intersects = raycaster.intersectObjects(planetMeshes.map(p => p.mesh));
         if (intersects.length > 0) {
           const object = intersects[0].object;
           const planetObj = planetMeshes.find(p => p.mesh === object);
           if (planetObj) {
             activePlanet = planetObj;
-            document.body.style.cursor = 'pointer';
+            cursor = 'pointer';
           }
-        } else {
-          activePlanet = null;
-          document.body.style.cursor = 'default';
         }
+
+        document.body.style.cursor = cursor;
       }
+    }
 
-      // Display Tooltip if we have an active planet
-      if (activePlanet) {
-        // Update Content
-        planetNameEl.textContent = activePlanet.data.name;
-        planetMassEl.textContent = activePlanet.data.mass;
-        planetDiameterEl.textContent = activePlanet.data.diameter;
-        planetTempEl.textContent = activePlanet.data.temp;
+    // Display Tooltip if we have an active planet
+    if (activePlanet) {
+      // Update Content
+      planetNameEl.textContent = activePlanet.data.name;
+      planetMassEl.textContent = activePlanet.data.mass;
+      planetDiameterEl.textContent = activePlanet.data.diameter;
+      planetTempEl.textContent = activePlanet.data.temp;
 
-        tooltip.style.display = 'block';
+      tooltip.style.display = 'block';
 
-        // Update Position
-        // CRITICAL FIX: Update matrices to ensure projection uses the latest camera/object transforms
-        camera.updateMatrixWorld();
-        activePlanet.mesh.updateMatrixWorld();
+      // Update Position
+      // CRITICAL FIX: Update matrices to ensure projection uses the latest camera/object transforms
+      camera.updateMatrixWorld();
+      activePlanet.mesh.updateMatrixWorld();
 
-        const vector = new THREE.Vector3();
-        activePlanet.mesh.getWorldPosition(vector);
-        vector.project(camera);
+      const vector = new THREE.Vector3();
+      activePlanet.mesh.getWorldPosition(vector);
+      vector.project(camera);
 
-        let x = (vector.x * .5 + .5) * window.innerWidth;
-        let y = (-(vector.y * .5) + .5) * window.innerHeight;
+      let x = (vector.x * .5 + .5) * window.innerWidth;
+      let y = (-(vector.y * .5) + .5) * window.innerHeight;
 
-        // Clamp to screen bounds (prevent overflow)
-        const padding = 10;
-        x = Math.max(padding, Math.min(window.innerWidth - padding, x));
-        y = Math.max(padding, Math.min(window.innerHeight - padding, y));
+      // Clamp to screen bounds (prevent overflow)
+      const padding = 10;
+      x = Math.max(padding, Math.min(window.innerWidth - padding, x));
+      y = Math.max(padding, Math.min(window.innerHeight - padding, y));
 
-        tooltip.style.left = `${x}px`;
-        tooltip.style.top = `${y}px`;
-      } else {
-        tooltip.style.display = 'none';
-      }
+      tooltip.style.left = `${x}px`;
+      tooltip.style.top = `${y}px`;
+    } else {
+      tooltip.style.display = 'none';
+    }
 
-      renderer.render(scene, camera);
+    renderer.render(scene, camera);
     }
 
     // --- Resize Handler ---
