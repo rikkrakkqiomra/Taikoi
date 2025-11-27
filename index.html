@@ -542,6 +542,42 @@
         gradient.addColorStop(1, colors[1]);
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, width, height);
+      } else if (type === 'synthetic') {
+        // Synthetic / Metallic Planet
+        const gradient = ctx.createLinearGradient(0, 0, width, height);
+        colors.forEach((color, index) => {
+          gradient.addColorStop(index / (colors.length - 1), color);
+        });
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, width, height);
+
+        // Add metallic shine/grid pattern
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+        ctx.lineWidth = 2;
+
+        // Grid lines
+        for (let i = 0; i < width; i += 40) {
+          ctx.beginPath();
+          ctx.moveTo(i, 0);
+          ctx.lineTo(i, height);
+          ctx.stroke();
+        }
+        for (let i = 0; i < height; i += 40) {
+          ctx.beginPath();
+          ctx.moveTo(0, i);
+          ctx.lineTo(width, i);
+          ctx.stroke();
+        }
+
+        // Random "tech" details
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+        for (let i = 0; i < 50; i++) {
+          const x = Math.random() * width;
+          const y = Math.random() * height;
+          const w = Math.random() * 50 + 10;
+          const h = Math.random() * 20 + 5;
+          ctx.fillRect(x, y, w, h);
+        }
       }
 
       const texture = new THREE.CanvasTexture(canvas);
@@ -581,6 +617,10 @@
       {
         name: "Neptune", radius: 1.9, distance: 100, speed: 0.006, type: 'gas', colors: ['#3F54BA', '#4169E1', '#000080'],
         mass: "1.02 × 10^26 kg", diameter: "49,244 km", temp: "-200 °C"
+      },
+      {
+        name: "Astroteles Aivoinko II", radius: 2.5, distance: 160, speed: 0.002, type: 'synthetic', colors: ['#C0C0C0', '#E8E8E8', '#A9A9A9'],
+        mass: "9.99 × 10^99 kg", diameter: "1,000,000 km", temp: "NaN °C"
       }
     ];
 
