@@ -809,6 +809,14 @@
     sunGlow.scale.set(SCENE_CONFIG.sunRadius * 6, SCENE_CONFIG.sunRadius * 6, 1);
     sun.add(sunGlow);
 
+    // Logo attached to the side of the sun
+    const logoTexture = textureLoader.load('AiiAold.jpg');
+    const logoMaterial = new THREE.SpriteMaterial({ map: logoTexture });
+    const logo = new THREE.Sprite(logoMaterial);
+    logo.scale.set(4, 4, 1);
+    logo.position.set(SCENE_CONFIG.sunRadius + 2, 0, 0); // Attached to the side
+    sun.add(logo);
+
     scene.add(sun);
 
     // 2. Starfield Background
