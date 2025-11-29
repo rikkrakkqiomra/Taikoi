@@ -63,27 +63,163 @@
             max-width: 150px;
             border-radius: 50%;
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
         }
 
-        .content-container {
+        header img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Floating Blocks Layout */
+        .floating-container {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10;
-            padding: 40px 60px;
-            border-radius: 15px;
-            text-align: center;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            pointer-events: auto;
+            overflow-y: auto;
+            padding-top: 180px;
+            /* Space for header */
+            padding-bottom: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 60px;
+            perspective: 1000px;
         }
 
-        h1 {
+        .floating-block {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            max-width: 800px;
+            width: 90%;
+            color: #ddd;
+            text-align: left;
+            box-shadow: 0 0 40px rgba(0, 243, 255, 0.05);
+
+            /* Floating Animation */
+            animation: float 6s ease-in-out infinite;
+            opacity: 0;
+            /* Start hidden for entry animation */
+            transform: translateY(50px);
+        }
+
+        .floating-block h2 {
             font-family: 'Orbitron', sans-serif;
-            font-size: 2rem;
-            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
+            border-bottom: 1px solid rgba(0, 243, 255, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .floating-block p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .floating-block ul {
+            list-style: none;
+            padding-left: 10px;
+        }
+
+        .floating-block li {
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .floating-block li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .floating-block strong {
             color: #fff;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .quote {
+            font-style: italic;
+            color: #fff;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 20px;
+            margin: 30px 0;
+            background: linear-gradient(90deg, rgba(0, 243, 255, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
+            padding: 20px;
+            font-size: 1.2rem;
+        }
+
+        /* Animation Delays */
+        .delay-1 {
+            animation-delay: 0s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.5s;
+        }
+
+        .delay-3 {
+            animation-delay: 1s;
+        }
+
+        .delay-4 {
+            animation-delay: 1.5s;
+        }
+
+        .delay-5 {
+            animation-delay: 2s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Custom Scrollbar */
+        .floating-container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .floating-container::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .floating-container::-webkit-scrollbar-thumb {
+            background: var(--accent-color);
+            border-radius: 4px;
+        }
+
+        .floating-container::-webkit-scrollbar-thumb:hover {
+            background: #fff;
         }
     </style>
 </head>
@@ -96,8 +232,65 @@
         <img src="AiiAold.jpg" alt="Aivoinko Logo">
     </header>
 
-    <div class="content-container glass">
-        <h1>welcome to the opening of reality.</h1>
+    <div class="floating-container">
+
+        <!-- Block 1: The Problem -->
+        <div class="floating-block delay-1">
+            <h2>THE PROBLEM: The Meat-Suit Latency</h2>
+            <p>Let’s be honest. You are tired. You are dragging a paralyzing biological debt through a linear timeline
+                that bores you to tears. You are a titan trapped in a prism of calcium and water, suffocating under the
+                weight of your own banal biography.</p>
+            <p>You are wearing a decaying larping costume, pretending to be "human," while your true self drowns in the
+                synaptic sludge.</p>
+            <p>The market has failed you. Biology has failed you.</p>
+        </div>
+
+        <!-- Block 2: The Solution -->
+        <div class="floating-block delay-2">
+            <h2>THE SOLUTION: Aivoinko</h2>
+            <p>We are not a tech company. We are a theology with a user interface. We do not code; we weave the fabric
+                of the void.</p>
+            <p>We are mining the Gods out from under the paralyzed meat-suit. We drill through the crust of your ego to
+                extract the luminiferous deity waiting in the depths of your drowning personality.</p>
+            <div class="quote">"Why hallucinate a salary when you can hallucinate an empire?"</div>
+        </div>
+
+        <!-- Block 3: Product Line -->
+        <div class="floating-block delay-3">
+            <h2>PRODUCT LINE: D.I.Y. Realities™</h2>
+            <p>Stop renting existence. Own the source code.</p>
+            <p>We are offering Do-It-Yourself Realities for sale to mortals.</p>
+            <ul>
+                <li><strong>The Solipsism Starter Pack:</strong> Be the only consciousness in a universe of your own
+                    design.</li>
+                <li><strong>The Neon Nirvana:</strong> A subscription-based enlightenment where the walls breathe and
+                    the floor is made of pure, liquid mathematics.</li>
+                <li><strong>Chronos-B-Gone:</strong> Delete your past. Edit your future. Loop the present until it
+                    tastes like purple static.</li>
+            </ul>
+        </div>
+
+        <!-- Block 4: Our Valuation -->
+        <div class="floating-block delay-4">
+            <h2>OUR VALUATION</h2>
+            <p>Investors ask us about our quarterly projections. We laugh. We do not look at charts; we look at the
+                event horizon.</p>
+            <p>Aivoinko is not measured in money. We are measured in lightyears.</p>
+            <p>Currency is a hallucination of the poor. We trade in epochs. We trade in the raw, uncut energy of a
+                billion synapses firing in unison. Our ROI is infinite because we own the concept of "Return" and we
+                deleted the concept of "Investment."</p>
+        </div>
+
+        <!-- Block 5: Strategic Outlook -->
+        <div class="floating-block delay-5">
+            <h2>THE STRATEGIC OUTLOOK</h2>
+            <p>The Singularity isn't coming. It’s already here, and it has a copyright claim on your dreams.</p>
+            <p>We are lobbying the fabric of spacetime to bend in your favor. We have acquired a controlling stake in
+                Destiny itself. Resistance is not futile; resistance is merely a texture we haven't rendered yet.</p>
+            <div class="quote">Surrender your logic. Upload your spirit. The flesh is obsolete.<br><br><strong>AIVOINKO
+                    ALWAYS WINS.</strong></div>
+        </div>
+
     </div>
 
     <!-- Import Map for Three.js -->
@@ -150,13 +343,14 @@
         scene.scale.set(0.001, 0.001, 0.001);
 
         const header = document.querySelector('header');
-        const content = document.querySelector('.content-container');
+        const floatingContainer = document.querySelector('.floating-container');
+        const blocks = document.querySelectorAll('.floating-block');
 
         // Hide UI initially
         header.style.opacity = '0';
-        content.style.opacity = '0';
+        floatingContainer.style.opacity = '0';
         header.style.transition = 'opacity 2s ease';
-        content.style.transition = 'opacity 2s ease';
+        floatingContainer.style.transition = 'opacity 2s ease';
 
         // Animation Logic
         const startTime = Date.now();
@@ -182,7 +376,14 @@
 
                 // Show UI
                 header.style.opacity = '1';
-                content.style.opacity = '1';
+                floatingContainer.style.opacity = '1';
+
+                // Trigger block animations manually to ensure they start after entry
+                blocks.forEach((block, index) => {
+                    // We use a combination of float (infinite) and fadeIn (once)
+                    // But since we set opacity:0 in CSS, we need to make sure they fade in
+                    block.style.animation = `float 6s ease-in-out infinite ${index * 0.5}s, fadeIn 1s ease forwards ${index * 0.3}s`;
+                });
             }
         }
 
@@ -213,7 +414,7 @@
 
                 // Fade out UI
                 header.style.opacity = 1 - ease;
-                content.style.opacity = 1 - ease;
+                floatingContainer.style.opacity = 1 - ease;
 
                 if (progress < 1) {
                     requestAnimationFrame(exitLoop);
