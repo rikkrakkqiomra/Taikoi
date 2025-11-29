@@ -405,6 +405,19 @@
     </div>
   </div>
 
+  <header class="glass">
+    <div class="logo-container">
+      <h1>Aivoinko</h1>
+      <h2 class="subtitle">Aurinko Reality Simulator</h2>
+    </div>
+    <nav>
+      <a href="#">Pure Systems</a>
+      <a href="#">DIY Realities</a>
+    </nav>
+  </header>
+
+  <div id="canvas-container"></div>
+
   <footer class="glass">
     <div class="status-item">
       <div class="dot"></div>
@@ -941,15 +954,6 @@
           }
         }
       }, { passive: false });
-    }
-
-    // --- DIY Realities Link ---
-    const diyLink = document.getElementById('diy-link');
-    if (diyLink) {
-      diyLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        startTransition();
-      });
     }
 
     // --- Animation Loop ---
