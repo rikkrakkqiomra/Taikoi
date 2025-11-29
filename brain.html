@@ -57,6 +57,14 @@
             transform: translateX(-50%);
             z-index: 10;
             text-align: center;
+            /* Remove outline on click */
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        header:focus,
+        header:active {
+            outline: none;
         }
 
         header img {
@@ -64,10 +72,20 @@
             border-radius: 50%;
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
             transition: transform 0.3s ease;
+            /* Prevent blue/gray flash on click */
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            -webkit-user-select: none;
         }
 
         header img:hover {
             transform: scale(1.05);
+        }
+
+        header img:focus,
+        header img:active {
+            outline: none;
         }
 
         /* Floating Blocks Layout */
