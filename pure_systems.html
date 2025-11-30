@@ -11,6 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&family=Courier+Prime&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --glass-bg: rgba(0, 20, 0, 0.8);
@@ -62,6 +63,28 @@
 
         header img:hover {
             transform: scale(1.05);
+        }
+
+        .social-links {
+            margin-top: 15px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            opacity: 0.8;
+        }
+
+        .social-links a:hover {
+            color: #fff;
+            text-shadow: 0 0 10px var(--accent-color);
+            transform: scale(1.2);
+            opacity: 1;
         }
 
         /* Terminal Layout */
@@ -198,6 +221,18 @@
 
     <header>
         <img src="AiiAold.jpg" alt="Aivoinko Logo">
+        <div class="social-links">
+            <a href="https://www.deviantart.com/rikkrakk" target="_blank" title="DeviantArt"><i
+                    class="fa-brands fa-deviantart"></i></a>
+            <a href="https://www.etsy.com/fi-en/listing/4327357893/kiomra-trionfi-nn64-card-deck-an-modern"
+                target="_blank" title="Etsy"><i class="fa-brands fa-etsy"></i></a>
+            <a href="https://soundcloud.com/liquid-licker" target="_blank" title="SoundCloud"><i
+                    class="fa-brands fa-soundcloud"></i></a>
+            <a href="https://fi.linkedin.com/in/riku-korpiaho-a465bb251" target="_blank" title="LinkedIn"><i
+                    class="fa-brands fa-linkedin"></i></a>
+            <a href="https://trepo.tuni.fi/handle/10024/157702" target="_blank" title="Trepo"><i
+                    class="fa-solid fa-graduation-cap"></i></a>
+        </div>
     </header>
 
     <div class="terminal-container">
