@@ -8,11 +8,13 @@
     <title>The Opening of Reality</title>
 
     <!-- # Assets: Favicon & Fonts -->
-    <link rel="icon" type="image/jpeg" href="AiiAold.jpg">
+    <link rel="icon" type="image/jpeg" href="AiiAold.8dde82cb.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <link rel="modulepreload" href="https://unpkg.com/three@0.160.0/build/three.module.js" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@400;700&display=swap"
         rel="stylesheet">
     <style>
         /* # Design System Variables */
@@ -263,7 +265,7 @@
 
     <!-- # Header with Logo -->
     <header>
-        <img src="AiiAold.jpg" alt="Aivoinko Logo">
+        <img src="AiiAold.8dde82cb.jpg" alt="Aivoinko Logo" width="150" height="150" fetchpriority="high" decoding="async">
     </header>
 
     <!-- # Main Content Container -->
@@ -340,6 +342,8 @@
 
     <script type="module">
         import * as THREE from 'three';
+
+        const FRAME_MS = 1000 / 60;
 
         // # Scene Initialization
         const scene = new THREE.Scene();
@@ -468,16 +472,28 @@
         header.addEventListener('click', exitAnimation);
 
         // # Main Animation Loop
-        function animate() {
-            requestAnimationFrame(animate);
+        let lastFrameTime = 0;
+        function animate(time) {
+            const deltaMs = lastFrameTime ? time - lastFrameTime : FRAME_MS;
+            lastFrameTime = time;
+            const dt = Math.min(deltaMs, 50) / FRAME_MS;
 
             // Rotate stars slowly
-            starMesh.rotation.y += 0.0005;
+            starMesh.rotation.y += 0.0005 * dt;
 
             renderer.render(scene, camera);
         }
 
-        animate();
+        renderer.setAnimationLoop(animate);
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                renderer.setAnimationLoop(null);
+                lastFrameTime = 0;
+            } else {
+                renderer.setAnimationLoop(animate);
+            }
+        });
 
         // # Window Resize Handler
         window.addEventListener('resize', () => {

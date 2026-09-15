@@ -2,7 +2,7 @@
 
 A stunning, interactive 3D simulation of the Solar System, built with **Three.js** and **HTML5 Canvas**. This project features procedural texture generation, realistic orbital mechanics, and a premium Sci-Fi aesthetic.
 
-![Aivoinko Aurinko](https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.jpg)
+![Aivoinko Aurinko](https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg)
 
 ## 🌌 Features
 

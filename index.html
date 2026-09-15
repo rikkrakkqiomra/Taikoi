@@ -5,11 +5,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Aivoinko Machine Metaphysics</title>
-  <link rel="icon" type="image/jpeg" href="AiiAold.jpg">
+  <link rel="icon" type="image/jpeg" href="AiiAold.8dde82cb.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="preload" as="image" href="AiiAold.8dde82cb.jpg" fetchpriority="high">
+  <link rel="modulepreload" href="https://unpkg.com/three@0.160.0/build/three.module.js" crossorigin>
+  <link rel="modulepreload" href="https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;700&display=swap"
     rel="stylesheet">
   <style>
     :root {
@@ -448,10 +452,9 @@
     // --- Configuration ---
     const SCENE_CONFIG = {
       sunRadius: 5,
-      orbitScale: 10, // Multiplier for distance to make it fit but look good
-      planetScale: 1, // Multiplier for planet size
       speedScale: 0.5,
     };
+    const FRAME_MS = 1000 / 60;
 
     // --- Texture Generation ---
     function createPlanetTexture(type, colors) {
@@ -471,13 +474,19 @@
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, width, height);
 
-        // Add turbulence
+        // Add turbulence (x-wave precomputed; identical to sin(y*0.05 + sin(x*0.01)*5)*20)
+        const xWave = new Float64Array(width);
+        for (let x = 0; x < width; x++) {
+          xWave[x] = Math.sin(x * 0.01) * 5;
+        }
         const imageData = ctx.getImageData(0, 0, width, height);
         const data = imageData.data;
         for (let y = 0; y < height; y++) {
+          const yTerm = y * 0.05;
+          const row = y * width;
           for (let x = 0; x < width; x++) {
-            const i = (y * width + x) * 4;
-            const n = Math.sin(y * 0.05 + Math.sin(x * 0.01) * 5) * 20;
+            const i = (row + x) * 4;
+            const n = Math.sin(yTerm + xWave[x]) * 20;
             data[i] = Math.min(255, Math.max(0, data[i] + n));
             data[i + 1] = Math.min(255, Math.max(0, data[i + 1] + n));
             data[i + 2] = Math.min(255, Math.max(0, data[i + 2] + n));
@@ -529,13 +538,6 @@
           ctx.fill();
         }
         ctx.globalAlpha = 1.0;
-      } else if (type === 'sun') {
-        // Sun surface
-        const gradient = ctx.createRadialGradient(width / 2, height / 2, 0, width / 2, height / 2, width);
-        gradient.addColorStop(0, colors[0]);
-        gradient.addColorStop(1, colors[1]);
-        ctx.fillStyle = gradient;
-        ctx.fillRect(0, 0, width, height);
       } else if (type === 'synthetic') {
         // Synthetic / Metallic Planet
         const gradient = ctx.createLinearGradient(0, 0, width, height);
@@ -720,7 +722,7 @@
     scene.add(sunCollider);
 
     // Load Texture
-    textureLoader.load('AiiAold.jpg',
+    textureLoader.load('AiiAold.8dde82cb.jpg',
       (texture) => {
         sun.material.map = texture;
         sun.material.needsUpdate = true;
@@ -777,9 +779,6 @@
     // 3. Planets
     const planetMeshes = [];
     PLANETS.forEach(data => {
-      const orbitGroup = new THREE.Group();
-      scene.add(orbitGroup);
-
       const orbitCurve = new THREE.EllipseCurve(0, 0, data.distance, data.distance, 0, 2 * Math.PI, false, 0);
       const points = orbitCurve.getPoints(100);
       const geometry = new THREE.BufferGeometry().setFromPoints(points);
@@ -827,6 +826,38 @@
         ring: ring
       });
     });
+
+    const planetRaycastTargets = planetMeshes.map(p => p.mesh);
+    const touchRaycastTargets = planetRaycastTargets.concat(sunCollider);
+    const tooltipWorldPos = new THREE.Vector3();
+    let displayedPlanet = null;
+    let lastCursor = '';
+    let tooltipVisible = false;
+    let lastTooltipX = -1;
+    let lastTooltipY = -1;
+    let lastFrameTime = 0;
+
+    function setCursor(cursor) {
+      if (cursor === lastCursor) return;
+      lastCursor = cursor;
+      document.body.style.cursor = cursor;
+    }
+
+    function setTooltipVisible(visible) {
+      if (tooltipVisible === visible) return;
+      tooltipVisible = visible;
+      tooltip.style.display = visible ? 'block' : 'none';
+    }
+
+    function updateTooltipContent(planetObj) {
+      if (displayedPlanet === planetObj) return;
+      displayedPlanet = planetObj;
+      const data = planetObj.data;
+      planetNameEl.textContent = data.name;
+      planetMassEl.textContent = data.mass;
+      planetDiameterEl.textContent = data.diameter;
+      planetTempEl.textContent = data.temp;
+    }
 
     // --- Transition Animation ---
     let isTransitioning = false;
@@ -879,7 +910,6 @@
 
       const header = document.querySelector('header');
       const footer = document.querySelector('footer');
-      const tooltip = document.getElementById('tooltip');
 
       if (header) {
         header.style.transition = 'opacity 0.5s ease';
@@ -889,7 +919,9 @@
         footer.style.transition = 'opacity 0.5s ease';
         footer.style.opacity = '0';
       }
-      if (tooltip) tooltip.style.display = 'none';
+      setTooltipVisible(false);
+      displayedPlanet = null;
+      activePlanet = null;
 
       const startTime = Date.now();
       const duration = 1000;
@@ -937,7 +969,7 @@
           mouse.y = -(touch.clientY / window.innerHeight) * 2 + 1;
 
           raycaster.setFromCamera(mouse, camera);
-          const intersects = raycaster.intersectObjects(planetMeshes.map(p => p.mesh).concat(sunCollider));
+          const intersects = raycaster.intersectObjects(touchRaycastTargets);
 
           if (intersects.length > 0) {
             const object = intersects[0].object;
@@ -953,19 +985,21 @@
             activePlanet = null;
           }
         }
-      }, { passive: false });
+      }, { passive: true });
     }
 
     // --- Animation Loop ---
-    function animate() {
-      requestAnimationFrame(animate);
+    function animate(time) {
+      const deltaMs = lastFrameTime ? time - lastFrameTime : FRAME_MS;
+      lastFrameTime = time;
+      const dt = Math.min(deltaMs, 50) / FRAME_MS;
 
       sun.lookAt(camera.position);
-      starMesh.rotation.y -= 0.0002;
+      starMesh.rotation.y -= 0.0002 * dt;
 
       planetMeshes.forEach(obj => {
-        obj.pivot.rotation.y += obj.speed * 0.01 * speedMultiplier;
-        obj.mesh.rotation.y += obj.selfRotationSpeed;
+        obj.pivot.rotation.y += obj.speed * 0.01 * speedMultiplier * dt;
+        obj.mesh.rotation.y += obj.selfRotationSpeed * dt;
       });
 
       controls.update();
@@ -981,7 +1015,7 @@
           cursor = 'pointer';
         }
 
-        const intersects = raycaster.intersectObjects(planetMeshes.map(p => p.mesh));
+        const intersects = raycaster.intersectObjects(planetRaycastTargets);
         if (intersects.length > 0) {
           const object = intersects[0].object;
           const planetObj = planetMeshes.find(p => p.mesh === object);
@@ -990,36 +1024,35 @@
             cursor = 'pointer';
           }
         }
-        document.body.style.cursor = cursor;
+        setCursor(cursor);
       }
 
       // Tooltip
       if (activePlanet) {
-        planetNameEl.textContent = activePlanet.data.name;
-        planetMassEl.textContent = activePlanet.data.mass;
-        planetDiameterEl.textContent = activePlanet.data.diameter;
-        planetTempEl.textContent = activePlanet.data.temp;
-
-        tooltip.style.display = 'block';
+        updateTooltipContent(activePlanet);
+        setTooltipVisible(true);
 
         camera.updateMatrixWorld();
         activePlanet.mesh.updateMatrixWorld();
+        activePlanet.mesh.getWorldPosition(tooltipWorldPos);
+        tooltipWorldPos.project(camera);
 
-        const vector = new THREE.Vector3();
-        activePlanet.mesh.getWorldPosition(vector);
-        vector.project(camera);
-
-        let x = (vector.x * .5 + .5) * window.innerWidth;
-        let y = (-(vector.y * .5) + .5) * window.innerHeight;
+        let x = (tooltipWorldPos.x * .5 + .5) * window.innerWidth;
+        let y = (-(tooltipWorldPos.y * .5) + .5) * window.innerHeight;
 
         const padding = 10;
         x = Math.max(padding, Math.min(window.innerWidth - padding, x));
         y = Math.max(padding, Math.min(window.innerHeight - padding, y));
 
-        tooltip.style.left = `${x}px`;
-        tooltip.style.top = `${y}px`;
+        if (x !== lastTooltipX || y !== lastTooltipY) {
+          lastTooltipX = x;
+          lastTooltipY = y;
+          tooltip.style.left = `${x}px`;
+          tooltip.style.top = `${y}px`;
+        }
       } else {
-        tooltip.style.display = 'none';
+        setTooltipVisible(false);
+        displayedPlanet = null;
       }
 
       renderer.render(scene, camera);
@@ -1031,7 +1064,16 @@
       renderer.setSize(window.innerWidth, window.innerHeight);
     });
 
-    animate();
+    renderer.setAnimationLoop(animate);
+
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        renderer.setAnimationLoop(null);
+        lastFrameTime = 0;
+      } else {
+        renderer.setAnimationLoop(animate);
+      }
+    });
 
     setTimeout(() => {
       const loader = document.getElementById('loading');
