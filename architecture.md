@@ -145,7 +145,7 @@ No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
 - **Sun:** procedural Canvas texture + additive glow sprite + invisible collider (`radius * 0.9`) for picking. Logo JPEG is cropped to a circle and applied to a pulsing `THREE.Sprite`.
 - **Planets:** 8 solar-system bodies + fictional `Astroteles Aivoinko II` (`type: 'synthetic'`). Saturn has a `RingGeometry`. Orbits are `EllipseCurve` line loops.
 - **Desktop:** camera starts at `(0, 140, 280)` (3/4 view). `mousemove` updates NDC mouse; click on sun collider starts transition; hover raycast drives tooltip + cursor.
-- **Mobile:** camera starts top-down at `(0, 400, 8)` so orbits read as circles; `touchstart` (passive) raycasts planets + sun; tap planet locks tooltip; tap empty space clears; tap sun transitions. Header nav is full-width `space-between` (CSS `max-width: 768px` only).
+- **Mobile:** camera starts top-down at `(0, 250, 6)` so orbits read as circles; `touchstart` (passive) raycasts planets + sun; tap planet locks tooltip; tap empty space clears; tap sun transitions. Header nav is full-width `space-between` with two-line labels (CSS `max-width: 768px` only).
 - **bfcache:** `pageshow` resets `isTransitioning` and replays entry animation.
 
 ---
@@ -242,4 +242,4 @@ Append-only. Newest rows at the **bottom**. Do not rewrite prior rows.
 | Date (YYYY-MM-DD) | Change Summary | Affected Paths | Root Cause / Rationale | Debug Notes / Side Effects |
 |---|---|---|---|---|
 | 2026-09-15 | Initial Architecture Snapshot | Full repo | System audit and documentation baseline | Zero-build Jamstack MPA; Three.js 0.160.0 via unpkg; no env/API/auth. `85d5131` stripped i18n/`styles.css`/`script.js`. `taikoi-sun-portal.png` unused. DIY Realities is a stub. |
-| 2026-09-15 | Mobile home: top-down camera + nav to header edges | index.html | Default `(0, 140, 280)` 3/4 camera made orbits ellipses on phones; nav was centered with `gap` | Desktop camera and `min-width: 768px` header row unchanged. Verify 390×844 vs 1440×900. Polar angle not reset on resize. |
+| 2026-09-15 | Mobile home: top-down camera + nav to header edges | index.html | Default `(0, 140, 280)` 3/4 camera made orbits ellipses on phones; nav was centered with `gap` | Desktop camera and `min-width: 768px` header row unchanged. Mobile camera `(0, 250, 6)`. Polar angle not reset on resize. |

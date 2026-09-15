@@ -202,6 +202,10 @@
       width: 100%;
     }
 
+    nav a br {
+      display: none;
+    }
+
     /* Animations */
     @keyframes flashEntry {
       0% {
@@ -295,8 +299,12 @@
 
       nav a {
         font-size: 0.85rem;
-        max-width: 45%;
+        width: 42%;
         line-height: 1.25;
+      }
+
+      nav a br {
+        display: inline;
       }
 
       nav a:nth-child(1) {
@@ -476,8 +484,8 @@
       <h2 class="subtitle">Machine Metaphysics</h2>
     </div>
     <nav>
-      <a href="pure_systems.html">Pure Systems</a>
-      <a href="#">DIY Realities</a>
+      <a href="pure_systems.html">Pure <br>Systems</a>
+      <a href="#">DIY <br>Realities</a>
     </nav>
   </header>
 
@@ -683,7 +691,7 @@
 
     const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
     if (isMobile) {
-      camera.position.set(0, 400, 8);
+      camera.position.set(0, 250, 6);
     } else {
       camera.position.set(0, 140, 280);
     }
