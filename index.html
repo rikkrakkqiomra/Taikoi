@@ -459,6 +459,19 @@
     html.ui-ready footer {
       opacity: 1 !important;
     }
+
+    #warp-flash {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      pointer-events: none;
+      opacity: 0;
+      background: radial-gradient(circle at center,
+          rgba(255, 255, 255, 0.95) 0%,
+          rgba(224, 64, 251, 0.8) 28%,
+          rgba(255, 171, 64, 0.35) 58%,
+          rgba(7, 1, 14, 1) 100%);
+    }
   </style>
 </head>
 
@@ -485,11 +498,12 @@
     </div>
     <nav>
       <a href="pure_systems.html">Pure <br>Systems</a>
-      <a href="#">DIY <br>Realities</a>
+      <a href="diy_realities.html" id="nav-diy">DIY <br>Realities</a>
     </nav>
   </header>
 
   <div id="canvas-container"></div>
+  <div id="warp-flash" aria-hidden="true"></div>
 
   <footer class="glass">
     <div class="status-item">
@@ -690,6 +704,8 @@
     scene.fog = new THREE.FogExp2(0x000000, 0.002);
 
     const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const baseFov = camera.fov;
+    const baseFogDensity = scene.fog.density;
     if (isMobile) {
       camera.position.set(0, 250, 6);
     } else {
@@ -978,6 +994,153 @@
 
     // --- Transition Animation ---
     let isTransitioning = false;
+    let warpState = null;
+
+    function disposeWarp(state) {
+      if (!state) return;
+      if (state.warpGroup && state.warpGroup.parent) {
+        state.warpGroup.parent.remove(state.warpGroup);
+      }
+      if (state.warpGeom) state.warpGeom.dispose();
+      if (state.warpMat) state.warpMat.dispose();
+    }
+
+    function startWarpTransition() {
+      if (isTransitioning) return;
+      isTransitioning = true;
+
+      const header = document.querySelector('header');
+      const footer = document.querySelector('footer');
+      const flash = document.getElementById('warp-flash');
+
+      if (header) {
+        header.style.transition = 'opacity 0.35s ease';
+        header.style.opacity = '0';
+      }
+      if (footer) {
+        footer.style.transition = 'opacity 0.35s ease';
+        footer.style.opacity = '0';
+      }
+      setTooltipVisible(false);
+      displayedPlanet = null;
+      activePlanet = null;
+      controls.enabled = false;
+      starMesh.visible = false;
+
+      const WARP_COUNT = 1600;
+      const positions = new Float32Array(WARP_COUNT * 6);
+      const colors = new Float32Array(WARP_COUNT * 6);
+      const starZ = new Float32Array(WARP_COUNT);
+      const starXY = new Float32Array(WARP_COUNT * 2);
+
+      for (let i = 0; i < WARP_COUNT; i++) {
+        const x = (Math.random() - 0.5) * 140;
+        const y = (Math.random() - 0.5) * 140;
+        const z = -(Math.random() * 420 + 16);
+        starXY[i * 2] = x;
+        starXY[i * 2 + 1] = y;
+        starZ[i] = z;
+        positions[i * 6] = x;
+        positions[i * 6 + 1] = y;
+        positions[i * 6 + 2] = z;
+        positions[i * 6 + 3] = x;
+        positions[i * 6 + 4] = y;
+        positions[i * 6 + 5] = z;
+
+        const pick = Math.random();
+        let r = 1, g = 1, b = 1;
+        if (pick > 0.55 && pick <= 0.82) {
+          r = 0.88; g = 0.25; b = 0.98;
+        } else if (pick > 0.82) {
+          r = 1; g = 0.67; b = 0.25;
+        }
+        colors[i * 6] = r;
+        colors[i * 6 + 1] = g;
+        colors[i * 6 + 2] = b;
+        colors[i * 6 + 3] = r;
+        colors[i * 6 + 4] = g;
+        colors[i * 6 + 5] = b;
+      }
+
+      const warpGeom = new THREE.BufferGeometry();
+      warpGeom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      warpGeom.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+      const warpMat = new THREE.LineBasicMaterial({
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.9,
+        blending: THREE.AdditiveBlending,
+        depthWrite: false,
+        fog: false
+      });
+      const warpLines = new THREE.LineSegments(warpGeom, warpMat);
+      warpLines.frustumCulled = false;
+      const warpGroup = new THREE.Group();
+      warpGroup.add(warpLines);
+      scene.add(warpGroup);
+
+      warpState = {
+        start: 0,
+        duration: 1500,
+        warpGroup,
+        warpGeom,
+        warpMat,
+        starZ,
+        starXY,
+        warpCount: WARP_COUNT,
+        flash,
+        navigated: false
+      };
+    }
+
+    function stepWarp(time, dt) {
+      if (!warpState || warpState.navigated) return;
+      if (!warpState.start) warpState.start = time;
+
+      const progress = Math.min((time - warpState.start) / warpState.duration, 1);
+      const ease = progress * progress;
+
+      warpState.warpGroup.position.copy(camera.position);
+      warpState.warpGroup.quaternion.copy(camera.quaternion);
+
+      const stretch = 6 + ease * 88;
+      const rush = (22 + ease * 160) * dt;
+      const arr = warpState.warpGeom.attributes.position.array;
+
+      for (let i = 0; i < warpState.warpCount; i++) {
+        let z = warpState.starZ[i] + rush;
+        if (z > 8) {
+          z = -420 - Math.random() * 80;
+          warpState.starXY[i * 2] = (Math.random() - 0.5) * 140;
+          warpState.starXY[i * 2 + 1] = (Math.random() - 0.5) * 140;
+        }
+        warpState.starZ[i] = z;
+        const x = warpState.starXY[i * 2];
+        const y = warpState.starXY[i * 2 + 1];
+        arr[i * 6] = x;
+        arr[i * 6 + 1] = y;
+        arr[i * 6 + 2] = z;
+        arr[i * 6 + 3] = x;
+        arr[i * 6 + 4] = y;
+        arr[i * 6 + 5] = z - stretch;
+      }
+      warpState.warpGeom.attributes.position.needsUpdate = true;
+      warpState.warpMat.opacity = 0.55 + ease * 0.45;
+
+      scene.fog.density = baseFogDensity + ease * 0.06;
+      camera.fov = baseFov + ease * 52;
+      camera.updateProjectionMatrix();
+
+      if (warpState.flash) {
+        const flashT = Math.max(0, (progress - 0.52) / 0.48);
+        warpState.flash.style.opacity = String(flashT);
+      }
+
+      if (progress >= 1) {
+        warpState.navigated = true;
+        window.location.href = 'diy_realities.html';
+      }
+    }
 
     function entryAnimation() {
       const header = document.querySelector('header');
@@ -1018,6 +1181,17 @@
 
     window.addEventListener('pageshow', () => {
       isTransitioning = false;
+      controls.enabled = true;
+      camera.fov = baseFov;
+      camera.updateProjectionMatrix();
+      scene.fog.density = baseFogDensity;
+      starMesh.visible = true;
+      const flash = document.getElementById('warp-flash');
+      if (flash) flash.style.opacity = '0';
+      if (warpState) {
+        disposeWarp(warpState);
+        warpState = null;
+      }
       entryAnimation();
     });
 
@@ -1061,6 +1235,15 @@
       transitionLoop();
     }
 
+    const diyNav = document.getElementById('nav-diy');
+    if (diyNav) {
+      diyNav.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        startWarpTransition();
+      });
+    }
+
     // --- Event Listeners (Defined here to access objects) ---
     if (!isMobile) {
       window.addEventListener('mousemove', (event) => {
@@ -1069,6 +1252,7 @@
       });
 
       window.addEventListener('click', (event) => {
+        if (event.target.closest && event.target.closest('a, header')) return;
         mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
         mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
@@ -1080,6 +1264,7 @@
       });
     } else {
       window.addEventListener('touchstart', (event) => {
+        if (event.target.closest && event.target.closest('a, header')) return;
         if (event.touches.length > 0) {
           const touch = event.touches[0];
           mouse.x = (touch.clientX / window.innerWidth) * 2 - 1;
@@ -1120,10 +1305,16 @@
         obj.mesh.rotation.y += obj.selfRotationSpeed * dt;
       });
 
-      controls.update();
+      if (warpState) {
+        stepWarp(time, dt);
+      }
+
+      if (!isTransitioning) {
+        controls.update();
+      }
 
       // Raycasting for Hover (Desktop)
-      if (!isMobile) {
+      if (!isMobile && !isTransitioning) {
         raycaster.setFromCamera(mouse, camera);
         let cursor = 'default';
         activePlanet = null;
