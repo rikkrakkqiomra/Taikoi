@@ -1,0 +1,49 @@
+---
+description: Keep architecture.md in sync with every code change; append Living Changelog entries.
+alwaysApply: true
+---
+
+# Architecture sync (mandatory)
+
+This rule is always on: code edits, refactors, dependency/CDN changes, routing, Netlify config, and bug fixes.
+
+## Before finishing any task
+
+1. Decide whether `architecture.md` is stale. Update it **in the same task** if you changed any of:
+   - routes / navigation (`index.html` ↔ `brain.html` ↔ `pure_systems.html`, new pages, stub links)
+   - data flow, state, or persistence (today: in-memory closures only)
+   - dependencies (Three.js import-map version, new CDN, fonts, npm if introduced)
+   - `netlify.toml` headers, publish dir, functions, redirects
+   - shared runtime contracts (`window.__aivoinko3d`, `__aivoinkoReveal`, animation-loop pause)
+   - assets (logo JPEG vs unused `taikoi-sun-portal.png`)
+   - constraints in section 6
+
+2. **Append one row** to the table under `## Living Changelog & Debug Journal` in `architecture.md` **before** you conclude. Newest row at the **bottom**. Never edit or delete prior rows.
+
+   Columns (all required):
+
+   | Column | Write |
+   |---|---|
+   | Date | `YYYY-MM-DD` (task date) |
+   | Change Summary | What the user-visible or structural change is |
+   | Affected Paths | Exact files/modules |
+   | Root Cause / Rationale | Why (required for bug fixes: the actual cause, not “fixed bug”) |
+   | Debug Notes / Side Effects | How to verify; pitfalls; what did **not** change |
+
+3. Keep `architecture.md` factual. No marketing, no speculation. If a layer does not exist (API, DB, auth, env vars), say **None**.
+
+## Examples
+
+```markdown
+| 2026-09-16 | Pin Three.js 0.161 on all pages | index.html, brain.html, pure_systems.html | unpkg 0.160 had a controls regression | Import maps must stay identical; OrbitControls path unchanged |
+```
+
+```markdown
+| 2026-09-16 | Sun click ignored on iOS | index.html | touchstart raycast missed collider (radius 0.9 too small) | Desktop click path unchanged; retest tap empty-space tooltip dismiss |
+```
+
+## Do not
+
+- Skip the changelog because the diff is “small”
+- Leave architecture claiming a bundler, SPA, or backend if the repo is still zero-build MPA
+- Put secrets or env **values** in `architecture.md` (names + purpose + sensitivity only)
