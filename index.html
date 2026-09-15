@@ -276,16 +276,43 @@
         padding: 15px 20px;
       }
 
+      h1 {
+        font-size: 2rem;
+        letter-spacing: 2px;
+      }
+
+      h2.subtitle {
+        font-size: 0.7rem;
+        letter-spacing: 3px;
+      }
+
+      nav {
+        width: 100%;
+        justify-content: space-between;
+        gap: 0;
+        margin-top: 18px;
+      }
+
+      nav a {
+        font-size: 0.85rem;
+        max-width: 45%;
+        line-height: 1.25;
+      }
+
+      nav a:nth-child(1) {
+        text-align: left;
+      }
+
+      nav a:nth-child(2) {
+        text-align: right;
+      }
+
       footer {
         padding: 8px 15px;
         font-size: 0.75rem;
         gap: 10px;
         width: 95%;
       }
-
-      /* Hide non-essential footer items on very small screens if needed, 
-           but user said "footer disappears", so let's try to keep it visible 
-           by ensuring high z-index and proper bottom spacing */
 
       /* Ensure tooltip doesn't cause overflow */
       #tooltip {
@@ -655,7 +682,11 @@
     scene.fog = new THREE.FogExp2(0x000000, 0.002);
 
     const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(0, 140, 280);
+    if (isMobile) {
+      camera.position.set(0, 400, 8);
+    } else {
+      camera.position.set(0, 140, 280);
+    }
 
     let renderer;
     try {
@@ -697,6 +728,7 @@
     controls.maxDistance = 600;
     controls.enablePan = false;
     controls.target.set(0, 0, 0);
+    controls.update();
 
     // --- Raycaster Setup ---
     const raycaster = new THREE.Raycaster();
