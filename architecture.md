@@ -6,7 +6,7 @@ Authoritative description of the live repository as of 2026-09-15. This file is 
 
 ## 1. Executive Overview & Purpose
 
-**Product identity:** Aivoinko (stylized “Machine Metaphysics”) is a public artistic website: an interactive 3D solar-system simulator plus three narrative subpages. README branding is “Aivoinko Aurinko Reality Simulator”; live document titles are `Aivoinko Machine Metaphysics` (`index.html`), `The Opening of Reality` (`brain.html`), `Pure Systems - Gamma Log` (`pure_systems.html`), and `DIY Realities` (`diy_realities.html`).
+**Product identity:** Aivoinko (stylized “Machine Metaphysics”) is a public artistic website: an interactive 3D solar-system simulator plus narrative subpages. README branding is “Aivoinko Aurinko Reality Simulator”; live document titles are `Aivoinko Machine Metaphysics` (`index.html`), `The Opening of Reality` (`brain.html`), `Pure Systems - Gamma Log` (`pure_systems.html`), `DIY Realities` (`diy_realities.html`), `Left Aperture` (`gate_left.html`), and `Right Aperture` (`gate_right.html`).
 
 **Core purpose:** Present a cinematic, sci-fi 3D solar system in the browser, then route visitors into manifesto/log content. Interaction is exploratory (orbit, zoom, planet tooltips) rather than transactional.
 
@@ -24,7 +24,7 @@ Authoritative description of the live repository as of 2026-09-15. This file is 
 | Frameworks | None | No React/Svelte/Vue/Next. |
 | 3D | Three.js + OrbitControls | **Pinned `0.160.0`** via HTML import maps → unpkg ESM. |
 | Styling | Inline `<style>` per HTML file | Shared visual language via duplicated CSS custom properties. No Tailwind, CSS Modules, or shared stylesheet. |
-| Fonts | Google Fonts | `Orbitron`, `Rajdhani` (index, brain); `Orbitron` + `Courier Prime` (pure_systems); `Orbitron` + `Exo 2` (diy_realities). |
+| Fonts | Google Fonts | `Orbitron`, `Rajdhani` (index, brain); `Orbitron` + `Courier Prime` (pure_systems); `Orbitron` + `Exo 2` (diy_realities); `Orbitron` + `Cormorant Garamond` (gate_left); `Orbitron` + `Cinzel` (gate_right). |
 | Database / ORM | None | All content is hardcoded in HTML/JS. |
 | Build tools | None | No Vite, Webpack, Turbopack, or bundler. Netlify publishes the repo root as-is. |
 | Runtime | Browser (WebGL) | Static files on Netlify CDN. No Node.js app runtime, no edge functions, no serverless functions. |
@@ -53,7 +53,9 @@ Taikoi/
 ├── brain.html                 # Manifesto page (“The Opening of Reality”)
 ├── pure_systems.html          # Terminal “Gamma Log” page + outbound social links
 ├── diy_realities.html         # Magenta/amber loom space (“DIY Realities”); content TBD
-├── AiiAold.8dde82cb.jpg       # Favicon, preload, sun-portal sprite, header logos
+├── gate_left.html             # Crimson left aperture; content TBD
+├── gate_right.html            # Gold/zinc right aperture; content TBD
+├── AiiAold.8dde82cb.jpg       # Favicon, preload, sun-portal sprite, header logos, wormhole seals
 ├── taikoi-sun-portal.png      # Tracked asset; not referenced by any HTML (unused)
 ├── netlify.toml               # Publish root + security + cache headers
 ├── README.md                  # Human-facing project description
@@ -66,10 +68,12 @@ No `.gitignore` in the current tree (removed in `85d5131`).
 
 | Path | URL (Netlify static) | Role |
 |---|---|---|
-| `index.html` | `/` | Primary 3D solar system. Nav to Pure Systems (href) and DIY Realities (warp). Sun click → `brain.html`. |
+| `index.html` | `/` | Primary 3D solar system. Nav to Pure Systems (href) and DIY Realities (warp + on-page wormhole choice). Sun click → `brain.html`. |
 | `brain.html` | `/brain.html` | Starfield + floating manifesto blocks. Header click → `index.html`. |
 | `pure_systems.html` | `/pure_systems.html` | Green starfield + log copy + social icons. Header click → `index.html`. |
-| `diy_realities.html` | `/diy_realities.html` | Magenta/amber hyperspace loom. Warp-in on load; header click reverse-warp → `index.html`. Title only; body copy not yet present. |
+| `diy_realities.html` | `/diy_realities.html` | Magenta/amber hyperspace loom. Default wormhole timeout destination. Header click reverse-warp → `index.html`. Title only. |
+| `gate_left.html` | `/gate_left.html` | Crimson vertical slit. Entered by left seal. Header reverse-warp → `index.html`. Title only. |
+| `gate_right.html` | `/gate_right.html` | Gold hexagonal aperture. Entered by right seal. Header reverse-warp → `index.html`. Title only. |
 | `netlify.toml` | n/a | Deployment contract: publish directory and HTTP headers. |
 
 Each HTML file is a **layout wrapper for itself**: `<head>` (meta, import map, fail-open script, fonts, CSS) + `<body>` (chrome + `#canvas-container` + page content) + trailing `<script type="module">` (Three.js scene). There is no shared layout partial or middleware.
@@ -79,7 +83,10 @@ Each HTML file is a **layout wrapper for itself**: `<head>` (meta, import map, f
 ```
 index.html  --nav "Pure Systems"-->  pure_systems.html  --header click-->  index.html
 index.html  --sun click/tap------->  brain.html         --header click-->  index.html
-index.html  --nav "DIY Realities"->  diy_realities.html --header click-->  index.html
+index.html  --nav "DIY Realities"->  warp boost → on-page choice hold (seals)
+                 timeout 3.2s ----->  diy_realities.html --header click-->  index.html
+                 left seal -------->  gate_left.html     --header click-->  index.html
+                 right seal ------->  gate_right.html    --header click-->  index.html
 ```
 
 ---
@@ -123,8 +130,8 @@ State is **page-local closures**:
 | Scene, camera, renderer, meshes | Module scope per page | Until unload |
 | `activePlanet` / tooltip DOM | `index.html` | Frame-to-frame; cleared on transition |
 | `isTransitioning` | `index.html` | Guards double-fire of sun → brain and DIY → warp navigation |
-| `warpState` | `index.html` | Camera-aligned star-streak LineSegments + FOV/fog/flash during DIY warp |
-| `mode` (`enter` / `idle` / `exit`) | `diy_realities.html` | Warp-in, settled loom, reverse-warp home |
+| `warpState` | `index.html` | DIY warp machine: `phase` `boost` / `choose` / `commit`, `destination` `forward`/`left`/`right`, camera-aligned streaks, FOV/fog/flash. Choice is DOM `#wormhole-choice`, not a separate route. |
+| `mode` (`enter` / `idle` / `exit`) | `diy_realities.html`, `gate_left.html`, `gate_right.html` | Warp-in, settled scene, reverse-warp home |
 | `speedMultiplier` | `index.html` | `0.15` if `innerWidth < 768` at init; not recomputed on rotate-to-landscape unless reload |
 | `window.__aivoinko3d` | All pages | `true` after module starts; `false` if WebGL constructor throws |
 | `window.__aivoinkoReveal` | All pages | Fail-open UI if the module never sets `__aivoinko3d` |
@@ -135,14 +142,14 @@ No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
 
 **None.** No login, tokens, CSRF, RBAC, or session cookies. Outbound social links are public `target="_blank"` anchors with `rel="noopener noreferrer"`.
 
-### Shared runtime pattern (all four pages)
+### Shared runtime pattern (all six pages)
 
 1. **Fail-open UI:** Head script registers `error` / `unhandledrejection` and a 2500 ms timeout. If `window.__aivoinko3d` is still falsy, `html.ui-ready` is applied so chrome is not trapped behind a blank WebGL failure. `index.html` also removes `#loading`.
 2. **WebGL try/catch:** Renderer construction failure sets `__aivoinko3d = false`, calls `__aivoinkoReveal`, rethrows.
 3. **Loop control:** Prefer `renderer.setAnimationLoop`; fall back to `requestAnimationFrame`. Pause on `document.hidden`; resume on visible; reset `lastFrameTime` to avoid a huge delta spike.
 4. **Delta time:** `dt = min(deltaMs, 50) / (1000/60)` so motion is frame-rate independent and hitch-capped.
 5. **Pixel ratio:** `Math.min(devicePixelRatio, 2)`.
-6. **Entry/exit:** Scene scale 0.001 → 1 (cubic out) on enter for index / brain / pure_systems; reverse cubic in then `location.href` on exit (brain / pure_systems header; index sun → `brain.html`). **DIY Realities** is a different contract: index `#nav-diy` `preventDefault` + camera-aligned additive `LineSegments` streaks, FOV punch, fog densify, magenta/amber `#warp-flash`; then `diy_realities.html`. That page starts with the same flash at opacity 1, a cylindrical star tunnel that decelerates into Points, and a magenta/amber/violet wireframe torus loom + icosahedron at `z = -38`. Header click reverse-warps to `index.html`. `bfcache` `pageshow` resets warp/FOV/fog on index and replays DIY enter.
+6. **Entry/exit:** Scene scale 0.001 → 1 (cubic out) on enter for index / brain / pure_systems; reverse cubic in then `location.href` on exit (brain / pure_systems header; index sun → `brain.html`). **DIY Realities warp** stays on `index.html` until a destination is chosen: `#nav-diy` `preventDefault` → `boost` (~1500 ms streaks + FOV) → `choose` (~3200 ms hold, flash ~0.4, left/right logo seals in `#wormhole-choice`, prefetch of the three destinations) → `commit` (~900 ms). Timeout commits `forward` → `diy_realities.html`. Left/right seal (or arrow keys) yaw-shear commit → `gate_left.html` / `gate_right.html`. **Do not** insert a seventh HTML loading page for this beat. DIY/gate pages start flash at opacity 0.5 and fade it in ~400 ms; DIY keeps the magenta loom; left is a crimson vertical slit with stars from +X; right is a gold hex torus with stars from −X. Header click reverse-warps to `index.html`. `bfcache` `pageshow` resets warp/FOV/fog/camera pose, hides seals, and replays entry.
 
 ### `index.html` simulation specifics
 
@@ -150,7 +157,7 @@ No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
 - **Planets:** 8 solar-system bodies + fictional `Astroteles Aivoinko II` (`type: 'synthetic'`). Saturn has a `RingGeometry`. Orbits are `EllipseCurve` line loops.
 - **Desktop:** camera starts at `(0, 140, 280)` (3/4 view). `mousemove` updates NDC mouse; click on sun collider starts transition; hover raycast drives tooltip + cursor.
 - **Mobile:** camera starts top-down at `(0, 250, 6)` so orbits read as circles; `touchstart` (passive) raycasts planets + sun; tap planet locks tooltip; tap empty space clears; tap sun transitions. Header nav is full-width `space-between` with two-line labels (CSS `max-width: 768px` only).
-- **bfcache:** `pageshow` resets `isTransitioning` and replays entry animation.
+- **bfcache:** `pageshow` resets `isTransitioning`, camera pose, warp overlay, and replays entry animation.
 
 ---
 
@@ -160,7 +167,7 @@ No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
 |---|---|---|
 | **Netlify** | Static hosting, TLS, header injection | Site down if deploy/CDN fails |
 | **unpkg.com** | Three.js ESM + addons | 3D fails; fail-open UI still reveals chrome after 2.5s / on error |
-| **Google Fonts** | Orbitron, Rajdhani, Courier Prime, Exo 2 | Fallback to `sans-serif` / `monospace` |
+| **Google Fonts** | Orbitron, Rajdhani, Courier Prime, Exo 2, Cormorant Garamond, Cinzel | Fallback to `sans-serif` / `serif` / `monospace` |
 | **DeviantArt** | `pure_systems.html` outbound | Link only |
 | **Etsy** | `pure_systems.html` outbound (Kiomra Trionfi listing) | Link only |
 | **SoundCloud** | `pure_systems.html` outbound | Link only |
@@ -187,8 +194,8 @@ Cache: `/` and `/*.html` → `public, max-age=0, must-revalidate`. `*.jpg|jpeg|w
 
 ### Conventions in force
 
-- **One file = one route.** CSS and JS are colocated in the HTML they serve. Duplication of the Three.js bootstrap (renderer, loop, visibility pause, fail-open) is intentional; extract only if all four pages stay in sync.
-- **Pin Three.js in all four import maps together.** Version drift between pages is a defect.
+- **One file = one route.** CSS and JS are colocated in the HTML they serve. Duplication of the Three.js bootstrap (renderer, loop, visibility pause, fail-open) is intentional; extract only if all six pages stay in sync.
+- **Pin Three.js in all six import maps together.** Version drift between pages is a defect.
 - **Hardcoded content.** Copy and planet stats are source, not CMS.
 - **WebGL is optional for readability.** Subpage text and index chrome must remain reachable if WebGL/CDN fails (`__aivoinkoReveal`).
 - **Performance caps:** DPR ≤ 2; mobile orbit speed × 0.15; pause loop when the tab is hidden; gas-giant texture turbulence uses a precomputed `xWave` array.
@@ -199,7 +206,7 @@ Cache: `/` and `/*.html` → `public, max-age=0, must-revalidate`. `*.jpg|jpeg|w
 
 - DOM ids: kebab-case (`canvas-container`, `planet-name`).
 - JS locals: camelCase (`planetMeshes`, `startTransition`).
-- CSS custom properties: `--glass-bg`, `--accent-color` (cyan `#00f3ff` on index/brain; green `#00ff00` on pure_systems; magenta `#e040fb` + amber `--amber: #ffab40` on diy_realities).
+- CSS custom properties: `--glass-bg`, `--accent-color` (cyan `#00f3ff` on index/brain; green `#00ff00` on pure_systems; magenta `#e040fb` + amber `--amber: #ffab40` on diy_realities; crimson `#ff2d55` on gate_left; gold `#d4af37` on gate_right).
 - Global flags: `window.__aivoinko3d`, `window.__aivoinkoReveal` (double-underscore prefix = cross-script contract between head snippet and module).
 
 ### Error handling
@@ -222,6 +229,7 @@ There is no API response schema.
 8. **Do not load Three.js from a second CDN or a different major** without verifying import-map + OrbitControls paths.
 9. **Do not cache-bust HTML via long `max-age` on `/*.html`** — `netlify.toml` currently forces revalidation for a reason.
 10. **Do not claim MIT licensing in docs without a `LICENSE` file.** README asserts MIT; the file is absent.
+11. **Do not turn the wormhole choice into a separate HTML loading page.** Seals live in `#wormhole-choice` on `index.html` during `warpState.phase === 'choose'`. `gate_left.html` / `gate_right.html` are destinations, not the interstitial.
 
 ---
 
@@ -230,9 +238,10 @@ There is no API response schema.
 | Item | Status |
 |---|---|
 | `DIY Realities` body copy | Title chrome only; narrative content not written yet |
+| `gate_left.html` / `gate_right.html` copy | Title chrome only; narrative content not written yet |
 | `taikoi-sun-portal.png` | Unreferenced binary |
 | `LICENSE` | Missing despite README MIT claim |
-| Shared CSS/JS modules | None; four-way copy of bootstrap |
+| Shared CSS/JS modules | None; six-way copy of bootstrap |
 | i18n | Removed; English-only |
 | Analytics | None |
 | Automated tests | None |
@@ -248,3 +257,4 @@ Append-only. Newest rows at the **bottom**. Do not rewrite prior rows.
 | 2026-09-15 | Initial Architecture Snapshot | Full repo | System audit and documentation baseline | Zero-build Jamstack MPA; Three.js 0.160.0 via unpkg; no env/API/auth. `85d5131` stripped i18n/`styles.css`/`script.js`. `taikoi-sun-portal.png` unused. DIY Realities is a stub. |
 | 2026-09-15 | Mobile home: top-down camera + nav to header edges | index.html | Default `(0, 140, 280)` 3/4 camera made orbits ellipses on phones; nav was centered with `gap` | Desktop camera and `min-width: 768px` header row unchanged. Mobile camera `(0, 250, 6)`. Polar angle not reset on resize. |
 | 2026-09-15 | DIY Realities route + hyperspace warp | index.html, diy_realities.html, architecture.md | Nav was `href="#"` with no page; needed a non-index, non-green destination | Index `#nav-diy` intercepts click (native href remains for no-JS). Warp is camera-aligned LineSegments + `#warp-flash`, not scene-scale. DIY page: Exo 2 + magenta/amber loom, tunnel warp-in then Points. Header reverse-warp home. Copy TBD. Sun → brain and Pure Systems href unchanged. |
+| 2026-09-15 | Wormhole choice hold on DIY warp | index.html, diy_realities.html, gate_left.html, gate_right.html, architecture.md | White flash + MPA load felt like a loading gap; user asked for a timed left/right seal choice in that beat | Choice is `#wormhole-choice` on index (`boost` 1.5s → `choose` 3.2s → `commit` 0.9s). Timeout → DIY. Seals/arrows → yaw-shear to gate pages. Prefetch three HTML docs. DIY opening flash now 0.5 / ~400 ms. Gate copy TBD. |

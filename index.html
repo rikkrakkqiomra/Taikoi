@@ -472,6 +472,83 @@
           rgba(255, 171, 64, 0.35) 58%,
           rgba(7, 1, 14, 1) 100%);
     }
+
+    #wormhole-choice {
+      position: fixed;
+      inset: 0;
+      z-index: 90;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 8vw;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    #wormhole-choice.is-open {
+      pointer-events: auto;
+      opacity: 1;
+    }
+
+    .wormhole-seal {
+      background: none;
+      border: 2px solid rgba(255, 255, 255, 0.35);
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+      border-radius: 50%;
+      width: clamp(72px, 16vw, 148px);
+      height: clamp(72px, 16vw, 148px);
+      overflow: hidden;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+      box-shadow: 0 0 24px rgba(224, 64, 251, 0.45), 0 0 48px rgba(255, 171, 64, 0.2);
+      animation: sealPulse 1.8s ease-in-out infinite;
+      outline: none;
+    }
+
+    .wormhole-seal img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .wormhole-seal:hover,
+    .wormhole-seal:focus-visible {
+      transform: scale(1.06);
+      border-color: #fff;
+      box-shadow: 0 0 32px rgba(255, 255, 255, 0.55), 0 0 64px rgba(224, 64, 251, 0.45);
+    }
+
+    #seal-left {
+      animation-delay: 0s;
+    }
+
+    #seal-right {
+      animation-delay: 0.4s;
+    }
+
+    @keyframes sealPulse {
+      0%,
+      100% {
+        filter: brightness(1);
+      }
+
+      50% {
+        filter: brightness(1.25);
+      }
+    }
+
+    @media (max-width: 768px) {
+      #wormhole-choice {
+        padding: 0 5vw;
+      }
+    }
   </style>
 </head>
 
@@ -504,6 +581,14 @@
 
   <div id="canvas-container"></div>
   <div id="warp-flash" aria-hidden="true"></div>
+  <div id="wormhole-choice" aria-hidden="true">
+    <button type="button" id="seal-left" class="wormhole-seal" aria-label="Left aperture">
+      <img src="AiiAold.8dde82cb.jpg" alt="" width="148" height="148" decoding="async">
+    </button>
+    <button type="button" id="seal-right" class="wormhole-seal" aria-label="Right aperture">
+      <img src="AiiAold.8dde82cb.jpg" alt="" width="148" height="148" decoding="async">
+    </button>
+  </div>
 
   <footer class="glass">
     <div class="status-item">
@@ -753,6 +838,8 @@
     controls.enablePan = false;
     controls.target.set(0, 0, 0);
     controls.update();
+    const homeCamPos = camera.position.clone();
+    const homeCamQuat = camera.quaternion.clone();
 
     // --- Raycaster Setup ---
     const raycaster = new THREE.Raycaster();
@@ -995,6 +1082,11 @@
     // --- Transition Animation ---
     let isTransitioning = false;
     let warpState = null;
+    let didPrefetchGates = false;
+    const BOOST_MS = 1500;
+    const CHOOSE_MS = 3200;
+    const COMMIT_MS = 900;
+    const choiceEl = document.getElementById('wormhole-choice');
 
     function disposeWarp(state) {
       if (!state) return;
@@ -1003,6 +1095,70 @@
       }
       if (state.warpGeom) state.warpGeom.dispose();
       if (state.warpMat) state.warpMat.dispose();
+    }
+
+    function prefetchDestinations() {
+      if (didPrefetchGates) return;
+      didPrefetchGates = true;
+      ['diy_realities.html', 'gate_left.html', 'gate_right.html'].forEach((href) => {
+        const link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.as = 'document';
+        link.href = href;
+        document.head.appendChild(link);
+      });
+    }
+
+    function showChoice() {
+      if (!choiceEl) return;
+      choiceEl.classList.add('is-open');
+      choiceEl.setAttribute('aria-hidden', 'false');
+    }
+
+    function hideChoice() {
+      if (!choiceEl) return;
+      choiceEl.classList.remove('is-open');
+      choiceEl.setAttribute('aria-hidden', 'true');
+    }
+
+    function commitWarp(destination) {
+      if (!warpState || warpState.phase !== 'choose' || warpState.navigated) return;
+      warpState.phase = 'commit';
+      warpState.phaseStart = 0;
+      warpState.destination = destination;
+      hideChoice();
+    }
+
+    function writeWarpStreaks(dt, stretch, rushZ, rushX) {
+      const arr = warpState.warpGeom.attributes.position.array;
+      const lateral = rushX !== 0;
+      for (let i = 0; i < warpState.warpCount; i++) {
+        let z = warpState.starZ[i] + rushZ * dt;
+        let x = warpState.starXY[i * 2] + rushX * dt;
+        let y = warpState.starXY[i * 2 + 1];
+        if (z > 8) {
+          z = -420 - Math.random() * 80;
+          x = (Math.random() - 0.5) * 140;
+          y = (Math.random() - 0.5) * 140;
+        }
+        if (lateral && Math.abs(x) > 180) {
+          x = -Math.sign(rushX) * 170;
+          y = (Math.random() - 0.5) * 140;
+          z = -(Math.random() * 420 + 16);
+        }
+        warpState.starZ[i] = z;
+        warpState.starXY[i * 2] = x;
+        warpState.starXY[i * 2 + 1] = y;
+        const dx = lateral ? -Math.sign(rushX) * stretch : 0;
+        const dz = lateral ? -stretch * 0.35 : -stretch;
+        arr[i * 6] = x;
+        arr[i * 6 + 1] = y;
+        arr[i * 6 + 2] = z;
+        arr[i * 6 + 3] = x + dx;
+        arr[i * 6 + 4] = y;
+        arr[i * 6 + 5] = z + dz;
+      }
+      warpState.warpGeom.attributes.position.needsUpdate = true;
     }
 
     function startWarpTransition() {
@@ -1026,6 +1182,7 @@
       activePlanet = null;
       controls.enabled = false;
       starMesh.visible = false;
+      hideChoice();
 
       const WARP_COUNT = 1600;
       const positions = new Float32Array(WARP_COUNT * 6);
@@ -1080,8 +1237,9 @@
       scene.add(warpGroup);
 
       warpState = {
-        start: 0,
-        duration: 1500,
+        phase: 'boost',
+        phaseStart: 0,
+        destination: 'forward',
         warpGroup,
         warpGeom,
         warpMat,
@@ -1089,56 +1247,83 @@
         starXY,
         warpCount: WARP_COUNT,
         flash,
-        navigated: false
+        navigated: false,
+        camQuat0: camera.quaternion.clone()
       };
     }
 
     function stepWarp(time, dt) {
       if (!warpState || warpState.navigated) return;
-      if (!warpState.start) warpState.start = time;
+      if (!warpState.phaseStart) warpState.phaseStart = time;
 
-      const progress = Math.min((time - warpState.start) / warpState.duration, 1);
-      const ease = progress * progress;
-
+      const elapsed = time - warpState.phaseStart;
       warpState.warpGroup.position.copy(camera.position);
       warpState.warpGroup.quaternion.copy(camera.quaternion);
 
-      const stretch = 6 + ease * 88;
-      const rush = (22 + ease * 160) * dt;
-      const arr = warpState.warpGeom.attributes.position.array;
-
-      for (let i = 0; i < warpState.warpCount; i++) {
-        let z = warpState.starZ[i] + rush;
-        if (z > 8) {
-          z = -420 - Math.random() * 80;
-          warpState.starXY[i * 2] = (Math.random() - 0.5) * 140;
-          warpState.starXY[i * 2 + 1] = (Math.random() - 0.5) * 140;
+      if (warpState.phase === 'boost') {
+        const progress = Math.min(elapsed / BOOST_MS, 1);
+        const ease = progress * progress;
+        const stretch = 6 + ease * 88;
+        const rushZ = 22 + ease * 160;
+        writeWarpStreaks(dt, stretch, rushZ, 0);
+        warpState.warpMat.opacity = 0.55 + ease * 0.45;
+        scene.fog.density = baseFogDensity + ease * 0.06;
+        camera.fov = baseFov + ease * 52;
+        camera.updateProjectionMatrix();
+        if (warpState.flash) {
+          const flashT = Math.max(0, (progress - 0.52) / 0.48) * 0.7;
+          warpState.flash.style.opacity = String(flashT);
         }
-        warpState.starZ[i] = z;
-        const x = warpState.starXY[i * 2];
-        const y = warpState.starXY[i * 2 + 1];
-        arr[i * 6] = x;
-        arr[i * 6 + 1] = y;
-        arr[i * 6 + 2] = z;
-        arr[i * 6 + 3] = x;
-        arr[i * 6 + 4] = y;
-        arr[i * 6 + 5] = z - stretch;
-      }
-      warpState.warpGeom.attributes.position.needsUpdate = true;
-      warpState.warpMat.opacity = 0.55 + ease * 0.45;
-
-      scene.fog.density = baseFogDensity + ease * 0.06;
-      camera.fov = baseFov + ease * 52;
-      camera.updateProjectionMatrix();
-
-      if (warpState.flash) {
-        const flashT = Math.max(0, (progress - 0.52) / 0.48);
-        warpState.flash.style.opacity = String(flashT);
+        if (progress >= 1) {
+          warpState.phase = 'choose';
+          warpState.phaseStart = time;
+          prefetchDestinations();
+          showChoice();
+        }
+        return;
       }
 
-      if (progress >= 1) {
-        warpState.navigated = true;
-        window.location.href = 'diy_realities.html';
+      if (warpState.phase === 'choose') {
+        const progress = Math.min(elapsed / CHOOSE_MS, 1);
+        writeWarpStreaks(dt, 28, 18, 0);
+        warpState.warpMat.opacity = 0.7;
+        scene.fog.density = baseFogDensity + 0.06;
+        camera.fov = baseFov + 52;
+        camera.updateProjectionMatrix();
+        if (warpState.flash) warpState.flash.style.opacity = '0.4';
+        if (progress >= 1) commitWarp('forward');
+        return;
+      }
+
+      if (warpState.phase === 'commit') {
+        const progress = Math.min(elapsed / COMMIT_MS, 1);
+        const ease = progress * progress;
+        const dest = warpState.destination;
+        camera.quaternion.copy(warpState.camQuat0);
+        if (dest === 'left') camera.rotateY(ease * 1.15);
+        if (dest === 'right') camera.rotateY(-ease * 1.15);
+        warpState.warpGroup.position.copy(camera.position);
+        warpState.warpGroup.quaternion.copy(camera.quaternion);
+
+        if (dest === 'forward') {
+          writeWarpStreaks(dt, 20 + ease * 90, 40 + ease * 220, 0);
+        } else if (dest === 'left') {
+          writeWarpStreaks(dt, 24 + ease * 100, 12 + ease * 40, -(50 + ease * 240));
+        } else {
+          writeWarpStreaks(dt, 24 + ease * 100, 12 + ease * 40, 50 + ease * 240);
+        }
+
+        warpState.warpMat.opacity = 0.7 + ease * 0.3;
+        camera.fov = baseFov + 52 + ease * 18;
+        camera.updateProjectionMatrix();
+        if (warpState.flash) {
+          warpState.flash.style.opacity = String(0.4 + ease * 0.6);
+        }
+        if (progress >= 1) {
+          warpState.navigated = true;
+          const href = dest === 'left' ? 'gate_left.html' : dest === 'right' ? 'gate_right.html' : 'diy_realities.html';
+          window.location.href = href;
+        }
       }
     }
 
@@ -1182,12 +1367,15 @@
     window.addEventListener('pageshow', () => {
       isTransitioning = false;
       controls.enabled = true;
+      camera.position.copy(homeCamPos);
+      camera.quaternion.copy(homeCamQuat);
       camera.fov = baseFov;
       camera.updateProjectionMatrix();
       scene.fog.density = baseFogDensity;
       starMesh.visible = true;
       const flash = document.getElementById('warp-flash');
       if (flash) flash.style.opacity = '0';
+      hideChoice();
       if (warpState) {
         disposeWarp(warpState);
         warpState = null;
@@ -1244,6 +1432,27 @@
       });
     }
 
+    const sealLeft = document.getElementById('seal-left');
+    const sealRight = document.getElementById('seal-right');
+    if (sealLeft) {
+      sealLeft.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        commitWarp('left');
+      });
+    }
+    if (sealRight) {
+      sealRight.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        commitWarp('right');
+      });
+    }
+    window.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') commitWarp('left');
+      if (event.key === 'ArrowRight') commitWarp('right');
+    });
+
     // --- Event Listeners (Defined here to access objects) ---
     if (!isMobile) {
       window.addEventListener('mousemove', (event) => {
@@ -1252,7 +1461,7 @@
       });
 
       window.addEventListener('click', (event) => {
-        if (event.target.closest && event.target.closest('a, header')) return;
+        if (event.target.closest && event.target.closest('a, header, #wormhole-choice')) return;
         mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
         mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
@@ -1264,7 +1473,7 @@
       });
     } else {
       window.addEventListener('touchstart', (event) => {
-        if (event.target.closest && event.target.closest('a, header')) return;
+        if (event.target.closest && event.target.closest('a, header, #wormhole-choice')) return;
         if (event.touches.length > 0) {
           const touch = event.touches[0];
           mouse.x = (touch.clientX / window.innerWidth) * 2 - 1;
