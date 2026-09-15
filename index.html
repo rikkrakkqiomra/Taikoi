@@ -5,13 +5,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Aivoinko Machine Metaphysics</title>
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script>
+    (function () {
+      function revealUi() {
+        if (window.__aivoinko3d) return;
+        document.documentElement.classList.add('ui-ready');
+        var loader = document.getElementById('loading');
+        if (loader) {
+          loader.style.opacity = '0';
+          setTimeout(function () {
+            if (loader.parentNode) loader.remove();
+          }, 1000);
+        }
+      }
+      window.__aivoinkoReveal = revealUi;
+      window.addEventListener('error', function () { revealUi(); }, true);
+      window.addEventListener('unhandledrejection', function () { revealUi(); });
+      setTimeout(revealUi, 2500);
+    })();
+  </script>
   <link rel="icon" type="image/jpeg" href="AiiAold.8dde82cb.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://unpkg.com" crossorigin>
   <link rel="preload" as="image" href="AiiAold.8dde82cb.jpg" fetchpriority="high">
-  <link rel="modulepreload" href="https://unpkg.com/three@0.160.0/build/three.module.js" crossorigin>
-  <link rel="modulepreload" href="https://unpkg.com/three@0.160.0/examples/jsm/controls/OrbitControls.js" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;700&display=swap"
     rel="stylesheet">
@@ -390,6 +414,16 @@
       color: #fff;
       font-weight: bold;
     }
+
+    html.ui-ready #loading {
+      opacity: 0 !important;
+      pointer-events: none;
+    }
+
+    html.ui-ready header,
+    html.ui-ready footer {
+      opacity: 1 !important;
+    }
   </style>
 </head>
 
@@ -435,19 +469,11 @@
     </div>
   </footer>
 
-  <!-- Import Map for Three.js -->
-  <script type="importmap">
-        {
-            "imports": {
-                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
-            }
-        }
-    </script>
-
   <script type="module">
     import * as THREE from 'three';
     import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+    window.__aivoinko3d = true;
 
     // --- Configuration ---
     const SCENE_CONFIG = {
@@ -631,10 +657,38 @@
     const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.set(0, 140, 280);
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    container.appendChild(renderer.domElement);
+    let renderer;
+    try {
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      container.appendChild(renderer.domElement);
+    } catch (err) {
+      console.warn('WebGL unavailable', err);
+      window.__aivoinko3d = false;
+      if (typeof window.__aivoinkoReveal === 'function') window.__aivoinkoReveal();
+      throw err;
+    }
+
+    let rafId = 0;
+    function startLoop(fn) {
+      if (renderer.setAnimationLoop) {
+        renderer.setAnimationLoop(fn);
+        return;
+      }
+      function tick(t) {
+        fn(t);
+        rafId = requestAnimationFrame(tick);
+      }
+      rafId = requestAnimationFrame(tick);
+    }
+    function stopLoop() {
+      if (renderer.setAnimationLoop) {
+        renderer.setAnimationLoop(null);
+        return;
+      }
+      cancelAnimationFrame(rafId);
+    }
 
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
@@ -668,45 +722,59 @@
 
     // 1. Sun
     function createSunTexture() {
+      const width = 1024;
+      const height = 512;
       const canvas = document.createElement('canvas');
-      canvas.width = 512;
-      canvas.height = 512;
+      canvas.width = width;
+      canvas.height = height;
       const context = canvas.getContext('2d');
 
-      // Background
-      const grad = context.createRadialGradient(256, 256, 20, 256, 256, 256);
-      grad.addColorStop(0, '#ffaa00');
-      grad.addColorStop(0.5, '#ff4400');
-      grad.addColorStop(1, '#550000');
+      const grad = context.createLinearGradient(0, 0, 0, height);
+      grad.addColorStop(0, '#ffcc66');
+      grad.addColorStop(0.45, '#ff7700');
+      grad.addColorStop(0.55, '#ff4400');
+      grad.addColorStop(1, '#ffcc66');
       context.fillStyle = grad;
-      context.fillRect(0, 0, 512, 512);
+      context.fillRect(0, 0, width, height);
 
-      // Details
-      context.strokeStyle = 'rgba(255, 200, 200, 0.5)';
+      context.strokeStyle = 'rgba(255, 220, 120, 0.45)';
       context.lineWidth = 2;
-      for (let i = 0; i < 50; i++) {
+      for (let i = 0; i < 80; i++) {
         context.beginPath();
-        context.moveTo(Math.random() * 512, Math.random() * 512);
-        context.bezierCurveTo(Math.random() * 512, Math.random() * 512, Math.random() * 512, Math.random() * 512, Math.random() * 512, Math.random() * 512);
+        context.moveTo(Math.random() * width, Math.random() * height);
+        context.bezierCurveTo(
+          Math.random() * width, Math.random() * height,
+          Math.random() * width, Math.random() * height,
+          Math.random() * width, Math.random() * height
+        );
         context.stroke();
       }
 
-      // Pupil
-      context.fillStyle = 'rgba(0,0,0,0.8)';
-      context.beginPath();
-      context.arc(256, 256, 60, 0, Math.PI * 2);
-      context.fill();
-
       return new THREE.CanvasTexture(canvas);
+    }
+
+    function createCircularLogoTexture(image) {
+      const size = 512;
+      const canvas = document.createElement('canvas');
+      canvas.width = size;
+      canvas.height = size;
+      const context = canvas.getContext('2d');
+      context.imageSmoothingEnabled = true;
+      context.imageSmoothingQuality = 'high';
+      context.beginPath();
+      context.arc(size / 2, size / 2, size / 2 - 1, 0, Math.PI * 2);
+      context.closePath();
+      context.clip();
+      context.drawImage(image, 0, 0, size, size);
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.colorSpace = THREE.SRGBColorSpace;
+      return texture;
     }
 
     const textureLoader = new THREE.TextureLoader();
     const sunGeometry = new THREE.SphereGeometry(SCENE_CONFIG.sunRadius, 48, 48);
     const sunMaterial = new THREE.MeshBasicMaterial({
-      color: 0xFFFFFF,
-      transparent: true,
-      opacity: 0.9,
-      side: THREE.DoubleSide
+      map: createSunTexture()
     });
     const sun = new THREE.Mesh(sunGeometry, sunMaterial);
     scene.add(sun);
@@ -721,17 +789,26 @@
     const sunCollider = new THREE.Mesh(sunColliderGeometry, sunColliderMaterial);
     scene.add(sunCollider);
 
-    // Load Texture
+    const logoSpriteScale = SCENE_CONFIG.sunRadius * 1.7;
+    const logoSprite = new THREE.Sprite(new THREE.SpriteMaterial({
+      transparent: true,
+      depthTest: false,
+      depthWrite: false
+    }));
+    logoSprite.scale.set(logoSpriteScale, logoSpriteScale, 1);
+    logoSprite.renderOrder = 10;
+    logoSprite.visible = false;
+    scene.add(logoSprite);
+
     textureLoader.load('AiiAold.8dde82cb.jpg',
       (texture) => {
-        sun.material.map = texture;
-        sun.material.needsUpdate = true;
+        logoSprite.material.map = createCircularLogoTexture(texture.image);
+        logoSprite.material.needsUpdate = true;
+        logoSprite.visible = true;
       },
       undefined,
       (err) => {
-        console.warn("Sun texture failed to load. Using procedural fallback.");
-        sun.material.map = createSunTexture();
-        sun.material.needsUpdate = true;
+        console.warn("Portal logo failed to load.", err);
       }
     );
 
@@ -994,7 +1071,8 @@
       lastFrameTime = time;
       const dt = Math.min(deltaMs, 50) / FRAME_MS;
 
-      sun.lookAt(camera.position);
+      const logoPulse = 1 + Math.sin(time * 0.002) * 0.06;
+      logoSprite.scale.set(logoSpriteScale * logoPulse, logoSpriteScale * logoPulse, 1);
       starMesh.rotation.y -= 0.0002 * dt;
 
       planetMeshes.forEach(obj => {
@@ -1064,21 +1142,24 @@
       renderer.setSize(window.innerWidth, window.innerHeight);
     });
 
-    renderer.setAnimationLoop(animate);
+    startLoop(animate);
 
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) {
-        renderer.setAnimationLoop(null);
+        stopLoop();
         lastFrameTime = 0;
       } else {
-        renderer.setAnimationLoop(animate);
+        startLoop(animate);
       }
     });
 
     setTimeout(() => {
       const loader = document.getElementById('loading');
+      if (!loader) return;
       loader.style.opacity = '0';
-      setTimeout(() => loader.remove(), 1000);
+      setTimeout(() => {
+        if (loader.parentNode) loader.remove();
+      }, 1000);
     }, 1000);
 
   </script>

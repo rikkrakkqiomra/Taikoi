@@ -6,13 +6,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pure Systems - Gamma Log</title>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+    <script>
+        (function () {
+            function revealUi() {
+                if (window.__aivoinko3d) return;
+                document.documentElement.classList.add('ui-ready');
+            }
+            window.__aivoinkoReveal = revealUi;
+            window.addEventListener('error', function () { revealUi(); }, true);
+            window.addEventListener('unhandledrejection', function () { revealUi(); });
+            setTimeout(revealUi, 2500);
+        })();
+    </script>
 
     <!-- # Assets: Favicon, Fonts & Icons -->
     <link rel="icon" type="image/jpeg" href="AiiAold.8dde82cb.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://unpkg.com" crossorigin>
-    <link rel="modulepreload" href="https://unpkg.com/three@0.160.0/build/three.module.js" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Courier+Prime&display=swap"
         rel="stylesheet">
@@ -243,6 +261,11 @@
             background: var(--accent-color);
             border: 1px solid #000;
         }
+
+        html.ui-ready header,
+        html.ui-ready .terminal-container {
+            opacity: 1 !important;
+        }
     </style>
 </head>
 
@@ -319,18 +342,10 @@
 
     </div>
 
-    <!-- # Import Map for Three.js (CDN) -->
-    <script type="importmap">
-        {
-            "imports": {
-                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
-            }
-        }
-    </script>
-
     <script type="module">
         import * as THREE from 'three';
+
+        window.__aivoinko3d = true;
 
         const FRAME_MS = 1000 / 60;
 
@@ -344,10 +359,38 @@
         camera.position.set(0, 0, 100);
 
         // # Renderer Setup
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        container.appendChild(renderer.domElement);
+        let renderer;
+        try {
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            container.appendChild(renderer.domElement);
+        } catch (err) {
+            console.warn('WebGL unavailable', err);
+            window.__aivoinko3d = false;
+            if (typeof window.__aivoinkoReveal === 'function') window.__aivoinkoReveal();
+            throw err;
+        }
+
+        let rafId = 0;
+        function startLoop(fn) {
+            if (renderer.setAnimationLoop) {
+                renderer.setAnimationLoop(fn);
+                return;
+            }
+            function tick(t) {
+                fn(t);
+                rafId = requestAnimationFrame(tick);
+            }
+            rafId = requestAnimationFrame(tick);
+        }
+        function stopLoop() {
+            if (renderer.setAnimationLoop) {
+                renderer.setAnimationLoop(null);
+                return;
+            }
+            cancelAnimationFrame(rafId);
+        }
 
         // # Starfield Generation (Green Tint)
         const starsGeometry = new THREE.BufferGeometry();
@@ -444,14 +487,14 @@
             renderer.render(scene, camera);
         }
 
-        renderer.setAnimationLoop(animate);
+        startLoop(animate);
 
         document.addEventListener('visibilitychange', () => {
             if (document.hidden) {
-                renderer.setAnimationLoop(null);
+                stopLoop();
                 lastFrameTime = 0;
             } else {
-                renderer.setAnimationLoop(animate);
+                startLoop(animate);
             }
         });
 
