@@ -31,10 +31,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --glass-bg: rgba(5, 12, 14, 0.45);
-            --glass-border: rgba(61, 155, 143, 0.35);
-            --text-color: #dceeea;
-            --accent-color: #3d9b8f;
+            --glass-bg: rgba(4, 4, 8, 0.45);
+            --glass-border: rgba(196, 140, 64, 0.35);
+            --text-color: #efe6d4;
+            --accent-color: #c48c40;
             --bronze: #c48c40;
         }
 
@@ -47,7 +47,7 @@
         body {
             margin: 0;
             overflow: hidden;
-            background-color: #05080c;
+            background-color: #000;
             font-family: 'Orbitron', sans-serif;
             color: var(--text-color);
         }
@@ -59,15 +59,6 @@
             width: 100%;
             height: 100%;
             z-index: 1;
-        }
-
-        body::after {
-            content: '';
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 4;
-            background: radial-gradient(ellipse at center, transparent 46%, rgba(5, 8, 12, 0.72) 100%);
         }
 
         header {
@@ -84,7 +75,7 @@
         header img {
             max-width: 120px;
             border-radius: 50%;
-            box-shadow: 0 0 24px rgba(61, 155, 143, 0.45), 0 0 48px rgba(196, 140, 64, 0.16);
+            box-shadow: 0 0 24px rgba(196, 140, 64, 0.28);
             transition: transform 0.3s ease;
             outline: none;
             -webkit-tap-highlight-color: transparent;
@@ -101,12 +92,8 @@
             inset: 0;
             z-index: 80;
             pointer-events: none;
-            opacity: 0.5;
-            background: radial-gradient(circle at center,
-                rgba(255, 255, 255, 0.95) 0%,
-                rgba(61, 155, 143, 0.78) 28%,
-                rgba(196, 140, 64, 0.32) 58%,
-                rgba(5, 8, 12, 1) 100%);
+            opacity: 0.28;
+            background: #000;
         }
 
         #realm-title {
@@ -126,27 +113,32 @@
             font-size: clamp(1.2rem, 4vw, 2.4rem);
             letter-spacing: 0.34em;
             text-transform: uppercase;
-            background: linear-gradient(90deg, #c48c40, #3d9b8f, #8fd4c8);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 18px rgba(61, 155, 143, 0.35));
+            color: #efe6d4;
+            text-shadow: 0 0 18px rgba(196, 140, 64, 0.35);
         }
 
         #fallback-art {
-            display: none;
+            display: flex;
             position: fixed;
             inset: 0;
             z-index: 5;
             align-items: center;
             justify-content: center;
             padding: 140px 6vw 12vh;
+            pointer-events: none;
+        }
+
+        #fallback-art.is-3d {
+            display: none;
         }
 
         #fallback-art figure {
-            max-width: min(86vw, 420px);
-            border: 18px solid #4a2d18;
-            box-shadow: inset 0 0 0 6px #b87333, 0 0 40px rgba(61, 155, 143, 0.25);
+            max-width: min(72vw, 720px);
+            max-height: 72vh;
+            border: 22px solid #4a2d18;
+            outline: 6px solid #b87333;
+            outline-offset: -10px;
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.65);
             background: #1a120c;
         }
 
@@ -154,6 +146,8 @@
             display: block;
             width: 100%;
             height: auto;
+            max-height: 68vh;
+            object-fit: contain;
         }
 
         html.ui-ready header,
@@ -163,6 +157,10 @@
 
         html.ui-ready #fallback-art {
             display: flex;
+        }
+
+        html.ui-ready #fallback-art.is-3d {
+            display: none;
         }
 
         html.ui-ready #warp-flash {
@@ -183,7 +181,7 @@
         <h1>Gallery</h1>
     </div>
 
-    <div id="fallback-art" aria-hidden="true">
+    <div id="fallback-art">
         <figure>
             <img src="gallery/01-elder.jpg" alt="The Elder">
         </figure>
@@ -199,20 +197,24 @@
         const TUNNEL_DEPTH = 900;
         const ENTER_MS = 2200;
         const EXIT_MS = 1200;
-        const VIEW_GAP = 14;
+        const VIEW_GAP = 9;
+
+        let mode = 'enter';
+        let focusIndex = 0;
+        let camTargetZ = 0;
 
         const ARTWORKS = [
             {
                 src: 'gallery/01-elder.jpg',
                 frame: 'wood',
-                desktop: { x: 0, y: 0.12, z: -13 },
-                mobile: { x: 0, y: 0.08, z: -11.6 }
+                desktop: { x: 0, y: 0, z: -5.4 },
+                mobile: { x: 0, y: 0, z: -4.7 }
             }
         ];
 
         const scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x05080c);
-        scene.fog = new THREE.FogExp2(0x05080c, 0.0018);
+        scene.background = new THREE.Color(0x000000);
+        scene.fog = new THREE.FogExp2(0x000000, 0.0009);
 
         const container = document.getElementById('canvas-container');
         const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 2000);
@@ -225,7 +227,7 @@
             renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            renderer.setClearColor(0x05080c, 1);
+            renderer.setClearColor(0x000000, 1);
             container.appendChild(renderer.domElement);
         } catch (err) {
             console.warn('WebGL unavailable', err);
@@ -254,9 +256,9 @@
             cancelAnimationFrame(rafId);
         }
 
-        const teal = new THREE.Color(0x3d9b8f);
-        const bronze = new THREE.Color(0xc48c40);
-        const ice = new THREE.Color(0xe8fff8);
+        const warm = new THREE.Color(0xe8d2a0);
+        const ice = new THREE.Color(0xf4f1ea);
+        const dim = new THREE.Color(0x8a8fa3);
 
         const linePositions = new Float32Array(STAR_COUNT * 6);
         const lineColors = new Float32Array(STAR_COUNT * 6);
@@ -267,8 +269,8 @@
         function paintStarColor(i) {
             const pick = Math.random();
             let color = ice;
-            if (pick > 0.42 && pick <= 0.74) color = teal;
-            else if (pick > 0.74) color = bronze;
+            if (pick > 0.42 && pick <= 0.74) color = dim;
+            else if (pick > 0.74) color = warm;
             starRGB[i * 3] = color.r;
             starRGB[i * 3 + 1] = color.g;
             starRGB[i * 3 + 2] = color.b;
@@ -413,28 +415,22 @@
 
         function createFrameMaterial(kind) {
             if (kind === 'wood') {
-                return new THREE.MeshStandardMaterial({
+                return new THREE.MeshBasicMaterial({
                     map: woodMap,
                     color: 0xc4a574,
-                    roughness: 0.74,
-                    metalness: 0.06,
                     fog: false
                 });
             }
             if (kind === 'bronze') {
-                return new THREE.MeshStandardMaterial({
+                return new THREE.MeshBasicMaterial({
                     map: bronzeMap,
                     color: 0xb87333,
-                    roughness: 0.36,
-                    metalness: 0.86,
                     fog: false
                 });
             }
-            return new THREE.MeshStandardMaterial({
+            return new THREE.MeshBasicMaterial({
                 map: ironMap,
-                color: 0x6a6e72,
-                roughness: 0.52,
-                metalness: 0.72,
+                color: 0x8a8e92,
                 fog: false
             });
         }
@@ -497,19 +493,8 @@
         hall.frustumCulled = false;
         scene.add(hall);
 
-        const ambient = new THREE.AmbientLight(0x1a2830, 0.55);
-        scene.add(ambient);
-        const key = new THREE.DirectionalLight(0xfff4e0, 1.2);
-        key.position.set(-5, 7, 9);
-        scene.add(key);
-        const rim = new THREE.DirectionalLight(0x3d9b8f, 0.42);
-        rim.position.set(7, -3, 5);
-        scene.add(rim);
-        const fill = new THREE.PointLight(0xc4a574, 0.7, 48);
-        fill.position.set(2.2, 1.4, -8);
-        hall.add(fill);
-
         const pieces = [];
+        const fallbackArt = document.getElementById('fallback-art');
 
         function isMobile() {
             return window.innerWidth < 768;
@@ -563,12 +548,14 @@
             }
             piece.userData.artMat.map = tex;
             piece.userData.artMat.needsUpdate = true;
+            piece.userData.hasTex = true;
+            if (mode === 'idle' && fallbackArt) fallbackArt.classList.add('is-3d');
         }
 
         function mountArtwork(spec, index, tex) {
             const img = tex && tex.image;
             const aspect = img && img.width && img.height ? img.width / img.height : 0.68;
-            const artH = 6.05;
+            const artH = isMobile() ? 5.0 : 5.8;
             const artW = artH * aspect;
             const group = new THREE.Group();
             const artMat = new THREE.MeshBasicMaterial({
@@ -582,18 +569,12 @@
 
             const back = new THREE.Mesh(
                 new THREE.BoxGeometry(artW + 0.06, artH + 0.06, 0.1),
-                new THREE.MeshStandardMaterial({ color: 0x140e0a, roughness: 0.92, metalness: 0.04, fog: false })
+                new THREE.MeshBasicMaterial({ color: 0x140e0a, fog: false })
             );
             back.position.z = -0.07;
             group.add(back);
             const frameGroup = buildFrame(spec.frame, artW, artH);
             group.add(frameGroup);
-
-            const lamp = new THREE.SpotLight(0xfff1d6, 1.8, 28, 0.62, 0.4, 1);
-            lamp.position.set(0, artH * 0.72, 4.2);
-            lamp.target.position.set(0, 0, 0);
-            group.add(lamp);
-            group.add(lamp.target);
 
             const pos = placeForSpec(spec, index);
             group.position.set(pos.x, pos.y, pos.z);
@@ -631,11 +612,8 @@
         titleEl.style.opacity = '0';
         header.style.pointerEvents = 'none';
 
-        let mode = 'enter';
         let phaseStart = 0;
         let exiting = false;
-        let focusIndex = 0;
-        let camTargetZ = 0;
         const baseFov = 70;
 
         function writeStreaks(stretch, rush, dt) {
@@ -695,7 +673,7 @@
                 const fly = 1 - arrive;
                 piece.position.x = base.x;
                 piece.position.y = base.y + (time ? Math.sin(time * 0.00075 + base.phase) * 0.12 * arrive : 0);
-                piece.position.z = base.z - 72 * fly;
+                piece.position.z = base.z - 18 * fly;
                 piece.rotation.y = time ? Math.sin(time * 0.00032 + base.phase) * 0.035 * arrive : 0;
                 piece.rotation.x = time ? Math.sin(time * 0.00026 + base.phase) * 0.018 * arrive : 0;
                 piece.visible = true;
@@ -756,16 +734,16 @@
             header.style.pointerEvents = 'none';
             header.style.opacity = '0';
             titleEl.style.opacity = '0';
-            if (flash) flash.style.opacity = '0.5';
             camera.fov = 92;
             camera.updateProjectionMatrix();
             hall.scale.setScalar(1);
+            applyLayout();
             poseHangings(0, 0);
             pointMesh.visible = false;
             streakMesh.visible = true;
             pointsMat.opacity = 0;
             streakMat.opacity = 1;
-            applyLayout();
+            if (flash) flash.style.opacity = '0.28';
         });
 
         let lastFrameTime = 0;
@@ -786,7 +764,7 @@
                 camera.updateProjectionMatrix();
                 scene.fog.density = 0.0009 + easeOut * 0.0016;
 
-                if (flash) flash.style.opacity = String(Math.max(0, 0.5 * (1 - Math.min((time - phaseStart) / 400, 1))));
+                if (flash) flash.style.opacity = String(Math.max(0, 0.28 * (1 - Math.min((time - phaseStart) / 350, 1))));
 
                 const hallT = Math.max(0, (progress - 0.28) / 0.72);
                 const hallEase = 1 - Math.pow(1 - hallT, 3);
@@ -805,6 +783,9 @@
                     poseHangings(time, 1);
                     if (flash) flash.style.opacity = '0';
                     mode = 'idle';
+                    if (fallbackArt && pieces.some((p) => p && p.userData.hasTex)) {
+                        fallbackArt.classList.add('is-3d');
+                    }
                 }
             } else if (mode === 'idle') {
                 driftPoints(dt, 0.42);
