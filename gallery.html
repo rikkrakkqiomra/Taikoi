@@ -120,24 +120,26 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 2.6vw;
-            padding: 128px 3vw 11vh;
+            gap: 3vw;
+            padding: 168px 4vw 16vh;
             pointer-events: none;
         }
 
         .hanging {
-            flex: 0 0 auto;
-            width: min(38vw, 62vh);
+            flex: 0 1 auto;
+            width: auto;
+            height: min(52vh, calc(100vh - 168px - 16vh - 20px));
+            max-width: min(34vw, 46%);
             --hang-y: 0px;
             animation: hangIn 1.05s ease both, hangDrift 10s ease-in-out 1.05s infinite;
         }
 
         .hanging:nth-child(1) {
-            --hang-y: -3.2vh;
+            --hang-y: -8px;
         }
 
         .hanging:nth-child(2) {
-            --hang-y: 4.4vh;
+            --hang-y: 8px;
         }
 
         .hanging.is-off {
@@ -146,8 +148,10 @@
 
         .hanging img {
             display: block;
-            width: 100%;
-            height: auto;
+            width: auto;
+            height: 100%;
+            max-width: 100%;
+            object-fit: contain;
             filter: drop-shadow(10px 16px 14px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 16px rgba(196, 140, 64, 0.12));
         }
 
@@ -179,12 +183,25 @@
         }
 
         @media (max-width: 768px) {
+            #hall {
+                padding: 148px 5vw 14vh;
+            }
+
             .hanging,
             .hanging:nth-child(1),
             .hanging:nth-child(2) {
-                width: min(90vw, 70vh);
+                width: min(86vw, 58vh);
+                height: auto;
+                max-width: min(86vw, 58vh);
+                max-height: calc(100vh - 148px - 14vh);
                 --hang-y: 0px;
                 animation-delay: 0s, 1.05s;
+            }
+
+            .hanging img {
+                width: 100%;
+                height: auto;
+                max-height: calc(100vh - 148px - 14vh);
             }
         }
 

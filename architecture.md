@@ -179,7 +179,7 @@ No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
 
 - **2D hangings:** `#hall` is DOM. Two precomposed PNGs with transparent exteriors: `art/hangings/01-elder-gilt.png` and `art/hangings/02-nautilus-titanium.png`. Elder's gilt black inner slip is also punched so the starfield shows between gold and canvas. `FRAMES` keeps punched walnut/gilt/iron/titanium PNG overlays under `art/frames/` for later stills. Assets are not under `gallery/` so they do not collide with Netlify Pretty URL `/gallery` (`gallery.html`).
 - **`ARTWORKS`:** `{ src, alt, frame }`. First hanging is gilt; second is titanium/walnut (`The Nautilus`).
-- **Layout:** desktop shows both in a row with CSS `--hang-y` stagger. Mobile shows one (`is-off` on the rest); swipe changes `focusIndex`. Optional `?focus=N` selects the starting hanging.
+- **Layout:** desktop shows both in a row, height-capped so they stay between the header logo and `#realm-title`. Mild `--hang-y` stagger (±8px). Mobile shows one (`is-off` on the rest); swipe changes `focusIndex`. Optional `?focus=N` selects the starting hanging.
 - **Three.js:** starfield + enter/exit streaks only. No OrbitControls, no 3D rails. Scene clear is black (`#000`).
 - **Fail-open:** `#hall` hangings remain in the HTML/CSS even if WebGL never starts (`html.ui-ready`).
 
@@ -293,3 +293,4 @@ Append-only. Newest rows at the **bottom**. Do not rewrite prior rows.
 | 2026-10-17 | Punch hanging exteriors so frames sit on starfield | gallery.html, art/hangings/01-elder-gilt.png, art/hangings/02-nautilus-titanium.png, architecture.md | Opaque JPEG hangings baked a black rectangle around each frame, covering the starfield | Flood-fill dark exterior to alpha 0, 1 px feather. Src now `.png`. Old hanging JPEGs removed. Index/DIY routes unchanged. |
 | 2026-10-17 | Punch Elder gilt inner slip so stars show through | art/hangings/01-elder-gilt.png, architecture.md | Black velvet mat between gold and canvas covered the starfield | Slip mask from `art/frames/gilt.png` (dark, non-gold, opaque overlay). Gold sight edge and painting stay. Nautilus unchanged. |
 | 2026-10-17 | Shrink hanging drop-shadow so punched slip stays open | gallery.html, architecture.md | 52px drop-shadow filled the Elder slip hole and hid the starfield again | Offset shadow 10/16/14px. Nautilus uses the same smaller shadow. |
+| 2026-10-17 | Keep gallery hangings out of logo and title | gallery.html, architecture.md | Large hangings plus ±vh stagger overlapped the header logo and GALLERY label | Hall padding 168px / 16vh; hanging height `min(52vh, 100vh - chrome)`; stagger ±8px. Mobile one-up unchanged. |
