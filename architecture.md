@@ -69,7 +69,7 @@ Taikoi/
 │   │   ├── 03-altar-bronze.png      # Hero hanging (still + winged bronze frame, transparent exterior)
 │   │   ├── 04-throne-dark.png       # Finale hanging (still + ebonized frame, transparent exterior)
 │   │   ├── 06-yantra-cassetta.png   # Hero hanging (still + walnut/gold cassetta frame, transparent exterior)
-│   │   ├── 08-visage-ivory.png      # Hero hanging (still + fractal champagne-ivory frame, transparent exterior)
+│   │   ├── 08-visage-abstract.png   # Hero hanging (still + abstract bronze frame, transparent exterior)
 │   │   └── 09-axis-ivory.png        # Showpiece hanging (still + palace ivory frame, transparent exterior)
 │   └── frames/                # Photographic PNG overlays for later stills
 │       ├── walnut.png
@@ -84,9 +84,9 @@ Taikoi/
 │       ├── ebony.png
 │       ├── ivory.png
 │       ├── photo.png
-│       ├── fractal-ivory.png
 │       ├── cassetta.png
-│       └── palace-ivory.png
+│       ├── palace-ivory.png
+│       └── abstract-bronze.png
 ├── diy_realities.html         # Magenta/amber loom space (“DIY Realities”); content TBD
 ├── gate_left.html             # Crimson left aperture; content TBD
 ├── gate_right.html            # Gold/zinc right aperture; content TBD
@@ -200,8 +200,8 @@ No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
 
 ### `gallery.html` hall specifics
 
-- **2D hangings:** `#hall` is DOM. Seven precomposed PNGs with transparent exteriors, last `art/hangings/09-axis-ivory.png`. Elder's gilt black inner slip is punched so the starfield shows between gold and canvas. `FRAMES` keeps punched overlays under `art/frames/` including `cassetta.png`, `fractal-ivory.png`, and `palace-ivory.png`. Assets are not under `gallery/` so they do not collide with Netlify Pretty URL `/gallery` (`gallery.html`).
-- **`ARTWORKS`:** `{ src, alt, frame }`. Fourth hanging is The Yantra (`cassetta`). Sixth is fractal champagne ivory (`The Visage`). Seventh is palace ivory (`The Axis`).
+- **2D hangings:** `#hall` is DOM. Seven precomposed PNGs with transparent exteriors, last `art/hangings/09-axis-ivory.png`. Elder's gilt black inner slip is punched so the starfield shows between gold and canvas. `FRAMES` keeps punched overlays under `art/frames/` including `cassetta.png`, `abstract-bronze.png`, and `palace-ivory.png`. Assets are not under `gallery/` so they do not collide with Netlify Pretty URL `/gallery` (`gallery.html`).
+- **`ARTWORKS`:** `{ src, alt, frame }`. Fourth hanging is The Yantra (`cassetta`). Sixth is abstract bronze (`The Visage`). Seventh is palace ivory (`The Axis`).
 - **Layout:** desktop `#hall` is a fixed, scrollable overlay (`overflow-y: auto`). Six `min-height: 100vh` bays: pair (Elder + Nautilus at ~62vh), Altar (~86vh), Throne (~86vh), solo The Yantra (square ~`min(86vh, 78vw)`), solo The Visage (~86vh), then solo The Axis (~90vh). `#realm-title` sits after The Axis. The return-home logo is `position: absolute` at the start of `#hall` (not `fixed`), so it leaves with the first bay. Starfield canvas stays pinned. Mobile: `display: contents` on bays, one hanging (`is-off` on the rest), swipe changes `focusIndex`. Optional `?focus=N` selects the starting hanging.
 - **Three.js:** starfield + enter/exit streaks only. No OrbitControls, no 3D rails. Scene clear is black (`#000`).
 - **Fail-open:** `#hall` hangings remain in the HTML/CSS even if WebGL never starts (`html.ui-ready`).
@@ -332,3 +332,4 @@ Append-only. Newest rows at the **bottom**. Do not rewrite prior rows.
 | 2026-10-17 | Warm The Visage frame toward the painting metals | gallery.html, art/hangings/08-visage-ivory.png, art/frames/fractal-ivory.png, architecture.md | Stark white ivory clashed with the gold/bronze still | Champagne-ivory grade on frame pixels only. Well and lace punch unchanged. |
 | 2026-10-17 | Hang The Yantra alone as a square hero | gallery.html, art/06-yantra.jpg, art/hangings/06-yantra-cassetta.png, art/frames/cassetta.png, architecture.md | Salon of Pact + Yantra + Window did not work; user asked to keep only the beige plate, enlarge it, and give it worthy frames from the original still | Walnut outer + worn-gold inner cassetta. Pact and Window hangings removed from DOM/ARTWORKS. Sources `05-pact.jpg` and `07-window.jpg` kept unused. |
 | 2026-10-17 | Hang The Axis as the ivory palace showpiece | gallery.html, art/09-axis.jpg, art/hangings/09-axis-ivory.png, art/frames/palace-ivory.png, architecture.md | User asked for megalomaniacal ivory frames on the new still and called it the draw | Gothic carved ivory + pierced lace, black exterior punched. Last 90vh bay after The Visage. Title moved with it. Mobile swipe includes it. |
+| 2026-10-17 | Reframe The Visage in abstract bronze | gallery.html, art/hangings/08-visage-abstract.png, art/frames/abstract-bronze.png, architecture.md | Fractal ivory lace was too ornate; user asked for simpler abstract frames | Low-poly bronze/iridescent planes, rectangular silhouette. Old `08-visage-ivory.png` and `fractal-ivory.png` removed. Axis palace ivory unchanged. |

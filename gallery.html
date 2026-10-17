@@ -197,6 +197,10 @@
             filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 20px rgba(196, 154, 82, 0.2));
         }
 
+        .hanging--abstract img {
+            filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.62)) drop-shadow(0 0 16px rgba(168, 130, 72, 0.16));
+        }
+
         .hanging--show {
             height: 90vh;
         }
@@ -246,6 +250,7 @@
             .hanging,
             .hanging--hero,
             .hanging--ivory,
+            .hanging--abstract,
             .hanging--show {
                 width: min(86vw, 62vh);
                 height: auto;
@@ -326,8 +331,8 @@
             </figure>
         </section>
         <section class="bay bay--hero">
-            <figure class="hanging hanging--hero hanging--ivory">
-                <img src="art/hangings/08-visage-ivory.png" alt="The Visage" decoding="async">
+            <figure class="hanging hanging--hero hanging--abstract">
+                <img src="art/hangings/08-visage-abstract.png" alt="The Visage" decoding="async">
             </figure>
         </section>
         <section class="bay bay--hero">
@@ -404,9 +409,9 @@
                 src: 'art/frames/photo.png',
                 inset: { top: '10.1%', right: '12.6%', bottom: '10.9%', left: '12.7%' }
             },
-            fractalIvory: {
-                src: 'art/frames/fractal-ivory.png',
-                inset: { top: '28.2%', right: '23.9%', bottom: '19.7%', left: '23.9%' }
+            abstractBronze: {
+                src: 'art/frames/abstract-bronze.png',
+                inset: { top: '20.8%', right: '22.6%', bottom: '21.2%', left: '24.1%' }
             },
             palaceIvory: {
                 src: 'art/frames/palace-ivory.png',
@@ -441,9 +446,9 @@
                 frame: 'cassetta'
             },
             {
-                src: 'art/hangings/08-visage-ivory.png',
+                src: 'art/hangings/08-visage-abstract.png',
                 alt: 'The Visage',
-                frame: 'fractalIvory'
+                frame: 'abstractBronze'
             },
             {
                 src: 'art/hangings/09-axis-ivory.png',
