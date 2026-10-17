@@ -166,6 +166,7 @@
         }
 
         .plaque {
+            position: relative;
             flex: 0 1 28rem;
             width: min(28rem, 34vw);
             padding: 1.5rem 1.45rem 1.6rem;
@@ -173,6 +174,79 @@
             border: 1px solid rgba(196, 140, 64, 0.48);
             box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(236, 226, 210, 0.08);
             color: #efe6d4;
+            overflow: visible;
+        }
+
+        .plaque-corners {
+            position: absolute;
+            inset: -5px;
+            pointer-events: none;
+        }
+
+        .plaque-corners i {
+            position: absolute;
+            width: 13px;
+            height: 13px;
+            border-color: #d4a45a;
+            border-style: solid;
+            border-width: 0;
+        }
+
+        .plaque-corners i:nth-child(1) {
+            top: 0;
+            left: 0;
+            border-top-width: 1.5px;
+            border-left-width: 1.5px;
+        }
+
+        .plaque-corners i:nth-child(2) {
+            top: 0;
+            right: 0;
+            border-top-width: 1.5px;
+            border-right-width: 1.5px;
+        }
+
+        .plaque-corners i:nth-child(3) {
+            bottom: 0;
+            left: 0;
+            border-bottom-width: 1.5px;
+            border-left-width: 1.5px;
+        }
+
+        .plaque-corners i:nth-child(4) {
+            bottom: 0;
+            right: 0;
+            border-bottom-width: 1.5px;
+            border-right-width: 1.5px;
+        }
+
+        .plaque-corners i::after {
+            content: "";
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: #d4a45a;
+            transform: rotate(45deg);
+        }
+
+        .plaque-corners i:nth-child(1)::after {
+            top: -3px;
+            left: -3px;
+        }
+
+        .plaque-corners i:nth-child(2)::after {
+            top: -3px;
+            right: -3px;
+        }
+
+        .plaque-corners i:nth-child(3)::after {
+            bottom: -3px;
+            left: -3px;
+        }
+
+        .plaque-corners i:nth-child(4)::after {
+            bottom: -3px;
+            right: -3px;
         }
 
         .plaque h2 {
@@ -416,6 +490,7 @@
                 <img src="art/hangings/01-elder-gilt.png" alt="The Elder" decoding="async">
             </figure>
             <article class="plaque">
+                <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
                 <h2>The Elder</h2>
                 <blockquote>The forest keeps a king who does not sit.</blockquote>
                 <p>The antlered face is not costume. It is what remains when a man agrees to be used as a door. Bark, beard, and bone are one weather.</p>
@@ -427,6 +502,7 @@
                 <img src="art/hangings/02-nautilus-walnut.png" alt="The Nautilus" decoding="async">
             </figure>
             <article class="plaque">
+                <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
                 <h2>The Nautilus</h2>
                 <blockquote>The spiral does not travel. It arrives by turning.</blockquote>
                 <p>A chambered mind, each room a year. The face is the last room that still has a window.</p>
@@ -438,6 +514,7 @@
                 <img src="art/hangings/03-altar-bronze.png" alt="The Altar" decoding="async">
             </figure>
             <article class="plaque">
+                <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
                 <h2>The Altar</h2>
                 <blockquote>What you offer is not the gift. The offering is that you stop.</blockquote>
                 <p>Bronze wings hold a pause, not a god. The fire is implied; the body has already decided.</p>
@@ -449,6 +526,7 @@
                 <img src="art/hangings/04-throne-dark.png" alt="The Throne" decoding="async">
             </figure>
             <article class="plaque">
+                <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
                 <h2>The Throne</h2>
                 <blockquote>Power is a chair that outlives the sitter.</blockquote>
                 <p>The machine-elder does not rule. He occupies the only seat that would have him.</p>
@@ -460,6 +538,7 @@
                 <img src="art/hangings/06-yantra-cassetta.png" alt="The Yantra" decoding="async">
             </figure>
             <article class="plaque">
+                <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
                 <h2>The Yantra</h2>
                 <blockquote>Geometry is prayer that does not need a mouth.</blockquote>
                 <p>The beige plate is a map of sitting still. Triangles hold the body so the body can hold the sky.</p>
@@ -471,6 +550,7 @@
                 <img src="art/hangings/08-visage-abstract.png" alt="The Visage" decoding="async">
             </figure>
             <article class="plaque">
+                <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
                 <h2>The Visage</h2>
                 <blockquote>The mask is honest. The face behind it is the rumor.</blockquote>
                 <p>Metal remembers every glance that tried to own it. Iridescence is the refusal to pick one soul.</p>
@@ -482,6 +562,7 @@
                 <img src="art/hangings/09-axis-ivory.png" alt="The Axis" decoding="async">
             </figure>
             <article class="plaque">
+                <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
                 <h2>The Axis</h2>
                 <blockquote>Two faces, one stillness: the world is allowed to turn.</blockquote>
                 <p>East and west share a spine. The cone is not a hat; it is the interval between them.</p>
@@ -493,6 +574,7 @@
                 <img src="art/hangings/10-grove-oak.png" alt="The Grove" decoding="async">
             </figure>
             <article class="plaque">
+                <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
                 <h2>The Grove</h2>
                 <blockquote>The old god stands behind the old man, and neither is first.</blockquote>
                 <p>The circle is not audience. It is the forest rehearsing a human shape.</p>
