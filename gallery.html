@@ -140,6 +140,20 @@
             padding: 6vh 3vw 7vh;
         }
 
+        .bay--cabinet {
+            flex-direction: column;
+            padding: 10vh 4vw 8vh;
+        }
+
+        .bay-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4vw;
+            width: 100%;
+            flex: 1;
+        }
+
         .hanging {
             flex: 0 0 auto;
             width: auto;
@@ -158,6 +172,11 @@
 
         .hanging--hero {
             height: 86vh;
+            --hang-y: 0px;
+        }
+
+        .hanging--small {
+            height: 38vh;
             --hang-y: 0px;
         }
 
@@ -183,6 +202,10 @@
 
         .hanging--finale img {
             filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.64)) drop-shadow(0 0 16px rgba(120, 78, 48, 0.18));
+        }
+
+        .hanging--small img {
+            filter: drop-shadow(8px 12px 12px rgba(0, 0, 0, 0.58)) drop-shadow(0 0 12px rgba(180, 190, 200, 0.12));
         }
 
         @keyframes hangIn {
@@ -231,6 +254,20 @@
                 max-height: calc(100vh - 148px - 14vh);
                 --hang-y: 0px;
                 animation-delay: 0s, 1.05s;
+            }
+
+            .hanging--small {
+                width: min(58vw, 42vh);
+                max-width: min(58vw, 42vh);
+                max-height: min(42vh, calc(100vh - 148px - 14vh));
+            }
+
+            .hanging--small img {
+                max-height: min(42vh, calc(100vh - 148px - 14vh));
+            }
+
+            .bay-row {
+                display: contents;
             }
 
             .hanging img {
@@ -286,6 +323,13 @@
             <figure class="hanging hanging--hero hanging--finale">
                 <img src="art/hangings/04-throne-brutalist.png" alt="The Throne" decoding="async">
             </figure>
+        </section>
+        <section class="bay bay--cabinet">
+            <div class="bay-row">
+                <figure class="hanging hanging--small">
+                    <img src="art/hangings/05-pact-ebony.png" alt="The Pact" decoding="async">
+                </figure>
+            </div>
             <div id="realm-title">
                 <h1>Gallery</h1>
             </div>
@@ -327,6 +371,10 @@
             brutalist: {
                 src: 'art/frames/brutalist.png',
                 inset: { top: '18.9%', right: '21.4%', bottom: '25.2%', left: '21.4%' }
+            },
+            ebony: {
+                src: 'art/frames/ebony.png',
+                inset: { top: '17.3%', right: '20.8%', bottom: '18.9%', left: '21.3%' }
             }
         };
 
@@ -350,6 +398,11 @@
                 src: 'art/hangings/04-throne-brutalist.png',
                 alt: 'The Throne',
                 frame: 'brutalist'
+            },
+            {
+                src: 'art/hangings/05-pact-ebony.png',
+                alt: 'The Pact',
+                frame: 'ebony'
             }
         ];
 
