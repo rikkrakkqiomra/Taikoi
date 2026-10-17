@@ -140,28 +140,6 @@
             padding: 6vh 3vw 7vh;
         }
 
-        .bay--cabinet {
-            flex-direction: column;
-            padding: 10vh 4vw 8vh;
-        }
-
-        .bay-row {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 3.2vw;
-            width: 100%;
-            flex: 1;
-        }
-
-        .bay-stack {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 2.6vh;
-        }
-
         .hanging {
             flex: 0 0 auto;
             width: auto;
@@ -183,26 +161,8 @@
             --hang-y: 0px;
         }
 
-        .hanging--small {
-            height: 38vh;
-            --hang-y: 0px;
-        }
-
-        .bay-stack .hanging--small {
-            height: 28vh;
-        }
-
-        .hanging--photo {
-            height: 62vh;
-            --hang-y: 2px;
-        }
-
-        .bay-stack .hanging:nth-child(1) {
-            --hang-y: -4px;
-        }
-
-        .bay-stack .hanging:nth-child(2) {
-            --hang-y: 4px;
+        .hanging--square {
+            height: min(86vh, 78vw);
         }
 
         .hanging.is-off {
@@ -229,16 +189,8 @@
             filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.62)) drop-shadow(0 0 12px rgba(80, 70, 55, 0.14));
         }
 
-        .hanging--small img {
-            filter: drop-shadow(8px 12px 12px rgba(0, 0, 0, 0.58)) drop-shadow(0 0 12px rgba(180, 190, 200, 0.12));
-        }
-
-        .bay-stack .hanging:nth-child(2) img {
-            filter: drop-shadow(8px 12px 12px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 12px rgba(210, 180, 120, 0.14));
-        }
-
-        .hanging--photo img {
-            filter: drop-shadow(10px 16px 16px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 14px rgba(200, 210, 220, 0.14));
+        .hanging--square img {
+            filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.58)) drop-shadow(0 0 16px rgba(196, 154, 72, 0.16));
         }
 
         .hanging--ivory img {
@@ -294,29 +246,10 @@
                 animation-delay: 0s, 1.05s;
             }
 
-            .hanging--small {
-                width: min(58vw, 42vh);
-                max-width: min(58vw, 42vh);
-                max-height: min(42vh, calc(100vh - 148px - 14vh));
-            }
-
-            .hanging--small img {
-                max-height: min(42vh, calc(100vh - 148px - 14vh));
-            }
-
-            .hanging--photo {
-                width: min(72vw, 56vh);
-                max-width: min(72vw, 56vh);
-                max-height: min(68vh, calc(100vh - 148px - 14vh));
-            }
-
-            .hanging--photo img {
-                max-height: min(68vh, calc(100vh - 148px - 14vh));
-            }
-
-            .bay-row,
-            .bay-stack {
-                display: contents;
+            .hanging--square {
+                width: min(82vw, 62vh, calc(100vh - 160px - 14vh));
+                max-width: min(82vw, 62vh, calc(100vh - 160px - 14vh));
+                max-height: calc(100vh - 160px - 14vh);
             }
 
             .hanging img {
@@ -372,20 +305,10 @@
                 <img src="art/hangings/04-throne-dark.png" alt="The Throne" decoding="async">
             </figure>
         </section>
-        <section class="bay bay--cabinet">
-            <div class="bay-row">
-                <div class="bay-stack">
-                    <figure class="hanging hanging--small">
-                        <img src="art/hangings/05-pact-ebony.png" alt="The Pact" decoding="async">
-                    </figure>
-                    <figure class="hanging hanging--small">
-                        <img src="art/hangings/06-yantra-ivory.png" alt="The Yantra" decoding="async">
-                    </figure>
-                </div>
-                <figure class="hanging hanging--photo">
-                    <img src="art/hangings/07-window-photo.png" alt="The Window" decoding="async">
-                </figure>
-            </div>
+        <section class="bay bay--hero">
+            <figure class="hanging hanging--hero hanging--square">
+                <img src="art/hangings/06-yantra-cassetta.png" alt="The Yantra" decoding="async">
+            </figure>
         </section>
         <section class="bay bay--hero">
             <figure class="hanging hanging--hero hanging--ivory">
@@ -445,6 +368,10 @@
                 src: 'art/frames/ebonized.png',
                 inset: { top: '18.7%', right: '21.5%', bottom: '20.6%', left: '21.8%' }
             },
+            cassetta: {
+                src: 'art/frames/cassetta.png',
+                inset: { top: '21.8%', right: '21.9%', bottom: '22.8%', left: '22.6%' }
+            },
             ebony: {
                 src: 'art/frames/ebony.png',
                 inset: { top: '17.3%', right: '20.8%', bottom: '18.9%', left: '21.3%' }
@@ -485,19 +412,9 @@
                 frame: 'ebonized'
             },
             {
-                src: 'art/hangings/05-pact-ebony.png',
-                alt: 'The Pact',
-                frame: 'ebony'
-            },
-            {
-                src: 'art/hangings/06-yantra-ivory.png',
+                src: 'art/hangings/06-yantra-cassetta.png',
                 alt: 'The Yantra',
-                frame: 'ivory'
-            },
-            {
-                src: 'art/hangings/07-window-photo.png',
-                alt: 'The Window',
-                frame: 'photo'
+                frame: 'cassetta'
             },
             {
                 src: 'art/hangings/08-visage-ivory.png',

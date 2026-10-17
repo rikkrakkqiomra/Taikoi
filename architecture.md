@@ -58,18 +58,16 @@ Taikoi/
 │   ├── 02-nautilus.jpg        # Source still
 │   ├── 03-altar.jpg           # Source still
 │   ├── 04-throne.jpg          # Source still
-│   ├── 05-pact.jpg            # Source still
+│   ├── 05-pact.jpg            # Unused still (removed from hall)
 │   ├── 06-yantra.jpg          # Source still
-│   ├── 07-window.jpg          # Source still
+│   ├── 07-window.jpg          # Unused still (removed from hall)
 │   ├── 08-visage.jpg          # Source still
 │   ├── hangings/
 │   │   ├── 01-elder-gilt.png        # Precomposed 2D hanging (still + photoreal gilt frame, transparent exterior)
 │   │   ├── 02-nautilus-walnut.png   # Precomposed 2D hanging (still + carved walnut frame, transparent exterior)
 │   │   ├── 03-altar-bronze.png      # Hero hanging (still + winged bronze frame, transparent exterior)
 │   │   ├── 04-throne-dark.png       # Finale hanging (still + ebonized frame, transparent exterior)
-│   │   ├── 05-pact-ebony.png        # Small cabinet hanging (still + ebony/pewter frame, transparent exterior)
-│   │   ├── 06-yantra-ivory.png      # Small cabinet hanging (still + ivory/brass frame, transparent exterior)
-│   │   ├── 07-window-photo.png      # Photo hanging (still + thin black gallery frame, transparent exterior)
+│   │   ├── 06-yantra-cassetta.png   # Hero hanging (still + walnut/gold cassetta frame, transparent exterior)
 │   │   └── 08-visage-ivory.png      # Hero hanging (still + fractal champagne-ivory frame, transparent exterior)
 │   └── frames/                # Photographic PNG overlays for later stills
 │       ├── walnut.png
@@ -84,7 +82,8 @@ Taikoi/
 │       ├── ebony.png
 │       ├── ivory.png
 │       ├── photo.png
-│       └── fractal-ivory.png
+│       ├── fractal-ivory.png
+│       └── cassetta.png
 ├── diy_realities.html         # Magenta/amber loom space (“DIY Realities”); content TBD
 ├── gate_left.html             # Crimson left aperture; content TBD
 ├── gate_right.html            # Gold/zinc right aperture; content TBD
@@ -104,7 +103,7 @@ No `.gitignore` in the current tree (removed in `85d5131`).
 | `index.html` | `/` | Primary 3D solar system. Nav to Pure Systems (href), Gallery (direct streak warp), and DIY Realities (warp + on-page wormhole choice). Sun click → `brain.html`. |
 | `brain.html` | `/brain.html` | Starfield + floating manifesto blocks. Header click → `index.html`. |
 | `pure_systems.html` | `/pure_systems.html` | Green starfield + log copy + social icons. Header click → `index.html`. |
-| `gallery.html` | `/gallery.html` | Black starfield (Three.js warp only) + 2D photographic hangings. Header reverse-warp → `index.html`. Eight hangings, last is The Visage in a fractal white-ivory frame. |
+| `gallery.html` | `/gallery.html` | Black starfield (Three.js warp only) + 2D photographic hangings. Header reverse-warp → `index.html`. Six hangings; The Yantra is a solo square hero after The Throne. Last is The Visage in a fractal champagne-ivory frame. |
 | `diy_realities.html` | `/diy_realities.html` | Magenta/amber hyperspace loom. Default wormhole timeout destination. Header click reverse-warp → `index.html`. Title only. |
 | `gate_left.html` | `/gate_left.html` | Crimson vertical slit. Entered by left seal. Header reverse-warp → `index.html`. Title only. |
 | `gate_right.html` | `/gate_right.html` | Gold hexagonal aperture. Entered by right seal. Header reverse-warp → `index.html`. Title only. |
@@ -198,9 +197,9 @@ No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
 
 ### `gallery.html` hall specifics
 
-- **2D hangings:** `#hall` is DOM. Eight precomposed PNGs with transparent exteriors, last `art/hangings/08-visage-ivory.png`. Elder's gilt black inner slip is punched so the starfield shows between gold and canvas. `FRAMES` keeps punched overlays under `art/frames/` including `fractal-ivory.png`. Assets are not under `gallery/` so they do not collide with Netlify Pretty URL `/gallery` (`gallery.html`).
-- **`ARTWORKS`:** `{ src, alt, frame }`. Eighth hanging is fractal white ivory (`The Visage`).
-- **Layout:** desktop `#hall` is a fixed, scrollable overlay (`overflow-y: auto`). Five `min-height: 100vh` bays: pair (Elder + Nautilus at ~62vh), Altar (~86vh), Throne (~86vh), salon cabinet (stacked miniatures ~28vh + Window ~62vh), then solo The Visage (~86vh). `#realm-title` sits after The Visage. The return-home logo is `position: absolute` at the start of `#hall` (not `fixed`), so it leaves with the first bay. Starfield canvas stays pinned. Mobile: `display: contents` on bays, one hanging (`is-off` on the rest), swipe changes `focusIndex`. Optional `?focus=N` selects the starting hanging.
+- **2D hangings:** `#hall` is DOM. Six precomposed PNGs with transparent exteriors, last `art/hangings/08-visage-ivory.png`. Elder's gilt black inner slip is punched so the starfield shows between gold and canvas. `FRAMES` keeps punched overlays under `art/frames/` including `cassetta.png` and `fractal-ivory.png`. Assets are not under `gallery/` so they do not collide with Netlify Pretty URL `/gallery` (`gallery.html`).
+- **`ARTWORKS`:** `{ src, alt, frame }`. Fourth hanging is The Yantra (`cassetta`). Sixth is fractal champagne ivory (`The Visage`).
+- **Layout:** desktop `#hall` is a fixed, scrollable overlay (`overflow-y: auto`). Five `min-height: 100vh` bays: pair (Elder + Nautilus at ~62vh), Altar (~86vh), Throne (~86vh), solo The Yantra (square ~`min(86vh, 78vw)`), then solo The Visage (~86vh). `#realm-title` sits after The Visage. The return-home logo is `position: absolute` at the start of `#hall` (not `fixed`), so it leaves with the first bay. Starfield canvas stays pinned. Mobile: `display: contents` on bays, one hanging (`is-off` on the rest), swipe changes `focusIndex`. Optional `?focus=N` selects the starting hanging.
 - **Three.js:** starfield + enter/exit streaks only. No OrbitControls, no 3D rails. Scene clear is black (`#000`).
 - **Fail-open:** `#hall` hangings remain in the HTML/CSS even if WebGL never starts (`html.ui-ready`).
 
@@ -288,7 +287,7 @@ There is no API response schema.
 | `taikoi-sun-portal.png` | Unreferenced binary |
 | `LICENSE` | Missing despite README MIT claim |
 | Shared CSS/JS modules | None; seven-way copy of bootstrap |
-| Gallery hangings | Eight stills under `art/` (`01-elder.jpg` … `08-visage.jpg`); further paste entries append to `ARTWORKS` |
+| Gallery hangings | Six hangings on the hall (`01`–`04`, `06`, `08`). Unused stills `05-pact.jpg` and `07-window.jpg` remain under `art/` |
 | i18n | Removed; English-only |
 | Analytics | None |
 | Automated tests | None |
@@ -328,3 +327,4 @@ Append-only. Newest rows at the **bottom**. Do not rewrite prior rows.
 | 2026-10-17 | Reframe The Nautilus in carved walnut | gallery.html, art/hangings/02-nautilus-walnut.png, art/frames/walnut-carved.png, architecture.md | Titanium corner plates read as CGI; user asked for a more real, museum frame | Dark carved walnut + worn gilt sight. Old `02-nautilus-titanium.png` removed. Pair size unchanged. |
 | 2026-10-17 | Quiet The Throne frame to dark ebonized wood | gallery.html, art/hangings/04-throne-dark.png, art/frames/ebonized.png, architecture.md | Gilt rococo was too loud; user asked for darker and more restrained | Simple black profile, thin bronze sight. Old `04-throne-rococo.png` removed. |
 | 2026-10-17 | Warm The Visage frame toward the painting metals | gallery.html, art/hangings/08-visage-ivory.png, art/frames/fractal-ivory.png, architecture.md | Stark white ivory clashed with the gold/bronze still | Champagne-ivory grade on frame pixels only. Well and lace punch unchanged. |
+| 2026-10-17 | Hang The Yantra alone as a square hero | gallery.html, art/06-yantra.jpg, art/hangings/06-yantra-cassetta.png, art/frames/cassetta.png, architecture.md | Salon of Pact + Yantra + Window did not work; user asked to keep only the beige plate, enlarge it, and give it worthy frames from the original still | Walnut outer + worn-gold inner cassetta. Pact and Window hangings removed from DOM/ARTWORKS. Sources `05-pact.jpg` and `07-window.jpg` kept unused. |
