@@ -321,6 +321,10 @@
             filter: drop-shadow(6px 10px 8px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 8px rgba(196, 154, 72, 0.18));
         }
 
+        .hanging--spectrum img {
+            filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.58)) drop-shadow(0 0 22px rgba(80, 200, 220, 0.18)) drop-shadow(0 0 16px rgba(220, 140, 60, 0.16));
+        }
+
         .hanging--ivory img {
             filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 20px rgba(196, 154, 82, 0.2));
         }
@@ -602,6 +606,18 @@
                 <p>A workshop note: if the profiles refuse to wait, the skull has learned to be a room.</p>
             </article>
         </section>
+        <section class="bay bay--left">
+            <figure class="hanging hanging--hero hanging--spectrum">
+                <img src="art/hangings/13-prism-spectrum.png" alt="The Prism" decoding="async">
+            </figure>
+            <article class="plaque">
+                <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                <h2>The Prism</h2>
+                <blockquote>The corridor does not choose a color. It keeps all of them.</blockquote>
+                <p>Gold is only the hour when the metal remembers the sun.</p>
+                <p>A workshop note: if the walls keep shifting hue, you are already inside the prism.</p>
+            </article>
+        </section>
         <div id="realm-title">
             <h1>Gallery</h1>
         </div>
@@ -690,6 +706,10 @@
             layeredGilt: {
                 src: 'art/frames/layered-gilt.png',
                 inset: { top: '22.7%', right: '28.3%', bottom: '24.6%', left: '28.7%' }
+            },
+            spectrumGilt: {
+                src: 'art/frames/spectrum-gilt.png',
+                inset: { top: '19.6%', right: '22.4%', bottom: '21.2%', left: '22.4%' }
             }
         };
 
@@ -743,6 +763,11 @@
                 src: 'art/hangings/12-chorus-layered.png',
                 alt: 'The Chorus',
                 frame: 'layeredGilt'
+            },
+            {
+                src: 'art/hangings/13-prism-spectrum.png',
+                alt: 'The Prism',
+                frame: 'spectrumGilt'
             }
         ];
 
