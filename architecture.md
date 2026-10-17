@@ -1,12 +1,12 @@
 # Taikoi / Aivoinko — Architecture
 
-Authoritative description of the live repository as of 2026-10-17. This file is the source of truth for structure, data flow, integrations, and engineering constraints. Update it whenever those change.
+Authoritative description of the live repository as of 2026-10-18. This file is the source of truth for structure, data flow, integrations, and engineering constraints. Update it whenever those change.
 
 ---
 
 ## 1. Executive Overview & Purpose
 
-**Product identity:** Aivoinko (stylized “Machine Metaphysics”) is a public artistic website: an interactive 3D solar-system simulator plus narrative subpages. README branding is “Aivoinko Aurinko Reality Simulator”; live document titles are `Aivoinko Machine Metaphysics` (`index.html`), `The Opening of Reality` (`brain.html`), `Pure Systems - Gamma Log` (`pure_systems.html`), `Gallery` (`gallery.html`), `DIY Realities` (`diy_realities.html`), `Left Aperture` (`gate_left.html`), and `Right Aperture` (`gate_right.html`).
+**Product identity:** Aivoinko (stylized “Machine Metaphysics”) is a public artistic website: an interactive 3D solar-system simulator plus narrative subpages. README branding is “Aivoinko Aurinko Reality Simulator”; live document titles are `Aivoinko Machine Metaphysics` (`index.html`), `The Opening of Reality` (`brain.html`), `System Log` (`pure_systems.html`), `Gallery` (`gallery.html`), `DIY Realities` (`diy_realities.html`), `Left Aperture` (`gate_left.html`), and `Right Aperture` (`gate_right.html`).
 
 **Core purpose:** Present a cinematic, sci-fi 3D solar system in the browser, then route visitors into manifesto/log content. Interaction is exploratory (orbit, zoom, planet tooltips) rather than transactional.
 
@@ -51,7 +51,7 @@ Mostly flat root. There is no `src/`, `public/`, `components/`, or `netlify/func
 Taikoi/
 ├── index.html                 # Home / solar-system simulator (site entry)
 ├── brain.html                 # Manifesto page (“The Opening of Reality”)
-├── pure_systems.html          # Terminal “Gamma Log” page + outbound social links
+├── pure_systems.html          # Terminal “System Log” page + outbound social links
 ├── gallery.html               # Black starfield + 2D hangings; header reverse-warp home
 ├── art/
 │   ├── 01-elder.jpg           # Source still
@@ -115,7 +115,7 @@ No `.gitignore` in the current tree (removed in `85d5131`).
 
 | Path | URL (Netlify static) | Role |
 |---|---|---|
-| `index.html` | `/` | Primary 3D solar system. Nav to Pure Systems (href), Gallery (direct streak warp), and DIY Realities (warp + on-page wormhole choice). Sun click → `brain.html`. |
+| `index.html` | `/` | Primary 3D solar system. Nav to System Log (href), Gallery (direct streak warp), and DIY Realities (warp + on-page wormhole choice). Sun click → `brain.html`. |
 | `brain.html` | `/brain.html` | Starfield + floating manifesto blocks. Header click → `index.html`. |
 | `pure_systems.html` | `/pure_systems.html` | Green starfield + log copy + social icons. Header click → `index.html`. |
 | `gallery.html` | `/gallery.html` | Black starfield (Three.js warp only) + 2D photographic hangings with draft text plaques. Header reverse-warp → `index.html`. Eleven solo bays; hangings alternate left/right on desktop. Last is The Prism in a polychrome Baroque frame. |
@@ -129,7 +129,7 @@ Each HTML file is a **layout wrapper for itself**: `<head>` (meta, import map, f
 ### Navigation graph
 
 ```
-index.html  --nav "Pure Systems"-->  pure_systems.html  --header click-->  index.html
+index.html  --nav "System Log"-->  pure_systems.html  --header click-->  index.html
 index.html  --sun click/tap------->  brain.html         --header click-->  index.html
 index.html  --nav "Gallery"------->  streak warp (boost → commit, no seals) → gallery.html
                  gallery header --->  reverse-warp → index.html
@@ -207,7 +207,7 @@ No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
 - **Sun:** procedural Canvas texture + additive glow sprite + invisible collider (`radius * 0.9`) for picking. Logo JPEG is cropped to a circle and applied to a pulsing `THREE.Sprite`.
 - **Planets:** 8 solar-system bodies + fictional `Astroteles Aivoinko II` (`type: 'synthetic'`). Saturn has a `RingGeometry`. Orbits are `EllipseCurve` line loops.
 - **Desktop:** camera starts at `(0, 140, 280)` (3/4 view). `mousemove` updates NDC mouse; click on sun collider starts transition; hover raycast drives tooltip + cursor.
-- **Mobile:** camera starts top-down at `(0, 250, 6)` so orbits read as circles; `touchstart` (passive) raycasts planets + sun; tap planet locks tooltip; tap empty space clears; tap sun transitions. Header nav is full-width `space-between` with three labels (CSS `max-width: 768px` only); Pure Systems and DIY Realities wrap to two lines.
+- **Mobile:** camera starts top-down at `(0, 250, 6)` so orbits read as circles; `touchstart` (passive) raycasts planets + sun; tap planet locks tooltip; tap empty space clears; tap sun transitions. Header nav is full-width `space-between` with three labels (CSS `max-width: 768px` only); System Log and DIY Realities wrap to two lines.
 - **bfcache:** `pageshow` resets `isTransitioning`, camera pose, warp overlay, and replays entry animation.
 
 ### `gallery.html` hall specifics
@@ -283,7 +283,7 @@ There is no API response schema.
 2. **Do not introduce a backend, env secrets, or Netlify functions without a new architecture section** (auth, data store, API contract).
 3. **Do not unpin or CDN-swap Three.js on one page only.**
 4. **Do not assume `taikoi-sun-portal.png` is wired.** It is unused; `AiiAold.8dde82cb.jpg` is the live logo/favicon/sun sprite.
-5. **Do not restyle `diy_realities.html` as the index solar system or the green Pure Systems terminal.** The route is a magenta/amber hyperspace loom; copy is still a placeholder title only.
+5. **Do not restyle `diy_realities.html` as the index solar system or the green System Log terminal.** The route is a magenta/amber hyperspace loom; copy is still a placeholder title only.
 6. **Do not persist user state across pages** unless you add an explicit store; MPA navigations wipe memory.
 7. **Do not raise `setPixelRatio` uncapped** or run the animation loop in background tabs — thermal/battery regressions on mobile.
 8. **Do not load Three.js from a second CDN or a different major** without verifying import-map + OrbitControls paths.
@@ -357,3 +357,4 @@ Append-only. Newest rows at the **bottom**. Do not rewrite prior rows.
 | 2026-10-17 | Let stars stream through The Sigil well | gallery.html, art/hangings/11-sigil-victorian.png, architecture.md | User asked for the starfield to fly through the painting's black | Well black punched to alpha 0. `.hanging--void` uses a small shadow. Idle streaks while the bay is on screen. |
 | 2026-10-17 | Restore gallery starfield after Sigil void patch | gallery.html, architecture.md | Extra `}` after the idle branch was a SyntaxError, so the Three.js module never started | Brace removed; void streaks wrapped in try/catch. Hangings were still visible via HTML fail-open. |
 | 2026-10-17 | Hang The Prism in a polychrome Baroque frame | gallery.html, art/13-prism.jpg, art/hangings/13-prism-spectrum.png, art/frames/spectrum-gilt.png, architecture.md | User asked for the most excessive multi-hue frame on the new spectral corridor still | Iridescent gilt/oil-slick liner, exterior punched. Solo bay after The Chorus, draft plaque. |
+| 2026-10-18 | Rename Pure Systems nav and title to System Log | index.html, pure_systems.html, architecture.md | The page is the log terminal; the old name did not say that | Home nav label and document title only. Route stays `pure_systems.html`. Log headings (Gamma Log, entries 2–3) unchanged. |
