@@ -241,6 +241,10 @@
             filter: drop-shadow(10px 16px 16px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 14px rgba(200, 210, 220, 0.14));
         }
 
+        .hanging--ivory img {
+            filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 22px rgba(236, 226, 210, 0.22));
+        }
+
         @keyframes hangIn {
             from {
                 opacity: 0;
@@ -280,7 +284,8 @@
             }
 
             .hanging,
-            .hanging--hero {
+            .hanging--hero,
+            .hanging--ivory {
                 width: min(86vw, 62vh);
                 height: auto;
                 max-width: min(86vw, 62vh);
@@ -382,6 +387,11 @@
                     <img src="art/hangings/07-window-photo.png" alt="The Window" decoding="async">
                 </figure>
             </div>
+        </section>
+        <section class="bay bay--hero">
+            <figure class="hanging hanging--hero hanging--ivory">
+                <img src="art/hangings/08-visage-ivory.png" alt="The Visage" decoding="async">
+            </figure>
             <div id="realm-title">
                 <h1>Gallery</h1>
             </div>
@@ -435,6 +445,10 @@
             photo: {
                 src: 'art/frames/photo.png',
                 inset: { top: '10.1%', right: '12.6%', bottom: '10.9%', left: '12.7%' }
+            },
+            fractalIvory: {
+                src: 'art/frames/fractal-ivory.png',
+                inset: { top: '28.2%', right: '23.9%', bottom: '19.7%', left: '23.9%' }
             }
         };
 
@@ -473,6 +487,11 @@
                 src: 'art/hangings/07-window-photo.png',
                 alt: 'The Window',
                 frame: 'photo'
+            },
+            {
+                src: 'art/hangings/08-visage-ivory.png',
+                alt: 'The Visage',
+                frame: 'fractalIvory'
             }
         ];
 
