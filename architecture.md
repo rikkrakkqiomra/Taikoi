@@ -57,8 +57,8 @@ Taikoi/
 │   ├── 01-elder.jpg           # Source still
 │   ├── 02-nautilus.jpg        # Source still
 │   ├── hangings/
-│   │   ├── 01-elder-gilt.jpg        # Precomposed 2D hanging (still + photoreal gilt frame)
-│   │   └── 02-nautilus-titanium.jpg # Precomposed 2D hanging (still + titanium/walnut frame)
+│   │   ├── 01-elder-gilt.png        # Precomposed 2D hanging (still + photoreal gilt frame, transparent exterior)
+│   │   └── 02-nautilus-titanium.png # Precomposed 2D hanging (still + titanium/walnut frame, transparent exterior)
 │   └── frames/                # Photographic PNG overlays for later stills
 │       ├── walnut.png
 │       ├── gilt.png
@@ -115,7 +115,7 @@ index.html  --nav "DIY Realities"->  warp boost → on-page choice hold (seals)
 1. Parses HTML.
 2. Resolves the import map and fetches Three.js from unpkg (network, CORS).
 3. Runs the inline module: constructs scene, starts the render loop.
-4. Optionally fetches `AiiAold.8dde82cb.jpg` (TextureLoader on index; `<img>` on subpages) and `art/hangings/*.jpg` on `gallery.html`.
+4. Optionally fetches `AiiAold.8dde82cb.jpg` (TextureLoader on index; `<img>` on subpages) and `art/hangings/*.png` on `gallery.html`.
 
 There are no server components, no hydration boundary, no BFF, and no form POSTs.
 
@@ -177,7 +177,7 @@ No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
 
 ### `gallery.html` hall specifics
 
-- **2D hangings:** `#hall` is DOM. Two precomposed JPEGs on black: `art/hangings/01-elder-gilt.jpg` and `art/hangings/02-nautilus-titanium.jpg`. `FRAMES` keeps punched walnut/gilt/iron/titanium PNG overlays under `art/frames/` for later stills. Assets are not under `gallery/` so they do not collide with Netlify Pretty URL `/gallery` (`gallery.html`).
+- **2D hangings:** `#hall` is DOM. Two precomposed PNGs with transparent exteriors: `art/hangings/01-elder-gilt.png` and `art/hangings/02-nautilus-titanium.png`. `FRAMES` keeps punched walnut/gilt/iron/titanium PNG overlays under `art/frames/` for later stills. Assets are not under `gallery/` so they do not collide with Netlify Pretty URL `/gallery` (`gallery.html`).
 - **`ARTWORKS`:** `{ src, alt, frame }`. First hanging is gilt; second is titanium/walnut (`The Nautilus`).
 - **Layout:** desktop shows both in a row with CSS `--hang-y` stagger. Mobile shows one (`is-off` on the rest); swipe changes `focusIndex`. Optional `?focus=N` selects the starting hanging.
 - **Three.js:** starfield + enter/exit streaks only. No OrbitControls, no 3D rails. Scene clear is black (`#000`).
@@ -290,3 +290,4 @@ Append-only. Newest rows at the **bottom**. Do not rewrite prior rows.
 | 2026-10-17 | Elder hanging recomposed in photoreal gilt frame | gallery.html, gallery/hangings/01-elder-gilt.jpg, gallery/frames/walnut.png, gallery/frames/gilt.png, architecture.md | Previous hanging JPEG baked a punched well (ghost elder + white hole); CSS/3D rails still read as Paint. User asked for 2D, real-looking artistic frames only. | Opaque JPEG: art cover-cropped under the liner, then frame pixels overlaid. Center sample is elder paint, not black/white. Walnut overlay kept for later stills. Index/DIY routes unchanged. |
 | 2026-10-17 | Second gallery hanging: Nautilus in titanium/walnut | gallery.html, gallery/02-nautilus.jpg, gallery/hangings/02-nautilus-titanium.jpg, gallery/frames/titanium.png, architecture.md | User added a new still and asked for a masterpiece edge in titanium with wood detail | Precomposed opaque JPEG. Desktop shows both with `--hang-y` stagger; mobile swipe to the second. Elder gilt hanging unchanged. Index/DIY routes unchanged. |
 | 2026-10-17 | Move hangings to `art/` so Netlify serves them | gallery.html, netlify.toml, architecture.md, art/**, deleted gallery/ | `gallery.html` Pretty URL `/gallery` collided with folder `gallery/`: live `/gallery/01-elder.jpg` 500, hangings 404 and were also missing from GitHub main | Src is now `art/hangings/*.jpg`. Header `/art/*` must-revalidate. Push `art/` to main. Index/DIY routes unchanged. |
+| 2026-10-17 | Punch hanging exteriors so frames sit on starfield | gallery.html, art/hangings/01-elder-gilt.png, art/hangings/02-nautilus-titanium.png, architecture.md | Opaque JPEG hangings baked a black rectangle around each frame, covering the starfield | Flood-fill dark exterior to alpha 0, 1 px feather. Src now `.png`. Old hanging JPEGs removed. Index/DIY routes unchanged. |
