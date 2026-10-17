@@ -60,13 +60,15 @@ Taikoi/
 │   ├── 04-throne.jpg          # Source still
 │   ├── 05-pact.jpg            # Source still
 │   ├── 06-yantra.jpg          # Source still
+│   ├── 07-window.jpg          # Source still
 │   ├── hangings/
 │   │   ├── 01-elder-gilt.png        # Precomposed 2D hanging (still + photoreal gilt frame, transparent exterior)
 │   │   ├── 02-nautilus-titanium.png # Precomposed 2D hanging (still + titanium/walnut frame, transparent exterior)
 │   │   ├── 03-altar-bronze.png      # Hero hanging (still + winged bronze frame, transparent exterior)
 │   │   ├── 04-throne-brutalist.png  # Finale hanging (still + concrete/steel brutalist frame, transparent exterior)
 │   │   ├── 05-pact-ebony.png        # Small cabinet hanging (still + ebony/pewter frame, transparent exterior)
-│   │   └── 06-yantra-ivory.png      # Small cabinet hanging (still + ivory/brass frame, transparent exterior)
+│   │   ├── 06-yantra-ivory.png      # Small cabinet hanging (still + ivory/brass frame, transparent exterior)
+│   │   └── 07-window-photo.png      # Photo hanging (still + thin black gallery frame, transparent exterior)
 │   └── frames/                # Photographic PNG overlays for later stills
 │       ├── walnut.png
 │       ├── gilt.png
@@ -75,7 +77,8 @@ Taikoi/
 │       ├── bronze.png
 │       ├── brutalist.png
 │       ├── ebony.png
-│       └── ivory.png
+│       ├── ivory.png
+│       └── photo.png
 ├── diy_realities.html         # Magenta/amber loom space (“DIY Realities”); content TBD
 ├── gate_left.html             # Crimson left aperture; content TBD
 ├── gate_right.html            # Gold/zinc right aperture; content TBD
@@ -95,7 +98,7 @@ No `.gitignore` in the current tree (removed in `85d5131`).
 | `index.html` | `/` | Primary 3D solar system. Nav to Pure Systems (href), Gallery (direct streak warp), and DIY Realities (warp + on-page wormhole choice). Sun click → `brain.html`. |
 | `brain.html` | `/brain.html` | Starfield + floating manifesto blocks. Header click → `index.html`. |
 | `pure_systems.html` | `/pure_systems.html` | Green starfield + log copy + social icons. Header click → `index.html`. |
-| `gallery.html` | `/gallery.html` | Black starfield (Three.js warp only) + 2D photographic hangings. Header reverse-warp → `index.html`. Six hangings: gilt elder, titanium nautilus, bronze altar, brutalist throne, ebony pact + ivory yantra (small pair). |
+| `gallery.html` | `/gallery.html` | Black starfield (Three.js warp only) + 2D photographic hangings. Header reverse-warp → `index.html`. Seven hangings: gilt elder, titanium nautilus, bronze altar, brutalist throne, ebony pact + ivory yantra (stacked miniatures), black-frame window photo. |
 | `diy_realities.html` | `/diy_realities.html` | Magenta/amber hyperspace loom. Default wormhole timeout destination. Header click reverse-warp → `index.html`. Title only. |
 | `gate_left.html` | `/gate_left.html` | Crimson vertical slit. Entered by left seal. Header reverse-warp → `index.html`. Title only. |
 | `gate_right.html` | `/gate_right.html` | Gold hexagonal aperture. Entered by right seal. Header reverse-warp → `index.html`. Title only. |
@@ -189,9 +192,9 @@ No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
 
 ### `gallery.html` hall specifics
 
-- **2D hangings:** `#hall` is DOM. Six precomposed PNGs with transparent exteriors: `art/hangings/01-elder-gilt.png`, `art/hangings/02-nautilus-titanium.png`, hero `art/hangings/03-altar-bronze.png`, finale `art/hangings/04-throne-brutalist.png`, and small pair `art/hangings/05-pact-ebony.png` + `art/hangings/06-yantra-ivory.png`. Elder's gilt black inner slip is punched so the starfield shows between gold and canvas. `FRAMES` keeps punched walnut/gilt/iron/titanium/bronze/brutalist/ebony/ivory PNG overlays under `art/frames/`. Assets are not under `gallery/` so they do not collide with Netlify Pretty URL `/gallery` (`gallery.html`).
-- **`ARTWORKS`:** `{ src, alt, frame }`. First hanging is gilt; second is titanium/walnut (`The Nautilus`); third is bronze (`The Altar`); fourth is brutalist concrete/steel (`The Throne`); fifth is ebony/pewter (`The Pact`); sixth is ivory/brass (`The Yantra`).
-- **Layout:** desktop `#hall` is a fixed, scrollable overlay (`overflow-y: auto`). Four `min-height: 100vh` bays: pair (Elder + Nautilus at ~62vh), solo hero (The Altar at ~86vh), solo finale (The Throne at ~86vh), then a cabinet bay with The Pact and The Yantra at ~38vh in `.bay-row`. `#realm-title` sits after the cabinet row, not `position: fixed`. Canvas/logo stay pinned. Mobile: `display: contents` on bays, one hanging (`is-off` on the rest), swipe changes `focusIndex`. Optional `?focus=N` selects the starting hanging.
+- **2D hangings:** `#hall` is DOM. Seven precomposed PNGs with transparent exteriors: `art/hangings/01-elder-gilt.png`, `art/hangings/02-nautilus-titanium.png`, hero `art/hangings/03-altar-bronze.png`, finale `art/hangings/04-throne-brutalist.png`, small pair `art/hangings/05-pact-ebony.png` + `art/hangings/06-yantra-ivory.png`, and photo `art/hangings/07-window-photo.png`. Elder's gilt black inner slip is punched so the starfield shows between gold and canvas. `FRAMES` keeps punched walnut/gilt/iron/titanium/bronze/brutalist/ebony/ivory/photo PNG overlays under `art/frames/`. Assets are not under `gallery/` so they do not collide with Netlify Pretty URL `/gallery` (`gallery.html`).
+- **`ARTWORKS`:** `{ src, alt, frame }`. First hanging is gilt; second is titanium/walnut (`The Nautilus`); third is bronze (`The Altar`); fourth is brutalist concrete/steel (`The Throne`); fifth is ebony/pewter (`The Pact`); sixth is ivory/brass (`The Yantra`); seventh is thin black gallery (`The Window`).
+- **Layout:** desktop `#hall` is a fixed, scrollable overlay (`overflow-y: auto`). Four `min-height: 100vh` bays: pair (Elder + Nautilus at ~62vh), solo hero (The Altar at ~86vh), solo finale (The Throne at ~86vh), then a salon cabinet: Pact and Yantra stacked at ~28vh beside The Window at ~62vh. `#realm-title` sits after the cabinet row, not `position: fixed`. Canvas/logo stay pinned. Mobile: `display: contents` on bays, one hanging (`is-off` on the rest), swipe changes `focusIndex`. Optional `?focus=N` selects the starting hanging.
 - **Three.js:** starfield + enter/exit streaks only. No OrbitControls, no 3D rails. Scene clear is black (`#000`).
 - **Fail-open:** `#hall` hangings remain in the HTML/CSS even if WebGL never starts (`html.ui-ready`).
 
@@ -279,7 +282,7 @@ There is no API response schema.
 | `taikoi-sun-portal.png` | Unreferenced binary |
 | `LICENSE` | Missing despite README MIT claim |
 | Shared CSS/JS modules | None; seven-way copy of bootstrap |
-| Gallery hangings | Six stills under `art/` (`01-elder.jpg` … `06-yantra.jpg`); further paste entries append to `ARTWORKS` |
+| Gallery hangings | Seven stills under `art/` (`01-elder.jpg` … `07-window.jpg`); further paste entries append to `ARTWORKS` |
 | i18n | Removed; English-only |
 | Analytics | None |
 | Automated tests | None |
@@ -312,3 +315,4 @@ Append-only. Newest rows at the **bottom**. Do not rewrite prior rows.
 | 2026-10-17 | Hang The Throne as a brutalist finale | gallery.html, art/04-throne.jpg, art/hangings/04-throne-brutalist.png, art/frames/brutalist.png, architecture.md | User added a seated machine-elder still to sit last, with a futuristic brutalist frame | Concrete/rusted-steel bolted frame, transparent exterior. Third 100vh bay after Altar. Title after finale. Mobile swipe includes it. |
 | 2026-10-17 | Hang The Pact as the smallest cabinet picture | gallery.html, art/05-pact.jpg, art/hangings/05-pact-ebony.png, art/frames/ebony.png, architecture.md | User asked for the next still to be the smallest, with room for a companion beside it | Ebony/pewter frame. Fourth bay, `.hanging--small` 38vh in `.bay-row`. Title after the row. Mobile swipe includes it, still smaller. |
 | 2026-10-17 | Hang The Yantra beside The Pact | gallery.html, art/06-yantra.jpg, art/hangings/06-yantra-ivory.png, art/frames/ivory.png, architecture.md | User asked for a second miniature next to The Pact | Ivory/brass square frame. Same `.bay-row` at 38vh. Mobile swipe includes it. |
+| 2026-10-17 | Hang The Window as a larger photo beside the miniatures | gallery.html, art/07-window.jpg, art/hangings/07-window-photo.png, art/frames/photo.png, architecture.md | User asked for a photograph-type hanging, larger, composed next to the cabinet pair | Thin black gallery frame. Salon: stacked miniatures 28vh + photo 62vh. Mobile swipe includes it. |

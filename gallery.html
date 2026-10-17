@@ -149,9 +149,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 4vw;
+            gap: 3.2vw;
             width: 100%;
             flex: 1;
+        }
+
+        .bay-stack {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2.6vh;
         }
 
         .hanging {
@@ -180,11 +188,20 @@
             --hang-y: 0px;
         }
 
-        .bay-row .hanging:nth-child(1) {
+        .bay-stack .hanging--small {
+            height: 28vh;
+        }
+
+        .hanging--photo {
+            height: 62vh;
+            --hang-y: 2px;
+        }
+
+        .bay-stack .hanging:nth-child(1) {
             --hang-y: -4px;
         }
 
-        .bay-row .hanging:nth-child(2) {
+        .bay-stack .hanging:nth-child(2) {
             --hang-y: 4px;
         }
 
@@ -216,8 +233,12 @@
             filter: drop-shadow(8px 12px 12px rgba(0, 0, 0, 0.58)) drop-shadow(0 0 12px rgba(180, 190, 200, 0.12));
         }
 
-        .bay-row .hanging:nth-child(2) img {
+        .bay-stack .hanging:nth-child(2) img {
             filter: drop-shadow(8px 12px 12px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 12px rgba(210, 180, 120, 0.14));
+        }
+
+        .hanging--photo img {
+            filter: drop-shadow(10px 16px 16px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 14px rgba(200, 210, 220, 0.14));
         }
 
         @keyframes hangIn {
@@ -278,7 +299,18 @@
                 max-height: min(42vh, calc(100vh - 148px - 14vh));
             }
 
-            .bay-row {
+            .hanging--photo {
+                width: min(72vw, 56vh);
+                max-width: min(72vw, 56vh);
+                max-height: min(68vh, calc(100vh - 148px - 14vh));
+            }
+
+            .hanging--photo img {
+                max-height: min(68vh, calc(100vh - 148px - 14vh));
+            }
+
+            .bay-row,
+            .bay-stack {
                 display: contents;
             }
 
@@ -338,11 +370,16 @@
         </section>
         <section class="bay bay--cabinet">
             <div class="bay-row">
-                <figure class="hanging hanging--small">
-                    <img src="art/hangings/05-pact-ebony.png" alt="The Pact" decoding="async">
-                </figure>
-                <figure class="hanging hanging--small">
-                    <img src="art/hangings/06-yantra-ivory.png" alt="The Yantra" decoding="async">
+                <div class="bay-stack">
+                    <figure class="hanging hanging--small">
+                        <img src="art/hangings/05-pact-ebony.png" alt="The Pact" decoding="async">
+                    </figure>
+                    <figure class="hanging hanging--small">
+                        <img src="art/hangings/06-yantra-ivory.png" alt="The Yantra" decoding="async">
+                    </figure>
+                </div>
+                <figure class="hanging hanging--photo">
+                    <img src="art/hangings/07-window-photo.png" alt="The Window" decoding="async">
                 </figure>
             </div>
             <div id="realm-title">
@@ -394,6 +431,10 @@
             ivory: {
                 src: 'art/frames/ivory.png',
                 inset: { top: '20.2%', right: '20.4%', bottom: '21.1%', left: '20.9%' }
+            },
+            photo: {
+                src: 'art/frames/photo.png',
+                inset: { top: '10.1%', right: '12.6%', bottom: '10.9%', left: '12.7%' }
             }
         };
 
@@ -427,6 +468,11 @@
                 src: 'art/hangings/06-yantra-ivory.png',
                 alt: 'The Yantra',
                 frame: 'ivory'
+            },
+            {
+                src: 'art/hangings/07-window-photo.png',
+                alt: 'The Window',
+                frame: 'photo'
             }
         ];
 
