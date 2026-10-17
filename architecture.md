@@ -66,7 +66,7 @@ Taikoi/
 │   │   ├── 01-elder-gilt.png        # Precomposed 2D hanging (still + photoreal gilt frame, transparent exterior)
 │   │   ├── 02-nautilus-titanium.png # Precomposed 2D hanging (still + titanium/walnut frame, transparent exterior)
 │   │   ├── 03-altar-bronze.png      # Hero hanging (still + winged bronze frame, transparent exterior)
-│   │   ├── 04-throne-brutalist.png  # Finale hanging (still + concrete/steel brutalist frame, transparent exterior)
+│   │   ├── 04-throne-rococo.png     # Finale hanging (still + gilt rococo frame, transparent exterior)
 │   │   ├── 05-pact-ebony.png        # Small cabinet hanging (still + ebony/pewter frame, transparent exterior)
 │   │   ├── 06-yantra-ivory.png      # Small cabinet hanging (still + ivory/brass frame, transparent exterior)
 │   │   ├── 07-window-photo.png      # Photo hanging (still + thin black gallery frame, transparent exterior)
@@ -78,6 +78,7 @@ Taikoi/
 │       ├── titanium.png
 │       ├── bronze.png
 │       ├── brutalist.png
+│       ├── rococo.png
 │       ├── ebony.png
 │       ├── ivory.png
 │       ├── photo.png
@@ -321,3 +322,4 @@ Append-only. Newest rows at the **bottom**. Do not rewrite prior rows.
 | 2026-10-17 | Hang The Window as a larger photo beside the miniatures | gallery.html, art/07-window.jpg, art/hangings/07-window-photo.png, art/frames/photo.png, architecture.md | User asked for a photograph-type hanging, larger, composed next to the cabinet pair | Thin black gallery frame. Salon: stacked miniatures 28vh + photo 62vh. Mobile swipe includes it. |
 | 2026-10-17 | Hang The Visage in a fractal white-ivory frame | gallery.html, art/08-visage.jpg, art/hangings/08-visage-ivory.png, art/frames/fractal-ivory.png, architecture.md | User asked for magnificent fractal frames in white ivory | Solo 86vh bay after the salon. Black exterior punched so lace sits on the starfield. Mobile swipe includes it. |
 | 2026-10-17 | Keep the return logo on the first gallery screen | gallery.html, architecture.md | `header` was `position: fixed`, so the home ball covered later hangings while scrolling | Logo is the first child of `#hall`, `position: absolute`. Exit fades `#hall` once (no stacked header fade). Mobile still shows the ball at the top. |
+| 2026-10-17 | Reframe The Throne in gilt rococo | gallery.html, art/hangings/04-throne-rococo.png, art/frames/rococo.png, architecture.md | User rejected the bolted brutalist frame as ugly and asked for rococo | Louis XV gilt openwork, black exterior punched. Old `04-throne-brutalist.png` removed. Position and size unchanged. |
