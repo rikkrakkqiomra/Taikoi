@@ -36,7 +36,7 @@ Authoritative description of the live repository as of 2026-10-17. This file is 
 |---|---|---|
 | `three@0.160.0` (`three.module.js`) | Scene graph, WebGL renderer, geometries, materials, lights, raycaster, sprites | Import map → `https://unpkg.com/three@0.160.0/build/three.module.js` |
 | `three/addons/controls/OrbitControls.js` | Camera orbit / zoom on `index.html` only | Import map prefix `three/addons/` → unpkg `examples/jsm/` |
-| HTML5 Canvas 2D | Procedural planet/sun/glow textures; circular crop of the sun logo | Created at runtime; shipped stills are the logo JPEG, `gallery/*.jpg`, and `gallery/frames/*.png` |
+| HTML5 Canvas 2D | Procedural planet/sun/glow textures; circular crop of the sun logo | Created at runtime; shipped stills are the logo JPEG, `art/*.jpg`, and `art/frames/*.png` |
 | Google Fonts | Display / body / terminal typography | CSS `<link>` after `preconnect` to `fonts.googleapis.com` / `fonts.gstatic.com` |
 
 **Not in the live tree:** npm packages, service workers, analytics SDKs, i18n runtime. Commit `85d5131` (2026-09-15) removed `i18n.js`, `translations/*.json`, `script.js`, `styles.css`, and `Analysis.md`. Do not assume those layers still exist.
@@ -45,7 +45,7 @@ Authoritative description of the live repository as of 2026-10-17. This file is 
 
 ## 3. Repository & Directory Topology
 
-Mostly flat root. There is no `src/`, `public/`, `components/`, or `netlify/functions/` directory. Artwork stills live in `gallery/`.
+Mostly flat root. There is no `src/`, `public/`, `components/`, or `netlify/functions/` directory. Artwork stills live in `art/` (not `gallery/`, which would collide with Netlify Pretty URL `/gallery` from `gallery.html`).
 
 ```
 Taikoi/
@@ -53,7 +53,7 @@ Taikoi/
 ├── brain.html                 # Manifesto page (“The Opening of Reality”)
 ├── pure_systems.html          # Terminal “Gamma Log” page + outbound social links
 ├── gallery.html               # Black starfield + 2D hangings; header reverse-warp home
-├── gallery/
+├── art/
 │   ├── 01-elder.jpg           # Source still
 │   ├── 02-nautilus.jpg        # Source still
 │   ├── hangings/
@@ -115,7 +115,7 @@ index.html  --nav "DIY Realities"->  warp boost → on-page choice hold (seals)
 1. Parses HTML.
 2. Resolves the import map and fetches Three.js from unpkg (network, CORS).
 3. Runs the inline module: constructs scene, starts the render loop.
-4. Optionally fetches `AiiAold.8dde82cb.jpg` (TextureLoader on index; `<img>` on subpages) and `gallery/*.jpg` on `gallery.html`.
+4. Optionally fetches `AiiAold.8dde82cb.jpg` (TextureLoader on index; `<img>` on subpages) and `art/hangings/*.jpg` on `gallery.html`.
 
 There are no server components, no hydration boundary, no BFF, and no form POSTs.
 
@@ -177,7 +177,7 @@ No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
 
 ### `gallery.html` hall specifics
 
-- **2D hangings:** `#hall` is DOM. Two precomposed JPEGs on black: `gallery/hangings/01-elder-gilt.jpg` and `gallery/hangings/02-nautilus-titanium.jpg`. `FRAMES` keeps punched walnut/gilt/iron/titanium PNG overlays for later stills.
+- **2D hangings:** `#hall` is DOM. Two precomposed JPEGs on black: `art/hangings/01-elder-gilt.jpg` and `art/hangings/02-nautilus-titanium.jpg`. `FRAMES` keeps punched walnut/gilt/iron/titanium PNG overlays under `art/frames/` for later stills. Assets are not under `gallery/` so they do not collide with Netlify Pretty URL `/gallery` (`gallery.html`).
 - **`ARTWORKS`:** `{ src, alt, frame }`. First hanging is gilt; second is titanium/walnut (`The Nautilus`).
 - **Layout:** desktop shows both in a row with CSS `--hang-y` stagger. Mobile shows one (`is-off` on the rest); swipe changes `focusIndex`. Optional `?focus=N` selects the starting hanging.
 - **Three.js:** starfield + enter/exit streaks only. No OrbitControls, no 3D rails. Scene clear is black (`#000`).
@@ -210,7 +210,7 @@ If a future change adds secrets, document name, purpose, and classification (`pu
 
 Global: `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `Permissions-Policy: camera=(), microphone=(), geolocation=()`.
 
-Cache: `/` and `/*.html` → `public, max-age=0, must-revalidate`. `*.jpg|jpeg|webp|avif` → `public, max-age=31536000, immutable`. `/gallery/*` → `public, max-age=0, must-revalidate` so replaced hangings are not frozen for a year. Logo filename includes a hash-like suffix (`AiiAold.8dde82cb.jpg`); renaming without cache-busting will stick for a year on those extensions.
+Cache: `/` and `/*.html` → `public, max-age=0, must-revalidate`. `*.jpg|jpeg|webp|avif` → `public, max-age=31536000, immutable`. `/art/*` → `public, max-age=0, must-revalidate` so replaced hangings are not frozen for a year. Logo filename includes a hash-like suffix (`AiiAold.8dde82cb.jpg`); renaming without cache-busting will stick for a year on those extensions.
 
 ---
 
@@ -267,7 +267,7 @@ There is no API response schema.
 | `taikoi-sun-portal.png` | Unreferenced binary |
 | `LICENSE` | Missing despite README MIT claim |
 | Shared CSS/JS modules | None; seven-way copy of bootstrap |
-| Gallery hangings | Two stills (`01-elder.jpg`, `02-nautilus.jpg`); further paste entries append to `ARTWORKS` |
+| Gallery hangings | Two stills under `art/` (`01-elder.jpg`, `02-nautilus.jpg`); further paste entries append to `ARTWORKS` |
 | i18n | Removed; English-only |
 | Analytics | None |
 | Automated tests | None |
@@ -289,3 +289,4 @@ Append-only. Newest rows at the **bottom**. Do not rewrite prior rows.
 | 2026-10-17 | Gallery hangings rebuilt as 2D photographic frames | gallery.html, gallery/frames/walnut.png, gallery/frames/gilt.png, gallery/frames/iron.png, architecture.md | 3D box rails and flat CSS borders read as painted junk; user asked for a 2D, museum-grade frame | Three.js now drives only the black starfield/warp. Hangings are DOM still + PNG overlay. Walnut on the elder; gilt/iron ready. Index/DIY routes unchanged. |
 | 2026-10-17 | Elder hanging recomposed in photoreal gilt frame | gallery.html, gallery/hangings/01-elder-gilt.jpg, gallery/frames/walnut.png, gallery/frames/gilt.png, architecture.md | Previous hanging JPEG baked a punched well (ghost elder + white hole); CSS/3D rails still read as Paint. User asked for 2D, real-looking artistic frames only. | Opaque JPEG: art cover-cropped under the liner, then frame pixels overlaid. Center sample is elder paint, not black/white. Walnut overlay kept for later stills. Index/DIY routes unchanged. |
 | 2026-10-17 | Second gallery hanging: Nautilus in titanium/walnut | gallery.html, gallery/02-nautilus.jpg, gallery/hangings/02-nautilus-titanium.jpg, gallery/frames/titanium.png, architecture.md | User added a new still and asked for a masterpiece edge in titanium with wood detail | Precomposed opaque JPEG. Desktop shows both with `--hang-y` stagger; mobile swipe to the second. Elder gilt hanging unchanged. Index/DIY routes unchanged. |
+| 2026-10-17 | Move hangings to `art/` so Netlify serves them | gallery.html, netlify.toml, architecture.md, art/**, deleted gallery/ | `gallery.html` Pretty URL `/gallery` collided with folder `gallery/`: live `/gallery/01-elder.jpg` 500, hangings 404 and were also missing from GitHub main | Src is now `art/hangings/*.jpg`. Header `/art/*` must-revalidate. Push `art/` to main. Index/DIY routes unchanged. |
