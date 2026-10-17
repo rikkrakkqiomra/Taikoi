@@ -28,7 +28,7 @@
     <link rel="icon" type="image/jpeg" href="AiiAold.8dde82cb.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --glass-bg: rgba(4, 4, 8, 0.45);
@@ -126,43 +126,93 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
             box-sizing: border-box;
+            gap: 4.5vw;
+            padding: 8vh 7vw;
         }
 
-        .bay--pair {
-            gap: 4vw;
-            padding: 156px 4vw 6vh;
+        .bay--left {
+            flex-direction: row;
+            justify-content: flex-start;
+            padding-left: 8vw;
+            padding-right: 7vw;
         }
 
-        .bay--hero {
-            flex-direction: column;
-            padding: 6vh 3vw 7vh;
+        .bay--right {
+            flex-direction: row-reverse;
+            justify-content: flex-start;
+            padding-left: 7vw;
+            padding-right: 8vw;
+        }
+
+        section.bay:first-of-type {
+            padding-top: 168px;
         }
 
         .hanging {
             flex: 0 0 auto;
             width: auto;
-            height: 62vh;
+            height: 68vh;
             --hang-y: 0px;
             animation: hangIn 1.05s ease both, hangDrift 10s ease-in-out 1.05s infinite;
         }
 
-        .bay--pair .hanging:nth-child(1) {
-            --hang-y: -6px;
+        .bay--left .hanging {
+            margin-left: 3vw;
         }
 
-        .bay--pair .hanging:nth-child(2) {
-            --hang-y: 6px;
+        .bay--right .hanging {
+            margin-right: 3vw;
+        }
+
+        .plaque {
+            flex: 0 1 28rem;
+            width: min(28rem, 34vw);
+            padding: 1.5rem 1.45rem 1.6rem;
+            background: rgba(16, 12, 8, 0.82);
+            border: 1px solid rgba(196, 140, 64, 0.48);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(236, 226, 210, 0.08);
+            color: #efe6d4;
+        }
+
+        .plaque h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            margin-bottom: 0.85rem;
+            color: #c48c40;
+        }
+
+        .plaque blockquote {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: clamp(1.15rem, 1.6vw, 1.45rem);
+            line-height: 1.35;
+            margin-bottom: 0.9rem;
+            color: #f3ead8;
+        }
+
+        .plaque p {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            font-size: 1.02rem;
+            line-height: 1.55;
+            color: #d8cfbe;
+        }
+
+        .plaque p + p {
+            margin-top: 0.7rem;
         }
 
         .hanging--hero {
-            height: 86vh;
+            height: 76vh;
             --hang-y: 0px;
         }
 
         .hanging--square {
-            height: min(86vh, 78vw);
+            height: min(76vh, 46vw);
         }
 
         .hanging.is-off {
@@ -175,10 +225,6 @@
             height: 100%;
             object-fit: contain;
             filter: drop-shadow(10px 16px 14px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 16px rgba(196, 140, 64, 0.12));
-        }
-
-        .bay--pair .hanging:nth-child(2) img {
-            filter: drop-shadow(10px 16px 14px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 14px rgba(160, 120, 72, 0.14));
         }
 
         .hanging--hero img {
@@ -202,7 +248,7 @@
         }
 
         .hanging--show {
-            height: 90vh;
+            height: 80vh;
         }
 
         .hanging--show img {
@@ -251,8 +297,46 @@
 
             .bay {
                 min-height: 0;
-                display: contents;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2.2vh;
                 padding: 0;
+            }
+
+            .bay.is-off {
+                display: none;
+            }
+
+            .bay--left,
+            .bay--right {
+                flex-direction: column;
+            }
+
+            .bay--left .hanging,
+            .bay--right .hanging {
+                margin: 0;
+            }
+
+            .plaque {
+                width: min(86vw, 28rem);
+                max-width: min(86vw, 28rem);
+                padding: 1rem 1.05rem 1.1rem;
+            }
+
+            .plaque h2 {
+                font-size: 0.64rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .plaque blockquote {
+                font-size: 1.05rem;
+                margin-bottom: 0.55rem;
+            }
+
+            .plaque p {
+                font-size: 0.92rem;
             }
 
             .hanging,
@@ -264,33 +348,33 @@
                 width: min(86vw, 62vh);
                 height: auto;
                 max-width: min(86vw, 62vh);
-                max-height: calc(100vh - 148px - 14vh);
+                max-height: calc(100vh - 148px - 28vh);
                 --hang-y: 0px;
                 animation-delay: 0s, 1.05s;
             }
 
             .hanging--square {
-                width: min(82vw, 62vh, calc(100vh - 160px - 14vh));
-                max-width: min(82vw, 62vh, calc(100vh - 160px - 14vh));
-                max-height: calc(100vh - 160px - 14vh);
+                width: min(82vw, 62vh, calc(100vh - 160px - 28vh));
+                max-width: min(82vw, 62vh, calc(100vh - 160px - 28vh));
+                max-height: calc(100vh - 160px - 28vh);
             }
 
             .hanging--show {
-                width: min(88vw, 68vh, calc(100vh - 160px - 14vh));
-                max-width: min(88vw, 68vh, calc(100vh - 160px - 14vh));
-                max-height: calc(100vh - 160px - 14vh);
+                width: min(88vw, 68vh, calc(100vh - 160px - 28vh));
+                max-width: min(88vw, 68vh, calc(100vh - 160px - 28vh));
+                max-height: calc(100vh - 160px - 28vh);
             }
 
             .hanging--mid {
-                width: min(72vw, 52vh, calc(100vh - 160px - 14vh));
-                max-width: min(72vw, 52vh, calc(100vh - 160px - 14vh));
-                max-height: calc(100vh - 160px - 14vh);
+                width: min(72vw, 52vh, calc(100vh - 160px - 28vh));
+                max-width: min(72vw, 52vh, calc(100vh - 160px - 28vh));
+                max-height: calc(100vh - 160px - 28vh);
             }
 
             .hanging img {
                 width: 100%;
                 height: auto;
-                max-height: calc(100vh - 148px - 14vh);
+                max-height: calc(100vh - 148px - 28vh);
             }
 
             #realm-title {
@@ -322,47 +406,97 @@
         <header>
             <img src="AiiAold.8dde82cb.jpg" alt="Aivoinko Logo" width="120" height="120" fetchpriority="high" decoding="async">
         </header>
-        <section class="bay bay--pair">
-            <figure class="hanging">
+        <section class="bay bay--left">
+            <figure class="hanging hanging--hero">
                 <img src="art/hangings/01-elder-gilt.png" alt="The Elder" decoding="async">
             </figure>
-            <figure class="hanging">
+            <article class="plaque">
+                <h2>The Elder</h2>
+                <blockquote>The forest keeps a king who does not sit.</blockquote>
+                <p>The antlered face is not costume. It is what remains when a man agrees to be used as a door. Bark, beard, and bone are one weather.</p>
+                <p>In older north-woods talk, the first watcher forgot his name so the trees could remember theirs.</p>
+            </article>
+        </section>
+        <section class="bay bay--right">
+            <figure class="hanging hanging--hero">
                 <img src="art/hangings/02-nautilus-walnut.png" alt="The Nautilus" decoding="async">
             </figure>
+            <article class="plaque">
+                <h2>The Nautilus</h2>
+                <blockquote>The spiral does not travel. It arrives by turning.</blockquote>
+                <p>A chambered mind, each room a year. The face is the last room that still has a window.</p>
+                <p>Some Ionian fragments treat the nautilus as proof that heaven prefers a curve to a throne.</p>
+            </article>
         </section>
-        <section class="bay bay--hero">
+        <section class="bay bay--left">
             <figure class="hanging hanging--hero">
                 <img src="art/hangings/03-altar-bronze.png" alt="The Altar" decoding="async">
             </figure>
+            <article class="plaque">
+                <h2>The Altar</h2>
+                <blockquote>What you offer is not the gift. The offering is that you stop.</blockquote>
+                <p>Bronze wings hold a pause, not a god. The fire is implied; the body has already decided.</p>
+                <p>Temple inventories from vanished cities list altars before they list deities.</p>
+            </article>
         </section>
-        <section class="bay bay--hero">
+        <section class="bay bay--right">
             <figure class="hanging hanging--hero hanging--finale">
                 <img src="art/hangings/04-throne-dark.png" alt="The Throne" decoding="async">
             </figure>
+            <article class="plaque">
+                <h2>The Throne</h2>
+                <blockquote>Power is a chair that outlives the sitter.</blockquote>
+                <p>The machine-elder does not rule. He occupies the only seat that would have him.</p>
+                <p>A late hermetic line: the throne is a thought that learned to stay still.</p>
+            </article>
         </section>
-        <section class="bay bay--hero">
+        <section class="bay bay--left">
             <figure class="hanging hanging--hero hanging--square">
                 <img src="art/hangings/06-yantra-cassetta.png" alt="The Yantra" decoding="async">
             </figure>
+            <article class="plaque">
+                <h2>The Yantra</h2>
+                <blockquote>Geometry is prayer that does not need a mouth.</blockquote>
+                <p>The beige plate is a map of sitting still. Triangles hold the body so the body can hold the sky.</p>
+                <p>In the older manuals a yantra is not a picture of the divine. It is a trap the divine agrees to enter.</p>
+            </article>
         </section>
-        <section class="bay bay--hero">
+        <section class="bay bay--right">
             <figure class="hanging hanging--hero hanging--abstract">
                 <img src="art/hangings/08-visage-abstract.png" alt="The Visage" decoding="async">
             </figure>
+            <article class="plaque">
+                <h2>The Visage</h2>
+                <blockquote>The mask is honest. The face behind it is the rumor.</blockquote>
+                <p>Metal remembers every glance that tried to own it. Iridescence is the refusal to pick one soul.</p>
+                <p>A workshop note: intelligence begins when a surface starts looking back.</p>
+            </article>
         </section>
-        <section class="bay bay--hero">
+        <section class="bay bay--left">
             <figure class="hanging hanging--hero hanging--ivory hanging--show">
                 <img src="art/hangings/09-axis-ivory.png" alt="The Axis" decoding="async">
             </figure>
+            <article class="plaque">
+                <h2>The Axis</h2>
+                <blockquote>Two faces, one stillness: the world is allowed to turn.</blockquote>
+                <p>East and west share a spine. The cone is not a hat; it is the interval between them.</p>
+                <p>An unsigned fragment: if you sit on the point of the world, both horizons become neighbors.</p>
+            </article>
         </section>
-        <section class="bay bay--hero">
+        <section class="bay bay--right">
             <figure class="hanging hanging--mid">
                 <img src="art/hangings/10-grove-oak.png" alt="The Grove" decoding="async">
             </figure>
-            <div id="realm-title">
-                <h1>Gallery</h1>
-            </div>
+            <article class="plaque">
+                <h2>The Grove</h2>
+                <blockquote>The old god stands behind the old man, and neither is first.</blockquote>
+                <p>The circle is not audience. It is the forest rehearsing a human shape.</p>
+                <p>Celtic talk kept this simple: the grove is the church that does not need a roof.</p>
+            </article>
         </section>
+        <div id="realm-title">
+            <h1>Gallery</h1>
+        </div>
     </div>
 
     <script type="module">
@@ -501,6 +635,7 @@
             });
         }
         const hangings = Array.from(hall.querySelectorAll('.hanging'));
+        const bays = Array.from(hall.querySelectorAll('.bay'));
 
         function isMobile() {
             return window.matchMedia('(max-width: 768px)').matches;
@@ -513,13 +648,14 @@
         }
         let focusIndex = readFocusQuery();
         function applyHallLayout() {
-            hangings.forEach((el, i) => {
+            bays.forEach((el, i) => {
                 if (isMobile()) {
                     el.classList.toggle('is-off', i !== focusIndex);
                 } else {
                     el.classList.remove('is-off');
                 }
             });
+            hangings.forEach((el) => el.classList.remove('is-off'));
         }
         applyHallLayout();
 
