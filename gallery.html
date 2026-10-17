@@ -180,6 +180,14 @@
             --hang-y: 0px;
         }
 
+        .bay-row .hanging:nth-child(1) {
+            --hang-y: -4px;
+        }
+
+        .bay-row .hanging:nth-child(2) {
+            --hang-y: 4px;
+        }
+
         .hanging.is-off {
             display: none;
         }
@@ -206,6 +214,10 @@
 
         .hanging--small img {
             filter: drop-shadow(8px 12px 12px rgba(0, 0, 0, 0.58)) drop-shadow(0 0 12px rgba(180, 190, 200, 0.12));
+        }
+
+        .bay-row .hanging:nth-child(2) img {
+            filter: drop-shadow(8px 12px 12px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 12px rgba(210, 180, 120, 0.14));
         }
 
         @keyframes hangIn {
@@ -329,6 +341,9 @@
                 <figure class="hanging hanging--small">
                     <img src="art/hangings/05-pact-ebony.png" alt="The Pact" decoding="async">
                 </figure>
+                <figure class="hanging hanging--small">
+                    <img src="art/hangings/06-yantra-ivory.png" alt="The Yantra" decoding="async">
+                </figure>
             </div>
             <div id="realm-title">
                 <h1>Gallery</h1>
@@ -375,6 +390,10 @@
             ebony: {
                 src: 'art/frames/ebony.png',
                 inset: { top: '17.3%', right: '20.8%', bottom: '18.9%', left: '21.3%' }
+            },
+            ivory: {
+                src: 'art/frames/ivory.png',
+                inset: { top: '20.2%', right: '20.4%', bottom: '21.1%', left: '20.9%' }
             }
         };
 
@@ -403,6 +422,11 @@
                 src: 'art/hangings/05-pact-ebony.png',
                 alt: 'The Pact',
                 frame: 'ebony'
+            },
+            {
+                src: 'art/hangings/06-yantra-ivory.png',
+                alt: 'The Yantra',
+                frame: 'ivory'
             }
         ];
 
