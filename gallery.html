@@ -197,6 +197,14 @@
             filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 20px rgba(196, 154, 82, 0.2));
         }
 
+        .hanging--show {
+            height: 90vh;
+        }
+
+        .hanging--show img {
+            filter: drop-shadow(14px 24px 22px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 28px rgba(236, 226, 210, 0.28));
+        }
+
         @keyframes hangIn {
             from {
                 opacity: 0;
@@ -237,7 +245,8 @@
 
             .hanging,
             .hanging--hero,
-            .hanging--ivory {
+            .hanging--ivory,
+            .hanging--show {
                 width: min(86vw, 62vh);
                 height: auto;
                 max-width: min(86vw, 62vh);
@@ -249,6 +258,12 @@
             .hanging--square {
                 width: min(82vw, 62vh, calc(100vh - 160px - 14vh));
                 max-width: min(82vw, 62vh, calc(100vh - 160px - 14vh));
+                max-height: calc(100vh - 160px - 14vh);
+            }
+
+            .hanging--show {
+                width: min(88vw, 68vh, calc(100vh - 160px - 14vh));
+                max-width: min(88vw, 68vh, calc(100vh - 160px - 14vh));
                 max-height: calc(100vh - 160px - 14vh);
             }
 
@@ -313,6 +328,11 @@
         <section class="bay bay--hero">
             <figure class="hanging hanging--hero hanging--ivory">
                 <img src="art/hangings/08-visage-ivory.png" alt="The Visage" decoding="async">
+            </figure>
+        </section>
+        <section class="bay bay--hero">
+            <figure class="hanging hanging--hero hanging--ivory hanging--show">
+                <img src="art/hangings/09-axis-ivory.png" alt="The Axis" decoding="async">
             </figure>
             <div id="realm-title">
                 <h1>Gallery</h1>
@@ -387,6 +407,10 @@
             fractalIvory: {
                 src: 'art/frames/fractal-ivory.png',
                 inset: { top: '28.2%', right: '23.9%', bottom: '19.7%', left: '23.9%' }
+            },
+            palaceIvory: {
+                src: 'art/frames/palace-ivory.png',
+                inset: { top: '29.2%', right: '25.5%', bottom: '22.5%', left: '26.3%' }
             }
         };
 
@@ -420,6 +444,11 @@
                 src: 'art/hangings/08-visage-ivory.png',
                 alt: 'The Visage',
                 frame: 'fractalIvory'
+            },
+            {
+                src: 'art/hangings/09-axis-ivory.png',
+                alt: 'The Axis',
+                frame: 'palaceIvory'
             }
         ];
 
