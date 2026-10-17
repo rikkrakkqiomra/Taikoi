@@ -365,31 +365,39 @@
         }
 
         @media (max-width: 768px) {
-            #hall {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                overflow: hidden;
-                padding: 148px 5vw 14vh;
+            header {
+                position: relative;
+                top: auto;
+                left: auto;
+                transform: none;
+                padding: 16px 0 8px;
             }
 
-            .bay {
+            header img {
+                max-width: 88px;
+            }
+
+            #hall {
+                display: block;
+                overflow-x: hidden;
+                overflow-y: auto;
+                padding: 0 5vw 10vh;
+            }
+
+            .bay,
+            .bay--left,
+            .bay--right {
                 min-height: 0;
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
+                justify-content: flex-start;
                 align-items: center;
-                gap: 2.2vh;
-                padding: 0;
+                gap: 3vh;
+                padding: 5vh 0 8vh;
             }
 
-            .bay.is-off {
-                display: none;
-            }
-
-            .bay--left,
-            .bay--right {
-                flex-direction: column;
+            section.bay:first-of-type {
+                padding-top: 1vh;
             }
 
             .bay--left .hanging,
@@ -398,9 +406,9 @@
             }
 
             .plaque {
-                width: min(86vw, 28rem);
-                max-width: min(86vw, 28rem);
-                padding: 1rem 1.05rem 1.1rem;
+                width: min(90vw, 28rem);
+                max-width: min(90vw, 28rem);
+                padding: 1.1rem 1.1rem 1.2rem;
             }
 
             .plaque h2 {
@@ -409,12 +417,12 @@
             }
 
             .plaque blockquote {
-                font-size: 1.05rem;
+                font-size: 1.08rem;
                 margin-bottom: 0.55rem;
             }
 
             .plaque p {
-                font-size: 0.92rem;
+                font-size: 0.95rem;
             }
 
             .hanging,
@@ -423,45 +431,24 @@
             .hanging--abstract,
             .hanging--mid,
             .hanging--show,
-            .hanging--large {
-                width: min(86vw, 62vh);
+            .hanging--large,
+            .hanging--square {
+                width: min(84vw, 52vh);
                 height: auto;
-                max-width: min(86vw, 62vh);
-                max-height: calc(100vh - 148px - 28vh);
+                max-width: min(84vw, 52vh);
+                max-height: 52vh;
                 --hang-y: 0px;
                 animation-delay: 0s, 1.05s;
-            }
-
-            .hanging--square {
-                width: min(82vw, 62vh, calc(100vh - 160px - 28vh));
-                max-width: min(82vw, 62vh, calc(100vh - 160px - 28vh));
-                max-height: calc(100vh - 160px - 28vh);
-            }
-
-            .hanging--show {
-                width: min(88vw, 68vh, calc(100vh - 160px - 28vh));
-                max-width: min(88vw, 68vh, calc(100vh - 160px - 28vh));
-                max-height: calc(100vh - 160px - 28vh);
-            }
-
-            .hanging--mid {
-                width: min(72vw, 52vh, calc(100vh - 160px - 28vh));
-                max-width: min(72vw, 52vh, calc(100vh - 160px - 28vh));
-                max-height: calc(100vh - 160px - 28vh);
             }
 
             .hanging img {
                 width: 100%;
                 height: auto;
-                max-height: calc(100vh - 148px - 28vh);
+                max-height: 52vh;
             }
 
             #realm-title {
-                position: fixed;
-                left: 50%;
-                bottom: 6vh;
-                transform: translateX(-50%);
-                margin-top: 0;
+                display: none;
             }
         }
 
@@ -735,14 +722,11 @@
         }
         let focusIndex = readFocusQuery();
         function applyHallLayout() {
-            bays.forEach((el, i) => {
-                if (isMobile()) {
-                    el.classList.toggle('is-off', i !== focusIndex);
-                } else {
-                    el.classList.remove('is-off');
-                }
-            });
+            bays.forEach((el) => el.classList.remove('is-off'));
             hangings.forEach((el) => el.classList.remove('is-off'));
+            if (isMobile() && focusIndex > 0 && bays[focusIndex]) {
+                bays[focusIndex].scrollIntoView({ block: 'start' });
+            }
         }
         applyHallLayout();
 
@@ -931,6 +915,10 @@
         function setFocus(next) {
             if (!hangings.length) return;
             focusIndex = Math.max(0, Math.min(hangings.length - 1, next));
+            if (isMobile() && bays[focusIndex]) {
+                bays[focusIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
+                return;
+            }
             applyHallLayout();
         }
 
