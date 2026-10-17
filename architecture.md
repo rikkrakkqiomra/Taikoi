@@ -36,7 +36,7 @@ Authoritative description of the live repository as of 2026-10-17. This file is 
 |---|---|---|
 | `three@0.160.0` (`three.module.js`) | Scene graph, WebGL renderer, geometries, materials, lights, raycaster, sprites | Import map → `https://unpkg.com/three@0.160.0/build/three.module.js` |
 | `three/addons/controls/OrbitControls.js` | Camera orbit / zoom on `index.html` only | Import map prefix `three/addons/` → unpkg `examples/jsm/` |
-| HTML5 Canvas 2D | Procedural planet/sun/glow textures; circular crop of the sun logo; gallery wood/bronze/iron frame maps | Created at runtime; shipped stills are the logo JPEG and `gallery/*.jpg` |
+| HTML5 Canvas 2D | Procedural planet/sun/glow textures; circular crop of the sun logo | Created at runtime; shipped stills are the logo JPEG, `gallery/*.jpg`, and `gallery/frames/*.png` |
 | Google Fonts | Display / body / terminal typography | CSS `<link>` after `preconnect` to `fonts.googleapis.com` / `fonts.gstatic.com` |
 
 **Not in the live tree:** npm packages, service workers, analytics SDKs, i18n runtime. Commit `85d5131` (2026-09-15) removed `i18n.js`, `translations/*.json`, `script.js`, `styles.css`, and `Analysis.md`. Do not assume those layers still exist.
@@ -52,9 +52,15 @@ Taikoi/
 ├── index.html                 # Home / solar-system simulator (site entry)
 ├── brain.html                 # Manifesto page (“The Opening of Reality”)
 ├── pure_systems.html          # Terminal “Gamma Log” page + outbound social links
-├── gallery.html               # Space hall of framed stills; header reverse-warp home
+├── gallery.html               # Black starfield + 2D hangings; header reverse-warp home
 ├── gallery/
-│   └── 01-elder.jpg           # First hanging; more stills append here
+│   ├── 01-elder.jpg           # Source still
+│   ├── hangings/
+│   │   └── 01-elder-gilt.jpg    # Precomposed 2D hanging (still + photoreal gilt frame, flattened on black)
+│   └── frames/                # Photographic PNG overlays for future stills
+│       ├── walnut.png
+│       ├── gilt.png
+│       └── iron.png
 ├── diy_realities.html         # Magenta/amber loom space (“DIY Realities”); content TBD
 ├── gate_left.html             # Crimson left aperture; content TBD
 ├── gate_right.html            # Gold/zinc right aperture; content TBD
@@ -74,7 +80,7 @@ No `.gitignore` in the current tree (removed in `85d5131`).
 | `index.html` | `/` | Primary 3D solar system. Nav to Pure Systems (href), Gallery (direct streak warp), and DIY Realities (warp + on-page wormhole choice). Sun click → `brain.html`. |
 | `brain.html` | `/brain.html` | Starfield + floating manifesto blocks. Header click → `index.html`. |
 | `pure_systems.html` | `/pure_systems.html` | Green starfield + log copy + social icons. Header click → `index.html`. |
-| `gallery.html` | `/gallery.html` | Verdigris/bronze space hall. Header reverse-warp → `index.html`. `ARTWORKS` list + wood/bronze/iron frame factories. One hanging today (`gallery/01-elder.jpg`). |
+| `gallery.html` | `/gallery.html` | Black starfield (Three.js warp only) + 2D photographic hangings. Header reverse-warp → `index.html`. One hanging today (`gallery/hangings/01-elder-gilt.jpg`). |
 | `diy_realities.html` | `/diy_realities.html` | Magenta/amber hyperspace loom. Default wormhole timeout destination. Header click reverse-warp → `index.html`. Title only. |
 | `gate_left.html` | `/gate_left.html` | Crimson vertical slit. Entered by left seal. Header reverse-warp → `index.html`. Title only. |
 | `gate_right.html` | `/gate_right.html` | Gold hexagonal aperture. Entered by right seal. Header reverse-warp → `index.html`. Title only. |
@@ -138,7 +144,7 @@ State is **page-local closures**:
 | `isTransitioning` | `index.html` | Guards double-fire of sun → brain, Gallery → direct warp, and DIY → warp navigation |
 | `warpState` | `index.html` | Warp machine: `phase` `boost` / `choose` / `commit`, `destination` `forward`/`left`/`right`/`direct`, optional `directHref` (Gallery skips `choose` and seals). DIY choice is DOM `#wormhole-choice`, not a separate route. |
 | `mode` (`enter` / `idle` / `exit`) | `gallery.html`, `diy_realities.html`, `gate_left.html`, `gate_right.html` | Warp-in, settled scene, reverse-warp home |
-| `ARTWORKS` / `focusIndex` | `gallery.html` | Hardcoded stills + frame kind + desktop/mobile pose. Mobile swipe advances `focusIndex` when more than one hanging exists. |
+| `ARTWORKS` / `focusIndex` | `gallery.html` | Hardcoded stills + `FRAMES` overlay (`walnut` / `gilt` / `iron`). Hangings are DOM figures, not meshes. Mobile swipe advances `focusIndex` when more than one hanging exists. |
 | `speedMultiplier` | `index.html` | `0.15` if `innerWidth < 768` at init; not recomputed on rotate-to-landscape unless reload |
 | `window.__aivoinko3d` | All pages | `true` after module starts; `false` if WebGL constructor throws |
 | `window.__aivoinkoReveal` | All pages | Fail-open UI if the module never sets `__aivoinko3d` |
@@ -156,7 +162,7 @@ No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
 3. **Loop control:** Prefer `renderer.setAnimationLoop`; fall back to `requestAnimationFrame`. Pause on `document.hidden`; resume on visible; reset `lastFrameTime` to avoid a huge delta spike.
 4. **Delta time:** `dt = min(deltaMs, 50) / (1000/60)` so motion is frame-rate independent and hitch-capped.
 5. **Pixel ratio:** `Math.min(devicePixelRatio, 2)`.
-6. **Entry/exit:** Scene scale 0.001 → 1 (cubic out) on enter for index / brain / pure_systems; reverse cubic in then `location.href` on exit (brain / pure_systems header; index sun → `brain.html`). **Gallery warp** is `#nav-gallery` `preventDefault` → `boost` (~1500 ms teal/bronze streaks + FOV) → `commit` (~900 ms) → `gallery.html`. Seals stay closed. **DIY Realities warp** stays on `index.html` until a destination is chosen: `#nav-diy` `preventDefault` → `boost` (~1500 ms streaks + FOV) → `choose` (~3200 ms hold, flash ~0.4, left/right logo seals in `#wormhole-choice`, prefetch of the three destinations) → `commit` (~900 ms). Timeout commits `forward` → `diy_realities.html`. Left/right seal (or arrow keys) yaw-shear commit → `gate_left.html` / `gate_right.html`. **Do not** insert a loading page for this beat. Gallery/DIY/gate pages start flash at opacity 0.5 and fade it in ~400 ms; gallery is a framed still hall with drifting stars; DIY keeps the magenta loom; left is a crimson vertical slit with stars from +X; right is a gold hex torus with stars from −X. Header click reverse-warps to `index.html`. `bfcache` `pageshow` resets warp/FOV/fog/camera pose, hides seals, and replays entry.
+6. **Entry/exit:** Scene scale 0.001 → 1 (cubic out) on enter for index / brain / pure_systems; reverse cubic in then `location.href` on exit (brain / pure_systems header; index sun → `brain.html`). **Gallery warp** is `#nav-gallery` `preventDefault` → `boost` (~1500 ms teal/bronze streaks + FOV) → `commit` (~900 ms) → `gallery.html`. Seals stay closed. **DIY Realities warp** stays on `index.html` until a destination is chosen: `#nav-diy` `preventDefault` → `boost` (~1500 ms streaks + FOV) → `choose` (~3200 ms hold, flash ~0.4, left/right logo seals in `#wormhole-choice`, prefetch of the three destinations) → `commit` (~900 ms). Timeout commits `forward` → `diy_realities.html`. Left/right seal (or arrow keys) yaw-shear commit → `gate_left.html` / `gate_right.html`. **Do not** insert a loading page for this beat. Gallery/DIY/gate pages start flash at opacity 0.5 and fade it in ~400 ms; gallery is a 2D photographic hanging over a black starfield; DIY keeps the magenta loom; left is a crimson vertical slit with stars from +X; right is a gold hex torus with stars from −X. Header click reverse-warps to `index.html`. `bfcache` `pageshow` resets warp/FOV/fog/camera pose, hides seals, and replays entry.
 
 ### `index.html` simulation specifics
 
@@ -168,10 +174,11 @@ No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
 
 ### `gallery.html` hall specifics
 
-- **`ARTWORKS`:** hardcoded `{ src, frame, desktop, mobile }`. `frame` is `wood` | `bronze` | `iron`. Factories build outer rails, stepped molding, corner bosses, and a contrasting inner liner (wood uses bronze liner). First hanging is `gallery/01-elder.jpg` with `wood`.
-- **Layout:** desktop uses `desktop` xyz (side-by-side / staggered z when more hangings exist). Mobile forces one hanging in frame (`x = 0`, swipe changes `focusIndex`). Resize re-runs `applyLayout`.
-- **Idle:** Points keep drifting toward the camera; hangings float. No OrbitControls. Scene clear is black (`#000`); no center vignette orb.
-- **Hanging visibility:** `#fallback-art` is a CSS wood/bronze frame around `gallery/01-elder.jpg` and is visible on load. It hides (`is-3d`) only after `TextureLoader` binds the still onto the Three.js plane. `focusIndex` / `camTargetZ` / `mode` are declared before `applyLayout` so mount cannot TDZ-crash.
+- **2D hangings:** `#hall` is DOM. The first piece is a precomposed JPEG (`gallery/hangings/01-elder-gilt.jpg`): the still cover-cropped into a photoreal giltwood frame and flattened on black. `FRAMES` keeps punched walnut/gilt/iron PNG overlays for later stills.
+- **`ARTWORKS`:** `{ src, alt, frame }`. First hanging `src` is the composed gilt JPEG.
+- **Layout:** desktop can show several hangings in a row. Mobile shows one (`is-off` on the rest); swipe changes `focusIndex`.
+- **Three.js:** starfield + enter/exit streaks only. No OrbitControls, no 3D rails. Scene clear is black (`#000`).
+- **Fail-open:** `#hall` hangings remain in the HTML/CSS even if WebGL never starts (`html.ui-ready`).
 
 ---
 
@@ -220,13 +227,13 @@ Cache: `/` and `/*.html` → `public, max-age=0, must-revalidate`. `*.jpg|jpeg|w
 
 - DOM ids: kebab-case (`canvas-container`, `planet-name`).
 - JS locals: camelCase (`planetMeshes`, `startTransition`).
-- CSS custom properties: `--glass-bg`, `--accent-color` (cyan `#00f3ff` on index/brain; green `#00ff00` on pure_systems; verdigris `#3d9b8f` + bronze `--bronze: #c48c40` on gallery; magenta `#e040fb` + amber `--amber: #ffab40` on diy_realities; crimson `#ff2d55` on gate_left; gold `#d4af37` on gate_right).
+- CSS custom properties: `--glass-bg`, `--accent-color` (cyan `#00f3ff` on index/brain; green `#00ff00` on pure_systems; bronze `#c48c40` on gallery; magenta `#e040fb` + amber `--amber: #ffab40` on diy_realities; crimson `#ff2d55` on gate_left; gold `#d4af37` on gate_right).
 - Global flags: `window.__aivoinko3d`, `window.__aivoinkoReveal` (double-underscore prefix = cross-script contract between head snippet and module).
 
 ### Error handling
 
 - WebGL init: `try/catch` → warn, fail-open, rethrow.
-- Texture load: `TextureLoader` error callback logs `"Portal logo failed to load."`; sun remains on procedural map. Gallery stills log `"Gallery artwork failed to load."` and mount a 1×1 fallback texture so the frame still builds.
+- Texture load: `TextureLoader` error callback logs `"Portal logo failed to load."`; sun remains on procedural map. Gallery stills are `<img>` tags (no TextureLoader).
 - Module/CDN failure: capture-phase `error` + `unhandledrejection` → reveal UI.
 
 There is no API response schema.
@@ -276,3 +283,5 @@ Append-only. Newest rows at the **bottom**. Do not rewrite prior rows.
 | 2026-09-15 | Wormhole choice hold on DIY warp | index.html, diy_realities.html, gate_left.html, gate_right.html, architecture.md | White flash + MPA load felt like a loading gap; user asked for a timed left/right seal choice in that beat | Choice is `#wormhole-choice` on index (`boost` 1.5s → `choose` 3.2s → `commit` 0.9s). Timeout → DIY. Seals/arrows → yaw-shear to gate pages. Prefetch three HTML docs. DIY opening flash now 0.5 / ~400 ms. Gate copy TBD. |
 | 2026-10-17 | Gallery as middle nav + framed space hall | index.html, gallery.html, gallery/01-elder.jpg, netlify.toml, architecture.md | Need a third home route for pasted stills without touching DIY seals or Pure Systems href | `#nav-gallery` warp is boost→commit with teal/bronze streaks. `gallery.html` uses `ARTWORKS` + wood/bronze/iron factories; first hanging is wood + bronze liner. Desktop staggered xyz, mobile one-at-a-time. `/gallery/*` must-revalidate. Three.js stays 0.160.0. Sun, Pure Systems, DIY choice unchanged. |
 | 2026-10-17 | Elder still invisible; gallery backdrop swapped | gallery.html, gallery/01-elder.jpg, architecture.md | `applyLayout` wrote `focusIndex`/`camTargetZ` before `let` init (TDZ), so the module died after WebGL start; `__aivoinko3d` stayed true and hid the CSS hanging. Center vignette + white warp-flash read as an empty orb. | Hanging JPEG is on-screen by default; `is-3d` only after texture bind. Backdrop is black starfield. Recopy `01-elder.jpg`. DIY/index routes unchanged. |
+| 2026-10-17 | Gallery hangings rebuilt as 2D photographic frames | gallery.html, gallery/frames/walnut.png, gallery/frames/gilt.png, gallery/frames/iron.png, architecture.md | 3D box rails and flat CSS borders read as painted junk; user asked for a 2D, museum-grade frame | Three.js now drives only the black starfield/warp. Hangings are DOM still + PNG overlay. Walnut on the elder; gilt/iron ready. Index/DIY routes unchanged. |
+| 2026-10-17 | Elder hanging recomposed in photoreal gilt frame | gallery.html, gallery/hangings/01-elder-gilt.jpg, gallery/frames/walnut.png, gallery/frames/gilt.png, architecture.md | Previous hanging JPEG baked a punched well (ghost elder + white hole); CSS/3D rails still read as Paint. User asked for 2D, real-looking artistic frames only. | Opaque JPEG: art cover-cropped under the liner, then frame pixels overlaid. Center sample is elder paint, not black/white. Walnut overlay kept for later stills. Index/DIY routes unchanged. |
