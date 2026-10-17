@@ -209,6 +209,14 @@
             filter: drop-shadow(14px 24px 22px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 28px rgba(236, 226, 210, 0.28));
         }
 
+        .hanging--mid {
+            height: 70vh;
+        }
+
+        .hanging--mid img {
+            filter: drop-shadow(10px 16px 14px rgba(0, 0, 0, 0.58)) drop-shadow(0 0 12px rgba(80, 110, 60, 0.14));
+        }
+
         @keyframes hangIn {
             from {
                 opacity: 0;
@@ -251,6 +259,7 @@
             .hanging--hero,
             .hanging--ivory,
             .hanging--abstract,
+            .hanging--mid,
             .hanging--show {
                 width: min(86vw, 62vh);
                 height: auto;
@@ -269,6 +278,12 @@
             .hanging--show {
                 width: min(88vw, 68vh, calc(100vh - 160px - 14vh));
                 max-width: min(88vw, 68vh, calc(100vh - 160px - 14vh));
+                max-height: calc(100vh - 160px - 14vh);
+            }
+
+            .hanging--mid {
+                width: min(72vw, 52vh, calc(100vh - 160px - 14vh));
+                max-width: min(72vw, 52vh, calc(100vh - 160px - 14vh));
                 max-height: calc(100vh - 160px - 14vh);
             }
 
@@ -338,6 +353,11 @@
         <section class="bay bay--hero">
             <figure class="hanging hanging--hero hanging--ivory hanging--show">
                 <img src="art/hangings/09-axis-ivory.png" alt="The Axis" decoding="async">
+            </figure>
+        </section>
+        <section class="bay bay--hero">
+            <figure class="hanging hanging--mid">
+                <img src="art/hangings/10-grove-oak.png" alt="The Grove" decoding="async">
             </figure>
             <div id="realm-title">
                 <h1>Gallery</h1>
@@ -416,6 +436,10 @@
             palaceIvory: {
                 src: 'art/frames/palace-ivory.png',
                 inset: { top: '29.2%', right: '25.5%', bottom: '22.5%', left: '26.3%' }
+            },
+            groveOak: {
+                src: 'art/frames/grove-oak.png',
+                inset: { top: '18.1%', right: '19.3%', bottom: '18.8%', left: '20.2%' }
             }
         };
 
@@ -454,6 +478,11 @@
                 src: 'art/hangings/09-axis-ivory.png',
                 alt: 'The Axis',
                 frame: 'palaceIvory'
+            },
+            {
+                src: 'art/hangings/10-grove-oak.png',
+                alt: 'The Grove',
+                frame: 'groveOak'
             }
         ];
 

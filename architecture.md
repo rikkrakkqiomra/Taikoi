@@ -63,6 +63,7 @@ Taikoi/
 │   ├── 07-window.jpg          # Unused still (removed from hall)
 │   ├── 08-visage.jpg          # Source still
 │   ├── 09-axis.jpg            # Source still
+│   ├── 10-grove.jpg           # Source still
 │   ├── hangings/
 │   │   ├── 01-elder-gilt.png        # Precomposed 2D hanging (still + photoreal gilt frame, transparent exterior)
 │   │   ├── 02-nautilus-walnut.png   # Precomposed 2D hanging (still + carved walnut frame, transparent exterior)
@@ -70,7 +71,8 @@ Taikoi/
 │   │   ├── 04-throne-dark.png       # Finale hanging (still + ebonized frame, transparent exterior)
 │   │   ├── 06-yantra-cassetta.png   # Hero hanging (still + walnut/gold cassetta frame, transparent exterior)
 │   │   ├── 08-visage-abstract.png   # Hero hanging (still + abstract bronze frame, transparent exterior)
-│   │   └── 09-axis-ivory.png        # Showpiece hanging (still + palace ivory frame, transparent exterior)
+│   │   ├── 09-axis-ivory.png        # Showpiece hanging (still + palace ivory frame, transparent exterior)
+│   │   └── 10-grove-oak.png         # Mid hanging (still + carved oak/antler frame, transparent exterior)
 │   └── frames/                # Photographic PNG overlays for later stills
 │       ├── walnut.png
 │       ├── walnut-carved.png
@@ -86,7 +88,8 @@ Taikoi/
 │       ├── photo.png
 │       ├── cassetta.png
 │       ├── palace-ivory.png
-│       └── abstract-bronze.png
+│       ├── abstract-bronze.png
+│       └── grove-oak.png
 ├── diy_realities.html         # Magenta/amber loom space (“DIY Realities”); content TBD
 ├── gate_left.html             # Crimson left aperture; content TBD
 ├── gate_right.html            # Gold/zinc right aperture; content TBD
@@ -106,7 +109,7 @@ No `.gitignore` in the current tree (removed in `85d5131`).
 | `index.html` | `/` | Primary 3D solar system. Nav to Pure Systems (href), Gallery (direct streak warp), and DIY Realities (warp + on-page wormhole choice). Sun click → `brain.html`. |
 | `brain.html` | `/brain.html` | Starfield + floating manifesto blocks. Header click → `index.html`. |
 | `pure_systems.html` | `/pure_systems.html` | Green starfield + log copy + social icons. Header click → `index.html`. |
-| `gallery.html` | `/gallery.html` | Black starfield (Three.js warp only) + 2D photographic hangings. Header reverse-warp → `index.html`. Seven hangings; last is The Axis in a palace ivory showpiece frame. |
+| `gallery.html` | `/gallery.html` | Black starfield (Three.js warp only) + 2D photographic hangings. Header reverse-warp → `index.html`. Eight hangings; The Axis is the ivory palace showpiece; last is The Grove in a smaller carved-oak frame. |
 | `diy_realities.html` | `/diy_realities.html` | Magenta/amber hyperspace loom. Default wormhole timeout destination. Header click reverse-warp → `index.html`. Title only. |
 | `gate_left.html` | `/gate_left.html` | Crimson vertical slit. Entered by left seal. Header reverse-warp → `index.html`. Title only. |
 | `gate_right.html` | `/gate_right.html` | Gold hexagonal aperture. Entered by right seal. Header reverse-warp → `index.html`. Title only. |
@@ -200,9 +203,9 @@ No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
 
 ### `gallery.html` hall specifics
 
-- **2D hangings:** `#hall` is DOM. Seven precomposed PNGs with transparent exteriors, last `art/hangings/09-axis-ivory.png`. Elder's gilt black inner slip is punched so the starfield shows between gold and canvas. `FRAMES` keeps punched overlays under `art/frames/` including `cassetta.png`, `abstract-bronze.png`, and `palace-ivory.png`. Assets are not under `gallery/` so they do not collide with Netlify Pretty URL `/gallery` (`gallery.html`).
-- **`ARTWORKS`:** `{ src, alt, frame }`. Fourth hanging is The Yantra (`cassetta`). Sixth is abstract bronze (`The Visage`). Seventh is palace ivory (`The Axis`).
-- **Layout:** desktop `#hall` is a fixed, scrollable overlay (`overflow-y: auto`). Six `min-height: 100vh` bays: pair (Elder + Nautilus at ~62vh), Altar (~86vh), Throne (~86vh), solo The Yantra (square ~`min(86vh, 78vw)`), solo The Visage (~86vh), then solo The Axis (~90vh). `#realm-title` sits after The Axis. The return-home logo is `position: absolute` at the start of `#hall` (not `fixed`), so it leaves with the first bay. Starfield canvas stays pinned. Mobile: `display: contents` on bays, one hanging (`is-off` on the rest), swipe changes `focusIndex`. Optional `?focus=N` selects the starting hanging.
+- **2D hangings:** `#hall` is DOM. Eight precomposed PNGs with transparent exteriors, last `art/hangings/10-grove-oak.png`. Elder's gilt black inner slip is punched so the starfield shows between gold and canvas. `FRAMES` keeps punched overlays under `art/frames/` including `cassetta.png`, `abstract-bronze.png`, `palace-ivory.png`, and `grove-oak.png`. Assets are not under `gallery/` so they do not collide with Netlify Pretty URL `/gallery` (`gallery.html`).
+- **`ARTWORKS`:** `{ src, alt, frame }`. Fourth hanging is The Yantra (`cassetta`). Sixth is abstract bronze (`The Visage`). Seventh is palace ivory (`The Axis`). Eighth is carved oak (`The Grove`).
+- **Layout:** desktop `#hall` is a fixed, scrollable overlay (`overflow-y: auto`). Seven `min-height: 100vh` bays: pair (Elder + Nautilus at ~62vh), Altar (~86vh), Throne (~86vh), solo The Yantra (square ~`min(86vh, 78vw)`), solo The Visage (~86vh), solo The Axis (~90vh), then solo The Grove (~70vh). `#realm-title` sits after The Grove. The return-home logo is `position: absolute` at the start of `#hall` (not `fixed`), so it leaves with the first bay. Starfield canvas stays pinned. Mobile: `display: contents` on bays, one hanging (`is-off` on the rest), swipe changes `focusIndex`. Optional `?focus=N` selects the starting hanging.
 - **Three.js:** starfield + enter/exit streaks only. No OrbitControls, no 3D rails. Scene clear is black (`#000`).
 - **Fail-open:** `#hall` hangings remain in the HTML/CSS even if WebGL never starts (`html.ui-ready`).
 
@@ -290,7 +293,7 @@ There is no API response schema.
 | `taikoi-sun-portal.png` | Unreferenced binary |
 | `LICENSE` | Missing despite README MIT claim |
 | Shared CSS/JS modules | None; seven-way copy of bootstrap |
-| Gallery hangings | Seven hangings on the hall (`01`–`04`, `06`, `08`, `09`). Unused stills `05-pact.jpg` and `07-window.jpg` remain under `art/` |
+| Gallery hangings | Eight hangings on the hall (`01`–`04`, `06`, `08`–`10`). Unused stills `05-pact.jpg` and `07-window.jpg` remain under `art/` |
 | i18n | Removed; English-only |
 | Analytics | None |
 | Automated tests | None |
@@ -333,3 +336,4 @@ Append-only. Newest rows at the **bottom**. Do not rewrite prior rows.
 | 2026-10-17 | Hang The Yantra alone as a square hero | gallery.html, art/06-yantra.jpg, art/hangings/06-yantra-cassetta.png, art/frames/cassetta.png, architecture.md | Salon of Pact + Yantra + Window did not work; user asked to keep only the beige plate, enlarge it, and give it worthy frames from the original still | Walnut outer + worn-gold inner cassetta. Pact and Window hangings removed from DOM/ARTWORKS. Sources `05-pact.jpg` and `07-window.jpg` kept unused. |
 | 2026-10-17 | Hang The Axis as the ivory palace showpiece | gallery.html, art/09-axis.jpg, art/hangings/09-axis-ivory.png, art/frames/palace-ivory.png, architecture.md | User asked for megalomaniacal ivory frames on the new still and called it the draw | Gothic carved ivory + pierced lace, black exterior punched. Last 90vh bay after The Visage. Title moved with it. Mobile swipe includes it. |
 | 2026-10-17 | Reframe The Visage in abstract bronze | gallery.html, art/hangings/08-visage-abstract.png, art/frames/abstract-bronze.png, architecture.md | Fractal ivory lace was too ornate; user asked for simpler abstract frames | Low-poly bronze/iridescent planes, rectangular silhouette. Old `08-visage-ivory.png` and `fractal-ivory.png` removed. Axis palace ivory unchanged. |
+| 2026-10-17 | Hang The Grove in a modest carved-oak frame | gallery.html, art/10-grove.jpg, art/hangings/10-grove-oak.png, art/frames/grove-oak.png, architecture.md | User asked for proper frames on the new forest still, smaller than The Axis | Dark oak + antler relief, thin gilt sight. `.hanging--mid` 70vh after the 90vh Axis. Title moved with it. Mobile swipe includes it. |
