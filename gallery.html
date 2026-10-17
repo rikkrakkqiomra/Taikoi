@@ -120,15 +120,24 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 4vw;
-            padding: 128px 4vw 11vh;
+            gap: 2.6vw;
+            padding: 128px 3vw 11vh;
             pointer-events: none;
         }
 
         .hanging {
             flex: 0 0 auto;
-            width: min(46vw, 70vh);
+            width: min(38vw, 62vh);
+            --hang-y: 0px;
             animation: hangIn 1.05s ease both, hangDrift 10s ease-in-out 1.05s infinite;
+        }
+
+        .hanging:nth-child(1) {
+            --hang-y: -3.2vh;
+        }
+
+        .hanging:nth-child(2) {
+            --hang-y: 4.4vh;
         }
 
         .hanging.is-off {
@@ -142,32 +151,40 @@
             filter: drop-shadow(0 28px 52px rgba(0, 0, 0, 0.82)) drop-shadow(0 0 26px rgba(196, 140, 64, 0.16));
         }
 
+        .hanging:nth-child(2) img {
+            filter: drop-shadow(0 28px 52px rgba(0, 0, 0, 0.82)) drop-shadow(0 0 26px rgba(170, 186, 200, 0.2));
+        }
+
         @keyframes hangIn {
             from {
                 opacity: 0;
-                transform: translateY(14px) scale(0.97);
+                transform: translateY(calc(var(--hang-y) + 14px)) scale(0.97);
             }
 
             to {
                 opacity: 1;
-                transform: none;
+                transform: translateY(var(--hang-y));
             }
         }
 
         @keyframes hangDrift {
             0%,
             100% {
-                transform: translateY(0);
+                transform: translateY(var(--hang-y));
             }
 
             50% {
-                transform: translateY(-10px);
+                transform: translateY(calc(var(--hang-y) - 10px));
             }
         }
 
         @media (max-width: 768px) {
-            .hanging {
+            .hanging,
+            .hanging:nth-child(1),
+            .hanging:nth-child(2) {
                 width: min(90vw, 70vh);
+                --hang-y: 0px;
+                animation-delay: 0s, 1.05s;
             }
         }
 
@@ -194,6 +211,9 @@
     <div id="hall">
         <figure class="hanging">
             <img src="gallery/hangings/01-elder-gilt.jpg" alt="The Elder" decoding="async">
+        </figure>
+        <figure class="hanging">
+            <img src="gallery/hangings/02-nautilus-titanium.jpg" alt="The Nautilus" decoding="async">
         </figure>
     </div>
 
@@ -224,6 +244,10 @@
             iron: {
                 src: 'gallery/frames/iron.png',
                 inset: { top: '15.5%', right: '19.6%', bottom: '16.3%', left: '19.6%' }
+            },
+            titanium: {
+                src: 'gallery/frames/titanium.png',
+                inset: { top: '12.4%', right: '14.8%', bottom: '12.8%', left: '14.9%' }
             }
         };
 
@@ -232,6 +256,11 @@
                 src: 'gallery/hangings/01-elder-gilt.jpg',
                 alt: 'The Elder',
                 frame: 'gilt'
+            },
+            {
+                src: 'gallery/hangings/02-nautilus-titanium.jpg',
+                alt: 'The Nautilus',
+                frame: 'titanium'
             }
         ];
 
@@ -255,7 +284,12 @@
             return window.innerWidth < 768;
         }
 
-        let focusIndex = 0;
+        function readFocusQuery() {
+            const focusQuery = Number(new URLSearchParams(window.location.search).get('focus'));
+            if (!Number.isInteger(focusQuery) || !hangings.length) return 0;
+            return Math.max(0, Math.min(hangings.length - 1, focusQuery));
+        }
+        let focusIndex = readFocusQuery();
         function applyHallLayout() {
             hangings.forEach((el, i) => {
                 if (isMobile()) {
@@ -493,7 +527,7 @@
             exiting = false;
             mode = 'enter';
             phaseStart = 0;
-            focusIndex = 0;
+            focusIndex = readFocusQuery();
             camera.position.set(0, 0, 0);
             header.style.pointerEvents = 'none';
             header.style.opacity = '0';

@@ -55,12 +55,15 @@ Taikoi/
 ├── gallery.html               # Black starfield + 2D hangings; header reverse-warp home
 ├── gallery/
 │   ├── 01-elder.jpg           # Source still
+│   ├── 02-nautilus.jpg        # Source still
 │   ├── hangings/
-│   │   └── 01-elder-gilt.jpg    # Precomposed 2D hanging (still + photoreal gilt frame, flattened on black)
-│   └── frames/                # Photographic PNG overlays for future stills
+│   │   ├── 01-elder-gilt.jpg        # Precomposed 2D hanging (still + photoreal gilt frame)
+│   │   └── 02-nautilus-titanium.jpg # Precomposed 2D hanging (still + titanium/walnut frame)
+│   └── frames/                # Photographic PNG overlays for later stills
 │       ├── walnut.png
 │       ├── gilt.png
-│       └── iron.png
+│       ├── iron.png
+│       └── titanium.png
 ├── diy_realities.html         # Magenta/amber loom space (“DIY Realities”); content TBD
 ├── gate_left.html             # Crimson left aperture; content TBD
 ├── gate_right.html            # Gold/zinc right aperture; content TBD
@@ -80,7 +83,7 @@ No `.gitignore` in the current tree (removed in `85d5131`).
 | `index.html` | `/` | Primary 3D solar system. Nav to Pure Systems (href), Gallery (direct streak warp), and DIY Realities (warp + on-page wormhole choice). Sun click → `brain.html`. |
 | `brain.html` | `/brain.html` | Starfield + floating manifesto blocks. Header click → `index.html`. |
 | `pure_systems.html` | `/pure_systems.html` | Green starfield + log copy + social icons. Header click → `index.html`. |
-| `gallery.html` | `/gallery.html` | Black starfield (Three.js warp only) + 2D photographic hangings. Header reverse-warp → `index.html`. One hanging today (`gallery/hangings/01-elder-gilt.jpg`). |
+| `gallery.html` | `/gallery.html` | Black starfield (Three.js warp only) + 2D photographic hangings. Header reverse-warp → `index.html`. Two hangings: gilt elder + titanium/walnut nautilus. |
 | `diy_realities.html` | `/diy_realities.html` | Magenta/amber hyperspace loom. Default wormhole timeout destination. Header click reverse-warp → `index.html`. Title only. |
 | `gate_left.html` | `/gate_left.html` | Crimson vertical slit. Entered by left seal. Header reverse-warp → `index.html`. Title only. |
 | `gate_right.html` | `/gate_right.html` | Gold hexagonal aperture. Entered by right seal. Header reverse-warp → `index.html`. Title only. |
@@ -174,9 +177,9 @@ No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
 
 ### `gallery.html` hall specifics
 
-- **2D hangings:** `#hall` is DOM. The first piece is a precomposed JPEG (`gallery/hangings/01-elder-gilt.jpg`): the still cover-cropped into a photoreal giltwood frame and flattened on black. `FRAMES` keeps punched walnut/gilt/iron PNG overlays for later stills.
-- **`ARTWORKS`:** `{ src, alt, frame }`. First hanging `src` is the composed gilt JPEG.
-- **Layout:** desktop can show several hangings in a row. Mobile shows one (`is-off` on the rest); swipe changes `focusIndex`.
+- **2D hangings:** `#hall` is DOM. Two precomposed JPEGs on black: `gallery/hangings/01-elder-gilt.jpg` and `gallery/hangings/02-nautilus-titanium.jpg`. `FRAMES` keeps punched walnut/gilt/iron/titanium PNG overlays for later stills.
+- **`ARTWORKS`:** `{ src, alt, frame }`. First hanging is gilt; second is titanium/walnut (`The Nautilus`).
+- **Layout:** desktop shows both in a row with CSS `--hang-y` stagger. Mobile shows one (`is-off` on the rest); swipe changes `focusIndex`. Optional `?focus=N` selects the starting hanging.
 - **Three.js:** starfield + enter/exit streaks only. No OrbitControls, no 3D rails. Scene clear is black (`#000`).
 - **Fail-open:** `#hall` hangings remain in the HTML/CSS even if WebGL never starts (`html.ui-ready`).
 
@@ -264,7 +267,7 @@ There is no API response schema.
 | `taikoi-sun-portal.png` | Unreferenced binary |
 | `LICENSE` | Missing despite README MIT claim |
 | Shared CSS/JS modules | None; seven-way copy of bootstrap |
-| Gallery hangings | One still (`01-elder.jpg`); further paste entries append to `ARTWORKS` |
+| Gallery hangings | Two stills (`01-elder.jpg`, `02-nautilus.jpg`); further paste entries append to `ARTWORKS` |
 | i18n | Removed; English-only |
 | Analytics | None |
 | Automated tests | None |
@@ -285,3 +288,4 @@ Append-only. Newest rows at the **bottom**. Do not rewrite prior rows.
 | 2026-10-17 | Elder still invisible; gallery backdrop swapped | gallery.html, gallery/01-elder.jpg, architecture.md | `applyLayout` wrote `focusIndex`/`camTargetZ` before `let` init (TDZ), so the module died after WebGL start; `__aivoinko3d` stayed true and hid the CSS hanging. Center vignette + white warp-flash read as an empty orb. | Hanging JPEG is on-screen by default; `is-3d` only after texture bind. Backdrop is black starfield. Recopy `01-elder.jpg`. DIY/index routes unchanged. |
 | 2026-10-17 | Gallery hangings rebuilt as 2D photographic frames | gallery.html, gallery/frames/walnut.png, gallery/frames/gilt.png, gallery/frames/iron.png, architecture.md | 3D box rails and flat CSS borders read as painted junk; user asked for a 2D, museum-grade frame | Three.js now drives only the black starfield/warp. Hangings are DOM still + PNG overlay. Walnut on the elder; gilt/iron ready. Index/DIY routes unchanged. |
 | 2026-10-17 | Elder hanging recomposed in photoreal gilt frame | gallery.html, gallery/hangings/01-elder-gilt.jpg, gallery/frames/walnut.png, gallery/frames/gilt.png, architecture.md | Previous hanging JPEG baked a punched well (ghost elder + white hole); CSS/3D rails still read as Paint. User asked for 2D, real-looking artistic frames only. | Opaque JPEG: art cover-cropped under the liner, then frame pixels overlaid. Center sample is elder paint, not black/white. Walnut overlay kept for later stills. Index/DIY routes unchanged. |
+| 2026-10-17 | Second gallery hanging: Nautilus in titanium/walnut | gallery.html, gallery/02-nautilus.jpg, gallery/hangings/02-nautilus-titanium.jpg, gallery/frames/titanium.png, architecture.md | User added a new still and asked for a masterpiece edge in titanium with wood detail | Precomposed opaque JPEG. Desktop shows both with `--hang-y` stagger; mobile swipe to the second. Elder gilt hanging unchanged. Index/DIY routes unchanged. |
