@@ -58,7 +58,7 @@
         }
 
         header {
-            position: fixed;
+            position: absolute;
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
@@ -350,11 +350,10 @@
     <div id="canvas-container"></div>
     <div id="warp-flash" aria-hidden="true"></div>
 
-    <header>
-        <img src="AiiAold.8dde82cb.jpg" alt="Aivoinko Logo" width="120" height="120" fetchpriority="high" decoding="async">
-    </header>
-
     <div id="hall">
+        <header>
+            <img src="AiiAold.8dde82cb.jpg" alt="Aivoinko Logo" width="120" height="120" fetchpriority="high" decoding="async">
+        </header>
         <section class="bay bay--pair">
             <figure class="hanging">
                 <img src="art/hangings/01-elder-gilt.png" alt="The Elder" decoding="async">
@@ -816,7 +815,6 @@
                 streakMat.opacity = 0.55 + ease * 0.45;
                 camera.fov = baseFov + ease * 48;
                 camera.updateProjectionMatrix();
-                header.style.opacity = String(1 - ease);
                 titleEl.style.opacity = String(1 - ease);
                 hall.style.opacity = String(1 - ease);
                 if (flash) flash.style.opacity = String(Math.max(0, (progress - 0.4) / 0.6));
