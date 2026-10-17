@@ -64,7 +64,7 @@ Taikoi/
 │   ├── 08-visage.jpg          # Source still
 │   ├── hangings/
 │   │   ├── 01-elder-gilt.png        # Precomposed 2D hanging (still + photoreal gilt frame, transparent exterior)
-│   │   ├── 02-nautilus-titanium.png # Precomposed 2D hanging (still + titanium/walnut frame, transparent exterior)
+│   │   ├── 02-nautilus-walnut.png   # Precomposed 2D hanging (still + carved walnut frame, transparent exterior)
 │   │   ├── 03-altar-bronze.png      # Hero hanging (still + winged bronze frame, transparent exterior)
 │   │   ├── 04-throne-rococo.png     # Finale hanging (still + gilt rococo frame, transparent exterior)
 │   │   ├── 05-pact-ebony.png        # Small cabinet hanging (still + ebony/pewter frame, transparent exterior)
@@ -73,6 +73,7 @@ Taikoi/
 │   │   └── 08-visage-ivory.png      # Hero hanging (still + fractal white-ivory frame, transparent exterior)
 │   └── frames/                # Photographic PNG overlays for later stills
 │       ├── walnut.png
+│       ├── walnut-carved.png
 │       ├── gilt.png
 │       ├── iron.png
 │       ├── titanium.png
@@ -323,3 +324,4 @@ Append-only. Newest rows at the **bottom**. Do not rewrite prior rows.
 | 2026-10-17 | Hang The Visage in a fractal white-ivory frame | gallery.html, art/08-visage.jpg, art/hangings/08-visage-ivory.png, art/frames/fractal-ivory.png, architecture.md | User asked for magnificent fractal frames in white ivory | Solo 86vh bay after the salon. Black exterior punched so lace sits on the starfield. Mobile swipe includes it. |
 | 2026-10-17 | Keep the return logo on the first gallery screen | gallery.html, architecture.md | `header` was `position: fixed`, so the home ball covered later hangings while scrolling | Logo is the first child of `#hall`, `position: absolute`. Exit fades `#hall` once (no stacked header fade). Mobile still shows the ball at the top. |
 | 2026-10-17 | Reframe The Throne in gilt rococo | gallery.html, art/hangings/04-throne-rococo.png, art/frames/rococo.png, architecture.md | User rejected the bolted brutalist frame as ugly and asked for rococo | Louis XV gilt openwork, black exterior punched. Old `04-throne-brutalist.png` removed. Position and size unchanged. |
+| 2026-10-17 | Reframe The Nautilus in carved walnut | gallery.html, art/hangings/02-nautilus-walnut.png, art/frames/walnut-carved.png, architecture.md | Titanium corner plates read as CGI; user asked for a more real, museum frame | Dark carved walnut + worn gilt sight. Old `02-nautilus-titanium.png` removed. Pair size unchanged. |
