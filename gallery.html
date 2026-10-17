@@ -317,6 +317,10 @@
             filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.58)) drop-shadow(0 0 16px rgba(196, 154, 72, 0.16));
         }
 
+        .hanging--void img {
+            filter: drop-shadow(6px 10px 8px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 8px rgba(196, 154, 72, 0.18));
+        }
+
         .hanging--ivory img {
             filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 20px rgba(196, 154, 82, 0.2));
         }
@@ -575,7 +579,7 @@
             </article>
         </section>
         <section class="bay bay--left">
-            <figure class="hanging hanging--hero hanging--square">
+            <figure class="hanging hanging--hero hanging--square hanging--void">
                 <img src="art/hangings/11-sigil-victorian.png" alt="The Sigil" decoding="async">
             </figure>
             <article class="plaque">
@@ -769,12 +773,18 @@
             return Math.max(0, Math.min(hangings.length - 1, focusQuery));
         }
         let focusIndex = readFocusQuery();
+        function scrollHallToFocus() {
+            if (focusIndex <= 0 || !bays[focusIndex]) return;
+            const bay = bays[focusIndex];
+            const top = isMobile()
+                ? bay.offsetTop
+                : bay.offsetTop - Math.max(0, (hall.clientHeight - bay.offsetHeight) / 2);
+            hall.scrollTop = Math.max(0, top);
+        }
         function applyHallLayout() {
             bays.forEach((el) => el.classList.remove('is-off'));
             hangings.forEach((el) => el.classList.remove('is-off'));
-            if (isMobile() && focusIndex > 0 && bays[focusIndex]) {
-                bays[focusIndex].scrollIntoView({ block: 'start' });
-            }
+            scrollHallToFocus();
         }
         applyHallLayout();
 
@@ -898,6 +908,108 @@
         pointMesh.frustumCulled = false;
         scene.add(pointMesh);
 
+        const VOID_COUNT = 1100;
+        const voidXY = new Float32Array(VOID_COUNT * 2);
+        const voidZ = new Float32Array(VOID_COUNT);
+        const voidPositions = new Float32Array(VOID_COUNT * 6);
+        const voidColors = new Float32Array(VOID_COUNT * 6);
+        const voidAim = new THREE.Vector3();
+        const voidDir = new THREE.Vector3();
+        const voidGeom = new THREE.BufferGeometry();
+        voidGeom.setAttribute('position', new THREE.BufferAttribute(voidPositions, 3));
+        voidGeom.setAttribute('color', new THREE.BufferAttribute(voidColors, 3));
+        const voidMat = new THREE.LineBasicMaterial({
+            vertexColors: true,
+            transparent: true,
+            opacity: 0.95,
+            blending: THREE.AdditiveBlending,
+            depthWrite: false,
+            fog: false
+        });
+        const voidMesh = new THREE.LineSegments(voidGeom, voidMat);
+        voidMesh.visible = false;
+        voidMesh.frustumCulled = false;
+        scene.add(voidMesh);
+
+        function wellNdc() {
+            const img = hall.querySelector('.hanging--void img');
+            if (!img) return null;
+            const r = img.getBoundingClientRect();
+            if (r.width < 12 || r.height < 12) return null;
+            const insetX = 0.18;
+            const insetY = 0.17;
+            const left = r.left + r.width * insetX;
+            const right = r.right - r.width * insetX;
+            const top = r.top + r.height * insetY;
+            const bottom = r.bottom - r.height * insetY;
+            if (right - left < 8 || bottom - top < 8) return null;
+            return {
+                x0: (left / window.innerWidth) * 2 - 1,
+                x1: (right / window.innerWidth) * 2 - 1,
+                y0: -((bottom / window.innerHeight) * 2 - 1),
+                y1: -((top / window.innerHeight) * 2 - 1)
+            };
+        }
+
+        function paintVoidColor(i) {
+            const pick = Math.random();
+            let color = ice;
+            if (pick > 0.38 && pick <= 0.7) color = dim;
+            else if (pick > 0.7) color = warm;
+            voidColors[i * 6] = color.r;
+            voidColors[i * 6 + 1] = color.g;
+            voidColors[i * 6 + 2] = color.b;
+            voidColors[i * 6 + 3] = color.r * 0.12;
+            voidColors[i * 6 + 4] = color.g * 0.12;
+            voidColors[i * 6 + 5] = color.b * 0.12;
+        }
+
+        function placeVoidStar(i, ndc, z) {
+            const nx = ndc.x0 + Math.random() * (ndc.x1 - ndc.x0);
+            const ny = ndc.y0 + Math.random() * (ndc.y1 - ndc.y0);
+            voidAim.set(nx, ny, 0.5).unproject(camera);
+            voidDir.copy(voidAim).sub(camera.position);
+            if (Math.abs(voidDir.z) < 0.0001) voidDir.z = -1;
+            const t = z / voidDir.z;
+            voidXY[i * 2] = voidDir.x * t;
+            voidXY[i * 2 + 1] = voidDir.y * t;
+            voidZ[i] = z;
+        }
+
+        function writeVoidStreaks(active, dt) {
+            if (!active) {
+                voidMesh.visible = false;
+                return;
+            }
+            const ndc = wellNdc();
+            if (!ndc) {
+                voidMesh.visible = false;
+                return;
+            }
+            const stretch = 28;
+            const rush = 54;
+            for (let i = 0; i < VOID_COUNT; i++) {
+                let z = voidZ[i] + rush * dt;
+                if (!z || z > -16) {
+                    placeVoidStar(i, ndc, -(40 + Math.random() * 760));
+                    paintVoidColor(i);
+                    z = voidZ[i];
+                }
+                voidZ[i] = z;
+                const x = voidXY[i * 2];
+                const y = voidXY[i * 2 + 1];
+                voidPositions[i * 6] = x;
+                voidPositions[i * 6 + 1] = y;
+                voidPositions[i * 6 + 2] = z;
+                voidPositions[i * 6 + 3] = x;
+                voidPositions[i * 6 + 4] = y;
+                voidPositions[i * 6 + 5] = z - stretch;
+            }
+            voidGeom.attributes.position.needsUpdate = true;
+            voidGeom.attributes.color.needsUpdate = true;
+            voidMesh.visible = true;
+        }
+
         const header = document.querySelector('header');
         const titleEl = document.getElementById('realm-title');
         const flash = document.getElementById('warp-flash');
@@ -909,6 +1021,13 @@
         let phaseStart = 0;
         let exiting = false;
         const baseFov = 70;
+        const voidBay = hall.querySelector('.hanging--void')?.closest('.bay');
+        function isVoidOnScreen() {
+            if (!voidBay) return false;
+            const r = voidBay.getBoundingClientRect();
+            const visible = Math.min(r.bottom, window.innerHeight) - Math.max(r.top, 0);
+            return visible > 140 && visible > r.height * 0.18;
+        }
 
         function writeStreaks(stretch, rush, dt) {
             const arr = streakGeom.attributes.position.array;
@@ -979,6 +1098,7 @@
             phaseStart = 0;
             pointMesh.visible = false;
             streakMesh.visible = true;
+            voidMesh.visible = false;
             for (let i = 0; i < STAR_COUNT; i++) {
                 if (starZ[i] > -20) placeStar(i, -(Math.random() * TUNNEL_DEPTH + 20));
             }
@@ -1019,6 +1139,7 @@
             camera.updateProjectionMatrix();
             pointMesh.visible = false;
             streakMesh.visible = true;
+            voidMesh.visible = false;
             pointsMat.opacity = 0;
             streakMat.opacity = 1;
             if (flash) flash.style.opacity = '0.28';
@@ -1056,9 +1177,14 @@
                     header.style.pointerEvents = 'auto';
                     if (flash) flash.style.opacity = '0';
                     mode = 'idle';
+                    scrollHallToFocus();
                 }
             } else if (mode === 'idle') {
+                streakMesh.visible = false;
+                pointMesh.visible = true;
                 driftPoints(dt, 0.42);
+                writeVoidStreaks(isVoidOnScreen(), dt);
+            }
             } else if (mode === 'exit') {
                 const progress = Math.min((time - phaseStart) / EXIT_MS, 1);
                 const ease = progress * progress * progress;
