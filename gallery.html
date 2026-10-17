@@ -1183,8 +1183,11 @@
                 streakMesh.visible = false;
                 pointMesh.visible = true;
                 driftPoints(dt, 0.42);
-                writeVoidStreaks(isVoidOnScreen(), dt);
-            }
+                try {
+                    writeVoidStreaks(isVoidOnScreen(), dt);
+                } catch (err) {
+                    voidMesh.visible = false;
+                }
             } else if (mode === 'exit') {
                 const progress = Math.min((time - phaseStart) / EXIT_MS, 1);
                 const ease = progress * progress * progress;
