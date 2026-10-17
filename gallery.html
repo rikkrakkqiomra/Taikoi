@@ -181,6 +181,10 @@
             filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.62)) drop-shadow(0 0 20px rgba(168, 142, 88, 0.18));
         }
 
+        .hanging--finale img {
+            filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.64)) drop-shadow(0 0 16px rgba(120, 78, 48, 0.18));
+        }
+
         @keyframes hangIn {
             from {
                 opacity: 0;
@@ -277,6 +281,11 @@
             <figure class="hanging hanging--hero">
                 <img src="art/hangings/03-altar-bronze.png" alt="The Altar" decoding="async">
             </figure>
+        </section>
+        <section class="bay bay--hero">
+            <figure class="hanging hanging--hero hanging--finale">
+                <img src="art/hangings/04-throne-brutalist.png" alt="The Throne" decoding="async">
+            </figure>
             <div id="realm-title">
                 <h1>Gallery</h1>
             </div>
@@ -314,6 +323,10 @@
             bronze: {
                 src: 'art/frames/bronze.png',
                 inset: { top: '16.2%', right: '20.4%', bottom: '16.8%', left: '20.4%' }
+            },
+            brutalist: {
+                src: 'art/frames/brutalist.png',
+                inset: { top: '18.9%', right: '21.4%', bottom: '25.2%', left: '21.4%' }
             }
         };
 
@@ -332,6 +345,11 @@
                 src: 'art/hangings/03-altar-bronze.png',
                 alt: 'The Altar',
                 frame: 'bronze'
+            },
+            {
+                src: 'art/hangings/04-throne-brutalist.png',
+                alt: 'The Throne',
+                frame: 'brutalist'
             }
         ];
 
