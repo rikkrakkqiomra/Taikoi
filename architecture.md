@@ -65,6 +65,7 @@ Taikoi/
 │   ├── 09-axis.jpg            # Source still
 │   ├── 10-grove.jpg           # Source still
 │   ├── 11-sigil.jpg           # Source still
+│   ├── 12-chorus.jpg          # Source still
 │   ├── hangings/
 │   │   ├── 01-elder-gilt.png        # Precomposed 2D hanging (still + photoreal gilt frame, transparent exterior)
 │   │   ├── 02-nautilus-walnut.png   # Precomposed 2D hanging (still + carved walnut frame, transparent exterior)
@@ -74,7 +75,8 @@ Taikoi/
 │   │   ├── 08-visage-abstract.png   # Hero hanging (still + abstract bronze frame, transparent exterior)
 │   │   ├── 09-axis-ivory.png        # Showpiece hanging (still + palace ivory frame, transparent exterior)
 │   │   ├── 10-grove-oak.png         # Mid hanging (still + carved oak/antler frame, transparent exterior)
-│   │   └── 11-sigil-victorian.png   # Hero hanging (still + Super Victorian gilt frame, transparent exterior)
+│   │   ├── 11-sigil-victorian.png   # Hero hanging (still + Super Victorian gilt frame, transparent exterior)
+│   │   └── 12-chorus-layered.png    # Hero hanging (still + multi-layer gilt/velvet frame, transparent exterior)
 │   └── frames/                # Photographic PNG overlays for later stills
 │       ├── walnut.png
 │       ├── walnut-carved.png
@@ -92,7 +94,8 @@ Taikoi/
 │       ├── palace-ivory.png
 │       ├── abstract-bronze.png
 │       ├── grove-oak.png
-│       └── victorian-gilt.png
+│       ├── victorian-gilt.png
+│       └── layered-gilt.png
 ├── diy_realities.html         # Magenta/amber loom space (“DIY Realities”); content TBD
 ├── gate_left.html             # Crimson left aperture; content TBD
 ├── gate_right.html            # Gold/zinc right aperture; content TBD
@@ -112,7 +115,7 @@ No `.gitignore` in the current tree (removed in `85d5131`).
 | `index.html` | `/` | Primary 3D solar system. Nav to Pure Systems (href), Gallery (direct streak warp), and DIY Realities (warp + on-page wormhole choice). Sun click → `brain.html`. |
 | `brain.html` | `/brain.html` | Starfield + floating manifesto blocks. Header click → `index.html`. |
 | `pure_systems.html` | `/pure_systems.html` | Green starfield + log copy + social icons. Header click → `index.html`. |
-| `gallery.html` | `/gallery.html` | Black starfield (Three.js warp only) + 2D photographic hangings with draft text plaques. Header reverse-warp → `index.html`. Nine solo bays; hangings alternate left/right on desktop. Last is The Sigil in Super Victorian gilt. |
+| `gallery.html` | `/gallery.html` | Black starfield (Three.js warp only) + 2D photographic hangings with draft text plaques. Header reverse-warp → `index.html`. Ten solo bays; hangings alternate left/right on desktop. Last is The Chorus in a multi-layer gilt frame. |
 | `diy_realities.html` | `/diy_realities.html` | Magenta/amber hyperspace loom. Default wormhole timeout destination. Header click reverse-warp → `index.html`. Title only. |
 | `gate_left.html` | `/gate_left.html` | Crimson vertical slit. Entered by left seal. Header reverse-warp → `index.html`. Title only. |
 | `gate_right.html` | `/gate_right.html` | Gold hexagonal aperture. Entered by right seal. Header reverse-warp → `index.html`. Title only. |
@@ -206,9 +209,9 @@ No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
 
 ### `gallery.html` hall specifics
 
-- **2D hangings:** `#hall` is DOM. Nine precomposed PNGs with transparent exteriors, last `art/hangings/11-sigil-victorian.png`. Elder's gilt black inner slip is punched so the starfield shows between gold and canvas. `FRAMES` keeps punched overlays under `art/frames/` including `victorian-gilt.png`. Assets are not under `gallery/` so they do not collide with Netlify Pretty URL `/gallery` (`gallery.html`).
-- **`ARTWORKS`:** `{ src, alt, frame }`. Fourth hanging is The Yantra (`cassetta`). Eighth is carved oak (`The Grove`). Ninth is Super Victorian gilt (`The Sigil`).
-- **Layout:** `#hall` is a fixed, scrollable overlay (`overflow-y: auto`) on desktop and mobile. Nine solo bays. Desktop: hanging plus a `.plaque` on the opposite side; odd works slightly left (`bay--left`), even slightly right (`bay--right`). Desktop heights: Nautilus / Altar / Axis `.hanging--large` ~86vh; other heroes ~76vh; Grove ~70vh. `#realm-title` sits after the last bay on desktop and is hidden on mobile. The return-home logo is `position: absolute` on desktop (first-bay padding) and `position: relative` in-flow on mobile so it does not cover the first hanging. Starfield canvas stays pinned. Mobile: bays stack (hanging then plaque), native scroll; optional swipe scrolls to the next bay. Optional `?focus=N` scrolls to that bay.
+- **2D hangings:** `#hall` is DOM. Ten precomposed PNGs with transparent exteriors, last `art/hangings/12-chorus-layered.png`. Elder's gilt black inner slip is punched so the starfield shows between gold and canvas. `FRAMES` keeps punched overlays under `art/frames/` including `victorian-gilt.png` and `layered-gilt.png`. Assets are not under `gallery/` so they do not collide with Netlify Pretty URL `/gallery` (`gallery.html`).
+- **`ARTWORKS`:** `{ src, alt, frame }`. Fourth hanging is The Yantra (`cassetta`). Ninth is Super Victorian gilt (`The Sigil`). Tenth is nested gilt/velvet (`The Chorus`).
+- **Layout:** `#hall` is a fixed, scrollable overlay (`overflow-y: auto`) on desktop and mobile. Ten solo bays. Desktop: hanging plus a `.plaque` on the opposite side; odd works slightly left (`bay--left`), even slightly right (`bay--right`). Desktop heights: Nautilus / Altar / Axis `.hanging--large` ~86vh; other heroes ~76vh; Grove ~70vh. `#realm-title` sits after the last bay on desktop and is hidden on mobile. The return-home logo is `position: absolute` on desktop (first-bay padding) and `position: relative` in-flow on mobile so it does not cover the first hanging. Starfield canvas stays pinned. Mobile: bays stack (hanging then plaque), native scroll; optional swipe scrolls to the next bay. Optional `?focus=N` scrolls to that bay.
 - **Plaques:** hardcoded English drafts in each bay (`h2` + blockquote + two short paragraphs). Cormorant Garamond body, Orbitron title. Copy is a first pass; not final. Square corners have a thin gilt L-bracket and a 5px diamond via `.plaque-corners`.
 - **Three.js:** starfield + enter/exit streaks only. No OrbitControls, no 3D rails. Scene clear is black (`#000`).
 - **Fail-open:** `#hall` hangings remain in the HTML/CSS even if WebGL never starts (`html.ui-ready`).
@@ -297,7 +300,7 @@ There is no API response schema.
 | `taikoi-sun-portal.png` | Unreferenced binary |
 | `LICENSE` | Missing despite README MIT claim |
 | Shared CSS/JS modules | None; seven-way copy of bootstrap |
-| Gallery hangings | Nine hangings on the hall (`01`–`04`, `06`, `08`–`11`). Unused stills `05-pact.jpg` and `07-window.jpg` remain under `art/` |
+| Gallery hangings | Ten hangings on the hall (`01`–`04`, `06`, `08`–`12`). Unused stills `05-pact.jpg` and `07-window.jpg` remain under `art/` |
 | i18n | Removed; English-only |
 | Analytics | None |
 | Automated tests | None |
@@ -347,3 +350,4 @@ Append-only. Newest rows at the **bottom**. Do not rewrite prior rows.
 | 2026-10-17 | Make the mobile gallery a scroll hall | gallery.html, architecture.md | One-at-a-time swipe crammed hanging + plaque + logo + GALLERY into one phone screen; logo and title overlapped the work | Mobile `#hall` scrolls. All bays visible, stacked. `#realm-title` hidden. Logo in-flow. Swipe scrolls to the next bay. Desktop left/right plaques unchanged. |
 | 2026-10-17 | Keep the gallery return logo circular on mobile | gallery.html, architecture.md | Mobile `max-width: 88px` left the 120px height attribute in place, so `border-radius: 50%` drew an oval | Header img is now square (`88×88` / `120×120`) with `aspect-ratio: 1`. |
 | 2026-10-17 | Hang The Sigil in a Super Victorian gilt frame | gallery.html, art/11-sigil.jpg, art/hangings/11-sigil-victorian.png, art/frames/victorian-gilt.png, architecture.md | User added a gold emblem still and asked for a magnificent Super Victorian frame | Square gilt exhibition frame, black exterior punched. Solo bay after The Grove, draft plaque. |
+| 2026-10-17 | Hang The Chorus in a multi-layer gilt frame | gallery.html, art/12-chorus.jpg, art/hangings/12-chorus-layered.png, art/frames/layered-gilt.png, architecture.md | User added stacked-face still and asked for frames that also step inward | Nested Victorian gilt + black velvet liner + inner gilt sight. Solo bay after The Sigil, draft plaque. |
