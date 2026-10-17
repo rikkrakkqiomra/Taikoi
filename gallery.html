@@ -117,29 +117,41 @@
             position: fixed;
             inset: 0;
             z-index: 5;
-            display: flex;
-            align-items: center;
+            display: grid;
+            grid-template-columns: auto auto;
             justify-content: center;
-            gap: 3vw;
-            padding: 168px 4vw 16vh;
+            align-content: center;
+            justify-items: center;
+            align-items: center;
+            column-gap: 3.4vw;
+            row-gap: 2vh;
+            padding: 140px 4vw 11vh;
             pointer-events: none;
         }
 
         .hanging {
             flex: 0 1 auto;
-            width: auto;
-            height: min(52vh, calc(100vh - 168px - 16vh - 20px));
-            max-width: min(34vw, 46%);
+            width: min(20vw, calc(26vh * 0.75));
+            height: min(26vh, calc((100vh - 140px - 11vh - 2vh) * 0.40));
+            max-width: none;
             --hang-y: 0px;
             animation: hangIn 1.05s ease both, hangDrift 10s ease-in-out 1.05s infinite;
         }
 
         .hanging:nth-child(1) {
-            --hang-y: -8px;
+            --hang-y: -6px;
         }
 
         .hanging:nth-child(2) {
-            --hang-y: 8px;
+            --hang-y: 6px;
+        }
+
+        .hanging--hero {
+            grid-column: 1 / -1;
+            width: min(30vw, calc(40vh * 0.75));
+            height: min(40vh, calc((100vh - 140px - 11vh - 2vh) * 0.58));
+            max-width: none;
+            --hang-y: 0px;
         }
 
         .hanging.is-off {
@@ -148,15 +160,19 @@
 
         .hanging img {
             display: block;
-            width: auto;
+            width: 100%;
             height: 100%;
-            max-width: 100%;
+            max-width: none;
             object-fit: contain;
             filter: drop-shadow(10px 16px 14px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 16px rgba(196, 140, 64, 0.12));
         }
 
         .hanging:nth-child(2) img {
             filter: drop-shadow(10px 16px 14px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 16px rgba(170, 186, 200, 0.16));
+        }
+
+        .hanging--hero img {
+            filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.62)) drop-shadow(0 0 20px rgba(168, 142, 88, 0.18));
         }
 
         @keyframes hangIn {
@@ -184,15 +200,20 @@
 
         @media (max-width: 768px) {
             #hall {
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 padding: 148px 5vw 14vh;
             }
 
             .hanging,
             .hanging:nth-child(1),
-            .hanging:nth-child(2) {
-                width: min(86vw, 58vh);
+            .hanging:nth-child(2),
+            .hanging--hero {
+                grid-column: auto;
+                width: min(86vw, 62vh);
                 height: auto;
-                max-width: min(86vw, 58vh);
+                max-width: min(86vw, 62vh);
                 max-height: calc(100vh - 148px - 14vh);
                 --hang-y: 0px;
                 animation-delay: 0s, 1.05s;
@@ -232,6 +253,9 @@
         <figure class="hanging">
             <img src="art/hangings/02-nautilus-titanium.png" alt="The Nautilus" decoding="async">
         </figure>
+        <figure class="hanging hanging--hero">
+            <img src="art/hangings/03-altar-bronze.png" alt="The Altar" decoding="async">
+        </figure>
     </div>
 
     <div id="realm-title">
@@ -265,6 +289,10 @@
             titanium: {
                 src: 'art/frames/titanium.png',
                 inset: { top: '12.4%', right: '14.8%', bottom: '12.8%', left: '14.9%' }
+            },
+            bronze: {
+                src: 'art/frames/bronze.png',
+                inset: { top: '16.2%', right: '20.4%', bottom: '16.8%', left: '20.4%' }
             }
         };
 
@@ -278,6 +306,11 @@
                 src: 'art/hangings/02-nautilus-titanium.png',
                 alt: 'The Nautilus',
                 frame: 'titanium'
+            },
+            {
+                src: 'art/hangings/03-altar-bronze.png',
+                alt: 'The Altar',
+                frame: 'bronze'
             }
         ];
 

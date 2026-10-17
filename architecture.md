@@ -56,14 +56,17 @@ Taikoi/
 ├── art/
 │   ├── 01-elder.jpg           # Source still
 │   ├── 02-nautilus.jpg        # Source still
+│   ├── 03-altar.jpg           # Source still
 │   ├── hangings/
 │   │   ├── 01-elder-gilt.png        # Precomposed 2D hanging (still + photoreal gilt frame, transparent exterior)
-│   │   └── 02-nautilus-titanium.png # Precomposed 2D hanging (still + titanium/walnut frame, transparent exterior)
+│   │   ├── 02-nautilus-titanium.png # Precomposed 2D hanging (still + titanium/walnut frame, transparent exterior)
+│   │   └── 03-altar-bronze.png      # Hero hanging (still + winged bronze frame, transparent exterior)
 │   └── frames/                # Photographic PNG overlays for later stills
 │       ├── walnut.png
 │       ├── gilt.png
 │       ├── iron.png
-│       └── titanium.png
+│       ├── titanium.png
+│       └── bronze.png
 ├── diy_realities.html         # Magenta/amber loom space (“DIY Realities”); content TBD
 ├── gate_left.html             # Crimson left aperture; content TBD
 ├── gate_right.html            # Gold/zinc right aperture; content TBD
@@ -83,7 +86,7 @@ No `.gitignore` in the current tree (removed in `85d5131`).
 | `index.html` | `/` | Primary 3D solar system. Nav to Pure Systems (href), Gallery (direct streak warp), and DIY Realities (warp + on-page wormhole choice). Sun click → `brain.html`. |
 | `brain.html` | `/brain.html` | Starfield + floating manifesto blocks. Header click → `index.html`. |
 | `pure_systems.html` | `/pure_systems.html` | Green starfield + log copy + social icons. Header click → `index.html`. |
-| `gallery.html` | `/gallery.html` | Black starfield (Three.js warp only) + 2D photographic hangings. Header reverse-warp → `index.html`. Two hangings: gilt elder + titanium/walnut nautilus. |
+| `gallery.html` | `/gallery.html` | Black starfield (Three.js warp only) + 2D photographic hangings. Header reverse-warp → `index.html`. Three hangings: gilt elder, titanium nautilus, bronze altar hero. |
 | `diy_realities.html` | `/diy_realities.html` | Magenta/amber hyperspace loom. Default wormhole timeout destination. Header click reverse-warp → `index.html`. Title only. |
 | `gate_left.html` | `/gate_left.html` | Crimson vertical slit. Entered by left seal. Header reverse-warp → `index.html`. Title only. |
 | `gate_right.html` | `/gate_right.html` | Gold hexagonal aperture. Entered by right seal. Header reverse-warp → `index.html`. Title only. |
@@ -177,9 +180,9 @@ No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
 
 ### `gallery.html` hall specifics
 
-- **2D hangings:** `#hall` is DOM. Two precomposed PNGs with transparent exteriors: `art/hangings/01-elder-gilt.png` and `art/hangings/02-nautilus-titanium.png`. Elder's gilt black inner slip is also punched so the starfield shows between gold and canvas. `FRAMES` keeps punched walnut/gilt/iron/titanium PNG overlays under `art/frames/` for later stills. Assets are not under `gallery/` so they do not collide with Netlify Pretty URL `/gallery` (`gallery.html`).
-- **`ARTWORKS`:** `{ src, alt, frame }`. First hanging is gilt; second is titanium/walnut (`The Nautilus`).
-- **Layout:** desktop shows both in a row, height-capped so they stay between the header logo and `#realm-title`. Mild `--hang-y` stagger (±8px). Mobile shows one (`is-off` on the rest); swipe changes `focusIndex`. Optional `?focus=N` selects the starting hanging.
+- **2D hangings:** `#hall` is DOM. Three precomposed PNGs with transparent exteriors: `art/hangings/01-elder-gilt.png`, `art/hangings/02-nautilus-titanium.png`, and hero `art/hangings/03-altar-bronze.png`. Elder's gilt black inner slip is punched so the starfield shows between gold and canvas. `FRAMES` keeps punched walnut/gilt/iron/titanium/bronze PNG overlays under `art/frames/`. Assets are not under `gallery/` so they do not collide with Netlify Pretty URL `/gallery` (`gallery.html`).
+- **`ARTWORKS`:** `{ src, alt, frame }`. First hanging is gilt; second is titanium/walnut (`The Nautilus`); third is bronze (`The Altar`).
+- **Layout:** desktop is a 2-column grid: Elder and Nautilus on the first row, `hanging--hero` (The Altar) spans both columns below, larger, no pair. Height-capped between logo and `#realm-title`. Mobile shows one (`is-off` on the rest); swipe changes `focusIndex`. Optional `?focus=N` selects the starting hanging.
 - **Three.js:** starfield + enter/exit streaks only. No OrbitControls, no 3D rails. Scene clear is black (`#000`).
 - **Fail-open:** `#hall` hangings remain in the HTML/CSS even if WebGL never starts (`html.ui-ready`).
 
@@ -267,7 +270,7 @@ There is no API response schema.
 | `taikoi-sun-portal.png` | Unreferenced binary |
 | `LICENSE` | Missing despite README MIT claim |
 | Shared CSS/JS modules | None; seven-way copy of bootstrap |
-| Gallery hangings | Two stills under `art/` (`01-elder.jpg`, `02-nautilus.jpg`); further paste entries append to `ARTWORKS` |
+| Gallery hangings | Three stills under `art/` (`01-elder.jpg`, `02-nautilus.jpg`, `03-altar.jpg`); further paste entries append to `ARTWORKS` |
 | i18n | Removed; English-only |
 | Analytics | None |
 | Automated tests | None |
@@ -294,3 +297,4 @@ Append-only. Newest rows at the **bottom**. Do not rewrite prior rows.
 | 2026-10-17 | Punch Elder gilt inner slip so stars show through | art/hangings/01-elder-gilt.png, architecture.md | Black velvet mat between gold and canvas covered the starfield | Slip mask from `art/frames/gilt.png` (dark, non-gold, opaque overlay). Gold sight edge and painting stay. Nautilus unchanged. |
 | 2026-10-17 | Shrink hanging drop-shadow so punched slip stays open | gallery.html, architecture.md | 52px drop-shadow filled the Elder slip hole and hid the starfield again | Offset shadow 10/16/14px. Nautilus uses the same smaller shadow. |
 | 2026-10-17 | Keep gallery hangings out of logo and title | gallery.html, architecture.md | Large hangings plus ±vh stagger overlapped the header logo and GALLERY label | Hall padding 168px / 16vh; hanging height `min(52vh, 100vh - chrome)`; stagger ±8px. Mobile one-up unchanged. |
+| 2026-10-17 | Add The Altar as a solo bronze hero hanging | gallery.html, art/03-altar.jpg, art/hangings/03-altar-bronze.png, art/frames/bronze.png, architecture.md | User added a third still to sit below the pair, larger, never paired on desktop | Winged oxidized-bronze frame, transparent exterior. `#hall` is a 2-col grid; `.hanging--hero` spans the second row. Mobile swipe includes it. |
