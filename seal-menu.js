@@ -1,6 +1,6 @@
 (function () {
     var REALMS = [
-        { label: 'Physicalus' },
+        { label: 'Physicalus', href: 'physicalus.html' },
         { label: 'Artificialus' },
         { label: 'KIOMRA' },
         { label: 'Musica' },
@@ -65,6 +65,10 @@
         if (action) button.setAttribute('data-seal-action', action);
         if (href) {
             button.setAttribute('data-href', href);
+            if (isHere(href)) {
+                button.classList.add('is-here');
+                button.setAttribute('aria-current', 'page');
+            }
         } else if (kind === 'realm') {
             button.setAttribute('aria-disabled', 'true');
         }
@@ -159,6 +163,13 @@
         window.location.href = 'index.html';
     }
 
+    function isHere(href) {
+        var path = window.location.pathname.replace(/\\/g, '/');
+        var file = String(href).split('/').pop();
+        var stem = file.replace(/\.html$/, '');
+        return path.endsWith('/' + file) || path.endsWith('/' + stem);
+    }
+
     function onItem(item) {
         var action = item.getAttribute('data-seal-action');
         if (action === 'return') {
@@ -170,7 +181,12 @@
             return;
         }
         var href = item.getAttribute('data-href');
-        if (href) window.location.href = href;
+        if (!href) return;
+        if (isHere(href)) {
+            close({ scroll: true, focus: true });
+            return;
+        }
+        window.location.href = href;
     }
 
     trigger.addEventListener('click', function (event) {

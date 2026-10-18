@@ -254,6 +254,15 @@ header.is-seal-open .seal-trigger {
     color: #f6efe2;
 }
 
+.seal-menu.is-open .seal-item.is-here .seal-gem {
+    opacity: 1;
+    box-shadow: 0 0 8px rgba(212, 164, 90, 0.9);
+}
+
+.seal-item.is-here .seal-label::after {
+    transform: scaleX(1);
+}
+
 header.is-seal-open .social-links,
 header.is-seal-open .nave-kicker {
     opacity: 0;

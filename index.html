@@ -37,7 +37,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preload" as="image" href="AiiAold.8dde82cb.jpg" fetchpriority="high">
   <link
-    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Rajdhani:wght@400;700&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Orbitron:wght@700;900&family=Rajdhani:wght@400;700&display=swap"
     rel="stylesheet">
   <style>
     :root {
@@ -185,6 +185,10 @@
 
     nav a:nth-child(3) {
       animation-delay: 1.9s;
+    }
+
+    nav a:nth-child(4) {
+      animation-delay: 2.1s;
     }
 
     nav a:hover {
@@ -424,27 +428,22 @@
       }
 
       nav a {
-        font-size: 0.72rem;
+        font-size: 0.64rem;
         width: auto;
         flex: 1;
         line-height: 1.25;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.2px;
       }
 
       nav a br {
         display: inline;
       }
 
-      nav a:nth-child(1) {
-        text-align: left;
-      }
-
-      nav a:nth-child(2) {
+      nav a:nth-child(1),
+      nav a:nth-child(2),
+      nav a:nth-child(3),
+      nav a:nth-child(4) {
         text-align: center;
-      }
-
-      nav a:nth-child(3) {
-        text-align: right;
       }
 
       footer {
@@ -615,13 +614,10 @@
     }
 
     #wormhole-choice {
+      --choose: 0;
       position: fixed;
       inset: 0;
       z-index: 90;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 8vw;
       overflow: visible;
       pointer-events: none;
       opacity: 0;
@@ -633,56 +629,373 @@
       opacity: 1;
     }
 
-    .wormhole-seal {
-      background: none;
-      border: 2px solid rgba(255, 255, 255, 0.35);
-      padding: 0;
-      margin: 0;
-      cursor: pointer;
-      border-radius: 50%;
-      width: clamp(72px, 16vw, 148px);
-      height: clamp(72px, 16vw, 148px);
-      overflow: hidden;
-      -webkit-tap-highlight-color: transparent;
-      touch-action: manipulation;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-      box-shadow: 0 0 24px rgba(224, 64, 251, 0.45), 0 0 48px rgba(255, 171, 64, 0.2);
-      animation: sealPulse 1.8s ease-in-out infinite;
-      outline: none;
-      flex: 0 0 auto;
+    .limen-lintel {
+      position: absolute;
+      left: 6vw;
+      top: 50%;
+      width: 88vw;
+      height: auto;
+      transform: translateY(-50%);
+      opacity: 0.4;
+      pointer-events: none;
+      z-index: 1;
+      user-select: none;
     }
 
-    .wormhole-seal img {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
+    .limen-core {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 2;
+      width: clamp(76px, 9vw, 118px);
+      height: clamp(76px, 9vw, 118px);
+      transform: translate(-50%, -50%);
+      display: grid;
+      place-items: center;
       pointer-events: none;
     }
 
-    .wormhole-seal:hover,
-    .wormhole-seal:focus-visible {
-      transform: scale(1.06);
-      border-color: #fff;
-      box-shadow: 0 0 32px rgba(255, 255, 255, 0.55), 0 0 64px rgba(224, 64, 251, 0.45);
+    .orrery,
+    .limen-core .emblem,
+    .limen-core p {
+      grid-area: 1 / 1;
     }
 
-    @keyframes sealPulse {
+    .orrery {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: conic-gradient(from -90deg,
+          rgba(217, 164, 65, 0.92) calc(var(--choose) * 1turn),
+          transparent 0);
+      -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 1.5px), #000 calc(100% - 1px));
+      mask: radial-gradient(farthest-side, transparent calc(100% - 1.5px), #000 calc(100% - 1px));
+    }
+
+    .limen-core .emblem {
+      width: 48%;
+      height: auto;
+      transform: scale(calc(0.85 + var(--choose) * 0.2));
+      filter: drop-shadow(0 0 12px rgba(217, 164, 65, 0.45));
+    }
+
+    .limen-core p {
+      position: absolute;
+      top: calc(100% + 4.1rem);
+      left: 50%;
+      margin: 0;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: clamp(1.05rem, 2vw, 1.45rem);
+      letter-spacing: 0.22em;
+      color: #efe6d4;
+      opacity: var(--choose);
+      text-shadow: 0 0 12px rgba(0, 0, 0, 0.85), 0 0 16px rgba(217, 164, 65, 0.35);
+    }
+
+    .wing {
+      position: absolute;
+      z-index: 3;
+      transition: opacity 0.25s ease;
+    }
+
+    .wing--left {
+      left: 4.5vw;
+      top: 54%;
+      transform: translateY(-50%);
+    }
+
+    .wing--right {
+      right: 3.5vw;
+      top: 46%;
+      transform: translateY(-50%);
+    }
+
+    .study {
+      position: absolute;
+      width: 34%;
+      height: auto;
+      pointer-events: none;
+      z-index: 4;
+      filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.5));
+      user-select: none;
+    }
+
+    .study--codex {
+      top: -9%;
+      left: -10%;
+      animation: studyDriftL 8s ease-in-out infinite;
+    }
+
+    .study--fragment {
+      right: -8%;
+      bottom: -8%;
+      width: 30%;
+      animation: studyDriftR 9s ease-in-out infinite;
+    }
+
+    @keyframes studyDriftL {
       0%,
-      100% {
-        filter: brightness(1);
+      100% { transform: rotate(-7deg) translateY(0); }
+      50% { transform: rotate(-7deg) translateY(-3px); }
+    }
+
+    @keyframes studyDriftR {
+      0%,
+      100% { transform: rotate(6deg) translateY(0); }
+      50% { transform: rotate(6deg) translateY(-3px); }
+    }
+
+    .apse {
+      --well-glow: rgba(255, 45, 85, 0.55);
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: none;
+      color: inherit;
+      font: inherit;
+      text-align: left;
+      cursor: pointer;
+      appearance: none;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      outline: none;
+    }
+
+    .apse--codex .frame {
+      --well-x: 49.93%;
+      --well-y: 49.81%;
+      --well-d: 52%;
+    }
+
+    .apse--fragment {
+      --well-glow: rgba(212, 175, 55, 0.5);
+      flex-direction: row-reverse;
+      text-align: right;
+    }
+
+    .apse--fragment .frame {
+      --well-x: 47.04%;
+      --well-y: 49.69%;
+      --well-d: 50%;
+    }
+
+    .frame {
+      position: relative;
+      flex: 0 0 auto;
+      width: min(34vh, 22vw);
+    }
+
+    .frame::after {
+      content: "";
+      position: absolute;
+      left: var(--well-x);
+      top: var(--well-y);
+      z-index: 1;
+      width: calc(var(--well-d) * 1.2);
+      aspect-ratio: 1;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      pointer-events: none;
+      background: radial-gradient(circle, var(--well-glow), transparent 68%);
+    }
+
+    .hanging {
+      display: block;
+      width: 100%;
+      height: auto;
+      pointer-events: none;
+      user-select: none;
+      filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.45));
+      transition: filter 0.25s ease;
+    }
+
+    .seal {
+      position: absolute;
+      left: var(--well-x);
+      top: var(--well-y);
+      z-index: 2;
+      width: var(--well-d);
+      aspect-ratio: 1;
+      height: auto;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      object-fit: cover;
+      pointer-events: none;
+      user-select: none;
+      box-shadow:
+        0 0 0 1px rgba(255, 255, 255, 0.28),
+        0 0 22px var(--well-glow);
+    }
+
+    .plaque {
+      position: relative;
+      flex: 0 0 auto;
+      width: min(11.5rem, 16vw);
+      padding: 0.72rem 0.78rem 0.82rem;
+      background: rgba(16, 12, 8, 0.72);
+      border: 1px solid rgba(196, 140, 64, 0.48);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(236, 226, 210, 0.08);
+      color: #efe6d4;
+    }
+
+    .plaque-corners {
+      position: absolute;
+      inset: -5px;
+      pointer-events: none;
+    }
+
+    .plaque-corners i {
+      position: absolute;
+      width: 11px;
+      height: 11px;
+      border-color: #d4a45a;
+      border-style: solid;
+      border-width: 0;
+    }
+
+    .plaque-corners i:nth-child(1) { top: 0; left: 0; border-top-width: 1.5px; border-left-width: 1.5px; }
+    .plaque-corners i:nth-child(2) { top: 0; right: 0; border-top-width: 1.5px; border-right-width: 1.5px; }
+    .plaque-corners i:nth-child(3) { bottom: 0; left: 0; border-bottom-width: 1.5px; border-left-width: 1.5px; }
+    .plaque-corners i:nth-child(4) { bottom: 0; right: 0; border-bottom-width: 1.5px; border-right-width: 1.5px; }
+
+    .plaque-corners i::after {
+      content: "";
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: #d4a45a;
+      transform: rotate(45deg);
+    }
+
+    .plaque-corners i:nth-child(1)::after { top: -3px; left: -3px; }
+    .plaque-corners i:nth-child(2)::after { top: -3px; right: -3px; }
+    .plaque-corners i:nth-child(3)::after { bottom: -3px; left: -3px; }
+    .plaque-corners i:nth-child(4)::after { bottom: -3px; right: -3px; }
+
+    .kicker {
+      display: block;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 0.62rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #c48c40;
+    }
+
+    .name {
+      display: block;
+      margin-top: 0.18rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      font-size: 1.65rem;
+      line-height: 1.05;
+      color: #f3ead8;
+    }
+
+    .line {
+      display: block;
+      margin-top: 0.38rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 0.98rem;
+      line-height: 1.3;
+      color: #d8cfbe;
+    }
+
+    #wormhole-choice:has(.apse:hover) .wing:not(:has(:hover)),
+    #wormhole-choice:has(.apse:focus-visible) .wing:not(:has(:focus-visible)) {
+      opacity: 0.45;
+    }
+
+    .apse:hover .hanging,
+    .apse:focus-visible .hanging {
+      filter: drop-shadow(0 22px 32px rgba(0, 0, 0, 0.55)) brightness(1.08);
+    }
+
+    @media (max-width: 1100px) {
+      .apse,
+      .apse--fragment {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
       }
 
-      50% {
-        filter: brightness(1.25);
+      .frame {
+        width: min(32vh, 28vw);
       }
     }
 
     @media (max-width: 768px) {
-      #wormhole-choice {
-        padding: 0 5vw;
+      .study {
+        display: none;
       }
+
+      .line {
+        display: none;
+      }
+
+      .wing--left {
+        left: 3.5vw;
+        top: 46%;
+      }
+
+      .wing--right {
+        right: 3.5vw;
+        top: 42%;
+      }
+
+      .frame,
+      .plaque {
+        width: 31vw;
+      }
+
+      .plaque {
+        padding: 0.35rem 0.3rem 0.42rem;
+      }
+
+      .kicker {
+        font-size: 0.5rem;
+        letter-spacing: 0.16em;
+      }
+
+      .name {
+        font-size: 1.05rem;
+      }
+
+      .limen-lintel {
+        left: 2vw;
+        width: 96vw;
+        opacity: 0.32;
+      }
+
+      .limen-core {
+        width: 58px;
+        height: 58px;
+      }
+
+      .limen-core p {
+        top: calc(100% + 1.65rem);
+        font-size: 0.95rem;
+        letter-spacing: 0.14em;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .study--codex,
+      .study--fragment {
+        animation: none;
+      }
+
+      .study--codex { transform: rotate(-7deg); }
+      .study--fragment { transform: rotate(6deg); }
     }
   </style>
 </head>
@@ -712,18 +1025,49 @@
       <a href="pure_systems.html">System <br>Log</a>
       <a href="gallery.html" id="nav-gallery">Gallery</a>
       <a href="diy_realities.html" id="nav-diy">Library</a>
+      <a href="bio.html" id="nav-bio">Bio</a>
     </nav>
   </header>
 
   <div id="canvas-container"></div>
   <div id="warp-flash" aria-hidden="true"></div>
   <div id="wormhole-choice" aria-hidden="true">
-    <button type="button" id="seal-left" class="wormhole-seal" aria-label="Codex Operum">
-      <img src="AiiAold.8dde82cb.jpg" alt="" width="148" height="148" decoding="async">
-    </button>
-    <button type="button" id="seal-right" class="wormhole-seal" aria-label="Fragmenta Apocrypha">
-      <img src="AiiAold.8dde82cb.jpg" alt="" width="148" height="148" decoding="async">
-    </button>
+    <img class="limen-lintel" src="art/limen/lintel.png" alt="" width="1229" height="196" decoding="async" draggable="false">
+    <div class="limen-core" aria-hidden="true">
+      <div class="orrery"></div>
+      <img class="emblem" src="art/khaeos/khaeos-emblem.png" alt="" width="999" height="1004" decoding="async" draggable="false">
+      <p>Khaeos</p>
+    </div>
+    <div class="wing wing--left">
+      <img class="study study--codex" src="art/limen/codex-study.png" alt="" width="667" height="430" decoding="async" draggable="false">
+      <button type="button" id="seal-left" class="apse apse--codex" aria-label="Codex Operum">
+        <span class="frame">
+          <img class="hanging" src="art/limen/codex-hanging.png" alt="" width="761" height="792" decoding="async" draggable="false">
+          <img class="seal" src="AiiAold.8dde82cb.jpg" alt="" width="148" height="148" decoding="async" draggable="false">
+        </span>
+        <span class="plaque">
+          <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span class="kicker">Codex</span>
+          <span class="name">Operum</span>
+          <em class="line">Scrolls that have been closed.</em>
+        </span>
+      </button>
+    </div>
+    <div class="wing wing--right">
+      <img class="study study--fragment" src="art/limen/fragment-study.png" alt="" width="810" height="809" decoding="async" draggable="false">
+      <button type="button" id="seal-right" class="apse apse--fragment" aria-label="Fragmenta Apocrypha">
+        <span class="frame">
+          <img class="hanging" src="art/limen/fragment-hanging.png" alt="" width="812" height="797" decoding="async" draggable="false">
+          <img class="seal" src="AiiAold.8dde82cb.jpg" alt="" width="148" height="148" decoding="async" draggable="false">
+        </span>
+        <span class="plaque">
+          <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+          <span class="kicker">Fragmenta</span>
+          <span class="name">Apocrypha</span>
+          <em class="line">Hands that have not finished.</em>
+        </span>
+      </button>
+    </div>
   </div>
 
   <footer class="glass">
@@ -1326,14 +1670,26 @@
       });
     }
 
+    function dimWarpChrome() {
+      const header = document.querySelector('header');
+      const footer = document.querySelector('footer');
+      const nodeRail = document.getElementById('node-rail');
+      if (header) header.style.opacity = '0';
+      if (footer) footer.style.opacity = '0';
+      if (nodeRail) nodeRail.style.opacity = '0';
+    }
+
     function showChoice() {
       if (!choiceEl) return;
+      choiceEl.style.setProperty('--choose', '0');
       choiceEl.classList.add('is-open');
       choiceEl.setAttribute('aria-hidden', 'false');
+      dimWarpChrome();
     }
 
     function hideChoice() {
       if (!choiceEl) return;
+      choiceEl.style.setProperty('--choose', '0');
       choiceEl.classList.remove('is-open');
       choiceEl.setAttribute('aria-hidden', 'true');
     }
@@ -1523,6 +1879,7 @@
 
       if (warpState.phase === 'choose') {
         const progress = Math.min(elapsed / CHOOSE_MS, 1);
+        if (choiceEl) choiceEl.style.setProperty('--choose', progress.toFixed(4));
         writeWarpStreaks(dt, 28, 18, 0);
         warpState.warpMat.opacity = 0.7;
         scene.fog.density = baseFogDensity + 0.06;
@@ -1682,6 +2039,15 @@
         event.preventDefault();
         event.stopPropagation();
         startWarpTransition('gallery.html');
+      });
+    }
+
+    const bioNav = document.getElementById('nav-bio');
+    if (bioNav) {
+      bioNav.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        startWarpTransition('bio.html');
       });
     }
 
