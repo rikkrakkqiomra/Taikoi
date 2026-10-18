@@ -369,14 +369,6 @@
             filter: drop-shadow(14px 24px 22px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 28px rgba(236, 226, 210, 0.28));
         }
 
-        .hanging--mid {
-            height: 70vh;
-        }
-
-        .hanging--mid img {
-            filter: drop-shadow(10px 16px 14px rgba(0, 0, 0, 0.58)) drop-shadow(0 0 12px rgba(80, 110, 60, 0.14));
-        }
-
         @keyframes hangIn {
             from {
                 opacity: 0;
@@ -467,7 +459,6 @@
             .hanging--hero,
             .hanging--ivory,
             .hanging--abstract,
-            .hanging--mid,
             .hanging--show,
             .hanging--large,
             .hanging--square {
@@ -595,18 +586,6 @@
             </article>
         </section>
         <section class="bay bay--right">
-            <figure class="hanging hanging--mid">
-                <img src="art/hangings/10-grove-oak.png" alt="The Grove" loading="lazy" decoding="async">
-            </figure>
-            <article class="plaque">
-                <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                <h2>The Grove</h2>
-                <blockquote>The old god stands behind the old man, and neither is first.</blockquote>
-                <p>The circle is not audience. It is the forest rehearsing a human shape.</p>
-                <p>Celtic talk kept this simple: the grove is the church that does not need a roof.</p>
-            </article>
-        </section>
-        <section class="bay bay--left">
             <figure class="hanging hanging--hero hanging--square hanging--void">
                 <img src="art/hangings/11-sigil-victorian.png" alt="The Sigil" loading="lazy" decoding="async">
             </figure>
@@ -618,7 +597,7 @@
                 <p>Victorian parlors hung crests to remember blood. This one remembers a machine that wanted a goddess.</p>
             </article>
         </section>
-        <section class="bay bay--right">
+        <section class="bay bay--left">
             <figure class="hanging hanging--hero">
                 <img src="art/hangings/12-chorus-layered.png" alt="The Chorus" loading="lazy" decoding="async">
             </figure>
@@ -630,7 +609,7 @@
                 <p>A workshop note: if the profiles refuse to wait, the skull has learned to be a room.</p>
             </article>
         </section>
-        <section class="bay bay--left">
+        <section class="bay bay--right">
             <figure class="hanging hanging--hero hanging--spectrum">
                 <img src="art/hangings/14-threshold-baroque.png" alt="The Threshold" loading="lazy" decoding="async">
             </figure>
@@ -642,7 +621,7 @@
                 <p>A workshop note: the light at the far end is not a door. It is the moment the corridor decides you have arrived.</p>
             </article>
         </section>
-        <section class="bay bay--right">
+        <section class="bay bay--left">
             <figure class="hanging hanging--square hanging--deco">
                 <img src="art/hangings/15-phaeton-deco.png" alt="The Phaeton" loading="lazy" decoding="async">
             </figure>
@@ -654,7 +633,7 @@
                 <p>Coachbuilders once signed the axle, not the engine. This one signs nothing; the glow is signature enough.</p>
             </article>
         </section>
-        <section class="bay bay--left">
+        <section class="bay bay--right">
             <figure class="hanging hanging--large hanging--spore">
                 <img src="art/hangings/16-spore-nouveau.png" alt="The Spore" loading="lazy" decoding="async">
             </figure>
@@ -666,7 +645,7 @@
                 <p>Pulp prophets drew the mushroom as a cathedral because a cathedral was too small to frighten anyone.</p>
             </article>
         </section>
-        <section class="bay bay--right">
+        <section class="bay bay--left">
             <figure class="hanging hanging--large hanging--stone">
                 <img src="art/hangings/17-spire-stone.png" alt="The Spire" loading="lazy" decoding="async">
             </figure>
@@ -678,7 +657,7 @@
                 <p>Caravan maps marked it with one word that every language translated as "later".</p>
             </article>
         </section>
-        <section class="bay bay--left">
+        <section class="bay bay--right">
             <figure class="hanging hanging--hero hanging--iron">
                 <img src="art/hangings/18-valkyrie-iron.png" alt="The Valkyrie" loading="lazy" decoding="async">
             </figure>
@@ -690,7 +669,7 @@
                 <p>An old field-note: where she stands, the larvae stop pretending to be stones.</p>
             </article>
         </section>
-        <section class="bay bay--right">
+        <section class="bay bay--left">
             <figure class="hanging hanging--hero hanging--oak">
                 <img src="art/hangings/19-conclave-oak.png" alt="The Conclave" loading="lazy" decoding="async">
             </figure>
@@ -779,10 +758,6 @@
                 src: 'art/frames/palace-ivory.png',
                 inset: { top: '29.2%', right: '25.5%', bottom: '22.5%', left: '26.3%' }
             },
-            groveOak: {
-                src: 'art/frames/grove-oak.png',
-                inset: { top: '18.1%', right: '19.3%', bottom: '18.8%', left: '20.2%' }
-            },
             victorianGilt: {
                 src: 'art/frames/victorian-gilt.png',
                 inset: { top: '15.9%', right: '16.8%', bottom: '17.9%', left: '17.1%' }
@@ -848,11 +823,6 @@
                 src: 'art/hangings/09-axis-ivory.png',
                 alt: 'The Axis',
                 frame: 'palaceIvory'
-            },
-            {
-                src: 'art/hangings/10-grove-oak.png',
-                alt: 'The Grove',
-                frame: 'groveOak'
             },
             {
                 src: 'art/hangings/11-sigil-victorian.png',
