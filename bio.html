@@ -170,6 +170,10 @@
             padding-right: 8vw;
         }
 
+        .bay--origin {
+            flex-wrap: wrap;
+        }
+
         .portrait {
             position: relative;
             flex: 0 0 auto;
@@ -381,6 +385,100 @@
             margin-top: 0.7rem;
         }
 
+        .sandbox {
+            position: relative;
+            flex: 0 0 100%;
+            width: min(42rem, 100%);
+            max-width: 42rem;
+            margin: 4.5vh auto 0;
+            padding: 2.2rem 2.05rem 1.65rem;
+            color: #2a2116;
+            background-color: #e4c89a;
+            background-image:
+                radial-gradient(ellipse 88% 48% at 14% -8%, rgba(255, 248, 226, 0.7), transparent 56%),
+                radial-gradient(ellipse 46% 36% at 78% 42%, rgba(255, 236, 196, 0.28), transparent 70%),
+                radial-gradient(ellipse 60% 50% at 108% 112%, rgba(138, 86, 38, 0.24), transparent 58%),
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.26 0 0 0 0 0.1 0 0 0 0.2 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            border: 12px solid #2a1d14;
+            box-shadow:
+                0 0 0 1px rgba(212, 168, 96, 0.78),
+                inset 0 0 0 1px rgba(255, 244, 214, 0.5),
+                inset 0 18px 26px rgba(255, 248, 230, 0.3),
+                inset 0 -20px 30px rgba(112, 68, 28, 0.16),
+                0 22px 36px rgba(0, 0, 0, 0.42);
+        }
+
+        .sandbox-pegs {
+            position: absolute;
+            inset: -18px;
+            pointer-events: none;
+            background:
+                linear-gradient(#6a4630, #3a2818) left top / 16px 16px no-repeat,
+                linear-gradient(#6a4630, #3a2818) right top / 16px 16px no-repeat,
+                linear-gradient(#6a4630, #3a2818) left bottom / 16px 16px no-repeat,
+                linear-gradient(#6a4630, #3a2818) right bottom / 16px 16px no-repeat;
+        }
+
+        .sandbox h2 {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -58%);
+            margin: 0;
+            padding: 0.4rem 1.05rem 0.34rem;
+            background: #1a140f;
+            border: 1px solid #d4a45a;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.68rem;
+            font-weight: 700;
+            letter-spacing: 0.42em;
+            text-indent: 0.42em;
+            text-transform: uppercase;
+            color: #f0e2c8;
+        }
+
+        .sandbox p {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            font-size: 1.14rem;
+            line-height: 1.58;
+            color: #2a2116;
+        }
+
+        .sandbox p + p {
+            margin-top: 0.85rem;
+        }
+
+        .sandbox p:first-of-type::first-letter {
+            float: left;
+            font-weight: 600;
+            font-size: 3.35rem;
+            line-height: 0.78;
+            padding: 0.14rem 0.42rem 0 0;
+            color: #6e3f1c;
+        }
+
+        .sandbox-rake {
+            height: 12px;
+            margin: 1.25rem 7% 0.2rem;
+            border: 0;
+            background: repeating-linear-gradient(
+                180deg,
+                transparent 0 3px,
+                rgba(92, 58, 28, 0.3) 3px 4px
+            );
+        }
+
+        .sandbox p.sandbox-coda {
+            margin-top: 0.15rem;
+            text-align: center;
+            font-style: italic;
+            font-size: 1.22rem;
+            letter-spacing: 0.08em;
+            color: #5c4030;
+        }
+
         .cabinet {
             position: relative;
             width: min(34rem, 78vw);
@@ -574,6 +672,34 @@
                 font-size: 0.98rem;
             }
 
+            .sandbox {
+                margin-top: 3.5vh;
+                padding: 1.75rem 1.15rem 1.3rem;
+            }
+
+            .sandbox-pegs {
+                inset: -12px;
+                background-size: 12px 12px;
+            }
+
+            .sandbox h2 {
+                font-size: 0.6rem;
+                letter-spacing: 0.28em;
+                text-indent: 0.28em;
+            }
+
+            .sandbox p {
+                font-size: 1.02rem;
+            }
+
+            .sandbox p:first-of-type::first-letter {
+                font-size: 2.55rem;
+            }
+
+            .sandbox p.sandbox-coda {
+                font-size: 1.08rem;
+            }
+
             #realm-title {
                 display: none;
             }
@@ -610,7 +736,7 @@
             </article>
         </section>
 
-        <section class="bay bay--left" id="tie">
+        <section class="bay bay--left bay--origin" id="tie">
             <figure class="portrait">
                 <span class="portrait-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
                 <img src="art/bio/01-tie.jpg" alt="Riku Richard Multimieli tiellä" width="768" height="1024" decoding="async">
@@ -621,6 +747,18 @@
                 <blockquote>Lasi päättää, mitkä kasvot saapuvat.</blockquote>
                 <p>Hän istuu vyön alla, takki kaulassa, ja katsoo ohi. Tie ei kysy nimeä. Se tarjoaa taajuuden, ja hän kulkee sen läpi, kunnes metsänreuna on pelkkää valoa.</p>
                 <p>Takki on liturgia. Tarinaa ei ajeta. Se annetaan tulla.</p>
+            </article>
+            <article class="sandbox" id="minusta">
+                <span class="sandbox-pegs" aria-hidden="true"></span>
+                <h2>Minusta</h2>
+                <p>Keskiaikaiseen sävyyn, sillä sävyllä, joka ei ano lupaa omalta vuosisadaltaan.</p>
+                <p>Kasvoin Nokia-huuman kuumeessa, Hervannan Research Centerillä, kulttuurien sulatusuunissa. Leikin siellä sillä aikaa, kun äitini oli töissä. Maasto oli outo: lasia, betonia, vieraita kieliä ja koneiden hiljaista ylpeyttä. Siinä opin, että maailma on laboratorio jo ennen kuin kukaan suostuu kutsumaan sitä sellaiseksi.</p>
+                <p>Samaan outoon maastoon palasin myöhemmin itse. Suoritin bioteknologian tutkinnon ja erikoistuin tekoälyyn, paluuna samalle pihalle, tällä kertaa aikuisen avaimilla.</p>
+                <p>Suurimman osan elämästäni olen viettänyt ajatellen. Maailma, psykologia ja tieteet eivät ole olleet sivupolkuja. Ne ovat olleet ilmasto, jossa olen asunut.</p>
+                <p>Olen kulkenut kahden kuukauden matkoja, Baliin, Italiaan, Thaimaahan ja Meksikoon, ja ammentanut sieluani muinaisraunioista ja taiteesta. Rauniot eivät olleet nähtävyyksiä. Ne olivat peilejä, jotka muistivat minut ennen minua.</p>
+                <p>Kahdenkymmenen ikävuoteni tienoilla vedin kymmenentuhannen ihmisen aivokemian ryhmää. Sen tarkoitus oli psykonautiikka ja itsetutkiskelu: yhteinen yritys katsoa sisäänpäin niin pitkälle, että kartta alkaa vastata.</p>
+                <hr class="sandbox-rake">
+                <p class="sandbox-coda">Saaga jatkuu.</p>
             </article>
         </section>
 
