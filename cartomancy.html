@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cartomancy</title>
-    <meta name="description" content="Cartomancy: the lands of Beliefs, Changes, and Powers, thirteen cards each, read as a fork of the tarot.">
+    <meta name="description" content="Cartomancy: the lands of Beliefs, Changes, Powers, and Relations, thirteen cards each, read as a fork of the tarot.">
     <meta name="theme-color" content="#8d6aae">
     <link rel="canonical" href="https://taikoi.netlify.app/cartomancy.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Aivoinko">
     <meta property="og:title" content="Cartomancy">
-    <meta property="og:description" content="Cartomancy: the lands of Beliefs, Changes, and Powers, thirteen cards each, read as a fork of the tarot.">
+    <meta property="og:description" content="Cartomancy: the lands of Beliefs, Changes, Powers, and Relations, thirteen cards each, read as a fork of the tarot.">
     <meta property="og:url" content="https://taikoi.netlify.app/cartomancy.html">
     <meta property="og:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Cartomancy">
-    <meta name="twitter:description" content="Cartomancy: the lands of Beliefs, Changes, and Powers, thirteen cards each, read as a fork of the tarot.">
+    <meta name="twitter:description" content="Cartomancy: the lands of Beliefs, Changes, Powers, and Relations, thirteen cards each, read as a fork of the tarot.">
     <meta name="twitter:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <link rel="apple-touch-icon" href="AiiAold.8dde82cb.jpg">
     <link rel="preconnect" href="https://unpkg.com" crossorigin>
@@ -451,9 +451,11 @@
         #deck-beliefs[hidden],
         #deck-changes[hidden],
         #deck-powers[hidden],
+        #deck-relations[hidden],
         #suit-intro[hidden],
         #suit-intro-changes[hidden],
-        #suit-intro-powers[hidden] {
+        #suit-intro-powers[hidden],
+        #suit-intro-relations[hidden] {
             display: none;
         }
 
@@ -581,14 +583,10 @@
         <div class="land-bar">
             <label for="land-select">Maa / Land</label>
             <select id="land-select" autocomplete="off">
-                <optgroup label="Open">
-                    <option value="beliefs" selected>I · Beliefs</option>
-                    <option value="changes">II · Changes</option>
-                    <option value="powers">III · Powers</option>
-                </optgroup>
-                <optgroup label="Sealed">
-                    <option value="sealed-iv">IV · Sealed</option>
-                </optgroup>
+                <option value="beliefs" selected>I · Beliefs</option>
+                <option value="changes">II · Changes</option>
+                <option value="powers">III · Powers</option>
+                <option value="relations">IV · Relations</option>
             </select>
         </div>
 
@@ -1255,13 +1253,234 @@
             </section>
         </div>
 
+        <article id="suit-intro-relations" class="suit-intro" hidden>
+            <p class="suit-kicker">Maa IV</p>
+            <h2>Relations</h2>
+            <blockquote>A relation is not a feeling between two people. It is the third thing that begins when they do not look away.</blockquote>
+            <p>This is the fourth land. Thirteen cards, and not a costume of any older deck. Ten weathers of a bond, then three who walk them: the Seeker, the Keeper, the Master.</p>
+            <p>Read a card for the bond it names. The picture is already the between. Fortune can wait.</p>
+        </article>
+
+        <nav class="suit-index" id="index-relations" aria-label="Cards of Relations" hidden>
+            <a href="#fate">I Fate</a>
+            <a href="#duality">II Duality</a>
+            <a href="#tension">III Tension</a>
+            <a href="#authenticity">IV Authenticity</a>
+            <a href="#exploration">V Exploration</a>
+            <a href="#reflection">VI Reflection</a>
+            <a href="#language">VII Language</a>
+            <a href="#celebration">VIII Celebration</a>
+            <a href="#solitude">IX Solitude</a>
+            <a href="#equilibrium">X Equilibrium</a>
+            <a href="#acceptance">XI Acceptance</a>
+            <a href="#love">XII Love</a>
+            <a href="#unity">XIII Unity</a>
+        </nav>
+
+        <div id="deck-relations" hidden>
+            <section class="card" id="fate">
+                <figure>
+                    <img src="art/cartomancy/relations/01-fate.png" alt="Root of Relations, Fate" width="613" height="1024" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">I · Root of Relations</p>
+                    <h2>Fate</h2>
+                    <blockquote>You do not choose the tree. You notice you are already a branch.</blockquote>
+                    <p>A face of bark and moss, antlers of bare wood, a beard of roots, leaves gathered at the chest. Fate is the relation that was growing before either person arrived. The branches do not ask permission. They record where the bond already went.</p>
+                    <p>This is the root, because a bond that has no history is only a meeting. Fate is the history that was underway.</p>
+                    <p class="reading-use"><span>In a reading</span> The connection is older than the decision to notice it. Tend what is already growing. Do not pretend you planted it today.</p>
+                </article>
+            </section>
+
+            <section class="card" id="duality">
+                <figure>
+                    <img src="art/cartomancy/relations/02-duality.png" alt="Relations, Duality" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">II · Relations</p>
+                    <h2>Duality</h2>
+                    <blockquote>Two hands. The smoke is the third thing they make.</blockquote>
+                    <p>An elder under a huge green turban, a gold skull at the chest, one hand closed on a stem and the other open, pale smoke rising between them. Duality is the relation of two that refuse to collapse into one. The turban is the weather they share. The face stays its own.</p>
+                    <p>A bond that erases one of its members is no longer a relation. It is an occupation.</p>
+                    <p class="reading-use"><span>In a reading</span> Keep both sides intact. The work is the smoke between them, not the victory of either hand.</p>
+                </article>
+            </section>
+
+            <section class="card" id="tension">
+                <figure>
+                    <img src="art/cartomancy/relations/03-tension.png" alt="Relations, Tension" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">III · Relations</p>
+                    <h2>Tension</h2>
+                    <blockquote>The offering and the wound are the same stream.</blockquote>
+                    <p>An old man pours from a cup into the mouth of a living tree, and what leaves the cup is red. A teapot waits on the floor. Tension is the relation that continues because neither side will set the vessel down. Care and injury are traveling in one line.</p>
+                    <p>The tree is not a guest. It is the other party, rooted, and it is drinking.</p>
+                    <p class="reading-use"><span>In a reading</span> Name what is being poured. The bond can survive the red stream. It cannot survive pretending the stream is tea.</p>
+                </article>
+            </section>
+
+            <section class="card" id="authenticity">
+                <figure>
+                    <img src="art/cartomancy/relations/04-authenticity.png" alt="Relations, Authenticity" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">IV · Relations</p>
+                    <h2>Authenticity</h2>
+                    <blockquote>No one at the table is performing the species the other expected.</blockquote>
+                    <p>A white-bearded man sits with three bears over papers and a candle. A dog sleeps under the cloth. Jars and loose pages cover the floor. Authenticity is the relation in which each member arrives as what they are. The bears are not guests in costume. The man is not a bear. They are reading the same page.</p>
+                    <p>A bond that requires a disguise is a negotiation with a mask. This table has put the masks on the floor.</p>
+                    <p class="reading-use"><span>In a reading</span> Come as you are, and let the other do the same. The page in the middle only works if both hands are real.</p>
+                </article>
+            </section>
+
+            <section class="card" id="exploration">
+                <figure>
+                    <img src="art/cartomancy/relations/05-exploration.png" alt="Relations, Exploration" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">V · Relations</p>
+                    <h2>Exploration</h2>
+                    <blockquote>The sea is the other party. The bottles are the attempts.</blockquote>
+                    <p>A figure leans over a table of colored glass on a pier, ships at the horizon, a skull watching from the wall, a small vial held to the light. Exploration is the relation you keep with what you have not yet named. Each bottle is a previous guess. The water does not correct them. It stays.</p>
+                    <p>The work is not to finish the other. It is to keep a clean glass and look again.</p>
+                    <p class="reading-use"><span>In a reading</span> Treat the bond as unfinished on purpose. Ask one more question before you cork the bottle.</p>
+                </article>
+            </section>
+
+            <section class="card" id="reflection">
+                <figure>
+                    <img src="art/cartomancy/relations/06-reflection.png" alt="Relations, Reflection" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">VI · Relations</p>
+                    <h2>Reflection</h2>
+                    <blockquote>The moths landed because the light was quiet.</blockquote>
+                    <p>A pale woman in profile, eyes lowered, white moths moving around her hair and shoulder. Reflection is the relation of a person to the image that comes back. The moths are not an audience. They are the thoughts that found a place to rest because no one was performing for them.</p>
+                    <p>A bond that cannot bear a silence has not yet met itself. This card is that meeting, seen from the side.</p>
+                    <p class="reading-use"><span>In a reading</span> Stop arranging your face. Let the other, or your own image, arrive without being directed.</p>
+                </article>
+            </section>
+
+            <section class="card" id="language">
+                <figure>
+                    <img src="art/cartomancy/relations/07-language.png" alt="Relations, Language" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">VII · Relations</p>
+                    <h2>Language</h2>
+                    <blockquote>The hand is offering a sentence that has not chosen its word.</blockquote>
+                    <p>A seated elder in teal, one palm open, glyphs already cut into the wall behind, vessels and small fires at the feet. Language is the relation that lets two interiors occupy one sound. The wall has been written on. The hand has not yet decided what to add.</p>
+                    <p>Speech is not the opposite of the bond. It is one of the ways the bond becomes a place both can stand.</p>
+                    <p class="reading-use"><span>In a reading</span> Say the thing in a form the other can enter. A private language is a locked room with two people outside it.</p>
+                </article>
+            </section>
+
+            <section class="card" id="celebration">
+                <figure>
+                    <img src="art/cartomancy/relations/08-celebration.png" alt="Relations, Celebration" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">VIII · Relations</p>
+                    <h2>Celebration</h2>
+                    <blockquote>The torch is not a leader. It is the excuse the circle needed.</blockquote>
+                    <p>A crowd stands in a forest around a figure who lifts a flame, arms raised, water in the foreground, many bodies turned toward the same light. Celebration is the relation that becomes visible only when more than two agree to be glad in public. The joy is shared, or it is only a mood.</p>
+                    <p>The circle does not erase anyone in it. It gives the bond a night it can be seen.</p>
+                    <p class="reading-use"><span>In a reading</span> Mark the bond where others can witness it. A private gladness is real. A celebrated one has a place to return to.</p>
+                </article>
+            </section>
+
+            <section class="card" id="solitude">
+                <figure>
+                    <img src="art/cartomancy/relations/09-solitude.png" alt="Relations, Solitude" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">IX · Relations</p>
+                    <h2>Solitude</h2>
+                    <blockquote>The scales are still in use. The other chair is empty.</blockquote>
+                    <p>An elder sits alone at a table of coins, small cups, a flame, and a balance, with instruments hanging in the dark. Solitude is a relation with the absent. The weighing continues. Someone is being measured who is not in the room, and the measurer knows their weight by heart.</p>
+                    <p>Being alone is not the end of a bond. It is the form a bond takes when one of its members is elsewhere, or gone, or not yet come.</p>
+                    <p class="reading-use"><span>In a reading</span> Keep the table set, and do not pretend the empty side is a failure. Solitude is the bond practiced at a distance.</p>
+                </article>
+            </section>
+
+            <section class="card" id="equilibrium">
+                <figure>
+                    <img src="art/cartomancy/relations/10-equilibrium.png" alt="Relations, Equilibrium" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">X · Relations</p>
+                    <h2>Equilibrium</h2>
+                    <blockquote>She is not alone. The birds and the water are doing their half.</blockquote>
+                    <p>A woman in white sits in a hanging garden, bare feet, hair bound, birds crossing a pale sphere, platforms of green suspended in mist. Equilibrium is the relation that does not need to move in order to be mutual. Nothing is being won. The garden holds because each part keeps its own weight.</p>
+                    <p>The last of the ten weathers, because a bond that cannot rest has not yet become a place.</p>
+                    <p class="reading-use"><span>In a reading</span> Stop adjusting. The balance is already the bond. A correction now would be a new argument.</p>
+                </article>
+            </section>
+
+            <section class="card card--court" id="acceptance">
+                <figure>
+                    <img src="art/cartomancy/relations/11-acceptance.png" alt="Seeker of Relations, Acceptance" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">XI · Seeker of Relations</p>
+                    <h2>Acceptance</h2>
+                    <blockquote>The spear is grounded. The antlers are what grew.</blockquote>
+                    <p>A figure with a beard of moss and a crown of antlers sits in a living chair, a spear at rest, a small skull in the ferns. Acceptance is the court of the one who stops arguing with what the relation already is. The weapon is not raised. The body has taken the shape of the place.</p>
+                    <p>The Seeker does not improve the bond. The Seeker agrees to see it.</p>
+                    <p class="reading-use"><span>In a reading</span> Put the spear down. What remains after the argument is the relation you actually have.</p>
+                </article>
+            </section>
+
+            <section class="card card--court" id="love">
+                <figure>
+                    <img src="art/cartomancy/relations/12-love.png" alt="Keeper of Relations, Love" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">XII · Keeper of Relations</p>
+                    <h2>Love</h2>
+                    <blockquote>The flowers are not decoration. They are the bond becoming visible.</blockquote>
+                    <p>A face meets you, hair like a pale river, leaves and blossoms caught in it, the throat grown through with vine. Love is what the Keeper holds: not a feeling that visits and leaves, a structure that keeps growing through the person who agreed to be its ground.</p>
+                    <p>The eyes are open. A love that cannot look is only a hunger with a softer name.</p>
+                    <p class="reading-use"><span>In a reading</span> Let the bond show on you. Keeping it means remaining visible to the one it joins you to.</p>
+                </article>
+            </section>
+
+            <section class="card card--court" id="unity">
+                <figure>
+                    <img src="art/cartomancy/relations/13-unity.png" alt="Master of Relations, Unity" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">XIII · Master of Relations</p>
+                    <h2>Unity</h2>
+                    <blockquote>The cracks are the joints. The light is what the joints agreed to carry.</blockquote>
+                    <p>A body of cut stone and circuit, vines at the shoulder, a white current in the chest, one hand raised among leaves. Unity is not the erasure of the two. It is the masonry in which difference still shows, and still conducts. Each tile keeps its edge.</p>
+                    <p>The Master does not abolish the suit. Fate, tension, solitude, love — they are the courses of the wall. They have stopped being rivals for the whole.</p>
+                    <p class="reading-use"><span>In a reading</span> Join without sanding the differences flat. What conducts through the joints is the bond. The joints themselves stay.</p>
+                </article>
+            </section>
+        </div>
+
         <div id="deck-sealed" hidden>
             <article class="sealed-plate">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
                 <p class="suit-kicker">Unopened</p>
                 <h2>This land is not yet drawn.</h2>
                 <p>The fork has other countries. Their cards are still in the dark, and a name given too early would be a lie with a border.</p>
-                <p>Return to an open land. Beliefs, Changes, and Powers can be read.</p>
+                <p>Return to an open land. Beliefs, Changes, Powers, and Relations can be read.</p>
             </article>
         </div>
 
@@ -1285,7 +1504,7 @@
         const landSelect = document.getElementById('land-select');
         const sealed = document.getElementById('deck-sealed');
         const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const OPEN_LANDS = ['beliefs', 'changes', 'powers'];
+        const OPEN_LANDS = ['beliefs', 'changes', 'powers', 'relations'];
 
         function isMobile() {
             return window.matchMedia('(max-width: 768px)').matches;
