@@ -51,7 +51,7 @@
             margin: 0;
             overflow-x: hidden;
             overflow-y: auto;
-            background-color: #070604;
+            background-color: #0c0614;
             font-family: 'Cormorant Garamond', serif;
             color: var(--text-color);
         }
@@ -71,12 +71,15 @@
             inset: 0;
             pointer-events: none;
             z-index: 4;
-            background: radial-gradient(ellipse at center, transparent 36%, rgba(7, 6, 4, 0.78) 100%);
+            background: radial-gradient(ellipse at center, transparent 22%, rgba(8, 4, 14, 0.42) 58%, rgba(8, 4, 14, 0.86) 100%);
         }
 
         header {
-            position: relative;
-            z-index: 10;
+            position: absolute;
+            top: 3.2vh;
+            left: 0;
+            right: 0;
+            z-index: 8;
             text-align: center;
             outline: none;
             -webkit-tap-highlight-color: transparent;
@@ -111,50 +114,140 @@
             opacity: 0.5;
             background: radial-gradient(circle at center,
                 rgba(255, 248, 230, 0.95) 0%,
-                rgba(217, 164, 65, 0.72) 26%,
-                rgba(47, 109, 58, 0.32) 56%,
-                rgba(7, 6, 4, 1) 100%);
+                rgba(217, 164, 65, 0.55) 18%,
+                rgba(120, 40, 180, 0.4) 48%,
+                rgba(12, 6, 20, 1) 100%);
         }
 
         #hall {
+            --passage: 0;
             position: relative;
             z-index: 5;
             opacity: 0;
         }
 
         .hero {
-            min-height: 68vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 1.15rem;
-            padding: 5vh 1.5rem 0;
+            position: relative;
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: grid;
+            place-items: center;
+            padding: 10vh 1.2rem 12vh;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            width: 1px;
+            height: 18vh;
+            transform: translateX(-50%);
+            background: linear-gradient(to bottom, transparent, rgba(217, 164, 65, 0.72));
+            pointer-events: none;
+        }
+
+        .oculus {
+            position: relative;
+            z-index: 1;
+            width: min(74vmin, 720px);
+            aspect-ratio: 1;
+            display: grid;
+            place-items: center;
+            transform: translateY(calc(var(--passage) * -7vh)) scale(calc(1 - var(--passage) * 0.05));
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .oculus .well,
+        .oculus .sigil,
+        .word {
+            grid-area: 1 / 1;
+        }
+
+        .oculus .well {
+            width: 128%;
+            height: 128%;
+            object-fit: cover;
+            mix-blend-mode: screen;
+            opacity: 0.9;
+            -webkit-mask-image: radial-gradient(circle at center, #000 18%, rgba(0, 0, 0, 0.85) 42%, transparent 68%);
+            mask-image: radial-gradient(circle at center, #000 18%, rgba(0, 0, 0, 0.85) 42%, transparent 68%);
+        }
+
+        .oculus .sigil {
+            width: 68%;
+            height: auto;
+            opacity: 0.9;
+            filter: drop-shadow(0 0 22px rgba(217, 164, 65, 0.28));
+        }
+
+        .word {
+            position: relative;
+            z-index: 3;
+            width: 78%;
+            justify-self: center;
+            align-self: center;
+        }
+
+        .word::before {
+            content: '';
+            position: absolute;
+            left: -12%;
+            right: -12%;
+            top: -38%;
+            bottom: -38%;
+            background: radial-gradient(ellipse at center, rgba(8, 4, 14, 0.82) 0%, rgba(8, 4, 14, 0.42) 42%, transparent 72%);
+            z-index: -1;
         }
 
         #metalogs {
-            width: min(52vw, 520px);
+            width: 100%;
             height: auto;
             display: block;
-        }
-
-        @media (max-width: 720px) {
-            #metalogs {
-                width: min(78vw, 560px);
-            }
+            filter: drop-shadow(0 12px 16px rgba(0, 0, 0, 0.72));
         }
 
         #logs {
-            max-width: 60rem;
-            margin: 0 auto;
-            padding: 0 1.25rem 14vh;
+            position: relative;
+            margin: 0;
+            padding: 0 0 18vh;
+        }
+
+        #logs::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 8vh;
+            width: 1px;
+            background: linear-gradient(to bottom, rgba(217, 164, 65, 0.72), rgba(150, 70, 200, 0.28) 62%, transparent);
+            pointer-events: none;
         }
 
         .folio {
-            max-width: 38rem;
-            margin: 0 auto 4.2rem;
+            position: relative;
+            max-width: none;
+            width: min(32rem, 40vw);
+            margin: 0 10vw 16vh auto;
             padding-bottom: 1.6rem;
             border-bottom: 1px solid rgba(217, 164, 65, 0.28);
+            background: linear-gradient(90deg, transparent, rgba(8, 4, 14, 0.5) 10%, rgba(8, 4, 14, 0.74) 48%, rgba(8, 4, 14, 0.5) 90%, transparent);
+            padding: 1.1rem 1.3rem 1.5rem;
+            transform: perspective(1400px) rotateY(-2deg);
+            transform-origin: 80% center;
+            transition: transform 0.45s ease;
+        }
+
+        .folio::after {
+            content: '';
+            position: absolute;
+            top: 1.7rem;
+            left: -8vw;
+            width: 8vw;
+            height: 1px;
+            background: linear-gradient(to left, rgba(217, 164, 65, 0.7), transparent);
+            pointer-events: none;
         }
 
         .folio h2,
@@ -194,9 +287,11 @@
         }
 
         .folio.folio--terminal {
-            max-width: 900px;
-            width: 90%;
-            margin: 1.6rem auto 4.2rem;
+            max-width: none;
+            width: min(38rem, 46vw);
+            margin: 0 0 16vh 8vw;
+            transform: perspective(1400px) rotateY(2deg);
+            transform-origin: 20% center;
             padding: 30px;
             border: 1px solid rgba(0, 255, 0, 0.3);
             border-radius: 5px;
@@ -206,12 +301,23 @@
             color: #00ff00;
         }
 
+        .folio.folio--terminal::after {
+            left: auto;
+            right: -7vw;
+            background: linear-gradient(to right, rgba(0, 255, 0, 0.4), transparent);
+        }
+
+        .folio:hover,
+        .folio:focus-within {
+            transform: perspective(1400px) rotateY(0deg);
+        }
+
         .folio.folio--terminal::before {
             content: '>>> SYSTEM_ROOT_ACCESS';
             position: absolute;
             top: -10px;
             left: 20px;
-            background: #070604;
+            background: #0c0614;
             padding: 0 10px;
             font-family: 'Courier Prime', monospace;
             font-size: 0.8rem;
@@ -276,9 +382,41 @@
             100% { opacity: 1; }
         }
 
+        @media (max-width: 800px) {
+            .oculus {
+                width: min(92vw, 460px);
+                margin-top: 7vh;
+            }
+
+            .word {
+                width: 88%;
+            }
+
+            #logs::before,
+            .hero::after,
+            .folio::after {
+                display: none;
+            }
+
+            .folio,
+            .folio.folio--terminal {
+                width: min(100%, 40rem);
+                max-width: none;
+                margin-left: auto;
+                margin-right: auto;
+                transform: none;
+            }
+        }
+
         @media (prefers-reduced-motion: reduce) {
             .glitch-text {
                 animation: none;
+            }
+
+            .oculus,
+            .folio,
+            .folio.folio--terminal {
+                transform: none;
             }
         }
 
@@ -307,7 +445,13 @@
             <header>
                 <img src="art/khaeos/khaeos-emblem.png" alt="Khaeos" width="999" height="1004" fetchpriority="high" decoding="async">
             </header>
-            <img id="metalogs" src="art/khaeos/khaeos-metalogs.png" alt="Khaeos Metalogs" width="1505" height="758" decoding="async">
+            <div class="oculus">
+                <img class="well" src="art/khaeos/khaeos-well.jpg" alt="" width="1024" height="1024" decoding="async">
+                <img class="sigil" src="art/khaeos/khaeos-emblem.png" alt="" width="999" height="1004" decoding="async">
+                <div class="word">
+                    <img id="metalogs" src="art/khaeos/khaeos-metalogs.png" alt="Khaeos Metalogs" width="1505" height="758" decoding="async">
+                </div>
+            </div>
         </section>
 
         <section id="logs">
@@ -390,8 +534,8 @@
         const BASE_FOV = 70;
 
         const scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x070604);
-        scene.fog = new THREE.FogExp2(0x070604, 0.012);
+        scene.background = new THREE.Color(0x0c0614);
+        scene.fog = new THREE.FogExp2(0x0c0614, 0.011);
 
         const container = document.getElementById('canvas-container');
         const camera = new THREE.PerspectiveCamera(BASE_FOV, window.innerWidth / window.innerHeight, 0.1, 2000);
@@ -404,7 +548,7 @@
             renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            renderer.setClearColor(0x070604, 1);
+            renderer.setClearColor(0x0c0614, 1);
             renderer.outputColorSpace = THREE.SRGBColorSpace;
             container.appendChild(renderer.domElement);
         } catch (err) {
@@ -437,6 +581,7 @@
         const gold = new THREE.Color(0xd9a441);
         const bone = new THREE.Color(0xf3ead4);
         const green = new THREE.Color(0x7dcea0);
+        const violet = new THREE.Color(0xb46cff);
 
         scene.add(new THREE.AmbientLight(0x3a2c18, 0.35));
         const keyLight = new THREE.PointLight(0xffe2a8, 18, 80, 2);
@@ -505,7 +650,7 @@
             const wordW = rect.width > 8
                 ? (rect.width / window.innerWidth) * view.halfW * 2
                 : Math.min(view.halfW, view.halfH) * 0.7;
-            const ringWorld = wordW * 0.58;
+            const ringWorld = wordW * 0.9;
             const ringScale = ringWorld / 1.42;
             rings.forEach((ring) => ring.scale.setScalar(ringScale));
             keyLight.position.set(mark.position.x, mark.position.y + 1.2, -dist + 10);
@@ -522,7 +667,8 @@
         function paintStarColor(i) {
             const pick = Math.random();
             let color = bone;
-            if (pick > 0.72 && pick <= 0.9) color = gold;
+            if (pick > 0.58 && pick <= 0.78) color = gold;
+            else if (pick > 0.78 && pick <= 0.9) color = violet;
             else if (pick > 0.9) color = green;
             starRGB[i * 3] = color.r;
             starRGB[i * 3 + 1] = color.g;
@@ -608,10 +754,22 @@
         let phaseStart = 0;
         let exiting = false;
         let starSpin = 0;
+        let scrollKick = 0;
+        let lastScrollY = 0;
         const ENTER_MS = 2200;
         const EXIT_MS = 1200;
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         const pointer = { x: 0, y: 0 };
         const camTarget = { x: 0, y: 0 };
+
+        window.addEventListener('scroll', () => {
+            const y = window.scrollY || 0;
+            const delta = Math.min(Math.abs(y - lastScrollY), 90);
+            lastScrollY = y;
+            scrollKick = Math.min(34, scrollKick + delta * 0.2);
+            const passage = Math.min(y / (window.innerHeight * 0.85), 1);
+            hall.style.setProperty('--passage', passage.toFixed(4));
+        }, { passive: true });
 
         function onPointer(e) {
             pointer.x = (e.clientX / window.innerWidth) * 2 - 1;
@@ -698,6 +856,10 @@
             pointer.x = 0;
             pointer.y = 0;
             camera.position.set(0, 0, 0);
+            streakMesh.position.set(0, 0, 0);
+            scrollKick = 0;
+            lastScrollY = window.scrollY || 0;
+            hall.style.setProperty('--passage', '0');
             header.style.pointerEvents = 'none';
             header.style.opacity = '0';
             hall.style.opacity = '0';
@@ -739,9 +901,15 @@
                 temple.scale.setScalar(Math.max(0.001, loomEase));
 
                 if (progress >= 1) {
-                    settlePoints();
-                    streakMesh.visible = false;
-                    pointsMat.opacity = 0.92;
+                    if (reduceMotion) {
+                        settlePoints();
+                        streakMesh.visible = false;
+                        pointsMat.opacity = 0.92;
+                    } else {
+                        streakMesh.visible = true;
+                        streakMat.opacity = 0.7;
+                        pointMesh.visible = false;
+                    }
                     header.style.transition = 'opacity 1.1s ease';
                     hall.style.transition = 'opacity 1.2s ease';
                     header.style.opacity = '1';
@@ -751,7 +919,17 @@
                     mode = 'idle';
                 }
             } else if (mode === 'idle') {
-                writeTempleStars(dt);
+                if (reduceMotion) {
+                    writeTempleStars(dt);
+                } else {
+                    scrollKick *= Math.pow(0.9, dt);
+                    const rush = 6.5 + scrollKick;
+                    writeStreaks(16 + scrollKick * 0.4, rush, dt);
+                    const driftX = pointer.x * 5.5;
+                    const driftY = -pointer.y * 3.4;
+                    streakMesh.position.x += (driftX - streakMesh.position.x) * 0.04 * dt;
+                    streakMesh.position.y += (driftY - streakMesh.position.y) * 0.04 * dt;
+                }
             } else if (mode === 'exit') {
                 const progress = Math.min((time - phaseStart) / EXIT_MS, 1);
                 const ease = progress * progress * progress;
@@ -764,6 +942,7 @@
                 header.style.opacity = String(1 - ease);
                 camTarget.x = 0;
                 camTarget.y = 0;
+                streakMesh.position.set(0, 0, 0);
                 if (flash) flash.style.opacity = String(Math.max(0, (progress - 0.4) / 0.6));
                 if (progress >= 1) {
                     window.location.href = 'index.html';

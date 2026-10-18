@@ -68,10 +68,16 @@ Taikoi/
 │   ├── 10-grove.jpg           # Source still
 │   ├── 11-sigil.jpg           # Source still
 │   ├── 12-chorus.jpg          # Source still
-│   ├── 13-prism.jpg           # Source still
+│   ├── 13-prism.jpg           # Unused still (The Prism hanging removed 2026-10-18)
+│   ├── 14-threshold.jpg       # Source still (iridescent corridor; self-framed hanging)
+│   ├── 15-phaeton.jpg         # Source still (futuristic noir automobile)
+│   ├── 16-spore.jpg           # Source still (1970s pulp sci-fi mushroom)
+│   ├── 17-spire.jpg           # Source still (colossal desert monument)
+│   ├── 18-valkyrie.jpg        # Source still (horned silver warrior queen)
+│   ├── 19-conclave.jpg        # Source still (green elder scholar on throne)
 │   ├── seal-scroll-top.png    # Seal index roller. Black exterior punched
 │   ├── seal-scroll-bottom.png # Matching lower roller
-│   ├── seal-stone.png         # Tall salmiakki basalt menu button. Black exterior punched. Page logo sits in the face
+│   ├── seal-stone.png         # Tall obsidian salmiakki menu button. Black exterior punched. Rainbow sheen in the glass. Page logo sits in the well
 │   ├── physicalus/            # Workshop photographs on physicalus.html (no art frames)
 │   │   ├── 01-hundred.jpg     # 100-layer Damascus pendant in the palm
 │   │   ├── 02-pair.jpg        # Brushed blank beside the etched pendant
@@ -87,7 +93,12 @@ Taikoi/
 │   │   ├── 10-grove-oak.png         # Mid hanging (still + carved oak/antler frame, transparent exterior)
 │   │   ├── 11-sigil-victorian.png   # Hero hanging (gilt frame + gold emblem; well black punched for stars)
 │   │   ├── 12-chorus-layered.png    # Hero hanging (still + multi-layer gilt/velvet frame, transparent exterior)
-│   │   └── 13-prism-spectrum.png    # Hero hanging (still + polychrome Baroque frame, transparent exterior)
+│   │   ├── 14-threshold-baroque.png # Hero hanging; ornate gilt Baroque frame baked into the still (self-framed; exterior punched)
+│   │   ├── 15-phaeton-deco.png      # Square hanging (still + black Art-Deco/amber-neon frame, transparent exterior)
+│   │   ├── 16-spore-nouveau.png     # Large hanging (still + Art-Nouveau gold/red-cabochon frame, transparent exterior)
+│   │   ├── 17-spire-stone.png       # Large hanging (still + weathered limestone classical frame, transparent exterior)
+│   │   ├── 18-valkyrie-iron.png     # Hero hanging (still + blackened-iron horn/bone frame, transparent exterior)
+│   │   └── 19-conclave-oak.png      # Hero/finale hanging (still + bog-oak/verdigris antler-vine frame, transparent exterior)
 │   ├── frames/                # Photographic PNG overlays for later stills
 │       ├── walnut.png
 │       ├── walnut-carved.png
@@ -107,7 +118,11 @@ Taikoi/
 │       ├── grove-oak.png
 │       ├── victorian-gilt.png
 │       ├── layered-gilt.png
-│       └── spectrum-gilt.png
+│       ├── deco-amber.png     # Black Art-Deco + amber neon (The Phaeton)
+│       ├── nouveau-spore.png  # Art-Nouveau gold + red cabochons (The Spore)
+│       ├── stone-spire.png    # Weathered limestone classical (The Spire)
+│       ├── iron-valkyrie.png  # Blackened iron horn/bone (The Valkyrie)
+│       └── oak-conclave.png   # Bog-oak + verdigris antler/vine (The Conclave)
 │   ├── bio/                   # bio.html portraits (CSS cassetta, not precomposed hangings)
 │   │   ├── 01-tie.jpg
 │   │   ├── 02-kaari.jpg
@@ -119,9 +134,10 @@ Taikoi/
 │   │   ├── fragment-hanging.png # Same cassetta; right stile broken; parchment tongue; well punched
 │   │   ├── codex-study.png    # Sealed scroll; transparent ground
 │   │   └── fragment-study.png # Torn cipher scrap; transparent ground
-│   └── khaeos/                # diy_realities.html shows khaeos-emblem.png and khaeos-metalogs.png in the DOM
-│       ├── khaeos-emblem.png  # Hex star sigil. Khaeos hall seal, and the Library choose vanishing point. Not a circle crop
+│   └── khaeos/                # diy_realities.html shows the emblem, the wordmark, and khaeos-well.jpg
+│       ├── khaeos-emblem.png  # Hex star sigil. Hall oculus and seal face, and the Library choose vanishing point. Not a circle crop
 │       ├── khaeos-metalogs.png # Two-line gold wordmark, Goudy Old Style, transparent
+│       ├── khaeos-well.jpg    # Painted hyperspace well, 1024². Black ground, screen-blended behind the oculus
 │       ├── khaeos-logo.png    # Unused. Earlier Greek KHAEOΣ plane texture
 │       ├── chlos.png          # Unused. Black ΧΛΟΣ
 │       ├── hexxacro.png       # Unused. Green hexagram
@@ -131,7 +147,7 @@ Taikoi/
 │       ├── parchment-left.jpg # Unused
 │       ├── parchment-right.jpg # Unused
 │       └── nebula.jpg         # Unused night window
-├── diy_realities.html         # Khaeos Metalogs: emblem, wordmark, seven rings, scroll hall; nav label stays Library
+├── diy_realities.html         # Khaeos Metalogs: oculus over a painted well, seven rings, coasting tunnel, staggered scroll
 ├── gate_left.html             # Crimson left aperture; content TBD
 ├── gate_right.html            # Fragmenta Apocrypha; gold starfield + unfinished folio nave
 ├── seal-menu.css              # Shared seal-index styles (eight subpages). Trigger is the diamond stone button
@@ -152,15 +168,15 @@ No `.gitignore` in the current tree (removed in `85d5131`).
 | `index.html` | `/` | Primary 3D solar system. Nav to System Log (href), Gallery (direct streak warp), Bio (direct streak warp), and Library (warp + on-page wormhole choice). Sun click → `brain.html`. |
 | `brain.html` | `/brain.html` | Starfield + floating manifesto blocks. Seal opens the index; Return → `index.html`. |
 | `pure_systems.html` | `/pure_systems.html` | Green starfield + log copy. Seal opens the index; Return → `index.html`. |
-| `gallery.html` | `/gallery.html` | Black starfield (Three.js warp only) + 2D photographic hangings with draft text plaques. Seal opens the gallery index; Return reverse-warps → `index.html`. Eleven solo bays; hangings alternate left/right on desktop. Last is The Prism in a polychrome Baroque frame. Seal item Physical Arts opens `physicalus.html`. Artificial Arts is this hall. Cartomancy, Musical Theatre, and Mineralogy do not navigate. |
+| `gallery.html` | `/gallery.html` | Black starfield (Three.js warp only) + 2D photographic hangings with draft text plaques. Seal opens the gallery index; Return reverse-warps → `index.html`. Sixteen solo bays; hangings alternate left/right on desktop. Last is The Conclave in a bog-oak/verdigris frame. Seal item Physical Arts opens `physicalus.html`. Artificial Arts is this hall. Cartomancy, Musical Theatre, and Mineralogy do not navigate. |
 | `physicalus.html` | `/physicalus.html` | Side hall of the gallery (Physical Arts). Same black starfield. Three workshop photographs of Damascus jewelry on cool steel plates (no art frames). Seal opens the same gallery index as `gallery.html`. Artificial Arts opens `gallery.html`. Return reverse-warps → `gallery.html`. |
 | `bio.html` | `/bio.html` | Black starfield + scroll hall. Opening name plate, four CSS-framed portraits (`art/bio/`), Finnish draft plaques, a sand tray (`#minusta`) under the first portrait, a Verkko cabinet of outbound work links, closing plate. Seal opens the index; Return reverse-warps → `index.html`. Portraits are not under a `bio/` root folder. |
-| `diy_realities.html` | `/diy_realities.html` | Khaeos Metalogs. Home nav label stays Library. Default wormhole timeout destination. DOM emblem and wordmark, seven smooth rings tracking the wordmark, fixed starfield, scroll hall. Odd folios are green System Log terminals (Multimieli, then Log Entry 2). Even folios stay gold/bone (Log Entry 1, then Log Entry 3). Seal opens the index; Return reverse-warps → `index.html`. |
+| `diy_realities.html` | `/diy_realities.html` | Khaeos Metalogs. Home nav label stays Library. Default wormhole timeout destination. DOM emblem and wordmark over `art/khaeos/khaeos-well.jpg`, seven smooth rings tracking the wordmark, coasting warp streaks after arrival, scroll hall with plates staggered off a center axis. Odd folios are green System Log terminals (Multimieli, then Log Entry 2). Even folios stay gold/bone (Log Entry 1, then Log Entry 3). Seal opens the index; Return reverse-warps → `index.html`. |
 | `gate_left.html` | `/gate_left.html` | Crimson vertical slit. Entered by left seal. Seal opens the index; Return reverse-warps → `index.html`. Title only. |
 | `gate_right.html` | `/gate_right.html` | Fragmenta Apocrypha: gold/zinc starfield + scrollable nave of six unfinished folios. Entered by right seal. Seal opens the index; Return reverse-warps → `index.html`. |
 | `netlify.toml` | n/a | Deployment contract: publish directory and HTTP headers. |
 
-Each HTML file is a **layout wrapper for itself**: `<head>` (meta, import map, fail-open script, fonts, CSS) + `<body>` (chrome + `#canvas-container` + page content) + trailing `<script type="module">` (Three.js scene). There is no shared layout partial or middleware. The eight subpages share `seal-menu.css` and `seal-menu.js` for the logo index. The trigger is `art/seal-stone.png` (punched salmiakki, 132×181px, 104×142px under 768px); the page logo sits in the face, circle-cropped except the Khaeos emblem. `index.html` does not.
+Each HTML file is a **layout wrapper for itself**: `<head>` (meta, import map, fail-open script, fonts, CSS) + `<body>` (chrome + `#canvas-container` + page content) + trailing `<script type="module">` (Three.js scene). There is no shared layout partial or middleware. The eight subpages share `seal-menu.css` and `seal-menu.js` for the logo index. The trigger is `art/seal-stone.png` (punched obsidian salmiakki, 132×216px, 104×170px under 768px); the page logo sits in the well, circle-cropped except the Khaeos emblem. `index.html` does not.
 
 ### Navigation graph
 
@@ -243,7 +259,7 @@ No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
 3. **Loop control:** Prefer `renderer.setAnimationLoop`; fall back to `requestAnimationFrame`. Pause on `document.hidden`; resume on visible; reset `lastFrameTime` to avoid a huge delta spike.
 4. **Delta time:** `dt = min(deltaMs, 50) / (1000/60)` so motion is frame-rate independent and hitch-capped.
 5. **Pixel ratio:** `Math.min(devicePixelRatio, 2)`.
-6. **Entry/exit:** Scene scale 0.001 → 1 (cubic out) on enter for index / brain / pure_systems; reverse cubic in then `location.href` on exit (brain / pure_systems Return; index sun → `brain.html`). **Gallery and Bio warps** are `#nav-gallery` and `#nav-bio` `preventDefault` → `boost` (~1500 ms teal/bronze streaks + FOV) → `commit` (~900 ms) → `gallery.html` or `bio.html`. Seals stay closed. **Library warp** stays on `index.html` until a destination is chosen: `#nav-diy` `preventDefault` → `boost` (~1500 ms streaks + FOV) → `choose` (~4200 ms hold, flash ~0.4, limen salon in `#wormhole-choice`: one stone lintel, Codex and Fragmenta cassetta wings with the logo in a punched well, inward plaques, non-click studies, and a non-click Khaeos emblem whose ring, scale, and label read `--choose`; prefetch of the three destinations) → `commit` (~900 ms). Timeout commits `forward` → `diy_realities.html`. Left/right seal (or arrow keys) yaw-shear commit → `gate_left.html` / `gate_right.html`. **Do not** insert a loading page for this beat. Gallery/DIY/gate pages start flash at opacity 0.5 and fade it in ~400 ms; gallery is a 2D photographic hanging over a black starfield; Bio is the same black starfield with a scroll of CSS-framed portraits and Finnish plaques; DIY is the Khaeos Metalogs hall: a DOM emblem and wordmark, seven smooth rings tracking the wordmark, a fixed starfield, and a scroll that alternates odd green System Log terminals with even gold/bone folios; left is a crimson vertical slit with stars from +X; right is a gold folio nave over a hex-ornament starfield with stars from −X. Seal click opens the shared index (`seal-menu.js`). Return calls `__aivoinkoSealExit`, which reverse-warps to `index.html`. Close Menu smooth-scrolls `#hall`, `#nave`, `.floating-container`, or `.terminal-container` to the top and folds the list. Physicalus href is `physicalus.html`; Return on that page reverse-warps to `gallery.html`. Artificialus, KIOMRA, Musica, and Mineralogy still have no href. `bfcache` `pageshow` resets warp/FOV/fog/camera pose, hides seals, and replays entry.
+6. **Entry/exit:** Scene scale 0.001 → 1 (cubic out) on enter for index / brain / pure_systems; reverse cubic in then `location.href` on exit (brain / pure_systems Return; index sun → `brain.html`). **Gallery and Bio warps** are `#nav-gallery` and `#nav-bio` `preventDefault` → `boost` (~1500 ms teal/bronze streaks + FOV) → `commit` (~900 ms) → `gallery.html` or `bio.html`. Seals stay closed. **Library warp** stays on `index.html` until a destination is chosen: `#nav-diy` `preventDefault` → `boost` (~1500 ms streaks + FOV) → `choose` (~4200 ms hold, flash ~0.4, limen salon in `#wormhole-choice`: one stone lintel, Codex and Fragmenta cassetta wings with the logo in a punched well, inward plaques, non-click studies, and a non-click Khaeos emblem whose ring, scale, and label read `--choose`; prefetch of the three destinations) → `commit` (~900 ms). Timeout commits `forward` → `diy_realities.html`. Left/right seal (or arrow keys) yaw-shear commit → `gate_left.html` / `gate_right.html`. **Do not** insert a loading page for this beat. Gallery/DIY/gate pages start flash at opacity 0.5 and fade it in ~400 ms; gallery is a 2D photographic hanging over a black starfield; Bio is the same black starfield with a scroll of CSS-framed portraits and Finnish plaques; DIY is the Khaeos Metalogs hall: a DOM emblem and wordmark over a painted well, seven smooth rings tracking the wordmark, coasting warp streaks after arrival, and a scroll that alternates odd green System Log terminals with even gold/bone folios, staggered off a center axis; left is a crimson vertical slit with stars from +X; right is a gold folio nave over a hex-ornament starfield with stars from −X. Seal click opens the shared index (`seal-menu.js`). Return calls `__aivoinkoSealExit`, which reverse-warps to `index.html`. Close Menu smooth-scrolls `#hall`, `#nave`, `.floating-container`, or `.terminal-container` to the top and folds the list. Physicalus href is `physicalus.html`; Return on that page reverse-warps to `gallery.html`. Artificialus, KIOMRA, Musica, and Mineralogy still have no href. `bfcache` `pageshow` resets warp/FOV/fog/camera pose, hides seals, and replays entry.
 
 ### `index.html` simulation specifics
 
@@ -257,9 +273,9 @@ No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
 
 ### `gallery.html` hall specifics
 
-- **2D hangings:** `#hall` is DOM. Eleven precomposed PNGs with transparent exteriors, last `art/hangings/13-prism-spectrum.png`. Elder's gilt black inner slip is punched so the starfield shows between gold and canvas. The Sigil well punches the still's black so the starfield streams through the emblem; `.hanging--void` keeps a small drop-shadow so the hole stays open. `FRAMES` keeps punched overlays under `art/frames/` including `victorian-gilt.png`, `layered-gilt.png`, and `spectrum-gilt.png`. Assets are not under `gallery/` so they do not collide with Netlify Pretty URL `/gallery` (`gallery.html`).
-- **`ARTWORKS`:** `{ src, alt, frame }`. Fourth hanging is The Yantra (`cassetta`). Ninth is Super Victorian gilt (`The Sigil`). Tenth is nested gilt/velvet (`The Chorus`). Eleventh is polychrome Baroque (`The Prism`).
-- **Layout:** `#hall` is a fixed, scrollable overlay (`overflow-y: auto`) on desktop and mobile. Eleven solo bays. Desktop: hanging plus a `.plaque` on the opposite side; odd works slightly left (`bay--left`), even slightly right (`bay--right`). Desktop heights: Nautilus / Altar / Axis `.hanging--large` ~86vh; other heroes ~76vh; Grove ~70vh. `#realm-title` sits after the last bay on desktop and is hidden on mobile. The seal is `position: absolute` on desktop (first-bay padding) and `position: relative` in-flow on mobile so it does not cover the first hanging. Click opens the seal index; it does not warp until Return. Starfield canvas stays pinned. Mobile: bays stack (hanging then plaque) and scroll natively. Optional `?focus=N` scrolls to that bay.
+- **2D hangings:** `#hall` is DOM. Sixteen precomposed PNGs with transparent exteriors, last `art/hangings/19-conclave-oak.png`. Elder's gilt black inner slip is punched so the starfield shows between gold and canvas. The Sigil well punches the still's black so the starfield streams through the emblem; `.hanging--void` keeps a small drop-shadow so the hole stays open. `FRAMES` keeps punched overlays under `art/frames/` including `victorian-gilt.png`, `layered-gilt.png`, and the five bespoke frames `deco-amber.png`, `nouveau-spore.png`, `stone-spire.png`, `iron-valkyrie.png`, `oak-conclave.png`. The Threshold hanging is self-framed (gilt Baroque baked into the still), so it has no separate overlay. Assets are not under `gallery/` so they do not collide with Netlify Pretty URL `/gallery` (`gallery.html`).
+- **`ARTWORKS`:** `{ src, alt, frame }`. Fourth hanging is The Yantra (`cassetta`). Ninth is Super Victorian gilt (`The Sigil`). Tenth is nested gilt/velvet (`The Chorus`). The last six are The Threshold (self-framed, registry `frame: 'gilt'` fallback only — dead code), The Phaeton (`decoAmber`), The Spore (`nouveauSpore`), The Spire (`stoneSpire`), The Valkyrie (`ironValkyrie`), and The Conclave (`oakConclave`). The `ARTWORKS`/`FRAMES` block is vestigial: it only runs when `#hall` has no `.hanging`, which never happens because the bays are hardcoded in the DOM.
+- **Layout:** `#hall` is a fixed, scrollable overlay (`overflow-y: auto`) on desktop and mobile. Sixteen solo bays. Desktop: hanging plus a `.plaque` on the opposite side; odd works slightly left (`bay--left`), even slightly right (`bay--right`). Desktop heights: Nautilus / Altar / Axis / Spore / Spire `.hanging--large` ~86vh; other heroes ~76vh; Grove `.hanging--mid` ~70vh; Phaeton `.hanging--square`. Per-piece glow filters: `.hanging--spectrum` (Threshold), `.hanging--deco` (Phaeton), `.hanging--spore`, `.hanging--stone`, `.hanging--iron`, `.hanging--oak`. `#realm-title` sits after the last bay on desktop and is hidden on mobile. The seal is `position: absolute` on desktop (first-bay padding) and `position: relative` in-flow on mobile so it does not cover the first hanging. Click opens the seal index; it does not warp until Return. Starfield canvas stays pinned. Mobile: bays stack (hanging then plaque) and scroll natively. Optional `?focus=N` scrolls to that bay.
 - **Plaques:** hardcoded English drafts in each bay (`h2` + blockquote + two short paragraphs). Cormorant Garamond body, Orbitron title. Copy is a first pass; not final. Square corners have a thin gilt L-bracket and a 5px diamond via `.plaque-corners`.
 - **Three.js:** starfield + enter/exit streaks only. No OrbitControls, no 3D rails. Scene clear is black (`#000`). When The Sigil bay is in the `#hall` viewport, a second well-frustum streak field (`VOID_COUNT` 1100) streams through the punched black; the hall starfield stays the slow idle points.
 - **Fail-open:** `#hall` hangings remain in the HTML/CSS even if WebGL never starts (`html.ui-ready`).
@@ -352,7 +368,7 @@ There is no API response schema.
 2. **Do not introduce a backend, env secrets, or Netlify functions without a new architecture section** (auth, data store, API contract).
 3. **Do not unpin or CDN-swap Three.js on one page only.**
 4. **Do not assume `taikoi-sun-portal.png` is wired.** It is unused; `AiiAold.8dde82cb.jpg` is the live logo/favicon/sun sprite.
-5. **Do not restyle `diy_realities.html` as the index solar system or the green System Log terminal.** The route is the Khaeos Metalogs hall: DOM images `art/khaeos/khaeos-emblem.png` and `art/khaeos/khaeos-metalogs.png`, seven smooth rings tracking the wordmark, and a scroll that alternates: odd folios reuse the System Log terminal frame (`Courier Prime`, `#00ff00`, `>>> SYSTEM_ROOT_ACCESS`, glitch), even folios stay gold/bone. The page itself is not the System Log. `pure_systems.html` stays the green terminal. Outbound work links live in the Bio Verkko cabinet. `khaeos-logo.png` and the other `art/khaeos/` planes are unused. The home nav label stays Library. If WebGL fails, the emblem, wordmark, and log text stay visible.
+5. **Do not restyle `diy_realities.html` as the index solar system or the green System Log terminal.** The route is the Khaeos Metalogs hall: DOM images `art/khaeos/khaeos-emblem.png`, `art/khaeos/khaeos-metalogs.png`, and `art/khaeos/khaeos-well.jpg`, seven smooth rings tracking the wordmark, a coasting tunnel, and a scroll that alternates: odd folios reuse the System Log terminal frame (`Courier Prime`, `#00ff00`, `>>> SYSTEM_ROOT_ACCESS`, glitch), even folios stay gold/bone, set to either side of a center axis. The page itself is not the System Log. `pure_systems.html` stays the green terminal. Outbound work links live in the Bio Verkko cabinet. `khaeos-logo.png` and the other `art/khaeos/` planes are unused. The home nav label stays Library. If WebGL fails, the emblem, wordmark, and log text stay visible.
 6. **Do not persist user state across pages** unless you add an explicit store; MPA navigations wipe memory.
 7. **Do not raise `setPixelRatio` uncapped** or run the animation loop in background tabs — thermal/battery regressions on mobile.
 8. **Do not load Three.js from a second CDN or a different major** without verifying import-map + OrbitControls paths.
@@ -374,7 +390,7 @@ There is no API response schema.
 | `LICENSE` | Missing despite README MIT claim |
 | Shared CSS/JS modules | `seal-menu.css` / `seal-menu.js` on the eight subpages. Three.js bootstrap is still copied per page. |
 | Seal index realms | Gallery index (`gallery.html`, `physicalus.html`): Physical Arts → `physicalus.html`, Artificial Arts → `gallery.html`. Cartomancy, Musical Theatre, Mineralogy do not navigate. Other six subpages list Section 1–4 and those items do not navigate |
-| Gallery hangings | Eleven hangings on the hall (`01`–`04`, `06`, `08`–`13`). Unused stills `05-pact.jpg` and `07-window.jpg` remain under `art/` |
+| Gallery hangings | Sixteen hangings on the hall (`01`–`04`, `06`, `08`–`12`, `14`–`19`). The Prism (`13`) was removed. Unused stills `05-pact.jpg`, `07-window.jpg`, and `13-prism.jpg` remain under `art/`; the `13-prism-spectrum.png` hanging and `spectrum-gilt.png` frame were deleted |
 | i18n | Shell and other pages are English. `bio.html` body copy is Finnish. |
 | Analytics | None |
 | Automated tests | None |
@@ -459,4 +475,7 @@ Append-only. Newest rows at the **bottom**. Do not rewrite prior rows.
 | 2026-10-18 | Tighten the Bio hall on desktop | bio.html, architecture.md | Each folio and bay was `min-height: 100vh` (close folio 72vh), so the name plate sat about a viewport away from the first portrait | Desktop sections size to their content. Name-to-first-image gap is about 7vh; bay-to-bay about 9vh. Portrait cap stays 50vh. Mobile (`max-width: 768px`) padding and `min-height: 0` unchanged. |
 | 2026-10-18 | Stretch the seal stone into a tall salmiakki | seal-menu.css, art/seal-stone.png, gallery.html, physicalus.html, gate_right.html, brain.html, pure_systems.html, bio.html, architecture.md | The square diamond did not read as a salmiakki; the user asked for more height at the same width | Trigger is 132×181px (104×142px under 768px). Logo stays circular. Desktop clearances: hall and first folio 216px, brain and System Log 220px. Press and the scroll index are unchanged. |
 | 2026-10-18 | Drop the bay swipe on Gallery and Physicalus | gallery.html, physicalus.html, architecture.md | A fast vertical flick often drifted past 48px sideways, and the stale `focusIndex` then smooth-scrolled back to an old bay while momentum was still running | `touchstart` / `touchend` and `setFocus` are gone. `#hall` native scroll and `?focus=N` remain. In-hall Physicalus links still scroll `#hall`. Bio, Khaeos, and the gates never had the swipe. Desktop plaques unchanged. |
+| 2026-10-18 | Remove The Prism and add six new framed gallery hangings | gallery.html, art/hangings/14..19, art/frames/{deco-amber,nouveau-spore,stone-spire,iron-valkyrie,oak-conclave}.png, art/14..19 source stills, deleted art/hangings/13-prism-spectrum.png + art/frames/spectrum-gilt.png, architecture.md | User asked to drop the Prism (judged weak) and add six supplied artworks with frames tailored to each image | New bays after The Chorus, alternating left/right: Threshold (self-framed gilt Baroque), Phaeton (deco-amber), Spore (nouveau-spore), Spire (stone-spire), Valkyrie (iron-valkyrie), Conclave (oak-conclave). Five bespoke frames were AI-generated with a chroma-key panel (green inner / magenta exterior) then composited with PIL; the window insets were measured from alpha. The Threshold image already shipped framed, so only its black exterior was punched. Five new glow classes (`--deco/--spore/--stone/--iron/--oak`) plus reused `--spectrum`. `ARTWORKS`/`FRAMES` registry updated for parity but stays dead code. Verify: hall shows 16 bays; mobile stacks them; `?focus=N` still scrolls. Pitfall: long temp filenames exceeded Windows MAX_PATH during compositing (copied to short names). Index/Physicalus/Bio routes unchanged. |
 | 2026-10-18 | Add a Minusta sand tray under the first Bio portrait | bio.html, architecture.md | The biography needed its own well, separate from the portrait plaques | `#minusta` sits in `#tie`, full width under the Tie plaque. Sand field, walnut rail, corner pegs, brass plate. Finnish first-person draft. Kaari, Vesi, Metsä, and Verkko plaques unchanged. No new font or asset. |
+| 2026-10-18 | Lengthen the seal into rainbow obsidian | seal-menu.css, art/seal-stone.png, gallery.html, physicalus.html, gate_right.html, brain.html, pure_systems.html, bio.html, architecture.md | The basalt salmiakki needed a little more height and a glass that can sit in the starfield | Trigger is 132×216px (104×170px under 768px). Body is black obsidian; violet, teal, and gold stay in the bevel and fractures. Logo stays circular in the well. Desktop clearances: hall and first folio 256px, brain and System Log 260px. Press and the scroll index are unchanged. |
+| 2026-10-18 | Open the Khaeos hall into a coasting hyperspace corridor | diy_realities.html, art/khaeos/khaeos-well.jpg, architecture.md | The arrival was a centered column and the tunnel stopped as soon as the title appeared | Hero is a full viewport: painted well, emblem, wordmark. Seven rings still track `#metalogs`. Idle keeps slow warp streaks; scroll speeds them. Plates stagger off a center axis. Odd/even folio faces, copy, seal, and Return are unchanged. `prefers-reduced-motion` uses the slow point field and flat plates. |

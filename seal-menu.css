@@ -10,7 +10,7 @@ header .seal-trigger {
     position: relative;
     display: inline-block;
     width: 132px;
-    height: 181px;
+    height: 216px;
     margin: 0;
     padding: 0;
     border: 0;
@@ -77,7 +77,7 @@ header .seal-trigger img:active {
     left: 50%;
     top: 50%;
     display: block;
-    width: 52%;
+    width: 40%;
     height: auto;
     max-width: none;
     aspect-ratio: 1;
@@ -101,7 +101,7 @@ header .seal-trigger img[src*="khaeos"],
 header .seal-trigger img[src*="khaeos"]:hover,
 header .seal-trigger img[src*="khaeos"]:focus,
 header .seal-trigger img[src*="khaeos"]:active {
-    width: 46%;
+    width: 38%;
     height: auto;
     border-radius: 0;
     object-fit: contain;
@@ -112,7 +112,7 @@ header .seal-trigger img[src*="khaeos"]:active {
 @media (max-width: 768px) {
     header .seal-trigger {
         width: 104px;
-        height: 142px;
+        height: 170px;
     }
 }
 
@@ -121,8 +121,8 @@ header .seal-trigger img[src*="khaeos"]:active {
     left: 50%;
     z-index: 5;
     width: min(17.5rem, 78vw);
-    max-height: calc(100vh - 14.25rem);
-    max-height: calc(100dvh - 14.25rem);
+    max-height: calc(100vh - 16.5rem);
+    max-height: calc(100dvh - 16.5rem);
     padding: 2.6rem 0.85rem 3.15rem;
     box-sizing: border-box;
     transform: translateX(-50%);
