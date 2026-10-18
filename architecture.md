@@ -24,7 +24,7 @@ Authoritative description of the live repository as of 2026-10-18. This file is 
 | Frameworks | None | No React/Svelte/Vue/Next. |
 | 3D | Three.js + OrbitControls | **Pinned `0.160.0`** via HTML import maps → unpkg ESM. |
 | Styling | Inline `<style>` per HTML file, plus `seal-menu.css` | Page chrome stays inline. The seal index is the one shared stylesheet. No Tailwind or CSS Modules. |
-| Fonts | Google Fonts | `Orbitron` + `Rajdhani` + `Cormorant Garamond` 500/italic 500 (index; Cormorant is the Library limen plaques and the Khaeos label); `Orbitron` + `Rajdhani` (brain); `Orbitron` + `Courier Prime` (pure_systems); `Orbitron` + `Cormorant Garamond` (gallery, physicalus, bio, gate_left, gate_right). Seal index uses Cormorant italic 500 + Orbitron on all eight seal pages. `Cinzel` on gate_right folios. `Orbitron` + `Cormorant Garamond` (regular 500 and italic 500) on the Khaeos Metalogs hall (`diy_realities.html`). |
+| Fonts | Google Fonts | `Orbitron` + `Rajdhani` + `Cormorant Garamond` 500/italic 500 (index; Cormorant is the Library limen plaques and the Khaeos label); `Orbitron` + `Rajdhani` (brain); `Orbitron` + `Courier Prime` (pure_systems); `Orbitron` + `Cormorant Garamond` (gallery, physicalus, bio, gate_left, gate_right). Seal index uses Cormorant italic 500 + Orbitron on all eight seal pages. `Cinzel` on gate_right folios. On the Khaeos Metalogs hall (`diy_realities.html`): `Cinzel` 500 and `EB Garamond` 500/italic 500 for the Multimieli folio; `Orbitron` + `Cormorant Garamond` (regular 500 and italic 500) for the three System Log folios. |
 | Database / ORM | None | All content is hardcoded in HTML/JS. |
 | Build tools | None | No Vite, Webpack, Turbopack, or bundler. Netlify publishes the repo root as-is. |
 | Runtime | Browser (WebGL) | Static files on Netlify CDN. No Node.js app runtime, no edge functions, no serverless functions. |
@@ -262,8 +262,8 @@ No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
 ### `physicalus.html` hall specifics
 
 - **Plates:** `#hall` is DOM over the same black starfield as `gallery.html`. Three workshop JPEGs under `art/physicalus/`: `01-hundred.jpg` (984×1024), `02-pair.jpg` (768×1024), `03-ridge.jpg` (768×1024). Each sits on a cool steel card (bevel, 1px sight, glass sheen). No frame PNG and no gilt corners. Sources were already about 1000px on the long edge, so they were not upscaled.
-- **Slips:** English maker's notes beside the plate. Orbitron kicker and credit, Cormorant italic title. Credit is Riimu Takomo with Joni. The patterned pendant is described as 100-layer Damascus. Copy is a first pass.
-- **Layout:** Three solo bays, alternating left/right like the gallery. `#realm-title` follows the last bay on desktop and is hidden on mobile. Seal is absolute on desktop and in-flow on mobile. Mobile stacks plate then slip; optional swipe scrolls to the next bay. Optional `?focus=N`.
+- **Slips:** One English maker's note, on the first plate only (`#hundred`). Orbitron kicker and credit, Cormorant italic title. Credit is Riimu Takomo with Joni. The pendant is 100-layer Damascus. The note's last line links the three views of that same piece: held, set down, turned. Later plates have no second title. A `.thread` under each repeats "The Hundred" and scrolls `#hall` back to `#view-hand`.
+- **Layout:** Three solo bays. The first pairs the plate with the note. The next two are the same pendant, plate plus thread, alternating left/right. `#realm-title` follows the last bay on desktop and is hidden on mobile. Seal is absolute on desktop and in-flow on mobile. Mobile stacks plate then note or thread; optional swipe scrolls to the next bay. Optional `?focus=N`. In-hall `#` links scroll `#hall`, not the document.
 - **Three.js:** Same enter/idle/exit streak field as the gallery (2200 stars, flash 0.28 fading in ~350 ms). No void well, no OrbitControls. Seal Return assigns `__aivoinkoSealExit`, which reverse-warps to `gallery.html`. Fail-open keeps the plates readable.
 - **Route:** Seal index item Physicalus sets `location.href` to `physicalus.html` from any seal page. Assets stay under `art/physicalus/` so they do not collide with Netlify Pretty URL `/physicalus`.
 
@@ -289,7 +289,7 @@ No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
 |---|---|---|
 | **Netlify** | Static hosting, TLS, header injection | Site down if deploy/CDN fails |
 | **unpkg.com** | Three.js ESM + addons | 3D fails; fail-open UI still reveals chrome after 2.5s / on error |
-| **Google Fonts** | Orbitron, Rajdhani, Courier Prime, Cormorant Garamond, Cinzel | Fallback to `sans-serif` / `serif` / `monospace` |
+| **Google Fonts** | Orbitron, Rajdhani, Courier Prime, Cormorant Garamond, Cinzel, EB Garamond | Fallback to `sans-serif` / `serif` / `monospace` |
 | **DeviantArt** | `pure_systems.html` outbound | Link only |
 | **Etsy** | `pure_systems.html` outbound (Kiomra Trionfi listing) | Link only |
 | **SoundCloud** | `pure_systems.html` outbound | Link only |
@@ -360,7 +360,7 @@ There is no API response schema.
 
 | Item | Status |
 |---|---|
-| Khaeos prose | The hall opens with a Finnish GAMMA LOG (Richard Multimieli, Entry 001.7), then duplicates the three System Log entries. `pure_systems.html` still holds only those three English copies and the social links |
+| Khaeos prose | The hall opens with a Finnish Multimieli folio (Entry 001.7, eight paragraphs; the pipe-run sentences were cut from the last). Then the three System Log entries. `pure_systems.html` still holds only those three English copies and the social links |
 | `gate_left.html` copy | Title chrome only; narrative content not written yet |
 | `gate_right.html` folios | Six English drafts with lacunae; not final |
 | `taikoi-sun-portal.png` | Unreferenced binary |
@@ -440,3 +440,5 @@ Append-only. Newest rows at the **bottom**. Do not rewrite prior rows.
 | 2026-10-18 | Open Physicalus as the gallery's photo hall | physicalus.html, art/physicalus/01-hundred.jpg, art/physicalus/02-pair.jpg, art/physicalus/03-ridge.jpg, seal-menu.js, seal-menu.css, architecture.md | The seal realm needed a side gallery for the Damascus jewelry made with Joni at Riimu Takomo, without art frames | Seal item Physicalus goes to `physicalus.html`. Same black starfield as the gallery. Three steel plates, maker's slips. Return reverse-warps to `gallery.html`. Other realms still have no href. Sources were already ~1000px, so they were not upscaled. Gallery hangings and home nav unchanged. |
 | 2026-10-18 | Replace the Library discs with a limen salon | index.html, art/limen/lintel.png, art/limen/codex-hanging.png, art/limen/fragment-hanging.png, art/limen/codex-study.png, art/limen/fragment-study.png, architecture.md | Two floating logos did not show the three fates of the hold | One split stone lintel. Codex and Fragmenta are the same gilt cassetta; the right stile is broken. Logo JPEG sits in a punched well. Inward plaques. Studies do not navigate. The Khaeos emblem, ring, and label read `--choose` and are not a button. Timeout, arrows, and Gallery/Bio direct warps unchanged. `gate_left.html` still has no folio copy. |
 | 2026-10-18 | Add a Finnish Multimieli folio at the top of the Khaeos hall | diy_realities.html, architecture.md | The crypt needed a Richard Multimieli scroll above the copied System Log | First `#logs` folio is GAMMA LOG, Entry 001.7, eight Finnish paragraphs. The three English System Log folios follow. `pure_systems.html` is unchanged. |
+| 2026-10-18 | Set the Multimieli folio in a book face | diy_realities.html, architecture.md | Orbitron plus the log measure made the Finnish scroll read as another terminal entry | `.folio.utterance` uses Cinzel for the kicker and EB Garamond for the lines. Sentence openings are capitalized, including Nietzche. The pipe-run sentence is gone. The three English folios stay Orbitron and Cormorant. |
+| 2026-10-18 | Keep one note for the three Damascus views | physicalus.html, architecture.md | The three plates are the same pendant, so the later bays were separate pieces on the page | The maker's note stays on the first plate. Its last line links held / set down / turned. The other plates keep a thread back to that note. Starfield, steel cards, and Return to the gallery unchanged. |

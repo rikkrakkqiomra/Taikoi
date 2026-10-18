@@ -266,6 +266,92 @@
             color: #9aa6b4;
         }
 
+        .slip .views {
+            margin-top: 0.95rem;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: 1.2rem;
+            line-height: 1.45;
+            color: #d5d2cb;
+        }
+
+        .slip .views a {
+            color: #f4f1ea;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(197, 206, 216, 0.35);
+        }
+
+        .slip .views a[aria-current="page"] {
+            border-bottom-color: #e7eef6;
+        }
+
+        .slip .views a:hover,
+        .slip .views a:focus-visible {
+            border-bottom-color: #e7eef6;
+        }
+
+        .slip .views a:focus-visible,
+        .thread:focus-visible {
+            outline: 1px solid rgba(197, 206, 216, 0.75);
+            outline-offset: 4px;
+        }
+
+        .cluster {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.95rem;
+        }
+
+        .bay--follow .plate {
+            margin: 0;
+        }
+
+        .bay--follow.bay--right {
+            flex-direction: row;
+            justify-content: flex-end;
+        }
+
+        .bay--follow.bay--right .cluster {
+            align-items: flex-end;
+            margin-right: 2vw;
+        }
+
+        .bay--follow.bay--left .cluster {
+            margin-left: 2vw;
+        }
+
+        .thread {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: #c5ced8;
+            text-decoration: none;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: clamp(1.45rem, 2.2vw, 1.9rem);
+            line-height: 1;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.95), 0 0 14px rgba(0, 0, 0, 0.8);
+        }
+
+        .thread i {
+            display: block;
+            width: 1.7rem;
+            height: 1px;
+            background: #c5ced8;
+        }
+
+        .bay--follow.bay--right .thread {
+            flex-direction: row-reverse;
+        }
+
+        .thread:hover,
+        .thread:focus-visible {
+            color: #f4f1ea;
+        }
+
         @keyframes hangIn {
             from {
                 opacity: 0;
@@ -347,6 +433,17 @@
                 font-size: 2.15rem;
             }
 
+            .cluster,
+            .bay--follow.bay--left .cluster,
+            .bay--follow.bay--right .cluster {
+                align-items: center;
+                margin: 0;
+            }
+
+            .bay--follow.bay--right .thread {
+                flex-direction: row;
+            }
+
             #realm-title {
                 display: none;
             }
@@ -378,44 +475,37 @@
         <header>
             <img src="AiiAold.8dde82cb.jpg" alt="Aivoinko Logo" width="120" height="120" fetchpriority="high" decoding="async">
         </header>
-        <section class="bay bay--left">
+        <section class="bay bay--left" id="view-hand">
             <figure class="plate plate--hero">
-                <img src="art/physicalus/01-hundred.jpg" alt="A hundred-layer Damascus pendant held in the palm" decoding="async">
+                <img src="art/physicalus/01-hundred.jpg" alt="The hundred-layer Damascus pendant, held in the palm" decoding="async">
                 <span class="sight" aria-hidden="true"></span>
             </figure>
-            <article class="slip">
-                <p class="kicker">01 · Damascus · 100 layers</p>
+            <article class="slip" id="hundred">
+                <p class="kicker">Damascus · 100 layers</p>
                 <h2>The Hundred</h2>
                 <p class="line">A hundred welds, one face.</p>
                 <p>Folded with Joni at Riimu Takomo. The etch is the count: each pale line is a layer that came through the fire. The hole is for a cord.</p>
+                <p class="views">The same face, <a href="#view-hand" aria-current="page">held</a>, <a href="#view-bench">set down</a>, and <a href="#view-ridge">turned</a>.</p>
                 <p class="credit">Riimu Takomo · with Joni</p>
             </article>
         </section>
-        <section class="bay bay--right">
-            <figure class="plate">
-                <img src="art/physicalus/02-pair.jpg" alt="A brushed steel pendant beside a patterned Damascus pendant" decoding="async">
-                <span class="sight" aria-hidden="true"></span>
-            </figure>
-            <article class="slip">
-                <p class="kicker">02 · Damascus · the pair</p>
-                <h2>The Bench</h2>
-                <p class="line">Pattern beside the blank.</p>
-                <p>One face has been asked to remember the fold. The other still wears the brush. Both were cut in the same sitting, with Joni.</p>
-                <p class="credit">Riimu Takomo · with Joni</p>
-            </article>
+        <section class="bay bay--follow bay--right" id="view-bench">
+            <div class="cluster">
+                <figure class="plate">
+                    <img src="art/physicalus/02-pair.jpg" alt="The same Damascus pendant, set down" decoding="async">
+                    <span class="sight" aria-hidden="true"></span>
+                </figure>
+                <a class="thread" href="#view-hand"><i aria-hidden="true"></i><span>The Hundred</span></a>
+            </div>
         </section>
-        <section class="bay bay--left">
-            <figure class="plate">
-                <img src="art/physicalus/03-ridge.jpg" alt="The faceted Damascus pendant turned between finger and thumb" decoding="async">
-                <span class="sight" aria-hidden="true"></span>
-            </figure>
-            <article class="slip">
-                <p class="kicker">03 · Damascus · the ridge</p>
-                <h2>The Ridge</h2>
-                <p class="line">A point that agreed to be worn.</p>
-                <p>Turned in the hand, the planes meet on a ridge and the pattern follows the grind. One hundred layers, between finger and thumb.</p>
-                <p class="credit">Riimu Takomo · with Joni</p>
-            </article>
+        <section class="bay bay--follow bay--left" id="view-ridge">
+            <div class="cluster">
+                <figure class="plate">
+                    <img src="art/physicalus/03-ridge.jpg" alt="The same Damascus pendant, turned" decoding="async">
+                    <span class="sight" aria-hidden="true"></span>
+                </figure>
+                <a class="thread" href="#view-hand"><i aria-hidden="true"></i><span>The Hundred</span></a>
+            </div>
         </section>
         <div id="realm-title">
             <h1>Physicalus</h1>
@@ -456,6 +546,27 @@
                 : bay.offsetTop - Math.max(0, (hall.clientHeight - bay.offsetHeight) / 2);
             hall.scrollTop = Math.max(0, top);
         }
+
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function markView(id) {
+            hall.querySelectorAll('.views a').forEach((link) => {
+                if (link.getAttribute('href') === '#' + id) link.setAttribute('aria-current', 'page');
+                else link.removeAttribute('aria-current');
+            });
+        }
+        hall.addEventListener('click', (event) => {
+            const link = event.target.closest('a[href^="#"]');
+            if (!link || !hall.contains(link)) return;
+            const id = link.getAttribute('href').slice(1);
+            const target = document.getElementById(id);
+            if (!target) return;
+            event.preventDefault();
+            const top = isMobile()
+                ? target.offsetTop
+                : target.offsetTop - Math.max(0, (hall.clientHeight - target.offsetHeight) / 2);
+            hall.scrollTo({ top: Math.max(0, top), behavior: reducedMotion ? 'auto' : 'smooth' });
+            if (id === 'view-hand' || id === 'view-bench' || id === 'view-ridge') markView(id);
+        });
 
         const scene = new THREE.Scene();
         scene.background = new THREE.Color(0x000000);
