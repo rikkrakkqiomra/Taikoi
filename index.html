@@ -721,7 +721,7 @@
       width: auto;
       pointer-events: none;
       user-select: none;
-      filter: brightness(0.82) saturate(0.95);
+      filter: brightness(0.96) saturate(1);
       transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease;
     }
 
@@ -729,16 +729,12 @@
       left: -4vw;
       transform: translateY(-50%) scale(1);
       transform-origin: left center;
-      -webkit-mask: linear-gradient(to right, #000 54%, transparent 98%);
-      mask: linear-gradient(to right, #000 54%, transparent 98%);
     }
 
     .gate--fragment .portal {
       right: -4vw;
       transform: translateY(-50%) scale(1);
       transform-origin: right center;
-      -webkit-mask: linear-gradient(to left, #000 54%, transparent 98%);
-      mask: linear-gradient(to left, #000 54%, transparent 98%);
     }
 
     .gate .plaque {
@@ -1014,7 +1010,7 @@
   <div id="warp-flash" aria-hidden="true"></div>
   <div id="wormhole-choice" aria-hidden="true">
     <button type="button" id="seal-left" class="gate gate--codex" aria-label="Codex Operum — scrolls that have been closed">
-      <img class="portal" src="art/limen/codex-portal.jpg" alt="" width="720" height="1280" decoding="async" draggable="false">
+      <img class="portal" src="art/limen/codex-portal.png" alt="" width="720" height="1280" decoding="async" draggable="false">
       <span class="plaque">
         <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
         <span class="kicker">Codex</span>
@@ -1030,7 +1026,7 @@
     </div>
 
     <button type="button" id="seal-right" class="gate gate--fragment" aria-label="Fragmenta Apocrypha — hands that have not finished">
-      <img class="portal" src="art/limen/fragment-portal.jpg" alt="" width="720" height="1280" decoding="async" draggable="false">
+      <img class="portal" src="art/limen/fragment-portal.png" alt="" width="720" height="1280" decoding="async" draggable="false">
       <span class="plaque">
         <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
         <span class="kicker">Fragmenta</span>
