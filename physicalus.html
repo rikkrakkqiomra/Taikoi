@@ -750,16 +750,6 @@
             pointsGeom.attributes.position.needsUpdate = true;
         }
 
-        function setFocus(next) {
-            if (!plates.length) return;
-            focusIndex = Math.max(0, Math.min(plates.length - 1, next));
-            if (isMobile() && bays[focusIndex]) {
-                bays[focusIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
-                return;
-            }
-            scrollHallToFocus();
-        }
-
         function exitAnimation() {
             if (exiting) return;
             exiting = true;
@@ -775,23 +765,6 @@
         }
 
         window.__aivoinkoSealExit = exitAnimation;
-
-        let touchX = null;
-        window.addEventListener('touchstart', (event) => {
-            if (event.target.closest && event.target.closest('header')) return;
-            if (event.touches.length === 1) touchX = event.touches[0].clientX;
-        }, { passive: true });
-        window.addEventListener('touchend', (event) => {
-            if (touchX == null || mode !== 'idle') {
-                touchX = null;
-                return;
-            }
-            const endX = event.changedTouches[0] ? event.changedTouches[0].clientX : touchX;
-            const dx = endX - touchX;
-            touchX = null;
-            if (Math.abs(dx) < 48 || plates.length < 2) return;
-            setFocus(focusIndex + (dx < 0 ? 1 : -1));
-        }, { passive: true });
 
         window.addEventListener('pageshow', () => {
             exiting = false;
