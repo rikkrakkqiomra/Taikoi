@@ -28,7 +28,9 @@
     <link rel="icon" type="image/jpeg" href="AiiAold.8dde82cb.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="seal-menu.css">
+    <script src="seal-menu.js" defer></script>
     <style>
         :root {
             --glass-bg: rgba(18, 0, 4, 0.5);
@@ -308,8 +310,7 @@
             streakMesh.visible = true;
         }
 
-        header.style.cursor = 'pointer';
-        header.addEventListener('click', exitAnimation);
+        window.__aivoinkoSealExit = exitAnimation;
 
         window.addEventListener('pageshow', () => {
             exiting = false;

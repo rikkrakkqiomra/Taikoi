@@ -622,6 +622,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 8vw;
+      overflow: visible;
       pointer-events: none;
       opacity: 0;
       transition: opacity 0.35s ease;
@@ -648,6 +649,7 @@
       box-shadow: 0 0 24px rgba(224, 64, 251, 0.45), 0 0 48px rgba(255, 171, 64, 0.2);
       animation: sealPulse 1.8s ease-in-out infinite;
       outline: none;
+      flex: 0 0 auto;
     }
 
     .wormhole-seal img {
@@ -667,6 +669,7 @@
     }
 
     #seal-left {
+      --relic-w: calc(172vh * 720 / 1280);
       position: relative;
       overflow: visible;
       border: none;
@@ -683,16 +686,23 @@
       box-shadow: none;
     }
 
-    .seal-left-tower {
+    .seal-left-monument {
       position: absolute;
       left: 50%;
       top: 50%;
-      width: 120%;
-      height: 160%;
-      transform: translate(-50%, -43.75%);
+      width: var(--relic-w);
+      height: auto;
+      transform: translate(-50%, -50%);
       z-index: 0;
-      pointer-events: none;
-      overflow: visible;
+      pointer-events: auto;
+    }
+
+    .seal-left-monument img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 0;
+      pointer-events: auto;
     }
 
     .seal-left-eye {
@@ -725,21 +735,21 @@
     .seal-left-pupil {
       position: absolute;
       left: 50%;
-      top: 10%;
-      width: 9%;
-      height: 80%;
+      top: 8%;
+      width: 12%;
+      height: 84%;
       transform: translateX(-50%);
       pointer-events: none;
       border-radius: 50%;
       background: linear-gradient(
         180deg,
         rgba(255, 45, 85, 0) 0%,
-        rgba(255, 45, 85, 0.38) 18%,
-        rgba(255, 220, 190, 0.92) 50%,
-        rgba(255, 45, 85, 0.38) 82%,
+        rgba(255, 45, 85, 0.55) 16%,
+        rgba(255, 230, 210, 0.98) 50%,
+        rgba(255, 45, 85, 0.55) 84%,
         rgba(255, 45, 85, 0) 100%
       );
-      box-shadow: 0 0 10px rgba(255, 80, 90, 0.85);
+      box-shadow: 0 0 14px rgba(255, 80, 90, 0.95);
     }
 
     #seal-left:hover .seal-left-eye,
@@ -761,37 +771,34 @@
     .seal-left-banner {
       position: absolute;
       left: 50%;
-      top: calc(100% + 22%);
-      transform: translateX(-50%);
+      top: calc(50% + var(--relic-w) * 0.421);
+      transform: translate(-50%, -50%);
       z-index: 3;
-      width: min(42vw, 320px);
-      padding: 0.55em 0.75em 0.5em;
-      background: rgba(12, 0, 4, 0.74);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(255, 45, 85, 0.72);
-      box-shadow:
-        0 0 16px rgba(255, 45, 85, 0.28),
-        inset 0 0 12px rgba(255, 45, 85, 0.12);
+      width: calc(var(--relic-w) * 0.26);
+      padding: 0.35em 0.2em;
+      background: none;
+      border: none;
+      box-shadow: none;
       font-family: 'Orbitron', sans-serif;
       font-weight: 900;
       text-transform: uppercase;
       letter-spacing: 0.28em;
-      color: #ffd6de;
+      color: #f4e2d4;
       text-align: center;
-      line-height: 1.2;
+      line-height: 1.15;
+      text-shadow: 0 1px 0 rgba(40, 8, 8, 0.85), 0 0 12px rgba(255, 45, 85, 0.35);
       pointer-events: auto;
     }
 
     .seal-left-banner-line {
       display: block;
-      font-size: clamp(0.42rem, 1.4vw, 0.62rem);
+      font-size: clamp(0.85rem, 2vh, 1.2rem);
       padding-left: 0.28em;
     }
 
     .seal-left-banner-core {
-      margin: 0.18em 0;
-      font-size: clamp(0.52rem, 1.8vw, 0.78rem);
+      margin: 0.12em 0 0;
+      font-size: clamp(1.05rem, 2.7vh, 1.65rem);
       letter-spacing: 0.22em;
       padding-left: 0.22em;
       color: #ff2d55;
@@ -799,7 +806,152 @@
     }
 
     #seal-right {
+      position: relative;
+      overflow: visible;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      animation: none;
+      isolation: isolate;
+    }
+
+    #seal-right:hover,
+    #seal-right:focus-visible {
+      transform: none;
+      border-color: transparent;
+      box-shadow: none;
+    }
+
+    .seal-right-crypt {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 124%;
+      height: 165%;
+      transform: translate(-50%, -43.75%);
+      z-index: 0;
+      pointer-events: none;
+      overflow: visible;
+      filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.42));
+    }
+
+    .seal-right-eye {
+      position: relative;
+      z-index: 2;
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid rgba(212, 175, 55, 0.86);
+      box-shadow:
+        0 0 16px rgba(212, 175, 55, 0.5),
+        0 0 36px rgba(197, 192, 176, 0.22);
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .seal-right-iris {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      pointer-events: none;
+      box-shadow:
+        inset 0 0 0 7px rgba(212, 175, 55, 0.48),
+        inset 0 0 18px rgba(212, 175, 55, 0.42);
+      animation: sealPulse 1.8s ease-in-out infinite;
       animation-delay: 0.4s;
+      -webkit-mask: conic-gradient(from 28deg, transparent 0 48deg, #000 48deg 360deg);
+      mask: conic-gradient(from 28deg, transparent 0 48deg, #000 48deg 360deg);
+      transition: box-shadow 0.2s ease, filter 0.2s ease;
+    }
+
+    .seal-right-gap {
+      position: absolute;
+      top: 8%;
+      right: 10%;
+      width: 18%;
+      height: 18%;
+      border-radius: 2px 40% 2px 30%;
+      background: rgba(8, 6, 2, 0.72);
+      box-shadow: 0 0 8px rgba(12, 10, 4, 0.8);
+      transform: rotate(-18deg);
+      pointer-events: none;
+    }
+
+    .seal-right-pupil {
+      position: absolute;
+      left: 50%;
+      top: 8%;
+      width: 12%;
+      height: 84%;
+      transform: translateX(-50%);
+      pointer-events: none;
+      border-radius: 50%;
+      background: linear-gradient(
+        180deg,
+        rgba(212, 175, 55, 0) 0%,
+        rgba(212, 175, 55, 0.55) 16%,
+        rgba(255, 244, 214, 0.96) 50%,
+        rgba(212, 175, 55, 0.55) 84%,
+        rgba(212, 175, 55, 0) 100%
+      );
+      box-shadow: 0 0 14px rgba(212, 175, 55, 0.9);
+    }
+
+    #seal-right:hover .seal-right-eye,
+    #seal-right:focus-visible .seal-right-eye {
+      border-color: #f0d78a;
+      box-shadow:
+        0 0 28px rgba(212, 175, 55, 0.88),
+        0 0 56px rgba(197, 192, 176, 0.4);
+    }
+
+    #seal-right:hover .seal-right-iris,
+    #seal-right:focus-visible .seal-right-iris {
+      filter: brightness(1.2);
+      box-shadow:
+        inset 0 0 0 8px rgba(240, 215, 138, 0.78),
+        inset 0 0 22px rgba(212, 175, 55, 0.7);
+    }
+
+    .seal-right-banner {
+      position: absolute;
+      left: 50%;
+      top: calc(100% + 22%);
+      transform: translateX(-50%);
+      z-index: 3;
+      width: min(42vw, 320px);
+      padding: 0.55em 0.75em 0.5em;
+      background: rgba(12, 12, 6, 0.74);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(212, 175, 55, 0.72);
+      box-shadow:
+        0 0 16px rgba(212, 175, 55, 0.28),
+        inset 0 0 12px rgba(212, 175, 55, 0.12);
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: #f4ead0;
+      text-align: center;
+      line-height: 1.2;
+      pointer-events: auto;
+    }
+
+    .seal-right-banner-line {
+      display: block;
+      font-size: clamp(0.42rem, 1.4vw, 0.62rem);
+      padding-left: 0.22em;
+    }
+
+    .seal-right-banner-core {
+      margin: 0.18em 0 0;
+      font-size: clamp(0.52rem, 1.8vw, 0.78rem);
+      letter-spacing: 0.16em;
+      padding-left: 0.16em;
+      color: #d4af37;
+      text-shadow: 0 0 12px rgba(212, 175, 55, 0.55);
     }
 
     @keyframes sealPulse {
@@ -818,16 +970,17 @@
         padding: 0 5vw;
       }
 
-      .seal-left-tower {
-        width: 108%;
-        height: 144%;
+      #seal-left {
+        --relic-w: 118vw;
+      }
+
+      .seal-left-monument {
+        height: auto;
+        width: var(--relic-w);
       }
 
       .seal-left-banner {
-        width: min(48vw, 200px);
-        top: calc(100% + 12%);
-        padding: 0.4em 0.45em 0.35em;
-        letter-spacing: 0.16em;
+        letter-spacing: 0.14em;
       }
 
       .seal-left-banner-line {
@@ -839,6 +992,29 @@
         font-size: clamp(0.44rem, 3vw, 0.58rem);
         letter-spacing: 0.12em;
         padding-left: 0.12em;
+      }
+
+      .seal-right-crypt {
+        width: 110%;
+        height: 148%;
+      }
+
+      .seal-right-banner {
+        width: min(48vw, 200px);
+        top: calc(100% + 12%);
+        padding: 0.4em 0.45em 0.35em;
+        letter-spacing: 0.12em;
+      }
+
+      .seal-right-banner-line {
+        font-size: clamp(0.36rem, 2.4vw, 0.48rem);
+        padding-left: 0.12em;
+      }
+
+      .seal-right-banner-core {
+        font-size: clamp(0.42rem, 2.8vw, 0.56rem);
+        letter-spacing: 0.1em;
+        padding-left: 0.1em;
       }
     }
   </style>
@@ -868,7 +1044,7 @@
     <nav>
       <a href="pure_systems.html">System <br>Log</a>
       <a href="gallery.html" id="nav-gallery">Gallery</a>
-      <a href="diy_realities.html" id="nav-diy">DIY <br>Realities</a>
+      <a href="diy_realities.html" id="nav-diy">Library</a>
     </nav>
   </header>
 
@@ -876,44 +1052,58 @@
   <div id="warp-flash" aria-hidden="true"></div>
   <div id="wormhole-choice" aria-hidden="true">
     <button type="button" id="seal-left" class="wormhole-seal">
-      <svg class="seal-left-tower" viewBox="0 0 120 160" aria-hidden="true" focusable="false">
-        <defs>
-          <linearGradient id="seal-left-stone" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0" stop-color="#2a080e" stop-opacity="0.52"></stop>
-            <stop offset="0.46" stop-color="#070002" stop-opacity="0.84"></stop>
-            <stop offset="0.54" stop-color="#070002" stop-opacity="0.84"></stop>
-            <stop offset="1" stop-color="#2a080e" stop-opacity="0.52"></stop>
-          </linearGradient>
-        </defs>
-        <path
-          fill="url(#seal-left-stone)"
-          stroke="#ff2d55"
-          stroke-width="1.2"
-          stroke-opacity="0.78"
-          stroke-linejoin="miter"
-          d="M28 2 L18 22 L14 36 L8 58 L4 76 L8 108 L16 122 L12 138 L8 158 H112 L108 138 L104 122 L112 108 L116 76 L112 58 L106 36 L102 22 L92 2 L80 20 L74 16 L66 22 L60 18 L54 22 L46 16 L40 20 Z">
-        </path>
-        <path
-          fill="none"
-          stroke="#ff2d55"
-          stroke-width="0.7"
-          stroke-opacity="0.35"
-          d="M60 4 V156 M22 128 L98 128 M18 142 L102 142">
-        </path>
-      </svg>
+      <span class="seal-left-monument" aria-hidden="true">
+        <img src="art/codex-operum-monument.png" alt="" width="720" height="1280" decoding="async">
+      </span>
       <span class="seal-left-eye">
         <img src="AiiAold.8dde82cb.jpg" alt="" width="148" height="148" decoding="async">
         <span class="seal-left-iris"></span>
         <span class="seal-left-pupil"></span>
       </span>
       <span class="seal-left-banner">
-        <span class="seal-left-banner-line">Inspect</span>
-        <span class="seal-left-banner-line seal-left-banner-core">KIOMRA 64NN</span>
-        <span class="seal-left-banner-line">system</span>
+        <span class="seal-left-banner-line">Codex</span>
+        <span class="seal-left-banner-line seal-left-banner-core">Operum</span>
       </span>
     </button>
-    <button type="button" id="seal-right" class="wormhole-seal" aria-label="Right aperture">
-      <img src="AiiAold.8dde82cb.jpg" alt="" width="148" height="148" decoding="async">
+    <button type="button" id="seal-right" class="wormhole-seal">
+      <svg class="seal-right-crypt" viewBox="0 0 120 160" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="seal-right-stone" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#8a7028" stop-opacity="0.55"></stop>
+            <stop offset="0.48" stop-color="#141008" stop-opacity="0.82"></stop>
+            <stop offset="1" stop-color="#8a7028" stop-opacity="0.38"></stop>
+          </linearGradient>
+        </defs>
+        <path
+          fill="url(#seal-right-stone)"
+          stroke="#d4af37"
+          stroke-width="1.15"
+          stroke-opacity="0.82"
+          stroke-linejoin="miter"
+          stroke-dasharray="18 5 9 7"
+          d="M32 6 L22 24 L16 40 L10 62 L6 78 L12 108 L20 124 L14 140 L10 158 H78 L86 146 L72 128 L96 112 L108 86 L92 70 L110 52 L98 34 L84 22 L70 18 L62 8 L54 20 L44 16 Z">
+        </path>
+        <path
+          fill="none"
+          stroke="#c5c0b0"
+          stroke-width="0.7"
+          stroke-opacity="0.45"
+          d="M60 10 V70 M28 132 L70 132 M18 44 L48 28 L78 44 M96 40 L112 28 M104 64 L118 58">
+        </path>
+        <polygon fill="none" stroke="#d4af37" stroke-width="0.85" stroke-opacity="0.55" points="60,4 78,14 78,34 60,44 42,34 42,14"></polygon>
+        <polygon fill="#d4af37" fill-opacity="0.18" stroke="#d4af37" stroke-width="0.6" points="102,48 114,42 118,56 108,62"></polygon>
+        <polygon fill="#c5c0b0" fill-opacity="0.2" stroke="#c5c0b0" stroke-width="0.5" points="96,96 112,90 116,108 100,112"></polygon>
+      </svg>
+      <span class="seal-right-eye">
+        <img src="AiiAold.8dde82cb.jpg" alt="" width="148" height="148" decoding="async">
+        <span class="seal-right-iris"></span>
+        <span class="seal-right-pupil"></span>
+        <span class="seal-right-gap" aria-hidden="true"></span>
+      </span>
+      <span class="seal-right-banner">
+        <span class="seal-right-banner-line">Fragmenta</span>
+        <span class="seal-right-banner-line seal-right-banner-core">Apocrypha</span>
+      </span>
     </button>
   </div>
 

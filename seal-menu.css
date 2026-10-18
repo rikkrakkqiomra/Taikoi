@@ -1,0 +1,280 @@
+/* Seal index: a gold meridian under the round logo. No panel, no blur. */
+
+.seal-anchor {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.seal-trigger {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    appearance: none;
+    background: none;
+    line-height: 0;
+    cursor: pointer;
+    border-radius: 50%;
+    color: inherit;
+    -webkit-tap-highlight-color: transparent;
+    transition: filter 420ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.seal-trigger:focus {
+    outline: none;
+}
+
+.seal-trigger:focus-visible {
+    outline: 1px solid rgba(212, 164, 90, 0.75);
+    outline-offset: 5px;
+}
+
+header.is-seal-open .seal-trigger {
+    filter: drop-shadow(0 0 14px rgba(212, 164, 90, 0.55));
+}
+
+.seal-trigger img {
+    display: block;
+}
+
+.seal-menu {
+    position: absolute;
+    left: 50%;
+    z-index: 5;
+    width: min(17.5rem, 78vw);
+    max-height: calc(100vh - 10.5rem);
+    max-height: calc(100dvh - 10.5rem);
+    padding: 0 0.55rem 1.15rem;
+    box-sizing: border-box;
+    transform: translateX(-50%);
+    text-align: center;
+    pointer-events: none;
+    visibility: hidden;
+    overflow: hidden;
+    isolation: isolate;
+    background: none;
+    transition: visibility 0s linear 280ms;
+}
+
+.seal-menu::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    left: 0;
+    right: 0;
+    top: 14px;
+    bottom: 0;
+    pointer-events: none;
+    background: rgba(0, 0, 0, 0.88);
+    -webkit-mask-image:
+        linear-gradient(180deg, transparent 0, #000 18px, #000 calc(100% - 16px), transparent 100%),
+        linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+    -webkit-mask-composite: source-in;
+    mask-image:
+        linear-gradient(180deg, transparent 0, #000 18px, #000 calc(100% - 16px), transparent 100%),
+        linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+    mask-composite: intersect;
+}
+
+.seal-menu.is-open {
+    pointer-events: auto;
+    visibility: visible;
+    overflow-x: hidden;
+    overflow-y: auto;
+    transition-delay: 0s;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(196, 140, 64, 0.35) transparent;
+}
+
+.seal-meridian {
+    display: block;
+    width: 1px;
+    height: 26px;
+    margin: 0 auto 2px;
+    background: linear-gradient(to bottom, rgba(212, 164, 90, 0.95), rgba(212, 164, 90, 0.12));
+    transform: scaleY(0);
+    transform-origin: top center;
+    position: relative;
+    z-index: 1;
+    transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.seal-menu.is-open .seal-meridian {
+    transform: scaleY(1);
+    transition-duration: 260ms;
+    transition-delay: 20ms;
+}
+
+.seal-rule {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 16px;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 260ms cubic-bezier(0.22, 1, 0.36, 1), transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.seal-menu.is-open .seal-rule {
+    opacity: 1;
+    transform: none;
+    transition-duration: 320ms;
+    transition-delay: calc(28ms + var(--i, 0) * 38ms);
+}
+
+.seal-rule i {
+    display: block;
+    width: 5px;
+    height: 5px;
+    background: #d4a45a;
+    transform: rotate(45deg);
+    opacity: 0.72;
+}
+
+.seal-item {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.7rem;
+    width: 100%;
+    margin: 0;
+    padding: 0.34rem 0.2rem;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    color: inherit;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.seal-item:focus {
+    outline: none;
+}
+
+.seal-gem {
+    flex: 0 0 auto;
+    width: 5px;
+    height: 5px;
+    background: #d4a45a;
+    transform: rotate(45deg);
+    opacity: 0;
+    box-shadow: 0 0 0 transparent;
+    transition:
+        opacity 260ms cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 200ms ease;
+}
+
+.seal-menu.is-open .seal-gem {
+    opacity: 0.32;
+    transition-duration: 320ms, 200ms;
+    transition-delay: calc(28ms + var(--i, 0) * 38ms), 0s;
+}
+
+.seal-label {
+    position: relative;
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(8px);
+    white-space: nowrap;
+    transition:
+        opacity 260ms cubic-bezier(0.22, 1, 0.36, 1),
+        transform 260ms cubic-bezier(0.22, 1, 0.36, 1),
+        color 180ms ease;
+}
+
+.seal-menu.is-open .seal-label {
+    opacity: 1;
+    transform: none;
+    transition-duration: 320ms, 320ms, 180ms;
+    transition-delay: calc(28ms + var(--i, 0) * 38ms), calc(28ms + var(--i, 0) * 38ms), 0s;
+}
+
+.seal-label::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.14em;
+    height: 1px;
+    background: linear-gradient(90deg, #d4a45a, rgba(212, 164, 90, 0));
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.seal-item--meta .seal-label {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700;
+    font-size: 0.68rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #c48c40;
+    margin-right: -0.32em;
+    text-shadow: 0 0 14px rgba(0, 0, 0, 0.95), 0 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+.seal-item--realm {
+    padding-top: 0.18rem;
+    padding-bottom: 0.18rem;
+}
+
+.seal-item--realm .seal-label {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(1.45rem, 2.5vw, 1.72rem);
+    line-height: 1.05;
+    letter-spacing: 0.015em;
+    color: #f3ead8;
+    text-shadow: 0 0 16px rgba(0, 0, 0, 0.95), 0 1px 2px rgba(0, 0, 0, 0.9);
+}
+
+.seal-item:hover .seal-gem,
+.seal-item:focus-visible .seal-gem {
+    opacity: 1;
+    box-shadow: 0 0 8px rgba(212, 164, 90, 0.9);
+}
+
+.seal-item:hover .seal-label::after,
+.seal-item:focus-visible .seal-label::after {
+    transform: scaleX(1);
+}
+
+.seal-item--meta:hover .seal-label,
+.seal-item--meta:focus-visible .seal-label {
+    color: #f0d7a4;
+}
+
+.seal-item--realm:hover .seal-label,
+.seal-item--realm:focus-visible .seal-label {
+    color: #f6efe2;
+}
+
+header.is-seal-open .social-links,
+header.is-seal-open .nave-kicker {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.social-links,
+.nave-kicker {
+    transition: opacity 280ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .seal-trigger,
+    .seal-menu,
+    .seal-meridian,
+    .seal-rule,
+    .seal-gem,
+    .seal-label,
+    .seal-label::after,
+    .social-links,
+    .nave-kicker {
+        transition: none;
+    }
+}

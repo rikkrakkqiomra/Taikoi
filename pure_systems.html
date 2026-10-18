@@ -32,8 +32,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Courier+Prime&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500&family=Orbitron:wght@700&family=Courier+Prime&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="seal-menu.css">
+    <script src="seal-menu.js" defer></script>
     <style>
         /* # Design System Variables (Terminal Theme) */
         :root {
@@ -474,8 +476,7 @@
         }
 
         // # Event Listeners
-        header.style.cursor = 'pointer';
-        header.addEventListener('click', exitAnimation);
+        window.__aivoinkoSealExit = exitAnimation;
 
         // # Main Animation Loop
         let lastFrameTime = 0;

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Right Aperture</title>
+    <title>Fragmenta Apocrypha</title>
     <script type="importmap">
         {
             "imports": {
@@ -28,7 +28,9 @@
     <link rel="icon" type="image/jpeg" href="AiiAold.8dde82cb.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="seal-menu.css">
+    <script src="seal-menu.js" defer></script>
     <style>
         :root {
             --glass-bg: rgba(12, 12, 8, 0.5);
@@ -49,8 +51,7 @@
 
         #canvas-container {
             position: absolute;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            inset: 0;
             z-index: 1;
         }
 
@@ -60,11 +61,35 @@
             inset: 0;
             pointer-events: none;
             z-index: 4;
-            background: radial-gradient(ellipse at center, transparent 40%, rgba(12, 12, 8, 0.78) 100%);
+            background:
+                radial-gradient(ellipse at 18% 0%, rgba(212, 175, 55, 0.08), transparent 42%),
+                radial-gradient(ellipse at center, transparent 42%, rgba(12, 12, 8, 0.72) 100%);
+        }
+
+        #nave {
+            position: fixed;
+            inset: 0;
+            z-index: 5;
+            overflow-x: hidden;
+            overflow-y: auto;
+            pointer-events: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(212, 175, 55, 0.35) transparent;
+        }
+
+        #nave::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background:
+                repeating-linear-gradient(60deg, transparent 0 56px, rgba(212, 175, 55, 0.035) 56px 57px),
+                repeating-linear-gradient(-60deg, transparent 0 56px, rgba(197, 192, 176, 0.025) 56px 57px);
         }
 
         header {
-            position: fixed;
+            position: absolute;
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
@@ -75,7 +100,11 @@
         }
 
         header img {
+            width: 110px;
+            height: 110px;
             max-width: 110px;
+            aspect-ratio: 1;
+            object-fit: cover;
             border-radius: 50%;
             box-shadow: 0 0 24px rgba(212, 175, 55, 0.5);
             transition: transform 0.3s ease;
@@ -84,6 +113,18 @@
         }
 
         header img:hover { transform: scale(1.05); }
+
+        .nave-kicker {
+            margin-top: 0.7rem;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 0.62rem;
+            letter-spacing: 0.38em;
+            text-transform: uppercase;
+            color: #d4af37;
+            text-shadow: 0 0 14px rgba(212, 175, 55, 0.4);
+            pointer-events: none;
+        }
 
         #warp-flash {
             position: fixed;
@@ -97,41 +138,272 @@
                 rgba(12, 12, 8, 1) 100%);
         }
 
+        .bay {
+            position: relative;
+            z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+            padding: 10vh 8vw;
+        }
+
+        .bay--left { justify-content: flex-start; }
+        .bay--right { justify-content: flex-end; }
+
+        section.bay:first-of-type { padding-top: 168px; }
+
+        .folio {
+            position: relative;
+            width: min(38rem, 44vw);
+            padding: 2.1rem 2rem 2.2rem;
+            background: rgba(14, 12, 6, 0.78);
+            border: 1px solid rgba(212, 175, 55, 0.62);
+            box-shadow:
+                0 22px 48px rgba(0, 0, 0, 0.45),
+                inset 0 1px 0 rgba(244, 234, 208, 0.08);
+            overflow: visible;
+        }
+
+        .folio--gap-east { border-right-color: transparent; }
+        .folio--gap-west { border-left-color: transparent; }
+        .folio--gap-ne {
+            border-top-color: transparent;
+            border-right: 1px dashed rgba(212, 175, 55, 0.22);
+        }
+        .folio--gap-sw {
+            border-bottom-color: transparent;
+            border-left: 1px dashed rgba(212, 175, 55, 0.22);
+        }
+        .folio--gap-south { border-bottom: 1px dashed rgba(212, 175, 55, 0.18); }
+        .folio--blank {
+            min-height: 42vh;
+            background: linear-gradient(180deg, rgba(14, 12, 6, 0.78) 0%, rgba(14, 12, 6, 0.2) 78%, transparent 100%);
+            border-bottom-color: transparent;
+        }
+
+        .folio-corners {
+            position: absolute;
+            inset: -6px;
+            pointer-events: none;
+        }
+
+        .folio-corners i {
+            position: absolute;
+            width: 14px;
+            height: 14px;
+            border-color: #d4af37;
+            border-style: solid;
+            border-width: 0;
+        }
+
+        .folio-corners i:nth-child(1) { top: 0; left: 0; border-top-width: 1.5px; border-left-width: 1.5px; }
+        .folio-corners i:nth-child(2) { top: 0; right: 0; border-top-width: 1.5px; border-right-width: 1.5px; }
+        .folio-corners i:nth-child(3) { bottom: 0; left: 0; border-bottom-width: 1.5px; border-left-width: 1.5px; }
+        .folio-corners i:nth-child(4) { bottom: 0; right: 0; border-bottom-width: 1.5px; border-right-width: 1.5px; }
+
+        .folio--gap-ne .folio-corners i:nth-child(2),
+        .folio--gap-east .folio-corners i:nth-child(2),
+        .folio--gap-east .folio-corners i:nth-child(4),
+        .folio--gap-sw .folio-corners i:nth-child(3),
+        .folio--gap-west .folio-corners i:nth-child(1),
+        .folio--gap-west .folio-corners i:nth-child(3),
+        .folio--gap-south .folio-corners i:nth-child(3),
+        .folio--gap-south .folio-corners i:nth-child(4),
+        .folio--blank .folio-corners i:nth-child(3),
+        .folio--blank .folio-corners i:nth-child(4) { display: none; }
+
+        .folio-latin {
+            font-family: 'Cinzel', serif;
+            font-size: 0.68rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: #c5c0b0;
+            margin-bottom: 0.7rem;
+        }
+
+        .folio h2 {
+            font-family: 'Cinzel', serif;
+            font-size: clamp(1.35rem, 2.4vw, 2rem);
+            letter-spacing: 0.08em;
+            font-weight: 700;
+            color: #d4af37;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 18px rgba(212, 175, 55, 0.28);
+        }
+
+        .folio blockquote {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+            line-height: 1.35;
+            margin-bottom: 1rem;
+            color: #f4ead0;
+        }
+
+        .folio p {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            font-size: 1.08rem;
+            line-height: 1.6;
+            color: #d8cfbe;
+        }
+
+        .folio p + p { margin-top: 0.75rem; }
+
+        .folio-lacuna {
+            color: #d4af37;
+            letter-spacing: 0.18em;
+            font-style: italic;
+        }
+
+        .folio-cut {
+            display: block;
+            margin-top: 1.1rem;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(212, 175, 55, 0.55), transparent 72%);
+        }
+
         #realm-title {
-            position: fixed;
-            left: 50%;
-            top: 52%;
-            transform: translate(-50%, -50%);
-            z-index: 6;
+            position: relative;
+            z-index: 1;
             text-align: center;
             pointer-events: none;
-            opacity: 0;
+            padding: 8vh 6vw 16vh;
         }
 
         #realm-title h1 {
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            font-size: clamp(1.3rem, 4.5vw, 2.8rem);
-            letter-spacing: 0.32em;
+            font-size: clamp(1.1rem, 3.6vw, 2.1rem);
+            letter-spacing: 0.34em;
             text-transform: uppercase;
             color: #d4af37;
             text-shadow: 0 0 22px rgba(212, 175, 55, 0.55);
         }
 
-        html.ui-ready header,
-        html.ui-ready #realm-title { opacity: 1 !important; }
+        @media (max-width: 768px) {
+            header {
+                position: relative;
+                top: auto;
+                left: auto;
+                transform: none;
+                padding: 16px 0 8px;
+            }
+
+            header img {
+                width: 88px;
+                height: 88px;
+                max-width: 88px;
+            }
+
+            #nave { padding: 0 5vw 10vh; }
+
+            .bay,
+            .bay--left,
+            .bay--right {
+                min-height: 0;
+                justify-content: flex-start;
+                padding: 5vh 0 8vh;
+            }
+
+            section.bay:first-of-type { padding-top: 1vh; }
+
+            .folio {
+                width: min(90vw, 32rem);
+                padding: 1.35rem 1.2rem 1.45rem;
+            }
+
+            .folio h2 { font-size: 1.28rem; }
+            .folio blockquote { font-size: 1.12rem; }
+            .folio p { font-size: 1rem; }
+
+            #realm-title { display: none; }
+        }
+
+        html.ui-ready #nave { opacity: 1; }
         html.ui-ready #warp-flash { opacity: 0 !important; }
+        #nave.is-leaving { opacity: 0 !important; transition: opacity 0.9s ease; }
     </style>
 </head>
 
 <body>
     <div id="canvas-container"></div>
     <div id="warp-flash" aria-hidden="true"></div>
-    <header>
-        <img src="AiiAold.8dde82cb.jpg" alt="Aivoinko Logo" width="110" height="110" fetchpriority="high" decoding="async">
-    </header>
-    <div id="realm-title">
-        <h1>Right Aperture</h1>
+    <div id="nave">
+        <header>
+            <img src="AiiAold.8dde82cb.jpg" alt="Aivoinko Logo" width="110" height="110" fetchpriority="high" decoding="async">
+            <p class="nave-kicker">Fragmenta Apocrypha</p>
+        </header>
+
+        <section class="bay bay--left">
+            <article class="folio folio--gap-ne">
+                <span class="folio-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                <p class="folio-latin">Folium I · index non ligatus</p>
+                <h2>The Unbound Index</h2>
+                <blockquote>Every shelf is a promise that a sentence will return.</blockquote>
+                <p>The catalogue lists works that have not yet consented to exist. Entries four through nine are ruled in gold and left empty on purpose.</p>
+                <p class="folio-lacuna">The seventh heading was written, then scraped, then […]</p>
+            </article>
+        </section>
+
+        <section class="bay bay--right">
+            <article class="folio folio--gap-west">
+                <span class="folio-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                <p class="folio-latin">Folium II · apparatus sine operatore</p>
+                <h2>Apparatus Without Operator</h2>
+                <blockquote>A machine that waits is already a theology.</blockquote>
+                <p>The brass lung was assembled from three centuries. No one claimed the crank. In the margin a later hand begins “when the operator—”</p>
+                <span class="folio-cut" aria-hidden="true"></span>
+            </article>
+        </section>
+
+        <section class="bay bay--left">
+            <article class="folio folio--gap-east">
+                <span class="folio-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                <p class="folio-latin">Folium III · septimum deest</p>
+                <h2>The Missing Seventh</h2>
+                <blockquote>Six laws hold. The seventh is the silence they orbit.</blockquote>
+                <p>Treatises on the solar engine name six motions. A burned quire once named a seventh that would have made the others honest.</p>
+                <p class="folio-lacuna">[ rasura: lex VII ]</p>
+            </article>
+        </section>
+
+        <section class="bay bay--right">
+            <article class="folio folio--gap-sw">
+                <span class="folio-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                <p class="folio-latin">Folium IV · epistula ad machinam futuram</p>
+                <h2>Letter to a Future Machine</h2>
+                <blockquote>If you can read this, you have already outlived the ink.</blockquote>
+                <p>We leave you no instructions, only the temperature of our doubt. Do not complete the circuit until</p>
+                <p class="folio-lacuna">[…]</p>
+            </article>
+        </section>
+
+        <section class="bay bay--left">
+            <article class="folio folio--gap-south">
+                <span class="folio-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                <p class="folio-latin">Folium V · census mundorum nondum natorum</p>
+                <h2>Census of Unborn Worlds</h2>
+                <blockquote>To count a world before it happens is a kind of theft.</blockquote>
+                <p>Columns of names, then a crease, then numbers that skip from twelve to forty. The census-taker writes “still arriving” and underlines nothing.</p>
+            </article>
+        </section>
+
+        <section class="bay bay--right">
+            <article class="folio folio--blank">
+                <span class="folio-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                <p class="folio-latin">Folium VI · colophon (vacat)</p>
+                <h2>Colophon</h2>
+                <blockquote>—</blockquote>
+                <p>This page was reserved for the name of the binder. The gold leaf stops halfway down the initial. The rest is</p>
+            </article>
+        </section>
+
+        <div id="realm-title">
+            <h1>Fragmenta Apocrypha</h1>
+        </div>
     </div>
 
     <script type="module">
@@ -229,26 +501,25 @@
         scene.add(pointMesh);
 
         const hex = new THREE.Group();
-        hex.position.set(0, 0, -34);
+        hex.position.set(0, 0, -46);
         hex.scale.set(0.001, 0.001, 0.001);
         scene.add(hex);
 
         const hexMat = new THREE.MeshBasicMaterial({
-            color: 0xd4af37, transparent: true, opacity: 0.8, wireframe: true, fog: false
+            color: 0xd4af37, transparent: true, opacity: 0.28, wireframe: true, fog: false
         });
-        const ringA = new THREE.Mesh(new THREE.TorusGeometry(8.5, 0.12, 6, 6), hexMat);
-        const ringB = new THREE.Mesh(new THREE.TorusGeometry(11.5, 0.08, 6, 6), hexMat.clone());
+        const ringA = new THREE.Mesh(new THREE.TorusGeometry(10.5, 0.1, 6, 6), hexMat);
+        const ringB = new THREE.Mesh(new THREE.TorusGeometry(14.5, 0.06, 6, 6), hexMat.clone());
         ringB.rotation.z = Math.PI / 6;
         hex.add(ringA, ringB);
-        hex.add(new THREE.PointLight(0xd4af37, 1.6, 70));
-        hex.add(new THREE.PointLight(0xc5c0b0, 0.7, 50));
+        hex.add(new THREE.PointLight(0xd4af37, 0.9, 80));
+        hex.add(new THREE.PointLight(0xc5c0b0, 0.4, 55));
 
         const header = document.querySelector('header');
-        const titleEl = document.getElementById('realm-title');
+        const nave = document.getElementById('nave');
         const flash = document.getElementById('warp-flash');
-        header.style.opacity = '0';
-        titleEl.style.opacity = '0';
         header.style.pointerEvents = 'none';
+        nave.style.opacity = '0';
 
         let mode = 'enter';
         let phaseStart = 0;
@@ -295,22 +566,23 @@
             if (exiting) return;
             exiting = true;
             header.style.pointerEvents = 'none';
+            nave.classList.add('is-leaving');
             mode = 'exit';
             phaseStart = 0;
             pointMesh.visible = false;
             streakMesh.visible = true;
         }
 
-        header.style.cursor = 'pointer';
-        header.addEventListener('click', exitAnimation);
+        window.__aivoinkoSealExit = exitAnimation;
 
         window.addEventListener('pageshow', () => {
             exiting = false;
             mode = 'enter';
             phaseStart = 0;
             header.style.pointerEvents = 'none';
-            header.style.opacity = '0';
-            titleEl.style.opacity = '0';
+            nave.classList.remove('is-leaving');
+            nave.style.opacity = '0';
+            nave.scrollTop = 0;
             if (flash) flash.style.opacity = '0.5';
             camera.fov = 88;
             camera.updateProjectionMatrix();
@@ -342,17 +614,15 @@
                     settlePoints();
                     streakMesh.visible = false;
                     pointsMat.opacity = 0.9;
-                    header.style.transition = 'opacity 1.1s ease';
-                    titleEl.style.transition = 'opacity 1.4s ease';
-                    header.style.opacity = '1';
-                    titleEl.style.opacity = '1';
+                    nave.style.transition = 'opacity 1.2s ease';
+                    nave.style.opacity = '1';
                     header.style.pointerEvents = 'auto';
                     mode = 'idle';
                 }
             } else if (mode === 'idle') {
                 pointMesh.rotation.y -= 0.00012 * dt;
-                hex.rotation.z += 0.003 * dt;
-                ringB.rotation.z -= 0.002 * dt;
+                hex.rotation.z += 0.0016 * dt;
+                ringB.rotation.z -= 0.0011 * dt;
             } else if (mode === 'exit') {
                 const progress = Math.min((time - phaseStart) / EXIT_MS, 1);
                 const ease = progress * progress * progress;
@@ -361,8 +631,6 @@
                 camera.fov = 72 + ease * 40;
                 camera.updateProjectionMatrix();
                 hex.scale.setScalar(Math.max(0.001, 1 - ease));
-                header.style.opacity = String(1 - ease);
-                titleEl.style.opacity = String(1 - ease);
                 if (flash) flash.style.opacity = String(Math.max(0, (progress - 0.35) / 0.65));
                 if (progress >= 1) {
                     window.location.href = 'index.html';
