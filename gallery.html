@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery</title>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
     <script type="importmap">
         {
             "imports": {
@@ -13,6 +14,7 @@
             }
         }
     </script>
+    <link rel="modulepreload" href="https://unpkg.com/three@0.160.0/build/three.module.js" crossorigin>
     <script>
         (function () {
             function revealUi() {
@@ -522,7 +524,7 @@
         </section>
         <section class="bay bay--right">
             <figure class="hanging hanging--large">
-                <img src="art/hangings/02-nautilus-walnut.png" alt="The Nautilus" decoding="async">
+                <img src="art/hangings/02-nautilus-walnut.png" alt="The Nautilus" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -534,7 +536,7 @@
         </section>
         <section class="bay bay--left">
             <figure class="hanging hanging--large">
-                <img src="art/hangings/03-altar-bronze.png" alt="The Altar" decoding="async">
+                <img src="art/hangings/03-altar-bronze.png" alt="The Altar" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -546,7 +548,7 @@
         </section>
         <section class="bay bay--right">
             <figure class="hanging hanging--hero hanging--finale">
-                <img src="art/hangings/04-throne-dark.png" alt="The Throne" decoding="async">
+                <img src="art/hangings/04-throne-dark.png" alt="The Throne" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -558,7 +560,7 @@
         </section>
         <section class="bay bay--left">
             <figure class="hanging hanging--hero hanging--square">
-                <img src="art/hangings/06-yantra-cassetta.png" alt="The Yantra" decoding="async">
+                <img src="art/hangings/06-yantra-cassetta.png" alt="The Yantra" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -570,7 +572,7 @@
         </section>
         <section class="bay bay--right">
             <figure class="hanging hanging--hero hanging--abstract">
-                <img src="art/hangings/08-visage-abstract.png" alt="The Visage" decoding="async">
+                <img src="art/hangings/08-visage-abstract.png" alt="The Visage" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -582,7 +584,7 @@
         </section>
         <section class="bay bay--left">
             <figure class="hanging hanging--ivory hanging--large">
-                <img src="art/hangings/09-axis-ivory.png" alt="The Axis" decoding="async">
+                <img src="art/hangings/09-axis-ivory.png" alt="The Axis" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -594,7 +596,7 @@
         </section>
         <section class="bay bay--right">
             <figure class="hanging hanging--mid">
-                <img src="art/hangings/10-grove-oak.png" alt="The Grove" decoding="async">
+                <img src="art/hangings/10-grove-oak.png" alt="The Grove" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -606,7 +608,7 @@
         </section>
         <section class="bay bay--left">
             <figure class="hanging hanging--hero hanging--square hanging--void">
-                <img src="art/hangings/11-sigil-victorian.png" alt="The Sigil" decoding="async">
+                <img src="art/hangings/11-sigil-victorian.png" alt="The Sigil" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -618,7 +620,7 @@
         </section>
         <section class="bay bay--right">
             <figure class="hanging hanging--hero">
-                <img src="art/hangings/12-chorus-layered.png" alt="The Chorus" decoding="async">
+                <img src="art/hangings/12-chorus-layered.png" alt="The Chorus" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -630,7 +632,7 @@
         </section>
         <section class="bay bay--left">
             <figure class="hanging hanging--hero hanging--spectrum">
-                <img src="art/hangings/14-threshold-baroque.png" alt="The Threshold" decoding="async">
+                <img src="art/hangings/14-threshold-baroque.png" alt="The Threshold" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -642,7 +644,7 @@
         </section>
         <section class="bay bay--right">
             <figure class="hanging hanging--square hanging--deco">
-                <img src="art/hangings/15-phaeton-deco.png" alt="The Phaeton" decoding="async">
+                <img src="art/hangings/15-phaeton-deco.png" alt="The Phaeton" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -654,7 +656,7 @@
         </section>
         <section class="bay bay--left">
             <figure class="hanging hanging--large hanging--spore">
-                <img src="art/hangings/16-spore-nouveau.png" alt="The Spore" decoding="async">
+                <img src="art/hangings/16-spore-nouveau.png" alt="The Spore" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -666,7 +668,7 @@
         </section>
         <section class="bay bay--right">
             <figure class="hanging hanging--large hanging--stone">
-                <img src="art/hangings/17-spire-stone.png" alt="The Spire" decoding="async">
+                <img src="art/hangings/17-spire-stone.png" alt="The Spire" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -678,7 +680,7 @@
         </section>
         <section class="bay bay--left">
             <figure class="hanging hanging--hero hanging--iron">
-                <img src="art/hangings/18-valkyrie-iron.png" alt="The Valkyrie" decoding="async">
+                <img src="art/hangings/18-valkyrie-iron.png" alt="The Valkyrie" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -690,7 +692,7 @@
         </section>
         <section class="bay bay--right">
             <figure class="hanging hanging--hero hanging--oak">
-                <img src="art/hangings/19-conclave-oak.png" alt="The Conclave" decoding="async">
+                <img src="art/hangings/19-conclave-oak.png" alt="The Conclave" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>

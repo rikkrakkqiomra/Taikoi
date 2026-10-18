@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Physicalus</title>
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
     <script type="importmap">
         {
             "imports": {
@@ -13,6 +14,7 @@
             }
         }
     </script>
+    <link rel="modulepreload" href="https://unpkg.com/three@0.160.0/build/three.module.js" crossorigin>
     <script>
         (function () {
             function revealUi() {
@@ -492,7 +494,7 @@
         <section class="bay bay--follow bay--right" id="view-bench">
             <div class="cluster">
                 <figure class="plate">
-                    <img src="art/physicalus/02-pair.jpg" alt="The same Damascus pendant, set down" decoding="async">
+                    <img src="art/physicalus/02-pair.jpg" alt="The same Damascus pendant, set down" loading="lazy" decoding="async">
                     <span class="sight" aria-hidden="true"></span>
                 </figure>
                 <a class="thread" href="#view-hand"><i aria-hidden="true"></i><span>The Hundred</span></a>
@@ -501,7 +503,7 @@
         <section class="bay bay--follow bay--left" id="view-ridge">
             <div class="cluster">
                 <figure class="plate">
-                    <img src="art/physicalus/03-ridge.jpg" alt="The same Damascus pendant, turned" decoding="async">
+                    <img src="art/physicalus/03-ridge.jpg" alt="The same Damascus pendant, turned" loading="lazy" decoding="async">
                     <span class="sight" aria-hidden="true"></span>
                 </figure>
                 <a class="thread" href="#view-hand"><i aria-hidden="true"></i><span>The Hundred</span></a>
