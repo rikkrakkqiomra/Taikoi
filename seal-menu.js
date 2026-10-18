@@ -13,6 +13,7 @@
     var header = img.closest('header');
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var open = false;
+    var frameTimer = 0;
 
     var anchor = document.createElement('div');
     anchor.className = 'seal-anchor';
@@ -35,6 +36,16 @@
     trigger.id = 'seal-trigger';
     menu.setAttribute('aria-labelledby', 'seal-trigger');
     anchor.appendChild(menu);
+
+    var scroll = document.createElement('div');
+    scroll.className = 'seal-scroll';
+    scroll.setAttribute('aria-hidden', 'true');
+    scroll.innerHTML = ''
+        + '<img class="seal-scroll-top" src="art/seal-scroll-top.png" alt="" width="1161" height="194" decoding="async">'
+        + '<i class="seal-scroll-rail seal-scroll-rail--left"></i>'
+        + '<i class="seal-scroll-rail seal-scroll-rail--right"></i>'
+        + '<img class="seal-scroll-bottom" src="art/seal-scroll-bottom.png" alt="" width="1149" height="217" decoding="async">';
+    menu.appendChild(scroll);
 
     var meridian = document.createElement('span');
     meridian.className = 'seal-meridian';
@@ -129,8 +140,10 @@
     function close(options) {
         if (!open) return;
         open = false;
+        clearTimeout(frameTimer);
         header.classList.remove('is-seal-open');
         menu.classList.remove('is-open');
+        menu.classList.remove('is-framed');
         menu.setAttribute('aria-hidden', 'true');
         trigger.setAttribute('aria-expanded', 'false');
         if ('inert' in menu) menu.inert = true;
@@ -146,6 +159,14 @@
         menu.setAttribute('aria-hidden', 'false');
         trigger.setAttribute('aria-expanded', 'true');
         if ('inert' in menu) menu.inert = false;
+        clearTimeout(frameTimer);
+        if (reduced) {
+            menu.classList.add('is-framed');
+            return;
+        }
+        frameTimer = setTimeout(function () {
+            if (open) menu.classList.add('is-framed');
+        }, 700);
     }
 
     function toggle() {

@@ -24,7 +24,7 @@ Authoritative description of the live repository as of 2026-10-18. This file is 
 | Frameworks | None | No React/Svelte/Vue/Next. |
 | 3D | Three.js + OrbitControls | **Pinned `0.160.0`** via HTML import maps → unpkg ESM. |
 | Styling | Inline `<style>` per HTML file, plus `seal-menu.css` | Page chrome stays inline. The seal index is the one shared stylesheet. No Tailwind or CSS Modules. |
-| Fonts | Google Fonts | `Orbitron` + `Rajdhani` + `Cormorant Garamond` 500/italic 500 (index; Cormorant is the Library limen plaques and the Khaeos label); `Orbitron` + `Rajdhani` (brain); `Orbitron` + `Courier Prime` (pure_systems); `Orbitron` + `Cormorant Garamond` (gallery, physicalus, bio, gate_left, gate_right). Seal index uses Cormorant italic 500 + Orbitron on all eight seal pages. `Cinzel` on gate_right folios. On the Khaeos Metalogs hall (`diy_realities.html`): `Cinzel` 500 and `EB Garamond` 500/italic 500 for the Multimieli folio; `Orbitron` + `Cormorant Garamond` (regular 500 and italic 500) for the three System Log folios. |
+| Fonts | Google Fonts | `Orbitron` + `Rajdhani` + `Cormorant Garamond` 500/italic 500 (index; Cormorant is the Library limen plaques and the Khaeos label); `Orbitron` + `Rajdhani` (brain); `Orbitron` + `Courier Prime` (pure_systems); `Orbitron` + `Cormorant Garamond` (gallery, physicalus, bio, gate_left, gate_right). Seal index uses Cormorant italic 500 + Orbitron on all eight seal pages. `Cinzel` on gate_right folios. On the Khaeos Metalogs hall (`diy_realities.html`): the Multimieli folio uses `Orbitron` and `Courier Prime` in `#00ff00`, with the System Log `glitch` skew. The three System Log folios stay `Orbitron` + `Cormorant Garamond` in gold/bone. `Courier Prime` is also the System Log body face. |
 | Database / ORM | None | All content is hardcoded in HTML/JS. |
 | Build tools | None | No Vite, Webpack, Turbopack, or bundler. Netlify publishes the repo root as-is. |
 | Runtime | Browser (WebGL) | Static files on Netlify CDN. No Node.js app runtime, no edge functions, no serverless functions. |
@@ -51,10 +51,10 @@ Mostly flat root. There is no `src/`, `public/`, `components/`, or `netlify/func
 Taikoi/
 ├── index.html                 # Home / solar-system simulator (site entry)
 ├── brain.html                 # Manifesto page (“The Opening of Reality”)
-├── pure_systems.html          # Terminal “System Log” page + outbound social links
+├── pure_systems.html          # Terminal “System Log” page
 ├── gallery.html               # Black starfield + 2D hangings; header reverse-warp home
 ├── physicalus.html            # Gallery side hall: same starfield, steel photo plates; Return → gallery.html
-├── bio.html                   # Black starfield + biography hall; header reverse-warp home
+├── bio.html                   # Black starfield + biography hall + outbound work links; header reverse-warp home
 ├── art/
 │   ├── 01-elder.jpg           # Source still
 │   ├── 02-nautilus.jpg        # Source still
@@ -69,6 +69,8 @@ Taikoi/
 │   ├── 11-sigil.jpg           # Source still
 │   ├── 12-chorus.jpg          # Source still
 │   ├── 13-prism.jpg           # Source still
+│   ├── seal-scroll-top.png    # Seal index roller. Black exterior punched
+│   ├── seal-scroll-bottom.png # Matching lower roller
 │   ├── physicalus/            # Workshop photographs on physicalus.html (no art frames)
 │   │   ├── 01-hundred.jpg     # 100-layer Damascus pendant in the palm
 │   │   ├── 02-pair.jpg        # Brushed blank beside the etched pendant
@@ -148,10 +150,10 @@ No `.gitignore` in the current tree (removed in `85d5131`).
 |---|---|---|
 | `index.html` | `/` | Primary 3D solar system. Nav to System Log (href), Gallery (direct streak warp), Bio (direct streak warp), and Library (warp + on-page wormhole choice). Sun click → `brain.html`. |
 | `brain.html` | `/brain.html` | Starfield + floating manifesto blocks. Seal opens the index; Return → `index.html`. |
-| `pure_systems.html` | `/pure_systems.html` | Green starfield + log copy + social icons. Seal opens the index; Return → `index.html`. |
+| `pure_systems.html` | `/pure_systems.html` | Green starfield + log copy. Seal opens the index; Return → `index.html`. |
 | `gallery.html` | `/gallery.html` | Black starfield (Three.js warp only) + 2D photographic hangings with draft text plaques. Seal opens the index; Return reverse-warps → `index.html`. Eleven solo bays; hangings alternate left/right on desktop. Last is The Prism in a polychrome Baroque frame. Seal item Physicalus opens `physicalus.html`. |
 | `physicalus.html` | `/physicalus.html` | Side hall of the gallery. Same black starfield. Three workshop photographs of Damascus jewelry on cool steel plates (no art frames). Seal opens the index; Return reverse-warps → `gallery.html`. |
-| `bio.html` | `/bio.html` | Black starfield + scroll hall. Opening name plate, four CSS-framed portraits (`art/bio/`), Finnish draft plaques, closing plate. Seal opens the index; Return reverse-warps → `index.html`. Portraits are not under a `bio/` root folder. |
+| `bio.html` | `/bio.html` | Black starfield + scroll hall. Opening name plate, four CSS-framed portraits (`art/bio/`), Finnish draft plaques, a Verkko cabinet of outbound work links, closing plate. Seal opens the index; Return reverse-warps → `index.html`. Portraits are not under a `bio/` root folder. |
 | `diy_realities.html` | `/diy_realities.html` | Khaeos Metalogs. Home nav label stays Library. Default wormhole timeout destination. DOM emblem and wordmark, seven smooth rings tracking the wordmark, fixed starfield, scroll hall. First folio is a Finnish GAMMA LOG from Richard Multimieli. The three System Log entries follow it in gold/bone. Seal opens the index; Return reverse-warps → `index.html`. |
 | `gate_left.html` | `/gate_left.html` | Crimson vertical slit. Entered by left seal. Seal opens the index; Return reverse-warps → `index.html`. Title only. |
 | `gate_right.html` | `/gate_right.html` | Fragmenta Apocrypha: gold/zinc starfield + scrollable nave of six unfinished folios. Entered by right seal. Seal opens the index; Return reverse-warps → `index.html`. |
@@ -229,7 +231,7 @@ No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
 
 ### Auth / session
 
-**None.** No login, tokens, CSRF, RBAC, or session cookies. Outbound social links are public `target="_blank"` anchors with `rel="noopener noreferrer"`.
+**None.** No login, tokens, CSRF, RBAC, or session cookies. Outbound work links on `bio.html` are public `target="_blank"` anchors with `rel="noopener noreferrer"`.
 
 ### Shared runtime pattern (all nine pages)
 
@@ -272,6 +274,7 @@ No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
 - **Hall:** `#hall` is DOM over a black starfield. Opening plate, four alternating bays, closing plate, then `#realm-title` (hidden on mobile). Copy is Finnish draft. The companion in `02-kaari.jpg` is unnamed.
 - **Portraits:** `art/bio/01-tie.jpg`, `02-kaari.jpg`, `03-vesi.jpg`, `04-metsa.jpg`. Each is 768×1024. Display cap is 50vh (42vh under 768px), inside a CSS cassetta: bone mat, 8px charcoal list, brass hairline, 8px corner ticks. No generated frame PNG.
 - **Plaques:** same corner language as the gallery (`.plaque-corners`). Cormorant Garamond body, Orbitron chapter labels.
+- **Verkko:** `#verkko` sits after the forest bay and before the closing plate. One brass cabinet, five outbound rows (DeviantArt, Etsy Kiomra Trionfi, SoundCloud, LinkedIn, Trepo). Same corner diamonds as the plaques. No generated frame.
 - **Three.js:** starfield + enter/exit streaks only. No OrbitControls, no void well, no swipe. Enter flash starts at 0.28 and fades in ~350 ms. Seal Return assigns `__aivoinkoSealExit`. Fail-open keeps the hall readable.
 - **Route:** home `#nav-bio` calls `startWarpTransition('bio.html')` and skips the wormhole choice. Assets stay under `art/bio/` so they do not collide with Netlify Pretty URL `/bio`.
 
@@ -289,12 +292,12 @@ No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
 |---|---|---|
 | **Netlify** | Static hosting, TLS, header injection | Site down if deploy/CDN fails |
 | **unpkg.com** | Three.js ESM + addons | 3D fails; fail-open UI still reveals chrome after 2.5s / on error |
-| **Google Fonts** | Orbitron, Rajdhani, Courier Prime, Cormorant Garamond, Cinzel, EB Garamond | Fallback to `sans-serif` / `serif` / `monospace` |
-| **DeviantArt** | `pure_systems.html` outbound | Link only |
-| **Etsy** | `pure_systems.html` outbound (Kiomra Trionfi listing) | Link only |
-| **SoundCloud** | `pure_systems.html` outbound | Link only |
-| **LinkedIn** | `pure_systems.html` outbound | Link only |
-| **Trepo (trepo.tuni.fi)** | `pure_systems.html` outbound (thesis handle) | Link only |
+| **Google Fonts** | Orbitron, Rajdhani, Courier Prime, Cormorant Garamond, Cinzel | Fallback to `sans-serif` / `serif` / `monospace` |
+| **DeviantArt** | `bio.html` outbound (`#verkko`) | Link only |
+| **Etsy** | `bio.html` outbound (Kiomra Trionfi listing) | Link only |
+| **SoundCloud** | `bio.html` outbound | Link only |
+| **LinkedIn** | `bio.html` outbound | Link only |
+| **Trepo (trepo.tuni.fi)** | `bio.html` outbound (thesis handle) | Link only |
 
 No analytics, CMS, payments, webhooks, auth providers, or first-party APIs.
 
@@ -345,7 +348,7 @@ There is no API response schema.
 2. **Do not introduce a backend, env secrets, or Netlify functions without a new architecture section** (auth, data store, API contract).
 3. **Do not unpin or CDN-swap Three.js on one page only.**
 4. **Do not assume `taikoi-sun-portal.png` is wired.** It is unused; `AiiAold.8dde82cb.jpg` is the live logo/favicon/sun sprite.
-5. **Do not restyle `diy_realities.html` as the index solar system or the green System Log terminal.** The route is the Khaeos Metalogs hall: DOM images `art/khaeos/khaeos-emblem.png` and `art/khaeos/khaeos-metalogs.png`, seven smooth rings tracking the wordmark, and a gold/bone scroll that opens with the Finnish Multimieli folio and then duplicates the three System Log blocks. `pure_systems.html` stays the green terminal with the social links. `khaeos-logo.png` and the other `art/khaeos/` planes are unused. The home nav label stays Library. If WebGL fails, the emblem, wordmark, and log text stay visible.
+5. **Do not restyle `diy_realities.html` as the index solar system or the green System Log terminal.** The route is the Khaeos Metalogs hall: DOM images `art/khaeos/khaeos-emblem.png` and `art/khaeos/khaeos-metalogs.png`, seven smooth rings tracking the wordmark, and a gold/bone scroll that opens with the Finnish Multimieli folio and then duplicates the three System Log blocks. `pure_systems.html` stays the green terminal. Outbound work links live in the Bio Verkko cabinet. `khaeos-logo.png` and the other `art/khaeos/` planes are unused. The home nav label stays Library. If WebGL fails, the emblem, wordmark, and log text stay visible.
 6. **Do not persist user state across pages** unless you add an explicit store; MPA navigations wipe memory.
 7. **Do not raise `setPixelRatio` uncapped** or run the animation loop in background tabs — thermal/battery regressions on mobile.
 8. **Do not load Three.js from a second CDN or a different major** without verifying import-map + OrbitControls paths.
@@ -360,7 +363,7 @@ There is no API response schema.
 
 | Item | Status |
 |---|---|
-| Khaeos prose | The hall opens with a Finnish Multimieli folio (Entry 001.7, eight paragraphs; the pipe-run sentences were cut from the last). Then the three System Log entries. `pure_systems.html` still holds only those three English copies and the social links |
+| Khaeos prose | The hall opens with a Finnish Multimieli folio (Entry 001.7, eight paragraphs; the pipe-run sentences were cut from the last). Then the three System Log entries. `pure_systems.html` still holds only those three English copies |
 | `gate_left.html` copy | Title chrome only; narrative content not written yet |
 | `gate_right.html` folios | Six English drafts with lacunae; not final |
 | `taikoi-sun-portal.png` | Unreferenced binary |
@@ -441,4 +444,7 @@ Append-only. Newest rows at the **bottom**. Do not rewrite prior rows.
 | 2026-10-18 | Replace the Library discs with a limen salon | index.html, art/limen/lintel.png, art/limen/codex-hanging.png, art/limen/fragment-hanging.png, art/limen/codex-study.png, art/limen/fragment-study.png, architecture.md | Two floating logos did not show the three fates of the hold | One split stone lintel. Codex and Fragmenta are the same gilt cassetta; the right stile is broken. Logo JPEG sits in a punched well. Inward plaques. Studies do not navigate. The Khaeos emblem, ring, and label read `--choose` and are not a button. Timeout, arrows, and Gallery/Bio direct warps unchanged. `gate_left.html` still has no folio copy. |
 | 2026-10-18 | Add a Finnish Multimieli folio at the top of the Khaeos hall | diy_realities.html, architecture.md | The crypt needed a Richard Multimieli scroll above the copied System Log | First `#logs` folio is GAMMA LOG, Entry 001.7, eight Finnish paragraphs. The three English System Log folios follow. `pure_systems.html` is unchanged. |
 | 2026-10-18 | Set the Multimieli folio in a book face | diy_realities.html, architecture.md | Orbitron plus the log measure made the Finnish scroll read as another terminal entry | `.folio.utterance` uses Cinzel for the kicker and EB Garamond for the lines. Sentence openings are capitalized, including Nietzche. The pipe-run sentence is gone. The three English folios stay Orbitron and Cormorant. |
+| 2026-10-18 | Set the Multimieli folio in System Log green type | diy_realities.html, architecture.md | The book face read worse than the log it replaced | Courier Prime and `#00ff00`, plus the System Log `glitch` skew on each Finnish paragraph, staggered. No terminal frame, root banner, or social links. English folios stay gold/bone. |
 | 2026-10-18 | Keep one note for the three Damascus views | physicalus.html, architecture.md | The three plates are the same pendant, so the later bays were separate pieces on the page | The maker's note stays on the first plate. Its last line links held / set down / turned. The other plates keep a thread back to that note. Starfield, steel cards, and Return to the gallery unchanged. |
+| 2026-10-18 | Cap the seal index with a manuscript scroll | seal-menu.css, seal-menu.js, art/seal-scroll-top.png, art/seal-scroll-bottom.png, architecture.md | The open list needed a medieval frame after the names had finished falling | Rollers and side rules arrive about 700 ms after open, via `.is-framed`. Black exteriors are punched. Names, Return, and Close Menu are unchanged. `prefers-reduced-motion` shows the frame at once. |
+| 2026-10-18 | Move the outbound work links from System Log into the Bio hall | bio.html, pure_systems.html, architecture.md | The Etsy and other work links belonged with the biography, not the green terminal | `#verkko` is a brass cabinet after the forest bay: DeviantArt, Etsy (Kiomra Trionfi), SoundCloud, LinkedIn, Trepo. Same URLs and `rel="noopener noreferrer"`. System Log header is the logo only; terminal `padding-top` is 160px. Log copy unchanged. Seal CSS still names `.social-links`, which no header uses. |

@@ -28,7 +28,7 @@
     <link rel="icon" type="image/jpeg" href="AiiAold.8dde82cb.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;1,500&family=EB+Garamond:ital,wght@0,500;1,500&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Courier+Prime&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="seal-menu.css">
     <script src="seal-menu.js" defer></script>
     <style>
@@ -198,50 +198,72 @@
         }
 
         .folio.utterance {
-            max-width: 34rem;
+            max-width: 40rem;
             margin: 1.5rem auto 5.5rem;
-            padding: 0 0 0.4rem;
+            padding: 0;
             border-bottom: none;
+            color: #00ff00;
         }
 
         .folio.utterance h2 {
-            font-family: 'Cinzel', serif;
-            font-weight: 500;
-            font-size: 0.68rem;
-            letter-spacing: 0.46em;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 1.35rem;
+            letter-spacing: 0.08em;
+            color: #00ff00;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.55);
             margin-bottom: 0.85rem;
         }
 
-        .folio.utterance .signature--lead {
-            font-family: 'EB Garamond', serif;
-            font-style: italic;
-            font-weight: 500;
-            font-size: 1.2rem;
-            line-height: 1.35;
-            letter-spacing: 0.01em;
-            color: #e7d7b0;
+        .folio.utterance .signature--lead,
+        .folio.utterance p {
+            font-family: 'Courier Prime', monospace;
+            font-style: normal;
+            font-weight: 400;
+            color: #00ff00;
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
             opacity: 1;
-            margin: 0 0 2.4rem;
+        }
+
+        .folio.utterance .signature--lead {
+            font-size: 0.95rem;
+            line-height: 1.5;
+            letter-spacing: 0;
+            margin: 0 0 1.35rem;
         }
 
         .folio.utterance p {
-            font-family: 'EB Garamond', serif;
-            font-weight: 500;
-            font-size: clamp(1.38rem, 2.5vw, 1.78rem);
-            line-height: 1.38;
-            letter-spacing: 0.004em;
-            color: #f7f1e4;
-            margin-bottom: 1.65rem;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            letter-spacing: 0;
+            margin-bottom: 1.25rem;
         }
 
-        @media (max-width: 720px) {
-            .folio.utterance {
-                margin-top: 0.5rem;
-            }
+        .glitch-text {
+            animation: glitch 3s infinite;
+        }
 
-            .folio.utterance p {
-                font-size: 1.32rem;
-                line-height: 1.4;
+        .folio.utterance p:nth-of-type(2) { animation-delay: 0.35s; }
+        .folio.utterance p:nth-of-type(3) { animation-delay: 0.7s; }
+        .folio.utterance p:nth-of-type(4) { animation-delay: 1.05s; }
+        .folio.utterance p:nth-of-type(5) { animation-delay: 1.4s; }
+        .folio.utterance p:nth-of-type(6) { animation-delay: 1.75s; }
+        .folio.utterance p:nth-of-type(7) { animation-delay: 2.1s; }
+        .folio.utterance p:nth-of-type(8) { animation-delay: 2.45s; }
+
+        @keyframes glitch {
+            0% { opacity: 1; }
+            95% { opacity: 1; }
+            96% { opacity: 0.8; transform: skewX(2deg); }
+            97% { opacity: 1; transform: skewX(0); }
+            98% { opacity: 0.9; transform: skewX(-2deg); }
+            99% { opacity: 1; transform: skewX(0); }
+            100% { opacity: 1; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .glitch-text {
+                animation: none;
             }
         }
 
@@ -277,14 +299,14 @@
             <article class="folio utterance">
                 <h2>Gamma Log</h2>
                 <div class="signature signature--lead">Excerpt from Thytans L; God/Animal Hybrid Lord Multimieli, Entry 001.7 XIOMRA</div>
-                <p>Nykyiset kulttuurit ovat kuin viisauden ruumiita, sielunsa unohtaneet jäänteet, neofobinen, vailla sielua mätänevät traditiot tekohengityksen hyrränä odottaa kaatumistaan että naakat ja haaskalinnut voivat vihdoin syödä kyllikseen.</p>
-                <p>Kaikki uskomukset tai mallit ovat virheellisiä likiarvoja, mutta jotkut niistä ovat käytännöllisiä.</p>
-                <p>Tervetuloa maailman suurimpaan larppaukseen, ihmisleikkiin. Älä sinäpä apina leiki ihmistä edessäsi.</p>
-                <p>En itse usko, että Jumala olisi kuollut - mutta sen tiedän, että Nietzche on kuollut jo yli satavuotta sitten.</p>
-                <p>Uskomukset luodaan siksi, että elämällä olisi jokin merkitys. Samantapaisesti uskotaan vaikkapa rahaan elämän tarkoituksena. Uskonnoilla on päämäärä, toisinkuin todellisuudella itsellään.</p>
-                <p>Voit nauraa toiselle 2 eri syystä. Henkilön tekojen hauskuudelle tai henkilön pelleydelle, tämä kertoo miten näet maailmaa.</p>
-                <p>Jos olet nyt etsimässä ihmistä, joka sinut auttaisi pois ongelmistasi - on aika katsoa peiliin.</p>
-                <p>“Elämä” on se asia joka tapahtuu, kaiken aikaa, mutta lipuu ohitsesi koska olet kiireinen tekemään muita suunnitelmia.</p>
+                <p class="glitch-text">Nykyiset kulttuurit ovat kuin viisauden ruumiita, sielunsa unohtaneet jäänteet, neofobinen, vailla sielua mätänevät traditiot tekohengityksen hyrränä odottaa kaatumistaan että naakat ja haaskalinnut voivat vihdoin syödä kyllikseen.</p>
+                <p class="glitch-text">Kaikki uskomukset tai mallit ovat virheellisiä likiarvoja, mutta jotkut niistä ovat käytännöllisiä.</p>
+                <p class="glitch-text">Tervetuloa maailman suurimpaan larppaukseen, ihmisleikkiin. Älä sinäpä apina leiki ihmistä edessäsi.</p>
+                <p class="glitch-text">En itse usko, että Jumala olisi kuollut - mutta sen tiedän, että Nietzche on kuollut jo yli satavuotta sitten.</p>
+                <p class="glitch-text">Uskomukset luodaan siksi, että elämällä olisi jokin merkitys. Samantapaisesti uskotaan vaikkapa rahaan elämän tarkoituksena. Uskonnoilla on päämäärä, toisinkuin todellisuudella itsellään.</p>
+                <p class="glitch-text">Voit nauraa toiselle 2 eri syystä. Henkilön tekojen hauskuudelle tai henkilön pelleydelle, tämä kertoo miten näet maailmaa.</p>
+                <p class="glitch-text">Jos olet nyt etsimässä ihmistä, joka sinut auttaisi pois ongelmistasi - on aika katsoa peiliin.</p>
+                <p class="glitch-text">“Elämä” on se asia joka tapahtuu, kaiken aikaa, mutta lipuu ohitsesi koska olet kiireinen tekemään muita suunnitelmia.</p>
             </article>
 
             <article class="folio">
