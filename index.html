@@ -656,8 +656,7 @@
     }
 
     .orrery,
-    .limen-core .emblem,
-    .limen-core p {
+    .limen-core .emblem {
       grid-area: 1 / 1;
     }
 
@@ -677,23 +676,6 @@
       height: auto;
       transform: scale(calc(0.85 + var(--choose) * 0.2));
       filter: drop-shadow(0 0 12px rgba(217, 164, 65, 0.45));
-    }
-
-    .limen-core p {
-      position: absolute;
-      top: calc(100% + 4.1rem);
-      left: 50%;
-      margin: 0;
-      transform: translateX(-50%);
-      white-space: nowrap;
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-weight: 500;
-      font-size: clamp(1.05rem, 2vw, 1.45rem);
-      letter-spacing: 0.22em;
-      color: #efe6d4;
-      opacity: var(--choose);
-      text-shadow: 0 0 12px rgba(0, 0, 0, 0.85), 0 0 16px rgba(217, 164, 65, 0.35);
     }
 
     .wing {
@@ -980,12 +962,6 @@
         width: 58px;
         height: 58px;
       }
-
-      .limen-core p {
-        top: calc(100% + 1.65rem);
-        font-size: 0.95rem;
-        letter-spacing: 0.14em;
-      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1036,7 +1012,6 @@
     <div class="limen-core" aria-hidden="true">
       <div class="orrery"></div>
       <img class="emblem" src="art/khaeos/khaeos-emblem.png" alt="" width="999" height="1004" decoding="async" draggable="false">
-      <p>Khaeos</p>
     </div>
     <div class="wing wing--left">
       <img class="study study--codex" src="art/limen/codex-study.png" alt="" width="667" height="430" decoding="async" draggable="false">
@@ -1645,7 +1620,7 @@
     let warpState = null;
     let didPrefetchGates = false;
     const BOOST_MS = 1500;
-    const CHOOSE_MS = 3200;
+    const CHOOSE_MS = 4200;
     const COMMIT_MS = 900;
     const choiceEl = document.getElementById('wormhole-choice');
 
