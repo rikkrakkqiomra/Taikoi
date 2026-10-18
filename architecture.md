@@ -100,17 +100,17 @@ Taikoi/
 │       ├── victorian-gilt.png
 │       ├── layered-gilt.png
 │       └── spectrum-gilt.png
-│   └── khaeos/                # Khaeos temple textures loaded by diy_realities.html
-│       ├── khaeos-logo.png    # Gold KHAEOΣ wordmark, transparent
-│       ├── chlos.png          # Black ΧΛΟΣ, transparent; sits on the left parchment
-│       ├── hexxacro.png       # Green hexagram sigil, transparent
-│       ├── wood-arch.png      # Wood wall with a punched oculus
-│       ├── wood-wall.jpg      # Uncut wood source; not loaded by HTML
-│       ├── wood-beam.jpg      # Lintel and sill
-│       ├── parchment-left.jpg
-│       ├── parchment-right.jpg
-│       └── nebula.jpg         # Night window (gold spiral) behind the oculus
-├── diy_realities.html         # Khaeos temple; home nav label remains Library
+│   └── khaeos/                # Only khaeos-logo.png is loaded by diy_realities.html
+│       ├── khaeos-logo.png    # Gold KHAEOΣ wordmark, transparent; the only live texture
+│       ├── chlos.png          # Unused. Black ΧΛΟΣ
+│       ├── hexxacro.png       # Unused. Green hexagram
+│       ├── wood-arch.png      # Unused. Wood wall with a punched oculus
+│       ├── wood-wall.jpg      # Unused uncut wood source
+│       ├── wood-beam.jpg      # Unused lintel strip
+│       ├── parchment-left.jpg # Unused
+│       ├── parchment-right.jpg # Unused
+│       └── nebula.jpg         # Unused night window
+├── diy_realities.html         # Khaeos: gold wordmark and seven smooth rings; nav label stays Library
 ├── gate_left.html             # Crimson left aperture; content TBD
 ├── gate_right.html            # Fragmenta Apocrypha; gold starfield + unfinished folio nave
 ├── seal-menu.css              # Shared seal-index styles (six subpages)
@@ -132,7 +132,7 @@ No `.gitignore` in the current tree (removed in `85d5131`).
 | `brain.html` | `/brain.html` | Starfield + floating manifesto blocks. Seal opens the index; Return → `index.html`. |
 | `pure_systems.html` | `/pure_systems.html` | Green starfield + log copy + social icons. Seal opens the index; Return → `index.html`. |
 | `gallery.html` | `/gallery.html` | Black starfield (Three.js warp only) + 2D photographic hangings with draft text plaques. Seal opens the index; Return reverse-warps → `index.html`. Eleven solo bays; hangings alternate left/right on desktop. Last is The Prism in a polychrome Baroque frame. |
-| `diy_realities.html` | `/diy_realities.html` | Khaeos temple. Home nav label stays Library. Default wormhole timeout destination. Wood oculus, parchment columns, Hexxacro sigil, three rings, stars between the planes. Seal opens the index; Return reverse-warps → `index.html`. |
+| `diy_realities.html` | `/diy_realities.html` | Khaeos. Home nav label stays Library. Default wormhole timeout destination. Gold KHAEOΣ wordmark, seven smooth rings, stars between them. Seal opens the index; Return reverse-warps → `index.html`. |
 | `gate_left.html` | `/gate_left.html` | Crimson vertical slit. Entered by left seal. Seal opens the index; Return reverse-warps → `index.html`. Title only. |
 | `gate_right.html` | `/gate_right.html` | Fragmenta Apocrypha: gold/zinc starfield + scrollable nave of six unfinished folios. Entered by right seal. Seal opens the index; Return reverse-warps → `index.html`. |
 | `netlify.toml` | n/a | Deployment contract: publish directory and HTTP headers. |
@@ -215,7 +215,7 @@ No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
 3. **Loop control:** Prefer `renderer.setAnimationLoop`; fall back to `requestAnimationFrame`. Pause on `document.hidden`; resume on visible; reset `lastFrameTime` to avoid a huge delta spike.
 4. **Delta time:** `dt = min(deltaMs, 50) / (1000/60)` so motion is frame-rate independent and hitch-capped.
 5. **Pixel ratio:** `Math.min(devicePixelRatio, 2)`.
-6. **Entry/exit:** Scene scale 0.001 → 1 (cubic out) on enter for index / brain / pure_systems; reverse cubic in then `location.href` on exit (brain / pure_systems Return; index sun → `brain.html`). **Gallery warp** is `#nav-gallery` `preventDefault` → `boost` (~1500 ms teal/bronze streaks + FOV) → `commit` (~900 ms) → `gallery.html`. Seals stay closed. **Library warp** stays on `index.html` until a destination is chosen: `#nav-diy` `preventDefault` → `boost` (~1500 ms streaks + FOV) → `choose` (~3200 ms hold, flash ~0.4, left Codex Operum relic-eye and right Fragmenta crypt-eye in `#wormhole-choice`, prefetch of the three destinations) → `commit` (~900 ms). Timeout commits `forward` → `diy_realities.html`. Left/right seal (or arrow keys) yaw-shear commit → `gate_left.html` / `gate_right.html`. **Do not** insert a loading page for this beat. Gallery/DIY/gate pages start flash at opacity 0.5 and fade it in ~400 ms; gallery is a 2D photographic hanging over a black starfield; DIY is the Khaeos temple (textured planes at separate depths, stars drifting between them); left is a crimson vertical slit with stars from +X; right is a gold folio nave over a hex-ornament starfield with stars from −X. Seal click opens the shared index (`seal-menu.js`). Return calls `__aivoinkoSealExit`, which reverse-warps to `index.html`. Close Menu smooth-scrolls `#hall`, `#nave`, `.floating-container`, or `.terminal-container` to the top and folds the list. Realm labels have no href yet. `bfcache` `pageshow` resets warp/FOV/fog/camera pose, hides seals, and replays entry.
+6. **Entry/exit:** Scene scale 0.001 → 1 (cubic out) on enter for index / brain / pure_systems; reverse cubic in then `location.href` on exit (brain / pure_systems Return; index sun → `brain.html`). **Gallery warp** is `#nav-gallery` `preventDefault` → `boost` (~1500 ms teal/bronze streaks + FOV) → `commit` (~900 ms) → `gallery.html`. Seals stay closed. **Library warp** stays on `index.html` until a destination is chosen: `#nav-diy` `preventDefault` → `boost` (~1500 ms streaks + FOV) → `choose` (~3200 ms hold, flash ~0.4, left Codex Operum relic-eye and right Fragmenta crypt-eye in `#wormhole-choice`, prefetch of the three destinations) → `commit` (~900 ms). Timeout commits `forward` → `diy_realities.html`. Left/right seal (or arrow keys) yaw-shear commit → `gate_left.html` / `gate_right.html`. **Do not** insert a loading page for this beat. Gallery/DIY/gate pages start flash at opacity 0.5 and fade it in ~400 ms; gallery is a 2D photographic hanging over a black starfield; DIY is the Khaeos wordmark with seven smooth rings and stars drifting through them; left is a crimson vertical slit with stars from +X; right is a gold folio nave over a hex-ornament starfield with stars from −X. Seal click opens the shared index (`seal-menu.js`). Return calls `__aivoinkoSealExit`, which reverse-warps to `index.html`. Close Menu smooth-scrolls `#hall`, `#nave`, `.floating-container`, or `.terminal-container` to the top and folds the list. Realm labels have no href yet. `bfcache` `pageshow` resets warp/FOV/fog/camera pose, hides seals, and replays entry.
 
 ### `index.html` simulation specifics
 
@@ -305,7 +305,7 @@ There is no API response schema.
 2. **Do not introduce a backend, env secrets, or Netlify functions without a new architecture section** (auth, data store, API contract).
 3. **Do not unpin or CDN-swap Three.js on one page only.**
 4. **Do not assume `taikoi-sun-portal.png` is wired.** It is unused; `AiiAold.8dde82cb.jpg` is the live logo/favicon/sun sprite.
-5. **Do not restyle `diy_realities.html` as the index solar system or the green System Log terminal.** The route is the Khaeos temple: photographic planes at separate depths, the Hexxacro sigil with three rings, and stars that pass between the layers. The home nav label stays Library. There is no prose body.
+5. **Do not restyle `diy_realities.html` as the index solar system or the green System Log terminal.** The route is the Khaeos wordmark (`art/khaeos/khaeos-logo.png`) with seven smooth rings and stars passing between them. The other files in `art/khaeos/` are unused. The home nav label stays Library. There is no prose body. The DOM title is fail-open only.
 6. **Do not persist user state across pages** unless you add an explicit store; MPA navigations wipe memory.
 7. **Do not raise `setPixelRatio` uncapped** or run the animation loop in background tabs — thermal/battery regressions on mobile.
 8. **Do not load Three.js from a second CDN or a different major** without verifying import-map + OrbitControls paths.
@@ -320,7 +320,7 @@ There is no API response schema.
 
 | Item | Status |
 |---|---|
-| Khaeos prose | The room is the temple (wordmark, sigil, ΧΛΟΣ). No narrative paragraphs |
+| Khaeos prose | The room is the gold wordmark and rings. No narrative paragraphs |
 | `gate_left.html` copy | Title chrome only; narrative content not written yet |
 | `gate_right.html` folios | Six English drafts with lacunae; not final |
 | `taikoi-sun-portal.png` | Unreferenced binary |
@@ -391,3 +391,4 @@ Append-only. Newest rows at the **bottom**. Do not rewrite prior rows.
 | 2026-10-18 | Seat Codex Operum on the relic plaque | index.html, architecture.md | The inscription sat on the carved band above the empty bronze plate | Banner offset tracks `--relic-w` so the two lines land in the plate. Relic image, eye, and right seal unchanged. |
 | 2026-10-18 | Seal click opens a shared index on the six subpages | seal-menu.css, seal-menu.js, gallery.html, brain.html, pure_systems.html, diy_realities.html, gate_left.html, gate_right.html, architecture.md | The round logo was a direct home warp; the index needs one list under that button | Return still calls each page's `exitAnimation` via `__aivoinkoSealExit`. Realm names do not navigate. Close Menu scrolls `#hall` / `#nave` / the page scroller to the top. Index sun and home nav unchanged. |
 | 2026-10-18 | Rebuild the Library room as the Khaeos temple | diy_realities.html, art/khaeos/, architecture.md | The magenta loom was a title placeholder; the destination is the Khaeos temple | Home nav stays Library. Route stays `diy_realities.html`. Warp-in, timeout, and seal Return unchanged. Planes sit at separate depths so stars pass between them. Fail-open still shows the header and the KHAEOΣ title if WebGL fails. |
+| 2026-10-18 | Replace the Khaeos planes with the logo and seven rings | diy_realities.html, architecture.md | The wood, parchment, nebula, and sigil read as flat game sprites | Only `art/khaeos/khaeos-logo.png` is loaded. Seven solid tori orbit the word; stars pass between them. Other `art/khaeos/` files stay on disk unused. Warp, timeout, seal Return, and the Library nav label unchanged. DOM title is fail-open only. |
