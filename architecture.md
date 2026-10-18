@@ -134,7 +134,7 @@ Taikoi/
 ├── gate_left.html             # Crimson left aperture; content TBD
 ├── gate_right.html            # Fragmenta Apocrypha; gold starfield + unfinished folio nave
 ├── seal-menu.css              # Shared seal-index styles (eight subpages)
-├── seal-menu.js               # Builds the seal index and calls __aivoinkoSealExit
+├── seal-menu.js               # Builds the seal index. Gallery halls on gallery/physicalus; Section 1–4 elsewhere. Return calls __aivoinkoSealExit
 ├── AiiAold.8dde82cb.jpg       # Favicon, preload, sun-portal sprite, header logos, wormhole seals
 ├── taikoi-sun-portal.png      # Tracked asset; not referenced by any HTML (unused)
 ├── netlify.toml               # Publish root + security + cache headers
@@ -151,8 +151,8 @@ No `.gitignore` in the current tree (removed in `85d5131`).
 | `index.html` | `/` | Primary 3D solar system. Nav to System Log (href), Gallery (direct streak warp), Bio (direct streak warp), and Library (warp + on-page wormhole choice). Sun click → `brain.html`. |
 | `brain.html` | `/brain.html` | Starfield + floating manifesto blocks. Seal opens the index; Return → `index.html`. |
 | `pure_systems.html` | `/pure_systems.html` | Green starfield + log copy. Seal opens the index; Return → `index.html`. |
-| `gallery.html` | `/gallery.html` | Black starfield (Three.js warp only) + 2D photographic hangings with draft text plaques. Seal opens the index; Return reverse-warps → `index.html`. Eleven solo bays; hangings alternate left/right on desktop. Last is The Prism in a polychrome Baroque frame. Seal item Physicalus opens `physicalus.html`. |
-| `physicalus.html` | `/physicalus.html` | Side hall of the gallery. Same black starfield. Three workshop photographs of Damascus jewelry on cool steel plates (no art frames). Seal opens the index; Return reverse-warps → `gallery.html`. |
+| `gallery.html` | `/gallery.html` | Black starfield (Three.js warp only) + 2D photographic hangings with draft text plaques. Seal opens the gallery index; Return reverse-warps → `index.html`. Eleven solo bays; hangings alternate left/right on desktop. Last is The Prism in a polychrome Baroque frame. Seal item Physical Arts opens `physicalus.html`. Artificial Arts is this hall. Cartomancy, Musical Theatre, and Mineralogy do not navigate. |
+| `physicalus.html` | `/physicalus.html` | Side hall of the gallery (Physical Arts). Same black starfield. Three workshop photographs of Damascus jewelry on cool steel plates (no art frames). Seal opens the same gallery index as `gallery.html`. Artificial Arts opens `gallery.html`. Return reverse-warps → `gallery.html`. |
 | `bio.html` | `/bio.html` | Black starfield + scroll hall. Opening name plate, four CSS-framed portraits (`art/bio/`), Finnish draft plaques, a Verkko cabinet of outbound work links, closing plate. Seal opens the index; Return reverse-warps → `index.html`. Portraits are not under a `bio/` root folder. |
 | `diy_realities.html` | `/diy_realities.html` | Khaeos Metalogs. Home nav label stays Library. Default wormhole timeout destination. DOM emblem and wordmark, seven smooth rings tracking the wordmark, fixed starfield, scroll hall. Odd folios are green System Log terminals (Multimieli, then Log Entry 2). Even folios stay gold/bone (Log Entry 1, then Log Entry 3). Seal opens the index; Return reverse-warps → `index.html`. |
 | `gate_left.html` | `/gate_left.html` | Crimson vertical slit. Entered by left seal. Seal opens the index; Return reverse-warps → `index.html`. Title only. |
@@ -168,7 +168,9 @@ index.html  --nav "System Log"-->  pure_systems.html  --seal Return-->  index.ht
 index.html  --sun click/tap------->  brain.html         --seal Return-->  index.html
 index.html  --nav "Gallery"------->  streak warp (boost → commit, no seals) → gallery.html
                  gallery seal Return ->  reverse-warp → index.html
-                 gallery seal Physicalus -> physicalus.html --seal Return--> gallery.html
+                 gallery seal Physical Arts -> physicalus.html --seal Return--> gallery.html
+                 gallery seal Artificial Arts -> gallery.html (current hall; closes and scrolls)
+                 physicalus seal Artificial Arts -> gallery.html
 index.html  --nav "Bio"---------->  streak warp (boost → commit, no seals) → bio.html
                  bio seal Return ---->  reverse-warp → index.html
 index.html  --nav "Library"------>  warp boost → on-page choice hold (seals)
@@ -267,7 +269,7 @@ No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
 - **Slips:** One English maker's note, on the first plate only (`#hundred`). Orbitron kicker and credit, Cormorant italic title. Credit is Riimu Takomo with Joni. The pendant is 100-layer Damascus. The note's last line links the three views of that same piece: held, set down, turned. Later plates have no second title. A `.thread` under each repeats "The Hundred" and scrolls `#hall` back to `#view-hand`.
 - **Layout:** Three solo bays. The first pairs the plate with the note. The next two are the same pendant, plate plus thread, alternating left/right. `#realm-title` follows the last bay on desktop and is hidden on mobile. Seal is absolute on desktop and in-flow on mobile. Mobile stacks plate then note or thread; optional swipe scrolls to the next bay. Optional `?focus=N`. In-hall `#` links scroll `#hall`, not the document.
 - **Three.js:** Same enter/idle/exit streak field as the gallery (2200 stars, flash 0.28 fading in ~350 ms). No void well, no OrbitControls. Seal Return assigns `__aivoinkoSealExit`, which reverse-warps to `gallery.html`. Fail-open keeps the plates readable.
-- **Route:** Seal index item Physicalus sets `location.href` to `physicalus.html` from any seal page. Assets stay under `art/physicalus/` so they do not collide with Netlify Pretty URL `/physicalus`.
+- **Route:** The gallery index (this page and `gallery.html` only) lists Physical Arts → `physicalus.html`, Artificial Arts → `gallery.html`, then Cartomancy, Musical Theatre, and Mineralogy with no href. Other subpages list Section 1–4 and those items do not navigate. Assets stay under `art/physicalus/` so they do not collide with Netlify Pretty URL `/physicalus`.
 
 ### `bio.html` hall specifics
 
@@ -369,7 +371,7 @@ There is no API response schema.
 | `taikoi-sun-portal.png` | Unreferenced binary |
 | `LICENSE` | Missing despite README MIT claim |
 | Shared CSS/JS modules | `seal-menu.css` / `seal-menu.js` on the eight subpages. Three.js bootstrap is still copied per page. |
-| Seal index realms | Physicalus opens `physicalus.html`. Artificialus, KIOMRA, Musica, and Mineralogy render in the menu and do not navigate |
+| Seal index realms | Gallery index (`gallery.html`, `physicalus.html`): Physical Arts → `physicalus.html`, Artificial Arts → `gallery.html`. Cartomancy, Musical Theatre, Mineralogy do not navigate. Other six subpages list Section 1–4 and those items do not navigate |
 | Gallery hangings | Eleven hangings on the hall (`01`–`04`, `06`, `08`–`13`). Unused stills `05-pact.jpg` and `07-window.jpg` remain under `art/` |
 | i18n | Shell and other pages are English. `bio.html` body copy is Finnish. |
 | Analytics | None |
@@ -450,3 +452,4 @@ Append-only. Newest rows at the **bottom**. Do not rewrite prior rows.
 | 2026-10-18 | Cap the seal index with a manuscript scroll | seal-menu.css, seal-menu.js, art/seal-scroll-top.png, art/seal-scroll-bottom.png, architecture.md | The open list needed a medieval frame after the names had finished falling | Rollers and side rules arrive about 700 ms after open, via `.is-framed`. Black exteriors are punched. Names, Return, and Close Menu are unchanged. `prefers-reduced-motion` shows the frame at once. |
 | 2026-10-18 | Move the outbound work links from System Log into the Bio hall | bio.html, pure_systems.html, architecture.md | The Etsy and other work links belonged with the biography, not the green terminal | `#verkko` is a brass cabinet after the forest bay: DeviantArt, Etsy (Kiomra Trionfi), SoundCloud, LinkedIn, Trepo. Same URLs and `rel="noopener noreferrer"`. System Log header is the logo only; terminal `padding-top` is 160px. Log copy unchanged. Seal CSS still names `.social-links`, which no header uses. |
 | 2026-10-18 | Hold the Library salon one second longer and drop the Khaeos caption | index.html, architecture.md | The choice hold felt short, and the center word sat under the emblem | `CHOOSE_MS` is 4200. The center emblem and orrery stay. Codex and Fragmenta plaques, routes, and Gallery/Bio direct warps are unchanged. |
+| 2026-10-18 | Split the seal index into a gallery list and unfinished sections | seal-menu.js, architecture.md | The gallery hall names were opening on every room | `gallery.html` and `physicalus.html` list Physical Arts → `physicalus.html`, Artificial Arts → `gallery.html`, then Cartomancy, Musical Theatre, Mineralogy with no href. The other six subpages list Section 1–4 with no href. Return and Close Menu unchanged. |

@@ -1,11 +1,29 @@
 (function () {
-    var REALMS = [
-        { label: 'Physicalus', href: 'physicalus.html' },
-        { label: 'Artificialus' },
-        { label: 'KIOMRA' },
-        { label: 'Musica' },
+    var GALLERY_REALMS = [
+        { label: 'Physical Arts', href: 'physicalus.html' },
+        { label: 'Artificial Arts', href: 'gallery.html' },
+        { label: 'Cartomancy' },
+        { label: 'Musical Theatre' },
         { label: 'Mineralogy' }
     ];
+
+    var SECTION_REALMS = [
+        { label: 'Section 1' },
+        { label: 'Section 2' },
+        { label: 'Section 3' },
+        { label: 'Section 4' }
+    ];
+
+    function pageStem() {
+        var path = window.location.pathname.replace(/\\/g, '/');
+        var parts = path.split('/').filter(Boolean);
+        var file = parts.length ? parts[parts.length - 1] : '';
+        return file.replace(/\.html$/, '');
+    }
+
+    var REALMS = (pageStem() === 'gallery' || pageStem() === 'physicalus')
+        ? GALLERY_REALMS
+        : SECTION_REALMS;
 
     var img = document.querySelector('header img');
     if (!img) return;
