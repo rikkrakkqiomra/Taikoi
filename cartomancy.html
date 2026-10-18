@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cartomancy</title>
-    <meta name="description" content="Cartomancy: the lands of Beliefs and Changes, thirteen cards each, read as a fork of the tarot.">
+    <meta name="description" content="Cartomancy: the lands of Beliefs, Changes, and Powers, thirteen cards each, read as a fork of the tarot.">
     <meta name="theme-color" content="#8d6aae">
     <link rel="canonical" href="https://taikoi.netlify.app/cartomancy.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Aivoinko">
     <meta property="og:title" content="Cartomancy">
-    <meta property="og:description" content="Cartomancy: the lands of Beliefs and Changes, thirteen cards each, read as a fork of the tarot.">
+    <meta property="og:description" content="Cartomancy: the lands of Beliefs, Changes, and Powers, thirteen cards each, read as a fork of the tarot.">
     <meta property="og:url" content="https://taikoi.netlify.app/cartomancy.html">
     <meta property="og:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Cartomancy">
-    <meta name="twitter:description" content="Cartomancy: the lands of Beliefs and Changes, thirteen cards each, read as a fork of the tarot.">
+    <meta name="twitter:description" content="Cartomancy: the lands of Beliefs, Changes, and Powers, thirteen cards each, read as a fork of the tarot.">
     <meta name="twitter:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <link rel="apple-touch-icon" href="AiiAold.8dde82cb.jpg">
     <link rel="preconnect" href="https://unpkg.com" crossorigin>
@@ -450,8 +450,10 @@
         #deck-sealed[hidden],
         #deck-beliefs[hidden],
         #deck-changes[hidden],
+        #deck-powers[hidden],
         #suit-intro[hidden],
-        #suit-intro-changes[hidden] {
+        #suit-intro-changes[hidden],
+        #suit-intro-powers[hidden] {
             display: none;
         }
 
@@ -582,9 +584,9 @@
                 <optgroup label="Open">
                     <option value="beliefs" selected>I · Beliefs</option>
                     <option value="changes">II · Changes</option>
+                    <option value="powers">III · Powers</option>
                 </optgroup>
                 <optgroup label="Sealed">
-                    <option value="sealed-iii">III · Sealed</option>
                     <option value="sealed-iv">IV · Sealed</option>
                 </optgroup>
             </select>
@@ -1032,13 +1034,234 @@
             </section>
         </div>
 
+        <article id="suit-intro-powers" class="suit-intro" hidden>
+            <p class="suit-kicker">Maa III</p>
+            <h2>Powers</h2>
+            <blockquote>A power is not a force. It is a capacity that has found a body willing to carry it.</blockquote>
+            <p>This is the third land. Thirteen cards, and not a costume of any older deck. Ten weathers of a capacity, then three who walk them: the Seeker, the Keeper, the Master.</p>
+            <p>Read a card for the capacity it names. The picture is already the use. Fortune can wait.</p>
+        </article>
+
+        <nav class="suit-index" id="index-powers" aria-label="Cards of Powers" hidden>
+            <a href="#potential">I Potential</a>
+            <a href="#avoidance">II Avoidance</a>
+            <a href="#pain">III Pain</a>
+            <a href="#failure">IV Failure</a>
+            <a href="#struggle">V Struggle</a>
+            <a href="#play">VI Play</a>
+            <a href="#swiftness">VII Swiftness</a>
+            <a href="#pleasure">VIII Pleasure</a>
+            <a href="#control">IX Control</a>
+            <a href="#courage">X Courage</a>
+            <a href="#clarity">XI Clarity</a>
+            <a href="#resilience">XII Resilience</a>
+            <a href="#focus">XIII Focus</a>
+        </nav>
+
+        <div id="deck-powers" hidden>
+            <section class="card" id="potential">
+                <figure>
+                    <img src="art/cartomancy/powers/01-potential.png" alt="Root of Powers, Potential" width="613" height="1024" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">I · Root of Powers</p>
+                    <h2>Potential</h2>
+                    <blockquote>The column is already burning. The lamp is only how you approach it.</blockquote>
+                    <p>An elder in pale robes sits among skulls and offers a small light toward a pillar of gold, bone, and hanging bells. The skulls are not a threat. They are forms a capacity has already passed through. The lamp is small because the column does not need to be lit.</p>
+                    <p>Potential is the root, because a power that has not yet chosen a use is still a power. Naming it too early spends it.</p>
+                    <p class="reading-use"><span>In a reading</span> The capacity is present and unspent. Approach it. Do not assign it a task until you have stood in its light.</p>
+                </article>
+            </section>
+
+            <section class="card" id="avoidance">
+                <figure>
+                    <img src="art/cartomancy/powers/02-avoidance.png" alt="Powers, Avoidance" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">II · Powers</p>
+                    <h2>Avoidance</h2>
+                    <blockquote>The costume is exquisite because the refusal has had time to become a style.</blockquote>
+                    <p>A tall hood, a pointed gilt cap, a face worked into a mask, eyes that do not quite meet you. Chains of stones fall where a voice would be. Avoidance is power spent on not arriving. The metal is the proof that the refusal has been practiced.</p>
+                    <p>It is the second card because a capacity that cannot be declined has not been chosen. The hood is a decision worn on the head.</p>
+                    <p class="reading-use"><span>In a reading</span> Notice what the splendor is keeping at a distance. The avoidance is skilled. Ask whether the distance is still the work.</p>
+                </article>
+            </section>
+
+            <section class="card" id="pain">
+                <figure>
+                    <img src="art/cartomancy/powers/03-pain.png" alt="Powers, Pain" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">III · Powers</p>
+                    <h2>Pain</h2>
+                    <blockquote>The throne is comfortable. That is how the lesson stays.</blockquote>
+                    <p>A pale figure sits in a high collar and a patterned coat, one foot forward, a globe at the knee. Pain is the capacity that teaches the limit of a body by occupying it. The chair is not a punishment. It is a seat that has been made easy enough to remain in.</p>
+                    <p>Power that hurts can still be administered. The globe says the hurt has a world, not only a nerve.</p>
+                    <p class="reading-use"><span>In a reading</span> The discomfort is information with a throne. Do not decorate it, and do not pretend the chair is empty.</p>
+                </article>
+            </section>
+
+            <section class="card" id="failure">
+                <figure>
+                    <img src="art/cartomancy/powers/04-failure.png" alt="Powers, Failure" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">IV · Powers</p>
+                    <h2>Failure</h2>
+                    <blockquote>The banner is still magnificent. The ground has kept the tools.</blockquote>
+                    <p>An elder stands under a huge yellow cloth in a camp of abandoned vessels, a small creature at the feet, the desert bright behind. Failure is the hour after the work has stopped agreeing. The banner did not come down. What it could not carry is lying in the sand.</p>
+                    <p>This is a capacity, not a verdict. A power that cannot fail has never been used where the weather is real.</p>
+                    <p class="reading-use"><span>In a reading</span> Leave the banner up if you must, and pick through what fell. The failure is the inventory, not the shame.</p>
+                </article>
+            </section>
+
+            <section class="card" id="struggle">
+                <figure>
+                    <img src="art/cartomancy/powers/05-struggle.png" alt="Powers, Struggle" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">V · Powers</p>
+                    <h2>Struggle</h2>
+                    <blockquote>The blade is held across the body because the fight has become a line.</blockquote>
+                    <p>A figure stands in a pale arch, one sword upright, another laid horizontal through the hands, rust or blood on the metal, a crown of points. Struggle is a capacity met by an equal capacity. The arch does not take a side. The horizontal blade is the place you have to live.</p>
+                    <p>Neither point has won. That is why the card is in the middle of the suit, where a power learns it is not alone.</p>
+                    <p class="reading-use"><span>In a reading</span> Stay on the line. The struggle is the work of two strengths, and ending it early would waste both.</p>
+                </article>
+            </section>
+
+            <section class="card" id="play">
+                <figure>
+                    <img src="art/cartomancy/powers/06-play.png" alt="Powers, Play" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">VI · Powers</p>
+                    <h2>Play</h2>
+                    <blockquote>The finger at the lips is a rule, not a secret.</blockquote>
+                    <p>A horned face, painted pale, jewelry hanging from the brow, one hand raised to the mouth and the other counting beads. Play is power that refuses to be solemn. The hush means a game is already underway, and speaking would break the move.</p>
+                    <p>The horns are not a threat. They are the costume the capacity wears when it would rather dance than decree.</p>
+                    <p class="reading-use"><span>In a reading</span> Treat the matter as a game with a real stake. Seriousness is not the same thing as attention.</p>
+                </article>
+            </section>
+
+            <section class="card" id="swiftness">
+                <figure>
+                    <img src="art/cartomancy/powers/07-swiftness.png" alt="Powers, Swiftness" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">VII · Powers</p>
+                    <h2>Swiftness</h2>
+                    <blockquote>The smile belongs to someone who has already moved.</blockquote>
+                    <p>A white-bearded engineer leans back in a nest of pipes, gauges, and brass, goggles on, both hands on the controls. Swiftness is the capacity that arrives before the argument. The machine is not decoration. It is how a decision gets ahead of the committee in the chest.</p>
+                    <p>Speed without a gauge is only panic. Here the dials are lit, and the face is glad.</p>
+                    <p class="reading-use"><span>In a reading</span> Move while the reading is still warm. Hesitation would be a second machine, and you do not have room for it.</p>
+                </article>
+            </section>
+
+            <section class="card" id="pleasure">
+                <figure>
+                    <img src="art/cartomancy/powers/08-pleasure.png" alt="Powers, Pleasure" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">VIII · Powers</p>
+                    <h2>Pleasure</h2>
+                    <blockquote>The skull is the seat. The cost has already been paid.</blockquote>
+                    <p>A calm figure sits on a great fanged skull, flowers and antlers in the hair, a staff in one hand, a thicket of bone and blossom behind. Pleasure is the capacity that makes a person stay. The face is not drunk. It knows what the chair is made of.</p>
+                    <p>To enjoy a thing and to ignore its price are different powers. This card is the first of those.</p>
+                    <p class="reading-use"><span>In a reading</span> Take the pleasure, and name the skull you are sitting on. Staying is allowed. Forgetting is not.</p>
+                </article>
+            </section>
+
+            <section class="card" id="control">
+                <figure>
+                    <img src="art/cartomancy/powers/09-control.png" alt="Powers, Control" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">IX · Powers</p>
+                    <h2>Control</h2>
+                    <blockquote>Stillness is the work. The hands stay on the arms of the chair.</blockquote>
+                    <p>An armored figure sits inside a ring of metal, a blade running down the center of the body, horns rising from the helm, the throne grown into claws. Control is the capacity that agrees to sit still so everything else can be arranged. Nothing in the picture is rushing.</p>
+                    <p>The danger is to mistake the seat for the world. A control that cannot stand up has become the chair.</p>
+                    <p class="reading-use"><span>In a reading</span> Arrange, and then leave one hand free. What you cannot release is no longer being governed.</p>
+                </article>
+            </section>
+
+            <section class="card" id="courage">
+                <figure>
+                    <img src="art/cartomancy/powers/10-courage.png" alt="Powers, Courage" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">X · Powers</p>
+                    <h2>Courage</h2>
+                    <blockquote>The scars are the record. The smoke is the pause.</blockquote>
+                    <p>A horned, marked face draws on a small burning flower, smoke rising, a skull and a crescent in the dark above the brow. Courage is not the absence of damage. It is the decision to keep the mouth occupied with something smaller than the fear, long enough to choose the next act.</p>
+                    <p>The last of the ten weathers, because a capacity that has not been frightened has not yet been proved.</p>
+                    <p class="reading-use"><span>In a reading</span> You already carry the marks. Take the breath, and then move. Courage is the pause that does not become a residence.</p>
+                </article>
+            </section>
+
+            <section class="card card--court" id="clarity">
+                <figure>
+                    <img src="art/cartomancy/powers/11-clarity.png" alt="Seeker of Powers, Clarity" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">XI · Seeker of Powers</p>
+                    <h2>Clarity</h2>
+                    <blockquote>The owl looks where she is not looking.</blockquote>
+                    <p>A woman in a winged helm stands in the snow, braids bound, an owl heavy on the arm, a staff in the other hand, a small fire showing at the hem. Clarity is the court of the one who can see a power without becoming it. Two gazes, one weather.</p>
+                    <p>The Seeker does not spend the capacity. She keeps it in view until it has a true name.</p>
+                    <p class="reading-use"><span>In a reading</span> Look twice, and from a second pair of eyes. What is clear will survive the second look.</p>
+                </article>
+            </section>
+
+            <section class="card card--court" id="resilience">
+                <figure>
+                    <img src="art/cartomancy/powers/12-resilience.png" alt="Keeper of Powers, Resilience" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">XII · Keeper of Powers</p>
+                    <h2>Resilience</h2>
+                    <blockquote>The sky has split. The jaw has not.</blockquote>
+                    <p>An armored face under a cracked world, light breaking through the stone behind the helm, wings of metal at the shoulders. Resilience is what the Keeper holds: not victory, the capacity to remain when the thing overhead has already failed. The grin is the jaw set, not a triumph.</p>
+                    <p>A power that cannot be broken is only untested. This one has been tested and is still standing in the rubble.</p>
+                    <p class="reading-use"><span>In a reading</span> Stay. The break is in the sky, not in the stance. Remaining is the whole instruction.</p>
+                </article>
+            </section>
+
+            <section class="card card--court" id="focus">
+                <figure>
+                    <img src="art/cartomancy/powers/13-focus.png" alt="Master of Powers, Focus" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">XIII · Master of Powers</p>
+                    <h2>Focus</h2>
+                    <blockquote>The hair is the excess. The hands are the decision.</blockquote>
+                    <p>A woman with a storm of blue hair, a small jewel at the brow, hands folded, eyes that do not wander. Focus is the mastery of power: every weather of the suit gathered into one gaze. Nothing in the picture is being spent. The excess is worn. The choice is in the clasp of the fingers.</p>
+                    <p>The Master does not abolish the suit. Potential, pain, play, courage — they are still in the hair. They have stopped competing for the eyes.</p>
+                    <p class="reading-use"><span>In a reading</span> Choose one use and hold it. The rest may remain beautiful. It does not get to move your hands.</p>
+                </article>
+            </section>
+        </div>
+
         <div id="deck-sealed" hidden>
             <article class="sealed-plate">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
                 <p class="suit-kicker">Unopened</p>
                 <h2>This land is not yet drawn.</h2>
                 <p>The fork has other countries. Their cards are still in the dark, and a name given too early would be a lie with a border.</p>
-                <p>Return to an open land. Beliefs and Changes can be read.</p>
+                <p>Return to an open land. Beliefs, Changes, and Powers can be read.</p>
             </article>
         </div>
 
@@ -1062,7 +1285,7 @@
         const landSelect = document.getElementById('land-select');
         const sealed = document.getElementById('deck-sealed');
         const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const OPEN_LANDS = ['beliefs', 'changes'];
+        const OPEN_LANDS = ['beliefs', 'changes', 'powers'];
 
         function isMobile() {
             return window.matchMedia('(max-width: 768px)').matches;
@@ -1075,7 +1298,7 @@
         function activeCards() {
             const land = activeLand();
             if (!land) return [];
-            const deck = document.getElementById(land === 'beliefs' ? 'deck-beliefs' : 'deck-changes');
+            const deck = document.getElementById('deck-' + land);
             return Array.from(deck.querySelectorAll('.card'));
         }
 
@@ -1105,12 +1328,12 @@
 
         function applyLand() {
             const land = activeLand();
-            document.getElementById('deck-beliefs').hidden = land !== 'beliefs';
-            document.getElementById('suit-intro').hidden = land !== 'beliefs';
-            document.getElementById('index-beliefs').hidden = land !== 'beliefs';
-            document.getElementById('deck-changes').hidden = land !== 'changes';
-            document.getElementById('suit-intro-changes').hidden = land !== 'changes';
-            document.getElementById('index-changes').hidden = land !== 'changes';
+            for (const key of OPEN_LANDS) {
+                const on = key === land;
+                document.getElementById('deck-' + key).hidden = !on;
+                document.getElementById(key === 'beliefs' ? 'suit-intro' : 'suit-intro-' + key).hidden = !on;
+                document.getElementById('index-' + key).hidden = !on;
+            }
             sealed.hidden = land !== '';
         }
 
