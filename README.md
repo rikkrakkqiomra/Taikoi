@@ -1,52 +1,44 @@
-# Aivoinko Aurinko Reality Simulator
+# Aivoinko
 
-A stunning, interactive 3D simulation of the Solar System, built with **Three.js** and **HTML5 Canvas**. This project features procedural texture generation, realistic orbital mechanics, and a premium Sci-Fi aesthetic.
+A public artistic site. The home page is an interactive 3D solar system. The other routes are narrative halls. There is no build step: each route is one HTML file, and Netlify publishes the repository root.
 
-![Aivoinko Aurinko](https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg)
+## Routes
 
-## 🌌 Features
+| File | What it is |
+|---|---|
+| `index.html` | Home. Three.js solar system. System Log is a normal link. Gallery and Bio warp directly. Library holds, then offers Codex Operum, Fragmenta Apocrypha, or Khaeos Metalogs. Click or tap the sun for The Opening of Reality. |
+| `brain.html` | The Opening of Reality. Manifesto. |
+| `pure_systems.html` | System Log. Green terminal. |
+| `gallery.html` | Sixteen framed hangings on a black starfield. |
+| `physicalus.html` | Side hall of the gallery. Workshop photographs. |
+| `cartomancy.html` | Cartomancy. The suit of Beliefs: thirteen cards, from Imagination to Freedom. |
+| `bio.html` | Biography hall. Finnish copy, and outbound work links. |
+| `diy_realities.html` | Khaeos Metalogs. The Library destination. |
+| `gate_left.html` | Left Aperture. Entered from the left seal. |
+| `gate_right.html` | Fragmenta Apocrypha. Entered from the right seal. |
 
-### 🔭 Interactive 3D Simulation
-- **Full Solar System**: Includes the Sun, Mercury, Venus, Earth, Mars, Jupiter, Saturn (with rings), Uranus, and Neptune.
-- **Realistic Orbits**: Planets orbit at relative speeds and distances.
-- **Procedural Textures**: All planet textures are generated programmatically using the HTML5 Canvas API—no external image assets required for planets.
-- **"Eye of the Brain" Sun**: A unique, glowing sun visualization featuring a custom "Eye" texture with a procedural fallback.
+The nine subpages share `seal-menu.css` and `seal-menu.js`. The seal opens an index. Return reverse-warps home. From Physicalus and Cartomancy, Return reverse-warps to the gallery.
 
-### 🎮 Interactive Experience
-- **Desktop**: Hover over planets to reveal detailed scientific data (Mass, Diameter, Temperature) via Sci-Fi tooltips.
-- **Mobile**: Optimized "Tap-to-Show" interaction. Tap a planet to lock the tooltip; tap empty space to dismiss.
-- **Controls**: Zoom, pan, and rotate the camera freely around the solar system.
+Artwork stills, frames, and hangings live under `art/`. The live logo, favicon, and sun sprite are `AiiAold.8dde82cb.jpg`.
 
-### 🎨 Visuals & UI
-- **Glassmorphism UI**: Sleek, modern header and footer with frosted glass effects.
-- **Cinematic Lighting**: Dynamic point lighting from the Sun and ambient starlight.
-- **Starfield Background**: A procedurally generated 3D starfield adds depth and immersion.
-- **Responsive Design**: Seamlessly adapts to desktop and mobile screens.
+## Stack
 
-## 🛠️ Technologies
+- HTML, CSS, and vanilla JavaScript (ES modules). No bundler and no `package.json`.
+- Three.js `0.160.0` from unpkg, pinned in every page import map. OrbitControls is used on the home page only.
+- Google Fonts: Orbitron, Rajdhani, Cormorant Garamond, Courier Prime, and Cinzel.
 
-- **Three.js**: For 3D rendering and scene management.
-- **HTML5 Canvas API**: For procedural texture generation.
-- **Vanilla JavaScript**: Core logic and interaction handling.
-- **CSS3**: For the Glassmorphism UI and animations.
-- **Google Fonts**: 'Orbitron' and 'Rajdhani' for typography.
+## Getting started
 
-## 🚀 Getting Started
+1. Clone the repository:
 
-1.  Clone the repository:
-    ```bash
-    git clone https://github.com/rikkrakkqiomra/Taikoi.git
-    ```
-2.  Open `index.html` in your web browser.
-    - *Note*: For the best experience (and to avoid CORS issues with the local Sun image), run it via a local server (e.g., VS Code Live Server or `python -m http.server`).
+   ```bash
+   git clone https://github.com/rikkrakkqiomra/Taikoi.git
+   ```
 
-## 📱 Mobile Optimization
+2. Serve the folder over HTTP, then open the site root. A local server is required so the browser can load the sun logo and the ES modules. Examples: VS Code Live Server, or `python -m http.server`.
 
-The simulation is fully optimized for mobile devices:
-- **Performance**: Rendering resolution is capped to prevent overheating.
-- **Interaction**: Touch-friendly "Tap-to-Show" tooltips.
-- **Speed**: Planet orbits are slowed down on mobile for easier interaction.
+Opening `index.html` as a `file://` URL can fail the logo texture on a cross-origin check.
 
-## 📄 License
+## License
 
-This project is open-source and available under the MIT License.
+MIT. See `LICENSE`.

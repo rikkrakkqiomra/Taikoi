@@ -2,7 +2,7 @@
     var GALLERY_REALMS = [
         { label: 'Physical Arts', href: 'physicalus.html' },
         { label: 'Artificial Arts', href: 'gallery.html' },
-        { label: 'Cartomancy' },
+        { label: 'Cartomancy', href: 'cartomancy.html' },
         { label: 'Musical Theatre' },
         { label: 'Mineralogy' }
     ];
@@ -21,7 +21,7 @@
         return file.replace(/\.html$/, '');
     }
 
-    var REALMS = (pageStem() === 'gallery' || pageStem() === 'physicalus')
+    var REALMS = (pageStem() === 'gallery' || pageStem() === 'physicalus' || pageStem() === 'cartomancy')
         ? GALLERY_REALMS
         : SECTION_REALMS;
 

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://taikoi.netlify.app/sitemap.xml

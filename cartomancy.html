@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cartomancy</title>
+    <meta name="description" content="Cartomancy: the suit of Beliefs, thirteen cards from Imagination to Freedom, read as a fork of the tarot.">
+    <meta name="theme-color" content="#8d6aae">
+    <link rel="canonical" href="https://taikoi.netlify.app/cartomancy.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Aivoinko">
+    <meta property="og:title" content="Cartomancy">
+    <meta property="og:description" content="Cartomancy: the suit of Beliefs, thirteen cards from Imagination to Freedom, read as a fork of the tarot.">
+    <meta property="og:url" content="https://taikoi.netlify.app/cartomancy.html">
+    <meta property="og:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Cartomancy">
+    <meta name="twitter:description" content="Cartomancy: the suit of Beliefs, thirteen cards from Imagination to Freedom, read as a fork of the tarot.">
+    <meta name="twitter:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
+    <link rel="apple-touch-icon" href="AiiAold.8dde82cb.jpg">
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+    <link rel="modulepreload" href="https://unpkg.com/three@0.160.0/build/three.module.js" crossorigin>
+    <script>
+        (function () {
+            function revealUi() {
+                if (window.__aivoinko3d) return;
+                document.documentElement.classList.add('ui-ready');
+            }
+            window.__aivoinkoReveal = revealUi;
+            window.addEventListener('error', function () { revealUi(); }, true);
+            window.addEventListener('unhandledrejection', function () { revealUi(); });
+            setTimeout(revealUi, 2500);
+        })();
+    </script>
+    <link rel="icon" type="image/jpeg" href="AiiAold.8dde82cb.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="seal-menu.css">
+    <script src="seal-menu.js" defer></script>
+    <style>
+        :root {
+            --glass-bg: rgba(8, 6, 14, 0.5);
+            --glass-border: rgba(176, 138, 212, 0.4);
+            --text-color: #efe6d4;
+            --accent-color: #c9a6e0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #000;
+            font-family: 'Orbitron', sans-serif;
+            color: var(--text-color);
+        }
+
+        #canvas-container {
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        header {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            text-align: center;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        header img {
+            width: 120px;
+            height: 120px;
+            max-width: 120px;
+            aspect-ratio: 1;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 0 24px rgba(176, 138, 212, 0.28);
+            transition: transform 0.3s ease;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        header img:hover {
+            transform: scale(1.05);
+        }
+
+        #warp-flash {
+            position: fixed;
+            inset: 0;
+            z-index: 80;
+            pointer-events: none;
+            opacity: 0.28;
+            background: #000;
+        }
+
+        #realm-title {
+            position: static;
+            z-index: 6;
+            text-align: center;
+            pointer-events: none;
+            opacity: 0;
+            margin-top: 4vh;
+            padding-bottom: 10vh;
+        }
+
+        #realm-title h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: clamp(1.1rem, 3.6vw, 2.1rem);
+            letter-spacing: 0.34em;
+            text-transform: uppercase;
+            color: #efe6d4;
+            text-shadow: 0 0 18px rgba(176, 138, 212, 0.4);
+        }
+
+        #hall {
+            position: fixed;
+            inset: 0;
+            z-index: 5;
+            overflow-x: hidden;
+            overflow-y: auto;
+            pointer-events: auto;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(176, 138, 212, 0.4) transparent;
+        }
+
+        .land-bar {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.7rem;
+            padding: 256px 7vw 2.5vh;
+            text-align: center;
+        }
+
+        .land-bar label {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 0.68rem;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: var(--accent-color);
+        }
+
+        .land-bar select {
+            appearance: none;
+            color-scheme: dark;
+            min-width: min(18rem, 78vw);
+            margin: 0;
+            padding: 0.45rem 2.4rem 0.5rem 1.1rem;
+            border: 1px solid rgba(176, 138, 212, 0.5);
+            border-radius: 0;
+            background-color: rgba(16, 10, 22, 0.88);
+            background-image: linear-gradient(45deg, transparent 50%, #c9a6e0 50%), linear-gradient(135deg, #c9a6e0 50%, transparent 50%);
+            background-position: calc(100% - 16px) 55%, calc(100% - 11px) 55%;
+            background-size: 5px 5px, 5px 5px;
+            background-repeat: no-repeat;
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(236, 226, 210, 0.06);
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: 1.45rem;
+            line-height: 1.2;
+            color: #f3ead8;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .land-bar select:focus {
+            outline: none;
+        }
+
+        .land-bar select:focus-visible {
+            box-shadow:
+                0 14px 32px rgba(0, 0, 0, 0.35),
+                0 0 0 1px rgba(201, 166, 224, 0.85);
+        }
+
+        .suit-intro {
+            width: min(40rem, 88vw);
+            margin: 0 auto 2vh;
+            text-align: center;
+        }
+
+        .suit-kicker {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 0.64rem;
+            letter-spacing: 0.34em;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            margin-bottom: 0.7rem;
+        }
+
+        .suit-intro h2 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 500;
+            font-style: italic;
+            font-size: clamp(2.1rem, 4vw, 3rem);
+            line-height: 1.05;
+            color: #f6efe2;
+            margin-bottom: 0.85rem;
+        }
+
+        .suit-intro blockquote {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: clamp(1.2rem, 1.8vw, 1.5rem);
+            line-height: 1.35;
+            color: #f3ead8;
+            margin-bottom: 0.9rem;
+        }
+
+        .suit-intro p {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 500;
+            font-size: 1.08rem;
+            line-height: 1.55;
+            color: #d8cfbe;
+        }
+
+        .suit-intro p + p {
+            margin-top: 0.65rem;
+        }
+
+        .suit-index {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.35rem 0.85rem;
+            width: min(46rem, 90vw);
+            margin: 2.2rem auto 1vh;
+        }
+
+        .suit-index a {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: 1.05rem;
+            color: #d8cfbe;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+        }
+
+        .suit-index a:hover,
+        .suit-index a:focus-visible {
+            color: #f6efe2;
+            border-bottom-color: rgba(201, 166, 224, 0.7);
+            outline: none;
+        }
+
+        .suit-index[hidden] {
+            display: none;
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2.4rem;
+            padding: 7vh 7vw 8vh;
+        }
+
+        .card figure {
+            margin: 0;
+            line-height: 0;
+        }
+
+        .card img {
+            display: block;
+            width: auto;
+            height: min(72vh, 760px);
+            max-width: min(88vw, 460px);
+            object-fit: contain;
+            filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.62)) drop-shadow(0 0 18px rgba(176, 138, 212, 0.14));
+        }
+
+        .reading {
+            position: relative;
+            width: min(36rem, 88vw);
+            padding: 1.5rem 1.5rem 1.65rem;
+            background: rgba(14, 10, 18, 0.84);
+            border: 1px solid rgba(176, 138, 212, 0.42);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(236, 226, 210, 0.07);
+            overflow: visible;
+        }
+
+        .card--court .reading {
+            border-color: rgba(212, 164, 90, 0.55);
+        }
+
+        .plaque-corners {
+            position: absolute;
+            inset: -5px;
+            pointer-events: none;
+        }
+
+        .plaque-corners i {
+            position: absolute;
+            width: 13px;
+            height: 13px;
+            border-color: #d4a45a;
+            border-style: solid;
+            border-width: 0;
+        }
+
+        .plaque-corners i:nth-child(1) {
+            top: 0;
+            left: 0;
+            border-top-width: 1.5px;
+            border-left-width: 1.5px;
+        }
+
+        .plaque-corners i:nth-child(2) {
+            top: 0;
+            right: 0;
+            border-top-width: 1.5px;
+            border-right-width: 1.5px;
+        }
+
+        .plaque-corners i:nth-child(3) {
+            bottom: 0;
+            left: 0;
+            border-bottom-width: 1.5px;
+            border-left-width: 1.5px;
+        }
+
+        .plaque-corners i:nth-child(4) {
+            bottom: 0;
+            right: 0;
+            border-bottom-width: 1.5px;
+            border-right-width: 1.5px;
+        }
+
+        .plaque-corners i::after {
+            content: "";
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background: #d4a45a;
+            transform: rotate(45deg);
+        }
+
+        .plaque-corners i:nth-child(1)::after {
+            top: -3px;
+            left: -3px;
+        }
+
+        .plaque-corners i:nth-child(2)::after {
+            top: -3px;
+            right: -3px;
+        }
+
+        .plaque-corners i:nth-child(3)::after {
+            bottom: -3px;
+            left: -3px;
+        }
+
+        .plaque-corners i:nth-child(4)::after {
+            bottom: -3px;
+            right: -3px;
+        }
+
+        .rank {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 0.64rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            margin-bottom: 0.55rem;
+        }
+
+        .reading h2 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 500;
+            font-style: italic;
+            font-size: clamp(1.8rem, 2.6vw, 2.3rem);
+            line-height: 1;
+            color: #f6efe2;
+            margin-bottom: 0.85rem;
+        }
+
+        .reading blockquote {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+            line-height: 1.35;
+            color: #f3ead8;
+            margin-bottom: 0.9rem;
+        }
+
+        .reading p {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 500;
+            font-size: 1.05rem;
+            line-height: 1.55;
+            color: #d8cfbe;
+        }
+
+        .reading p + p {
+            margin-top: 0.7rem;
+        }
+
+        .reading-use {
+            margin-top: 0.95rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid rgba(176, 138, 212, 0.28);
+        }
+
+        .reading-use span {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 0.58rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: #d4a45a;
+            margin-right: 0.45rem;
+        }
+
+        #deck-sealed {
+            display: flex;
+            justify-content: center;
+            padding: 6vh 7vw 12vh;
+        }
+
+        #deck-sealed[hidden],
+        #deck-beliefs[hidden],
+        #suit-intro[hidden] {
+            display: none;
+        }
+
+        .sealed-plate {
+            position: relative;
+            width: min(34rem, 88vw);
+            padding: 1.7rem 1.5rem 1.8rem;
+            text-align: center;
+            background: rgba(14, 10, 18, 0.84);
+            border: 1px solid rgba(212, 164, 90, 0.4);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .sealed-plate h2 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 500;
+            font-style: italic;
+            font-size: clamp(1.7rem, 2.8vw, 2.2rem);
+            color: #f6efe2;
+            margin: 0.7rem 0 0.85rem;
+        }
+
+        .sealed-plate p {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 500;
+            font-size: 1.05rem;
+            line-height: 1.55;
+            color: #d8cfbe;
+        }
+
+        .sealed-plate p + p {
+            margin-top: 0.65rem;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                position: relative;
+                top: auto;
+                left: auto;
+                transform: none;
+                padding: 16px 0 8px;
+            }
+
+            header img {
+                width: 88px;
+                height: 88px;
+                max-width: 88px;
+            }
+
+            #hall {
+                padding: 0 0 8vh;
+            }
+
+            .land-bar {
+                padding: 1vh 6vw 2vh;
+            }
+
+            .land-bar select {
+                font-size: 1.25rem;
+            }
+
+            .card {
+                gap: 1.6rem;
+                padding: 4vh 0 6vh;
+            }
+
+            .card img {
+                height: auto;
+                width: min(78vw, 340px);
+                max-width: min(78vw, 340px);
+                max-height: 62vh;
+            }
+
+            .reading {
+                width: min(90vw, 36rem);
+                padding: 1.15rem 1.1rem 1.25rem;
+            }
+
+            .reading h2 {
+                font-size: 1.7rem;
+            }
+
+            .reading blockquote {
+                font-size: 1.08rem;
+            }
+
+            .reading p,
+            .suit-intro p,
+            .sealed-plate p {
+                font-size: 0.98rem;
+            }
+
+            #realm-title {
+                display: none;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            header img {
+                transition: none;
+            }
+        }
+
+        html.ui-ready header,
+        html.ui-ready #realm-title,
+        html.ui-ready #hall {
+            opacity: 1 !important;
+        }
+
+        html.ui-ready #warp-flash {
+            opacity: 0 !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="canvas-container"></div>
+    <div id="warp-flash" aria-hidden="true"></div>
+
+    <div id="hall">
+        <header>
+            <img src="AiiAold.8dde82cb.jpg" alt="Aivoinko Logo" width="120" height="120" fetchpriority="high" decoding="async">
+        </header>
+
+        <div class="land-bar">
+            <label for="land-select">Maa / Land</label>
+            <select id="land-select" autocomplete="off">
+                <optgroup label="Open">
+                    <option value="beliefs" selected>I · Beliefs</option>
+                </optgroup>
+                <optgroup label="Sealed">
+                    <option value="sealed-ii">II · Sealed</option>
+                    <option value="sealed-iii">III · Sealed</option>
+                    <option value="sealed-iv">IV · Sealed</option>
+                </optgroup>
+            </select>
+        </div>
+
+        <article id="suit-intro" class="suit-intro">
+            <p class="suit-kicker">Maa I</p>
+            <h2>Beliefs</h2>
+            <blockquote>A belief is not an opinion. It is a room the mind agrees to live in.</blockquote>
+            <p>This is the first land of the fork. Thirteen cards, and not a costume of any older deck. Ten weathers of a conviction, then three who walk them: the Seeker, the Keeper, the Master.</p>
+            <p>Read a card for the structure it names. The picture is already the argument. Fortune can wait.</p>
+        </article>
+
+        <nav class="suit-index" aria-label="Cards of Beliefs">
+            <a href="#imagination">I Imagination</a>
+            <a href="#bias">II Bias</a>
+            <a href="#dogma">III Dogma</a>
+            <a href="#doubt">IV Doubt</a>
+            <a href="#interpretation">V Interpretation</a>
+            <a href="#dream">VI Dream</a>
+            <a href="#reverence">VII Reverence</a>
+            <a href="#assumption">VIII Assumption</a>
+            <a href="#story">IX Story</a>
+            <a href="#trust">X Trust</a>
+            <a href="#openness">XI Openness</a>
+            <a href="#self">XII Self</a>
+            <a href="#freedom">XIII Freedom</a>
+        </nav>
+
+        <div id="deck-beliefs">
+            <section class="card" id="imagination">
+                <figure>
+                    <img src="art/cartomancy/01-imagination.jpg" alt="Root of Beliefs, Imagination" width="613" height="1024" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">I · Root of Beliefs</p>
+                    <h2>Imagination</h2>
+                    <blockquote>Before a belief has evidence, it has a face.</blockquote>
+                    <p>The lens on the brow is the instrument that turns a feeling into something that can be looked at. Cloud, metal, and the green dark at the throat are one weather: thought before it has chosen a side.</p>
+                    <p>Imagination is the root, because nothing later in the suit can stand until an image has been risked. A belief that cannot be pictured is only a rumor about itself.</p>
+                    <p class="reading-use"><span>In a reading</span> The matter is still unformed, and that is its strength. Give it a picture before you give it a law.</p>
+                </article>
+            </section>
+
+            <section class="card" id="bias">
+                <figure>
+                    <img src="art/cartomancy/02-bias.jpg" alt="Beliefs, Bias" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">II · Beliefs</p>
+                    <h2>Bias</h2>
+                    <blockquote>One eye rests so the other can be certain.</blockquote>
+                    <p>The face is porcelain that has already cracked, and the crack has grown a bark. Bias is the grain in the glass: the closed eye, the open eye, the mouth that has set.</p>
+                    <p>To meet this card is to notice which half of the face you have been trusting. The wood does not apologize for being wood.</p>
+                    <p class="reading-use"><span>In a reading</span> Name the lens before you name the fact. What you call obvious is the eye that stayed open.</p>
+                </article>
+            </section>
+
+            <section class="card" id="dogma">
+                <figure>
+                    <img src="art/cartomancy/03-dogma.jpg" alt="Beliefs, Dogma" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">III · Beliefs</p>
+                    <h2>Dogma</h2>
+                    <blockquote>The teaching sits. The fear hangs above it.</blockquote>
+                    <p>An elder on a throne, a congregation at the steps, and in the vault a mouth with too many teeth. Dogma is a belief that has hired a room, an audience, and a monster to keep the ceiling interesting.</p>
+                    <p>It is a truth that forgot it was once a question, and built a temple so it would not be asked again.</p>
+                    <p class="reading-use"><span>In a reading</span> Something here is being protected by ceremony. Ask who is served if the question stays seated.</p>
+                </article>
+            </section>
+
+            <section class="card" id="doubt">
+                <figure>
+                    <img src="art/cartomancy/04-doubt.jpg" alt="Beliefs, Doubt" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">IV · Beliefs</p>
+                    <h2>Doubt</h2>
+                    <blockquote>The smoke is the argument still leaving the mouth.</blockquote>
+                    <p>A pale face, a crown of leaves, a third eye that opened because the two ordinary ones stopped agreeing. Doubt smokes. It holds the ember where the breath can see it.</p>
+                    <p>Doubt is belief agreeing to stay unfinished. The honest card of the suit.</p>
+                    <p class="reading-use"><span>In a reading</span> Do not rush the smoke into a verdict. The third eye is open. Let the other two catch up.</p>
+                </article>
+            </section>
+
+            <section class="card" id="interpretation">
+                <figure>
+                    <img src="art/cartomancy/05-interpretation.jpg" alt="Beliefs, Interpretation" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">V · Beliefs</p>
+                    <h2>Interpretation</h2>
+                    <blockquote>Meaning is a thread you hand to something that can fly.</blockquote>
+                    <p>A hooded clerk, a string, a jury of crows, a chart of faces, a fire underneath. Interpretation is the trade of giving the birds a line and then reading whatever they carry back as if it had been yours.</p>
+                    <p>The fire is real. The chart is a guess that learned to look official. Between them stands the only honest figure: the one who does not show a face.</p>
+                    <p class="reading-use"><span>In a reading</span> You are about to call a pattern a message. Notice which bird you are listening to, and which you have already decided is only weather.</p>
+                </article>
+            </section>
+
+            <section class="card" id="dream">
+                <figure>
+                    <img src="art/cartomancy/06-dream.jpg" alt="Beliefs, Dream" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">VI · Beliefs</p>
+                    <h2>Dream</h2>
+                    <blockquote>The forest dictates. The clerk has no face yet.</blockquote>
+                    <p>An antlered writer sits in the roots, and a hooded scribe copies, the hood open where a face should be. Dream is belief arriving before the one who will claim it has features.</p>
+                    <p>The book on the knee is already being written by something older than the hand. The scribe's work is to keep up without inventing a name too early.</p>
+                    <p class="reading-use"><span>In a reading</span> A picture is ahead of your explanation. Write it down before you interpret it. The face can come later.</p>
+                </article>
+            </section>
+
+            <section class="card" id="reverence">
+                <figure>
+                    <img src="art/cartomancy/07-reverence.jpg" alt="Beliefs, Reverence" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">VII · Beliefs</p>
+                    <h2>Reverence</h2>
+                    <blockquote>Attention that has agreed to be smaller than its object.</blockquote>
+                    <p>White hair, a beard like a slow river, a mark on the brow, a geometry behind the head that does not need to be solved. Reverence is the posture of a mind that has stopped trying to be the largest thing in the room.</p>
+                    <p>The collar of light is a horizon worn as clothing. What is revered stays unnamed, because a name would shrink it back into a tool.</p>
+                    <p class="reading-use"><span>In a reading</span> Approach without grasping. Stand still long enough that the thing can be itself.</p>
+                </article>
+            </section>
+
+            <section class="card" id="assumption">
+                <figure>
+                    <img src="art/cartomancy/08-assumption.jpg" alt="Beliefs, Assumption" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">VIII · Beliefs</p>
+                    <h2>Assumption</h2>
+                    <blockquote>You take the path because the tree already looks inhabited.</blockquote>
+                    <p>A woman in green at a trunk full of holes, and one of the holes is an eye. Assumption is the step taken before the question. Dress, flowers, and the lean all treat the tree as a house.</p>
+                    <p>Sometimes the eye is really there. Sometimes the dark is only a knot. The card will not say which. It says that you have already decided.</p>
+                    <p class="reading-use"><span>In a reading</span> Find the step you did not notice taking. That step is carrying the conclusion.</p>
+                </article>
+            </section>
+
+            <section class="card" id="story">
+                <figure>
+                    <img src="art/cartomancy/09-story.jpg" alt="Beliefs, Story" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">IX · Beliefs</p>
+                    <h2>Story</h2>
+                    <blockquote>A body built of other stones, so the chest can keep walking.</blockquote>
+                    <p>The head is a pyramid of tiles, the throat a treasury of chains, the shoulders a weather of monuments. Story is how a belief survives its author: by becoming architecture someone else can stand inside.</p>
+                    <p>The face is still visible, barely, under the monument. A story that forgets it has a face becomes a ruin that gives orders.</p>
+                    <p class="reading-use"><span>In a reading</span> You are inside a telling. Ask whether you are the teller, the stone, or the one the monument was built to impress.</p>
+                </article>
+            </section>
+
+            <section class="card" id="trust">
+                <figure>
+                    <img src="art/cartomancy/10-trust.jpg" alt="Beliefs, Trust" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">X · Beliefs</p>
+                    <h2>Trust</h2>
+                    <blockquote>The hands meet, and do not check the clasp.</blockquote>
+                    <p>Flowers, a pale ruff, fingers interlaced at the sternum. Trust is the last of the ten because it is the belief that has stopped inspecting itself. The ornament is the courage to be seen while unguarded.</p>
+                    <p>The eyes are open and level. Nothing in the picture is hiding, which is why it can be mistaken for safety.</p>
+                    <p class="reading-use"><span>In a reading</span> Something may be given without a contract. Receive it plainly. Do not decorate the gift into a proof.</p>
+                </article>
+            </section>
+
+            <section class="card card--court" id="openness">
+                <figure>
+                    <img src="art/cartomancy/11-openness.jpg" alt="Seeker of Beliefs, Openness" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">XI · Seeker of Beliefs</p>
+                    <h2>Openness</h2>
+                    <blockquote>She keeps the window open and lets the animal stand unleashed.</blockquote>
+                    <p>A seeker with a censer, smoke leaving toward a dark crown of beasts, a pale lamb at her shoulder that nobody is holding. Openness is the discipline of not closing the hand around what has come to stand beside you.</p>
+                    <p>The court begins here. The ten described the weather. The Seeker is the one who walks into it carrying fire and refusing a leash.</p>
+                    <p class="reading-use"><span>In a reading</span> Stay permeable. Do not adopt the belief yet, and do not drive it off. Let it remain a guest.</p>
+                </article>
+            </section>
+
+            <section class="card card--court" id="self">
+                <figure>
+                    <img src="art/cartomancy/12-self.jpg" alt="Keeper of Beliefs, Self" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">XII · Keeper of Beliefs</p>
+                    <h2>Self</h2>
+                    <blockquote>The eyes close, and the machinery goes on being a face.</blockquote>
+                    <p>A mask of iridescent metal, eyes shut, a temple of gears and small figures holding the likeness up. Self is what the Keeper guards: a reliquary. Identity continues after the glance that made it has ended.</p>
+                    <p>The danger is worship of the housing. A self that cannot be opened becomes the dogma of one person.</p>
+                    <p class="reading-use"><span>In a reading</span> Keep what is yours without mistaking the vessel for the relic. Close the eyes. Leave the door unlatched.</p>
+                </article>
+            </section>
+
+            <section class="card card--court" id="freedom">
+                <figure>
+                    <img src="art/cartomancy/13-freedom.jpg" alt="Master of Beliefs, Freedom" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">XIII · Master of Beliefs</p>
+                    <h2>Freedom</h2>
+                    <blockquote>Both faces look. The world hangs from a point.</blockquote>
+                    <p>A two-faced sitter under a cone, on an island that is also an inverted mountain, planets and small craft strung on a line above the snow. Freedom is the balance in which a belief no longer needs the ground in order to be true.</p>
+                    <p>The Master does not abolish the suit. Imagination, bias, dogma, doubt — they are still in the sky, as vessels. They have stopped being the floor.</p>
+                    <p class="reading-use"><span>In a reading</span> You may set the belief down without betraying it. What remains is the seat, and the seat is enough.</p>
+                </article>
+            </section>
+        </div>
+
+        <div id="deck-sealed" hidden>
+            <article class="sealed-plate">
+                <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                <p class="suit-kicker">Unopened</p>
+                <h2>This land is not yet drawn.</h2>
+                <p>The fork has other countries. Their cards are still in the dark, and a name given too early would be a lie with a border.</p>
+                <p>Return to Beliefs. The first land is the one that can be read.</p>
+            </article>
+        </div>
+
+        <div id="realm-title">
+            <h1>Cartomancy</h1>
+        </div>
+    </div>
+
+    <script type="module">
+        import * as THREE from 'three';
+
+        window.__aivoinko3d = true;
+
+        const FRAME_MS = 1000 / 60;
+        const STAR_COUNT = 2200;
+        const TUNNEL_DEPTH = 900;
+        const ENTER_MS = 2200;
+        const EXIT_MS = 1200;
+
+        const hall = document.getElementById('hall');
+        const cards = Array.from(hall.querySelectorAll('#deck-beliefs .card'));
+        const landSelect = document.getElementById('land-select');
+        const deck = document.getElementById('deck-beliefs');
+        const intro = document.getElementById('suit-intro');
+        const indexNav = hall.querySelector('.suit-index');
+        const sealed = document.getElementById('deck-sealed');
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        function isMobile() {
+            return window.matchMedia('(max-width: 768px)').matches;
+        }
+
+        function readFocusQuery() {
+            const focusQuery = Number(new URLSearchParams(window.location.search).get('focus'));
+            if (!Number.isInteger(focusQuery) || focusQuery < 1 || focusQuery > cards.length) return 0;
+            return focusQuery;
+        }
+
+        let focusIndex = readFocusQuery();
+
+        function scrollHallToFocus() {
+            if (focusIndex < 1 || landSelect.value !== 'beliefs') return;
+            const card = cards[focusIndex - 1];
+            if (!card) return;
+            const top = isMobile()
+                ? card.offsetTop
+                : card.offsetTop - Math.max(0, (hall.clientHeight - card.offsetHeight) / 2);
+            hall.scrollTop = Math.max(0, top);
+        }
+
+        function applyLand() {
+            const live = landSelect.value === 'beliefs';
+            deck.hidden = !live;
+            intro.hidden = !live;
+            indexNav.hidden = !live;
+            sealed.hidden = live;
+        }
+
+        landSelect.addEventListener('change', () => {
+            applyLand();
+            const behavior = reduced ? 'auto' : 'smooth';
+            const top = landSelect.value === 'beliefs' ? 0 : Math.max(0, sealed.offsetTop - 24);
+            hall.scrollTo({ top: top, behavior: behavior });
+        });
+
+        hall.addEventListener('click', (event) => {
+            const link = event.target.closest('a[href^="#"]');
+            if (!link || !hall.contains(link)) return;
+            const target = document.getElementById(link.getAttribute('href').slice(1));
+            if (!target || !hall.contains(target)) return;
+            event.preventDefault();
+            const top = Math.max(0, target.offsetTop - (isMobile() ? 8 : 28));
+            hall.scrollTo({ top: top, behavior: reduced ? 'auto' : 'smooth' });
+        });
+
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x000000);
+        scene.fog = new THREE.FogExp2(0x000000, 0.0009);
+
+        const container = document.getElementById('canvas-container');
+        const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.1, 2000);
+        camera.position.set(0, 0, 0);
+        camera.fov = 92;
+        camera.updateProjectionMatrix();
+
+        let renderer;
+        try {
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            renderer.setClearColor(0x000000, 1);
+            container.appendChild(renderer.domElement);
+        } catch (err) {
+            console.warn('WebGL unavailable', err);
+            window.__aivoinko3d = false;
+            if (typeof window.__aivoinkoReveal === 'function') window.__aivoinkoReveal();
+            throw err;
+        }
+
+        let rafId = 0;
+        function startLoop(fn) {
+            if (renderer.setAnimationLoop) {
+                renderer.setAnimationLoop(fn);
+                return;
+            }
+            function tick(t) {
+                fn(t);
+                rafId = requestAnimationFrame(tick);
+            }
+            rafId = requestAnimationFrame(tick);
+        }
+        function stopLoop() {
+            if (renderer.setAnimationLoop) {
+                renderer.setAnimationLoop(null);
+                return;
+            }
+            cancelAnimationFrame(rafId);
+        }
+
+        const warm = new THREE.Color(0xd4b0ea);
+        const ice = new THREE.Color(0xf4f1ea);
+        const dim = new THREE.Color(0x8a8498);
+
+        const linePositions = new Float32Array(STAR_COUNT * 6);
+        const lineColors = new Float32Array(STAR_COUNT * 6);
+        const starXY = new Float32Array(STAR_COUNT * 2);
+        const starZ = new Float32Array(STAR_COUNT);
+        const starRGB = new Float32Array(STAR_COUNT * 3);
+
+        function paintStarColor(i) {
+            const pick = Math.random();
+            let color = ice;
+            if (pick > 0.42 && pick <= 0.74) color = dim;
+            else if (pick > 0.74) color = warm;
+            starRGB[i * 3] = color.r;
+            starRGB[i * 3 + 1] = color.g;
+            starRGB[i * 3 + 2] = color.b;
+        }
+
+        function placeStar(i, z) {
+            const angle = Math.random() * Math.PI * 2;
+            const radius = 6 + Math.random() * 78;
+            starXY[i * 2] = Math.cos(angle) * radius;
+            starXY[i * 2 + 1] = Math.sin(angle) * radius;
+            starZ[i] = z;
+        }
+
+        for (let i = 0; i < STAR_COUNT; i++) {
+            placeStar(i, -(Math.random() * TUNNEL_DEPTH + 20));
+            paintStarColor(i);
+            const r = starRGB[i * 3];
+            const g = starRGB[i * 3 + 1];
+            const b = starRGB[i * 3 + 2];
+            lineColors[i * 6] = r;
+            lineColors[i * 6 + 1] = g;
+            lineColors[i * 6 + 2] = b;
+            lineColors[i * 6 + 3] = r * 0.25;
+            lineColors[i * 6 + 4] = g * 0.25;
+            lineColors[i * 6 + 5] = b * 0.25;
+        }
+
+        const streakGeom = new THREE.BufferGeometry();
+        streakGeom.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
+        streakGeom.setAttribute('color', new THREE.BufferAttribute(lineColors, 3));
+        const streakMat = new THREE.LineBasicMaterial({
+            vertexColors: true,
+            transparent: true,
+            opacity: 1,
+            blending: THREE.AdditiveBlending,
+            depthWrite: false,
+            fog: false
+        });
+        const streakMesh = new THREE.LineSegments(streakGeom, streakMat);
+        streakMesh.frustumCulled = false;
+        scene.add(streakMesh);
+
+        const pointPositions = new Float32Array(STAR_COUNT * 3);
+        const pointColors = new Float32Array(STAR_COUNT * 3);
+        const pointsGeom = new THREE.BufferGeometry();
+        pointsGeom.setAttribute('position', new THREE.BufferAttribute(pointPositions, 3));
+        pointsGeom.setAttribute('color', new THREE.BufferAttribute(pointColors, 3));
+        const pointsMat = new THREE.PointsMaterial({
+            vertexColors: true,
+            size: 0.55,
+            transparent: true,
+            opacity: 0,
+            blending: THREE.AdditiveBlending,
+            depthWrite: false,
+            fog: false
+        });
+        const pointMesh = new THREE.Points(pointsGeom, pointsMat);
+        pointMesh.visible = false;
+        pointMesh.frustumCulled = false;
+        scene.add(pointMesh);
+
+        const header = document.querySelector('header');
+        const titleEl = document.getElementById('realm-title');
+        const flash = document.getElementById('warp-flash');
+        header.style.opacity = '0';
+        titleEl.style.opacity = '0';
+        header.style.pointerEvents = 'none';
+
+        let mode = 'enter';
+        let phaseStart = 0;
+        let exiting = false;
+        const baseFov = 70;
+
+        function writeStreaks(stretch, rush, dt) {
+            const arr = streakGeom.attributes.position.array;
+            for (let i = 0; i < STAR_COUNT; i++) {
+                let z = starZ[i] + rush * dt;
+                if (z > 12) {
+                    placeStar(i, -TUNNEL_DEPTH - Math.random() * 80);
+                    z = starZ[i];
+                }
+                starZ[i] = z;
+                const x = starXY[i * 2];
+                const y = starXY[i * 2 + 1];
+                arr[i * 6] = x;
+                arr[i * 6 + 1] = y;
+                arr[i * 6 + 2] = z;
+                arr[i * 6 + 3] = x;
+                arr[i * 6 + 4] = y;
+                arr[i * 6 + 5] = z - stretch;
+            }
+            streakGeom.attributes.position.needsUpdate = true;
+        }
+
+        function settlePoints() {
+            for (let i = 0; i < STAR_COUNT; i++) {
+                pointPositions[i * 3] = starXY[i * 2];
+                pointPositions[i * 3 + 1] = starXY[i * 2 + 1];
+                pointPositions[i * 3 + 2] = starZ[i];
+                pointColors[i * 3] = starRGB[i * 3];
+                pointColors[i * 3 + 1] = starRGB[i * 3 + 1];
+                pointColors[i * 3 + 2] = starRGB[i * 3 + 2];
+            }
+            pointsGeom.attributes.position.needsUpdate = true;
+            pointsGeom.attributes.color.needsUpdate = true;
+            pointMesh.visible = true;
+        }
+
+        function driftPoints(dt, rush) {
+            for (let i = 0; i < STAR_COUNT; i++) {
+                let z = starZ[i] + rush * dt;
+                if (z > 8) {
+                    placeStar(i, -TUNNEL_DEPTH - Math.random() * 80);
+                    z = starZ[i];
+                }
+                starZ[i] = z;
+                pointPositions[i * 3] = starXY[i * 2];
+                pointPositions[i * 3 + 1] = starXY[i * 2 + 1];
+                pointPositions[i * 3 + 2] = z;
+            }
+            pointsGeom.attributes.position.needsUpdate = true;
+        }
+
+        function exitAnimation() {
+            if (exiting) return;
+            exiting = true;
+            header.style.pointerEvents = 'none';
+            hall.style.opacity = '1';
+            mode = 'exit';
+            phaseStart = 0;
+            pointMesh.visible = false;
+            streakMesh.visible = true;
+            for (let i = 0; i < STAR_COUNT; i++) {
+                if (starZ[i] > -20) placeStar(i, -(Math.random() * TUNNEL_DEPTH + 20));
+            }
+        }
+
+        window.__aivoinkoSealExit = exitAnimation;
+
+        window.addEventListener('pageshow', () => {
+            exiting = false;
+            mode = 'enter';
+            phaseStart = 0;
+            focusIndex = readFocusQuery();
+            camera.position.set(0, 0, 0);
+            header.style.pointerEvents = 'none';
+            header.style.opacity = '0';
+            titleEl.style.opacity = '0';
+            hall.style.opacity = '';
+            hall.scrollTop = 0;
+            camera.fov = 92;
+            camera.updateProjectionMatrix();
+            pointMesh.visible = false;
+            streakMesh.visible = true;
+            pointsMat.opacity = 0;
+            streakMat.opacity = 1;
+            if (flash) flash.style.opacity = '0.28';
+            applyLand();
+            scrollHallToFocus();
+        });
+
+        let lastFrameTime = 0;
+        function animate(time) {
+            const deltaMs = lastFrameTime ? time - lastFrameTime : FRAME_MS;
+            lastFrameTime = time;
+            const dt = Math.min(deltaMs, 50) / FRAME_MS;
+
+            if (!phaseStart) phaseStart = time;
+
+            if (mode === 'enter') {
+                const progress = Math.min((time - phaseStart) / ENTER_MS, 1);
+                const easeOut = 1 - Math.pow(1 - progress, 3);
+                const warpLeft = 1 - easeOut;
+                writeStreaks(8 + warpLeft * 95, 40 + warpLeft * 420, dt);
+
+                camera.fov = 92 - easeOut * 22;
+                camera.updateProjectionMatrix();
+                scene.fog.density = 0.0009 + easeOut * 0.0016;
+
+                if (flash) flash.style.opacity = String(Math.max(0, 0.28 * (1 - Math.min((time - phaseStart) / 350, 1))));
+
+                if (progress >= 1) {
+                    settlePoints();
+                    streakMesh.visible = false;
+                    pointsMat.opacity = 0.9;
+                    header.style.transition = 'opacity 1.1s ease';
+                    titleEl.style.transition = 'opacity 1.4s ease';
+                    header.style.opacity = '1';
+                    titleEl.style.opacity = '1';
+                    header.style.pointerEvents = 'auto';
+                    if (flash) flash.style.opacity = '0';
+                    mode = 'idle';
+                    scrollHallToFocus();
+                }
+            } else if (mode === 'idle') {
+                streakMesh.visible = false;
+                pointMesh.visible = true;
+                driftPoints(dt, 0.42);
+            } else if (mode === 'exit') {
+                const progress = Math.min((time - phaseStart) / EXIT_MS, 1);
+                const ease = progress * progress * progress;
+                writeStreaks(8 + ease * 110, 60 + ease * 520, dt);
+                streakMat.opacity = 0.55 + ease * 0.45;
+                camera.fov = baseFov + ease * 48;
+                camera.updateProjectionMatrix();
+                titleEl.style.opacity = String(1 - ease);
+                hall.style.opacity = String(1 - ease);
+                if (flash) flash.style.opacity = String(Math.max(0, (progress - 0.4) / 0.6));
+                if (progress >= 1) {
+                    window.location.href = 'gallery.html';
+                    mode = 'gone';
+                }
+            }
+
+            renderer.render(scene, camera);
+        }
+
+        startLoop(animate);
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                stopLoop();
+                lastFrameTime = 0;
+            } else {
+                startLoop(animate);
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            scrollHallToFocus();
+        });
+    </script>
+</body>
+
+</html>

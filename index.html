@@ -3,8 +3,22 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Aivoinko Machine Metaphysics</title>
+  <meta name="description" content="An interactive 3D solar system. Orbit the planets, then warp into the gallery, the library, the biography, and the system log.">
+  <meta name="theme-color" content="#00f3ff">
+  <link rel="canonical" href="https://taikoi.netlify.app/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Aivoinko">
+  <meta property="og:title" content="Aivoinko Machine Metaphysics">
+  <meta property="og:description" content="An interactive 3D solar system. Orbit the planets, then warp into the gallery, the library, the biography, and the system log.">
+  <meta property="og:url" content="https://taikoi.netlify.app/">
+  <meta property="og:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Aivoinko Machine Metaphysics">
+  <meta name="twitter:description" content="An interactive 3D solar system. Orbit the planets, then warp into the gallery, the library, the biography, and the system log.">
+  <meta name="twitter:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
+  <link rel="apple-touch-icon" href="AiiAold.8dde82cb.jpg">
   <link rel="preconnect" href="https://unpkg.com" crossorigin>
   <script type="importmap">
     {
@@ -621,28 +635,15 @@
       position: fixed;
       inset: 0;
       z-index: 90;
-      overflow: visible;
+      overflow: hidden;
       pointer-events: none;
       opacity: 0;
-      transition: opacity 0.35s ease;
+      transition: opacity 0.4s ease;
     }
 
     #wormhole-choice.is-open {
       pointer-events: auto;
       opacity: 1;
-    }
-
-    .limen-lintel {
-      position: absolute;
-      left: 6vw;
-      top: 50%;
-      width: 88vw;
-      height: auto;
-      transform: translateY(-50%);
-      opacity: 0.4;
-      pointer-events: none;
-      z-index: 1;
-      user-select: none;
     }
 
     .limen-core {
@@ -681,142 +682,147 @@
       filter: drop-shadow(0 0 12px rgba(217, 164, 65, 0.45));
     }
 
-    .wing {
+    .gate {
       position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 46vw;
       z-index: 3;
-      transition: opacity 0.25s ease;
-    }
-
-    .wing--left {
-      left: 4.5vw;
-      top: 54%;
-      transform: translateY(-50%);
-    }
-
-    .wing--right {
-      right: 3.5vw;
-      top: 46%;
-      transform: translateY(-50%);
-    }
-
-    .study {
-      position: absolute;
-      width: 34%;
-      height: auto;
-      pointer-events: none;
-      z-index: 4;
-      filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.5));
-      user-select: none;
-    }
-
-    .study--codex {
-      top: -9%;
-      left: -10%;
-      animation: studyDriftL 8s ease-in-out infinite;
-    }
-
-    .study--fragment {
-      right: -8%;
-      bottom: -8%;
-      width: 30%;
-      animation: studyDriftR 9s ease-in-out infinite;
-    }
-
-    @keyframes studyDriftL {
-      0%,
-      100% { transform: rotate(-7deg) translateY(0); }
-      50% { transform: rotate(-7deg) translateY(-3px); }
-    }
-
-    @keyframes studyDriftR {
-      0%,
-      100% { transform: rotate(6deg) translateY(0); }
-      50% { transform: rotate(6deg) translateY(-3px); }
-    }
-
-    .apse {
-      --well-glow: rgba(255, 45, 85, 0.55);
       display: flex;
       align-items: center;
-      gap: 0.9rem;
       margin: 0;
       padding: 0;
       border: 0;
       background: none;
       color: inherit;
       font: inherit;
-      text-align: left;
       cursor: pointer;
       appearance: none;
       -webkit-tap-highlight-color: transparent;
       touch-action: manipulation;
       outline: none;
+      transition: opacity 0.3s ease;
     }
 
-    .apse--codex .frame {
-      --well-x: 49.93%;
-      --well-y: 49.81%;
-      --well-d: 52%;
+    .gate--codex {
+      left: 0;
+      justify-content: flex-start;
     }
 
-    .apse--fragment {
-      --well-glow: rgba(212, 175, 55, 0.5);
-      flex-direction: row-reverse;
-      text-align: right;
+    .gate--fragment {
+      right: 0;
+      justify-content: flex-end;
     }
 
-    .apse--fragment .frame {
-      --well-x: 47.04%;
-      --well-y: 49.69%;
-      --well-d: 50%;
-    }
-
-    .frame {
-      position: relative;
-      flex: 0 0 auto;
-      width: min(34vh, 22vw);
-    }
-
-    .frame::after {
-      content: "";
+    .portal {
       position: absolute;
-      left: var(--well-x);
-      top: var(--well-y);
-      z-index: 1;
-      width: calc(var(--well-d) * 1.2);
-      aspect-ratio: 1;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      pointer-events: none;
-      background: radial-gradient(circle, var(--well-glow), transparent 68%);
-    }
-
-    .hanging {
-      display: block;
-      width: 100%;
-      height: auto;
+      top: 50%;
+      height: 114vh;
+      width: auto;
       pointer-events: none;
       user-select: none;
-      filter: drop-shadow(0 18px 28px rgba(0, 0, 0, 0.45));
-      transition: filter 0.25s ease;
+      filter: brightness(0.82) saturate(0.95);
+      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease;
     }
 
-    .seal {
+    .gate--codex .portal {
+      left: -4vw;
+      transform: translateY(-50%) scale(1);
+      transform-origin: left center;
+      -webkit-mask: linear-gradient(to right, #000 54%, transparent 98%);
+      mask: linear-gradient(to right, #000 54%, transparent 98%);
+    }
+
+    .gate--fragment .portal {
+      right: -4vw;
+      transform: translateY(-50%) scale(1);
+      transform-origin: right center;
+      -webkit-mask: linear-gradient(to left, #000 54%, transparent 98%);
+      mask: linear-gradient(to left, #000 54%, transparent 98%);
+    }
+
+    .gate .plaque {
       position: absolute;
-      left: var(--well-x);
-      top: var(--well-y);
-      z-index: 2;
-      width: var(--well-d);
-      aspect-ratio: 1;
-      height: auto;
-      transform: translate(-50%, -50%);
-      border-radius: 50%;
-      object-fit: cover;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 4;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.4s ease;
+    }
+
+    .gate--codex .plaque { left: clamp(2rem, 11vw, 15rem); }
+    .gate--fragment .plaque { right: clamp(2rem, 11vw, 15rem); text-align: right; }
+
+    .chevron {
+      position: absolute;
+      top: 50%;
+      width: 24px;
+      height: 24px;
+      border-style: solid;
+      border-width: 0;
+      z-index: 4;
       pointer-events: none;
-      user-select: none;
-      box-shadow:
-        0 0 0 1px rgba(255, 255, 255, 0.28),
-        0 0 22px var(--well-glow);
+    }
+
+    .chevron--left {
+      right: clamp(1.5rem, 7vw, 8rem);
+      border-left-width: 3px;
+      border-bottom-width: 3px;
+      border-color: rgba(255, 96, 116, 0.9);
+      filter: drop-shadow(0 0 6px rgba(255, 60, 90, 0.6));
+      animation: nudgeL 1.9s ease-in-out infinite;
+    }
+
+    .chevron--right {
+      left: clamp(1.5rem, 7vw, 8rem);
+      border-right-width: 3px;
+      border-top-width: 3px;
+      border-color: rgba(232, 197, 110, 0.9);
+      filter: drop-shadow(0 0 6px rgba(217, 164, 65, 0.6));
+      animation: nudgeR 1.9s ease-in-out infinite;
+    }
+
+    @keyframes nudgeL {
+      0%, 100% { transform: translateY(-50%) translateX(0) rotate(45deg); opacity: 0.5; }
+      50% { transform: translateY(-50%) translateX(-9px) rotate(45deg); opacity: 0.95; }
+    }
+
+    @keyframes nudgeR {
+      0%, 100% { transform: translateY(-50%) translateX(0) rotate(45deg); opacity: 0.5; }
+      50% { transform: translateY(-50%) translateX(9px) rotate(45deg); opacity: 0.95; }
+    }
+
+    .gate--codex:hover .portal,
+    .gate--codex:focus-visible .portal {
+      filter: brightness(1.15) saturate(1.05) drop-shadow(0 0 48px rgba(255, 45, 85, 0.3));
+      transform: translateY(-50%) scale(1.035);
+    }
+
+    .gate--fragment:hover .portal,
+    .gate--fragment:focus-visible .portal {
+      filter: brightness(1.15) saturate(1.05) drop-shadow(0 0 48px rgba(217, 164, 65, 0.3));
+      transform: translateY(-50%) scale(1.035);
+    }
+
+    .gate:hover .plaque,
+    .gate:focus-visible .plaque {
+      transform: translateY(-50%) scale(1.04);
+    }
+
+    .gate--codex:hover .plaque,
+    .gate--codex:focus-visible .plaque {
+      border-color: rgba(255, 96, 116, 0.75);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45), 0 0 26px rgba(255, 45, 85, 0.28);
+    }
+
+    .gate--fragment:hover .plaque,
+    .gate--fragment:focus-visible .plaque {
+      border-color: rgba(232, 197, 110, 0.8);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45), 0 0 26px rgba(217, 164, 65, 0.3);
+    }
+
+    #wormhole-choice:has(.gate:hover) .gate:not(:hover),
+    #wormhole-choice:has(.gate:focus-visible) .gate:not(:focus-visible) {
+      opacity: 0.38;
     }
 
     .plaque {
@@ -895,56 +901,38 @@
       color: #d8cfbe;
     }
 
-    #wormhole-choice:has(.apse:hover) .wing:not(:has(:hover)),
-    #wormhole-choice:has(.apse:focus-visible) .wing:not(:has(:focus-visible)) {
-      opacity: 0.45;
-    }
-
-    .apse:hover .hanging,
-    .apse:focus-visible .hanging {
-      filter: drop-shadow(0 22px 32px rgba(0, 0, 0, 0.55)) brightness(1.08);
-    }
-
     @media (max-width: 1100px) {
-      .apse,
-      .apse--fragment {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
+      .portal {
+        height: 94vh;
       }
 
-      .frame {
-        width: min(32vh, 28vw);
-      }
+      .gate--codex .plaque { left: clamp(1rem, 7vw, 12rem); }
+      .gate--fragment .plaque { right: clamp(1rem, 7vw, 12rem); }
     }
 
     @media (max-width: 768px) {
-      .study {
-        display: none;
-      }
-
       .line {
         display: none;
       }
 
-      .wing--left {
-        left: 3.5vw;
-        top: 46%;
+      .gate {
+        width: 50vw;
       }
 
-      .wing--right {
-        right: 3.5vw;
-        top: 42%;
+      .portal {
+        height: 64vh;
       }
 
-      .frame,
-      .plaque {
-        width: 31vw;
-      }
+      .gate--codex .portal { left: -14vw; }
+      .gate--fragment .portal { right: -14vw; }
 
       .plaque {
-        padding: 0.35rem 0.3rem 0.42rem;
+        width: 34vw;
+        padding: 0.4rem 0.42rem 0.5rem;
       }
+
+      .gate--codex .plaque { left: 3vw; }
+      .gate--fragment .plaque { right: 3vw; }
 
       .kicker {
         font-size: 0.5rem;
@@ -952,14 +940,11 @@
       }
 
       .name {
-        font-size: 1.05rem;
+        font-size: 1.1rem;
       }
 
-      .limen-lintel {
-        left: 2vw;
-        width: 96vw;
-        opacity: 0.32;
-      }
+      .chevron--left { right: clamp(0.5rem, 4vw, 3rem); }
+      .chevron--right { left: clamp(0.5rem, 4vw, 3rem); }
 
       .limen-core {
         width: 58px;
@@ -968,18 +953,35 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .study--codex,
-      .study--fragment {
+      .chevron--left,
+      .chevron--right {
         animation: none;
+        opacity: 0.85;
+        transform: translateY(-50%) rotate(45deg);
       }
 
-      .study--codex { transform: rotate(-7deg); }
-      .study--fragment { transform: rotate(6deg); }
+      .portal {
+        transition: filter 0.4s ease;
+      }
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
     }
   </style>
 </head>
 
 <body>
+
+  <a href="brain.html" id="enter-opening" class="sr-only">Enter The Opening of Reality</a>
 
   <div id="loading">
     <div class="loader"></div>
@@ -1011,41 +1013,32 @@
   <div id="canvas-container"></div>
   <div id="warp-flash" aria-hidden="true"></div>
   <div id="wormhole-choice" aria-hidden="true">
-    <img class="limen-lintel" src="art/limen/lintel.png" alt="" width="1229" height="196" decoding="async" draggable="false">
+    <button type="button" id="seal-left" class="gate gate--codex" aria-label="Codex Operum — scrolls that have been closed">
+      <img class="portal" src="art/limen/codex-portal.jpg" alt="" width="720" height="1280" decoding="async" draggable="false">
+      <span class="plaque">
+        <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span class="kicker">Codex</span>
+        <span class="name">Operum</span>
+        <em class="line">Scrolls that have been closed.</em>
+      </span>
+      <span class="chevron chevron--left" aria-hidden="true"></span>
+    </button>
+
     <div class="limen-core" aria-hidden="true">
       <div class="orrery"></div>
       <img class="emblem" src="art/khaeos/khaeos-emblem.png" alt="" width="999" height="1004" decoding="async" draggable="false">
     </div>
-    <div class="wing wing--left">
-      <img class="study study--codex" src="art/limen/codex-study.png" alt="" width="667" height="430" decoding="async" draggable="false">
-      <button type="button" id="seal-left" class="apse apse--codex" aria-label="Codex Operum">
-        <span class="frame">
-          <img class="hanging" src="art/limen/codex-hanging.png" alt="" width="761" height="792" decoding="async" draggable="false">
-          <img class="seal" src="AiiAold.8dde82cb.jpg" alt="" width="148" height="148" decoding="async" draggable="false">
-        </span>
-        <span class="plaque">
-          <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-          <span class="kicker">Codex</span>
-          <span class="name">Operum</span>
-          <em class="line">Scrolls that have been closed.</em>
-        </span>
-      </button>
-    </div>
-    <div class="wing wing--right">
-      <img class="study study--fragment" src="art/limen/fragment-study.png" alt="" width="810" height="809" decoding="async" draggable="false">
-      <button type="button" id="seal-right" class="apse apse--fragment" aria-label="Fragmenta Apocrypha">
-        <span class="frame">
-          <img class="hanging" src="art/limen/fragment-hanging.png" alt="" width="812" height="797" decoding="async" draggable="false">
-          <img class="seal" src="AiiAold.8dde82cb.jpg" alt="" width="148" height="148" decoding="async" draggable="false">
-        </span>
-        <span class="plaque">
-          <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-          <span class="kicker">Fragmenta</span>
-          <span class="name">Apocrypha</span>
-          <em class="line">Hands that have not finished.</em>
-        </span>
-      </button>
-    </div>
+
+    <button type="button" id="seal-right" class="gate gate--fragment" aria-label="Fragmenta Apocrypha — hands that have not finished">
+      <img class="portal" src="art/limen/fragment-portal.jpg" alt="" width="720" height="1280" decoding="async" draggable="false">
+      <span class="plaque">
+        <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span class="kicker">Fragmenta</span>
+        <span class="name">Apocrypha</span>
+        <em class="line">Hands that have not finished.</em>
+      </span>
+      <span class="chevron chevron--right" aria-hidden="true"></span>
+    </button>
   </div>
 
   <footer class="glass">
@@ -1061,7 +1054,7 @@
     </div>
   </footer>
 
-  <div id="node-rail" class="glass" role="status" aria-live="polite" aria-label="Node telemetry">
+  <div id="node-rail" class="glass" aria-hidden="true">
     <div class="node-rail-inner">
       <div class="dot" aria-hidden="true"></div>
       <div class="node-rail-track">
@@ -2009,6 +2002,15 @@
         }
       }
       transitionLoop();
+    }
+
+    const enterOpening = document.getElementById('enter-opening');
+    if (enterOpening) {
+      enterOpening.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        startTransition();
+      });
     }
 
     const galleryNav = document.getElementById('nav-gallery');

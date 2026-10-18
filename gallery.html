@@ -5,6 +5,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery</title>
+    <meta name="description" content="Gallery: fourteen framed hangings on a black starfield, from The Elder to The Conclave.">
+    <meta name="theme-color" content="#c48c40">
+    <link rel="canonical" href="https://taikoi.netlify.app/gallery.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Aivoinko">
+    <meta property="og:title" content="Gallery">
+    <meta property="og:description" content="Gallery: fourteen framed hangings on a black starfield, from The Elder to The Conclave.">
+    <meta property="og:url" content="https://taikoi.netlify.app/gallery.html">
+    <meta property="og:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Gallery">
+    <meta name="twitter:description" content="Gallery: fourteen framed hangings on a black starfield, from The Elder to The Conclave.">
+    <meta name="twitter:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
+    <link rel="apple-touch-icon" href="AiiAold.8dde82cb.jpg">
     <link rel="preconnect" href="https://unpkg.com" crossorigin>
     <script type="importmap">
         {
@@ -325,10 +339,6 @@
             filter: drop-shadow(6px 10px 8px rgba(0, 0, 0, 0.4)) drop-shadow(0 0 8px rgba(196, 154, 72, 0.18));
         }
 
-        .hanging--spectrum img {
-            filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.58)) drop-shadow(0 0 22px rgba(80, 200, 220, 0.18)) drop-shadow(0 0 16px rgba(220, 140, 60, 0.16));
-        }
-
         .hanging--deco img {
             filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 20px rgba(255, 170, 60, 0.22)) drop-shadow(0 0 14px rgba(80, 150, 210, 0.12));
         }
@@ -392,7 +402,25 @@
             }
         }
 
+        @keyframes hangFade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         @media (max-width: 768px) {
+            html, body {
+                height: auto;
+                min-height: 100%;
+                overflow-x: clip;
+                overflow-y: auto;
+                -webkit-text-size-adjust: 100%;
+                text-size-adjust: 100%;
+            }
+
+            #canvas-container {
+                position: fixed;
+            }
+
             header {
                 position: relative;
                 top: auto;
@@ -408,10 +436,17 @@
             }
 
             #hall {
+                position: relative;
+                inset: auto;
                 display: block;
-                overflow-x: hidden;
-                overflow-y: auto;
-                padding: 0 5vw 10vh;
+                height: auto;
+                min-height: 100vh;
+                min-height: 100dvh;
+                overflow: visible;
+                padding: 0 5vw calc(12vh + env(safe-area-inset-bottom, 0px));
+                touch-action: pan-y;
+                -webkit-text-size-adjust: 100%;
+                text-size-adjust: 100%;
             }
 
             .bay,
@@ -424,6 +459,7 @@
                 align-items: center;
                 gap: 3vh;
                 padding: 5vh 0 8vh;
+                touch-action: pan-y;
             }
 
             section.bay:first-of-type {
@@ -436,8 +472,13 @@
             }
 
             .plaque {
+                position: relative;
+                z-index: 2;
+                flex: 0 0 auto;
+                align-self: center;
                 width: min(90vw, 28rem);
                 max-width: min(90vw, 28rem);
+                min-height: min-content;
                 padding: 1.1rem 1.1rem 1.2rem;
             }
 
@@ -462,18 +503,28 @@
             .hanging--show,
             .hanging--large,
             .hanging--square {
+                position: relative;
+                z-index: 1;
+                flex: 0 0 auto;
+                min-height: 0;
                 width: min(84vw, 52vh);
+                width: min(84vw, 52svh);
                 height: auto;
                 max-width: min(84vw, 52vh);
-                max-height: 52vh;
+                max-width: min(84vw, 52svh);
+                max-height: none;
                 --hang-y: 0px;
-                animation-delay: 0s, 1.05s;
+                transform: none;
+                animation: hangFade 0.9s ease both;
             }
 
             .hanging img {
+                display: block;
                 width: 100%;
                 height: auto;
                 max-height: 52vh;
+                max-height: 52svh;
+                object-fit: contain;
             }
 
             #realm-title {
@@ -503,7 +554,7 @@
         </header>
         <section class="bay bay--left">
             <figure class="hanging hanging--hero">
-                <img src="art/hangings/01-elder-gilt.png" alt="The Elder" decoding="async">
+                <img src="art/hangings/01-elder-gilt.png" alt="The Elder" width="864" height="1152" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -515,7 +566,7 @@
         </section>
         <section class="bay bay--right">
             <figure class="hanging hanging--large">
-                <img src="art/hangings/02-nautilus-walnut.png" alt="The Nautilus" loading="lazy" decoding="async">
+                <img src="art/hangings/02-nautilus-walnut.png" alt="The Nautilus" width="1350" height="1800" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -527,7 +578,7 @@
         </section>
         <section class="bay bay--left">
             <figure class="hanging hanging--large">
-                <img src="art/hangings/03-altar-bronze.png" alt="The Altar" loading="lazy" decoding="async">
+                <img src="art/hangings/03-altar-bronze.png" alt="The Altar" width="864" height="1152" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -539,7 +590,7 @@
         </section>
         <section class="bay bay--right">
             <figure class="hanging hanging--hero hanging--finale">
-                <img src="art/hangings/04-throne-dark.png" alt="The Throne" loading="lazy" decoding="async">
+                <img src="art/hangings/04-throne-dark.png" alt="The Throne" width="1350" height="1800" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -551,7 +602,7 @@
         </section>
         <section class="bay bay--left">
             <figure class="hanging hanging--hero hanging--square">
-                <img src="art/hangings/06-yantra-cassetta.png" alt="The Yantra" loading="lazy" decoding="async">
+                <img src="art/hangings/06-yantra-cassetta.png" alt="The Yantra" width="1800" height="1800" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -563,7 +614,7 @@
         </section>
         <section class="bay bay--right">
             <figure class="hanging hanging--hero hanging--abstract">
-                <img src="art/hangings/08-visage-abstract.png" alt="The Visage" loading="lazy" decoding="async">
+                <img src="art/hangings/08-visage-abstract.png" alt="The Visage" width="1350" height="1800" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -575,7 +626,7 @@
         </section>
         <section class="bay bay--left">
             <figure class="hanging hanging--ivory hanging--large">
-                <img src="art/hangings/09-axis-ivory.png" alt="The Axis" loading="lazy" decoding="async">
+                <img src="art/hangings/09-axis-ivory.png" alt="The Axis" width="1350" height="1800" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -587,7 +638,7 @@
         </section>
         <section class="bay bay--right">
             <figure class="hanging hanging--hero hanging--square hanging--void">
-                <img src="art/hangings/11-sigil-victorian.png" alt="The Sigil" loading="lazy" decoding="async">
+                <img src="art/hangings/11-sigil-victorian.png" alt="The Sigil" width="1800" height="1800" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -599,7 +650,7 @@
         </section>
         <section class="bay bay--left">
             <figure class="hanging hanging--hero">
-                <img src="art/hangings/12-chorus-layered.png" alt="The Chorus" loading="lazy" decoding="async">
+                <img src="art/hangings/12-chorus-layered.png" alt="The Chorus" width="1350" height="1800" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -610,20 +661,8 @@
             </article>
         </section>
         <section class="bay bay--right">
-            <figure class="hanging hanging--hero hanging--spectrum">
-                <img src="art/hangings/14-threshold-baroque.png" alt="The Threshold" loading="lazy" decoding="async">
-            </figure>
-            <article class="plaque">
-                <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                <h2>The Threshold</h2>
-                <blockquote>The hallway does not end. It brightens until you forget it was ever dark.</blockquote>
-                <p>Every surface is a different wavelength remembering the same sun. Walk, and the walls agree to let you pass.</p>
-                <p>A workshop note: the light at the far end is not a door. It is the moment the corridor decides you have arrived.</p>
-            </article>
-        </section>
-        <section class="bay bay--left">
             <figure class="hanging hanging--square hanging--deco">
-                <img src="art/hangings/15-phaeton-deco.png" alt="The Phaeton" loading="lazy" decoding="async">
+                <img src="art/hangings/15-phaeton-deco.png" alt="The Phaeton" width="1024" height="1024" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -633,9 +672,9 @@
                 <p>Coachbuilders once signed the axle, not the engine. This one signs nothing; the glow is signature enough.</p>
             </article>
         </section>
-        <section class="bay bay--right">
+        <section class="bay bay--left">
             <figure class="hanging hanging--large hanging--spore">
-                <img src="art/hangings/16-spore-nouveau.png" alt="The Spore" loading="lazy" decoding="async">
+                <img src="art/hangings/16-spore-nouveau.png" alt="The Spore" width="864" height="1152" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -645,9 +684,9 @@
                 <p>Pulp prophets drew the mushroom as a cathedral because a cathedral was too small to frighten anyone.</p>
             </article>
         </section>
-        <section class="bay bay--left">
+        <section class="bay bay--right">
             <figure class="hanging hanging--large hanging--stone">
-                <img src="art/hangings/17-spire-stone.png" alt="The Spire" loading="lazy" decoding="async">
+                <img src="art/hangings/17-spire-stone.png" alt="The Spire" width="864" height="1152" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -657,9 +696,9 @@
                 <p>Caravan maps marked it with one word that every language translated as "later".</p>
             </article>
         </section>
-        <section class="bay bay--right">
+        <section class="bay bay--left">
             <figure class="hanging hanging--hero hanging--iron">
-                <img src="art/hangings/18-valkyrie-iron.png" alt="The Valkyrie" loading="lazy" decoding="async">
+                <img src="art/hangings/18-valkyrie-iron.png" alt="The Valkyrie" width="864" height="1152" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -669,9 +708,9 @@
                 <p>An old field-note: where she stands, the larvae stop pretending to be stones.</p>
             </article>
         </section>
-        <section class="bay bay--left">
+        <section class="bay bay--right">
             <figure class="hanging hanging--hero hanging--oak">
-                <img src="art/hangings/19-conclave-oak.png" alt="The Conclave" loading="lazy" decoding="async">
+                <img src="art/hangings/19-conclave-oak.png" alt="The Conclave" width="864" height="1152" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -835,12 +874,6 @@
                 frame: 'layeredGilt'
             },
             {
-                // Self-framed hanging: the ornate gilt Baroque frame is baked into the still.
-                src: 'art/hangings/14-threshold-baroque.png',
-                alt: 'The Threshold',
-                frame: 'gilt'
-            },
-            {
                 src: 'art/hangings/15-phaeton-deco.png',
                 alt: 'The Phaeton',
                 frame: 'decoAmber'
@@ -897,9 +930,12 @@
         function scrollHallToFocus() {
             if (focusIndex <= 0 || !bays[focusIndex]) return;
             const bay = bays[focusIndex];
-            const top = isMobile()
-                ? bay.offsetTop
-                : bay.offsetTop - Math.max(0, (hall.clientHeight - bay.offsetHeight) / 2);
+            if (isMobile()) {
+                const top = bay.getBoundingClientRect().top + window.scrollY;
+                window.scrollTo(0, Math.max(0, top));
+                return;
+            }
+            const top = bay.offsetTop - Math.max(0, (hall.clientHeight - bay.offsetHeight) / 2);
             hall.scrollTop = Math.max(0, top);
         }
         function applyHallLayout() {
@@ -1228,6 +1264,7 @@
             titleEl.style.opacity = '0';
             hall.style.opacity = '';
             hall.scrollTop = 0;
+            window.scrollTo(0, 0);
             camera.fov = 92;
             camera.updateProjectionMatrix();
             pointMesh.visible = false;
