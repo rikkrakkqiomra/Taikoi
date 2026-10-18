@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cartomancy</title>
-    <meta name="description" content="Cartomancy: the suit of Beliefs, thirteen cards from Imagination to Freedom, read as a fork of the tarot.">
+    <meta name="description" content="Cartomancy: the lands of Beliefs and Changes, thirteen cards each, read as a fork of the tarot.">
     <meta name="theme-color" content="#8d6aae">
     <link rel="canonical" href="https://taikoi.netlify.app/cartomancy.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Aivoinko">
     <meta property="og:title" content="Cartomancy">
-    <meta property="og:description" content="Cartomancy: the suit of Beliefs, thirteen cards from Imagination to Freedom, read as a fork of the tarot.">
+    <meta property="og:description" content="Cartomancy: the lands of Beliefs and Changes, thirteen cards each, read as a fork of the tarot.">
     <meta property="og:url" content="https://taikoi.netlify.app/cartomancy.html">
     <meta property="og:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Cartomancy">
-    <meta name="twitter:description" content="Cartomancy: the suit of Beliefs, thirteen cards from Imagination to Freedom, read as a fork of the tarot.">
+    <meta name="twitter:description" content="Cartomancy: the lands of Beliefs and Changes, thirteen cards each, read as a fork of the tarot.">
     <meta name="twitter:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <link rel="apple-touch-icon" href="AiiAold.8dde82cb.jpg">
     <link rel="preconnect" href="https://unpkg.com" crossorigin>
@@ -449,7 +449,9 @@
 
         #deck-sealed[hidden],
         #deck-beliefs[hidden],
-        #suit-intro[hidden] {
+        #deck-changes[hidden],
+        #suit-intro[hidden],
+        #suit-intro-changes[hidden] {
             display: none;
         }
 
@@ -579,9 +581,9 @@
             <select id="land-select" autocomplete="off">
                 <optgroup label="Open">
                     <option value="beliefs" selected>I · Beliefs</option>
+                    <option value="changes">II · Changes</option>
                 </optgroup>
                 <optgroup label="Sealed">
-                    <option value="sealed-ii">II · Sealed</option>
                     <option value="sealed-iii">III · Sealed</option>
                     <option value="sealed-iv">IV · Sealed</option>
                 </optgroup>
@@ -596,7 +598,7 @@
             <p>Read a card for the structure it names. The picture is already the argument. Fortune can wait.</p>
         </article>
 
-        <nav class="suit-index" aria-label="Cards of Beliefs">
+        <nav class="suit-index" id="index-beliefs" aria-label="Cards of Beliefs">
             <a href="#imagination">I Imagination</a>
             <a href="#bias">II Bias</a>
             <a href="#dogma">III Dogma</a>
@@ -809,13 +811,234 @@
             </section>
         </div>
 
+        <article id="suit-intro-changes" class="suit-intro" hidden>
+            <p class="suit-kicker">Maa II</p>
+            <h2>Changes</h2>
+            <blockquote>A change is not an event. It is the interval in which a thing agrees to become another thing.</blockquote>
+            <p>This is the second land. Thirteen cards, and not a costume of any older deck. Ten weathers of a turning, then three who walk them: the Seeker, the Keeper, the Master.</p>
+            <p>Read a card for the motion it names. The picture is already the turning. Fortune can wait.</p>
+        </article>
+
+        <nav class="suit-index" id="index-changes" aria-label="Cards of Changes" hidden>
+            <a href="#time">I Time</a>
+            <a href="#fear">II Fear</a>
+            <a href="#attachment">III Attachment</a>
+            <a href="#opportunity">IV Opportunity</a>
+            <a href="#manifestation">V Manifestation</a>
+            <a href="#inspiration">VI Inspiration</a>
+            <a href="#futility">VII Futility</a>
+            <a href="#sacrifice">VIII Sacrifice</a>
+            <a href="#renewal">IX Renewal</a>
+            <a href="#adjustment">X Adjustment</a>
+            <a href="#curiosity">XI Curiosity</a>
+            <a href="#vision">XII Vision</a>
+            <a href="#adaptation">XIII Adaptation</a>
+        </nav>
+
+        <div id="deck-changes" hidden>
+            <section class="card" id="time">
+                <figure>
+                    <img src="art/cartomancy/changes/01-time.png" alt="Root of Changes, Time" width="613" height="1024" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">I · Root of Changes</p>
+                    <h2>Time</h2>
+                    <blockquote>Before anything moves, duration has to agree.</blockquote>
+                    <p>The figure in the arch is not dressed. Muscle, vessel, and a spiked halo are the body shown as a clock worn on the inside. A smaller face looks up from the step, because time is only visible to someone who is already inside it.</p>
+                    <p>Change has no root until one moment can be told from the next. Without that difference, fear and renewal are the same weather.</p>
+                    <p class="reading-use"><span>In a reading</span> The matter has duration, and that is the whole permission. Let one moment finish before you ask the next to begin.</p>
+                </article>
+            </section>
+
+            <section class="card" id="fear">
+                <figure>
+                    <img src="art/cartomancy/changes/02-fear.png" alt="Changes, Fear" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">II · Changes</p>
+                    <h2>Fear</h2>
+                    <blockquote>The first shape a change takes is a weapon.</blockquote>
+                    <p>Purple smoke has learned to be a crown. Gold plates sit on a body that is already half thorn, and the staff is a relic that still expects to be obeyed. Fear is how the nervous system announces that the room is no longer the room.</p>
+                    <p>It is the second card because a turning that cannot be feared has not been felt. The crown is weather. The staff can be set down.</p>
+                    <p class="reading-use"><span>In a reading</span> Name what the body is bracing for. The alarm is information. It is not yet a decision.</p>
+                </article>
+            </section>
+
+            <section class="card" id="attachment">
+                <figure>
+                    <img src="art/cartomancy/changes/03-attachment.png" alt="Changes, Attachment" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">III · Changes</p>
+                    <h2>Attachment</h2>
+                    <blockquote>What will not fall is being held up.</blockquote>
+                    <p>A smiling corpse in violet hangs from ropes, and the hands on the ropes are not all alive. One man in a dark suit laughs as he pulls. The rest are bone. Attachment keeps a change in the air by spending other people on the strings.</p>
+                    <p>The figure looks ceremonial. The work underneath is labor. Height, here, is a bill.</p>
+                    <p class="reading-use"><span>In a reading</span> Ask who is holding the rope, and whether the height is worth their arms. Slack is a kind of honesty.</p>
+                </article>
+            </section>
+
+            <section class="card" id="opportunity">
+                <figure>
+                    <img src="art/cartomancy/changes/04-opportunity.png" alt="Changes, Opportunity" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">IV · Changes</p>
+                    <h2>Opportunity</h2>
+                    <blockquote>The weathered face can still look straight at you.</blockquote>
+                    <p>Feathers open in more than one direction. Beads, a star on the shoulder, a coin at the chest: the elder is dressed in what earlier turnings left behind. Opportunity is not a blank door. It is a direction that survived.</p>
+                    <p>The portrait does not smile. It offers the look, which is stricter than an invitation.</p>
+                    <p class="reading-use"><span>In a reading</span> The opening is already wearing a history. Step toward it without pretending you are the first.</p>
+                </article>
+            </section>
+
+            <section class="card" id="manifestation">
+                <figure>
+                    <img src="art/cartomancy/changes/05-manifestation.png" alt="Changes, Manifestation" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">V · Changes</p>
+                    <h2>Manifestation</h2>
+                    <blockquote>A wish becomes a body you can walk around.</blockquote>
+                    <p>Wings of machined gold fill a cathedral of gears. The figure holds a ring the size of a doorway, and the ring is the circuit a change closes when it stops being imagined. Green at the legs is the living thing the machine agreed to carry.</p>
+                    <p>A turning that never takes a shape is only a rumor of motion. Weight is the proof.</p>
+                    <p class="reading-use"><span>In a reading</span> Give the change a form that can be stood next to. Until it has weight, it is still a wish.</p>
+                </article>
+            </section>
+
+            <section class="card" id="inspiration">
+                <figure>
+                    <img src="art/cartomancy/changes/06-inspiration.png" alt="Changes, Inspiration" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">VI · Changes</p>
+                    <h2>Inspiration</h2>
+                    <blockquote>The bird lands because the fire was kept small.</blockquote>
+                    <p>A kneeling man in an old coat, white at the throat, offers his hands to a crested bird. A tree leans in, and a low flame works in a brazier. Inspiration is a visitor. It requires a place to perch and something already burning.</p>
+                    <p>The smile is the risk of being altered by what you invited. A larger fire would have sent the bird back into the leaves.</p>
+                    <p class="reading-use"><span>In a reading</span> Make the fire smaller, not larger. What is coming needs a wrist, not a stage.</p>
+                </article>
+            </section>
+
+            <section class="card" id="futility">
+                <figure>
+                    <img src="art/cartomancy/changes/07-futility.png" alt="Changes, Futility" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">VII · Changes</p>
+                    <h2>Futility</h2>
+                    <blockquote>The instrument is beautiful. The river was not listening.</blockquote>
+                    <p>A woman sits on a root above moving water, a harp larger than the clearing behind her, a small object cupped in her hands. Moss, orchids, and the stream continue their own work. The song is not nothing. It is simply not the river.</p>
+                    <p>Futility is an effort aimed at the wrong element. The harp did not fail. The current was never going to become music.</p>
+                    <p class="reading-use"><span>In a reading</span> Stop asking the water to become the harp. Move the music, or let the current keep its name.</p>
+                </article>
+            </section>
+
+            <section class="card" id="sacrifice">
+                <figure>
+                    <img src="art/cartomancy/changes/08-sacrifice.png" alt="Changes, Sacrifice" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">VIII · Changes</p>
+                    <h2>Sacrifice</h2>
+                    <blockquote>White is the floor you clear for what comes next.</blockquote>
+                    <p>A seated figure, face shadowed, hands pressed, blue beads falling between the fingers. The robe is marked with small crosses and circles, and a dark mouth opens in the wall behind. The white is not innocence. It is what was set down so a change would have a place to stand.</p>
+                    <p>The room can be ready and still be empty. Emptying is not the same thing as arrival.</p>
+                    <p class="reading-use"><span>In a reading</span> Set down the one thing the turning actually needs. An offering that costs everything is usually a fear wearing white.</p>
+                </article>
+            </section>
+
+            <section class="card" id="renewal">
+                <figure>
+                    <img src="art/cartomancy/changes/09-renewal.png" alt="Changes, Renewal" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">IX · Changes</p>
+                    <h2>Renewal</h2>
+                    <blockquote>The same body, rebuilt around what still conducts.</blockquote>
+                    <p>A skeletal elder sits in a broken wall, beard like a river, one arm a cabinet of switches, wires running into the stone. The other hand is still a hand. Renewal is not a fresh start. It is the agreement to be repaired in place, with the ruin left visible.</p>
+                    <p>What conducts is kept. What only remembered conducting is allowed to become wire.</p>
+                    <p class="reading-use"><span>In a reading</span> Repair the joint that still carries a current. Do not sand the wall back to a year that is gone.</p>
+                </article>
+            </section>
+
+            <section class="card" id="adjustment">
+                <figure>
+                    <img src="art/cartomancy/changes/10-adjustment.png" alt="Changes, Adjustment" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">X · Changes</p>
+                    <h2>Adjustment</h2>
+                    <blockquote>A small correction keeps a large structure from lying.</blockquote>
+                    <p>The hat is a tower: brass, tiers, a measure worn on the head. Blue tassels fall where a beard would be, and the face carries marks under the eyes like a calibration that was accepted. Behind, a corridor of doors. A change that cannot be tuned becomes a dogma with legs.</p>
+                    <p>The face is calm. The hat is doing the work. The last of the ten weathers is a tenth of a turn.</p>
+                    <p class="reading-use"><span>In a reading</span> Correct the measure, not the person. A small turn is sometimes the whole turning.</p>
+                </article>
+            </section>
+
+            <section class="card card--court" id="curiosity">
+                <figure>
+                    <img src="art/cartomancy/changes/11-curiosity.png" alt="Seeker of Changes, Curiosity" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">XI · Seeker of Changes</p>
+                    <h2>Curiosity</h2>
+                    <blockquote>An instrument, not a verdict.</blockquote>
+                    <p>A profile in a diving helm, one lens lit blue, cables and small mechanisms hanging like a second beard. The face is uncovered enough to be human and closed enough to go under. Curiosity is the court of approach: the willingness to be changed by what the lens finds, before a name is given.</p>
+                    <p>The helm is how you stay present inside the unknown. It is not armor against it.</p>
+                    <p class="reading-use"><span>In a reading</span> Look longer than is comfortable, and do not decide in the first breath. The lens is already open.</p>
+                </article>
+            </section>
+
+            <section class="card card--court" id="vision">
+                <figure>
+                    <img src="art/cartomancy/changes/12-vision.png" alt="Keeper of Changes, Vision" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">XII · Keeper of Changes</p>
+                    <h2>Vision</h2>
+                    <blockquote>A spiral, not a forecast.</blockquote>
+                    <p>A face in profile, eyes closed, grown into a nautilus of blades and chambers. Turquoise and bone, a second coil in the dark. Vision is the capacity to keep more than one future in the same shell. The eyes are shut because a glance would flatten the picture.</p>
+                    <p>The Keeper does not spend the vision. Spending it would make it a plan, and a plan is a smaller room.</p>
+                    <p class="reading-use"><span>In a reading</span> Hold the picture without forcing it into a single door. A vision that can only be one thing has already become a fear.</p>
+                </article>
+            </section>
+
+            <section class="card card--court" id="adaptation">
+                <figure>
+                    <img src="art/cartomancy/changes/13-adaptation.png" alt="Master of Changes, Adaptation" width="613" height="1024" loading="lazy" decoding="async">
+                </figure>
+                <article class="reading">
+                    <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                    <p class="rank">XIII · Master of Changes</p>
+                    <h2>Adaptation</h2>
+                    <blockquote>The shape that can live with the turning.</blockquote>
+                    <p>A column of machine and face, cables like roots, lamps for eyes. Around it, other faces — some looking up, some in profile, some half absorbed into the same machinery. Adaptation is not a victory over change. It is the body that no longer needs the old outline in order to continue.</p>
+                    <p>The faces are not an audience. They are the earlier versions that stayed. The Master keeps what still conducts and lets the outline go.</p>
+                    <p class="reading-use"><span>In a reading</span> Keep the versions that still carry a current. What remains is a way of going on.</p>
+                </article>
+            </section>
+        </div>
+
         <div id="deck-sealed" hidden>
             <article class="sealed-plate">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
                 <p class="suit-kicker">Unopened</p>
                 <h2>This land is not yet drawn.</h2>
                 <p>The fork has other countries. Their cards are still in the dark, and a name given too early would be a lie with a border.</p>
-                <p>Return to Beliefs. The first land is the one that can be read.</p>
+                <p>Return to an open land. Beliefs and Changes can be read.</p>
             </article>
         </div>
 
@@ -836,29 +1059,43 @@
         const EXIT_MS = 1200;
 
         const hall = document.getElementById('hall');
-        const cards = Array.from(hall.querySelectorAll('#deck-beliefs .card'));
         const landSelect = document.getElementById('land-select');
-        const deck = document.getElementById('deck-beliefs');
-        const intro = document.getElementById('suit-intro');
-        const indexNav = hall.querySelector('.suit-index');
         const sealed = document.getElementById('deck-sealed');
         const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const OPEN_LANDS = ['beliefs', 'changes'];
 
         function isMobile() {
             return window.matchMedia('(max-width: 768px)').matches;
         }
 
+        function activeLand() {
+            return OPEN_LANDS.includes(landSelect.value) ? landSelect.value : '';
+        }
+
+        function activeCards() {
+            const land = activeLand();
+            if (!land) return [];
+            const deck = document.getElementById(land === 'beliefs' ? 'deck-beliefs' : 'deck-changes');
+            return Array.from(deck.querySelectorAll('.card'));
+        }
+
+        function readLandQuery() {
+            const land = new URLSearchParams(window.location.search).get('land');
+            if (OPEN_LANDS.includes(land)) landSelect.value = land;
+        }
+
         function readFocusQuery() {
             const focusQuery = Number(new URLSearchParams(window.location.search).get('focus'));
-            if (!Number.isInteger(focusQuery) || focusQuery < 1 || focusQuery > cards.length) return 0;
+            if (!Number.isInteger(focusQuery) || focusQuery < 1 || focusQuery > activeCards().length) return 0;
             return focusQuery;
         }
 
+        readLandQuery();
         let focusIndex = readFocusQuery();
 
         function scrollHallToFocus() {
-            if (focusIndex < 1 || landSelect.value !== 'beliefs') return;
-            const card = cards[focusIndex - 1];
+            if (focusIndex < 1 || !activeLand()) return;
+            const card = activeCards()[focusIndex - 1];
             if (!card) return;
             const top = isMobile()
                 ? card.offsetTop
@@ -867,17 +1104,20 @@
         }
 
         function applyLand() {
-            const live = landSelect.value === 'beliefs';
-            deck.hidden = !live;
-            intro.hidden = !live;
-            indexNav.hidden = !live;
-            sealed.hidden = live;
+            const land = activeLand();
+            document.getElementById('deck-beliefs').hidden = land !== 'beliefs';
+            document.getElementById('suit-intro').hidden = land !== 'beliefs';
+            document.getElementById('index-beliefs').hidden = land !== 'beliefs';
+            document.getElementById('deck-changes').hidden = land !== 'changes';
+            document.getElementById('suit-intro-changes').hidden = land !== 'changes';
+            document.getElementById('index-changes').hidden = land !== 'changes';
+            sealed.hidden = land !== '';
         }
 
         landSelect.addEventListener('change', () => {
             applyLand();
             const behavior = reduced ? 'auto' : 'smooth';
-            const top = landSelect.value === 'beliefs' ? 0 : Math.max(0, sealed.offsetTop - 24);
+            const top = activeLand() ? 0 : Math.max(0, sealed.offsetTop - 24);
             hall.scrollTo({ top: top, behavior: behavior });
         });
 
@@ -1093,6 +1333,7 @@
             exiting = false;
             mode = 'enter';
             phaseStart = 0;
+            readLandQuery();
             focusIndex = readFocusQuery();
             camera.position.set(0, 0, 0);
             header.style.pointerEvents = 'none';

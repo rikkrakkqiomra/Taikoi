@@ -443,7 +443,7 @@
                 min-height: 100vh;
                 min-height: 100dvh;
                 overflow: visible;
-                padding: 0 3vw calc(12vh + env(safe-area-inset-bottom, 0px));
+                padding: 0 3vw 0;
                 touch-action: pan-y;
                 -webkit-text-size-adjust: 100%;
                 text-size-adjust: 100%;
@@ -528,7 +528,15 @@
             }
 
             #realm-title {
-                display: none;
+                display: block;
+                margin: 1vh auto 0;
+                padding: 4vh 4vw calc(8vh + env(safe-area-inset-bottom, 0px));
+            }
+
+            #realm-title h1 {
+                font-size: clamp(1.45rem, 7.2vw, 2.1rem);
+                letter-spacing: 0.32em;
+                padding-left: 0.32em;
             }
         }
 
