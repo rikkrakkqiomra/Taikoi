@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Aivoinko Machine Metaphysics</title>
   <script type="importmap">
     {
@@ -46,6 +46,7 @@
       --text-color: #ffffff;
       --accent-color: #00f3ff;
       --silver-gradient: linear-gradient(to bottom, #ffffff 0%, #c0c0c0 50%, #8a8a8a 100%);
+      --node-rail-h: 32px;
     }
 
     * {
@@ -257,9 +258,7 @@
 
     footer {
       position: fixed;
-      bottom: 20px;
-      bottom: env(safe-area-inset-bottom, 20px);
-      /* Handle iPhone home bar */
+      bottom: calc(var(--node-rail-h) + env(safe-area-inset-bottom, 0px) + 10px);
       left: 50%;
       transform: translateX(-50%);
       z-index: 10;
@@ -275,6 +274,129 @@
       justify-content: center;
       white-space: nowrap;
       /* Prevent text wrapping issues */
+    }
+
+    #node-rail {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 10;
+      height: calc(var(--node-rail-h) + env(safe-area-inset-bottom, 0px));
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+      pointer-events: none;
+      overflow: hidden;
+      border: none;
+      border-radius: 0;
+      border-top: 1px solid rgba(0, 243, 255, 0.42);
+      background: linear-gradient(180deg, rgba(0, 243, 255, 0.08) 0%, rgba(0, 0, 0, 0.52) 100%), var(--glass-bg);
+      box-shadow: 0 -10px 28px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(0, 243, 255, 0.12);
+    }
+
+    .node-rail-inner {
+      height: var(--node-rail-h);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 14px;
+    }
+
+    #node-rail .dot {
+      flex-shrink: 0;
+    }
+
+    .node-rail-track {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%);
+      mask-image: linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%);
+    }
+
+    .node-rail-marquee {
+      display: flex;
+      width: max-content;
+      animation: nodeRailScroll 32s linear infinite;
+    }
+
+    .node-rail-line {
+      margin: 0;
+      padding-right: 3.6rem;
+      flex-shrink: 0;
+      white-space: nowrap;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #d7f9ff;
+      text-shadow: 0 0 10px rgba(0, 243, 255, 0.35);
+    }
+
+    .node-rail-line .node-label {
+      color: var(--accent-color);
+    }
+
+    .node-rail-line .node-sep {
+      display: inline-block;
+      margin: 0 0.85em;
+      color: rgba(0, 243, 255, 0.45);
+    }
+
+    .node-clock,
+    .node-utc {
+      color: #fff;
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum";
+    }
+
+    @keyframes nodeRailScroll {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    @media (min-width: 900px) {
+      .node-rail-track {
+        -webkit-mask-image: none;
+        mask-image: none;
+      }
+
+      .node-rail-marquee {
+        width: 100%;
+        justify-content: center;
+        animation: none;
+      }
+
+      .node-rail-line {
+        padding-right: 0;
+        font-size: clamp(0.55rem, 1.05vw, 0.7rem);
+        letter-spacing: 0.12em;
+      }
+
+      .node-rail-line[aria-hidden="true"] {
+        display: none;
+      }
+    }
+
+    @media (max-width: 899px) and (prefers-reduced-motion: reduce) {
+      .node-rail-marquee {
+        animation: none;
+      }
+
+      .node-rail-track {
+        pointer-events: auto;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .node-rail-line[aria-hidden="true"] {
+        display: none;
+      }
     }
 
     /* Mobile-specific adjustments */
@@ -466,7 +588,8 @@
     }
 
     html.ui-ready header,
-    html.ui-ready footer {
+    html.ui-ready footer,
+    html.ui-ready #node-rail {
       opacity: 1 !important;
     }
 
@@ -544,7 +667,135 @@
     }
 
     #seal-left {
-      animation-delay: 0s;
+      position: relative;
+      overflow: visible;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      animation: none;
+      isolation: isolate;
+    }
+
+    #seal-left:hover,
+    #seal-left:focus-visible {
+      transform: none;
+      border-color: transparent;
+      box-shadow: none;
+    }
+
+    .seal-left-tower {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 120%;
+      height: 160%;
+      transform: translate(-50%, -43.75%);
+      z-index: 0;
+      pointer-events: none;
+      overflow: visible;
+    }
+
+    .seal-left-eye {
+      position: relative;
+      z-index: 2;
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid rgba(255, 45, 85, 0.86);
+      box-shadow:
+        0 0 16px rgba(255, 45, 85, 0.55),
+        0 0 36px rgba(255, 45, 85, 0.28);
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .seal-left-iris {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      pointer-events: none;
+      box-shadow:
+        inset 0 0 0 7px rgba(255, 45, 85, 0.42),
+        inset 0 0 18px rgba(255, 45, 85, 0.5);
+      animation: sealPulse 1.8s ease-in-out infinite;
+      transition: box-shadow 0.2s ease, filter 0.2s ease;
+    }
+
+    .seal-left-pupil {
+      position: absolute;
+      left: 50%;
+      top: 10%;
+      width: 9%;
+      height: 80%;
+      transform: translateX(-50%);
+      pointer-events: none;
+      border-radius: 50%;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 45, 85, 0) 0%,
+        rgba(255, 45, 85, 0.38) 18%,
+        rgba(255, 220, 190, 0.92) 50%,
+        rgba(255, 45, 85, 0.38) 82%,
+        rgba(255, 45, 85, 0) 100%
+      );
+      box-shadow: 0 0 10px rgba(255, 80, 90, 0.85);
+    }
+
+    #seal-left:hover .seal-left-eye,
+    #seal-left:focus-visible .seal-left-eye {
+      border-color: #ff6b81;
+      box-shadow:
+        0 0 28px rgba(255, 45, 85, 0.9),
+        0 0 56px rgba(255, 45, 85, 0.45);
+    }
+
+    #seal-left:hover .seal-left-iris,
+    #seal-left:focus-visible .seal-left-iris {
+      filter: brightness(1.2);
+      box-shadow:
+        inset 0 0 0 8px rgba(255, 90, 100, 0.78),
+        inset 0 0 22px rgba(255, 45, 85, 0.7);
+    }
+
+    .seal-left-banner {
+      position: absolute;
+      left: 50%;
+      top: calc(100% + 22%);
+      transform: translateX(-50%);
+      z-index: 3;
+      width: min(42vw, 320px);
+      padding: 0.55em 0.75em 0.5em;
+      background: rgba(12, 0, 4, 0.74);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 45, 85, 0.72);
+      box-shadow:
+        0 0 16px rgba(255, 45, 85, 0.28),
+        inset 0 0 12px rgba(255, 45, 85, 0.12);
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      color: #ffd6de;
+      text-align: center;
+      line-height: 1.2;
+      pointer-events: auto;
+    }
+
+    .seal-left-banner-line {
+      display: block;
+      font-size: clamp(0.42rem, 1.4vw, 0.62rem);
+      padding-left: 0.28em;
+    }
+
+    .seal-left-banner-core {
+      margin: 0.18em 0;
+      font-size: clamp(0.52rem, 1.8vw, 0.78rem);
+      letter-spacing: 0.22em;
+      padding-left: 0.22em;
+      color: #ff2d55;
+      text-shadow: 0 0 12px rgba(255, 45, 85, 0.55);
     }
 
     #seal-right {
@@ -565,6 +816,29 @@
     @media (max-width: 768px) {
       #wormhole-choice {
         padding: 0 5vw;
+      }
+
+      .seal-left-tower {
+        width: 108%;
+        height: 144%;
+      }
+
+      .seal-left-banner {
+        width: min(48vw, 200px);
+        top: calc(100% + 12%);
+        padding: 0.4em 0.45em 0.35em;
+        letter-spacing: 0.16em;
+      }
+
+      .seal-left-banner-line {
+        font-size: clamp(0.38rem, 2.6vw, 0.5rem);
+        padding-left: 0.16em;
+      }
+
+      .seal-left-banner-core {
+        font-size: clamp(0.44rem, 3vw, 0.58rem);
+        letter-spacing: 0.12em;
+        padding-left: 0.12em;
       }
     }
   </style>
@@ -601,8 +875,42 @@
   <div id="canvas-container"></div>
   <div id="warp-flash" aria-hidden="true"></div>
   <div id="wormhole-choice" aria-hidden="true">
-    <button type="button" id="seal-left" class="wormhole-seal" aria-label="Left aperture">
-      <img src="AiiAold.8dde82cb.jpg" alt="" width="148" height="148" decoding="async">
+    <button type="button" id="seal-left" class="wormhole-seal">
+      <svg class="seal-left-tower" viewBox="0 0 120 160" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="seal-left-stone" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#2a080e" stop-opacity="0.52"></stop>
+            <stop offset="0.46" stop-color="#070002" stop-opacity="0.84"></stop>
+            <stop offset="0.54" stop-color="#070002" stop-opacity="0.84"></stop>
+            <stop offset="1" stop-color="#2a080e" stop-opacity="0.52"></stop>
+          </linearGradient>
+        </defs>
+        <path
+          fill="url(#seal-left-stone)"
+          stroke="#ff2d55"
+          stroke-width="1.2"
+          stroke-opacity="0.78"
+          stroke-linejoin="miter"
+          d="M28 2 L18 22 L14 36 L8 58 L4 76 L8 108 L16 122 L12 138 L8 158 H112 L108 138 L104 122 L112 108 L116 76 L112 58 L106 36 L102 22 L92 2 L80 20 L74 16 L66 22 L60 18 L54 22 L46 16 L40 20 Z">
+        </path>
+        <path
+          fill="none"
+          stroke="#ff2d55"
+          stroke-width="0.7"
+          stroke-opacity="0.35"
+          d="M60 4 V156 M22 128 L98 128 M18 142 L102 142">
+        </path>
+      </svg>
+      <span class="seal-left-eye">
+        <img src="AiiAold.8dde82cb.jpg" alt="" width="148" height="148" decoding="async">
+        <span class="seal-left-iris"></span>
+        <span class="seal-left-pupil"></span>
+      </span>
+      <span class="seal-left-banner">
+        <span class="seal-left-banner-line">Inspect</span>
+        <span class="seal-left-banner-line seal-left-banner-core">KIOMRA 64NN</span>
+        <span class="seal-left-banner-line">system</span>
+      </span>
     </button>
     <button type="button" id="seal-right" class="wormhole-seal" aria-label="Right aperture">
       <img src="AiiAold.8dde82cb.jpg" alt="" width="148" height="148" decoding="async">
@@ -621,6 +929,87 @@
       <span>Drag to Rotate &bull; Scroll to Zoom</span>
     </div>
   </footer>
+
+  <div id="node-rail" class="glass" role="status" aria-live="polite" aria-label="Node telemetry">
+    <div class="node-rail-inner">
+      <div class="dot" aria-hidden="true"></div>
+      <div class="node-rail-track">
+        <div class="node-rail-marquee">
+          <p class="node-rail-line">
+            <span class="node-label">Node: Northern Europe, sub-Helsinki</span><span class="node-sep">·</span>60.1699° N<span class="node-sep">·</span>24.9384° E<span class="node-sep">·</span>TZ Europe/Helsinki<span class="node-sep">·</span><span class="node-utc">UTC+03:00</span><span class="node-sep">·</span><span class="node-clock">--:--:--</span>
+          </p>
+          <p class="node-rail-line" aria-hidden="true">
+            <span class="node-label">Node: Northern Europe, sub-Helsinki</span><span class="node-sep">·</span>60.1699° N<span class="node-sep">·</span>24.9384° E<span class="node-sep">·</span>TZ Europe/Helsinki<span class="node-sep">·</span><span class="node-utc">UTC+03:00</span><span class="node-sep">·</span><span class="node-clock">--:--:--</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var TZ = 'Europe/Helsinki';
+      var clocks = document.querySelectorAll('.node-clock');
+      var offsets = document.querySelectorAll('.node-utc');
+      var timer = null;
+      var timeFmt = new Intl.DateTimeFormat('en-GB', {
+        timeZone: TZ,
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: false
+      });
+      var offsetFmt = new Intl.DateTimeFormat('en-US', {
+        timeZone: TZ,
+        timeZoneName: 'shortOffset'
+      });
+
+      function pad(n) {
+        return n < 10 ? '0' + n : String(n);
+      }
+
+      function formatOffset(date) {
+        var parts = offsetFmt.formatToParts(date);
+        var raw = 'GMT+2';
+        for (var i = 0; i < parts.length; i++) {
+          if (parts[i].type === 'timeZoneName') {
+            raw = parts[i].value;
+            break;
+          }
+        }
+        var match = raw.match(/([+-])(\d{1,2})(?::?(\d{2}))?/);
+        if (!match) return 'UTC+02:00';
+        return 'UTC' + match[1] + pad(Number(match[2])) + ':' + (match[3] || '00');
+      }
+
+      function tick() {
+        var now = new Date();
+        var time = timeFmt.format(now);
+        var utc = formatOffset(now);
+        for (var i = 0; i < clocks.length; i++) clocks[i].textContent = time;
+        for (var j = 0; j < offsets.length; j++) offsets[j].textContent = utc;
+      }
+
+      function start() {
+        if (timer) return;
+        tick();
+        timer = setInterval(tick, 1000);
+      }
+
+      function stop() {
+        if (!timer) return;
+        clearInterval(timer);
+        timer = null;
+      }
+
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) stop();
+        else start();
+      });
+
+      start();
+    })();
+  </script>
 
   <script type="module">
     import * as THREE from 'three';
@@ -1186,6 +1575,7 @@
 
       const header = document.querySelector('header');
       const footer = document.querySelector('footer');
+      const nodeRail = document.getElementById('node-rail');
       const flash = document.getElementById('warp-flash');
       const isGallery = Boolean(directHref);
 
@@ -1196,6 +1586,10 @@
       if (footer) {
         footer.style.transition = 'opacity 0.35s ease';
         footer.style.opacity = '0';
+      }
+      if (nodeRail) {
+        nodeRail.style.transition = 'opacity 0.35s ease';
+        nodeRail.style.opacity = '0';
       }
       setTooltipVisible(false);
       displayedPlanet = null;
@@ -1366,6 +1760,7 @@
     function entryAnimation() {
       const header = document.querySelector('header');
       const footer = document.querySelector('footer');
+      const nodeRail = document.getElementById('node-rail');
 
       if (header) {
         header.style.opacity = '0';
@@ -1374,6 +1769,10 @@
       if (footer) {
         footer.style.opacity = '0';
         footer.style.transition = 'opacity 1.5s ease';
+      }
+      if (nodeRail) {
+        nodeRail.style.opacity = '0';
+        nodeRail.style.transition = 'opacity 1.5s ease';
       }
 
       scene.scale.set(0.001, 0.001, 0.001);
@@ -1395,6 +1794,7 @@
           scene.rotation.z = 0;
           if (header) header.style.opacity = '1';
           if (footer) footer.style.opacity = '1';
+          if (nodeRail) nodeRail.style.opacity = '1';
         }
       }
       entryLoop();
@@ -1428,6 +1828,7 @@
 
       const header = document.querySelector('header');
       const footer = document.querySelector('footer');
+      const nodeRail = document.getElementById('node-rail');
 
       if (header) {
         header.style.transition = 'opacity 0.5s ease';
@@ -1436,6 +1837,10 @@
       if (footer) {
         footer.style.transition = 'opacity 0.5s ease';
         footer.style.opacity = '0';
+      }
+      if (nodeRail) {
+        nodeRail.style.transition = 'opacity 0.5s ease';
+        nodeRail.style.opacity = '0';
       }
       setTooltipVisible(false);
       displayedPlanet = null;
