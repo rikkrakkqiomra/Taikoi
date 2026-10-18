@@ -71,7 +71,7 @@ Taikoi/
 │   ├── 13-prism.jpg           # Source still
 │   ├── seal-scroll-top.png    # Seal index roller. Black exterior punched
 │   ├── seal-scroll-bottom.png # Matching lower roller
-│   ├── seal-stone.png         # Diamond basalt menu button. Black exterior punched. Page logo sits in the face
+│   ├── seal-stone.png         # Tall salmiakki basalt menu button. Black exterior punched. Page logo sits in the face
 │   ├── physicalus/            # Workshop photographs on physicalus.html (no art frames)
 │   │   ├── 01-hundred.jpg     # 100-layer Damascus pendant in the palm
 │   │   ├── 02-pair.jpg        # Brushed blank beside the etched pendant
@@ -160,7 +160,7 @@ No `.gitignore` in the current tree (removed in `85d5131`).
 | `gate_right.html` | `/gate_right.html` | Fragmenta Apocrypha: gold/zinc starfield + scrollable nave of six unfinished folios. Entered by right seal. Seal opens the index; Return reverse-warps → `index.html`. |
 | `netlify.toml` | n/a | Deployment contract: publish directory and HTTP headers. |
 
-Each HTML file is a **layout wrapper for itself**: `<head>` (meta, import map, fail-open script, fonts, CSS) + `<body>` (chrome + `#canvas-container` + page content) + trailing `<script type="module">` (Three.js scene). There is no shared layout partial or middleware. The eight subpages share `seal-menu.css` and `seal-menu.js` for the logo index. The trigger is `art/seal-stone.png` (punched diamond, 132px, 104px under 768px); the page logo sits in the face, circle-cropped except the Khaeos emblem. `index.html` does not.
+Each HTML file is a **layout wrapper for itself**: `<head>` (meta, import map, fail-open script, fonts, CSS) + `<body>` (chrome + `#canvas-container` + page content) + trailing `<script type="module">` (Three.js scene). There is no shared layout partial or middleware. The eight subpages share `seal-menu.css` and `seal-menu.js` for the logo index. The trigger is `art/seal-stone.png` (punched salmiakki, 132×181px, 104×142px under 768px); the page logo sits in the face, circle-cropped except the Khaeos emblem. `index.html` does not.
 
 ### Navigation graph
 
@@ -456,3 +456,4 @@ Append-only. Newest rows at the **bottom**. Do not rewrite prior rows.
 | 2026-10-18 | Split the seal index into a gallery list and unfinished sections | seal-menu.js, architecture.md | The gallery hall names were opening on every room | `gallery.html` and `physicalus.html` list Physical Arts → `physicalus.html`, Artificial Arts → `gallery.html`, then Cartomancy, Musical Theatre, Mineralogy with no href. The other six subpages list Section 1–4 with no href. Return and Close Menu unchanged. |
 | 2026-10-18 | Replace the round seal with a diamond stone button | seal-menu.css, seal-menu.js, art/seal-stone.png, pure_systems.html, architecture.md | The circular logo did not read as a menu control | Trigger is a punched basalt diamond on all eight seal pages. Page logo stays in the face (Khaeos emblem is not circle-cropped). Press sinks the stone; the name-fall and scroll frame are unchanged. System Log terminal `padding-top` is 176px. Home nav unchanged. |
 | 2026-10-18 | Tighten the Bio hall on desktop | bio.html, architecture.md | Each folio and bay was `min-height: 100vh` (close folio 72vh), so the name plate sat about a viewport away from the first portrait | Desktop sections size to their content. Name-to-first-image gap is about 7vh; bay-to-bay about 9vh. Portrait cap stays 50vh. Mobile (`max-width: 768px`) padding and `min-height: 0` unchanged. |
+| 2026-10-18 | Stretch the seal stone into a tall salmiakki | seal-menu.css, art/seal-stone.png, gallery.html, physicalus.html, gate_right.html, brain.html, pure_systems.html, bio.html, architecture.md | The square diamond did not read as a salmiakki; the user asked for more height at the same width | Trigger is 132×181px (104×142px under 768px). Logo stays circular. Desktop clearances: hall and first folio 216px, brain and System Log 220px. Press and the scroll index are unchanged. |
