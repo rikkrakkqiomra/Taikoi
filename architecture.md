@@ -71,6 +71,7 @@ Taikoi/
 │   ├── 13-prism.jpg           # Source still
 │   ├── seal-scroll-top.png    # Seal index roller. Black exterior punched
 │   ├── seal-scroll-bottom.png # Matching lower roller
+│   ├── seal-stone.png         # Diamond basalt menu button. Black exterior punched. Page logo sits in the face
 │   ├── physicalus/            # Workshop photographs on physicalus.html (no art frames)
 │   │   ├── 01-hundred.jpg     # 100-layer Damascus pendant in the palm
 │   │   ├── 02-pair.jpg        # Brushed blank beside the etched pendant
@@ -133,7 +134,7 @@ Taikoi/
 ├── diy_realities.html         # Khaeos Metalogs: emblem, wordmark, seven rings, scroll hall; nav label stays Library
 ├── gate_left.html             # Crimson left aperture; content TBD
 ├── gate_right.html            # Fragmenta Apocrypha; gold starfield + unfinished folio nave
-├── seal-menu.css              # Shared seal-index styles (eight subpages)
+├── seal-menu.css              # Shared seal-index styles (eight subpages). Trigger is the diamond stone button
 ├── seal-menu.js               # Builds the seal index. Gallery halls on gallery/physicalus; Section 1–4 elsewhere. Return calls __aivoinkoSealExit
 ├── AiiAold.8dde82cb.jpg       # Favicon, preload, sun-portal sprite, header logos, wormhole seals
 ├── taikoi-sun-portal.png      # Tracked asset; not referenced by any HTML (unused)
@@ -159,7 +160,7 @@ No `.gitignore` in the current tree (removed in `85d5131`).
 | `gate_right.html` | `/gate_right.html` | Fragmenta Apocrypha: gold/zinc starfield + scrollable nave of six unfinished folios. Entered by right seal. Seal opens the index; Return reverse-warps → `index.html`. |
 | `netlify.toml` | n/a | Deployment contract: publish directory and HTTP headers. |
 
-Each HTML file is a **layout wrapper for itself**: `<head>` (meta, import map, fail-open script, fonts, CSS) + `<body>` (chrome + `#canvas-container` + page content) + trailing `<script type="module">` (Three.js scene). There is no shared layout partial or middleware. The eight subpages share `seal-menu.css` and `seal-menu.js` for the logo index. `index.html` does not.
+Each HTML file is a **layout wrapper for itself**: `<head>` (meta, import map, fail-open script, fonts, CSS) + `<body>` (chrome + `#canvas-container` + page content) + trailing `<script type="module">` (Three.js scene). There is no shared layout partial or middleware. The eight subpages share `seal-menu.css` and `seal-menu.js` for the logo index. The trigger is `art/seal-stone.png` (punched diamond, 132px, 104px under 768px); the page logo sits in the face, circle-cropped except the Khaeos emblem. `index.html` does not.
 
 ### Navigation graph
 
@@ -453,3 +454,4 @@ Append-only. Newest rows at the **bottom**. Do not rewrite prior rows.
 | 2026-10-18 | Move the outbound work links from System Log into the Bio hall | bio.html, pure_systems.html, architecture.md | The Etsy and other work links belonged with the biography, not the green terminal | `#verkko` is a brass cabinet after the forest bay: DeviantArt, Etsy (Kiomra Trionfi), SoundCloud, LinkedIn, Trepo. Same URLs and `rel="noopener noreferrer"`. System Log header is the logo only; terminal `padding-top` is 160px. Log copy unchanged. Seal CSS still names `.social-links`, which no header uses. |
 | 2026-10-18 | Hold the Library salon one second longer and drop the Khaeos caption | index.html, architecture.md | The choice hold felt short, and the center word sat under the emblem | `CHOOSE_MS` is 4200. The center emblem and orrery stay. Codex and Fragmenta plaques, routes, and Gallery/Bio direct warps are unchanged. |
 | 2026-10-18 | Split the seal index into a gallery list and unfinished sections | seal-menu.js, architecture.md | The gallery hall names were opening on every room | `gallery.html` and `physicalus.html` list Physical Arts → `physicalus.html`, Artificial Arts → `gallery.html`, then Cartomancy, Musical Theatre, Mineralogy with no href. The other six subpages list Section 1–4 with no href. Return and Close Menu unchanged. |
+| 2026-10-18 | Replace the round seal with a diamond stone button | seal-menu.css, seal-menu.js, art/seal-stone.png, pure_systems.html, architecture.md | The circular logo did not read as a menu control | Trigger is a punched basalt diamond on all eight seal pages. Page logo stays in the face (Khaeos emblem is not circle-cropped). Press sinks the stone; the name-fall and scroll frame are unchanged. System Log terminal `padding-top` is 176px. Home nav unchanged. |

@@ -42,7 +42,7 @@
     trigger.className = 'seal-trigger';
     trigger.setAttribute('aria-expanded', 'false');
     trigger.setAttribute('aria-controls', 'seal-menu');
-    trigger.setAttribute('aria-label', 'Site index');
+    trigger.setAttribute('aria-label', 'Menu');
     anchor.appendChild(trigger);
     trigger.appendChild(img);
 
@@ -125,7 +125,7 @@
     if ('inert' in menu) menu.inert = true;
 
     function hang() {
-        var height = img.offsetHeight || img.height || 0;
+        var height = trigger.offsetHeight || img.offsetHeight || img.height || 0;
         if (height) menu.style.top = height + 'px';
     }
 
