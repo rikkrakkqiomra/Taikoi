@@ -363,6 +363,10 @@
             filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.62)) drop-shadow(0 0 18px rgba(160, 80, 255, 0.22)) drop-shadow(0 0 14px rgba(212, 160, 70, 0.18));
         }
 
+        .hanging--totem img {
+            filter: drop-shadow(16px 28px 24px rgba(0, 0, 0, 0.62)) drop-shadow(0 0 22px rgba(180, 70, 36, 0.24)) drop-shadow(0 0 16px rgba(36, 120, 110, 0.16));
+        }
+
         .hanging--ivory img {
             filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 20px rgba(196, 154, 82, 0.2));
         }
@@ -377,6 +381,10 @@
 
         .hanging--large {
             height: 86vh;
+        }
+
+        .hanging--monument {
+            height: min(94vh, 56vw);
         }
 
         .hanging--show img {
@@ -506,7 +514,8 @@
             .hanging--abstract,
             .hanging--show,
             .hanging--large,
-            .hanging--square {
+            .hanging--square,
+            .hanging--monument {
                 position: relative;
                 z-index: 1;
                 flex: 0 0 auto;
@@ -673,15 +682,15 @@
             </article>
         </section>
         <section class="bay bay--right">
-            <figure class="hanging hanging--hero">
-                <img src="art/hangings/12-chorus-layered.png" alt="The Chorus" width="1350" height="1800" loading="lazy" decoding="async">
+            <figure class="hanging hanging--monument hanging--totem">
+                <img src="art/hangings/21-totem-wood.png" alt="The Totem" width="1024" height="1024" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                <h2>The Chorus</h2>
-                <blockquote>The faces do not take turns. They share one sleep.</blockquote>
-                <p>Layers are not a disguise. They are the only way a mind can stay in one place.</p>
-                <p>A workshop note: if the profiles refuse to wait, the skull has learned to be a room.</p>
+                <h2>The Totem</h2>
+                <blockquote>The faces are not a crowd. They are one house that learned to stand.</blockquote>
+                <p>Paint is only the memory the wood agreed to keep. Red for the mouth that still speaks, blue for the eye that does not blink.</p>
+                <p>A carver's last instruction: hang it higher than a hand can reach. What looks back should not be touched.</p>
             </article>
         </section>
         <section class="bay bay--left">
@@ -825,9 +834,9 @@
                 src: 'art/frames/victorian-gilt.png',
                 inset: { top: '15.9%', right: '16.8%', bottom: '17.9%', left: '17.1%' }
             },
-            layeredGilt: {
-                src: 'art/frames/layered-gilt.png',
-                inset: { top: '22.7%', right: '28.3%', bottom: '24.6%', left: '28.7%' }
+            woodTotem: {
+                src: 'art/frames/wood-totem.png',
+                inset: { top: '29.3%', right: '23.7%', bottom: '20.8%', left: '23.7%' }
             },
             decoAmber: {
                 src: 'art/frames/deco-amber.png',
@@ -902,9 +911,9 @@
                 frame: 'victorianGilt'
             },
             {
-                src: 'art/hangings/12-chorus-layered.png',
-                alt: 'The Chorus',
-                frame: 'layeredGilt'
+                src: 'art/hangings/21-totem-wood.png',
+                alt: 'The Totem',
+                frame: 'woodTotem'
             },
             {
                 src: 'art/hangings/15-phaeton-deco.png',
