@@ -574,20 +574,8 @@
             <img src="AiiAold.8dde82cb.jpg" alt="Aivoinko Logo" width="120" height="120" fetchpriority="high" decoding="async">
         </header>
         <section class="bay bay--left">
-            <figure class="hanging hanging--hero">
-                <img src="art/hangings/01-elder-gilt.png" alt="The Elder" width="864" height="1152" decoding="async">
-            </figure>
-            <article class="plaque">
-                <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                <h2>The Elder</h2>
-                <blockquote>The forest keeps a king who does not sit.</blockquote>
-                <p>The antlered face is not costume. It is what remains when a man agrees to be used as a door. Bark, beard, and bone are one weather.</p>
-                <p>In older north-woods talk, the first watcher forgot his name so the trees could remember theirs.</p>
-            </article>
-        </section>
-        <section class="bay bay--right">
             <figure class="hanging hanging--large">
-                <img src="art/hangings/02-nautilus-walnut.png" alt="The Nautilus" width="1350" height="1800" loading="lazy" decoding="async">
+                <img src="art/hangings/02-nautilus-walnut.png" alt="The Nautilus" width="1350" height="1800" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -597,7 +585,7 @@
                 <p>Some Ionian fragments treat the nautilus as proof that heaven prefers a curve to a throne.</p>
             </article>
         </section>
-        <section class="bay bay--left">
+        <section class="bay bay--right">
             <figure class="hanging hanging--large">
                 <img src="art/hangings/03-altar-bronze.png" alt="The Altar" width="864" height="1152" loading="lazy" decoding="async">
             </figure>
@@ -607,6 +595,18 @@
                 <blockquote>What you offer is not the gift. The offering is that you stop.</blockquote>
                 <p>Bronze wings hold a pause, not a god. The fire is implied; the body has already decided.</p>
                 <p>Temple inventories from vanished cities list altars before they list deities.</p>
+            </article>
+        </section>
+        <section class="bay bay--left">
+            <figure class="hanging hanging--hero">
+                <img src="art/hangings/01-elder-gilt.png" alt="The Elder" width="864" height="1152" loading="lazy" decoding="async">
+            </figure>
+            <article class="plaque">
+                <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                <h2>The Elder</h2>
+                <blockquote>The forest keeps a king who does not sit.</blockquote>
+                <p>The antlered face is not costume. It is what remains when a man agrees to be used as a door. Bark, beard, and bone are one weather.</p>
+                <p>In older north-woods talk, the first watcher forgot his name so the trees could remember theirs.</p>
             </article>
         </section>
         <section class="bay bay--right">
@@ -866,11 +866,6 @@
 
         const ARTWORKS = [
             {
-                src: 'art/hangings/01-elder-gilt.png',
-                alt: 'The Elder',
-                frame: 'gilt'
-            },
-            {
                 src: 'art/hangings/02-nautilus-walnut.png',
                 alt: 'The Nautilus',
                 frame: 'walnutCarved'
@@ -879,6 +874,11 @@
                 src: 'art/hangings/03-altar-bronze.png',
                 alt: 'The Altar',
                 frame: 'bronze'
+            },
+            {
+                src: 'art/hangings/01-elder-gilt.png',
+                alt: 'The Elder',
+                frame: 'gilt'
             },
             {
                 src: 'art/hangings/20-signal-obsidian.png',
