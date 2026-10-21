@@ -7,6 +7,13 @@
         { label: 'Mineralogy' }
     ];
 
+    var LIBRARY_REALMS = [
+        { label: 'Section 1' },
+        { label: 'Liber / Ready', href: 'gate_left.html' },
+        { label: 'Manuscript / Foul Papers', href: 'gate_right.html' },
+        { label: 'Metalog', href: 'diy_realities.html' }
+    ];
+
     var SECTION_REALMS = [
         { label: 'Section 1' },
         { label: 'Section 2' },
@@ -21,9 +28,12 @@
         return file.replace(/\.html$/, '');
     }
 
-    var REALMS = (pageStem() === 'gallery' || pageStem() === 'physicalus' || pageStem() === 'cartomancy')
+    var stem = pageStem();
+    var REALMS = (stem === 'gallery' || stem === 'physicalus' || stem === 'cartomancy')
         ? GALLERY_REALMS
-        : SECTION_REALMS;
+        : (stem === 'diy_realities' || stem === 'gate_left' || stem === 'gate_right')
+            ? LIBRARY_REALMS
+            : SECTION_REALMS;
 
     var img = document.querySelector('header img');
     if (!img) return;
