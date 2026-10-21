@@ -8,7 +8,6 @@
     ];
 
     var LIBRARY_REALMS = [
-        { label: 'Section 1' },
         { label: 'Liber / Ready', href: 'gate_left.html' },
         { label: 'Manuscript / Foul Papers', href: 'gate_right.html' },
         { label: 'Metalog', href: 'diy_realities.html' }
