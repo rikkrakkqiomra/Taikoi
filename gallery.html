@@ -574,8 +574,20 @@
             <img src="AiiAold.8dde82cb.jpg" alt="Aivoinko Logo" width="120" height="120" fetchpriority="high" decoding="async">
         </header>
         <section class="bay bay--left">
+            <figure class="hanging hanging--hero">
+                <img src="art/hangings/01-elder-gilt.png" alt="The Elder" width="864" height="1152" decoding="async">
+            </figure>
+            <article class="plaque">
+                <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                <h2>The Elder</h2>
+                <blockquote>The forest keeps a king who does not sit.</blockquote>
+                <p>The antlered face is not costume. It is what remains when a man agrees to be used as a door. Bark, beard, and bone are one weather.</p>
+                <p>In older north-woods talk, the first watcher forgot his name so the trees could remember theirs.</p>
+            </article>
+        </section>
+        <section class="bay bay--right">
             <figure class="hanging hanging--large">
-                <img src="art/hangings/02-nautilus-walnut.png" alt="The Nautilus" width="1350" height="1800" decoding="async">
+                <img src="art/hangings/02-nautilus-walnut.png" alt="The Nautilus" width="1350" height="1800" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -585,7 +597,7 @@
                 <p>Some Ionian fragments treat the nautilus as proof that heaven prefers a curve to a throne.</p>
             </article>
         </section>
-        <section class="bay bay--right">
+        <section class="bay bay--left">
             <figure class="hanging hanging--large">
                 <img src="art/hangings/03-altar-bronze.png" alt="The Altar" width="864" height="1152" loading="lazy" decoding="async">
             </figure>
@@ -597,28 +609,16 @@
                 <p>Temple inventories from vanished cities list altars before they list deities.</p>
             </article>
         </section>
-        <section class="bay bay--left">
-            <figure class="hanging hanging--hero">
-                <img src="art/hangings/01-elder-gilt.png" alt="The Elder" width="864" height="1152" loading="lazy" decoding="async">
-            </figure>
-            <article class="plaque">
-                <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                <h2>The Elder</h2>
-                <blockquote>The forest keeps a king who does not sit.</blockquote>
-                <p>The antlered face is not costume. It is what remains when a man agrees to be used as a door. Bark, beard, and bone are one weather.</p>
-                <p>In older north-woods talk, the first watcher forgot his name so the trees could remember theirs.</p>
-            </article>
-        </section>
         <section class="bay bay--right">
-            <figure class="hanging hanging--hero hanging--obsidian">
-                <img src="art/hangings/20-signal-obsidian.png" alt="The Signal" width="864" height="1152" loading="lazy" decoding="async">
+            <figure class="hanging hanging--monument hanging--totem">
+                <img src="art/hangings/21-totem-wood.png" alt="The Totem" width="1024" height="1024" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                <h2>The Signal</h2>
-                <blockquote>The column does not speak. The field answers in gold.</blockquote>
-                <p>A body of light keeps the posture of someone who has not finished arriving. The witnesses stand because kneeling would make them smaller than the beam.</p>
-                <p>An unsigned ridge note: where the light touches the grass, the earth agrees to become a mirror.</p>
+                <h2>The Totem</h2>
+                <blockquote>The faces are not a crowd. They are one house that learned to stand.</blockquote>
+                <p>Paint is only the memory the wood agreed to keep. Red for the mouth that still speaks, blue for the eye that does not blink.</p>
+                <p>A carver's last instruction: hang it higher than a hand can reach. What looks back should not be touched.</p>
             </article>
         </section>
         <section class="bay bay--left">
@@ -682,15 +682,15 @@
             </article>
         </section>
         <section class="bay bay--right">
-            <figure class="hanging hanging--monument hanging--totem">
-                <img src="art/hangings/21-totem-wood.png" alt="The Totem" width="1024" height="1024" loading="lazy" decoding="async">
+            <figure class="hanging hanging--hero hanging--obsidian">
+                <img src="art/hangings/20-signal-obsidian.png" alt="The Signal" width="864" height="1152" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                <h2>The Totem</h2>
-                <blockquote>The faces are not a crowd. They are one house that learned to stand.</blockquote>
-                <p>Paint is only the memory the wood agreed to keep. Red for the mouth that still speaks, blue for the eye that does not blink.</p>
-                <p>A carver's last instruction: hang it higher than a hand can reach. What looks back should not be touched.</p>
+                <h2>The Signal</h2>
+                <blockquote>The column does not speak. The field answers in gold.</blockquote>
+                <p>A body of light keeps the posture of someone who has not finished arriving. The witnesses stand because kneeling would make them smaller than the beam.</p>
+                <p>An unsigned ridge note: where the light touches the grass, the earth agrees to become a mirror.</p>
             </article>
         </section>
         <section class="bay bay--left">
@@ -866,6 +866,11 @@
 
         const ARTWORKS = [
             {
+                src: 'art/hangings/01-elder-gilt.png',
+                alt: 'The Elder',
+                frame: 'gilt'
+            },
+            {
                 src: 'art/hangings/02-nautilus-walnut.png',
                 alt: 'The Nautilus',
                 frame: 'walnutCarved'
@@ -876,14 +881,9 @@
                 frame: 'bronze'
             },
             {
-                src: 'art/hangings/01-elder-gilt.png',
-                alt: 'The Elder',
-                frame: 'gilt'
-            },
-            {
-                src: 'art/hangings/20-signal-obsidian.png',
-                alt: 'The Signal',
-                frame: 'obsidianSignal'
+                src: 'art/hangings/21-totem-wood.png',
+                alt: 'The Totem',
+                frame: 'woodTotem'
             },
             {
                 src: 'art/hangings/04-throne-dark.png',
@@ -911,9 +911,9 @@
                 frame: 'victorianGilt'
             },
             {
-                src: 'art/hangings/21-totem-wood.png',
-                alt: 'The Totem',
-                frame: 'woodTotem'
+                src: 'art/hangings/20-signal-obsidian.png',
+                alt: 'The Signal',
+                frame: 'obsidianSignal'
             },
             {
                 src: 'art/hangings/15-phaeton-gilt.png',
