@@ -20,6 +20,13 @@
         { label: 'Section 4' }
     ];
 
+    var SERVICE_REALMS = [
+        { label: 'Branding', href: 'branding.html' },
+        { label: 'Business Strategy', href: 'business_strategy.html' },
+        { label: 'Pricing', href: 'pricing.html' },
+        { label: 'Contact', href: 'contact.html' }
+    ];
+
     function pageStem() {
         var path = window.location.pathname.replace(/\\/g, '/');
         var parts = path.split('/').filter(Boolean);
@@ -32,7 +39,9 @@
         ? GALLERY_REALMS
         : (stem === 'diy_realities' || stem === 'gate_left' || stem === 'gate_right')
             ? LIBRARY_REALMS
-            : SECTION_REALMS;
+            : (stem === 'services' || stem === 'branding' || stem === 'business_strategy' || stem === 'pricing' || stem === 'contact')
+                ? SERVICE_REALMS
+                : SECTION_REALMS;
 
     var img = document.querySelector('header img');
     if (!img) return;
