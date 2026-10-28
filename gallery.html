@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gallery</title>
-    <meta name="description" content="Gallery: fifteen framed hangings on a black starfield, from The Elder to The Conclave.">
+    <meta name="description" content="Gallery: sixteen framed hangings on a black starfield, from The Elder to The Reliquary.">
     <meta name="theme-color" content="#c48c40">
     <link rel="canonical" href="https://taikoi.netlify.app/gallery.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Aivoinko">
     <meta property="og:title" content="Gallery">
-    <meta property="og:description" content="Gallery: fifteen framed hangings on a black starfield, from The Elder to The Conclave.">
+    <meta property="og:description" content="Gallery: sixteen framed hangings on a black starfield, from The Elder to The Reliquary.">
     <meta property="og:url" content="https://taikoi.netlify.app/gallery.html">
     <meta property="og:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Gallery">
-    <meta name="twitter:description" content="Gallery: fifteen framed hangings on a black starfield, from The Elder to The Conclave.">
+    <meta name="twitter:description" content="Gallery: sixteen framed hangings on a black starfield, from The Elder to The Reliquary.">
     <meta name="twitter:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <link rel="apple-touch-icon" href="AiiAold.8dde82cb.jpg">
     <link rel="preconnect" href="https://unpkg.com" crossorigin>
@@ -359,6 +359,10 @@
             filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 18px rgba(120, 150, 90, 0.18));
         }
 
+        .hanging--pewter img {
+            filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.62)) drop-shadow(0 0 18px rgba(168, 176, 184, 0.22));
+        }
+
         .hanging--obsidian img {
             filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.62)) drop-shadow(0 0 18px rgba(160, 80, 255, 0.22)) drop-shadow(0 0 14px rgba(212, 160, 70, 0.18));
         }
@@ -515,7 +519,8 @@
             .hanging--show,
             .hanging--large,
             .hanging--square,
-            .hanging--monument {
+            .hanging--monument,
+            .hanging--pewter {
                 position: relative;
                 z-index: 1;
                 flex: 0 0 auto;
@@ -753,6 +758,18 @@
                 <p>Behind the throne a green giant keeps the posture of a thought no one has finished.</p>
             </article>
         </section>
+        <section class="bay bay--right">
+            <figure class="hanging hanging--large hanging--pewter">
+                <img src="art/hangings/22-reliquary-pewter.png" alt="The Reliquary" width="864" height="1152" loading="lazy" decoding="async">
+            </figure>
+            <article class="plaque">
+                <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                <h2>The Reliquary</h2>
+                <blockquote>The shrine does not keep a saint. It keeps the pause.</blockquote>
+                <p>Bone and conduit are one weather. The eyes are shut so the niche can remain a room.</p>
+                <p>An unsigned workshop note: do not wake what was built to hold still.</p>
+            </article>
+        </section>
         <div id="realm-title">
             <h1>Gallery</h1>
         </div>
@@ -861,6 +878,10 @@
             obsidianSignal: {
                 src: 'art/frames/obsidian-signal.png',
                 inset: { top: '16.7%', right: '20.5%', bottom: '17.7%', left: '20.4%' }
+            },
+            pewterReliquary: {
+                src: 'art/frames/pewter-reliquary.png',
+                inset: { top: '21.4%', right: '19.6%', bottom: '16.9%', left: '19.8%' }
             }
         };
 
@@ -939,6 +960,11 @@
                 src: 'art/hangings/19-conclave-oak.png',
                 alt: 'The Conclave',
                 frame: 'oakConclave'
+            },
+            {
+                src: 'art/hangings/22-reliquary-pewter.png',
+                alt: 'The Reliquary',
+                frame: 'pewterReliquary'
             }
         ];
 
