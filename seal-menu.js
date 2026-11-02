@@ -21,7 +21,7 @@
     ];
 
     var SERVICE_REALMS = [
-        { label: 'Branding', href: 'branding.html' },
+        { label: 'The Work', href: 'branding.html' },
         { label: 'Business Strategy', href: 'business_strategy.html' },
         { label: 'Pricing', href: 'pricing.html' },
         { label: 'Contact', href: 'contact.html' }

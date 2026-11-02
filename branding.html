@@ -5,19 +5,19 @@
     <!-- # Core Meta Tags & Title -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Branding</title>
-    <meta name="description" content="Branding. A Services page on the same starfield as the sun.">
+    <title>The Work</title>
+    <meta name="description" content="The Work. Three ways of staying: a company, a mind, a machine that does not leave the house.">
     <meta name="theme-color" content="#00f3ff">
     <link rel="canonical" href="https://taikoi.netlify.app/branding.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Aivoinko">
-    <meta property="og:title" content="Branding">
-    <meta property="og:description" content="Branding. A Services page on the same starfield as the sun.">
+    <meta property="og:title" content="The Work">
+    <meta property="og:description" content="The Work. Three ways of staying: a company, a mind, a machine that does not leave the house.">
     <meta property="og:url" content="https://taikoi.netlify.app/branding.html">
     <meta property="og:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Branding">
-    <meta name="twitter:description" content="Branding. A Services page on the same starfield as the sun.">
+    <meta name="twitter:title" content="The Work">
+    <meta name="twitter:description" content="The Work. Three ways of staying: a company, a mind, a machine that does not leave the house.">
     <meta name="twitter:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <link rel="apple-touch-icon" href="AiiAold.8dde82cb.jpg">
     <link rel="preconnect" href="https://unpkg.com" crossorigin>
@@ -158,112 +158,146 @@
             perspective: 1000px;
         }
 
-        /* # Content Block Styling */
-        .floating-block {
-            background: rgba(0, 0, 0, 0.6);
+        /* # The Work brochure */
+        .work-mast {
+            text-align: center;
+            max-width: 38rem;
+            width: 90%;
+            opacity: 0;
+            transform: translateY(24px);
+        }
+
+        .work-mast h1 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: clamp(2.4rem, 5vw, 3.35rem);
+            line-height: 1.08;
+            letter-spacing: 0.02em;
+            color: #f3ead8;
+            text-shadow: 0 0 16px rgba(0, 0, 0, 0.95), 0 1px 2px rgba(0, 0, 0, 0.9);
+        }
+
+        .work-kicker {
+            margin-top: 0.85rem;
+            font-size: 1.08rem;
+            line-height: 1.65;
+            letter-spacing: 0.02em;
+            color: #c8c0b0;
+        }
+
+        .work-sands {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            align-items: stretch;
+            gap: 1.35rem;
+            width: min(72rem, 94vw);
+        }
+
+        .sand {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            isolation: isolate;
+            padding: 1.85rem 1.45rem 2.05rem;
+            background: rgba(8, 6, 4, 0.9);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            border-radius: 15px;
-            max-width: 800px;
-            width: 90%;
-            color: #ddd;
-            text-align: left;
-            box-shadow: 0 0 40px rgba(0, 243, 255, 0.05);
-
-            /* Floating Animation */
-            animation: float 6s ease-in-out infinite;
+            border: 1px solid rgba(212, 168, 96, 0.28);
+            color: #d8d2c6;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
             opacity: 0;
-            /* Start hidden for entry animation */
-            transform: translateY(50px);
+            transform: translateY(24px);
         }
 
-        .floating-block h2 {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--accent-color);
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
-            border-bottom: 1px solid rgba(0, 243, 255, 0.3);
-            padding-bottom: 10px;
-        }
-
-        .floating-block p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        .floating-block ul {
-            list-style: none;
-            padding-left: 10px;
-        }
-
-        .floating-block li {
-            margin-bottom: 15px;
-            position: relative;
-            padding-left: 25px;
-        }
-
-        .floating-block li::before {
-            content: '>';
+        .sand::before,
+        .sand::after {
+            content: "";
             position: absolute;
-            left: 0;
-            color: var(--accent-color);
-            font-weight: bold;
+            top: 1.35rem;
+            bottom: 1.45rem;
+            width: 1px;
+            pointer-events: none;
+            background: linear-gradient(
+                to bottom,
+                rgba(184, 138, 74, 0),
+                rgba(212, 168, 96, 0.72) 14%,
+                rgba(212, 168, 96, 0.72) 86%,
+                rgba(184, 138, 74, 0)
+            );
         }
 
-        .floating-block strong {
-            color: #fff;
+        .sand::before {
+            left: 0.55rem;
         }
 
-        .quote {
+        .sand::after {
+            right: 0.55rem;
+        }
+
+        .sand-gem {
+            display: block;
+            width: 6px;
+            height: 6px;
+            margin: 0 auto 0.95rem;
+            background: #d4a45a;
+            transform: rotate(45deg);
+            box-shadow: 0 0 8px rgba(212, 164, 90, 0.55);
+        }
+
+        .sand h2 {
+            font-family: 'Cormorant Garamond', Georgia, serif;
             font-style: italic;
-            color: #fff;
-            border-left: 4px solid var(--accent-color);
-            padding-left: 20px;
-            margin: 30px 0;
-            background: linear-gradient(90deg, rgba(0, 243, 255, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
-            padding: 20px;
-            font-size: 1.2rem;
+            font-weight: 500;
+            font-size: clamp(1.55rem, 2.1vw, 1.9rem);
+            line-height: 1.12;
+            letter-spacing: 0.015em;
+            color: #f3ead8;
+            text-align: center;
+            text-shadow: 0 0 16px rgba(0, 0, 0, 0.95), 0 1px 2px rgba(0, 0, 0, 0.9);
         }
 
-        /* # Animation Delays for Staggered Entry */
-        .delay-1 {
-            animation-delay: 0s;
+        .sand-term {
+            display: block;
+            margin: 0.7rem 0 1.15rem;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 0.62rem;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            text-align: center;
+            color: #c48c40;
+            text-shadow: 0 0 14px rgba(0, 0, 0, 0.95);
         }
 
-        .delay-2 {
-            animation-delay: 0.5s;
+        .sand-term::before,
+        .sand-term::after {
+            content: "";
+            display: block;
+            width: 2.4rem;
+            height: 1px;
+            margin: 0.55rem auto 0;
+            background: linear-gradient(90deg, rgba(212, 164, 90, 0), #d4a45a, rgba(212, 164, 90, 0));
         }
 
-        .delay-3 {
-            animation-delay: 1s;
+        .sand-term::before {
+            margin: 0 auto 0.55rem;
         }
 
-        .delay-4 {
-            animation-delay: 1.5s;
+        .sand p {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            margin-bottom: 1.05rem;
         }
 
-        .delay-5 {
-            animation-delay: 2s;
+        .sand p:last-child {
+            margin-bottom: 0;
         }
 
-        /* # Keyframe Animations */
-        @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-15px);
-            }
-
-            100% {
-                transform: translateY(0px);
+        @media (max-width: 768px) {
+            .work-sands {
+                grid-template-columns: 1fr;
+                width: min(34rem, 92vw);
             }
         }
 
@@ -271,6 +305,13 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .work-mast,
+            .sand {
+                transform: none;
             }
         }
 
@@ -294,8 +335,10 @@
 
         html.ui-ready header,
         html.ui-ready .floating-container,
-        html.ui-ready .floating-block {
+        html.ui-ready .work-mast,
+        html.ui-ready .sand {
             opacity: 1 !important;
+            transform: none;
         }
     </style>
 </head>
@@ -312,8 +355,32 @@
 
     <!-- # Main Content Container -->
     <div class="floating-container">
-        <div class="floating-block delay-1">
-            <h2>Branding</h2>
+        <div class="work-mast">
+            <h1>The Work</h1>
+            <p class="work-kicker">Three ways of staying. A company, a mind, a machine that does not leave the house.</p>
+        </div>
+        <div class="work-sands">
+            <article class="sand">
+                <i class="sand-gem" aria-hidden="true"></i>
+                <h2>Residency</h2>
+                <p class="sand-term">Six months, at least</p>
+                <p>The public face of a company is not a logo dropped onto a template. It is the site, the mark, the way a page is composed, and every quiet failure underneath. We take that on as a continuous engagement: half a year at the shortest, and longer when the work asks for it.</p>
+                <p>Whatever the stack is — a site written by hand, WordPress, or something less polite — we go into it and find the traps before they find your visitors. Design and counsel sit in the same agreement. You are not handed a file and left to interpret it.</p>
+            </article>
+            <article class="sand">
+                <i class="sand-gem" aria-hidden="true"></i>
+                <h2>Seminar</h2>
+                <p class="sand-term">Four months, or eight</p>
+                <p>Vision fails when it is only a sentence on a wall. This is a working course in how to think one, and how to act while the conditions keep moving. We meet when the weeks allow, not on a rigid timetable, and the work between meetings is part of the course.</p>
+                <p>The reading is realistic. The history of philosophy and of psychology, as those traditions actually ran, set next to systems thinking as it is used now. No mystique in place of a method. When the months end, the materials stay with you, and the right to use them is yours.</p>
+            </article>
+            <article class="sand">
+                <i class="sand-gem" aria-hidden="true"></i>
+                <h2>Sanctum</h2>
+                <p class="sand-term">Fifteen thousand euros a pilot</p>
+                <p>An intelligence that lives where you do. We plant a private, local system in the environment you name: a serious model, cut off from the open internet, shaped to the work of that house and no other.</p>
+                <p>A pilot is fifteen thousand euros. A later purchase follows the same care. We walk the security, the model, and a plain interface, and we leave you able to use it without a translator in the room.</p>
+            </article>
         </div>
     </div>
 
@@ -391,7 +458,7 @@
 
         const header = document.querySelector('header');
         const floatingContainer = document.querySelector('.floating-container');
-        const blocks = document.querySelectorAll('.floating-block');
+        const brochure = [document.querySelector('.work-mast'), ...document.querySelectorAll('.sand')];
 
         // # Hide UI initially
         header.style.opacity = '0';
@@ -425,11 +492,9 @@
                 header.style.opacity = '1';
                 floatingContainer.style.opacity = '1';
 
-                // Trigger block animations manually to ensure they start after entry
-                blocks.forEach((block, index) => {
-                    // We use a combination of float (infinite) and fadeIn (once)
-                    // But since we set opacity:0 in CSS, we need to make sure they fade in
-                    block.style.animation = `float 6s ease-in-out infinite ${index * 0.5}s, fadeIn 1s ease forwards ${index * 0.3}s`;
+                brochure.forEach((block, index) => {
+                    if (!block) return;
+                    block.style.animation = `fadeIn 1s ease forwards ${index * 0.18}s`;
                 });
             }
         }

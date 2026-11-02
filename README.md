@@ -8,8 +8,8 @@ A public artistic site. The home page is an interactive 3D solar system. The oth
 |---|---|
 | `index.html` | Home. Three.js solar system. Services is a normal link. Gallery and Bio warp directly. Library holds, then offers Codex Operum, Fragmenta Apocrypha, or Khaeos Metalogs. Click or tap the sun for The Opening of Reality. |
 | `brain.html` | The Opening of Reality. Manifesto. Sun and the clipped keyboard link only. |
-| `services.html` | Services. Same starfield and opening text as the sun page. Seal lists Branding, Business Strategy, Pricing, and Contact. |
-| `branding.html` | Branding. Starfield page. Return goes to Services. |
+| `services.html` | Services. Same starfield and opening text as the sun page. Seal lists The Work, Business Strategy, Pricing, and Contact. |
+| `branding.html` | The Work. Three service sands on the starfield. Return goes to Services. |
 | `business_strategy.html` | Business Strategy. Starfield page. Return goes to Services. |
 | `pricing.html` | Pricing. Starfield page. Return goes to Services. |
 | `contact.html` | Contact. Starfield page. Return goes to Services. |
@@ -21,7 +21,7 @@ A public artistic site. The home page is an interactive 3D solar system. The oth
 | `gate_left.html` | Left Aperture. Entered from the left seal. |
 | `gate_right.html` | Fragmenta Apocrypha. Entered from the right seal. |
 
-The subpages share `seal-menu.css` and `seal-menu.js`. The seal opens an index. Return reverse-warps home. From Physicalus and Cartomancy, Return reverse-warps to the gallery. From Branding, Business Strategy, Pricing, and Contact, Return reverse-warps to Services.
+The subpages share `seal-menu.css` and `seal-menu.js`. The seal opens an index. Return reverse-warps home. From Physicalus and Cartomancy, Return reverse-warps to the gallery. From The Work, Business Strategy, Pricing, and Contact, Return reverse-warps to Services.
 
 Artwork stills, frames, and hangings live under `art/`. The live logo, favicon, and sun sprite are `AiiAold.8dde82cb.jpg`.
 
