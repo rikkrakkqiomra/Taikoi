@@ -6,18 +6,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Business Strategy</title>
-    <meta name="description" content="Business Strategy. A Services page on the same starfield as the sun.">
+    <meta name="description" content="Aivoinko does not sell the next shot. We change the conditions under which other strategies are written.">
     <meta name="theme-color" content="#00f3ff">
     <link rel="canonical" href="https://taikoi.netlify.app/business_strategy.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Aivoinko">
     <meta property="og:title" content="Business Strategy">
-    <meta property="og:description" content="Business Strategy. A Services page on the same starfield as the sun.">
+    <meta property="og:description" content="Aivoinko does not sell the next shot. We change the conditions under which other strategies are written.">
     <meta property="og:url" content="https://taikoi.netlify.app/business_strategy.html">
     <meta property="og:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Business Strategy">
-    <meta name="twitter:description" content="Business Strategy. A Services page on the same starfield as the sun.">
+    <meta name="twitter:description" content="Aivoinko does not sell the next shot. We change the conditions under which other strategies are written.">
     <meta name="twitter:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <link rel="apple-touch-icon" href="AiiAold.8dde82cb.jpg">
     <link rel="preconnect" href="https://unpkg.com" crossorigin>
@@ -158,119 +158,156 @@
             perspective: 1000px;
         }
 
-        /* # Content Block Styling */
-        .floating-block {
-            background: rgba(0, 0, 0, 0.6);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            border-radius: 15px;
-            max-width: 800px;
-            width: 90%;
-            color: #ddd;
-            text-align: left;
-            box-shadow: 0 0 40px rgba(0, 243, 255, 0.05);
-
-            /* Floating Animation */
-            animation: float 6s ease-in-out infinite;
-            opacity: 0;
-            /* Start hidden for entry animation */
-            transform: translateY(50px);
-        }
-
-        .floating-block h2 {
-            font-family: 'Orbitron', sans-serif;
-            color: var(--accent-color);
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
-            border-bottom: 1px solid rgba(0, 243, 255, 0.3);
-            padding-bottom: 10px;
-        }
-
-        .floating-block p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        .floating-block ul {
-            list-style: none;
-            padding-left: 10px;
-        }
-
-        .floating-block li {
-            margin-bottom: 15px;
+        /* # Strategy scroll */
+        .strategy-scroll {
             position: relative;
-            padding-left: 25px;
+            isolation: isolate;
+            width: min(42rem, 92vw);
+            padding: 3.55rem 2.15rem 3.9rem;
+            opacity: 0;
+            transform: translateY(24px);
         }
 
-        .floating-block li::before {
-            content: '>';
+        .strategy-scroll::before {
+            content: "";
             position: absolute;
+            z-index: 0;
             left: 0;
-            color: var(--accent-color);
-            font-weight: bold;
+            right: 0;
+            top: 18px;
+            bottom: 16px;
+            pointer-events: none;
+            background: rgba(18, 12, 6, 0.97);
+            -webkit-mask-image:
+                linear-gradient(180deg, transparent 0, #000 18px, #000 calc(100% - 16px), transparent 100%),
+                linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+            -webkit-mask-composite: source-in;
+            mask-image:
+                linear-gradient(180deg, transparent 0, #000 18px, #000 calc(100% - 16px), transparent 100%),
+                linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+            mask-composite: intersect;
         }
 
-        .floating-block strong {
-            color: #fff;
+        .scroll-roll {
+            position: absolute;
+            z-index: 2;
+            left: 0;
+            width: 100%;
+            height: auto;
+            max-width: none;
+            pointer-events: none;
+            object-fit: fill;
+            filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.45));
         }
 
-        .quote {
+        .scroll-roll--top {
+            top: 0;
+        }
+
+        .scroll-roll--bottom {
+            bottom: 0;
+        }
+
+        .scroll-rail {
+            position: absolute;
+            z-index: 2;
+            top: 2.6rem;
+            bottom: 2.9rem;
+            width: 1px;
+            pointer-events: none;
+            background: linear-gradient(
+                to bottom,
+                rgba(184, 138, 74, 0),
+                rgba(212, 168, 96, 0.72) 14%,
+                rgba(212, 168, 96, 0.72) 86%,
+                rgba(184, 138, 74, 0)
+            );
+        }
+
+        .scroll-rail--left {
+            left: 0.5rem;
+        }
+
+        .scroll-rail--right {
+            right: 0.5rem;
+        }
+
+        .scroll-field {
+            position: relative;
+            z-index: 3;
+            color: #d8d2c6;
+        }
+
+        .scroll-gem {
+            display: block;
+            width: 6px;
+            height: 6px;
+            margin: 0 auto 0.95rem;
+            background: #d4a45a;
+            transform: rotate(45deg);
+            box-shadow: 0 0 8px rgba(212, 164, 90, 0.55);
+        }
+
+        .scroll-kicker {
+            margin-bottom: 0.7rem;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 0.62rem;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            text-align: center;
+            color: #c48c40;
+        }
+
+        .scroll-field h1 {
+            margin-bottom: 1.55rem;
+            font-family: 'Cormorant Garamond', Georgia, serif;
             font-style: italic;
-            color: #fff;
-            border-left: 4px solid var(--accent-color);
-            padding-left: 20px;
-            margin: 30px 0;
-            background: linear-gradient(90deg, rgba(0, 243, 255, 0.1) 0%, rgba(0, 0, 0, 0) 100%);
-            padding: 20px;
-            font-size: 1.2rem;
+            font-weight: 500;
+            font-size: clamp(1.7rem, 3.4vw, 2.25rem);
+            line-height: 1.18;
+            letter-spacing: 0.01em;
+            text-align: center;
+            text-wrap: balance;
+            color: #f3ead8;
+            text-shadow: 0 0 16px rgba(0, 0, 0, 0.95), 0 1px 2px rgba(0, 0, 0, 0.9);
         }
 
-        /* # Animation Delays for Staggered Entry */
-        .delay-1 {
-            animation-delay: 0s;
+        .scroll-field h2 {
+            margin: 1.55rem 0 0.7rem;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 0.64rem;
+            letter-spacing: 0.26em;
+            text-transform: uppercase;
+            color: #c48c40;
         }
 
-        .delay-2 {
-            animation-delay: 0.5s;
+        .scroll-field p {
+            font-size: 1.06rem;
+            line-height: 1.75;
+            margin-bottom: 0.95rem;
         }
 
-        .delay-3 {
-            animation-delay: 1s;
+        .scroll-field p:last-child {
+            margin-bottom: 0;
         }
 
-        .delay-4 {
-            animation-delay: 1.5s;
-        }
-
-        .delay-5 {
-            animation-delay: 2s;
-        }
-
-        /* # Keyframe Animations */
-        @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-15px);
-            }
-
-            100% {
-                transform: translateY(0px);
-            }
+        .scroll-field strong {
+            color: #f3ead8;
+            font-weight: 700;
         }
 
         @keyframes fadeIn {
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .strategy-scroll {
+                transform: none;
             }
         }
 
@@ -294,8 +331,9 @@
 
         html.ui-ready header,
         html.ui-ready .floating-container,
-        html.ui-ready .floating-block {
+        html.ui-ready .strategy-scroll {
             opacity: 1 !important;
+            transform: none;
         }
     </style>
 </head>
@@ -312,9 +350,28 @@
 
     <!-- # Main Content Container -->
     <div class="floating-container">
-        <div class="floating-block delay-1">
-            <h2>Business Strategy</h2>
-        </div>
+        <article class="strategy-scroll">
+            <img class="scroll-roll scroll-roll--top" src="art/seal-scroll-top.png" alt="" width="1161" height="194" decoding="async">
+            <i class="scroll-rail scroll-rail--left" aria-hidden="true"></i>
+            <i class="scroll-rail scroll-rail--right" aria-hidden="true"></i>
+            <div class="scroll-field">
+                <i class="scroll-gem" aria-hidden="true"></i>
+                <p class="scroll-kicker">Aivoinko</p>
+                <h1>A strategy that writes other strategies</h1>
+                <p>Most firms plan as if the world were a billiard table. One strike, a known cushion, a predicted pocket. That is determinism dressed as management. It works until the table moves, which it does.</p>
+                <p>Aivoinko does not sell the next shot. We change the conditions under which shots are chosen. The client’s own strategy is the object. Ours is the method that keeps that object from going brittle.</p>
+                <h2>Vision</h2>
+                <p>A house that can think, appear, and compute on its own terms. The public face is not a template. Intelligence is not a lease. Vision is not a sentence on a wall. Machine Metaphysics names the stance: the machine is local, the mind is trained, and the brand is whole enough to be recognised as itself.</p>
+                <h2>Method</h2>
+                <p>We work on the generators of strategy, not on a five-year script. Three instruments, one purpose.</p>
+                <p><strong>Brand Enrichment and Wholeness.</strong> A company that cannot see its own face cannot steer. We take the site, the mark, the composition, and the failures underneath, and we stay. Design and counsel are one agreement. The stack is irrelevant. Duration is six months at the shortest, because structure does not move on a sprint.</p>
+                <p><strong>Philosophical and Technological Mind Expansion.</strong> Plans fail when the people who write them cannot think while the conditions keep moving. This is a working course: the history of philosophy and of psychology as those traditions actually ran, set next to systems thinking as it is used now. Four months, or eight. The materials remain with the house, with the right to use them.</p>
+                <p><strong>Sovereign AI Intelligence Architecture.</strong> Whoever owns the inference owns the next plan. We plant a model-agnostic platform on the client’s metal: on-premises, air-gapped if asked, outside the CLOUD Act, FISA 702, and the rest of extra-territorial reach. A strategy written on a hyperscaler’s terms is not the client’s strategy.</p>
+                <h2>Stance</h2>
+                <p>We do not hand over a file and leave. We do not rent cognition. The gallery, the library, and the metalwork are not decoration. Form and thought are the same trade. The measure is not a quarterly chart. The measure is whether the house can write its next strategy without borrowing a jurisdiction, a template, or a mind it does not own.</p>
+            </div>
+            <img class="scroll-roll scroll-roll--bottom" src="art/seal-scroll-bottom.png" alt="" width="1149" height="217" decoding="async">
+        </article>
     </div>
 
     <script type="module">
@@ -391,7 +448,7 @@
 
         const header = document.querySelector('header');
         const floatingContainer = document.querySelector('.floating-container');
-        const blocks = document.querySelectorAll('.floating-block');
+        const scroll = document.querySelector('.strategy-scroll');
 
         // # Hide UI initially
         header.style.opacity = '0';
@@ -425,12 +482,7 @@
                 header.style.opacity = '1';
                 floatingContainer.style.opacity = '1';
 
-                // Trigger block animations manually to ensure they start after entry
-                blocks.forEach((block, index) => {
-                    // We use a combination of float (infinite) and fadeIn (once)
-                    // But since we set opacity:0 in CSS, we need to make sure they fade in
-                    block.style.animation = `float 6s ease-in-out infinite ${index * 0.5}s, fadeIn 1s ease forwards ${index * 0.3}s`;
-                });
+                if (scroll) scroll.style.animation = 'fadeIn 1s ease forwards';
             }
         }
 

@@ -10,7 +10,7 @@ A public artistic site. The home page is an interactive 3D solar system. The oth
 | `brain.html` | The Opening of Reality. Manifesto. Sun and the clipped keyboard link only. |
 | `services.html` | Services. Same starfield and opening text as the sun page. Seal lists The Work, Business Strategy, Pricing, and Contact. |
 | `branding.html` | The Work. Three service sands on the starfield. Return goes to Services. |
-| `business_strategy.html` | Business Strategy. Starfield page. Return goes to Services. |
+| `business_strategy.html` | Business Strategy. Centered scroll: vision and the method that writes other strategies. Return goes to Services. |
 | `pricing.html` | Pricing. Starfield page. Return goes to Services. |
 | `contact.html` | Contact. Starfield page. Return goes to Services. |
 | `gallery.html` | Sixteen framed hangings on a black starfield. |
