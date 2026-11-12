@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Left Aperture</title>
-    <meta name="description" content="Left Aperture: the crimson slit beyond the Codex Operum seal.">
+    <meta name="description" content="Left Aperture: two sealed theses beyond the Codex Operum seal.">
     <meta name="theme-color" content="#ff2d55">
     <link rel="canonical" href="https://taikoi.netlify.app/gate_left.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Aivoinko">
     <meta property="og:title" content="Left Aperture">
-    <meta property="og:description" content="Left Aperture: the crimson slit beyond the Codex Operum seal.">
+    <meta property="og:description" content="Left Aperture: two sealed theses beyond the Codex Operum seal.">
     <meta property="og:url" content="https://taikoi.netlify.app/gate_left.html">
     <meta property="og:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Left Aperture">
-    <meta name="twitter:description" content="Left Aperture: the crimson slit beyond the Codex Operum seal.">
+    <meta name="twitter:description" content="Left Aperture: two sealed theses beyond the Codex Operum seal.">
     <meta name="twitter:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <link rel="apple-touch-icon" href="AiiAold.8dde82cb.jpg">
     <link rel="preconnect" href="https://unpkg.com" crossorigin>
@@ -44,7 +44,7 @@
     <link rel="icon" type="image/jpeg" href="AiiAold.8dde82cb.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,500&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="seal-menu.css">
     <script src="seal-menu.js" defer></script>
     <style>
@@ -115,42 +115,862 @@
                 rgba(18, 0, 6, 1) 100%);
         }
 
-        #realm-title {
+        #liber-veil {
             position: fixed;
-            left: 50%;
-            top: 52%;
-            transform: translate(-50%, -50%);
-            z-index: 6;
-            text-align: center;
+            inset: 0;
+            z-index: 7;
             pointer-events: none;
             opacity: 0;
+            background:
+                radial-gradient(ellipse at 50% 42%, rgba(40, 0, 10, 0.18) 0%, rgba(10, 0, 4, 0.78) 100%);
+            transition: opacity 420ms ease;
+        }
+
+        #liber-veil.is-on {
+            opacity: 1;
+        }
+
+        #liber-stage {
+            position: fixed;
+            inset: 0;
+            z-index: 8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 13.4rem 1.1rem 1.4rem;
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        #realm-title {
+            position: relative;
+            z-index: 1;
+            margin: 0 0 1.35rem;
+            text-align: center;
+            pointer-events: none;
+            transition: opacity 420ms ease;
         }
 
         #realm-title h1 {
             font-family: 'Orbitron', sans-serif;
             font-weight: 900;
-            font-size: clamp(1.3rem, 4.5vw, 2.8rem);
+            font-size: clamp(1.05rem, 3.6vw, 2.15rem);
             letter-spacing: 0.32em;
             text-transform: uppercase;
             color: #ff2d55;
             text-shadow: 0 0 22px rgba(255, 45, 85, 0.55);
         }
 
+        #liber-stage.is-reading #realm-title {
+            opacity: 0.22;
+        }
+
+        #liber {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 1.35rem 2.1rem;
+            width: min(54rem, 100%);
+        }
+
+        .liber-codex {
+            position: relative;
+            width: min(23rem, 100%);
+            flex: 1 1 16rem;
+            max-width: 24rem;
+            transition: opacity 360ms ease, filter 360ms ease;
+        }
+
+        #liber-stage.is-reading .liber-codex:not(.is-open) {
+            opacity: 0.16;
+            filter: blur(1.2px);
+            pointer-events: none;
+        }
+
+        .liber-codex.is-open {
+            position: fixed;
+            left: 50%;
+            top: 7.4rem;
+            z-index: 3;
+            width: min(34rem, 92vw);
+            max-width: 34rem;
+            transform: translateX(-50%);
+        }
+
+        .liber-seal {
+            position: relative;
+            z-index: 2;
+            display: block;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            background: none;
+            cursor: pointer;
+            color: inherit;
+            text-align: center;
+            -webkit-tap-highlight-color: transparent;
+            pointer-events: auto;
+        }
+
+        .liber-seal:focus {
+            outline: none;
+        }
+
+        .liber-seal:focus-visible .liber-drum {
+            filter:
+                drop-shadow(0 10px 12px rgba(0, 0, 0, 0.55))
+                drop-shadow(0 0 10px rgba(255, 45, 85, 0.7));
+        }
+
+        .liber-drum {
+            position: relative;
+            display: block;
+            filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 16px rgba(255, 45, 85, 0.28));
+            transition:
+                transform 180ms cubic-bezier(0.22, 1, 0.36, 1),
+                filter 180ms ease;
+        }
+
+        .liber-seal:hover .liber-drum,
+        .liber-seal:focus-visible .liber-drum {
+            transform: translateY(-3px);
+            filter:
+                brightness(1.07)
+                drop-shadow(0 16px 14px rgba(0, 0, 0, 0.6))
+                drop-shadow(0 0 22px rgba(255, 45, 85, 0.48));
+        }
+
+        .liber-seal:active .liber-drum {
+            transform: translateY(2px) scale(0.985);
+            filter: brightness(0.94) drop-shadow(0 4px 4px rgba(0, 0, 0, 0.7));
+            transition-duration: 70ms;
+        }
+
+        .liber-codex.is-open .liber-seal:hover .liber-drum,
+        .liber-codex.is-open .liber-seal:focus-visible .liber-drum,
+        .liber-codex.is-open .liber-seal:active .liber-drum {
+            transform: none;
+            filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 16px rgba(255, 45, 85, 0.28));
+        }
+
+        .liber-roll {
+            display: block;
+            width: 100%;
+            height: auto;
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .liber-wax {
+            position: absolute;
+            left: 50%;
+            top: 30%;
+            width: 2.85rem;
+            height: 2.85rem;
+            border-radius: 48% 52% 49% 51% / 51% 47% 53% 49%;
+            background:
+                radial-gradient(circle at 32% 28%, #ff8a96 0%, #ff2d55 40%, #8a001c 76%, #43000d 100%);
+            box-shadow:
+                0 0 0 2px rgba(72, 0, 14, 0.92),
+                0 5px 10px rgba(0, 0, 0, 0.5),
+                0 0 16px rgba(255, 45, 85, 0.5),
+                inset 0 2px 3px rgba(255, 210, 218, 0.38),
+                inset 0 -6px 8px rgba(40, 0, 8, 0.55);
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            animation: wax-breath 4.2s ease-in-out infinite;
+        }
+
+        .liber-wax::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 8px;
+            height: 8px;
+            background: rgba(255, 220, 226, 0.88);
+            transform: translate(-50%, -50%) rotate(45deg);
+            box-shadow: 0 0 8px rgba(255, 45, 85, 0.75);
+        }
+
+        @keyframes wax-breath {
+            0%, 100% { box-shadow: 0 0 0 2px rgba(72, 0, 14, 0.92), 0 5px 10px rgba(0, 0, 0, 0.5), 0 0 14px rgba(255, 45, 85, 0.42), inset 0 2px 3px rgba(255, 210, 218, 0.38), inset 0 -6px 8px rgba(40, 0, 8, 0.55); }
+            50% { box-shadow: 0 0 0 2px rgba(72, 0, 14, 0.92), 0 5px 10px rgba(0, 0, 0, 0.5), 0 0 24px rgba(255, 45, 85, 0.72), inset 0 2px 3px rgba(255, 210, 218, 0.38), inset 0 -6px 8px rgba(40, 0, 8, 0.55); }
+        }
+
+        .liber-meta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.18rem;
+            margin-top: -0.15rem;
+            transition: opacity 280ms ease;
+        }
+
+        .liber-codex.is-open .liber-meta {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .liber-year {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 0.62rem;
+            letter-spacing: 0.38em;
+            text-transform: uppercase;
+            color: #ff6b7a;
+            margin-right: -0.38em;
+            text-shadow: 0 0 12px rgba(0, 0, 0, 0.95);
+        }
+
+        .liber-name {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: clamp(1.15rem, 2.4vw, 1.48rem);
+            line-height: 1.18;
+            letter-spacing: 0.01em;
+            color: #f3ead8;
+            text-wrap: balance;
+            text-shadow: 0 0 16px rgba(0, 0, 0, 0.95), 0 1px 2px rgba(0, 0, 0, 0.9);
+        }
+
+        .liber-sheet {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            z-index: 1;
+            box-sizing: border-box;
+            padding: 1.55rem 1.45rem 3.35rem;
+            overflow-x: hidden;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            isolation: isolate;
+            visibility: hidden;
+            pointer-events: none;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 45, 85, 0.35) transparent;
+            transition: visibility 0s linear 280ms;
+        }
+
+        .liber-sheet::-webkit-scrollbar { width: 6px; }
+        .liber-sheet::-webkit-scrollbar-track { background: transparent; }
+        .liber-sheet::-webkit-scrollbar-thumb {
+            background: rgba(255, 45, 85, 0.35);
+            border-radius: 3px;
+        }
+
+        .liber-codex.is-open .liber-sheet {
+            visibility: visible;
+            pointer-events: auto;
+            transition-delay: 0s;
+        }
+
+        .liber-sheet::before {
+            content: "";
+            position: absolute;
+            z-index: 0;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 14px;
+            pointer-events: none;
+            background: rgba(8, 6, 4, 0.94);
+            transition: background 640ms ease;
+            -webkit-mask-image:
+                linear-gradient(180deg, transparent 0, #000 18px, #000 calc(100% - 16px), transparent 100%),
+                linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+            -webkit-mask-composite: source-in;
+            mask-image:
+                linear-gradient(180deg, transparent 0, #000 18px, #000 calc(100% - 16px), transparent 100%),
+                linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+            mask-composite: intersect;
+        }
+
+        .liber-sheet.is-framed::before {
+            background: rgba(18, 12, 6, 0.97);
+        }
+
+        .liber-sheet-roll,
+        .liber-sheet-rail {
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .liber-sheet-roll {
+            z-index: 2;
+            left: 0;
+            width: 100%;
+            height: auto;
+            max-width: none;
+            object-fit: fill;
+            opacity: 0;
+            filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.45));
+            transform: scaleY(0.12);
+            transform-origin: center bottom;
+            transition:
+                opacity 480ms ease,
+                transform 640ms cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .liber-sheet-roll--bottom {
+            bottom: 0;
+        }
+
+        .liber-sheet.is-framed .liber-sheet-roll {
+            opacity: 1;
+            transform: none;
+        }
+
+        .liber-sheet-rail {
+            z-index: 2;
+            top: 1.15rem;
+            bottom: 2.8rem;
+            width: 1px;
+            background: linear-gradient(
+                to bottom,
+                rgba(184, 138, 74, 0),
+                rgba(212, 168, 96, 0.72) 14%,
+                rgba(212, 168, 96, 0.72) 86%,
+                rgba(184, 138, 74, 0)
+            );
+            transform: scaleY(0);
+            transition: transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .liber-sheet-rail--left {
+            left: 0.48rem;
+            transform-origin: top center;
+        }
+
+        .liber-sheet-rail--right {
+            right: 0.48rem;
+            transform-origin: bottom center;
+        }
+
+        .liber-sheet.is-framed .liber-sheet-rail {
+            transform: scaleY(1);
+        }
+
+        .liber-field {
+            position: relative;
+            z-index: 3;
+            color: #d8d2c6;
+            text-align: center;
+        }
+
+        .liber-meridian {
+            display: block;
+            width: 1px;
+            height: 22px;
+            margin: 0 auto 0.35rem;
+            background: linear-gradient(to bottom, rgba(255, 90, 110, 0.95), rgba(255, 45, 85, 0.12));
+            transform: scaleY(0);
+            transform-origin: top center;
+            transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .liber-codex.is-open .liber-meridian {
+            transform: scaleY(1);
+            transition-duration: 260ms;
+            transition-delay: 20ms;
+        }
+
+        .liber-gem {
+            display: block;
+            width: 6px;
+            height: 6px;
+            margin: 0 auto 0.85rem;
+            background: #ff5a73;
+            transform: rotate(45deg);
+            box-shadow: 0 0 8px rgba(255, 45, 85, 0.55);
+            opacity: 0;
+            transition: opacity 260ms cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .liber-codex.is-open .liber-gem {
+            opacity: 0.85;
+            transition-delay: 40ms;
+        }
+
+        .liber-kicker,
+        .liber-field h2,
+        .liber-field p,
+        .liber-act {
+            opacity: 0;
+            transform: translateY(8px);
+            transition:
+                opacity 320ms cubic-bezier(0.22, 1, 0.36, 1),
+                transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+            transition-delay: calc(28ms + var(--i, 0) * 38ms);
+        }
+
+        .liber-codex.is-open .liber-kicker,
+        .liber-codex.is-open .liber-field h2,
+        .liber-codex.is-open .liber-field p,
+        .liber-codex.is-open .liber-act {
+            opacity: 1;
+            transform: none;
+        }
+
+        .liber-kicker {
+            margin-bottom: 0.65rem;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 0.6rem;
+            letter-spacing: 0.26em;
+            text-transform: uppercase;
+            color: #c48c40;
+        }
+
+        .liber-field h2 {
+            margin-bottom: 0.85rem;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+            line-height: 1.2;
+            letter-spacing: 0.01em;
+            text-wrap: balance;
+            color: #f3ead8;
+            text-shadow: 0 0 16px rgba(0, 0, 0, 0.95), 0 1px 2px rgba(0, 0, 0, 0.9);
+        }
+
+        .liber-field p {
+            font-size: 1.04rem;
+            line-height: 1.72;
+            margin-bottom: 0.7rem;
+        }
+
+        .liber-field p:last-of-type {
+            margin-bottom: 0.35rem;
+        }
+
+        .liber-actions {
+            margin-top: 0.55rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .liber-rule {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 16px;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 260ms cubic-bezier(0.22, 1, 0.36, 1), transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+            transition-delay: calc(28ms + var(--i, 0) * 38ms);
+        }
+
+        .liber-codex.is-open .liber-rule {
+            opacity: 1;
+            transform: none;
+        }
+
+        .liber-rule i {
+            display: block;
+            width: 5px;
+            height: 5px;
+            background: #d4a45a;
+            transform: rotate(45deg);
+            opacity: 0.72;
+        }
+
+        .liber-act {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.7rem;
+            width: 100%;
+            margin: 0;
+            padding: 0.34rem 0.2rem;
+            border: 0;
+            background: none;
+            cursor: pointer;
+            color: inherit;
+            text-decoration: none;
+            font: inherit;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .liber-act:focus {
+            outline: none;
+        }
+
+        .liber-act .liber-spark {
+            flex: 0 0 auto;
+            width: 5px;
+            height: 5px;
+            background: #d4a45a;
+            transform: rotate(45deg);
+            opacity: 0.32;
+            box-shadow: 0 0 0 transparent;
+            transition: opacity 200ms ease, box-shadow 200ms ease;
+        }
+
+        .liber-label {
+            position: relative;
+            display: inline-block;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 0.68rem;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: #c48c40;
+            margin-right: -0.32em;
+            text-shadow: 0 0 14px rgba(0, 0, 0, 0.95), 0 1px 2px rgba(0, 0, 0, 0.9);
+        }
+
+        .liber-label::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -0.14em;
+            height: 1px;
+            background: linear-gradient(90deg, #d4a45a, rgba(212, 164, 90, 0));
+            transform: scaleX(0);
+            transform-origin: left center;
+            transition: transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .liber-act:hover .liber-spark,
+        .liber-act:focus-visible .liber-spark {
+            opacity: 1;
+            box-shadow: 0 0 8px rgba(212, 164, 90, 0.9);
+        }
+
+        .liber-act:hover .liber-label,
+        .liber-act:focus-visible .liber-label {
+            color: #f0d7a4;
+        }
+
+        .liber-act:hover .liber-label::after,
+        .liber-act:focus-visible .liber-label::after {
+            transform: scaleX(1);
+        }
+
         html.ui-ready header,
-        html.ui-ready #realm-title { opacity: 1 !important; }
+        html.ui-ready #liber-stage { opacity: 1 !important; }
         html.ui-ready #warp-flash { opacity: 0 !important; }
+
+        @media (max-width: 768px) {
+            #liber-stage {
+                padding-top: 11.2rem;
+            }
+
+            #liber {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .liber-codex {
+                flex: 0 0 auto;
+                width: min(22.5rem, 100%);
+                max-width: 22.5rem;
+            }
+
+            .liber-wax {
+                width: 2.4rem;
+                height: 2.4rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .liber-drum,
+            .liber-meta,
+            .liber-wax,
+            #liber-veil,
+            #realm-title,
+            .liber-codex,
+            .liber-sheet,
+            .liber-sheet::before,
+            .liber-sheet-roll,
+            .liber-sheet-rail,
+            .liber-meridian,
+            .liber-gem,
+            .liber-kicker,
+            .liber-field h2,
+            .liber-field p,
+            .liber-act,
+            .liber-rule,
+            .liber-label::after {
+                animation: none;
+                transition: none;
+            }
+
+            .liber-seal:hover .liber-drum,
+            .liber-seal:focus-visible .liber-drum,
+            .liber-seal:active .liber-drum {
+                transform: none;
+            }
+        }
     </style>
 </head>
 
 <body>
     <div id="canvas-container"></div>
     <div id="warp-flash" aria-hidden="true"></div>
+        <div id="liber-veil" aria-hidden="true"></div>
     <header>
         <img src="AiiAold.8dde82cb.jpg" alt="Aivoinko Logo" width="110" height="110" fetchpriority="high" decoding="async">
     </header>
-    <div id="realm-title">
-        <h1>Left Aperture</h1>
+    <div id="liber-stage">
+        <div id="realm-title">
+            <h1>Left Aperture</h1>
+        </div>
+        <div id="liber">
+            <article class="liber-codex" data-codex="chip">
+                <button type="button" class="liber-seal" aria-expanded="false" aria-controls="sheet-chip" aria-label="Open 2024 thesis, Neurovascular Networks on Chip">
+                    <span class="liber-drum">
+                        <img class="liber-roll" src="art/seal-scroll-top.png" alt="" width="1161" height="194" decoding="async">
+                        <span class="liber-wax" aria-hidden="true"></span>
+                    </span>
+                    <span class="liber-meta">
+                        <span class="liber-year">2024</span>
+                        <span class="liber-name">Neurovascular Networks on Chip</span>
+                    </span>
+                </button>
+                <div class="liber-sheet" id="sheet-chip" role="dialog" aria-modal="true" aria-labelledby="title-chip" aria-hidden="true" hidden>
+                    <img class="liber-sheet-roll liber-sheet-roll--bottom" src="art/seal-scroll-bottom.png" alt="" width="1149" height="217" decoding="async">
+                    <i class="liber-sheet-rail liber-sheet-rail--left" aria-hidden="true"></i>
+                    <i class="liber-sheet-rail liber-sheet-rail--right" aria-hidden="true"></i>
+                    <div class="liber-field" lang="en">
+                        <span class="liber-meridian" aria-hidden="true"></span>
+                        <i class="liber-gem" aria-hidden="true"></i>
+                        <p class="liber-kicker" style="--i:0">Bachelor's thesis · Tampere University · 37 pp.</p>
+                        <h2 id="title-chip" style="--i:1">Optimizing Perfusion Conditions for 3D Neurovascular Networks on Chip</h2>
+                        <p style="--i:2">A rocking platform was asked to give three-dimensional neurovascular cultures a living, bidirectional flow. Chips that shared one hydrogel, one medium, and one geometry — neurons alone, vessels of marrow stroma with endothelium, and the three together — did not outgrow their hydrostatic twins. Perfusion still matters. This particular motion did not.</p>
+                        <div class="liber-actions">
+                            <span class="liber-rule" style="--i:3" aria-hidden="true"><i></i></span>
+                            <a class="liber-act" style="--i:4" href="art/liber/neurovascular-on-chip.pdf" target="_blank" rel="noopener noreferrer">
+                                <i class="liber-spark" aria-hidden="true"></i>
+                                <span class="liber-label">Read</span>
+                            </a>
+                            <span class="liber-rule" style="--i:5" aria-hidden="true"><i></i></span>
+                            <a class="liber-act" style="--i:6" href="art/liber/neurovascular-on-chip.pdf" download="Korpiaho_neurovascular_on_chip.pdf">
+                                <i class="liber-spark" aria-hidden="true"></i>
+                                <span class="liber-label">Download full</span>
+                            </a>
+                            <span class="liber-rule" style="--i:7" aria-hidden="true"><i></i></span>
+                            <button type="button" class="liber-act" style="--i:8" data-liber-close>
+                                <i class="liber-spark" aria-hidden="true"></i>
+                                <span class="liber-label">Close</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article class="liber-codex" data-codex="control">
+                <button type="button" class="liber-seal" aria-expanded="false" aria-controls="sheet-control" aria-label="Open 2026 thesis, Hallusinaatioista hallintaan">
+                    <span class="liber-drum">
+                        <img class="liber-roll" src="art/seal-scroll-top.png" alt="" width="1161" height="194" decoding="async">
+                        <span class="liber-wax" aria-hidden="true"></span>
+                    </span>
+                    <span class="liber-meta">
+                        <span class="liber-year">2026</span>
+                        <span class="liber-name">Hallusinaatioista hallintaan</span>
+                    </span>
+                </button>
+                <div class="liber-sheet" id="sheet-control" role="dialog" aria-modal="true" aria-labelledby="title-control" aria-hidden="true" hidden>
+                    <img class="liber-sheet-roll liber-sheet-roll--bottom" src="art/seal-scroll-bottom.png" alt="" width="1149" height="217" decoding="async">
+                    <i class="liber-sheet-rail liber-sheet-rail--left" aria-hidden="true"></i>
+                    <i class="liber-sheet-rail liber-sheet-rail--right" aria-hidden="true"></i>
+                    <div class="liber-field" lang="fi">
+                        <span class="liber-meridian" aria-hidden="true"></span>
+                        <i class="liber-gem" aria-hidden="true"></i>
+                        <p class="liber-kicker" style="--i:0">Diplomityö · Tampereen yliopisto · 91 s.</p>
+                        <h2 id="title-control" style="--i:1">Hallusinaatioista hallintaan</h2>
+                        <p style="--i:2">Paikallinen RAG- ja NLI-yhdistelmä lukee ISO-standardien versioita ilman pilveä. Pelkkä vektorisimilaarisuus sokeutuu lähes samalle normitekstille; suunnattu looginen päättely näkee, missä vaatimus kutistuu. Terveydenhuollon data jää koneelle.</p>
+                        <div class="liber-actions">
+                            <span class="liber-rule" style="--i:3" aria-hidden="true"><i></i></span>
+                            <a class="liber-act" style="--i:4" href="art/liber/hallucinations-to-control.pdf" target="_blank" rel="noopener noreferrer">
+                                <i class="liber-spark" aria-hidden="true"></i>
+                                <span class="liber-label">Read</span>
+                            </a>
+                            <span class="liber-rule" style="--i:5" aria-hidden="true"><i></i></span>
+                            <a class="liber-act" style="--i:6" href="art/liber/hallucinations-to-control.pdf" download="Korpiaho_hallusinaatioista_hallintaan.pdf">
+                                <i class="liber-spark" aria-hidden="true"></i>
+                                <span class="liber-label">Download full</span>
+                            </a>
+                            <span class="liber-rule" style="--i:7" aria-hidden="true"><i></i></span>
+                            <button type="button" class="liber-act" style="--i:8" data-liber-close>
+                                <i class="liber-spark" aria-hidden="true"></i>
+                                <span class="liber-label">Close</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
     </div>
+
+    <script>
+        (function () {
+            var stage = document.getElementById('liber-stage');
+            var veil = document.getElementById('liber-veil');
+            var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            var open = null;
+            var frameTimer = 0;
+            var restoreFocus = null;
+
+            function closeSealMenu() {
+                var trigger = document.querySelector('header.is-seal-open .seal-trigger');
+                if (trigger) trigger.click();
+            }
+
+            function placeSheet(codex) {
+                var drum = codex.querySelector('.liber-drum');
+                var sheet = codex.querySelector('.liber-sheet');
+                if (!drum || !sheet) return;
+                var header = document.querySelector('header');
+                var sealBottom = header ? header.getBoundingClientRect().bottom : 96;
+                var stageTop = Math.max(10, sealBottom - 12);
+                codex.style.top = stageTop + 'px';
+                var drumH = drum.getBoundingClientRect().height;
+                var sheetTop = drumH * 0.52;
+                sheet.style.top = sheetTop + 'px';
+                sheet.style.left = '0';
+                sheet.style.width = '100%';
+                var maxH = window.innerHeight - stageTop - sheetTop - 12;
+                sheet.style.maxHeight = Math.max(80, maxH) + 'px';
+            }
+
+            function shut(codex) {
+                if (!codex) return;
+                var sheet = codex.querySelector('.liber-sheet');
+                var seal = codex.querySelector('.liber-seal');
+                codex.classList.remove('is-open');
+                if (sheet) {
+                    sheet.classList.remove('is-framed');
+                    sheet.setAttribute('aria-hidden', 'true');
+                    sheet.hidden = true;
+                    if ('inert' in sheet) sheet.inert = true;
+                }
+                if (seal) seal.setAttribute('aria-expanded', 'false');
+                codex.style.top = '';
+            }
+
+            function closeAll(options) {
+                if (!open) return;
+                clearTimeout(frameTimer);
+                shut(open);
+                open = null;
+                stage.classList.remove('is-reading');
+                veil.classList.remove('is-on');
+                if (options && options.focus && restoreFocus && typeof restoreFocus.focus === 'function') {
+                    restoreFocus.focus();
+                }
+                restoreFocus = null;
+            }
+
+            function show(codex) {
+                closeSealMenu();
+                if (open && open !== codex) shut(open);
+                var sheet = codex.querySelector('.liber-sheet');
+                var seal = codex.querySelector('.liber-seal');
+                restoreFocus = seal;
+                open = codex;
+                stage.classList.add('is-reading');
+                veil.classList.add('is-on');
+                placeSheet(codex);
+                codex.classList.add('is-open');
+                if (seal) seal.setAttribute('aria-expanded', 'true');
+                if (sheet) {
+                    sheet.hidden = false;
+                    sheet.setAttribute('aria-hidden', 'false');
+                    if ('inert' in sheet) sheet.inert = false;
+                    sheet.scrollTop = 0;
+                }
+                clearTimeout(frameTimer);
+                if (reduced) {
+                    if (sheet) sheet.classList.add('is-framed');
+                    return;
+                }
+                frameTimer = setTimeout(function () {
+                    if (open === codex && sheet) sheet.classList.add('is-framed');
+                }, 700);
+            }
+
+            function toggle(codex) {
+                if (open === codex) closeAll({ focus: true });
+                else show(codex);
+            }
+
+            window.__aivoinkoLiberClose = function () {
+                closeAll({ focus: false });
+            };
+
+            stage.addEventListener('click', function (event) {
+                var seal = event.target.closest('.liber-seal');
+                if (seal) {
+                    event.preventDefault();
+                    toggle(seal.closest('.liber-codex'));
+                    return;
+                }
+                if (event.target.closest('[data-liber-close]')) {
+                    event.preventDefault();
+                    closeAll({ focus: true });
+                    return;
+                }
+                if (open && !event.target.closest('.liber-codex.is-open')) {
+                    closeAll({ focus: true });
+                }
+            });
+
+            document.addEventListener('click', function (event) {
+                if (event.target.closest('.seal-trigger') && open) {
+                    closeAll({ focus: false });
+                }
+            }, true);
+
+            document.addEventListener('keydown', function (event) {
+                if (!open) return;
+                if (event.key === 'Escape') {
+                    event.preventDefault();
+                    closeAll({ focus: true });
+                    return;
+                }
+                if (event.key !== 'Tab') return;
+                var sheet = open.querySelector('.liber-sheet');
+                if (!sheet) return;
+                var nodes = Array.prototype.slice.call(sheet.querySelectorAll('a, button')).filter(function (el) {
+                    return !el.hidden && el.offsetParent !== null;
+                });
+                var seal = open.querySelector('.liber-seal');
+                if (seal) nodes.unshift(seal);
+                if (!nodes.length) return;
+                var first = nodes[0];
+                var last = nodes[nodes.length - 1];
+                if (event.shiftKey && document.activeElement === first) {
+                    event.preventDefault();
+                    last.focus();
+                } else if (!event.shiftKey && document.activeElement === last) {
+                    event.preventDefault();
+                    first.focus();
+                }
+            });
+
+            window.addEventListener('resize', function () {
+                if (open) placeSheet(open);
+            });
+
+            window.addEventListener('pageshow', function () {
+                closeAll({ focus: false });
+            });
+
+            document.querySelectorAll('.liber-sheet').forEach(function (sheet) {
+                if ('inert' in sheet) sheet.inert = true;
+            });
+        })();
+    </script>
 
     <script type="module">
         import * as THREE from 'three';
@@ -269,10 +1089,13 @@
         gate.add(new THREE.PointLight(0xff2d55, 1.8, 70));
 
         const header = document.querySelector('header');
-        const titleEl = document.getElementById('realm-title');
+        const stage = document.getElementById('liber-stage');
         const flash = document.getElementById('warp-flash');
         header.style.opacity = '0';
-        titleEl.style.opacity = '0';
+        if (stage) {
+            stage.style.opacity = '0';
+            stage.style.pointerEvents = 'none';
+        }
         header.style.pointerEvents = 'none';
 
         let mode = 'enter';
@@ -320,6 +1143,8 @@
             if (exiting) return;
             exiting = true;
             header.style.pointerEvents = 'none';
+            if (stage) stage.style.pointerEvents = 'none';
+            if (typeof window.__aivoinkoLiberClose === 'function') window.__aivoinkoLiberClose();
             mode = 'exit';
             phaseStart = 0;
             pointMesh.visible = false;
@@ -334,7 +1159,10 @@
             phaseStart = 0;
             header.style.pointerEvents = 'none';
             header.style.opacity = '0';
-            titleEl.style.opacity = '0';
+            if (stage) {
+                stage.style.pointerEvents = 'none';
+                stage.style.opacity = '0';
+            }
             if (flash) flash.style.opacity = '0.5';
             camera.fov = 88;
             camera.updateProjectionMatrix();
@@ -367,9 +1195,12 @@
                     streakMesh.visible = false;
                     pointsMat.opacity = 0.9;
                     header.style.transition = 'opacity 1.1s ease';
-                    titleEl.style.transition = 'opacity 1.4s ease';
+                    if (stage) stage.style.transition = 'opacity 1.4s ease';
                     header.style.opacity = '1';
-                    titleEl.style.opacity = '1';
+                    if (stage) {
+                        stage.style.opacity = '1';
+                        stage.style.pointerEvents = 'auto';
+                    }
                     header.style.pointerEvents = 'auto';
                     mode = 'idle';
                 }
@@ -385,7 +1216,7 @@
                 camera.updateProjectionMatrix();
                 gate.scale.setScalar(Math.max(0.001, 1 - ease));
                 header.style.opacity = String(1 - ease);
-                titleEl.style.opacity = String(1 - ease);
+                if (stage) stage.style.opacity = String(1 - ease);
                 if (flash) flash.style.opacity = String(Math.max(0, (progress - 0.35) / 0.65));
                 if (progress >= 1) {
                     window.location.href = 'index.html';

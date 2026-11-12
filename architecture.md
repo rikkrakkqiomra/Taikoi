@@ -151,6 +151,9 @@ Taikoi/
 │   │   ├── 02-kaari.jpg
 │   │   ├── 03-vesi.jpg
 │   │   └── 04-metsa.jpg
+│   ├── liber/                 # gate_left.html sealed theses (PDFs)
+│   │   ├── neurovascular-on-chip.pdf      # Bachelor's thesis, April 2024, 37 pp.
+│   │   └── hallucinations-to-control.pdf  # Diplomityö, April 2026, 91 pp.
 │   ├── limen/                 # index.html Library choose salon (the two portal gates)
 │   │   ├── codex-portal.png   # Live left gate. Sealed crimson/bronze arch door; alpha keyed from luminance so black lets stars through; edges feathered (inner side most)
 │   │   ├── fragment-portal.png # Live right gate. Broken gold apocrypha arch; same luminance alpha + feathered edges
@@ -175,7 +178,7 @@ Taikoi/
 │       ├── parchment-right.jpg # Unused
 │       └── nebula.jpg         # Unused night window
 ├── diy_realities.html         # Khaeos Metalogs: oculus over a painted well, seven rings, coasting tunnel, staggered scroll
-├── gate_left.html             # Crimson left aperture; content TBD
+├── gate_left.html             # Crimson left aperture; two sealed thesis scrolls
 ├── gate_right.html            # Fragmenta Apocrypha; gold starfield + unfinished folio nave
 ├── seal-menu.css              # Shared seal-index styles (twelve public subpages + vault/opening.html). Trigger is the diamond stone button
 ├── seal-menu.js               # Builds the seal index. Gallery halls on gallery/physicalus/cartomancy; Library rooms on diy_realities/gate_left/gate_right; The Work, Business Strategy, Pricing, Contact on the five Services pages; Section 1–4 on bio and vault/opening.html. Return calls __aivoinkoSealExit
@@ -210,7 +213,7 @@ No `.gitignore` in the current tree (removed in `85d5131`).
 | `cartomancy.html` | `/cartomancy.html` | Beliefs, Changes, Powers, and Relations suits of the tarot fork. Black starfield, land dropdown, thirteen cards with English readings under each image. Seal opens the gallery index. Return reverse-warps → `gallery.html`. All four lands are open. |
 | `bio.html` | `/bio.html` | Black starfield + scroll hall. Opening name plate, four CSS-framed portraits (`art/bio/`), Finnish draft plaques, a sand tray (`#minusta`) under the first portrait, a Verkko cabinet of outbound work links, closing plate. Seal opens the index; Return reverse-warps → `index.html`. Portraits are not under a `bio/` root folder. |
 | `diy_realities.html` | `/diy_realities.html` | Khaeos Metalogs. Home nav label stays Library. Default wormhole timeout destination. DOM emblem and wordmark over `art/khaeos/khaeos-well.jpg`, seven smooth rings tracking the wordmark, coasting warp streaks after arrival, scroll hall with plates staggered off a center axis. Odd folios are green System Log terminals (Multimieli, then Log Entry 2). Even folios stay gold/bone (Log Entry 1, then Log Entry 3). Seal opens the index; Return reverse-warps → `index.html`. |
-| `gate_left.html` | `/gate_left.html` | Crimson vertical slit. Entered by left seal. Seal opens the index; Return reverse-warps → `index.html`. Title only. |
+| `gate_left.html` | `/gate_left.html` | Crimson vertical slit. Entered by left seal. Two sealed thesis scrolls unfurl from wax-stamped rollers (`art/liber/*.pdf`). Seal opens the index; Return reverse-warps → `index.html`. |
 | `gate_right.html` | `/gate_right.html` | Fragmenta Apocrypha: gold/zinc starfield + scrollable nave of six unfinished folios. Entered by right seal. Seal opens the index; Return reverse-warps → `index.html`. |
 | `404.html` | any unknown path | Netlify not-found. Static chrome, no import map, no WebGL, `noindex`. Link returns to `index.html`. |
 | `robots.txt` | `/robots.txt` | Allows all crawlers, disallows `/brain` and `/vault/`, and names `sitemap.xml`. |
@@ -355,6 +358,12 @@ No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
 - **Three.js:** starfield + enter/exit streaks only. No OrbitControls, no void well, no swipe. Enter flash starts at 0.28 and fades in ~350 ms. Seal Return assigns `__aivoinkoSealExit`. Fail-open keeps the hall readable.
 - **Route:** home `#nav-bio` calls `startWarpTransition('bio.html')` and skips the wormhole choice. Assets stay under `art/bio/` so they do not collide with Netlify Pretty URL `/bio`.
 
+### `gate_left.html` Liber specifics
+
+- **Scrolls:** `#liber-stage` is DOM over the crimson slit. Two `.liber-codex` buttons sit under `#realm-title`. Each closed control is `art/seal-scroll-top.png` plus a crimson wax disc, an Orbitron year, and a Cormorant italic name. 2024 is *Neurovascular Networks on Chip* (`art/liber/neurovascular-on-chip.pdf`, English abstract). 2026 is *Hallusinaatioista hallintaan* (`art/liber/hallucinations-to-control.pdf`, Finnish abstract).
+- **Unfurl:** Clicking a roller closes the other scroll and the seal index if either is open. The open codex is `position: fixed` under the seal; the drum stays as the top and a manuscript sheet (`is-open`, then `is-framed` at 700 ms, same cadence as `seal-menu.js`) drops from the parchment lip. Copy, then Orbitron **Read** / **Download full** / **Close**. `#liber-veil` dims the starfield. Escape, Close, the veil, or a click outside the open codex rolls it up. `prefers-reduced-motion` frames immediately. Below 768px `#liber` is a column. The open sheet scrolls inside `max-height` because `body` is `overflow: hidden`.
+- **Three.js:** Warp, idle points, and reverse-warp are unchanged. The stage fades with the title on enter/idle/exit. `__aivoinkoLiberClose` runs at the start of `__aivoinkoSealExit`. Fail-open still reveals the rollers.
+
 ### `gate_right.html` nave specifics
 
 - **Folios:** `#nave` is DOM, six hardcoded English drafts with Latin running heads. Gaps, rasurae, and an unfinished colophon are intentional. Cinzel titles, Cormorant body, Orbitron kicker. Copy is a first pass.
@@ -411,7 +420,7 @@ Redirects: force 404 (`to = "/404.html"`, `status = 404`, `force = true`) for `/
 - DOM ids: kebab-case (`canvas-container`, `planet-name`).
 - JS locals: camelCase (`planetMeshes`, `startTransition`).
 - CSS custom properties: `--glass-bg`, `--accent-color` (cyan `#00f3ff` on index, the five Services pages, and `vault/opening.html`; bronze `#c48c40` on gallery; steel `#b7c3d1` on physicalus; gold `#d9a441` + green `#2f6d3a` on diy_realities; crimson `#ff2d55` on gate_left; gold `#d4af37` on gate_right; amethyst `#c9a6e0` on cartomancy).
-- Global flags: `window.__aivoinko3d`, `window.__aivoinkoReveal`, `window.__aivoinkoSealExit` (double-underscore prefix = cross-script contract between the head snippet, the seal index, and the module).
+- Global flags: `window.__aivoinko3d`, `window.__aivoinkoReveal`, `window.__aivoinkoSealExit` (double-underscore prefix = cross-script contract between the head snippet, the seal index, and the module). `window.__aivoinkoLiberClose` is `gate_left.html` only and rolls up an open thesis sheet.
 
 ### Error handling
 
@@ -444,14 +453,14 @@ There is no API response schema.
 | Item | Status |
 |---|---|
 | Khaeos prose | Odd folios are green terminals: Finnish Multimieli (Entry 001.7, eight paragraphs; pipe-run sentences cut) then English Log Entry 2. The Finnish article is `lang="fi"`; its English signature is `lang="en"`. Even folios are gold/bone Log Entries 1 and 3. Those folios are the only remaining System Log text |
-| `gate_left.html` copy | Title chrome only; narrative content not written yet |
+| `gate_left.html` copy | Two thesis abstracts (English 2024 perfusion study; Finnish 2026 RAG/NLI diplomityö). Full PDFs in `art/liber/` |
 | `gate_right.html` folios | Six English drafts with lacunae; not final |
 | `taikoi-sun-portal.png` | Unreferenced binary |
 | Canonical origin | `robots.txt`, `sitemap.xml`, and every page canonical / Open Graph URL assume `https://taikoi.netlify.app`. A custom domain must change those strings together |
 | Shared CSS/JS modules | `seal-menu.css` / `seal-menu.js` on the twelve public subpages and `vault/opening.html`. Three.js bootstrap is still copied per page. |
 | Seal index realms | Gallery index (`gallery.html`, `physicalus.html`, `cartomancy.html`): Physical Arts → `physicalus.html`, Artificial Arts → `gallery.html`, Cartomancy → `cartomancy.html`. Musical Theatre and Mineralogy do not navigate. Library index (`diy_realities.html`, `gate_left.html`, `gate_right.html`): Liber / Ready → `gate_left.html`; Manuscript / Foul Papers → `gate_right.html`; Metalog → `diy_realities.html`. Services index (`services.html`, `branding.html`, `business_strategy.html`, `pricing.html`, `contact.html`): The Work, Business Strategy, Pricing, Contact. `bio.html` and `vault/opening.html` list Section 1–4 and those items do not navigate |
 | Gallery hangings | Sixteen hangings on the hall (`01`–`04`, `06`, `08`–`09`, `11`, `15`–`16`, `18`, `20`–`24`). The Totem (`21`) is the fourth bay. The Signal (`20`) is the tenth bay, after The Sigil. The Potential (`24`) is the thirteenth bay, in the old Spire slot. Futility (`23`) is the fifteenth bay, in the old Conclave slot. The Reliquary (`22`) is the last bay. The Totem replaced The Chorus. The Chorus hanging, `layered-gilt.png`, and `art/12-chorus.jpg` were deleted | The Prism (`13`), The Grove (`10`), The Threshold (`14`), The Conclave hanging, and The Spire hanging were removed. Unused stills `05-pact.jpg`, `07-window.jpg`, `10-grove.jpg`, `13-prism.jpg`, `14-threshold.jpg`, `17-spire.jpg`, and `19-conclave.jpg` remain under `art/`; the `13-prism-spectrum.png` hanging and `spectrum-gilt.png` frame were deleted; the `10-grove-oak.png` hanging and `grove-oak.png` frame were deleted; the self-framed `14-threshold-baroque.png` hanging was deleted; `19-conclave-oak.png` and `17-spire-stone.png` were deleted |
-| i18n | Shell and other pages are English. `bio.html` body copy is Finnish. |
+| i18n | Shell and other pages are English. `bio.html` body copy is Finnish. The 2026 Left Aperture sheet is Finnish (`lang="fi"`). |
 | Analytics | None |
 | Automated tests | None |
 
@@ -576,3 +585,4 @@ Append-only. Newest rows at the **bottom**. Do not rewrite prior rows.
 | 2026-11-02 | Write the Business Strategy scroll | business_strategy.html, README.md, architecture.md | The room was a title plate; the firm needed a stated method for shaping other strategies, not a billiard-table plan | Centered scroll uses the seal rollers. Copy: vision, method (the three Work lines), stance. No float animation. The Work sands, Pricing, and Contact are unchanged. |
 | 2026-11-12 | Write four Services products | services.html, README.md, architecture.md | The Services hall still copied the sun manifesto; the offerings were unwritten | Four `floating-block` cards: Brand Enrichment and Wholeness, Philosophical and Technological Mind Expansion, Sovereign AI Intelligence Architecture, GEO / Marketing Strategist. Seal still lists Branding, Business Strategy, Pricing, Contact. Brain copy, title-plate rooms, and routing are unchanged. Verify: Services shows the four products; GEO is last; Return still goes home. |
 | 2026-11-12 | Sun and Services open The Work; manifesto goes to the vault | index.html, services.html, vault/opening.html, deleted brain.html, netlify.toml, robots.txt, sitemap.xml, README.md, architecture.md | The public face still opened the Meat-Suit manifesto; the work had to be the first page after the sun | `#nav-services`, sun click/tap, and `#enter-opening` share `startTransition()` (1s cubic collapse) into `services.html`. The Work preamble sits above the four products. Manifesto moved to `vault/opening.html` with `noindex` and `base href="../"`. Force 404 for `/brain`, `/brain.html`, `/vault`, `/vault/*`. Sitemap drops `brain.html`. Gallery, Bio, and Library warps unchanged. Verify: Services and the sun land on The Work; `/brain.html` is not a public page. |
+| 2026-11-12 | Two sealed thesis scrolls on Left Aperture | gate_left.html, art/liber/neurovascular-on-chip.pdf, art/liber/hallucinations-to-control.pdf, architecture.md | Liber / Ready was title-only; the two attached theses needed a sealed unfurl on the crimson slit | Wax-stamped rollers under the title. Open uses the seal-menu cadence (`is-open`, then `is-framed` at 700 ms). English 2024 perfusion abstract; Finnish 2026 RAG/NLI abstract. Read / Download full / Close. Seal index and parchment are not open together. Warp and Return unchanged. Verify: both rollers unfurl; PDFs open and download; Escape and the veil close; mobile sheet scrolls inside. |
