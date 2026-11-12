@@ -1,14 +1,14 @@
 # Taikoi / Aivoinko — Architecture
 
-Authoritative description of the live repository as of 2026-11-02. This file is the source of truth for structure, data flow, integrations, and engineering constraints. Update it whenever those change.
+Authoritative description of the live repository as of 2026-11-12. This file is the source of truth for structure, data flow, integrations, and engineering constraints. Update it whenever those change.
 
 ---
 
 ## 1. Executive Overview & Purpose
 
-**Product identity:** Aivoinko (stylized “Machine Metaphysics”) is a public artistic website: an interactive 3D solar-system simulator plus narrative subpages. `README.md` describes that multi-page site. Live document titles are `Aivoinko Machine Metaphysics` (`index.html`), `The Opening of Reality` (`brain.html`), `Services` (`services.html`), `The Work` (`branding.html`), `Business Strategy` (`business_strategy.html`), `Pricing` (`pricing.html`), `Contact` (`contact.html`), `Gallery` (`gallery.html`), `Physicalus` (`physicalus.html`), `Cartomancy` (`cartomancy.html`), `Bio` (`bio.html`), `Khaeos Metalogs` (`diy_realities.html`), `Left Aperture` (`gate_left.html`), and `Fragmenta Apocrypha` (`gate_right.html`). Canonical and Open Graph URLs use `https://taikoi.netlify.app`.
+**Product identity:** Aivoinko (stylized “Machine Metaphysics”) is a public artistic website: an interactive 3D solar-system simulator plus narrative subpages. `README.md` describes that multi-page site. Live document titles are `Aivoinko Machine Metaphysics` (`index.html`), `The Work` (`services.html` catalog and `branding.html` brochure), `Business Strategy` (`business_strategy.html`), `Pricing` (`pricing.html`), `Contact` (`contact.html`), `Gallery` (`gallery.html`), `Physicalus` (`physicalus.html`), `Cartomancy` (`cartomancy.html`), `Bio` (`bio.html`), `Khaeos Metalogs` (`diy_realities.html`), `Left Aperture` (`gate_left.html`), and `Fragmenta Apocrypha` (`gate_right.html`). `The Opening of Reality` lives at `vault/opening.html` and is not a public route. Canonical and Open Graph URLs use `https://taikoi.netlify.app`.
 
-**Core purpose:** Present a cinematic, sci-fi 3D solar system in the browser, then route visitors into manifesto/log content. Interaction is exploratory (orbit, zoom, planet tooltips) rather than transactional.
+**Core purpose:** Present a cinematic, sci-fi 3D solar system in the browser, then route visitors into The Work (four engagements) and narrative halls. Interaction is exploratory (orbit, zoom, planet tooltips) rather than transactional.
 
 **Target users:** Desktop and mobile visitors of a public Netlify site. No accounts, no roles, no authenticated surfaces.
 
@@ -24,7 +24,7 @@ Authoritative description of the live repository as of 2026-11-02. This file is 
 | Frameworks | None | No React/Svelte/Vue/Next. |
 | 3D | Three.js + OrbitControls | **Pinned `0.160.0`** via HTML import maps → unpkg ESM. |
 | Styling | Inline `<style>` per HTML file, plus `seal-menu.css` | Page chrome stays inline. The seal index is the one shared stylesheet. No Tailwind or CSS Modules. |
-| Fonts | Google Fonts | `Orbitron` + `Rajdhani` + `Cormorant Garamond` 500/italic 500 (index; Cormorant is the Library limen plaques and the Khaeos label); `Orbitron` + `Rajdhani` (brain, services, pricing, contact); `Orbitron` + `Rajdhani` + `Cormorant Garamond` italic 500 (branding: The Work mast and sand titles; business_strategy: strategy-scroll title); `Orbitron` + `Cormorant Garamond` (gallery, physicalus, cartomancy, bio, gate_left, gate_right). Seal index uses Cormorant italic 500 + Orbitron on all thirteen seal pages. `Cinzel` on gate_right folios. On the Khaeos Metalogs hall (`diy_realities.html`): odd `#logs` articles (`.folio--terminal`) use the System Log block — `Orbitron` headings, `Courier Prime` body, `#00ff00`, frame, `>>> SYSTEM_ROOT_ACCESS`, and the `glitch` skew. Even articles stay `Orbitron` + `Cormorant Garamond` in gold/bone. There is no separate System Log page. |
+| Fonts | Google Fonts | `Orbitron` + `Rajdhani` + `Cormorant Garamond` 500/italic 500 (index; Cormorant is the Library limen plaques and the Khaeos label); `Orbitron` + `Rajdhani` (services, pricing, contact, and `vault/opening.html`); `Orbitron` + `Rajdhani` + `Cormorant Garamond` italic 500 (branding: The Work mast and sand titles; business_strategy: strategy-scroll title); `Orbitron` + `Cormorant Garamond` (gallery, physicalus, cartomancy, bio, gate_left, gate_right). Seal index uses Cormorant italic 500 + Orbitron on the twelve public seal pages and the vaulted manifesto. `Cinzel` on gate_right folios. On the Khaeos Metalogs hall (`diy_realities.html`): odd `#logs` articles (`.folio--terminal`) use the System Log block — `Orbitron` headings, `Courier Prime` body, `#00ff00`, frame, `>>> SYSTEM_ROOT_ACCESS`, and the `glitch` skew. Even articles stay `Orbitron` + `Cormorant Garamond` in gold/bone. There is no separate System Log page. |
 | Database / ORM | None | All content is hardcoded in HTML/JS. |
 | Build tools | None | No Vite, Webpack, Turbopack, or bundler. Netlify publishes the repo root as-is. |
 | Runtime | Browser (WebGL) | Static files on Netlify CDN. No Node.js app runtime, no edge functions, no serverless functions. |
@@ -50,9 +50,8 @@ Mostly flat root. There is no `src/`, `public/`, `components/`, or `netlify/func
 ```
 Taikoi/
 ├── index.html                 # Home / solar-system simulator (site entry)
-├── brain.html                 # Manifesto page (“The Opening of Reality”). Sun and the clipped keyboard link only
-├── services.html              # Same starfield and opening text as brain.html. Home nav “Services”
-├── branding.html              # The Work. Three service sands on the starfield. Return → services.html
+├── services.html              # The Work: preamble + four product blocks. Home nav “Services” and sun collapse here
+├── branding.html              # The Work brochure. Three service sands on the starfield. Return → services.html
 ├── business_strategy.html     # Strategy scroll on the starfield. Return → services.html
 ├── pricing.html               # Services section. Starfield title plate. Return → services.html
 ├── contact.html               # Services section. Starfield title plate. Return → services.html
@@ -178,15 +177,17 @@ Taikoi/
 ├── diy_realities.html         # Khaeos Metalogs: oculus over a painted well, seven rings, coasting tunnel, staggered scroll
 ├── gate_left.html             # Crimson left aperture; content TBD
 ├── gate_right.html            # Fragmenta Apocrypha; gold starfield + unfinished folio nave
-├── seal-menu.css              # Shared seal-index styles (thirteen subpages). Trigger is the diamond stone button
-├── seal-menu.js               # Builds the seal index. Gallery halls on gallery/physicalus/cartomancy; Library rooms on diy_realities/gate_left/gate_right; The Work, Business Strategy, Pricing, Contact on the five Services pages; Section 1–4 on brain and bio. Return calls __aivoinkoSealExit
+├── seal-menu.css              # Shared seal-index styles (twelve public subpages + vault/opening.html). Trigger is the diamond stone button
+├── seal-menu.js               # Builds the seal index. Gallery halls on gallery/physicalus/cartomancy; Library rooms on diy_realities/gate_left/gate_right; The Work, Business Strategy, Pricing, Contact on the five Services pages; Section 1–4 on bio and vault/opening.html. Return calls __aivoinkoSealExit
 ├── AiiAold.8dde82cb.jpg       # Favicon, preload, sun-portal sprite, header logos, wormhole seals, apple-touch icon
 ├── taikoi-sun-portal.png      # Tracked asset; not referenced by any HTML (unused)
-├── robots.txt                 # Allow all crawlers; points at sitemap.xml
-├── sitemap.xml                # Fourteen public routes. Origin https://taikoi.netlify.app
+├── vault/
+│   └── opening.html           # Vaulted manifesto (“The Opening of Reality”). noindex. Netlify 404s /vault/*
+├── robots.txt                 # Allow all crawlers except /brain and /vault/; points at sitemap.xml
+├── sitemap.xml                # Thirteen public routes. Origin https://taikoi.netlify.app
 ├── 404.html                   # Netlify not-found page. Static chrome only; no Three.js; noindex
 ├── LICENSE                    # MIT. Copyright 2026 Riku Korpiaho
-├── netlify.toml               # Publish root + security + cache headers
+├── netlify.toml               # Publish root + security + cache headers + force 404 for /brain and /vault/*
 ├── README.md                  # Human-facing project description
 └── architecture.md            # This file
 ```
@@ -197,9 +198,9 @@ No `.gitignore` in the current tree (removed in `85d5131`).
 
 | Path | URL (Netlify static) | Role |
 |---|---|---|
-| `index.html` | `/` | Primary 3D solar system. Nav to Services (href), Gallery (direct streak warp), Bio (direct streak warp), and Library (warp + on-page wormhole choice). Sun click → `brain.html`. |
-| `brain.html` | `/brain.html` | Starfield + floating manifesto blocks. Seal lists Section 1–4 (no href). Return → `index.html`. Reached by the sun and the clipped `#enter-opening` link. |
-| `services.html` | `/services.html` | Same starfield and the same five manifesto blocks as `brain.html`. Seal lists The Work, Business Strategy, Pricing, and Contact. Return → `index.html`. |
+| `index.html` | `/` | Primary 3D solar system. Nav to Services (`#nav-services` collapse), Gallery (direct streak warp), Bio (direct streak warp), and Library (warp + on-page wormhole choice). Sun click and `#enter-opening` collapse → `services.html`. |
+| `services.html` | `/services.html` | Same starfield. Title The Work. Preamble plus four product blocks: Brand Enrichment and Wholeness, Philosophical and Technological Mind Expansion, Sovereign AI Intelligence Architecture, GEO / Marketing Strategist. Seal lists The Work, Business Strategy, Pricing, and Contact. Return → `index.html`. |
+| `vault/opening.html` | unpublished | Vaulted manifesto (Meat-Suit Latency). Starfield + five blocks. Seal lists Section 1–4 (no href). Return → `../index.html`. `noindex`. Netlify force-404s `/brain`, `/brain.html`, `/vault`, and `/vault/*`. |
 | `branding.html` | `/branding.html` | Same starfield. The Work brochure: mast plus three sand columns titled Brand Enrichment and Wholeness, Philosophical and Technological Mind Expansion, and Sovereign AI Intelligence Architecture. Third sand-term is Pure AI; the pilot price is not on this page. Columns align to the top so a longer sand can continue down the scroll. Seal lists the four Services rooms. Return → `services.html`. |
 | `business_strategy.html` | `/business_strategy.html` | Same starfield. Centered manuscript scroll (`art/seal-scroll-top.png` / `art/seal-scroll-bottom.png`) with vision and meta-strategy copy. Seal lists the four Services rooms. Return → `services.html`. |
 | `pricing.html` | `/pricing.html` | Same starfield. Title plate only. Seal lists the four Services rooms. Return → `services.html`. |
@@ -212,21 +213,22 @@ No `.gitignore` in the current tree (removed in `85d5131`).
 | `gate_left.html` | `/gate_left.html` | Crimson vertical slit. Entered by left seal. Seal opens the index; Return reverse-warps → `index.html`. Title only. |
 | `gate_right.html` | `/gate_right.html` | Fragmenta Apocrypha: gold/zinc starfield + scrollable nave of six unfinished folios. Entered by right seal. Seal opens the index; Return reverse-warps → `index.html`. |
 | `404.html` | any unknown path | Netlify not-found. Static chrome, no import map, no WebGL, `noindex`. Link returns to `index.html`. |
-| `robots.txt` | `/robots.txt` | Allows all crawlers and names `sitemap.xml`. |
-| `sitemap.xml` | `/sitemap.xml` | The fourteen public routes. Not `404.html`. |
-| `netlify.toml` | n/a | Deployment contract: publish directory and HTTP headers. |
+| `robots.txt` | `/robots.txt` | Allows all crawlers, disallows `/brain` and `/vault/`, and names `sitemap.xml`. |
+| `sitemap.xml` | `/sitemap.xml` | The thirteen public routes. Not `404.html`, not `vault/opening.html`. |
+| `netlify.toml` | n/a | Deployment contract: publish directory, HTTP headers, and force 404 for `/brain`, `/brain.html`, `/vault`, and `/vault/*`. |
 
-Each of the fourteen scene pages is a **layout wrapper for itself**: `<head>` (meta, import map, fail-open script, fonts, CSS) + `<body>` (chrome + `#canvas-container` + page content) + trailing `<script type="module">` (Three.js scene). `404.html` is static chrome only. There is no shared layout partial or middleware. The thirteen subpages share `seal-menu.css` and `seal-menu.js` for the logo index. The trigger is `art/seal-stone.png` (punched obsidian salmiakki, 132×216px, 104×170px under 768px); the page logo sits in the well, circle-cropped except the Khaeos emblem. `index.html` does not.
+Each of the thirteen public scene pages is a **layout wrapper for itself**: `<head>` (meta, import map, fail-open script, fonts, CSS) + `<body>` (chrome + `#canvas-container` + page content) + trailing `<script type="module">` (Three.js scene). `404.html` is static chrome only. `vault/opening.html` is the same wrapper, unpublished. There is no shared layout partial or middleware. The twelve public subpages and `vault/opening.html` share `seal-menu.css` and `seal-menu.js` for the logo index. The trigger is `art/seal-stone.png` (punched obsidian salmiakki, 132×216px, 104×170px under 768px); the page logo sits in the well, circle-cropped except the Khaeos emblem. `index.html` does not.
 
 ### Navigation graph
 
 ```
-index.html  --nav "Services"---->  services.html       --seal Return-->  index.html
+index.html  --nav "Services"---->  collapse 1s ---->  services.html  --seal Return-->  index.html
+                 sun click/tap ------------------>  collapse 1s ---->  services.html
+                 #enter-opening ----------------->  collapse 1s ---->  services.html
                  services seal The Work ----------> branding.html          --seal Return--> services.html
                  services seal Business Strategy -> business_strategy.html --seal Return--> services.html
                  services seal Pricing -----------> pricing.html           --seal Return--> services.html
                  services seal Contact -----------> contact.html           --seal Return--> services.html
-index.html  --sun click/tap------->  brain.html         --seal Return-->  index.html
 index.html  --nav "Gallery"------->  streak warp (boost → commit, no seals) → gallery.html
                  gallery seal Return ->  reverse-warp → index.html
                  gallery seal Physical Arts -> physicalus.html --seal Return--> gallery.html
@@ -284,7 +286,7 @@ State is **page-local closures**:
 |---|---|---|
 | Scene, camera, renderer, meshes | Module scope per page | Until unload |
 | `activePlanet` / tooltip DOM | `index.html` | Frame-to-frame; cleared on transition |
-| `isTransitioning` | `index.html` | Guards double-fire of sun → brain, Gallery → direct warp, Bio → direct warp, and DIY → warp navigation |
+| `isTransitioning` | `index.html` | Guards double-fire of sun/Services → The Work, Gallery → direct warp, Bio → direct warp, and DIY → warp navigation |
 | `warpState` | `index.html` | Warp machine: `phase` `boost` / `choose` / `commit`, `destination` `forward`/`left`/`right`/`direct`, optional `directHref` (Gallery and Bio skip `choose` and seals). DIY choice is DOM `#wormhole-choice`, not a separate route. |
 | `mode` (`enter` / `idle` / `exit`) | `gallery.html`, `physicalus.html`, `cartomancy.html`, `bio.html`, `diy_realities.html`, `gate_left.html`, `gate_right.html` | Warp-in, settled scene, reverse-warp home. Physicalus and Cartomancy exit href is `gallery.html`; the others go to `index.html`. |
 | `ARTWORKS` / `focusIndex` | `gallery.html` | Hardcoded stills + `FRAMES` overlay (`walnut` / `gilt` / `iron`). Hangings are DOM figures, not meshes. `focusIndex` is read from `?focus=N` and scrolls `#hall` once after enter. Native scroll does not advance it. `physicalus.html` uses the same query on its three plates. |
@@ -292,7 +294,7 @@ State is **page-local closures**:
 | node clock interval | `index.html` | 1000 ms while the tab is visible; cleared on `document.hidden`; in-memory only |
 | `window.__aivoinko3d` | All pages | `true` after module starts; `false` if WebGL constructor throws |
 | `window.__aivoinkoReveal` | All pages | Fail-open UI if the module never sets `__aivoinko3d` |
-| `window.__aivoinkoSealExit` | Thirteen subpages | Page module assigns its `exitAnimation`. Seal index Return calls it. Unset → `location.href = 'index.html'`. `physicalus.html` and `cartomancy.html` assign an exit whose href is `gallery.html`. `branding.html`, `business_strategy.html`, `pricing.html`, and `contact.html` assign an exit whose href is `services.html`. |
+| `window.__aivoinkoSealExit` | Twelve public subpages and `vault/opening.html` | Page module assigns its `exitAnimation`. Seal index Return calls it. Unset → `location.href = 'index.html'`. `physicalus.html` and `cartomancy.html` assign an exit whose href is `gallery.html`. `branding.html`, `business_strategy.html`, `pricing.html`, and `contact.html` assign an exit whose href is `services.html`. `vault/opening.html` assigns `../index.html`. |
 
 No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
 
@@ -300,21 +302,20 @@ No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
 
 **None.** No login, tokens, CSRF, RBAC, or session cookies. Outbound work links on `bio.html` are public `target="_blank"` anchors with `rel="noopener noreferrer"`.
 
-### Shared runtime pattern (all fourteen pages)
+### Shared runtime pattern (thirteen public pages and `vault/opening.html`)
 
 1. **Fail-open UI:** Head script registers `error` / `unhandledrejection` and a 2500 ms timeout. If `window.__aivoinko3d` is still falsy, `html.ui-ready` is applied so chrome is not trapped behind a blank WebGL failure. `index.html` also removes `#loading`.
 2. **WebGL try/catch:** Renderer construction failure sets `__aivoinko3d = false`, calls `__aivoinkoReveal`, rethrows.
 3. **Loop control:** Prefer `renderer.setAnimationLoop`; fall back to `requestAnimationFrame`. Pause on `document.hidden`; resume on visible; reset `lastFrameTime` to avoid a huge delta spike.
 4. **Delta time:** `dt = min(deltaMs, 50) / (1000/60)` so motion is frame-rate independent and hitch-capped.
 5. **Pixel ratio:** `Math.min(devicePixelRatio, 2)`.
-6. **Entry/exit:** Scene scale 0.001 → 1 (cubic out) on enter for index / brain / services and the four service sections; reverse cubic in then `location.href` on exit (brain and services Return → `index.html`; The Work, Business Strategy, Pricing, and Contact Return → `services.html`; index sun → `brain.html`). **Gallery and Bio warps** are `#nav-gallery` and `#nav-bio` `preventDefault` → `boost` (~1500 ms teal/bronze streaks + FOV) → `commit` (~900 ms) → `gallery.html` or `bio.html`. Seals stay closed. **Library warp** stays on `index.html` until a destination is chosen: `#nav-diy` `preventDefault` → `boost` (~1500 ms streaks + FOV) → `choose` (~4200 ms hold, flash ~0.4, limen salon in `#wormhole-choice`: two full-height portal gates — a sealed crimson Codex door (`art/limen/codex-portal.png`) on the left and a broken gold Fragmenta arch (`art/limen/fragment-portal.png`) on the right — alpha-keyed PNGs so the warp streaks fly through their black and all edges feather into the starfield — each a `.gate` button with an inward plaque and an outward-pulsing chevron; a non-click Khaeos emblem vortex in the center whose ring and scale read `--choose`; prefetch of the three destinations) → `commit` (~900 ms). Timeout commits `forward` → `diy_realities.html`. Left/right seal (or arrow keys) yaw-shear commit → `gate_left.html` / `gate_right.html`. **Do not** insert a loading page for this beat. Gallery/DIY/gate pages start flash at opacity 0.5 and fade it in ~400 ms; gallery is a 2D photographic hanging over a black starfield; Bio is the same black starfield with a scroll of CSS-framed portraits and Finnish plaques; DIY is the Khaeos Metalogs hall: a DOM emblem and wordmark over a painted well, seven smooth rings tracking the wordmark, coasting warp streaks after arrival, and a scroll that alternates odd green System Log terminals with even gold/bone folios, staggered off a center axis; left is a crimson vertical slit with stars from +X; right is a gold folio nave over a hex-ornament starfield with stars from −X. Seal click opens the shared index (`seal-menu.js`). Return calls `__aivoinkoSealExit`, which reverse-warps to `index.html`. Close Menu smooth-scrolls `#hall`, `#nave`, `.floating-container`, or `.terminal-container` to the top and folds the list. Physicalus href is `physicalus.html`; Return on that page reverse-warps to `gallery.html`. Cartomancy href is `cartomancy.html`; Return on that page reverse-warps to `gallery.html`. Musical Theatre and Mineralogy still have no href. `bfcache` `pageshow` resets warp/FOV/fog/camera pose, hides seals, and replays entry.
-
+6. **Entry/exit:** Scene scale 0.001 → 1 (cubic out) on enter for index / services and the four service sections; reverse cubic in then `location.href` on exit (services Return → `index.html`; The Work, Business Strategy, Pricing, and Contact Return → `services.html`; index sun, `#nav-services`, and `#enter-opening` → `services.html` via the 1s cubic collapse). `vault/opening.html` still uses the same scale enter/exit; Return → `../index.html`. **Gallery and Bio warps** are `#nav-gallery` and `#nav-bio` `preventDefault` → `boost` (~1500 ms teal/bronze streaks + FOV) → `commit` (~900 ms) → `gallery.html` or `bio.html`. Seals stay closed. **Library warp** stays on `index.html` until a destination is chosen: `#nav-diy` `preventDefault` → `boost` (~1500 ms streaks + FOV) → `choose` (~4200 ms hold, flash ~0.4, limen salon in `#wormhole-choice`: two full-height portal gates — a sealed crimson Codex door (`art/limen/codex-portal.png`) on the left and a broken gold Fragmenta arch (`art/limen/fragment-portal.png`) on the right — alpha-keyed PNGs so the warp streaks fly through their black and all edges feather into the starfield — each a `.gate` button with an inward plaque and an outward-pulsing chevron; a non-click Khaeos emblem vortex in the center whose ring and scale read `--choose`; prefetch of the three destinations) → `commit` (~900 ms). Timeout commits `forward` → `diy_realities.html`. Left/right seal (or arrow keys) yaw-shear commit → `gate_left.html` / `gate_right.html`. **Do not** insert a loading page for this beat. Gallery/DIY/gate pages start flash at opacity 0.5 and fade it in ~400 ms; gallery is a 2D photographic hanging over a black starfield; Bio is the same black starfield with a scroll of CSS-framed portraits and Finnish plaques; DIY is the Khaeos Metalogs hall: a DOM emblem and wordmark over a painted well, seven smooth rings tracking the wordmark, coasting warp streaks after arrival, and a scroll that alternates odd green System Log terminals with even gold/bone folios, staggered off a center axis; left is a crimson vertical slit with stars from +X; right is a gold folio nave over a hex-ornament starfield with stars from −X. Seal click opens the shared index (`seal-menu.js`). Return calls `__aivoinkoSealExit`, which reverse-warps to `index.html`. Close Menu smooth-scrolls `#hall`, `#nave`, `.floating-container`, or `.terminal-container` to the top and folds the list. Physicalus href is `physicalus.html`; Return on that page reverse-warps to `gallery.html`. Cartomancy href is `cartomancy.html`; Return on that page reverse-warps to `gallery.html`. Musical Theatre and Mineralogy still have no href. `bfcache` `pageshow` resets warp/FOV/fog/camera pose, hides seals, and replays entry.
 ### `index.html` simulation specifics
 
 - **Sun:** procedural Canvas texture + additive glow sprite + invisible collider (`radius * 0.9`) for picking. Logo JPEG is cropped to a circle and applied to a pulsing `THREE.Sprite`.
 - **Planets:** 8 solar-system bodies + fictional `Astroteles Aivoinko II` (`type: 'synthetic'`). Saturn has a `RingGeometry`. Orbits are `EllipseCurve` line loops.
-- **Desktop:** camera starts at `(0, 140, 280)` (3/4 view). `mousemove` updates NDC mouse; click on sun collider starts transition; hover raycast drives tooltip + cursor. A clipped link `#enter-opening` (“Enter The Opening of Reality”) calls the same `startTransition()`. Its `href` stays `brain.html` when JavaScript does not run. Nothing in that link is painted on screen.
-- **Mobile:** camera starts top-down at `(0, 250, 6)` so orbits read as circles; `touchstart` (passive) raycasts planets + sun; tap planet locks tooltip; tap empty space clears; tap sun transitions. Header nav is full-width with four centered labels (CSS `max-width: 768px` only): Services, Gallery, Library, and Bio. Type is `0.64rem`.
+- **Desktop:** camera starts at `(0, 140, 280)` (3/4 view). `mousemove` updates NDC mouse; click on sun collider starts transition; hover raycast drives tooltip + cursor. `#nav-services` and a clipped link `#enter-opening` (“Enter The Work”) call the same `startTransition()`. The hrefs stay `services.html` when JavaScript does not run. Nothing in the clipped link is painted on screen.
+- **Mobile:** camera starts top-down at `(0, 250, 6)` so orbits read as circles; `touchstart` (passive) raycasts planets + sun; tap planet locks tooltip; tap empty space clears; tap sun transitions to The Work. Header nav is full-width with four centered labels (CSS `max-width: 768px` only): Services, Gallery, Library, and Bio. Type is `0.64rem`.
 - **Node rail:** `#node-rail` is a full-bleed HUD under the existing status footer. Copy is the site node (`Northern Europe, Sub-Tampere, RÄMSÖÖ` at `61.3413° N, 23.3017° E`) plus a live `Europe/Helsinki` clock and UTC offset. No geolocation. Mobile (`max-width: 899px`) CSS-marquee of two identical lines; desktop is static and centered. `prefers-reduced-motion: reduce` stops the marquee and lets the track scroll horizontally. A non-module inline script ticks the clock; it is not inside the Three.js module. The rail is `aria-hidden`, so the once-per-second clock is not announced. Pinch-zoom is allowed (`viewport` has no `maximum-scale` or `user-scalable=no`).
 - **bfcache:** `pageshow` resets `isTransitioning`, camera pose, warp overlay, and replays entry animation.
 - **Library choice:** `#wormhole-choice` during `choose`. Each frame sets `--choose` from `elapsed / CHOOSE_MS` (0–1). That variable fills the center orrery and scales `art/khaeos/khaeos-emblem.png`. The center is not a button. `#seal-left` (`.gate--codex`) and `#seal-right` (`.gate--fragment`) are full-height portal buttons: an alpha-keyed portal PNG (`pointer-events: none`; black is transparent so the warp streaks pass through and all edges feather into the starfield), an absolutely-positioned `.plaque`, and an animated `.chevron` pointing outward toward that gate. Hover/focus brightens and scales the portal, glows the plaque, and dims the other gate via `:has()`. `showChoice` sets header, footer, and `#node-rail` opacity to 0. Below 768px the gates widen to 50vw, the portal shrinks, and the italic plaque line is hidden. `prefers-reduced-motion` stops the chevron nudge and portal transform; the ring still fills. Arrow keys, 4200 ms timeout, and the Gallery/Bio direct warps are unchanged. `gate_left.html` is still title chrome only.
@@ -334,7 +335,7 @@ No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
 - **Slips:** One English maker's note, on the first plate only (`#hundred`). Orbitron kicker and credit, Cormorant italic title. Credit is Riimu Takomo with Joni. The pendant is 100-layer Damascus. The note's last line links the three views of that same piece: held, set down, turned. Later plates have no second title. A `.thread` under each repeats "The Hundred" and scrolls `#hall` back to `#view-hand`.
 - **Layout:** Three solo bays. The first pairs the plate with the note. The next two are the same pendant, plate plus thread, alternating left/right. `#realm-title` follows the last bay on desktop and is hidden on mobile. Seal is absolute on desktop and in-flow on mobile. Mobile stacks plate then note or thread and scrolls natively. Optional `?focus=N`. In-hall `#` links scroll `#hall`, not the document.
 - **Three.js:** Same enter/idle/exit streak field as the gallery (2200 stars, flash 0.28 fading in ~350 ms). No void well, no OrbitControls. Seal Return assigns `__aivoinkoSealExit`, which reverse-warps to `gallery.html`. Fail-open keeps the plates readable.
-- **Route:** The gallery index (`gallery.html`, `physicalus.html`, and `cartomancy.html`) lists Physical Arts → `physicalus.html`, Artificial Arts → `gallery.html`, Cartomancy → `cartomancy.html`, then Musical Theatre and Mineralogy with no href. The Library index (`diy_realities.html`, `gate_left.html`, `gate_right.html`) lists Liber / Ready → `gate_left.html`, Manuscript / Foul Papers → `gate_right.html`, and Metalog → `diy_realities.html`. The Services index (`services.html`, `branding.html`, `business_strategy.html`, `pricing.html`, `contact.html`) lists The Work → `branding.html`, Business Strategy → `business_strategy.html`, Pricing → `pricing.html`, and Contact → `contact.html`. `brain.html` and `bio.html` list Section 1–4 and those items do not navigate. Assets stay under `art/physicalus/` so they do not collide with Netlify Pretty URL `/physicalus`.
+- **Route:** The gallery index (`gallery.html`, `physicalus.html`, and `cartomancy.html`) lists Physical Arts → `physicalus.html`, Artificial Arts → `gallery.html`, Cartomancy → `cartomancy.html`, then Musical Theatre and Mineralogy with no href. The Library index (`diy_realities.html`, `gate_left.html`, `gate_right.html`) lists Liber / Ready → `gate_left.html`, Manuscript / Foul Papers → `gate_right.html`, and Metalog → `diy_realities.html`. The Services index (`services.html`, `branding.html`, `business_strategy.html`, `pricing.html`, `contact.html`) lists The Work → `branding.html`, Business Strategy → `business_strategy.html`, Pricing → `pricing.html`, and Contact → `contact.html`. `bio.html` and `vault/opening.html` list Section 1–4 and those items do not navigate. Assets stay under `art/physicalus/` so they do not collide with Netlify Pretty URL `/physicalus`.
 
 ### `cartomancy.html` hall specifics
 
@@ -389,14 +390,16 @@ Global: `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-
 
 Cache: `/` and `/*.html` → `public, max-age=0, must-revalidate`. `*.jpg|jpeg|webp|avif` → `public, max-age=31536000, immutable`. `/art/*` → `public, max-age=0, must-revalidate` so replaced hangings are not frozen for a year. Logo filename includes a hash-like suffix (`AiiAold.8dde82cb.jpg`); renaming without cache-busting will stick for a year on those extensions.
 
+Redirects: force 404 (`to = "/404.html"`, `status = 404`, `force = true`) for `/brain`, `/brain.html`, `/vault`, and `/vault/*`. The manifesto file remains in git at `vault/opening.html`.
+
 ---
 
 ## 6. Key Engineering Conventions & Patterns
 
 ### Conventions in force
 
-- **One file = one route.** Page CSS and the Three.js module stay in the HTML they serve. Duplication of the Three.js bootstrap (renderer, loop, visibility pause, fail-open) is intentional. The seal index is the exception: `seal-menu.css` and `seal-menu.js` are shared by the thirteen subpages.
-- **Pin Three.js in all fourteen import maps together.** Version drift between pages is a defect.
+- **One file = one route.** Page CSS and the Three.js module stay in the HTML they serve. Duplication of the Three.js bootstrap (renderer, loop, visibility pause, fail-open) is intentional. The seal index is the exception: `seal-menu.css` and `seal-menu.js` are shared by the twelve public subpages and `vault/opening.html`.
+- **Pin Three.js in every import map together.** Version drift between pages is a defect. The vaulted manifesto keeps the same pin.
 - **Hardcoded content.** Copy and planet stats are source, not CMS.
 - **WebGL is optional for readability.** Subpage text and index chrome must remain reachable if WebGL/CDN fails (`__aivoinkoReveal`).
 - **Performance caps:** DPR ≤ 2; mobile orbit speed × 0.15; pause loop when the tab is hidden; gas-giant texture turbulence uses a precomputed `xWave` array.
@@ -407,7 +410,7 @@ Cache: `/` and `/*.html` → `public, max-age=0, must-revalidate`. `*.jpg|jpeg|w
 
 - DOM ids: kebab-case (`canvas-container`, `planet-name`).
 - JS locals: camelCase (`planetMeshes`, `startTransition`).
-- CSS custom properties: `--glass-bg`, `--accent-color` (cyan `#00f3ff` on index, brain, and the five Services pages; bronze `#c48c40` on gallery; steel `#b7c3d1` on physicalus; gold `#d9a441` + green `#2f6d3a` on diy_realities; crimson `#ff2d55` on gate_left; gold `#d4af37` on gate_right; amethyst `#c9a6e0` on cartomancy).
+- CSS custom properties: `--glass-bg`, `--accent-color` (cyan `#00f3ff` on index, the five Services pages, and `vault/opening.html`; bronze `#c48c40` on gallery; steel `#b7c3d1` on physicalus; gold `#d9a441` + green `#2f6d3a` on diy_realities; crimson `#ff2d55` on gate_left; gold `#d4af37` on gate_right; amethyst `#c9a6e0` on cartomancy).
 - Global flags: `window.__aivoinko3d`, `window.__aivoinkoReveal`, `window.__aivoinkoSealExit` (double-underscore prefix = cross-script contract between the head snippet, the seal index, and the module).
 
 ### Error handling
@@ -432,6 +435,7 @@ There is no API response schema.
 10. **Do not claim MIT licensing in docs without a `LICENSE` file.** `LICENSE` is MIT, copyright 2026 Riku Korpiaho. README points at that file.
 11. **Do not turn the wormhole choice into a separate HTML loading page.** Seals live in `#wormhole-choice` on `index.html` during `warpState.phase === 'choose'`. `gate_left.html` / `gate_right.html` are destinations, not the interstitial.
 12. **Do not route Gallery or Bio through the DIY seal hold.** `#nav-gallery` and `#nav-bio` use `warpState.directHref` and skip `choose`.
+13. **Do not restore `brain.html` as a public route.** The manifesto is `vault/opening.html`. Netlify force-404s `/brain`, `/brain.html`, `/vault`, and `/vault/*`. Services and the sun use the cubic collapse into `services.html`.
 
 ---
 
@@ -444,8 +448,8 @@ There is no API response schema.
 | `gate_right.html` folios | Six English drafts with lacunae; not final |
 | `taikoi-sun-portal.png` | Unreferenced binary |
 | Canonical origin | `robots.txt`, `sitemap.xml`, and every page canonical / Open Graph URL assume `https://taikoi.netlify.app`. A custom domain must change those strings together |
-| Shared CSS/JS modules | `seal-menu.css` / `seal-menu.js` on the thirteen subpages. Three.js bootstrap is still copied per page. |
-| Seal index realms | Gallery index (`gallery.html`, `physicalus.html`, `cartomancy.html`): Physical Arts → `physicalus.html`, Artificial Arts → `gallery.html`, Cartomancy → `cartomancy.html`. Musical Theatre and Mineralogy do not navigate. Library index (`diy_realities.html`, `gate_left.html`, `gate_right.html`): Liber / Ready → `gate_left.html`; Manuscript / Foul Papers → `gate_right.html`; Metalog → `diy_realities.html`. Services index (`services.html`, `branding.html`, `business_strategy.html`, `pricing.html`, `contact.html`): The Work, Business Strategy, Pricing, Contact. `brain.html` and `bio.html` list Section 1–4 and those items do not navigate |
+| Shared CSS/JS modules | `seal-menu.css` / `seal-menu.js` on the twelve public subpages and `vault/opening.html`. Three.js bootstrap is still copied per page. |
+| Seal index realms | Gallery index (`gallery.html`, `physicalus.html`, `cartomancy.html`): Physical Arts → `physicalus.html`, Artificial Arts → `gallery.html`, Cartomancy → `cartomancy.html`. Musical Theatre and Mineralogy do not navigate. Library index (`diy_realities.html`, `gate_left.html`, `gate_right.html`): Liber / Ready → `gate_left.html`; Manuscript / Foul Papers → `gate_right.html`; Metalog → `diy_realities.html`. Services index (`services.html`, `branding.html`, `business_strategy.html`, `pricing.html`, `contact.html`): The Work, Business Strategy, Pricing, Contact. `bio.html` and `vault/opening.html` list Section 1–4 and those items do not navigate |
 | Gallery hangings | Sixteen hangings on the hall (`01`–`04`, `06`, `08`–`09`, `11`, `15`–`16`, `18`, `20`–`24`). The Totem (`21`) is the fourth bay. The Signal (`20`) is the tenth bay, after The Sigil. The Potential (`24`) is the thirteenth bay, in the old Spire slot. Futility (`23`) is the fifteenth bay, in the old Conclave slot. The Reliquary (`22`) is the last bay. The Totem replaced The Chorus. The Chorus hanging, `layered-gilt.png`, and `art/12-chorus.jpg` were deleted | The Prism (`13`), The Grove (`10`), The Threshold (`14`), The Conclave hanging, and The Spire hanging were removed. Unused stills `05-pact.jpg`, `07-window.jpg`, `10-grove.jpg`, `13-prism.jpg`, `14-threshold.jpg`, `17-spire.jpg`, and `19-conclave.jpg` remain under `art/`; the `13-prism-spectrum.png` hanging and `spectrum-gilt.png` frame were deleted; the `10-grove-oak.png` hanging and `grove-oak.png` frame were deleted; the self-framed `14-threshold-baroque.png` hanging was deleted; `19-conclave-oak.png` and `17-spire-stone.png` were deleted |
 | i18n | Shell and other pages are English. `bio.html` body copy is Finnish. |
 | Analytics | None |
@@ -570,3 +574,5 @@ Append-only. Newest rows at the **bottom**. Do not rewrite prior rows.
 | 2026-11-02 | Rewrite Sanctum as Pure AI; drop the pilot price from The Work | branding.html, architecture.md | The fifteen-thousand-euro pilot belongs on Pricing; Sanctum needed sovereignty copy and a model-agnostic claim | Sand-term is Pure AI. CLOUD Act, FISA 702, Schrems II, GDPR, NIS2, data residency, air gap, and on-premises enter the sand. Columns `align-items: start` so Sanctum can run longer. Residency, Seminar, and the Pricing title plate are unchanged. |
 | 2026-11-02 | Replace the three sand titles on The Work | branding.html, architecture.md | Residency, Seminar, and Sanctum read as room names, not offerings | Titles are Brand Enrichment and Wholeness, Philosophical and Technological Mind Expansion, and Sovereign AI Intelligence Architecture. Sand-terms and body copy stay; one Sanctum sentence now says “the architecture”. |
 | 2026-11-02 | Write the Business Strategy scroll | business_strategy.html, README.md, architecture.md | The room was a title plate; the firm needed a stated method for shaping other strategies, not a billiard-table plan | Centered scroll uses the seal rollers. Copy: vision, method (the three Work lines), stance. No float animation. The Work sands, Pricing, and Contact are unchanged. |
+| 2026-11-12 | Write four Services products | services.html, README.md, architecture.md | The Services hall still copied the sun manifesto; the offerings were unwritten | Four `floating-block` cards: Brand Enrichment and Wholeness, Philosophical and Technological Mind Expansion, Sovereign AI Intelligence Architecture, GEO / Marketing Strategist. Seal still lists Branding, Business Strategy, Pricing, Contact. Brain copy, title-plate rooms, and routing are unchanged. Verify: Services shows the four products; GEO is last; Return still goes home. |
+| 2026-11-12 | Sun and Services open The Work; manifesto goes to the vault | index.html, services.html, vault/opening.html, deleted brain.html, netlify.toml, robots.txt, sitemap.xml, README.md, architecture.md | The public face still opened the Meat-Suit manifesto; the work had to be the first page after the sun | `#nav-services`, sun click/tap, and `#enter-opening` share `startTransition()` (1s cubic collapse) into `services.html`. The Work preamble sits above the four products. Manifesto moved to `vault/opening.html` with `noindex` and `base href="../"`. Force 404 for `/brain`, `/brain.html`, `/vault`, `/vault/*`. Sitemap drops `brain.html`. Gallery, Bio, and Library warps unchanged. Verify: Services and the sun land on The Work; `/brain.html` is not a public page. |

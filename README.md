@@ -1,15 +1,15 @@
 # Aivoinko
 
-A public artistic site. The home page is an interactive 3D solar system. The other routes are narrative halls. There is no build step: each route is one HTML file, and Netlify publishes the repository root.
+A public artistic site. The home page is an interactive 3D solar system. Services and the sun open The Work. The other public routes are narrative halls. There is no build step: each route is one HTML file, and Netlify publishes the repository root.
 
 ## Routes
 
 | File | What it is |
 |---|---|
-| `index.html` | Home. Three.js solar system. Services is a normal link. Gallery and Bio warp directly. Library holds, then offers Codex Operum, Fragmenta Apocrypha, or Khaeos Metalogs. Click or tap the sun for The Opening of Reality. |
-| `brain.html` | The Opening of Reality. Manifesto. Sun and the clipped keyboard link only. |
-| `services.html` | Services. Same starfield and opening text as the sun page. Seal lists The Work, Business Strategy, Pricing, and Contact. |
-| `branding.html` | The Work. Three service sands on the starfield. Return goes to Services. |
+| `index.html` | Home. Three.js solar system. Services and the sun collapse into The Work. Gallery and Bio warp directly. Library holds, then offers Codex Operum, Fragmenta Apocrypha, or Khaeos Metalogs. |
+| `services.html` | The Work. A preamble and four product blocks on the same starfield. Seal lists The Work, Business Strategy, Pricing, and Contact. |
+| `vault/opening.html` | The Opening of Reality manifesto. Vaulted. Netlify serves 404 for `/brain` and `/vault/*`. |
+| `branding.html` | The Work brochure. Three service sands on the starfield. Return goes to Services. |
 | `business_strategy.html` | Business Strategy. Centered scroll: vision and the method that writes other strategies. Return goes to Services. |
 | `pricing.html` | Pricing. Starfield page. Return goes to Services. |
 | `contact.html` | Contact. Starfield page. Return goes to Services. |

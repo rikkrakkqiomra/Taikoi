@@ -42,3 +42,27 @@
   for = "/art/*"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
+
+[[redirects]]
+  from = "/brain"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/brain.html"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/vault"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/vault/*"
+  to = "/404.html"
+  status = 404
+  force = true

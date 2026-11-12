@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /brain
+Disallow: /vault/
 
 Sitemap: https://taikoi.netlify.app/sitemap.xml

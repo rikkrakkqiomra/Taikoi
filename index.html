@@ -969,7 +969,7 @@
 
 <body>
 
-  <a href="brain.html" id="enter-opening" class="sr-only">Enter The Opening of Reality</a>
+  <a href="services.html" id="enter-opening" class="sr-only">Enter The Work</a>
 
   <div id="loading">
     <div class="loader"></div>
@@ -991,7 +991,7 @@
       <h2 class="subtitle">Machine Metaphysics</h2>
     </div>
     <nav>
-      <a href="services.html">Services</a>
+      <a href="services.html" id="nav-services">Services</a>
       <a href="gallery.html" id="nav-gallery">Gallery</a>
       <a href="diy_realities.html" id="nav-diy">Library</a>
       <a href="bio.html" id="nav-bio">Bio</a>
@@ -1986,7 +1986,7 @@
         if (progress < 1) {
           requestAnimationFrame(transitionLoop);
         } else {
-          window.location.href = 'brain.html';
+          window.location.href = 'services.html';
         }
       }
       transitionLoop();
@@ -1995,6 +1995,15 @@
     const enterOpening = document.getElementById('enter-opening');
     if (enterOpening) {
       enterOpening.addEventListener('click', (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        startTransition();
+      });
+    }
+
+    const servicesNav = document.getElementById('nav-services');
+    if (servicesNav) {
+      servicesNav.addEventListener('click', (event) => {
         event.preventDefault();
         event.stopPropagation();
         startTransition();
