@@ -82,11 +82,14 @@
         }
 
         header {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            position: relative;
+            top: auto;
+            left: auto;
+            transform: none;
             z-index: 10;
+            width: 100%;
+            flex-shrink: 0;
+            padding: 20px 0 8px;
             text-align: center;
             outline: none;
             -webkit-tap-highlight-color: transparent;
@@ -137,7 +140,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 13.4rem 1.1rem 1.4rem;
+            padding: 0 1.1rem 1.4rem;
             pointer-events: auto;
             opacity: 0;
             overflow-x: hidden;
@@ -732,10 +735,10 @@
     <div id="canvas-container"></div>
     <div id="warp-flash" aria-hidden="true"></div>
         <div id="liber-veil" aria-hidden="true"></div>
-    <header>
-        <img src="AiiAold.8dde82cb.jpg" alt="Aivoinko Logo" width="110" height="110" fetchpriority="high" decoding="async">
-    </header>
     <div id="liber-stage">
+        <header>
+            <img src="AiiAold.8dde82cb.jpg" alt="Aivoinko Logo" width="110" height="110" fetchpriority="high" decoding="async">
+        </header>
         <div id="realm-title">
             <h1>Left Aperture</h1>
         </div>

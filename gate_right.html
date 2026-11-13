@@ -105,11 +105,13 @@
         }
 
         header {
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            position: relative;
+            top: auto;
+            left: auto;
+            transform: none;
             z-index: 10;
+            width: 100%;
+            padding: 20px 0 8px;
             text-align: center;
             outline: none;
             -webkit-tap-highlight-color: transparent;
@@ -167,7 +169,7 @@
         .bay--left { justify-content: flex-start; }
         .bay--right { justify-content: flex-end; }
 
-        section.bay:first-of-type { padding-top: 256px; }
+        section.bay:first-of-type { padding-top: 8vh; }
 
         .folio {
             position: relative;

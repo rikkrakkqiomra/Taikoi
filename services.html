@@ -6,18 +6,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Services</title>
-    <meta name="description" content="Aivoinko services: The Work, Business Strategy, Pricing, and Contact.">
+    <meta name="description" content="Aivoinko services: Offerings, Business Strategy, Pricing, and Contact.">
     <meta name="theme-color" content="#00f3ff">
     <link rel="canonical" href="https://taikoi.netlify.app/services.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Aivoinko">
     <meta property="og:title" content="Services">
-    <meta property="og:description" content="Aivoinko services: The Work, Business Strategy, Pricing, and Contact.">
+    <meta property="og:description" content="Aivoinko services: Offerings, Business Strategy, Pricing, and Contact.">
     <meta property="og:url" content="https://taikoi.netlify.app/services.html">
     <meta property="og:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Services">
-    <meta name="twitter:description" content="Aivoinko services: The Work, Business Strategy, Pricing, and Contact.">
+    <meta name="twitter:description" content="Aivoinko services: Offerings, Business Strategy, Pricing, and Contact.">
     <meta name="twitter:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <link rel="apple-touch-icon" href="AiiAold.8dde82cb.jpg">
     <link rel="preconnect" href="https://unpkg.com" crossorigin>
@@ -99,11 +99,14 @@
 
         /* # Header & Navigation */
         header {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
+            position: relative;
+            top: auto;
+            left: auto;
+            transform: none;
             z-index: 10;
+            width: 100%;
+            flex-shrink: 0;
+            padding-top: 20px;
             text-align: center;
             /* # Remove outline on click */
             outline: none;
@@ -148,8 +151,7 @@
             pointer-events: auto;
             overflow-y: auto;
             /* # Enable scrolling */
-            padding-top: 260px;
-            /* # Space for header */
+            padding-top: 8px;
             padding-bottom: 100px;
             display: flex;
             flex-direction: column;
@@ -164,36 +166,52 @@
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 40px;
+            padding: 32px 36px;
             border-radius: 15px;
             max-width: 800px;
             width: 90%;
             color: #ddd;
             text-align: left;
             box-shadow: 0 0 40px rgba(0, 243, 255, 0.05);
-
-            /* Floating Animation */
-            animation: float 6s ease-in-out infinite;
             opacity: 0;
-            /* Start hidden for entry animation */
             transform: translateY(50px);
         }
 
         .floating-block h2 {
             font-family: 'Orbitron', sans-serif;
             color: var(--accent-color);
-            margin-bottom: 20px;
-            font-size: 1.8rem;
+            margin: 0;
+            font-size: 1.45rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             text-shadow: 0 0 15px rgba(0, 243, 255, 0.4);
-            border-bottom: 1px solid rgba(0, 243, 255, 0.3);
+        }
+
+        .block-head {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 16px;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.35);
             padding-bottom: 10px;
         }
 
+        .block-cta {
+            flex: 0 0 auto;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            white-space: nowrap;
+        }
+
         .floating-block p {
-            font-size: 1.1rem;
-            line-height: 1.8;
+            font-size: 1.08rem;
+            line-height: 1.65;
             margin-bottom: 0;
         }
 
@@ -201,14 +219,22 @@
             text-decoration: none;
             color: inherit;
             cursor: pointer;
-            transition: border-color 180ms ease, box-shadow 180ms ease;
+            border-color: rgba(0, 243, 255, 0.42);
+            box-shadow: 0 0 28px rgba(0, 243, 255, 0.1), inset 0 0 0 1px rgba(0, 243, 255, 0.08);
+            transition: border-color 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
         }
 
         a.floating-block:hover,
         a.floating-block:focus-visible {
-            border-color: rgba(0, 243, 255, 0.45);
-            box-shadow: 0 0 40px rgba(0, 243, 255, 0.12);
+            background: rgba(0, 243, 255, 0.06);
+            border-color: #00f3ff;
+            box-shadow: 0 0 36px rgba(0, 243, 255, 0.28), inset 0 0 0 1px rgba(0, 243, 255, 0.2);
             outline: none;
+        }
+
+        a.floating-block:hover .block-cta,
+        a.floating-block:focus-visible .block-cta {
+            text-shadow: 0 0 12px rgba(0, 243, 255, 0.7);
         }
 
         .floating-block ul {
@@ -449,6 +475,7 @@
         html.ui-ready .floating-container,
         html.ui-ready .floating-block {
             opacity: 1 !important;
+            transform: none;
         }
     </style>
 </head>
@@ -458,13 +485,11 @@
     <!-- # 3D Render Target -->
     <div id="canvas-container"></div>
 
-    <!-- # Header with Logo -->
-    <header>
-        <img src="AiiAold.8dde82cb.jpg" alt="Aivoinko Logo" width="150" height="150" fetchpriority="high" decoding="async">
-    </header>
-
     <!-- # Main Content Container -->
     <div class="floating-container">
+        <header>
+            <img src="AiiAold.8dde82cb.jpg" alt="Aivoinko Logo" width="150" height="150" fetchpriority="high" decoding="async">
+        </header>
 
         <article class="calling-card">
             <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -474,21 +499,33 @@
             <p class="vita-contact"><a href="tel:+358405056974">+358 40 505 6974</a> · <a href="mailto:Aivoinko@gmail.com">Aivoinko@gmail.com</a></p>
         </article>
 
-        <a class="floating-block delay-1" href="branding.html">
-            <h2>The Work</h2>
-            <p>Four engagements. How a company looks, thinks, computes, and is found.</p>
+        <a class="floating-block delay-1" href="branding.html" aria-label="Open Offerings">
+            <div class="block-head">
+                <h2>Offerings</h2>
+                <span class="block-cta" aria-hidden="true">Open →</span>
+            </div>
+            <p>Hire the brand, a thinking course, a private AI on your own machines, and how the company is found.</p>
         </a>
-        <a class="floating-block delay-2" href="business_strategy.html">
-            <h2>Business Strategy</h2>
-            <p>The method that writes other strategies, so the house does not go brittle.</p>
+        <a class="floating-block delay-2" href="business_strategy.html" aria-label="Open Business Strategy">
+            <div class="block-head">
+                <h2>Business Strategy</h2>
+                <span class="block-cta" aria-hidden="true">Open →</span>
+            </div>
+            <p>The firm's vision: you should own your face, your mind, your machines, and the way you are found.</p>
         </a>
-        <a class="floating-block delay-3" href="pricing.html">
-            <h2>Pricing</h2>
-            <p>How long each engagement runs. The sum is agreed in the work.</p>
+        <a class="floating-block delay-3" href="pricing.html" aria-label="Open Pricing">
+            <div class="block-head">
+                <h2>Pricing</h2>
+                <span class="block-cta" aria-hidden="true">Open →</span>
+            </div>
+            <p>How long each of those four engagements runs; the fee is set when we begin.</p>
         </a>
-        <a class="floating-block delay-4" href="contact.html">
-            <h2>Contact</h2>
-            <p>The conversation starts on LinkedIn.</p>
+        <a class="floating-block delay-4" href="contact.html" aria-label="Open Contact">
+            <div class="block-head">
+                <h2>Contact</h2>
+                <span class="block-cta" aria-hidden="true">Open →</span>
+            </div>
+            <p>Message on LinkedIn to begin.</p>
         </a>
 
         <footer class="hall-closer">
@@ -609,9 +646,7 @@
 
                 // Trigger block animations manually to ensure they start after entry
                 blocks.forEach((block, index) => {
-                    // We use a combination of float (infinite) and fadeIn (once)
-                    // But since we set opacity:0 in CSS, we need to make sure they fade in
-                    block.style.animation = `float 6s ease-in-out infinite ${index * 0.5}s, fadeIn 1s ease forwards ${index * 0.3}s`;
+                    block.style.animation = `fadeIn 1s ease forwards ${index * 0.3}s`;
                 });
             }
         }
