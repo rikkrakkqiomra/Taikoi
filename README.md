@@ -7,7 +7,7 @@ A public artistic site. The home page is an interactive 3D solar system. Service
 | File | What it is |
 |---|---|
 | `index.html` | Home. Three.js solar system. Services and the sun collapse into Services. Gallery and Bio warp directly. Library holds, then offers Codex Operum, Fragmenta Apocrypha, or Khaeos Metalogs. |
-| `services.html` | Services landing. Four room links on the same starfield. Seal lists The Work, Business Strategy, Pricing, and Contact. |
+| `services.html` | Services landing. Name card, then four room links on the same starfield. Seal lists The Work, Business Strategy, Pricing, and Contact. |
 | `vault/opening.html` | The Opening of Reality manifesto. Vaulted. Netlify serves 404 for `/brain` and `/vault/*`. |
 | `branding.html` | The Work brochure. Four service sands on the starfield. Return goes to Services. |
 | `business_strategy.html` | Business Strategy. Centered scroll: vision and four instruments. Return goes to Services. |
