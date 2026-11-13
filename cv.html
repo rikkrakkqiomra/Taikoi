@@ -117,23 +117,7 @@
         }
 
         #realm-title {
-            position: static;
-            z-index: 6;
-            text-align: center;
-            pointer-events: none;
             opacity: 0;
-            margin-top: 4vh;
-            padding-bottom: 12vh;
-        }
-
-        #realm-title h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            font-size: clamp(1.1rem, 3.6vw, 2.1rem);
-            letter-spacing: 0.34em;
-            text-transform: uppercase;
-            color: #efe6d4;
-            text-shadow: 0 0 18px rgba(196, 140, 64, 0.35);
         }
 
         #hall {
@@ -822,9 +806,6 @@
                 font-size: 1.08rem;
             }
 
-            #realm-title {
-                display: none;
-            }
         }
 
         html.ui-ready header,
@@ -872,7 +853,7 @@
                 <h2>Core Competencies / Technical Stack</h2>
                 <div class="vita-stack">
                     <h3>AI &amp; Agentic Architectures</h3>
-                    <p>Multi-Agent Systems, Hybrid AI, LLM Orchestration, Hallucination Minimization, Agentic RAG, Prompt Engineering, Model Fine-tuning &amp; Evaluation, Model Context Protocol (MCP).</p>
+                    <p>Multi-Agent Systems, Hybrid AI, LLM Orchestration, Hallucination Minimization, Agentic RAG, Query Expansion, Prompt Engineering, Model Fine-tuning &amp; Evaluation, Model Context Protocol (MCP).</p>
                 </div>
                 <div class="vita-stack">
                     <h3>Modern AI Development</h3>
@@ -961,15 +942,20 @@
                 <h3 class="vita-title">Local-First Compound RegTech AI Engine</h3>
                 <p>Built a fully offline Compound AI platform for regulatory compliance analysis. Engineered a deterministic-to-generative pipeline featuring clustering neural network, graphs, hybrid retrieval (HNSW + BM25), BGE pairwise batch reranking, DeBERTa-v3 directional NLI logic, and bipartite matching, eliminating hallucinations in regulated contexts and generating automated regulatory impact matrices. (Commercial scaling &amp; continued development under NDA).</p>
                 <h3 class="vita-title">Autonomous Edge AI Cluster</h3>
-                <p>Configured and deployed localized high-performance inference pipelines on NVIDIA GB10 ARM Spark hardware, achieving ultra-low latency and full offline data privacy. Engineered an autonomous multi-agent core featuring audit-grade, compliance-by-design telemetry and logging with modular design.</p>
+                <p>Configured and deployed localized high-performance inference pipelines on NVIDIA GB10 ARM Spark hardware, achieving ultra-low latency and full offline data privacy. Engineered an autonomous multi-agent core featuring audit-grade, compliance-by-design telemetry and logging with modular design. Query expansion fans one prompt into a structured set of probes; those probes then run concurrently as distinct professional personas on different models—physician, counsel, and peers answering the same question at once rather than in a single voice.</p>
                 <h3 class="vita-title">Multi-Objective Bayesian Optimization Engine</h3>
                 <p>Architected a black-box optimization microservice for industrial formulations. Significantly reducing experimental iterations while maintaining regulatory parameter bounds (Architecture and proprietary details protected under NDA).</p>
+                <h3 class="vita-title">AI-Assisted Automatic Backtester &amp; Trading Platform</h3>
+                <p>Architected an AI-assisted automatic backtesting and execution-research platform for a short-biased systematic book. The signal grammar is Ichimoku Kinko Hyo treated as a full equilibrium map, not a single oscillator: the kumo is future consensus, and shorts arm only when price trades beneath that cloud, Tenkan and Kijun have crossed and aligned bearish, and Chikou is clear of both price and kumo—with Kijun as the invalidation and trailing spine. A multi-model layer (Ichimoku parameter families, timeframes, and complementary regime filters) votes on each setup; an assistant expands the market query and withholds size unless the ensemble can jointly defend the short. The backtester walks history forward without look-ahead, applying fill and slippage, and emits expectancy, drawdown, and hit-rate so the book is audited before capital is at risk.</p>
             </article>
         </section>
 
-        <div id="realm-title">
+        <footer class="hall-closer" id="realm-title">
             <h1>CV</h1>
-        </div>
+            <button type="button" id="hall-return" class="hall-return" aria-label="Return">
+                <img src="AiiAold.8dde82cb.jpg" alt="" width="48" height="48" decoding="async">
+            </button>
+        </footer>
     </div>
 
     <script type="module">

@@ -281,20 +281,7 @@
             background: linear-gradient(90deg, rgba(212, 175, 55, 0.55), transparent 72%);
         }
 
-        #realm-title {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            pointer-events: none;
-            padding: 8vh 6vw 16vh;
-        }
-
-        #realm-title h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            font-size: clamp(1.1rem, 3.6vw, 2.1rem);
-            letter-spacing: 0.34em;
-            text-transform: uppercase;
+        .hall-closer h1 {
             color: #d4af37;
             text-shadow: 0 0 22px rgba(212, 175, 55, 0.55);
         }
@@ -335,7 +322,6 @@
             .folio blockquote { font-size: 1.12rem; }
             .folio p { font-size: 1rem; }
 
-            #realm-title { display: none; }
         }
 
         html.ui-ready #nave { opacity: 1; }
@@ -417,9 +403,12 @@
             </article>
         </section>
 
-        <div id="realm-title">
+        <footer class="hall-closer" id="realm-title">
             <h1>Fragmenta Apocrypha</h1>
-        </div>
+            <button type="button" id="hall-return" class="hall-return" aria-label="Return">
+                <img src="AiiAold.8dde82cb.jpg" alt="" width="48" height="48" decoding="async">
+            </button>
+        </footer>
     </div>
 
     <script type="module">

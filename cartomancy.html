@@ -115,22 +115,10 @@
         }
 
         #realm-title {
-            position: static;
-            z-index: 6;
-            text-align: center;
-            pointer-events: none;
             opacity: 0;
-            margin-top: 4vh;
-            padding-bottom: 10vh;
         }
 
-        #realm-title h1 {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 900;
-            font-size: clamp(1.1rem, 3.6vw, 2.1rem);
-            letter-spacing: 0.34em;
-            text-transform: uppercase;
-            color: #efe6d4;
+        .hall-closer h1 {
             text-shadow: 0 0 18px rgba(176, 138, 212, 0.4);
         }
 
@@ -548,9 +536,6 @@
                 font-size: 0.98rem;
             }
 
-            #realm-title {
-                display: none;
-            }
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -1484,9 +1469,12 @@
             </article>
         </div>
 
-        <div id="realm-title">
+        <footer class="hall-closer" id="realm-title">
             <h1>Cartomancy</h1>
-        </div>
+            <button type="button" id="hall-return" class="hall-return" aria-label="Return">
+                <img src="AiiAold.8dde82cb.jpg" alt="" width="48" height="48" decoding="async">
+            </button>
+        </footer>
     </div>
 
     <script type="module">

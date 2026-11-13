@@ -22,7 +22,7 @@ A public artistic site. The home page is an interactive 3D solar system. Service
 | `gate_left.html` | Left Aperture. Entered from the left seal. |
 | `gate_right.html` | Fragmenta Apocrypha. Entered from the right seal. |
 
-The subpages share `seal-menu.css` and `seal-menu.js`. The seal opens an index. Return reverse-warps home. From Physicalus and Cartomancy, Return reverse-warps to the gallery. From The Work, Business Strategy, Pricing, and Contact, Return reverse-warps to Services. From CV, Return reverse-warps to Bio.
+The subpages share `seal-menu.css` and `seal-menu.js`. The seal opens an index. Return reverse-warps home. From Physicalus and Cartomancy, Return reverse-warps to the gallery. From The Work, Business Strategy, Pricing, and Contact, Return reverse-warps to Services. From CV, Return reverse-warps to Bio. Each public subpage ends with an in-flow closer: the page name and the obsidian return stone. The stone is the same Return as the seal. The vaulted manifesto has no closer.
 
 Artwork stills, frames, and hangings live under `art/`. The live logo, favicon, and sun sprite are `AiiAold.8dde82cb.jpg`.
 

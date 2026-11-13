@@ -138,8 +138,11 @@
             flex-direction: column;
             align-items: center;
             padding: 13.4rem 1.1rem 1.4rem;
-            pointer-events: none;
+            pointer-events: auto;
             opacity: 0;
+            overflow-x: hidden;
+            overflow-y: auto;
+            overscroll-behavior: contain;
         }
 
         #realm-title {
@@ -161,8 +164,18 @@
             text-shadow: 0 0 22px rgba(255, 45, 85, 0.55);
         }
 
-        #liber-stage.is-reading #realm-title {
+        #liber-stage.is-reading #realm-title,
+        #liber-stage.is-reading .hall-closer {
             opacity: 0.22;
+        }
+
+        #liber-stage.is-reading .hall-return {
+            pointer-events: none;
+        }
+
+        .hall-closer h1 {
+            color: #ff2d55;
+            text-shadow: 0 0 22px rgba(255, 45, 85, 0.55);
         }
 
         #liber {
@@ -810,6 +823,12 @@
                 </div>
             </article>
         </div>
+        <footer class="hall-closer">
+            <h1>Left Aperture</h1>
+            <button type="button" id="hall-return" class="hall-return" aria-label="Return">
+                <img src="AiiAold.8dde82cb.jpg" alt="" width="48" height="48" decoding="async">
+            </button>
+        </footer>
     </div>
 
     <script>

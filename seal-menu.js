@@ -160,7 +160,7 @@
         var nave = document.getElementById('nave');
         if (hall) roots.push(hall);
         if (nave) roots.push(nave);
-        document.querySelectorAll('.floating-container, .terminal-container').forEach(function (el) {
+        document.querySelectorAll('.floating-container, .terminal-container, #liber-stage').forEach(function (el) {
             roots.push(el);
         });
         var doc = document.scrollingElement || document.documentElement;
@@ -310,6 +310,14 @@
         if (anchor.contains(document.activeElement)) return;
         close({ scroll: false, focus: true });
     });
+
+    var hallReturn = document.getElementById('hall-return');
+    if (hallReturn) {
+        hallReturn.addEventListener('click', function (event) {
+            event.preventDefault();
+            goHome();
+        });
+    }
 
     window.addEventListener('pageshow', function () {
         close({ scroll: false, focus: false });
