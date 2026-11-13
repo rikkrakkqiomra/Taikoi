@@ -163,7 +163,7 @@
             position: relative;
             isolation: isolate;
             width: min(42rem, 92vw);
-            padding: 3.55rem 2.15rem 3.9rem;
+            padding: 3.55rem 2.15rem 0;
             opacity: 0;
             transform: translateY(24px);
         }
@@ -236,6 +236,8 @@
             position: relative;
             z-index: 3;
             color: #d8d2c6;
+            /* Full height of seal-scroll-bottom.png (1149×217) plus a short gap */
+            padding-bottom: calc(100% * 217 / 1149 + 0.6rem);
         }
 
         .scroll-gem {
