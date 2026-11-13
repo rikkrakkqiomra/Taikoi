@@ -16,12 +16,13 @@ A public artistic site. The home page is an interactive 3D solar system. Service
 | `gallery.html` | Sixteen framed hangings on a black starfield. |
 | `physicalus.html` | Side hall of the gallery. Workshop photographs. |
 | `cartomancy.html` | Cartomancy. The suit of Beliefs: thirteen cards, from Imagination to Freedom. |
-| `bio.html` | Biography hall. Finnish copy, and outbound work links. |
+| `bio.html` | Multimieli. Finnish copy, portraits, and outbound work links. |
+| `cv.html` | CV. English vita. Return goes to Bio. |
 | `diy_realities.html` | Khaeos Metalogs. The Library destination. |
 | `gate_left.html` | Left Aperture. Entered from the left seal. |
 | `gate_right.html` | Fragmenta Apocrypha. Entered from the right seal. |
 
-The subpages share `seal-menu.css` and `seal-menu.js`. The seal opens an index. Return reverse-warps home. From Physicalus and Cartomancy, Return reverse-warps to the gallery. From The Work, Business Strategy, Pricing, and Contact, Return reverse-warps to Services.
+The subpages share `seal-menu.css` and `seal-menu.js`. The seal opens an index. Return reverse-warps home. From Physicalus and Cartomancy, Return reverse-warps to the gallery. From The Work, Business Strategy, Pricing, and Contact, Return reverse-warps to Services. From CV, Return reverse-warps to Bio.
 
 Artwork stills, frames, and hangings live under `art/`. The live logo, favicon, and sun sprite are `AiiAold.8dde82cb.jpg`.
 

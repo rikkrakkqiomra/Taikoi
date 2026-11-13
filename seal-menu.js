@@ -27,6 +27,11 @@
         { label: 'Contact', href: 'contact.html' }
     ];
 
+    var BIO_REALMS = [
+        { label: 'Multimieli', href: 'bio.html' },
+        { label: 'CV', href: 'cv.html' }
+    ];
+
     function pageStem() {
         var path = window.location.pathname.replace(/\\/g, '/');
         var parts = path.split('/').filter(Boolean);
@@ -41,7 +46,9 @@
             ? LIBRARY_REALMS
             : (stem === 'services' || stem === 'branding' || stem === 'business_strategy' || stem === 'pricing' || stem === 'contact')
                 ? SERVICE_REALMS
-                : SECTION_REALMS;
+                : (stem === 'bio' || stem === 'cv')
+                    ? BIO_REALMS
+                    : SECTION_REALMS;
 
     var img = document.querySelector('header img');
     if (!img) return;
