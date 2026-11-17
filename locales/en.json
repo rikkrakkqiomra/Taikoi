@@ -78,7 +78,7 @@
     "lede": "Four engagements: the company’s public face, a working course in judgment, a private AI on your machines, and how the company is found. Duration is written here. The fee is agreed when we begin.",
     "workHeading": "Four engagements",
     "workNote": "Open one for the full brief.",
-    "roomsLabel": "Business Strategy and Pricing",
+    "roomsLabel": "Business Strategy, Pricing, and Contact",
     "brand": {
       "title": "Brand Enrichment and Wholeness",
       "term": "Six months, at least",
@@ -106,6 +106,10 @@
     "pricing": {
       "title": "Pricing",
       "body": "How long each runs. The fee is agreed at the start, not listed as a tariff."
+    },
+    "contact": {
+      "title": "Contact",
+      "body": "Write about an engagement. Phone, post, and LinkedIn are in the same hall."
     }
   },
   "branding": {
@@ -172,13 +176,34 @@
     "aiName": "Sovereign AI Intelligence Architecture.",
     "aiTerm": "Pure AI.",
     "geoName": "GEO / Marketing Strategist.",
-    "geoTerm": "Ongoing."
+    "geoTerm": "Ongoing.",
+    "contact": "Write to Contact if one of these is timely."
   },
   "contact": {
     "title": "Contact",
-    "description": "Contact. The conversation starts on LinkedIn.",
-    "lede": "The conversation starts on LinkedIn.",
-    "link": "Riku Korpiaho on LinkedIn"
+    "description": "Contact. Write about an engagement, or call, email, or open LinkedIn.",
+    "lede": "Write if one of the four engagements is timely. LinkedIn, phone, and post stay open.",
+    "link": "Riku Korpiaho on LinkedIn",
+    "name": "Name",
+    "email": "Email",
+    "organization": "Organization",
+    "subject": "Subject",
+    "subjectPlaceholder": "Choose",
+    "subjectBrand": "Brand",
+    "subjectCourse": "Course",
+    "subjectAi": "AI",
+    "subjectGeo": "GEO",
+    "subjectOther": "Other",
+    "message": "Message",
+    "consent": "I understand the message is used only for this enquiry.",
+    "privacy": "The controller is Riku Korpiaho / Aivoinko. The message is used only for this enquiry. Not for marketing. It stays in Netlify’s form archive and goes out as an email notification. The form travels through Netlify, not through your machines.",
+    "submit": "Send",
+    "sending": "Sending…",
+    "success": "The message has arrived.",
+    "error": "The send did not succeed. Use email, or try again.",
+    "required": "Fill this field.",
+    "invalidEmail": "Write an email address.",
+    "tooShort": "Write the message a little longer."
   },
   "notFound": {
     "title": "Not Found",

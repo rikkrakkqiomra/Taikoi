@@ -78,7 +78,7 @@
     "lede": "Neljä toimeksiantoa: yrityksen julkinen kasvo, työskentelevä kurssi harkinnassa, yksityinen tekoäly omilla koneillasi, ja se miten yritys löydetään. Kesto kirjoitetaan tähän. Palkkio sovitaan, kun aloitamme.",
     "workHeading": "Neljä toimeksiantoa",
     "workNote": "Avaa yksi, niin näet koko toimeksiannon.",
-    "roomsLabel": "Liiketoimintastrategia ja hinnoittelu",
+    "roomsLabel": "Liiketoimintastrategia, hinnoittelu ja yhteys",
     "brand": {
       "title": "Brändin eheys ja kokonaisuus",
       "term": "Vähintään kuusi kuukautta",
@@ -106,6 +106,10 @@
     "pricing": {
       "title": "Hinnoittelu",
       "body": "Kuinka kauan kukin kestää. Palkkio sovitaan alussa, ei listata tariffina."
+    },
+    "contact": {
+      "title": "Yhteys",
+      "body": "Kirjoita toimeksiannosta. Puhelin, posti ja LinkedIn ovat samassa salissa."
     }
   },
   "branding": {
@@ -172,13 +176,34 @@
     "aiName": "Suvereeni tekoälyarkkitehtuuri.",
     "aiTerm": "Puhdas tekoäly.",
     "geoName": "GEO / markkinointistrategi.",
-    "geoTerm": "Jatkuva."
+    "geoTerm": "Jatkuva.",
+    "contact": "Kirjoita yhteys, jos jokin näistä on ajankohtainen."
   },
   "contact": {
     "title": "Yhteys",
-    "description": "Yhteys. Keskustelu alkaa LinkedInissä.",
-    "lede": "Keskustelu alkaa LinkedInissä.",
-    "link": "Riku Korpiaho LinkedInissä"
+    "description": "Yhteys. Kirjoita toimeksiannosta, tai soita, lähetä posti, tai avaa LinkedIn.",
+    "lede": "Kirjoita, jos jokin neljästä toimeksiannosta on ajankohtainen. LinkedIn, puhelin ja posti ovat edelleen auki.",
+    "link": "Riku Korpiaho LinkedInissä",
+    "name": "Nimi",
+    "email": "Sähköposti",
+    "organization": "Organisaatio",
+    "subject": "Aihe",
+    "subjectPlaceholder": "Valitse",
+    "subjectBrand": "Brändi",
+    "subjectCourse": "Kurssi",
+    "subjectAi": "Tekoäly",
+    "subjectGeo": "GEO",
+    "subjectOther": "Muu",
+    "message": "Viesti",
+    "consent": "Ymmärrän, että viestiä käytetään vain tähän yhteydenottoon.",
+    "privacy": "Rekisterinpitäjä on Riku Korpiaho / Aivoinko. Viestiä käytetään vain tähän yhteydenottoon. Ei markkinointia. Se säilyy Netlifyn lomakearkistossa ja lähtee sähköposti-ilmoituksena. Lomake kulkee Netlifyn kautta, ei teidän koneidenne kautta.",
+    "submit": "Lähetä",
+    "sending": "Lähetetään…",
+    "success": "Viesti on perillä.",
+    "error": "Lähetys ei onnistunut. Käytä sähköpostia tai yritä uudelleen.",
+    "required": "Täytä tämä kenttä.",
+    "invalidEmail": "Kirjoita sähköpostiosoite.",
+    "tooShort": "Kirjoita viesti vähän pidempänä."
   },
   "notFound": {
     "title": "Ei löydy",

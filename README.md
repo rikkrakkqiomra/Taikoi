@@ -11,8 +11,8 @@ A public artistic site. The home page is an interactive 3D solar system. Service
 | `vault/opening.html` | The Opening of Reality manifesto. Vaulted. Netlify serves 404 for `/brain` and `/vault/*`. |
 | `branding.html` | The Work brochure. Four service sands on the starfield. Return goes to Services. |
 | `business_strategy.html` | Business Strategy. Centered scroll: vision and four instruments. Return goes to Services. |
-| `pricing.html` | Pricing. Four engagements and their durations. Return goes to Services. |
-| `contact.html` | Contact. LinkedIn. Return goes to Services. |
+| `pricing.html` | Pricing. Four engagements and their durations. A line links to Contact. Return goes to Services. |
+| `contact.html` | Contact. Enquiry form, phone, email, and LinkedIn. Return goes to Services. |
 | `gallery.html` | Sixteen framed hangings on a black starfield. |
 | `physicalus.html` | Side hall of the gallery. Workshop photographs. |
 | `cartomancy.html` | Cartomancy. The suit of Beliefs: thirteen cards, from Imagination to Freedom. |

@@ -54,7 +54,7 @@ Taikoi/
 ├── branding.html              # The Work brochure. Four service sands on the starfield. Return → services.html
 ├── business_strategy.html     # Strategy scroll: four instruments. Return → services.html
 ├── pricing.html               # Four engagements and their durations. Return → services.html
-├── contact.html               # LinkedIn. Return → services.html
+├── contact.html               # Enquiry form (Netlify Forms) plus tel, mailto, LinkedIn. Return → services.html
 ├── gallery.html               # Black starfield + 2D hangings; header reverse-warp home
 ├── physicalus.html            # Gallery side hall: same starfield, steel photo plates; Return → gallery.html
 ├── cartomancy.html            # Beliefs, Changes, Powers, and Relations suit guides. Thirteen cards each. Return → gallery.html
@@ -208,12 +208,12 @@ No `.gitignore` in the current tree (removed in `85d5131`).
 | Path | URL (Netlify static) | Role |
 |---|---|---|
 | `index.html` | `/` | Primary 3D solar system. Nav to Services (`#nav-services` collapse), Gallery (direct streak warp), Bio (direct streak warp), and Library (warp + on-page wormhole choice). Sun click and `#enter-opening` collapse → `services.html`. |
-| `services.html` | `/services.html` | Practice page over a dim pinned starfield (same 5000-point field as the service halls, bone `#e8e0d4` at opacity 0.28, fog `#0c0b09`). Document scrolls; `#canvas-container` is `position: fixed`. Copy is visible at once (no UI hide on enter). Warm `#0c0b09` ground, bone type, brass hairlines. Kicker is Services. Identity, then a four-engagement lede. `tel:+358405056974`, `mailto:Aivoinko@gmail.com`, and outbound LinkedIn (`fi.linkedin.com/in/riku-korpiaho-a465bb251`, `noopener`). Numbered engagements 01–04 link to `branding.html#brand`, `#course`, `#ai`, `#geo`. Then Business Strategy and Pricing. Contact is the vita plus the seal, not a third in-page card. Header seal is the shared 132×216px stone (104×170px under 768px). Closer is the shared Services title plus return stone, full-width after `.practice`. Return reverse-scales the field → `index.html`. |
+| `services.html` | `/services.html` | Practice page over a dim pinned starfield (same 5000-point field as the service halls, bone `#e8e0d4` at opacity 0.28, fog `#0c0b09`). Document scrolls; `#canvas-container` is `position: fixed`. Copy is visible at once (no UI hide on enter). Warm `#0c0b09` ground, bone type, brass hairlines. Kicker is Services. Identity, then a four-engagement lede. `tel:+358405056974`, `mailto:Aivoinko@gmail.com`, and outbound LinkedIn (`fi.linkedin.com/in/riku-korpiaho-a465bb251`, `noopener`). Numbered engagements 01–04 link to `branding.html#brand`, `#course`, `#ai`, `#geo`. Then Business Strategy, Pricing, and Contact (`contact.html`) as in-page rooms. The vita (phone, email, LinkedIn) stays on this page. Seal Contact is unchanged. Header seal is the shared 132×216px stone (104×170px under 768px). Closer is the shared Services title plus return stone, full-width after `.practice`. Return reverse-scales the field → `index.html`. |
 | `vault/opening.html` | unpublished | Vaulted manifesto (Meat-Suit Latency). Starfield + five blocks. Seal lists Section 1–4 (no href). Return → `../index.html`. `noindex`. Netlify force-404s `/brain`, `/brain.html`, `/vault`, and `/vault/*`. |
 | `branding.html` | `/branding.html` | Same starfield. The Work brochure: mast plus four sand columns in a two-column grid, titled Brand Enrichment and Wholeness, Philosophical and Technological Mind Expansion, Sovereign AI Intelligence Architecture, and GEO / Marketing Strategist. Sands have ids `brand`, `course`, `ai`, `geo` for Services deep links. Fourth sand-term is Ongoing. No euros on this page. Seal lists the four Services rooms. Return → `services.html`. |
 | `business_strategy.html` | `/business_strategy.html` | Same starfield. Centered manuscript scroll (`art/seal-scroll-top.png` / `art/seal-scroll-bottom.png`) with vision, four instruments, and stance. Seal lists the four Services rooms. Return → `services.html`. |
-| `pricing.html` | `/pricing.html` | Same starfield. Four engagements and their durations. The sum is agreed in the engagement. Seal lists the four Services rooms. Return → `services.html`. |
-| `contact.html` | `/contact.html` | Same starfield. LinkedIn (`fi.linkedin.com/in/riku-korpiaho-a465bb251`). Seal lists the four Services rooms. Return → `services.html`. |
+| `pricing.html` | `/pricing.html` | Same starfield. Four engagements and their durations. The sum is agreed in the engagement. A line under the list links to `contact.html`. Seal lists the four Services rooms. Return → `services.html`. |
+| `contact.html` | `/contact.html` | Same starfield. Enquiry form `name="contact"` (`data-netlify="true"`, honeypot `bot-field`, `action="/contact.html"`). Fields: name, email, optional organization, subject, message (min 8, max 4000), consent. Subject values stored as `Brändi`, `Kurssi`, `Tekoäly`, `GEO`, `Muu`. With JS, `fetch` POSTs `application/x-www-form-urlencoded` to `/` and the block becomes the success line. Without JS, the browser POSTs to `/contact.html` (not `/fi` or `/en`, so the language rewrites do not swallow it). Failure keeps the form and shows the error line. `tel:+358405056974`, `mailto:Aivoinko@gmail.com`, and LinkedIn stay above the form. A short controller notice sits under it: Riku Korpiaho / Aivoinko, enquiry only, Netlify form archive plus email notification, not the client’s machines. No privacy-policy page. Seal lists the four Services rooms. Return → `services.html`. |
 | `gallery.html` | `/gallery.html` | Black starfield (Three.js warp only) + 2D photographic hangings with draft text plaques. Seal opens the gallery index; Return reverse-warps → `index.html`. Sixteen solo bays; hangings alternate left/right on desktop. Fourth is The Totem in a carved cedar frame. Last is The Reliquary in a pewter rococo frame. After the last bay, Gallery then an obsidian return stone reverse-warps home. Seal item Physical Arts opens `physicalus.html`. Artificial Arts is this hall. Cartomancy opens `cartomancy.html`. Musical Theatre and Mineralogy do not navigate. |
 | `physicalus.html` | `/physicalus.html` | Side hall of the gallery (Physical Arts). Same black starfield. Three workshop photographs of Damascus jewelry on cool steel plates (no art frames). Seal opens the same gallery index as `gallery.html`. Artificial Arts opens `gallery.html`. Return reverse-warps → `gallery.html`. |
 | `cartomancy.html` | `/cartomancy.html` | Beliefs, Changes, Powers, and Relations suits of the tarot fork. Black starfield, land dropdown, thirteen cards with English readings under each image. Seal opens the gallery index. Return reverse-warps → `gallery.html`. All four lands are open. |
@@ -239,6 +239,8 @@ index.html  --nav "Services"---->  collapse 1s ---->  services.html  --seal Retu
                  services seal Business Strategy -> business_strategy.html --seal Return--> services.html
                  services seal Pricing -----------> pricing.html           --seal Return--> services.html
                  services seal Contact -----------> contact.html           --seal Return--> services.html
+                 services in-page rooms ----------> business_strategy.html, pricing.html, contact.html
+                 pricing.html link ---------------> contact.html
 index.html  --nav "Gallery"------->  streak warp (boost → commit, no seals) → gallery.html
                  gallery seal Return ->  reverse-warp → index.html
                  gallery seal Physical Arts -> physicalus.html --seal Return--> gallery.html
@@ -265,15 +267,16 @@ index.html  --nav "Library"------>  warp boost → on-page choice hold (seals)
 
 ### Client vs server
 
-**100% client.** Netlify serves immutable (or must-revalidate) static files. The browser:
+**Static pages, one form post.** Netlify serves immutable (or must-revalidate) static files. The browser:
 
 1. Parses HTML.
 2. Resolves the import map and fetches Three.js from unpkg (network, CORS).
 3. Runs the inline module: constructs scene, starts the render loop.
 4. Optionally fetches `AiiAold.8dde82cb.jpg` (TextureLoader on index; `<img>` on subpages) and `art/hangings/*.png` on `gallery.html`.
 5. Fetches `/locales/fi.json` or `/locales/en.json` and writes the strings into `[data-i18n]` nodes. Default visible HTML is Finnish.
+6. On `contact.html`, a successful enquiry POSTs to Netlify Forms. That is the only server write. It is not an application API in this repo.
 
-There are no server components, no hydration boundary, no BFF, and no form POSTs.
+There are no server components, no hydration boundary, and no BFF. `contact.html` is the one form POST: the browser submits `form-name=contact` to Netlify Forms. There is still no `netlify/functions/` directory and no database in this repo.
 
 ### Data flow lifecycle
 
@@ -286,6 +289,7 @@ User gesture / page load
   → Raycaster (index only) maps pointer/touch → planet tooltip or sun transition
   → Full navigation via window.location.href or <a>
   → Previous page JS heap discarded (MPA). Language survives in the URL prefix `/fi` or `/en`, and in localStorage key `taikoi.lang` when the prefix is absent.
+  → Contact submit: `fetch('/', { method: 'POST' })` with `application/x-www-form-urlencoded`. No-JS posts to `/contact.html`. The language prefix is not the form action.
 ```
 
 Planet science fields (`mass`, `diameter`, `temp`) live in the `PLANETS` array inside `index.html`. Names and the rest of the UI copy live in `locales/fi.json` and `locales/en.json`. Nothing is fetched from an application API.
@@ -316,7 +320,9 @@ No `sessionStorage`, cookies, or IndexedDB. `localStorage` holds only `taikoi.la
 
 ### Auth / session
 
-**None.** No login, tokens, CSRF, RBAC, or session cookies. Outbound work links on `bio.html` and the LinkedIn links on `services.html` and `contact.html` are public `target="_blank"` anchors with `rel="noopener noreferrer"`. `services.html` and `cv.html` expose the CV phone as `tel:` and the CV email as `mailto:`.
+**None.** No login, tokens, CSRF, RBAC, or session cookies. Outbound work links on `bio.html` and the LinkedIn links on `services.html` and `contact.html` are public `target="_blank"` anchors with `rel="noopener noreferrer"`. `services.html`, `contact.html`, and `cv.html` expose the CV phone as `tel:` and the CV email as `mailto:`.
+
+`contact.html` collects name, email, optional organization, subject, message, and a consent checkbox. Subject values posted to Netlify are the Finnish short names (`Brändi`, `Kurssi`, `Tekoäly`, `GEO`, `Muu`); the visible option labels follow the active locale. Netlify Forms stores the submission. It can also email it. The notification address is set in the Netlify UI, not in the repo. There is no CSRF token. The honeypot field is `bot-field`; a filled honeypot is not posted and the hall shows the success line.
 
 ### Shared runtime pattern (WebGL pages and `vault/opening.html`)
 
@@ -396,6 +402,7 @@ No `sessionStorage`, cookies, or IndexedDB. `localStorage` holds only `taikoi.la
 | Service | Use | Failure mode |
 |---|---|---|
 | **Netlify** | Static hosting, TLS, header injection | Site down if deploy/CDN fails |
+| **Netlify Forms** | `contact.html` form name `contact`. AJAX POST `/`. No-JS POST `action="/contact.html"` so the `/fi` and `/en` rewrites do not swallow it. Honeypot `bot-field`. | The hall shows the error line; `tel:` and `mailto:` remain. A static preview server does not deliver the mail. Deploy registers the form. The notification mailbox is a Netlify UI setting, not an env var. |
 | **unpkg.com** | Three.js ESM + addons | 3D fails; fail-open UI still reveals chrome after 2.5s / on error |
 | **Google Fonts** | Orbitron, Rajdhani, Courier Prime, Cormorant Garamond, Cinzel | Fallback to `sans-serif` / `serif` / `monospace` |
 | **DeviantArt** | `bio.html` outbound (`#verkko`) | Link only |
@@ -404,11 +411,11 @@ No `sessionStorage`, cookies, or IndexedDB. `localStorage` holds only `taikoi.la
 | **LinkedIn** | `bio.html` outbound | Link only |
 | **Trepo (trepo.tuni.fi)** | `bio.html` outbound (thesis handle) | Link only |
 
-No analytics, CMS, payments, webhooks, auth providers, or first-party APIs.
+No analytics, CMS, payments, webhooks, auth providers, or first-party APIs. No `netlify/functions/` directory. Netlify Forms is the hosted form sink, not a function in this repo.
 
 ### Environment variables
 
-**None required.** No `.env`, no Netlify env bindings referenced in code, no secrets. Sensitivity classification: N/A.
+**None required.** No `.env`, no Netlify env bindings referenced in code, no secrets. Sensitivity classification: N/A. The contact notification mailbox is configured in the Netlify UI, not as an env var.
 
 If a future change adds secrets, document name, purpose, and classification (`public` / `secret`) here **without values**.
 
@@ -457,7 +464,7 @@ There is no API response schema.
 2. **Do not introduce a backend, env secrets, or Netlify functions without a new architecture section** (auth, data store, API contract).
 3. **Do not unpin or CDN-swap Three.js on one page only.**
 4. **Do not assume `taikoi-sun-portal.png` is wired.** It is unused; `AiiAold.8dde82cb.jpg` is the live logo/favicon/sun sprite.
-5. **Do not restyle `diy_realities.html` as the index solar system or the green System Log terminal.** The route is the Khaeos Metalogs hall: DOM images `art/khaeos/khaeos-emblem.png`, `art/khaeos/khaeos-metalogs.png`, and `art/khaeos/khaeos-well.jpg`, seven smooth rings tracking the wordmark, a coasting tunnel, and a scroll that alternates: odd folios reuse the System Log terminal frame (`Courier Prime`, `#00ff00`, `>>> SYSTEM_ROOT_ACCESS`, glitch), even folios stay gold/bone, set to either side of a center axis. The page itself is not a separate System Log route. The green terminal lives only in this hall. Outbound work links live in the Bio Verkko cabinet, on `contact.html`, and as `tel:` / `mailto:` on `cv.html`. `khaeos-logo.png` and the other `art/khaeos/` planes are unused. The home nav label stays Library. If WebGL fails, the emblem, wordmark, and log text stay visible.
+5. **Do not restyle `diy_realities.html` as the index solar system or the green System Log terminal.** The route is the Khaeos Metalogs hall: DOM images `art/khaeos/khaeos-emblem.png`, `art/khaeos/khaeos-metalogs.png`, and `art/khaeos/khaeos-well.jpg`, seven smooth rings tracking the wordmark, a coasting tunnel, and a scroll that alternates: odd folios reuse the System Log terminal frame (`Courier Prime`, `#00ff00`, `>>> SYSTEM_ROOT_ACCESS`, glitch), even folios stay gold/bone, set to either side of a center axis. The page itself is not a separate System Log route. The green terminal lives only in this hall. Outbound work links live in the Bio Verkko cabinet. `contact.html` posts the enquiry form and also shows `tel:`, `mailto:`, and LinkedIn. `services.html` and `cv.html` also expose `tel:` / `mailto:`. `khaeos-logo.png` and the other `art/khaeos/` planes are unused. The home nav label stays Library. If WebGL fails, the emblem, wordmark, and log text stay visible.
 6. **Do not persist user state across pages** except the language store: URL prefix `/fi` or `/en`, plus `localStorage` key `taikoi.lang`. MPA navigations still wipe scene memory.
 7. **Do not raise `setPixelRatio` uncapped** or run the animation loop in background tabs — thermal/battery regressions on mobile.
 8. **Do not load Three.js from a second CDN or a different major** without verifying import-map + OrbitControls paths.
@@ -484,6 +491,8 @@ There is no API response schema.
 | i18n | Live. Finnish is the HTML source. English is `locales/en.json`. Public URLs are `/fi/...` and `/en/...` via Netlify 200 rewrites. `404.html` and `vault/opening.html` do not redirect. |
 | Analytics | None |
 | Automated tests | None |
+| Contact mail | `contact.html` posts to Netlify Forms. The notification address is not in git. Set it in the Netlify UI. Submissions also stay in the Netlify form archive until deleted there. |
+| Privacy policy page | None. `contact.html` carries a short controller notice only. |
 
 ---
 
@@ -620,3 +629,4 @@ Append-only. Newest rows at the **bottom**. Do not rewrite prior rows.
 | 2026-11-17 | Clarify the Services catalogue | services.html, branding.html, architecture.md | A visitor could not tell this was Services, LinkedIn opened Contact, all four lines dumped onto one brochure, and Contact was written three times | Kicker is Services. Lede names the four engagements. Numbered rows link to `branding.html#brand` / `#course` / `#ai` / `#geo`. LinkedIn is the public profile. In-page rooms are Strategy and Pricing. Seal Contact is unchanged. |
 | 2026-11-17 | Restore shared seal and hall closer on Services | services.html, README.md, architecture.md | The shrunk stone and text Return broke the same chrome as the other halls | Header uses the shared 132×216px trigger. Closer is Services plus the obsidian stone, full-width after `.practice`. Copy, starfield, and rooms unchanged. |
 | 2026-11-17 | Finnish and English without a build | i18n.js, i18n.css, locales/fi.json, locales/en.json, netlify.toml, sitemap.xml, seal-menu.js, every HTML page, architecture.md, README.md | The site had one language in the HTML and no shared dictionary | Vanilla JSON i18n. Default copy is Finnish. `/fi/*` and `/en/*` rewrite to the same files. `html lang` follows the prefix. Switcher is flag plus FI/EN. Vault and 404 stay on the current URL. Three.js pins unchanged. Verify: `/fi/services.html` is Finnish; `/en/gallery.html` is English; the seal labels follow; `/fi/vault/*` is still 404. |
+| 2026-11-17 | Enquiry form on the Contact hall | contact.html, services.html, pricing.html, locales/fi.json, locales/en.json, README.md, architecture.md | Contact was a LinkedIn link, so an enquiry needed an account; Services hid Contact in the seal and Pricing ended without a next step | Netlify Forms form `contact` on `contact.html`: name, email, organization, subject, message, consent, honeypot. AJAX POST `/`; no-JS POST `/contact.html`. Success replaces the block. Phone, email, and LinkedIn stay. Services `.rooms` adds Contact. Pricing links to Contact. No functions, no env, no privacy page. Verify on the deployed site: submit, then check Netlify Forms and set the notification mailbox in the UI. A local static server does not deliver the mail. `prefers-reduced-motion` stops the block float. Home nav still has no Contact link. |

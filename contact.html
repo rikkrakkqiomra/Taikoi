@@ -8,7 +8,7 @@
     <script src="/i18n.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="contact.title">Yhteys</title>
-    <meta name="description" data-i18n-attr="content:contact.description" content="Yhteys. Keskustelu alkaa LinkedInissä.">
+    <meta name="description" data-i18n-attr="content:contact.description" content="Yhteys. Kirjoita toimeksiannosta, tai soita, lähetä posti, tai avaa LinkedIn.">
     <meta name="theme-color" content="#00f3ff">
     <link rel="canonical" href="https://taikoi.netlify.app/fi/contact.html">
     <link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/contact.html">
@@ -17,12 +17,12 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Aivoinko">
     <meta property="og:title" data-i18n-attr="content:contact.title" content="Yhteys">
-    <meta property="og:description" data-i18n-attr="content:contact.description" content="Yhteys. Keskustelu alkaa LinkedInissä.">
+    <meta property="og:description" data-i18n-attr="content:contact.description" content="Yhteys. Kirjoita toimeksiannosta, tai soita, lähetä posti, tai avaa LinkedIn.">
     <meta property="og:url" content="https://taikoi.netlify.app/fi/contact.html">
     <meta property="og:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" data-i18n-attr="content:contact.title" content="Yhteys">
-    <meta name="twitter:description" data-i18n-attr="content:contact.description" content="Yhteys. Keskustelu alkaa LinkedInissä.">
+    <meta name="twitter:description" data-i18n-attr="content:contact.description" content="Yhteys. Kirjoita toimeksiannosta, tai soita, lähetä posti, tai avaa LinkedIn.">
     <meta name="twitter:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <link rel="apple-touch-icon" href="AiiAold.8dde82cb.jpg">
     <link rel="preconnect" href="https://unpkg.com" crossorigin>
@@ -312,6 +312,156 @@
             background: #fff;
         }
 
+        .channels {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contact-form .field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .contact-form .field > label {
+            font-size: 0.78rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent-color);
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form select,
+        .contact-form textarea {
+            width: 100%;
+            font: inherit;
+            font-size: 1rem;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(0, 243, 255, 0.35);
+            border-radius: 4px;
+            padding: 0.7rem 0.75rem;
+        }
+
+        .contact-form textarea {
+            min-height: 8rem;
+            resize: vertical;
+        }
+
+        .contact-form select {
+            color-scheme: dark;
+        }
+
+        .contact-form input:focus-visible,
+        .contact-form select:focus-visible,
+        .contact-form textarea:focus-visible,
+        .contact-form button:focus-visible {
+            outline: 1px solid #fff;
+            outline-offset: 2px;
+            border-color: #fff;
+        }
+
+        .contact-form input[aria-invalid="true"],
+        .contact-form select[aria-invalid="true"],
+        .contact-form textarea[aria-invalid="true"] {
+            border-color: #ffb4c8;
+        }
+
+        .floating-block .field-error,
+        .floating-block .form-fail {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            color: #ffb4c8;
+        }
+
+        .floating-block .form-fail {
+            margin-top: 0.9rem;
+        }
+
+        .consent {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7rem;
+            margin: 0.2rem 0 1rem;
+            cursor: pointer;
+            text-transform: none;
+            letter-spacing: 0;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #ddd;
+        }
+
+        .consent span {
+            text-transform: none;
+            letter-spacing: 0;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #ddd;
+        }
+
+        .consent input {
+            margin-top: 0.3rem;
+            accent-color: #00f3ff;
+        }
+
+        .contact-form button {
+            align-self: flex-start;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.78rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--accent-color);
+            background: transparent;
+            border: 1px solid rgba(0, 243, 255, 0.55);
+            border-radius: 4px;
+            padding: 0.8rem 1.4rem;
+            cursor: pointer;
+        }
+
+        .contact-form button:hover {
+            color: #fff;
+            border-color: #fff;
+        }
+
+        .contact-form button:disabled {
+            opacity: 0.55;
+            cursor: wait;
+        }
+
+        .floating-block .privacy {
+            margin-top: 1.4rem;
+            margin-bottom: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #aaa;
+        }
+
+        .hp {
+            display: none;
+        }
+
+        #contact-done h2 {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .floating-block {
+                animation: none !important;
+                transform: none;
+            }
+        }
+
         .hall-closer h1 {
             color: #00f3ff;
             text-shadow: 0 0 18px rgba(0, 243, 255, 0.35);
@@ -335,10 +485,66 @@
         <header>
             <img src="AiiAold.8dde82cb.jpg" alt="Aivoinkon logo" data-i18n-attr="alt:common.logoAlt" width="150" height="150" fetchpriority="high" decoding="async">
         </header>
-        <div class="floating-block delay-1">
-            <h2 data-i18n="contact.title">Yhteys</h2>
-            <p data-i18n="contact.lede">Keskustelu alkaa LinkedInissä.</p>
-            <p><a href="https://fi.linkedin.com/in/riku-korpiaho-a465bb251" target="_blank" rel="noopener noreferrer" data-i18n="contact.link" data-i18n-attr="aria-label:contact.link" aria-label="Riku Korpiaho LinkedInissä">Riku Korpiaho LinkedInissä</a></p>
+        <div class="floating-block delay-1" id="contact-panel">
+            <div id="contact-ask">
+                <h2 data-i18n="contact.title">Yhteys</h2>
+                <p data-i18n="contact.lede">Kirjoita, jos jokin neljästä toimeksiannosta on ajankohtainen. LinkedIn, puhelin ja posti ovat edelleen auki.</p>
+                <p class="channels">
+                    <a href="tel:+358405056974">+358 40 505 6974</a>
+                    <a href="mailto:Aivoinko@gmail.com">Aivoinko@gmail.com</a>
+                    <a href="https://fi.linkedin.com/in/riku-korpiaho-a465bb251" target="_blank" rel="noopener noreferrer" data-i18n="contact.link" data-i18n-attr="aria-label:contact.link" aria-label="Riku Korpiaho LinkedInissä">Riku Korpiaho LinkedInissä</a>
+                </p>
+                <form class="contact-form" name="contact" method="post" action="/contact.html" data-netlify="true" netlify-honeypot="bot-field" accept-charset="utf-8">
+                    <input type="hidden" name="form-name" value="contact">
+                    <p class="hp" aria-hidden="true">
+                        <label>Älä täytä tätä <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+                    </p>
+                    <div class="field">
+                        <label for="contact-name" data-i18n="contact.name">Nimi</label>
+                        <input id="contact-name" name="name" type="text" required maxlength="200" autocomplete="name" aria-errormessage="contact-name-error">
+                        <p class="field-error" id="contact-name-error" hidden></p>
+                    </div>
+                    <div class="field">
+                        <label for="contact-email" data-i18n="contact.email">Sähköposti</label>
+                        <input id="contact-email" name="email" type="email" required maxlength="200" autocomplete="email" aria-errormessage="contact-email-error">
+                        <p class="field-error" id="contact-email-error" hidden></p>
+                    </div>
+                    <div class="field">
+                        <label for="contact-organization" data-i18n="contact.organization">Organisaatio</label>
+                        <input id="contact-organization" name="organization" type="text" maxlength="200" autocomplete="organization">
+                    </div>
+                    <div class="field">
+                        <label for="contact-subject" data-i18n="contact.subject">Aihe</label>
+                        <select id="contact-subject" name="subject" required aria-errormessage="contact-subject-error">
+                            <option value="" data-i18n="contact.subjectPlaceholder">Valitse</option>
+                            <option value="Brändi" data-i18n="contact.subjectBrand">Brändi</option>
+                            <option value="Kurssi" data-i18n="contact.subjectCourse">Kurssi</option>
+                            <option value="Tekoäly" data-i18n="contact.subjectAi">Tekoäly</option>
+                            <option value="GEO" data-i18n="contact.subjectGeo">GEO</option>
+                            <option value="Muu" data-i18n="contact.subjectOther">Muu</option>
+                        </select>
+                        <p class="field-error" id="contact-subject-error" hidden></p>
+                    </div>
+                    <div class="field">
+                        <label for="contact-message" data-i18n="contact.message">Viesti</label>
+                        <textarea id="contact-message" name="message" required minlength="8" maxlength="4000" aria-errormessage="contact-message-error"></textarea>
+                        <p class="field-error" id="contact-message-error" hidden></p>
+                    </div>
+                    <div class="field">
+                        <label class="consent">
+                            <input id="contact-consent" name="consent" type="checkbox" value="yes" required aria-errormessage="contact-consent-error">
+                            <span data-i18n="contact.consent">Ymmärrän, että viestiä käytetään vain tähän yhteydenottoon.</span>
+                        </label>
+                        <p class="field-error" id="contact-consent-error" hidden></p>
+                    </div>
+                    <button type="submit"><span data-i18n="contact.submit">Lähetä</span></button>
+                    <p id="contact-fail" class="form-fail" role="alert" tabindex="-1" hidden data-i18n="contact.error">Lähetys ei onnistunut. Käytä sähköpostia tai yritä uudelleen.</p>
+                </form>
+                <p class="privacy" data-i18n="contact.privacy">Rekisterinpitäjä on Riku Korpiaho / Aivoinko. Viestiä käytetään vain tähän yhteydenottoon. Ei markkinointia. Se säilyy Netlifyn lomakearkistossa ja lähtee sähköposti-ilmoituksena. Lomake kulkee Netlifyn kautta, ei teidän koneidenne kautta.</p>
+            </div>
+            <div id="contact-done" hidden>
+                <h2 id="contact-done-title" tabindex="-1" data-i18n="contact.success">Viesti on perillä.</h2>
+            </div>
         </div>
         <footer class="hall-closer">
             <h1 data-i18n="contact.title">Yhteys</h1>
@@ -347,6 +553,109 @@
             </button>
         </footer>
     </div>
+
+    <script>
+        (function () {
+            var form = document.querySelector('form[name="contact"]');
+            if (!form) return;
+            var ask = document.getElementById('contact-ask');
+            var done = document.getElementById('contact-done');
+            var fail = document.getElementById('contact-fail');
+            var submitBtn = form.querySelector('button[type="submit"]');
+            var submitLabel = submitBtn.querySelector('span');
+
+            function text(key, fallback) {
+                var api = window.__aivoinkoI18n;
+                var value = api && typeof api.t === 'function' ? api.t(key) : '';
+                return value || fallback;
+            }
+
+            function errorSlot(input) {
+                var id = input.getAttribute('aria-errormessage');
+                return id ? document.getElementById(id) : null;
+            }
+
+            function clearField(input) {
+                input.removeAttribute('aria-invalid');
+                var slot = errorSlot(input);
+                if (!slot) return;
+                slot.hidden = true;
+                slot.textContent = '';
+            }
+
+            function fieldMessage(input) {
+                var validity = input.validity;
+                if (validity.valueMissing) return text('contact.required', 'Täytä tämä kenttä.');
+                if (validity.typeMismatch) return text('contact.invalidEmail', 'Kirjoita sähköpostiosoite.');
+                if (validity.tooShort) return text('contact.tooShort', 'Kirjoita viesti vähän pidempänä.');
+                return text('contact.required', 'Täytä tämä kenttä.');
+            }
+
+            function showError(input) {
+                input.setAttribute('aria-invalid', 'true');
+                var slot = errorSlot(input);
+                if (!slot) return;
+                slot.hidden = false;
+                slot.textContent = fieldMessage(input);
+            }
+
+            function fields() {
+                return form.querySelectorAll('input, select, textarea');
+            }
+
+            function onEdit(event) {
+                var input = event.target;
+                if (!input || !input.validity || input.name === 'bot-field' || input.name === 'form-name') return;
+                if (input.validity.valid) clearField(input);
+            }
+
+            form.addEventListener('input', onEdit);
+            form.addEventListener('change', onEdit);
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                fail.hidden = true;
+                var first = null;
+                fields().forEach(function (input) {
+                    if (input.name === 'bot-field' || input.name === 'form-name') return;
+                    if (input.validity.valid) {
+                        clearField(input);
+                        return;
+                    }
+                    showError(input);
+                    if (!first) first = input;
+                });
+                if (first) {
+                    first.focus();
+                    return;
+                }
+                var honey = form.querySelector('[name="bot-field"]');
+                if (honey && honey.value) {
+                    ask.hidden = true;
+                    done.hidden = false;
+                    document.getElementById('contact-done-title').focus();
+                    return;
+                }
+                submitBtn.disabled = true;
+                submitLabel.textContent = text('contact.sending', 'Lähetetään…');
+                fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(new FormData(form)).toString()
+                }).then(function (res) {
+                    if (!res.ok) throw new Error('form');
+                    ask.hidden = true;
+                    done.hidden = false;
+                    document.getElementById('contact-done-title').focus();
+                }).catch(function () {
+                    fail.hidden = false;
+                    submitBtn.disabled = false;
+                    submitLabel.textContent = text('contact.submit', 'Lähetä');
+                    fail.focus();
+                });
+            });
+        })();
+    </script>
 
     <script type="module">
         import * as THREE from 'three';
@@ -457,9 +766,14 @@
                 floatingContainer.style.opacity = '1';
 
                 // Trigger block animations manually to ensure they start after entry
+                const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
                 blocks.forEach((block, index) => {
-                    // We use a combination of float (infinite) and fadeIn (once)
-                    // But since we set opacity:0 in CSS, we need to make sure they fade in
+                    if (reduceMotion) {
+                        block.style.animation = 'none';
+                        block.style.opacity = '1';
+                        block.style.transform = 'none';
+                        return;
+                    }
                     block.style.animation = `float 6s ease-in-out infinite ${index * 0.5}s, fadeIn 1s ease forwards ${index * 0.3}s`;
                 });
             }
