@@ -1,0 +1,28 @@
+{
+  "title": "Physicalus",
+  "description": "Physicalus: workshop photographs of a hundred-layer Damascus pendant, a side hall of the gallery.",
+  "returnTitle": "Physicalus",
+  "hundred": {
+    "alt": "The hundred-layer Damascus pendant, held in the palm",
+    "kicker": "Damascus · 100 layers",
+    "title": "The Hundred",
+    "line": "A hundred welds, one face.",
+    "p1": "Folded with Joni at Riimu Takomo. The etch is the count: each pale line is a layer that came through the fire. The hole is for a cord.",
+    "credit": "Riimu Takomo · with Joni"
+  },
+  "views": {
+    "lead": "The same face,",
+    "held": "held",
+    "sep": ", ",
+    "set": "set down",
+    "and": ", and ",
+    "turned": "turned",
+    "stop": "."
+  },
+  "bench": {
+    "alt": "The same Damascus pendant, set down"
+  },
+  "ridge": {
+    "alt": "The same Damascus pendant, turned"
+  }
+}

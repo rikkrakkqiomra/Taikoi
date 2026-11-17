@@ -1,0 +1,28 @@
+{
+  "title": "Physicalus",
+  "description": "Physicalus: pajavalokuvia sadankerroksisesta damaskusriipuksesta, gallerian sivusali.",
+  "returnTitle": "Physicalus",
+  "hundred": {
+    "alt": "Sadankerroksinen damaskusriipus, kämmenellä",
+    "kicker": "Damaskus · 100 kerrosta",
+    "title": "Sata",
+    "line": "Sata hitsiä, yksi pinta.",
+    "p1": "Taitettu Jonin kanssa Riimu Takomossa. Syövytys on luku: jokainen vaalea viiva on kerros, joka tuli tulen läpi. Reikä on nauhaa varten.",
+    "credit": "Riimu Takomo · Jonin kanssa"
+  },
+  "views": {
+    "lead": "Sama pinta,",
+    "held": "kämmenellä",
+    "sep": ", ",
+    "set": "laskettuna",
+    "and": " ja ",
+    "turned": "käännettynä",
+    "stop": "."
+  },
+  "bench": {
+    "alt": "Sama damaskusriipus, laskettuna"
+  },
+  "ridge": {
+    "alt": "Sama damaskusriipus, käännettynä"
+  }
+}

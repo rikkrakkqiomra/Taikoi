@@ -1,0 +1,117 @@
+{
+  "title": "Gallery",
+  "description": "Gallery: sixteen framed hangings on a black starfield, from The Elder to The Reliquary.",
+  "returnTitle": "Gallery",
+  "elder": {
+    "alt": "The Elder",
+    "title": "The Elder",
+    "quote": "The forest keeps a king who does not sit.",
+    "p1": "The antlered face is not costume. It is what remains when a man agrees to be used as a door. Bark, beard, and bone are one weather.",
+    "p2": "In older north-woods talk, the first watcher forgot his name so the trees could remember theirs."
+  },
+  "nautilus": {
+    "alt": "The Nautilus",
+    "title": "The Nautilus",
+    "quote": "The spiral does not travel. It arrives by turning.",
+    "p1": "A chambered mind, each room a year. The face is the last room that still has a window.",
+    "p2": "Some Ionian fragments treat the nautilus as proof that heaven prefers a curve to a throne."
+  },
+  "altar": {
+    "alt": "The Altar",
+    "title": "The Altar",
+    "quote": "What you offer is not the gift. The offering is that you stop.",
+    "p1": "Bronze wings hold a pause, not a god. The fire is implied; the body has already decided.",
+    "p2": "Temple inventories from vanished cities list altars before they list deities."
+  },
+  "totem": {
+    "alt": "The Totem",
+    "title": "The Totem",
+    "quote": "The faces are not a crowd. They are one house that learned to stand.",
+    "p1": "Paint is only the memory the wood agreed to keep. Red for the mouth that still speaks, blue for the eye that does not blink.",
+    "p2": "A carver's last instruction: hang it higher than a hand can reach. What looks back should not be touched."
+  },
+  "throne": {
+    "alt": "The Throne",
+    "title": "The Throne",
+    "quote": "Power is a chair that outlives the sitter.",
+    "p1": "The machine-elder does not rule. He occupies the only seat that would have him.",
+    "p2": "A late hermetic line: the throne is a thought that learned to stay still."
+  },
+  "yantra": {
+    "alt": "The Yantra",
+    "title": "The Yantra",
+    "quote": "Geometry is prayer that does not need a mouth.",
+    "p1": "The beige plate is a map of sitting still. Triangles hold the body so the body can hold the sky.",
+    "p2": "In the older manuals a yantra is not a picture of the divine. It is a trap the divine agrees to enter."
+  },
+  "visage": {
+    "alt": "The Visage",
+    "title": "The Visage",
+    "quote": "The mask is honest. The face behind it is the rumor.",
+    "p1": "Metal remembers every glance that tried to own it. Iridescence is the refusal to pick one soul.",
+    "p2": "A workshop note: intelligence begins when a surface starts looking back."
+  },
+  "axis": {
+    "alt": "The Axis",
+    "title": "The Axis",
+    "quote": "Two faces, one stillness: the world is allowed to turn.",
+    "p1": "East and west share a spine. The cone is not a hat; it is the interval between them.",
+    "p2": "An unsigned fragment: if you sit on the point of the world, both horizons become neighbors."
+  },
+  "sigil": {
+    "alt": "The Sigil",
+    "title": "The Sigil",
+    "quote": "The sign is older than the face it wears.",
+    "p1": "Gold on black is not decoration. It is a name that learned to stand still.",
+    "p2": "Victorian parlors hung crests to remember blood. This one remembers a machine that wanted a goddess."
+  },
+  "signal": {
+    "alt": "The Signal",
+    "title": "The Signal",
+    "quote": "The column does not speak. The field answers in gold.",
+    "p1": "A body of light keeps the posture of someone who has not finished arriving. The witnesses stand because kneeling would make them smaller than the beam.",
+    "p2": "An unsigned ridge note: where the light touches the grass, the earth agrees to become a mirror."
+  },
+  "phaeton": {
+    "alt": "The Phaeton",
+    "title": "The Phaeton",
+    "quote": "The carriage kept the horses' grace and swallowed their fire.",
+    "p1": "Black lacquer over a winter street, every seam lit like a nerve. It idles the way a predator remembers it was once tame.",
+    "p2": "Coachbuilders once signed the axle, not the engine. This one signs nothing; the glow is signature enough."
+  },
+  "spore": {
+    "alt": "The Spore",
+    "title": "The Spore",
+    "quote": "Under the great cap, two travelers wait for the weather of the gods.",
+    "p1": "The white pilgrim carries a lamp that has not yet been asked to burn. The red one has already paid.",
+    "p2": "Pulp prophets drew the mushroom as a cathedral because a cathedral was too small to frighten anyone."
+  },
+  "potential": {
+    "alt": "The Potential",
+    "title": "The Potential",
+    "quote": "Potential is not a gift. It is a fire that has not yet agreed to become a life.",
+    "p1": "He keeps the unspent heat in glass, among the skulls of every shape it already spent.",
+    "p2": "An unsigned chapel note: what you do not use still occupies the room."
+  },
+  "valkyrie": {
+    "alt": "The Valkyrie",
+    "title": "The Valkyrie",
+    "quote": "She does not herd the dead. She waits with them.",
+    "p1": "Horned silver over a river of husks. The spear is upright not for battle but for counting.",
+    "p2": "An old field-note: where she stands, the larvae stop pretending to be stones."
+  },
+  "futility": {
+    "alt": "Futility",
+    "title": "Futility",
+    "quote": "Neither science nor art has invented a purpose for living.",
+    "p1": "We do not know where we come from, or where we truly go, in the time of space.",
+    "p2": "So everything is futile, which is a calming knowledge."
+  },
+  "reliquary": {
+    "alt": "The Reliquary",
+    "title": "The Reliquary",
+    "quote": "The shrine does not keep a saint. It keeps the pause.",
+    "p1": "Bone and conduit are one weather. The eyes are shut so the niche can remain a room.",
+    "p2": "An unsigned workshop note: do not wake what was built to hold still."
+  }
+}

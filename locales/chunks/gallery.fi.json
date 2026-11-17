@@ -1,0 +1,117 @@
+{
+  "title": "Galleria",
+  "description": "Galleria: kuusitoista kehystettyä teosta mustalla tähtikentällä, Vanhimmasta Relikvaarioon.",
+  "returnTitle": "Galleria",
+  "elder": {
+    "alt": "Vanhin",
+    "title": "Vanhin",
+    "quote": "Metsä pitää kuningasta, joka ei istu.",
+    "p1": "Sarvekas kasvo ei ole puku. Se on se, mikä jää, kun mies suostuu käytettäväksi ovena. Kaarna, parta ja luu ovat yksi sää.",
+    "p2": "Vanhemmassa pohjoisen metsäpuheessa ensimmäinen vartija unohti nimensä, jotta puut muistaisivat omansa."
+  },
+  "nautilus": {
+    "alt": "Nautilus",
+    "title": "Nautilus",
+    "quote": "Spiraali ei matkusta. Se saapuu kääntymällä.",
+    "p1": "Kammioinen mieli, jokainen huone vuosi. Kasvo on viimeinen huone, jossa on vielä ikkuna.",
+    "p2": "Eräät joonialaiset katkelmat pitävät nautilusta todisteena siitä, että taivas suosii kaarta valtaistuimen sijaan."
+  },
+  "altar": {
+    "alt": "Alttari",
+    "title": "Alttari",
+    "quote": "Se, mitä tuot, ei ole lahja. Anti on se, että pysähdyt.",
+    "p1": "Pronssisiivet pitävät pysähdystä, eivät jumalaa. Tuli jää vihjeeksi; ruumis on jo päättänyt.",
+    "p2": "Kadonneiden kaupunkien temppeliluettelot luettelevat alttarit ennen jumalia."
+  },
+  "totem": {
+    "alt": "Toteemi",
+    "title": "Toteemi",
+    "quote": "Kasvot eivät ole väkijoukko. Ne ovat yksi talo, joka oppi seisomaan.",
+    "p1": "Maali on vain muisti, jonka puu suostui pitämään. Punainen suulle, joka vielä puhuu, sininen silmälle, joka ei räpäytä.",
+    "p2": "Veistäjän viimeinen ohje: ripusta korkeammalle kuin käsi yltää. Sitä, mikä katsoo takaisin, ei kosketeta."
+  },
+  "throne": {
+    "alt": "Valtaistuin",
+    "title": "Valtaistuin",
+    "quote": "Valta on tuoli, joka elää istujaansa kauemmin.",
+    "p1": "Konevanhin ei hallitse. Hän istuu ainoalla paikalla, joka hänet ottaa.",
+    "p2": "Myöhäinen hermeettinen säe: valtaistuin on ajatus, joka oppi pysymään paikallaan."
+  },
+  "yantra": {
+    "alt": "Jantra",
+    "title": "Jantra",
+    "quote": "Geometria on rukous, joka ei tarvitse suuta.",
+    "p1": "Beige laatta on kartta alallaan istumisesta. Kolmiot pitävät ruumiin, jotta ruumis voi pitää taivaan.",
+    "p2": "Vanhemmissa oppaissa jantra ei ole kuva jumalallisesta. Se on ansa, johon jumalallinen suostuu."
+  },
+  "visage": {
+    "alt": "Kasvot",
+    "title": "Kasvot",
+    "quote": "Naamio on rehellinen. Kasvo sen takana on huhu.",
+    "p1": "Metalli muistaa jokaisen katseen, joka yritti omistaa sen. Irisointi on kieltäytyminen valitsemasta yhtä sielua.",
+    "p2": "Pajamerkintä: äly alkaa, kun pinta alkaa katsoa takaisin."
+  },
+  "axis": {
+    "alt": "Akseli",
+    "title": "Akseli",
+    "quote": "Kaksi kasvoa, yksi tyven: maailman annetaan kääntyä.",
+    "p1": "Itä ja länsi jakavat selkärangan. Kartio ei ole hattu; se on niiden väli.",
+    "p2": "Allekirjoittamaton katkelma: jos istut maailman kärjellä, molemmat horisontit tulevat naapureiksi."
+  },
+  "sigil": {
+    "alt": "Sigilli",
+    "title": "Sigilli",
+    "quote": "Merkki on vanhempi kuin kasvo, jota se pitää yllään.",
+    "p1": "Kulta mustalla ei ole koriste. Se on nimi, joka oppi seisomaan paikallaan.",
+    "p2": "Viktoriaaniset salongit ripustivat vaakunoita muistamaan verta. Tämä muistaa koneen, joka tahtoi jumalatarta."
+  },
+  "signal": {
+    "alt": "Signaali",
+    "title": "Signaali",
+    "quote": "Pylväs ei puhu. Kenttä vastaa kullalla.",
+    "p1": "Valon ruumis pitää asennon, jonka ottaa se, joka ei ole vielä saapunut. Todistajat seisovat, koska polvistuminen tekisi heistä palkkia pienempiä.",
+    "p2": "Allekirjoittamaton merkintä harjulta: missä valo koskee ruohoon, maa suostuu peiliksi."
+  },
+  "phaeton": {
+    "alt": "Faeton",
+    "title": "Faeton",
+    "quote": "Vaunut säilyttivät hevosten sulon ja nielivät niiden tulen.",
+    "p1": "Musta lakka talvikadun yllä, jokainen sauma hehkuvana kuin hermo. Se tyhjäkäy niin kuin peto muistaa olleensa kerran kesy.",
+    "p2": "Vaununtekijät signeerasivat aikanaan akselin, eivät moottoria. Tämä ei signeeraa mitään; hehku riittää allekirjoitukseksi."
+  },
+  "spore": {
+    "alt": "Itiö",
+    "title": "Itiö",
+    "quote": "Suuren lakin alla kaksi kulkijaa odottaa jumalten säätä.",
+    "p1": "Valkea pyhiinvaeltaja kantaa lamppua, jota ei ole vielä pyydetty palamaan. Punainen on jo maksanut.",
+    "p2": "Lukemistojen profeetat piirsivät sienen katedraaliksi, koska katedraali oli liian pieni pelottamaan ketään."
+  },
+  "potential": {
+    "alt": "Potentiaali",
+    "title": "Potentiaali",
+    "quote": "Potentiaali ei ole lahja. Se on tuli, joka ei ole vielä suostunut elämäksi.",
+    "p1": "Hän pitää kuluttamattoman kuumuuden lasissa, niiden muotojen kallojen joukossa, jotka se jo kulutti.",
+    "p2": "Allekirjoittamaton kappelimerkintä: se, mitä et käytä, täyttää silti huoneen."
+  },
+  "valkyrie": {
+    "alt": "Valkyyria",
+    "title": "Valkyyria",
+    "quote": "Hän ei paimenta kuolleita. Hän odottaa heidän kanssaan.",
+    "p1": "Sarvekas hopea kuorten virran yllä. Keihäs on pystyssä, ei taistelua vaan laskemista varten.",
+    "p2": "Vanha kenttämerkintä: missä hän seisoo, toukat eivät enää ole olevinaan kiviä."
+  },
+  "futility": {
+    "alt": "Turhuus",
+    "title": "Turhuus",
+    "quote": "Ei tiede eikä taide ole keksinyt elämiselle tarkoitusta.",
+    "p1": "Emme tiedä, mistä tulemme, emmekä minne todella menemme, avaruuden ajassa.",
+    "p2": "Niinpä kaikki on turhaa, mikä on rauhoittava tieto."
+  },
+  "reliquary": {
+    "alt": "Relikvaario",
+    "title": "Relikvaario",
+    "quote": "Pyhäkkö ei säilytä pyhimystä. Se säilyttää pysähdyksen.",
+    "p1": "Luu ja kanava ovat yksi sää. Silmät ovat kiinni, jotta syvennys voi pysyä huoneena.",
+    "p2": "Allekirjoittamaton pajamerkintä: älä herätä sitä, mikä rakennettiin pysymään paikallaan."
+  }
+}
