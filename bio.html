@@ -393,98 +393,360 @@
             margin-top: 0.7rem;
         }
 
-        .sandbox {
-            position: relative;
+        .chronicles {
             flex: 0 0 100%;
             width: min(42rem, 100%);
             max-width: 42rem;
             margin: 4.5vh auto 0;
-            padding: 2.2rem 2.05rem 1.65rem;
-            color: #2a2116;
-            background-color: #e4c89a;
-            background-image:
-                radial-gradient(ellipse 88% 48% at 14% -8%, rgba(255, 248, 226, 0.7), transparent 56%),
-                radial-gradient(ellipse 46% 36% at 78% 42%, rgba(255, 236, 196, 0.28), transparent 70%),
-                radial-gradient(ellipse 60% 50% at 108% 112%, rgba(138, 86, 38, 0.24), transparent 58%),
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.4 0 0 0 0 0.26 0 0 0 0 0.1 0 0 0 0.2 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-            border: 12px solid #2a1d14;
-            box-shadow:
-                0 0 0 1px rgba(212, 168, 96, 0.78),
-                inset 0 0 0 1px rgba(255, 244, 214, 0.5),
-                inset 0 18px 26px rgba(255, 248, 230, 0.3),
-                inset 0 -20px 30px rgba(112, 68, 28, 0.16),
-                0 22px 36px rgba(0, 0, 0, 0.42);
+            display: flex;
+            flex-direction: column;
+            gap: 1.15rem;
         }
 
-        .sandbox-pegs {
-            position: absolute;
-            inset: -18px;
-            pointer-events: none;
-            background:
-                linear-gradient(#6a4630, #3a2818) left top / 16px 16px no-repeat,
-                linear-gradient(#6a4630, #3a2818) right top / 16px 16px no-repeat,
-                linear-gradient(#6a4630, #3a2818) left bottom / 16px 16px no-repeat,
-                linear-gradient(#6a4630, #3a2818) right bottom / 16px 16px no-repeat;
+        .chronicle {
+            position: relative;
+            width: 100%;
         }
 
-        .sandbox h2 {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translate(-50%, -58%);
+        .chronicle-seal {
+            position: relative;
+            z-index: 3;
+            display: block;
+            width: 100%;
             margin: 0;
-            padding: 0.4rem 1.05rem 0.34rem;
-            background: #1a140f;
-            border: 1px solid #d4a45a;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.35);
+            padding: 0;
+            border: 0;
+            background: none;
+            cursor: pointer;
+            color: inherit;
+            text-align: center;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .chronicle-seal:focus {
+            outline: none;
+        }
+
+        .chronicle-seal:focus-visible .chronicle-drum {
+            filter:
+                drop-shadow(0 10px 12px rgba(0, 0, 0, 0.55))
+                drop-shadow(0 0 10px rgba(212, 164, 90, 0.55));
+        }
+
+        .chronicle-drum {
+            position: relative;
+            display: block;
+            filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.45));
+            transition:
+                transform 180ms cubic-bezier(0.22, 1, 0.36, 1),
+                filter 180ms ease;
+        }
+
+        .chronicle-seal:hover .chronicle-drum,
+        .chronicle-seal:focus-visible .chronicle-drum {
+            transform: translateY(-3px);
+            filter:
+                brightness(1.07)
+                drop-shadow(0 16px 14px rgba(0, 0, 0, 0.6))
+                drop-shadow(0 0 18px rgba(212, 164, 90, 0.35));
+        }
+
+        .chronicle-seal:active .chronicle-drum {
+            transform: translateY(2px) scale(0.985);
+            filter: brightness(0.94) drop-shadow(0 4px 4px rgba(0, 0, 0, 0.7));
+            transition-duration: 70ms;
+        }
+
+        .chronicle.is-open .chronicle-seal:hover .chronicle-drum,
+        .chronicle.is-open .chronicle-seal:focus-visible .chronicle-drum,
+        .chronicle.is-open .chronicle-seal:active .chronicle-drum {
+            transform: none;
+            filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.45));
+        }
+
+        .chronicle-roll {
+            display: block;
+            width: 100%;
+            height: auto;
+            max-width: none;
+            pointer-events: none;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .chronicle-meta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.18rem;
+            max-height: 4.6rem;
+            margin-top: -0.15rem;
+            overflow: hidden;
+            opacity: 1;
+            transition:
+                opacity 280ms ease,
+                max-height 320ms cubic-bezier(0.22, 1, 0.36, 1),
+                margin 280ms ease;
+        }
+
+        .chronicle.is-open .chronicle-meta {
+            opacity: 0;
+            max-height: 0;
+            margin: 0;
+            pointer-events: none;
+        }
+
+        .chronicle-year {
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.68rem;
             font-weight: 700;
-            letter-spacing: 0.42em;
-            text-indent: 0.42em;
+            font-size: 0.62rem;
+            letter-spacing: 0.38em;
             text-transform: uppercase;
-            color: #f0e2c8;
+            color: #c48c40;
+            margin-right: -0.38em;
+            text-shadow: 0 0 12px rgba(0, 0, 0, 0.95);
         }
 
-        .sandbox p {
-            font-family: 'Cormorant Garamond', serif;
+        .chronicle-name {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-style: italic;
             font-weight: 500;
-            font-size: 1.14rem;
-            line-height: 1.58;
-            color: #2a2116;
+            font-size: clamp(1.15rem, 2.4vw, 1.48rem);
+            line-height: 1.18;
+            letter-spacing: 0.01em;
+            color: #f3ead8;
+            text-wrap: balance;
+            text-shadow: 0 0 16px rgba(0, 0, 0, 0.95), 0 1px 2px rgba(0, 0, 0, 0.9);
         }
 
-        .sandbox p + p {
-            margin-top: 0.85rem;
+        .chronicle-sheet {
+            display: grid;
+            grid-template-rows: 0fr;
+            margin-top: 0;
+            position: relative;
+            z-index: 1;
+            pointer-events: none;
+            transition:
+                grid-template-rows 640ms cubic-bezier(0.22, 1, 0.36, 1),
+                margin-top 640ms cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        .sandbox p:first-of-type::first-letter {
+        .chronicle.is-open .chronicle-sheet {
+            grid-template-rows: 1fr;
+            margin-top: -2.7rem;
+            pointer-events: auto;
+        }
+
+        .chronicle-sheet-clip {
+            overflow: hidden;
+            min-height: 0;
+        }
+
+        .chronicle-sheet-body {
+            position: relative;
+            isolation: isolate;
+            padding: 2.85rem 2.15rem 0;
+        }
+
+        .chronicle-sheet-body::before {
+            content: "";
+            position: absolute;
+            z-index: 0;
+            left: 0;
+            right: 0;
+            top: 18px;
+            bottom: 16px;
+            pointer-events: none;
+            background: rgba(8, 6, 4, 0.94);
+            transition: background 640ms ease;
+            -webkit-mask-image:
+                linear-gradient(180deg, transparent 0, #000 18px, #000 calc(100% - 16px), transparent 100%),
+                linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+            -webkit-mask-composite: source-in;
+            mask-image:
+                linear-gradient(180deg, transparent 0, #000 18px, #000 calc(100% - 16px), transparent 100%),
+                linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+            mask-composite: intersect;
+        }
+
+        .chronicle.is-framed .chronicle-sheet-body::before {
+            background: rgba(18, 12, 6, 0.97);
+        }
+
+        .chronicle-sheet-roll,
+        .chronicle-sheet-rail {
+            position: absolute;
+            pointer-events: none;
+        }
+
+        .chronicle-sheet-roll {
+            z-index: 2;
+            left: 0;
+            width: 100%;
+            height: auto;
+            max-width: none;
+            object-fit: fill;
+            opacity: 0;
+            filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.45));
+            transform: scaleY(0.12);
+            transform-origin: center bottom;
+            transition:
+                opacity 480ms ease,
+                transform 640ms cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .chronicle-sheet-roll--bottom {
+            bottom: 0;
+        }
+
+        .chronicle.is-framed .chronicle-sheet-roll {
+            opacity: 1;
+            transform: none;
+        }
+
+        .chronicle-sheet-rail {
+            z-index: 2;
+            top: 2.6rem;
+            bottom: 2.9rem;
+            width: 1px;
+            background: linear-gradient(
+                to bottom,
+                rgba(184, 138, 74, 0),
+                rgba(212, 168, 96, 0.72) 14%,
+                rgba(212, 168, 96, 0.72) 86%,
+                rgba(184, 138, 74, 0)
+            );
+            transform: scaleY(0);
+            transition: transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .chronicle-sheet-rail--left {
+            left: 0.5rem;
+            transform-origin: top center;
+        }
+
+        .chronicle-sheet-rail--right {
+            right: 0.5rem;
+            transform-origin: bottom center;
+        }
+
+        .chronicle.is-framed .chronicle-sheet-rail {
+            transform: scaleY(1);
+        }
+
+        .chronicle-field {
+            position: relative;
+            z-index: 3;
+            color: #d8d2c6;
+            text-align: left;
+            padding-bottom: calc(100% * 217 / 1149 + 0.6rem);
+        }
+
+        .chronicle-gem,
+        .chronicle-kicker,
+        .chronicle-field h2,
+        .chronicle-field p {
+            opacity: 0;
+            transform: translateY(8px);
+            transition:
+                opacity 320ms cubic-bezier(0.22, 1, 0.36, 1),
+                transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
+            transition-delay: calc(28ms + var(--i, 0) * 38ms);
+        }
+
+        .chronicle.is-open .chronicle-gem,
+        .chronicle.is-open .chronicle-kicker,
+        .chronicle.is-open .chronicle-field h2,
+        .chronicle.is-open .chronicle-field p {
+            opacity: 1;
+            transform: none;
+        }
+
+        .chronicle-gem {
+            display: block;
+            width: 6px;
+            height: 6px;
+            margin: 0 auto 0.95rem;
+            background: #d4a45a;
+            transform: rotate(45deg);
+            box-shadow: 0 0 8px rgba(212, 164, 90, 0.55);
+        }
+
+        .chronicle.is-open .chronicle-gem {
+            transform: rotate(45deg);
+        }
+
+        .chronicle-kicker {
+            margin-bottom: 0.7rem;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 0.62rem;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            text-align: center;
+            color: #c48c40;
+        }
+
+        .chronicle-field h2 {
+            margin-bottom: 1.15rem;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: clamp(1.7rem, 3.4vw, 2.25rem);
+            line-height: 1.18;
+            letter-spacing: 0.01em;
+            text-align: center;
+            text-wrap: balance;
+            color: #f3ead8;
+            text-shadow: 0 0 16px rgba(0, 0, 0, 0.95), 0 1px 2px rgba(0, 0, 0, 0.9);
+        }
+
+        .chronicle-field p {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 500;
+            font-size: 1.08rem;
+            line-height: 1.7;
+            margin-bottom: 0.9rem;
+        }
+
+        .chronicle-field p.chronicle-drop::first-letter {
             float: left;
             font-weight: 600;
-            font-size: 3.35rem;
+            font-size: 3.2rem;
             line-height: 0.78;
             padding: 0.14rem 0.42rem 0 0;
-            color: #6e3f1c;
+            color: #d4a45a;
         }
 
-        .sandbox-rake {
-            height: 12px;
-            margin: 1.25rem 7% 0.2rem;
-            border: 0;
-            background: repeating-linear-gradient(
-                180deg,
-                transparent 0 3px,
-                rgba(92, 58, 28, 0.3) 3px 4px
-            );
-        }
-
-        .sandbox p.sandbox-coda {
-            margin-top: 0.15rem;
+        .chronicle-field p.chronicle-coda {
+            margin-top: 0.35rem;
+            margin-bottom: 0;
             text-align: center;
             font-style: italic;
             font-size: 1.22rem;
             letter-spacing: 0.08em;
-            color: #5c4030;
+            color: #c9b89a;
+        }
+
+        .chronicle-field p.chronicle-sealed {
+            text-align: center;
+            font-style: italic;
+            color: #c9b89a;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .chronicle-drum,
+            .chronicle-meta,
+            .chronicle-sheet,
+            .chronicle-sheet-body::before,
+            .chronicle-sheet-roll,
+            .chronicle-sheet-rail,
+            .chronicle-gem,
+            .chronicle-kicker,
+            .chronicle-field h2,
+            .chronicle-field p {
+                transition: none;
+            }
         }
 
         .verkko-scroll {
@@ -766,32 +1028,32 @@
                 font-size: 0.98rem;
             }
 
-            .sandbox {
+            .chronicles {
                 margin-top: 3.5vh;
-                padding: 1.75rem 1.15rem 1.3rem;
             }
 
-            .sandbox-pegs {
-                inset: -12px;
-                background-size: 12px 12px;
+            .chronicle-sheet-body {
+                padding: 2.5rem 1.35rem 0;
             }
 
-            .sandbox h2 {
-                font-size: 0.6rem;
-                letter-spacing: 0.28em;
-                text-indent: 0.28em;
+            .chronicle-field h2 {
+                font-size: clamp(1.35rem, 6vw, 1.7rem);
             }
 
-            .sandbox p {
+            .chronicle-field p {
                 font-size: 1.02rem;
             }
 
-            .sandbox p:first-of-type::first-letter {
+            .chronicle-field p.chronicle-drop::first-letter {
                 font-size: 2.55rem;
             }
 
-            .sandbox p.sandbox-coda {
+            .chronicle-field p.chronicle-coda {
                 font-size: 1.08rem;
+            }
+
+            .chronicle.is-open .chronicle-sheet {
+                margin-top: -2.2rem;
             }
 
         }
@@ -839,18 +1101,90 @@
                 <p data-i18n="bio.tie.p1">Hän istuu vyön alla, takki kaulassa, ja katsoo ohi. Tie ei kysy nimeä. Se tarjoaa taajuuden, ja hän kulkee sen läpi, kunnes metsänreuna on pelkkää valoa.</p>
                 <p data-i18n="bio.tie.p2">Takki on liturgia. Tarinaa ei ajeta. Se annetaan tulla.</p>
             </article>
-            <article class="sandbox" id="minusta">
-                <span class="sandbox-pegs" aria-hidden="true"></span>
-                <h2 data-i18n="bio.minusta.heading">Minusta</h2>
-                <p data-i18n="bio.minusta.p1">Keskiaikaiseen sävyyn, sillä sävyllä, joka ei ano lupaa omalta vuosisadaltaan.</p>
-                <p data-i18n="bio.minusta.p2">Kasvoin Nokia-huuman kuumeessa, Hervannan Research Centerillä, kulttuurien sulatusuunissa. Leikin siellä sillä aikaa, kun äitini oli töissä. Maasto oli outo: lasia, betonia, vieraita kieliä ja koneiden hiljaista ylpeyttä. Siinä opin, että maailma on laboratorio jo ennen kuin kukaan suostuu kutsumaan sitä sellaiseksi.</p>
-                <p data-i18n="bio.minusta.p3">Samaan outoon maastoon palasin myöhemmin itse. Suoritin bioteknologian tutkinnon ja erikoistuin tekoälyyn, paluuna samalle pihalle, tällä kertaa aikuisen avaimilla.</p>
-                <p data-i18n="bio.minusta.p4">Suurimman osan elämästäni olen viettänyt ajatellen. Maailma, psykologia ja tieteet eivät ole olleet sivupolkuja. Ne ovat olleet ilmasto, jossa olen asunut.</p>
-                <p data-i18n="bio.minusta.p5">Olen kulkenut kahden kuukauden matkoja, Baliin, Italiaan, Thaimaahan ja Meksikoon, ja ammentanut sieluani muinaisraunioista ja taiteesta. Rauniot eivät olleet nähtävyyksiä. Ne olivat peilejä, jotka muistivat minut ennen minua.</p>
-                <p data-i18n="bio.minusta.p6">Kahdenkymmenen ikävuoteni tienoilla vedin kymmenentuhannen ihmisen aivokemian ryhmää. Sen tarkoitus oli psykonautiikka ja itsetutkiskelu: yhteinen yritys katsoa sisäänpäin niin pitkälle, että kartta alkaa vastata.</p>
-                <hr class="sandbox-rake">
-                <p class="sandbox-coda" data-i18n="bio.minusta.coda">Saaga jatkuu.</p>
-            </article>
+            <div class="chronicles" id="minusta">
+                <article class="chronicle is-open is-framed" data-chronicle="i">
+                    <button type="button" class="chronicle-seal" aria-expanded="true" aria-controls="sheet-i" aria-label="Chronicles I" data-i18n-attr="aria-label:bio.chronicles.i.label">
+                        <span class="chronicle-drum">
+                            <img class="chronicle-roll" src="art/seal-scroll-top.png" alt="" width="1161" height="194" decoding="async">
+                        </span>
+                        <span class="chronicle-meta">
+                            <span class="chronicle-year" data-i18n="bio.chronicles.i.label">Chronicles I</span>
+                            <span class="chronicle-name" data-i18n="bio.minusta.heading">Minusta</span>
+                        </span>
+                    </button>
+                    <div class="chronicle-sheet" id="sheet-i" aria-hidden="false">
+                        <div class="chronicle-sheet-clip">
+                            <div class="chronicle-sheet-body">
+                                <img class="chronicle-sheet-roll chronicle-sheet-roll--bottom" src="art/seal-scroll-bottom.png" alt="" width="1149" height="217" decoding="async">
+                                <i class="chronicle-sheet-rail chronicle-sheet-rail--left" aria-hidden="true"></i>
+                                <i class="chronicle-sheet-rail chronicle-sheet-rail--right" aria-hidden="true"></i>
+                                <div class="chronicle-field">
+                                    <i class="chronicle-gem" style="--i:0" aria-hidden="true"></i>
+                                    <p class="chronicle-kicker" style="--i:0" data-i18n="bio.chronicles.i.label">Chronicles I</p>
+                                    <h2 style="--i:1" data-i18n="bio.minusta.heading">Minusta</h2>
+                                    <p class="chronicle-drop" style="--i:2" data-i18n="bio.minusta.p1">Keskiaikaiseen sävyyn, sillä sävyllä, joka ei ano lupaa omalta vuosisadaltaan.</p>
+                                    <p style="--i:3" data-i18n="bio.minusta.p2">Kasvoin Nokia-huuman kuumeessa, Hervannan Research Centerillä, kulttuurien sulatusuunissa. Leikin siellä sillä aikaa, kun äitini oli töissä. Maasto oli outo: lasia, betonia, vieraita kieliä ja koneiden hiljaista ylpeyttä. Siinä opin, että maailma on laboratorio jo ennen kuin kukaan suostuu kutsumaan sitä sellaiseksi.</p>
+                                    <p style="--i:4" data-i18n="bio.minusta.p3">Samaan outoon maastoon palasin myöhemmin itse. Suoritin bioteknologian tutkinnon ja erikoistuin tekoälyyn, paluuna samalle pihalle, tällä kertaa aikuisen avaimilla.</p>
+                                    <p style="--i:5" data-i18n="bio.minusta.p4">Suurimman osan elämästäni olen viettänyt ajatellen. Maailma, psykologia ja tieteet eivät ole olleet sivupolkuja. Ne ovat olleet ilmasto, jossa olen asunut.</p>
+                                    <p style="--i:6" data-i18n="bio.minusta.p5">Olen kulkenut kahden kuukauden matkoja, Baliin, Italiaan, Thaimaahan ja Meksikoon, ja ammentanut sieluani muinaisraunioista ja taiteesta. Rauniot eivät olleet nähtävyyksiä. Ne olivat peilejä, jotka muistivat minut ennen minua.</p>
+                                    <p style="--i:7" data-i18n="bio.minusta.p6">Kahdenkymmenen ikävuoteni tienoilla vedin kymmenentuhannen ihmisen aivokemian ryhmää. Sen tarkoitus oli psykonautiikka ja itsetutkiskelu: yhteinen yritys katsoa sisäänpäin niin pitkälle, että kartta alkaa vastata.</p>
+                                    <p class="chronicle-coda" style="--i:8" data-i18n="bio.minusta.coda">Saaga jatkuu.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="chronicle" data-chronicle="ii">
+                    <button type="button" class="chronicle-seal" aria-expanded="false" aria-controls="sheet-ii" aria-label="Chronicles II" data-i18n-attr="aria-label:bio.chronicles.ii.label">
+                        <span class="chronicle-drum">
+                            <img class="chronicle-roll" src="art/seal-scroll-top.png" alt="" width="1161" height="194" decoding="async">
+                        </span>
+                        <span class="chronicle-meta">
+                            <span class="chronicle-year" data-i18n="bio.chronicles.ii.label">Chronicles II</span>
+                        </span>
+                    </button>
+                    <div class="chronicle-sheet" id="sheet-ii" aria-hidden="true">
+                        <div class="chronicle-sheet-clip">
+                            <div class="chronicle-sheet-body">
+                                <img class="chronicle-sheet-roll chronicle-sheet-roll--bottom" src="art/seal-scroll-bottom.png" alt="" width="1149" height="217" decoding="async">
+                                <i class="chronicle-sheet-rail chronicle-sheet-rail--left" aria-hidden="true"></i>
+                                <i class="chronicle-sheet-rail chronicle-sheet-rail--right" aria-hidden="true"></i>
+                                <div class="chronicle-field">
+                                    <i class="chronicle-gem" style="--i:0" aria-hidden="true"></i>
+                                    <p class="chronicle-kicker" style="--i:0" data-i18n="bio.chronicles.ii.label">Chronicles II</p>
+                                    <p class="chronicle-sealed" style="--i:1" data-i18n="bio.chronicles.sealed">Mustetta ei ole vielä laskettu.</p>
+                                    <p class="chronicle-coda" style="--i:2" data-i18n="bio.minusta.coda">Saaga jatkuu.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+                <article class="chronicle" data-chronicle="iii">
+                    <button type="button" class="chronicle-seal" aria-expanded="false" aria-controls="sheet-iii" aria-label="Chronicles III" data-i18n-attr="aria-label:bio.chronicles.iii.label">
+                        <span class="chronicle-drum">
+                            <img class="chronicle-roll" src="art/seal-scroll-top.png" alt="" width="1161" height="194" decoding="async">
+                        </span>
+                        <span class="chronicle-meta">
+                            <span class="chronicle-year" data-i18n="bio.chronicles.iii.label">Chronicles III</span>
+                        </span>
+                    </button>
+                    <div class="chronicle-sheet" id="sheet-iii" aria-hidden="true">
+                        <div class="chronicle-sheet-clip">
+                            <div class="chronicle-sheet-body">
+                                <img class="chronicle-sheet-roll chronicle-sheet-roll--bottom" src="art/seal-scroll-bottom.png" alt="" width="1149" height="217" decoding="async">
+                                <i class="chronicle-sheet-rail chronicle-sheet-rail--left" aria-hidden="true"></i>
+                                <i class="chronicle-sheet-rail chronicle-sheet-rail--right" aria-hidden="true"></i>
+                                <div class="chronicle-field">
+                                    <i class="chronicle-gem" style="--i:0" aria-hidden="true"></i>
+                                    <p class="chronicle-kicker" style="--i:0" data-i18n="bio.chronicles.iii.label">Chronicles III</p>
+                                    <p class="chronicle-sealed" style="--i:1" data-i18n="bio.chronicles.sealed">Mustetta ei ole vielä laskettu.</p>
+                                    <p class="chronicle-coda" style="--i:2" data-i18n="bio.minusta.coda">Saaga jatkuu.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
         </section>
 
         <section class="bay bay--right">
@@ -976,6 +1310,93 @@
             </button>
         </footer>
     </div>
+
+    <script>
+        (function () {
+            var root = document.getElementById('minusta');
+            if (!root) return;
+            var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            var open = root.querySelector('.chronicle.is-open') || null;
+            var frameTimer = 0;
+
+            function closeSealMenu() {
+                var trigger = document.querySelector('header.is-seal-open .seal-trigger');
+                if (trigger) trigger.click();
+            }
+
+            function shut(codex) {
+                if (!codex) return;
+                var sheet = codex.querySelector('.chronicle-sheet');
+                var seal = codex.querySelector('.chronicle-seal');
+                codex.classList.remove('is-open');
+                codex.classList.remove('is-framed');
+                if (sheet) {
+                    sheet.setAttribute('aria-hidden', 'true');
+                    if ('inert' in sheet) sheet.inert = true;
+                }
+                if (seal) seal.setAttribute('aria-expanded', 'false');
+            }
+
+            function closeAll() {
+                if (!open) return;
+                clearTimeout(frameTimer);
+                shut(open);
+                open = null;
+            }
+
+            function show(codex) {
+                closeSealMenu();
+                if (open && open !== codex) shut(open);
+                var sheet = codex.querySelector('.chronicle-sheet');
+                var seal = codex.querySelector('.chronicle-seal');
+                open = codex;
+                codex.classList.add('is-open');
+                if (seal) seal.setAttribute('aria-expanded', 'true');
+                if (sheet) {
+                    sheet.setAttribute('aria-hidden', 'false');
+                    if ('inert' in sheet) sheet.inert = false;
+                }
+                clearTimeout(frameTimer);
+                if (reduced) {
+                    codex.classList.add('is-framed');
+                    return;
+                }
+                frameTimer = setTimeout(function () {
+                    if (open === codex) codex.classList.add('is-framed');
+                }, 700);
+            }
+
+            function toggle(codex) {
+                if (open === codex) closeAll();
+                else show(codex);
+            }
+
+            window.__aivoinkoChronicleClose = closeAll;
+
+            root.addEventListener('click', function (event) {
+                var seal = event.target.closest('.chronicle-seal');
+                if (!seal || !root.contains(seal)) return;
+                event.preventDefault();
+                toggle(seal.closest('.chronicle'));
+            });
+
+            document.addEventListener('click', function (event) {
+                if (event.target.closest('.seal-trigger') && open) closeAll();
+            }, true);
+
+            document.addEventListener('keydown', function (event) {
+                if (!open || event.key !== 'Escape') return;
+                event.preventDefault();
+                var seal = open.querySelector('.chronicle-seal');
+                closeAll();
+                if (seal && typeof seal.focus === 'function') seal.focus();
+            });
+
+            root.querySelectorAll('.chronicle:not(.is-open) .chronicle-sheet').forEach(function (sheet) {
+                if ('inert' in sheet) sheet.inert = true;
+            });
+        })();
+    </script>
 
     <script type="module">
         import * as THREE from 'three';
@@ -1173,6 +1594,7 @@
         function exitAnimation() {
             if (exiting) return;
             exiting = true;
+            if (typeof window.__aivoinkoChronicleClose === 'function') window.__aivoinkoChronicleClose();
             header.style.pointerEvents = 'none';
             hall.style.opacity = '1';
             mode = 'exit';

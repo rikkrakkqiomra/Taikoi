@@ -930,6 +930,18 @@
       "p2": "The coat is liturgy. The story is not driven. It is allowed to come.",
       "alt": "Riku Richard Multimieli on the road"
     },
+    "chronicles": {
+      "i": {
+        "label": "Chronicles I"
+      },
+      "ii": {
+        "label": "Chronicles II"
+      },
+      "iii": {
+        "label": "Chronicles III"
+      },
+      "sealed": "Ink has not yet been laid."
+    },
     "minusta": {
       "heading": "Of Me",
       "p1": "In a medieval register, the register that does not beg leave of its own century.",

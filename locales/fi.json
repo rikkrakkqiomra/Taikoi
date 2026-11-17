@@ -930,6 +930,18 @@
       "p2": "Takki on liturgia. Tarinaa ei ajeta. Se annetaan tulla.",
       "alt": "Riku Richard Multimieli tiellä"
     },
+    "chronicles": {
+      "i": {
+        "label": "Chronicles I"
+      },
+      "ii": {
+        "label": "Chronicles II"
+      },
+      "iii": {
+        "label": "Chronicles III"
+      },
+      "sealed": "Mustetta ei ole vielä laskettu."
+    },
     "minusta": {
       "heading": "Minusta",
       "p1": "Keskiaikaiseen sävyyn, sillä sävyllä, joka ei ano lupaa omalta vuosisadaltaan.",
