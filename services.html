@@ -20,6 +20,28 @@
     <meta name="twitter:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <link rel="apple-touch-icon" href="AiiAold.8dde82cb.jpg">
     <link rel="icon" type="image/jpeg" href="AiiAold.8dde82cb.jpg">
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+    <link rel="modulepreload" href="https://unpkg.com/three@0.160.0/build/three.module.js" crossorigin>
+    <script>
+        (function () {
+            function revealUi() {
+                if (window.__aivoinko3d) return;
+                document.documentElement.classList.add('ui-ready');
+            }
+            window.__aivoinkoReveal = revealUi;
+            window.addEventListener('error', function () { revealUi(); }, true);
+            window.addEventListener('unhandledrejection', function () { revealUi(); });
+            setTimeout(revealUi, 2500);
+        })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Orbitron:wght@700&amp;family=Source+Sans+3:ital,wght@0,400;0,500;0,600&amp;display=swap" rel="stylesheet">
@@ -55,7 +77,16 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        #canvas-container {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
         .practice {
+            position: relative;
+            z-index: 5;
             width: min(40rem, calc(100% - 2.4rem));
             margin: 0 auto;
             padding: 1.4rem 0 0;
@@ -314,6 +345,7 @@
 </head>
 
 <body>
+    <div id="canvas-container"></div>
     <div class="practice">
         <header>
             <img src="AiiAold.8dde82cb.jpg" alt="Aivoinko Logo" width="36" height="36" fetchpriority="high" decoding="async">
@@ -377,10 +409,121 @@
         </footer>
     </div>
 
-    <script>
-        window.__aivoinkoSealExit = function () {
-            window.location.href = 'index.html';
-        };
+    <script type="module">
+        import * as THREE from 'three';
+
+        window.__aivoinko3d = true;
+
+        const FRAME_MS = 1000 / 60;
+        const scene = new THREE.Scene();
+        scene.fog = new THREE.FogExp2(0x0c0b09, 0.003);
+
+        const container = document.getElementById('canvas-container');
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(0, 0, 100);
+
+        let renderer;
+        try {
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setClearColor(0x0c0b09, 1);
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            container.appendChild(renderer.domElement);
+        } catch (err) {
+            console.warn('WebGL unavailable', err);
+            window.__aivoinko3d = false;
+            if (typeof window.__aivoinkoReveal === 'function') window.__aivoinkoReveal();
+            throw err;
+        }
+
+        let rafId = 0;
+        function startLoop(fn) {
+            if (renderer.setAnimationLoop) {
+                renderer.setAnimationLoop(fn);
+                return;
+            }
+            function tick(t) {
+                fn(t);
+                rafId = requestAnimationFrame(tick);
+            }
+            rafId = requestAnimationFrame(tick);
+        }
+        function stopLoop() {
+            if (renderer.setAnimationLoop) {
+                renderer.setAnimationLoop(null);
+                return;
+            }
+            cancelAnimationFrame(rafId);
+        }
+
+        const starsGeometry = new THREE.BufferGeometry();
+        const starsCount = 5000;
+        const posArray = new Float32Array(starsCount * 3);
+        for (let i = 0; i < starsCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 500;
+        }
+        starsGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const starMesh = new THREE.Points(starsGeometry, new THREE.PointsMaterial({
+            size: 0.18,
+            color: 0xe8e0d4,
+            transparent: true,
+            opacity: 0.28,
+            depthWrite: false
+        }));
+        scene.add(starMesh);
+
+        const practice = document.querySelector('.practice');
+
+        function exitAnimation() {
+            const header = document.querySelector('header');
+            if (header) header.style.pointerEvents = 'none';
+            const startTime = Date.now();
+            const duration = 1000;
+
+            function exitLoop() {
+                const elapsed = Date.now() - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                const ease = progress * progress * progress;
+                const scale = 1 - ease;
+                scene.scale.set(scale, scale, scale);
+                scene.rotation.z = ease * 1.0;
+                practice.style.opacity = String(1 - ease);
+                if (progress < 1) {
+                    requestAnimationFrame(exitLoop);
+                } else {
+                    window.location.href = 'index.html';
+                }
+            }
+            exitLoop();
+        }
+
+        window.__aivoinkoSealExit = exitAnimation;
+
+        let lastFrameTime = 0;
+        function animate(time) {
+            const deltaMs = lastFrameTime ? time - lastFrameTime : FRAME_MS;
+            lastFrameTime = time;
+            const dt = Math.min(deltaMs, 50) / FRAME_MS;
+            starMesh.rotation.y += 0.0005 * dt;
+            renderer.render(scene, camera);
+        }
+
+        startLoop(animate);
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                stopLoop();
+                lastFrameTime = 0;
+            } else {
+                startLoop(animate);
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
     </script>
 </body>
 
