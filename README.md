@@ -29,7 +29,7 @@ Artwork stills, frames, and hangings live under `art/`. The live logo, favicon, 
 
 - HTML, CSS, and vanilla JavaScript (ES modules). No bundler and no `package.json`.
 - Three.js `0.160.0` from unpkg, pinned in every page import map except `404.html`. OrbitControls is used on the home page only.
-- Google Fonts: Orbitron, Rajdhani, Cormorant Garamond, Source Sans 3, Courier Prime, and Cinzel.
+- Google Fonts: Orbitron, Rajdhani, Cormorant Garamond, Source Sans 3, and Cinzel.
 
 ## Languages
 

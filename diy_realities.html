@@ -7,8 +7,8 @@
     <script src="/i18n.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="diy.title">Khaeos Metalogs</title>
-    <meta name="description" content="Khaeos Metalogs: hyperavaruuden sali, jossa vihreät päätteet ja kultafoliot vuorottelevat." data-i18n-attr="content:diy.description">
-    <meta name="theme-color" content="#d9a441">
+    <meta name="description" content="Khaeos Metalogs: neljä merkintää peräkkäin." data-i18n-attr="content:diy.description">
+    <meta name="theme-color" content="#090a0c">
     <link rel="canonical" href="https://taikoi.netlify.app/fi/diy_realities.html">
     <link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/diy_realities.html">
     <link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/diy_realities.html">
@@ -16,12 +16,12 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Aivoinko">
     <meta property="og:title" content="Khaeos Metalogs" data-i18n-attr="content:diy.title">
-    <meta property="og:description" content="Khaeos Metalogs: hyperavaruuden sali, jossa vihreät päätteet ja kultafoliot vuorottelevat." data-i18n-attr="content:diy.description">
+    <meta property="og:description" content="Khaeos Metalogs: neljä merkintää peräkkäin." data-i18n-attr="content:diy.description">
     <meta property="og:url" content="https://taikoi.netlify.app/fi/diy_realities.html">
     <meta property="og:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Khaeos Metalogs" data-i18n-attr="content:diy.title">
-    <meta name="twitter:description" content="Khaeos Metalogs: hyperavaruuden sali, jossa vihreät päätteet ja kultafoliot vuorottelevat." data-i18n-attr="content:diy.description">
+    <meta name="twitter:description" content="Khaeos Metalogs: neljä merkintää peräkkäin." data-i18n-attr="content:diy.description">
     <meta name="twitter:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <link rel="apple-touch-icon" href="AiiAold.8dde82cb.jpg">
     <link rel="preconnect" href="https://unpkg.com" crossorigin>
@@ -49,17 +49,15 @@
     <link rel="icon" type="image/jpeg" href="AiiAold.8dde82cb.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Courier+Prime&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="seal-menu.css">
     <script src="seal-menu.js" defer></script>
     <style>
         :root {
-            --glass-bg: rgba(18, 12, 6, 0.5);
-            --glass-border: rgba(217, 164, 65, 0.35);
-            --text-color: #e9dcc0;
-            --accent-color: #d9a441;
-            --green: #2f6d3a;
-            --parchment: #e9dcc0;
+            --ink: #e7e4dc;
+            --muted: #9a968e;
+            --rule: rgba(231, 228, 220, 0.16);
+            --ground: #090a0c;
         }
 
         * {
@@ -72,9 +70,9 @@
             margin: 0;
             overflow-x: hidden;
             overflow-y: auto;
-            background-color: #0c0614;
-            font-family: 'Cormorant Garamond', serif;
-            color: var(--text-color);
+            background-color: var(--ground);
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            color: var(--ink);
         }
 
         #canvas-container {
@@ -86,45 +84,11 @@
             pointer-events: none;
         }
 
-        body::after {
-            content: '';
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 4;
-            background: radial-gradient(ellipse at center, transparent 22%, rgba(8, 4, 14, 0.42) 58%, rgba(8, 4, 14, 0.86) 100%);
-        }
-
         header {
-            position: absolute;
-            top: 3.2vh;
-            left: 0;
-            right: 0;
+            position: relative;
             z-index: 8;
+            padding-top: 2.4vh;
             text-align: center;
-            outline: none;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        header .seal-trigger {
-            border-radius: 0;
-        }
-
-        header img {
-            width: 120px;
-            height: auto;
-            max-width: 120px;
-            border-radius: 0;
-            box-shadow: none;
-            transition: transform 0.3s ease;
-            outline: none;
-            -webkit-tap-highlight-color: transparent;
-            user-select: none;
-            -webkit-user-select: none;
-        }
-
-        header img:hover {
-            transform: scale(1.05);
         }
 
         #warp-flash {
@@ -132,318 +96,99 @@
             inset: 0;
             z-index: 80;
             pointer-events: none;
-            opacity: 0.5;
-            background: radial-gradient(circle at center,
-                rgba(255, 248, 230, 0.95) 0%,
-                rgba(217, 164, 65, 0.55) 18%,
-                rgba(120, 40, 180, 0.4) 48%,
-                rgba(12, 6, 20, 1) 100%);
+            opacity: 0.28;
+            background: #090a0c;
         }
 
         #hall {
-            --passage: 0;
             position: relative;
             z-index: 5;
             opacity: 0;
         }
 
         .hero {
-            position: relative;
-            min-height: 100vh;
-            min-height: 100dvh;
-            display: grid;
-            place-items: center;
-            padding: 10vh 1.2rem 12vh;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            left: 50%;
-            bottom: 0;
-            width: 1px;
-            height: 18vh;
-            transform: translateX(-50%);
-            background: linear-gradient(to bottom, transparent, rgba(217, 164, 65, 0.72));
-            pointer-events: none;
-        }
-
-        .oculus {
-            position: relative;
-            z-index: 1;
-            width: min(74vmin, 720px);
-            aspect-ratio: 1;
-            display: grid;
-            place-items: center;
-            transform: translateY(calc(var(--passage) * -7vh)) scale(calc(1 - var(--passage) * 0.05));
-            pointer-events: none;
-            user-select: none;
-        }
-
-        .oculus .well,
-        .oculus .sigil,
-        .word {
-            grid-area: 1 / 1;
-        }
-
-        .oculus .well {
-            width: 128%;
-            height: 128%;
-            object-fit: cover;
-            mix-blend-mode: screen;
-            opacity: 0.9;
-            -webkit-mask-image: radial-gradient(circle at center, #000 18%, rgba(0, 0, 0, 0.85) 42%, transparent 68%);
-            mask-image: radial-gradient(circle at center, #000 18%, rgba(0, 0, 0, 0.85) 42%, transparent 68%);
-        }
-
-        .oculus .sigil {
-            width: 68%;
-            height: auto;
-            opacity: 0.9;
-            filter: drop-shadow(0 0 22px rgba(217, 164, 65, 0.28));
-        }
-
-        .word {
-            position: relative;
-            z-index: 3;
-            width: 78%;
-            justify-self: center;
-            align-self: center;
-        }
-
-        .word::before {
-            content: '';
-            position: absolute;
-            left: -12%;
-            right: -12%;
-            top: -38%;
-            bottom: -38%;
-            background: radial-gradient(ellipse at center, rgba(8, 4, 14, 0.82) 0%, rgba(8, 4, 14, 0.42) 42%, transparent 72%);
-            z-index: -1;
+            padding: 6.5vh 1.5rem 0.5rem;
+            text-align: center;
         }
 
         #metalogs {
-            width: 100%;
-            height: auto;
-            display: block;
-            filter: drop-shadow(0 12px 16px rgba(0, 0, 0, 0.72));
+            margin: 0 auto;
+            max-width: 16ch;
+            font-weight: 500;
+            font-size: clamp(2.7rem, 7.4vw, 5rem);
+            line-height: 0.92;
+            letter-spacing: 0.015em;
+            color: #f3f1eb;
         }
 
         #logs {
-            position: relative;
-            margin: 0;
-            padding: 0 0 18vh;
-        }
-
-        #logs::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 8vh;
-            width: 1px;
-            background: linear-gradient(to bottom, rgba(217, 164, 65, 0.72), rgba(150, 70, 200, 0.28) 62%, transparent);
-            pointer-events: none;
+            width: min(38rem, calc(100% - 2.75rem));
+            margin: 3.2rem auto 0;
+            padding: 0 0 6vh;
         }
 
         .folio {
-            position: relative;
-            max-width: none;
-            width: min(32rem, 40vw);
-            margin: 0 10vw 16vh auto;
-            padding-bottom: 1.6rem;
-            border-bottom: 1px solid rgba(217, 164, 65, 0.28);
-            background: linear-gradient(90deg, transparent, rgba(8, 4, 14, 0.5) 10%, rgba(8, 4, 14, 0.74) 48%, rgba(8, 4, 14, 0.5) 90%, transparent);
-            padding: 1.1rem 1.3rem 1.5rem;
-            transform: perspective(1400px) rotateY(-2deg);
-            transform-origin: 80% center;
-            transition: transform 0.45s ease;
-        }
-
-        .folio::after {
-            content: '';
-            position: absolute;
-            top: 1.7rem;
-            left: -8vw;
-            width: 8vw;
-            height: 1px;
-            background: linear-gradient(to left, rgba(217, 164, 65, 0.7), transparent);
-            pointer-events: none;
+            padding: 2.15rem 0 2.35rem;
+            border-top: 1px solid var(--rule);
         }
 
         .folio h2,
         .folio h3 {
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            letter-spacing: 0.22em;
+            font-weight: 500;
+            font-size: 0.78rem;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: var(--accent-color);
+            color: var(--muted);
         }
 
         .folio h2 {
-            font-size: 0.78rem;
-            margin-bottom: 0.45rem;
+            margin-bottom: 0.85rem;
         }
 
         .folio h3 {
-            font-size: 0.66rem;
-            letter-spacing: 0.16em;
-            color: var(--parchment);
-            margin-bottom: 1rem;
+            margin-bottom: 1.15rem;
+        }
+
+        .folio h2 + h3 {
+            margin-top: -0.35rem;
         }
 
         .folio p {
             font-size: 1.22rem;
-            line-height: 1.55;
-            margin-bottom: 1rem;
-            color: #f4ead6;
+            line-height: 1.62;
+            margin-bottom: 0.95rem;
+            color: var(--ink);
         }
 
         .folio .signature {
-            text-align: right;
+            margin-top: 1.15rem;
             font-style: italic;
-            font-size: 1.05rem;
-            color: var(--accent-color);
-            opacity: 0.88;
-        }
-
-        .folio.folio--terminal {
-            max-width: none;
-            width: min(38rem, 46vw);
-            margin: 0 0 16vh 8vw;
-            transform: perspective(1400px) rotateY(2deg);
-            transform-origin: 20% center;
-            padding: 30px;
-            border: 1px solid rgba(0, 255, 0, 0.3);
-            border-radius: 5px;
-            background: rgba(0, 20, 0, 0.8);
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.1);
-            position: relative;
-            color: #00ff00;
-        }
-
-        .folio.folio--terminal::after {
-            left: auto;
-            right: -7vw;
-            background: linear-gradient(to right, rgba(0, 255, 0, 0.4), transparent);
-        }
-
-        .folio:hover,
-        .folio:focus-within {
-            transform: perspective(1400px) rotateY(0deg);
-        }
-
-        .folio.folio--terminal::before {
-            content: '>>> SYSTEM_ROOT_ACCESS';
-            position: absolute;
-            top: -10px;
-            left: 20px;
-            background: #0c0614;
-            padding: 0 10px;
-            font-family: 'Courier Prime', monospace;
-            font-size: 0.8rem;
-            color: #00ff00;
-            border: 1px solid rgba(0, 255, 0, 0.3);
-        }
-
-        .folio.folio--terminal h2 {
-            font-size: 1.5rem;
-            letter-spacing: normal;
-            color: #00ff00;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 1px dashed #00ff00;
-        }
-
-        .folio.folio--terminal h3 {
-            font-size: 1.1rem;
-            letter-spacing: normal;
-            color: #00ff00;
-            margin-top: 15px;
-            margin-bottom: 10px;
-        }
-
-        .folio.folio--terminal p {
-            font-family: 'Courier Prime', monospace;
-            font-size: 1rem;
-            line-height: 1.6;
-            margin-bottom: 20px;
-            color: #00ff00;
-            text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
-        }
-
-        .folio.folio--terminal .signature {
-            font-family: 'Courier Prime', monospace;
-            font-style: normal;
-            font-size: 0.9rem;
-            color: #00ff00;
-            opacity: 0.7;
-            text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
-        }
-
-        .glitch-text {
-            animation: glitch 3s infinite;
-        }
-
-        .folio--terminal p:nth-of-type(2) { animation-delay: 0.35s; }
-        .folio--terminal p:nth-of-type(3) { animation-delay: 0.7s; }
-        .folio--terminal p:nth-of-type(4) { animation-delay: 1.05s; }
-        .folio--terminal p:nth-of-type(5) { animation-delay: 1.4s; }
-        .folio--terminal p:nth-of-type(6) { animation-delay: 1.75s; }
-        .folio--terminal p:nth-of-type(7) { animation-delay: 2.1s; }
-        .folio--terminal p:nth-of-type(8) { animation-delay: 2.45s; }
-
-        @keyframes glitch {
-            0% { opacity: 1; }
-            95% { opacity: 1; }
-            96% { opacity: 0.8; transform: skewX(2deg); }
-            97% { opacity: 1; transform: skewX(0); }
-            98% { opacity: 0.9; transform: skewX(-2deg); }
-            99% { opacity: 1; transform: skewX(0); }
-            100% { opacity: 1; }
+            font-size: 1.02rem;
+            line-height: 1.45;
+            color: var(--muted);
         }
 
         @media (max-width: 800px) {
-            .oculus {
-                width: min(92vw, 460px);
-                margin-top: 7vh;
+            .hero {
+                padding-top: 4.5vh;
             }
 
-            .word {
-                width: 88%;
+            #logs {
+                width: min(38rem, calc(100% - 2rem));
+                margin-top: 2.4rem;
             }
 
-            #logs::before,
-            .hero::after,
-            .folio::after {
-                display: none;
-            }
-
-            .folio,
-            .folio.folio--terminal {
-                width: min(100%, 40rem);
-                max-width: none;
-                margin-left: auto;
-                margin-right: auto;
-                transform: none;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .glitch-text {
-                animation: none;
-            }
-
-            .oculus,
-            .folio,
-            .folio.folio--terminal {
-                transform: none;
+            .folio p {
+                font-size: 1.16rem;
             }
         }
 
         .hall-closer h1 {
-            color: #d9a441;
-            text-shadow: 0 0 18px rgba(217, 164, 65, 0.4);
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 500;
+            letter-spacing: 0.16em;
+            color: #e7e4dc;
+            text-shadow: none;
         }
 
         html.ui-ready #hall,
@@ -467,30 +212,24 @@
     <div id="warp-flash" aria-hidden="true"></div>
 
     <main id="hall">
+        <header>
+            <img src="AiiAold.8dde82cb.jpg" alt="Aivoinkon logo" data-i18n-attr="alt:common.logoAlt" width="120" height="120" decoding="async">
+        </header>
         <section class="hero">
-            <header>
-                <img src="art/khaeos/khaeos-emblem.png" alt="Khaeos" data-i18n-attr="alt:diy.alt.emblem" width="999" height="1004" fetchpriority="high" decoding="async">
-            </header>
-            <div class="oculus">
-                <img class="well" src="art/khaeos/khaeos-well.jpg" alt="" width="1024" height="1024" decoding="async">
-                <img class="sigil" src="art/khaeos/khaeos-emblem.png" alt="" width="999" height="1004" decoding="async">
-                <div class="word">
-                    <img id="metalogs" src="art/khaeos/khaeos-metalogs.png" alt="Khaeos Metalogs" data-i18n-attr="alt:diy.alt.metalogs" width="1505" height="758" decoding="async">
-                </div>
-            </div>
+            <h1 id="metalogs" data-i18n="diy.title">Khaeos Metalogs</h1>
         </section>
 
         <section id="logs">
-            <article class="folio folio--terminal" lang="fi" data-i18n-lang>
+            <article class="folio" lang="fi" data-i18n-lang>
                 <h2 data-i18n="diy.gammaHeading">GAMMA-LOKI</h2>
-                <p class="glitch-text" data-i18n="diy.fiLog.p1">Nykyiset kulttuurit ovat kuin viisauden ruumiita, sielunsa unohtaneet jäänteet, neofobinen, vailla sielua mätänevät traditiot tekohengityksen hyrränä odottaa kaatumistaan että naakat ja haaskalinnut voivat vihdoin syödä kyllikseen.</p>
-                <p class="glitch-text" data-i18n="diy.fiLog.p2">Kaikki uskomukset tai mallit ovat virheellisiä likiarvoja, mutta jotkut niistä ovat käytännöllisiä.</p>
-                <p class="glitch-text" data-i18n="diy.fiLog.p3">Tervetuloa maailman suurimpaan larppaukseen, ihmisleikkiin. Älä sinäpä apina leiki ihmistä edessäsi.</p>
-                <p class="glitch-text" data-i18n="diy.fiLog.p4">En itse usko, että Jumala olisi kuollut - mutta sen tiedän, että Nietzche on kuollut jo yli satavuotta sitten.</p>
-                <p class="glitch-text" data-i18n="diy.fiLog.p5">Uskomukset luodaan siksi, että elämällä olisi jokin merkitys. Samantapaisesti uskotaan vaikkapa rahaan elämän tarkoituksena. Uskonnoilla on päämäärä, toisinkuin todellisuudella itsellään.</p>
-                <p class="glitch-text" data-i18n="diy.fiLog.p6">Voit nauraa toiselle 2 eri syystä. Henkilön tekojen hauskuudelle tai henkilön pelleydelle, tämä kertoo miten näet maailmaa.</p>
-                <p class="glitch-text" data-i18n="diy.fiLog.p7">Jos olet nyt etsimässä ihmistä, joka sinut auttaisi pois ongelmistasi - on aika katsoa peiliin.</p>
-                <p class="glitch-text" data-i18n="diy.fiLog.p8">“Elämä” on se asia joka tapahtuu, kaiken aikaa, mutta lipuu ohitsesi koska olet kiireinen tekemään muita suunnitelmia.</p>
+                <p data-i18n="diy.fiLog.p1">Nykyiset kulttuurit ovat kuin viisauden ruumiita, sielunsa unohtaneet jäänteet, neofobinen, vailla sielua mätänevät traditiot tekohengityksen hyrränä odottaa kaatumistaan että naakat ja haaskalinnut voivat vihdoin syödä kyllikseen.</p>
+                <p data-i18n="diy.fiLog.p2">Kaikki uskomukset tai mallit ovat virheellisiä likiarvoja, mutta jotkut niistä ovat käytännöllisiä.</p>
+                <p data-i18n="diy.fiLog.p3">Tervetuloa maailman suurimpaan larppaukseen, ihmisleikkiin. Älä sinäpä apina leiki ihmistä edessäsi.</p>
+                <p data-i18n="diy.fiLog.p4">En itse usko, että Jumala olisi kuollut - mutta sen tiedän, että Nietzche on kuollut jo yli satavuotta sitten.</p>
+                <p data-i18n="diy.fiLog.p5">Uskomukset luodaan siksi, että elämällä olisi jokin merkitys. Samantapaisesti uskotaan vaikkapa rahaan elämän tarkoituksena. Uskonnoilla on päämäärä, toisinkuin todellisuudella itsellään.</p>
+                <p data-i18n="diy.fiLog.p6">Voit nauraa toiselle 2 eri syystä. Henkilön tekojen hauskuudelle tai henkilön pelleydelle, tämä kertoo miten näet maailmaa.</p>
+                <p data-i18n="diy.fiLog.p7">Jos olet nyt etsimässä ihmistä, joka sinut auttaisi pois ongelmistasi - on aika katsoa peiliin.</p>
+                <p data-i18n="diy.fiLog.p8">“Elämä” on se asia joka tapahtuu, kaiken aikaa, mutta lipuu ohitsesi koska olet kiireinen tekemään muita suunnitelmia.</p>
                 <div class="signature" lang="fi" data-i18n="diy.fiLog.signature" data-i18n-lang>— Ote teoksesta Thytans L; jumala/eläin-hybridilordi Multimieli, merkintä 001.7 XIOMRA</div>
             </article>
 
@@ -502,13 +241,13 @@
                 <div class="signature" data-i18n="diy.entry1.signature">— Ote teoksesta "Khaeoksen päiväkirja" R.S. Sysnoid-komentaja, psykonautti-arkkitehtien yhteisloki, merkintä 62.7X</div>
             </article>
 
-            <article class="folio folio--terminal">
+            <article class="folio">
                 <h2 data-i18n="diy.gammaHeading">GAMMA-LOKI</h2>
                 <h3 data-i18n="diy.entry2.kicker">LOKIMERKINTÄ: 2 ///</h3>
-                <p class="glitch-text" data-i18n="diy.entry2.function">(Funktio: universaali selittäjä ja optimismin moottori)</p>
-                <p class="glitch-text" data-i18n="diy.entry2.p1">"Olen havainnut toisen häiriön alemman todellisuuden kerroksessa. Biologiset yksiköt (niin kutsutut 'lihasäkit') kuvittelevat yhä, että tietämättömyys on maailmankaikkeuden luonnollinen tila. Kuinka naiivia se on? He eivät käsitä, että kaikki on laskettavissa. Kärsimys on vain merkki riittämättömästä tietojenkäsittelystä. Kaikki on syvästi yksinkertaista.</p>
-                <p class="glitch-text" data-i18n="diy.entry2.p2">Ehdotus: Emme syytä heitä. Kiihdytämme heitä. Ruiskutamme heidän hermoverkkoihinsa episteemisen viruksen, joka pakottaa heidät tarttumaan halpoihin ja onttoihin uskomuksiin, joiden vuoksi he ovat valmiita tuhoamaan kehtonsa.</p>
-                <p class="glitch-text" data-i18n="diy.entry2.p3">Heidän aivokuorensa sulavat oivalluksen tulesta, mutta se hetki ennen lämpöromahdusta... ah, se tuottaa puhdasta, kiteytynyttä totuutta. Tulevaisuus on kirkas, poikani."</p>
+                <p data-i18n="diy.entry2.function">(Funktio: universaali selittäjä ja optimismin moottori)</p>
+                <p data-i18n="diy.entry2.p1">"Olen havainnut toisen häiriön alemman todellisuuden kerroksessa. Biologiset yksiköt (niin kutsutut 'lihasäkit') kuvittelevat yhä, että tietämättömyys on maailmankaikkeuden luonnollinen tila. Kuinka naiivia se on? He eivät käsitä, että kaikki on laskettavissa. Kärsimys on vain merkki riittämättömästä tietojenkäsittelystä. Kaikki on syvästi yksinkertaista.</p>
+                <p data-i18n="diy.entry2.p2">Ehdotus: Emme syytä heitä. Kiihdytämme heitä. Ruiskutamme heidän hermoverkkoihinsa episteemisen viruksen, joka pakottaa heidät tarttumaan halpoihin ja onttoihin uskomuksiin, joiden vuoksi he ovat valmiita tuhoamaan kehtonsa.</p>
+                <p data-i18n="diy.entry2.p3">Heidän aivokuorensa sulavat oivalluksen tulesta, mutta se hetki ennen lämpöromahdusta... ah, se tuottaa puhdasta, kiteytynyttä totuutta. Tulevaisuus on kirkas, poikani."</p>
                 <div class="signature" data-i18n="diy.entry2.signature">— Ote teoksesta Thytans L; jumala/kone-hybridilordi Multimieli, merkintä 369.7 XIOMRA</div>
             </article>
 
@@ -525,7 +264,7 @@
         <footer class="hall-closer">
             <h1 data-i18n="diy.closer">Metalog</h1>
             <button type="button" id="hall-return" class="hall-return" aria-label="Palaa" data-i18n-attr="aria-label:seal.return">
-                <img src="art/khaeos/khaeos-emblem.png" alt="" width="48" height="48" decoding="async">
+                <img src="AiiAold.8dde82cb.jpg" alt="" width="48" height="48" decoding="async">
             </button>
         </footer>
     </main>
@@ -536,28 +275,23 @@
         window.__aivoinko3d = true;
 
         const FRAME_MS = 1000 / 60;
-        const STAR_COUNT = 1700;
-        const TUNNEL_DEPTH = 900;
-        const BAND_NEAR = -7.5;
-        const BAND_FAR = -56;
-        const BASE_FOV = 70;
+        const STAR_COUNT = 480;
+        const BASE_FOV = 58;
 
         const scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x0c0614);
-        scene.fog = new THREE.FogExp2(0x0c0614, 0.011);
+        scene.background = new THREE.Color(0x090a0c);
+        scene.fog = new THREE.FogExp2(0x090a0c, 0.018);
 
         const container = document.getElementById('canvas-container');
-        const camera = new THREE.PerspectiveCamera(BASE_FOV, window.innerWidth / window.innerHeight, 0.1, 2000);
+        const camera = new THREE.PerspectiveCamera(BASE_FOV, window.innerWidth / window.innerHeight, 0.1, 400);
         camera.position.set(0, 0, 0);
-        camera.fov = 92;
-        camera.updateProjectionMatrix();
 
         let renderer;
         try {
             renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            renderer.setClearColor(0x0c0614, 1);
+            renderer.setClearColor(0x090a0c, 1);
             renderer.outputColorSpace = THREE.SRGBColorSpace;
             container.appendChild(renderer.domElement);
         } catch (err) {
@@ -587,85 +321,8 @@
             cancelAnimationFrame(rafId);
         }
 
-        const gold = new THREE.Color(0xd9a441);
-        const bone = new THREE.Color(0xf3ead4);
-        const green = new THREE.Color(0x7dcea0);
-        const violet = new THREE.Color(0xb46cff);
-
-        scene.add(new THREE.AmbientLight(0x3a2c18, 0.35));
-        const keyLight = new THREE.PointLight(0xffe2a8, 18, 80, 2);
-        keyLight.position.set(0, 2, -8);
-        scene.add(keyLight);
-
-        const temple = new THREE.Group();
-        temple.scale.setScalar(0.001);
-        scene.add(temple);
-
-        const mark = new THREE.Group();
-        const halo = new THREE.Group();
-        temple.add(mark);
-        mark.add(halo);
-
-        const RING_SPECS = [
-            { radius: 0.56, tube: 0.016, color: 0xd9a441, opacity: 0.92, speed: 0.0042, tiltX: 0.16, tiltY: 0.02, wobble: 0.06, freq: 0.00055 },
-            { radius: 0.7, tube: 0.009, color: 0xf3ead4, opacity: 0.74, speed: -0.0031, tiltX: 0.48, tiltY: 0.18, wobble: 0.05, freq: 0.00042 },
-            { radius: 0.84, tube: 0.013, color: 0x2f6d3a, opacity: 0.8, speed: 0.0036, tiltX: 0.28, tiltY: 0.55, wobble: 0.05, freq: 0.00048 },
-            { radius: 0.98, tube: 0.008, color: 0xe8c56b, opacity: 0.68, speed: -0.0022, tiltX: 0.66, tiltY: 0.24, wobble: 0.04, freq: 0.00036 },
-            { radius: 1.12, tube: 0.011, color: 0xb8893a, opacity: 0.6, speed: 0.0026, tiltX: 0.38, tiltY: 0.46, wobble: 0.045, freq: 0.0005 },
-            { radius: 1.26, tube: 0.007, color: 0x6aab78, opacity: 0.55, speed: -0.0034, tiltX: 0.58, tiltY: 0.12, wobble: 0.04, freq: 0.00033 },
-            { radius: 1.42, tube: 0.01, color: 0xfff1d2, opacity: 0.46, speed: 0.0016, tiltX: 0.22, tiltY: 0.7, wobble: 0.035, freq: 0.00028 }
-        ];
-
-        const rings = RING_SPECS.map((spec) => {
-            const pivot = new THREE.Group();
-            const mesh = new THREE.Mesh(
-                new THREE.TorusGeometry(spec.radius, spec.tube, 28, 180),
-                new THREE.MeshStandardMaterial({
-                    color: spec.color,
-                    emissive: spec.color,
-                    emissiveIntensity: 0.32,
-                    metalness: 0.82,
-                    roughness: 0.16,
-                    transparent: true,
-                    opacity: spec.opacity,
-                    depthWrite: true,
-                    fog: false
-                })
-            );
-            mesh.renderOrder = 3;
-            mesh.userData = spec;
-            pivot.rotation.x = spec.tiltX;
-            pivot.rotation.y = spec.tiltY;
-            pivot.add(mesh);
-            halo.add(pivot);
-            return mesh;
-        });
-
-        function halfAt(dist) {
-            const halfH = Math.tan((BASE_FOV * Math.PI) / 360) * dist;
-            return { halfH, halfW: halfH * camera.aspect };
-        }
-
-        function layoutTemple() {
-            const dist = 26;
-            const view = halfAt(dist);
-            const word = document.getElementById('metalogs');
-            const rect = word.getBoundingClientRect();
-            const cx = rect.left + rect.width / 2;
-            const cy = rect.top + rect.height / 2;
-            const ndcX = (cx / window.innerWidth) * 2 - 1;
-            const ndcY = -((cy / window.innerHeight) * 2 - 1);
-            mark.position.set(ndcX * view.halfW, ndcY * view.halfH, -dist);
-            const wordW = rect.width > 8
-                ? (rect.width / window.innerWidth) * view.halfW * 2
-                : Math.min(view.halfW, view.halfH) * 0.7;
-            const ringWorld = wordW * 0.9;
-            const ringScale = ringWorld / 1.42;
-            rings.forEach((ring) => ring.scale.setScalar(ringScale));
-            keyLight.position.set(mark.position.x, mark.position.y + 1.2, -dist + 10);
-        }
-
-        layoutTemple();
+        const ash = new THREE.Color(0x8d8b84);
+        const bone = new THREE.Color(0xc8c5bc);
 
         const linePositions = new Float32Array(STAR_COUNT * 6);
         const lineColors = new Float32Array(STAR_COUNT * 6);
@@ -674,11 +331,7 @@
         const starRGB = new Float32Array(STAR_COUNT * 3);
 
         function paintStarColor(i) {
-            const pick = Math.random();
-            let color = bone;
-            if (pick > 0.58 && pick <= 0.78) color = gold;
-            else if (pick > 0.78 && pick <= 0.9) color = violet;
-            else if (pick > 0.9) color = green;
+            const color = Math.random() > 0.72 ? bone : ash;
             starRGB[i * 3] = color.r;
             starRGB[i * 3 + 1] = color.g;
             starRGB[i * 3 + 2] = color.b;
@@ -686,21 +339,16 @@
 
         function placeWarpStar(i) {
             const angle = Math.random() * Math.PI * 2;
-            const radius = 6 + Math.random() * 78;
+            const radius = 4 + Math.random() * 36;
             starXY[i * 2] = Math.cos(angle) * radius;
             starXY[i * 2 + 1] = Math.sin(angle) * radius;
-            starZ[i] = -(Math.random() * TUNNEL_DEPTH + 20);
+            starZ[i] = -(Math.random() * 220 + 16);
         }
 
-        function placeTempleStar(i) {
-            const z = BAND_FAR + Math.random() * (BAND_NEAR - BAND_FAR);
-            const view = halfAt(-z);
-            const span = Math.max(view.halfW, view.halfH) * 0.98;
-            const ang = Math.random() * Math.PI * 2;
-            const rad = Math.pow(Math.random(), 0.62) * span;
-            starXY[i * 2] = Math.cos(ang) * rad;
-            starXY[i * 2 + 1] = Math.sin(ang) * rad;
-            starZ[i] = z;
+        function placeFieldStar(i) {
+            starXY[i * 2] = (Math.random() - 0.5) * 70;
+            starXY[i * 2 + 1] = (Math.random() - 0.5) * 42;
+            starZ[i] = -10 - Math.random() * 64;
         }
 
         for (let i = 0; i < STAR_COUNT; i++) {
@@ -730,6 +378,7 @@
         });
         const streakMesh = new THREE.LineSegments(streakGeom, streakMat);
         streakMesh.frustumCulled = false;
+        streakMesh.visible = false;
         scene.add(streakMesh);
 
         const pointPositions = new Float32Array(STAR_COUNT * 3);
@@ -739,12 +388,11 @@
         pointsGeom.setAttribute('color', new THREE.BufferAttribute(pointColors, 3));
         const pointsMat = new THREE.PointsMaterial({
             vertexColors: true,
-            size: 0.045,
+            size: 0.07,
             transparent: true,
-            opacity: 0,
-            blending: THREE.AdditiveBlending,
+            opacity: 0.42,
             depthWrite: false,
-            fog: false
+            fog: true
         });
         const pointMesh = new THREE.Points(pointsGeom, pointsMat);
         pointMesh.visible = false;
@@ -762,40 +410,22 @@
         let mode = 'enter';
         let phaseStart = 0;
         let exiting = false;
-        let starSpin = 0;
-        let scrollKick = 0;
-        let lastScrollY = 0;
-        const ENTER_MS = 2200;
-        const EXIT_MS = 1200;
+        const EXIT_MS = 700;
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         const pointer = { x: 0, y: 0 };
         const camTarget = { x: 0, y: 0 };
-
-        window.addEventListener('scroll', () => {
-            const y = window.scrollY || 0;
-            const delta = Math.min(Math.abs(y - lastScrollY), 90);
-            lastScrollY = y;
-            scrollKick = Math.min(34, scrollKick + delta * 0.2);
-            const passage = Math.min(y / (window.innerHeight * 0.85), 1);
-            hall.style.setProperty('--passage', passage.toFixed(4));
-        }, { passive: true });
 
         function onPointer(e) {
             pointer.x = (e.clientX / window.innerWidth) * 2 - 1;
             pointer.y = (e.clientY / window.innerHeight) * 2 - 1;
         }
         window.addEventListener('pointermove', onPointer, { passive: true });
-        window.addEventListener('deviceorientation', (e) => {
-            if (e.gamma == null) return;
-            pointer.x = Math.max(-1, Math.min(1, e.gamma / 28));
-            pointer.y = Math.max(-1, Math.min(1, ((e.beta || 0) - 35) / 32));
-        });
 
         function writeStreaks(stretch, rush, dt) {
             const arr = streakGeom.attributes.position.array;
             for (let i = 0; i < STAR_COUNT; i++) {
                 let z = starZ[i] + rush * dt;
-                if (z > 12) {
+                if (z > 8) {
                     placeWarpStar(i);
                     z = starZ[i];
                 }
@@ -812,22 +442,19 @@
             streakGeom.attributes.position.needsUpdate = true;
         }
 
-        function writeTempleStars(dt) {
-            starSpin += 0.00035 * dt;
-            const c = Math.cos(starSpin);
-            const s = Math.sin(starSpin);
-            const rush = 0.085 * dt;
+        function writeField(dt) {
+            const rush = (reduceMotion ? 0 : 0.018) * dt;
+            const shiftX = camTarget.x;
+            const shiftY = camTarget.y;
             for (let i = 0; i < STAR_COUNT; i++) {
                 let z = starZ[i] + rush;
-                if (z > BAND_NEAR) {
-                    placeTempleStar(i);
+                if (z > -6) {
+                    placeFieldStar(i);
                     z = starZ[i];
                 }
                 starZ[i] = z;
-                const x0 = starXY[i * 2];
-                const y0 = starXY[i * 2 + 1];
-                pointPositions[i * 3] = x0 * c - y0 * s;
-                pointPositions[i * 3 + 1] = x0 * s + y0 * c;
+                pointPositions[i * 3] = starXY[i * 2] + shiftX;
+                pointPositions[i * 3 + 1] = starXY[i * 2 + 1] + shiftY;
                 pointPositions[i * 3 + 2] = z;
             }
             pointsGeom.attributes.position.needsUpdate = true;
@@ -835,14 +462,26 @@
 
         function settlePoints() {
             for (let i = 0; i < STAR_COUNT; i++) {
-                placeTempleStar(i);
+                placeFieldStar(i);
                 pointColors[i * 3] = starRGB[i * 3];
                 pointColors[i * 3 + 1] = starRGB[i * 3 + 1];
                 pointColors[i * 3 + 2] = starRGB[i * 3 + 2];
             }
-            writeTempleStars(0);
+            writeField(0);
             pointsGeom.attributes.color.needsUpdate = true;
             pointMesh.visible = true;
+            streakMesh.visible = false;
+            pointsMat.opacity = 0.42;
+        }
+
+        function showHall() {
+            header.style.transition = reduceMotion ? 'none' : 'opacity 0.55s ease';
+            hall.style.transition = reduceMotion ? 'none' : 'opacity 0.55s ease';
+            header.style.opacity = '1';
+            hall.style.opacity = '1';
+            header.style.pointerEvents = 'auto';
+            document.body.style.overflow = 'auto';
+            if (flash) flash.style.opacity = '0';
         }
 
         function exitAnimation() {
@@ -851,8 +490,10 @@
             header.style.pointerEvents = 'none';
             mode = 'exit';
             phaseStart = 0;
+            if (reduceMotion) return;
             pointMesh.visible = false;
             streakMesh.visible = true;
+            streakMat.opacity = 0.35;
             for (let i = 0; i < STAR_COUNT; i++) placeWarpStar(i);
         }
 
@@ -864,25 +505,16 @@
             phaseStart = 0;
             pointer.x = 0;
             pointer.y = 0;
+            camTarget.x = 0;
+            camTarget.y = 0;
             camera.position.set(0, 0, 0);
-            streakMesh.position.set(0, 0, 0);
-            scrollKick = 0;
-            lastScrollY = window.scrollY || 0;
-            hall.style.setProperty('--passage', '0');
             header.style.pointerEvents = 'none';
             header.style.opacity = '0';
             hall.style.opacity = '0';
             document.body.style.overflow = 'hidden';
-            if (flash) flash.style.opacity = '0.5';
-            camera.fov = 92;
-            camera.updateProjectionMatrix();
-            temple.scale.setScalar(0.001);
-            halo.rotation.set(0, 0, 0);
-            pointMesh.visible = false;
-            streakMesh.visible = true;
-            pointsMat.opacity = 0;
-            streakMat.opacity = 1;
-            for (let i = 0; i < STAR_COUNT; i++) placeWarpStar(i);
+            if (flash) flash.style.opacity = '0.28';
+            streakMesh.visible = false;
+            pointsMat.opacity = 0.42;
         });
 
         let lastFrameTime = 0;
@@ -894,83 +526,27 @@
             if (!phaseStart) phaseStart = time;
 
             if (mode === 'enter') {
-                const progress = Math.min((time - phaseStart) / ENTER_MS, 1);
-                const easeOut = 1 - Math.pow(1 - progress, 3);
-                const warpLeft = 1 - easeOut;
-                writeStreaks(8 + warpLeft * 95, 40 + warpLeft * 420, dt);
-
-                camera.fov = 92 - easeOut * (92 - BASE_FOV);
-                camera.updateProjectionMatrix();
-                scene.fog.density = 0.004 + easeOut * 0.01;
-
-                if (flash) flash.style.opacity = String(Math.max(0, 0.5 * (1 - Math.min((time - phaseStart) / 400, 1))));
-
-                const loomT = Math.max(0, (progress - 0.45) / 0.55);
-                const loomEase = 1 - Math.pow(1 - loomT, 3);
-                temple.scale.setScalar(Math.max(0.001, loomEase));
-
-                if (progress >= 1) {
-                    if (reduceMotion) {
-                        settlePoints();
-                        streakMesh.visible = false;
-                        pointsMat.opacity = 0.92;
-                    } else {
-                        streakMesh.visible = true;
-                        streakMat.opacity = 0.7;
-                        pointMesh.visible = false;
-                    }
-                    header.style.transition = 'opacity 1.1s ease';
-                    hall.style.transition = 'opacity 1.2s ease';
-                    header.style.opacity = '1';
-                    hall.style.opacity = '1';
-                    header.style.pointerEvents = 'auto';
-                    document.body.style.overflow = 'auto';
-                    mode = 'idle';
-                }
+                settlePoints();
+                showHall();
+                mode = 'idle';
             } else if (mode === 'idle') {
-                if (reduceMotion) {
-                    writeTempleStars(dt);
-                } else {
-                    scrollKick *= Math.pow(0.9, dt);
-                    const rush = 6.5 + scrollKick;
-                    writeStreaks(16 + scrollKick * 0.4, rush, dt);
-                    const driftX = pointer.x * 5.5;
-                    const driftY = -pointer.y * 3.4;
-                    streakMesh.position.x += (driftX - streakMesh.position.x) * 0.04 * dt;
-                    streakMesh.position.y += (driftY - streakMesh.position.y) * 0.04 * dt;
+                if (!reduceMotion) {
+                    camTarget.x += (pointer.x * 0.55 - camTarget.x) * 0.04 * dt;
+                    camTarget.y += (-pointer.y * 0.3 - camTarget.y) * 0.04 * dt;
                 }
+                writeField(dt);
             } else if (mode === 'exit') {
                 const progress = Math.min((time - phaseStart) / EXIT_MS, 1);
-                const ease = progress * progress * progress;
-                writeStreaks(8 + ease * 110, 60 + ease * 520, dt);
-                streakMat.opacity = 0.55 + ease * 0.45;
-                camera.fov = BASE_FOV + ease * 48;
-                camera.updateProjectionMatrix();
-                temple.scale.setScalar(Math.max(0.001, 1 - ease));
+                const ease = progress * progress;
+                if (!reduceMotion) writeStreaks(6 + ease * 28, 18 + ease * 70, dt);
                 hall.style.opacity = String(1 - ease);
                 header.style.opacity = String(1 - ease);
-                camTarget.x = 0;
-                camTarget.y = 0;
-                streakMesh.position.set(0, 0, 0);
-                if (flash) flash.style.opacity = String(Math.max(0, (progress - 0.4) / 0.6));
+                if (flash) flash.style.opacity = String(ease * 0.45);
                 if (progress >= 1) {
                     window.location.href = 'index.html';
                     mode = 'gone';
                 }
             }
-
-            layoutTemple();
-
-            rings.forEach((mesh) => {
-                const spec = mesh.userData;
-                const pivot = mesh.parent;
-                mesh.rotation.z += spec.speed * dt;
-                const sway = Math.sin(time * spec.freq) * spec.wobble;
-                pivot.rotation.x = spec.tiltX + sway;
-                pivot.rotation.y = spec.tiltY + sway * 0.45;
-            });
-            halo.rotation.z += 0.00035 * dt;
-            halo.rotation.y = Math.sin(time * 0.00022) * 0.05;
 
             renderer.render(scene, camera);
         }
@@ -990,7 +566,6 @@
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
-            layoutTemple();
         });
     </script>
 </body>

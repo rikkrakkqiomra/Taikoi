@@ -24,7 +24,7 @@ Authoritative description of the live repository as of 2026-11-17. This file is 
 | Frameworks | None | No React/Svelte/Vue/Next. |
 | 3D | Three.js + OrbitControls | **Pinned `0.160.0`** via HTML import maps → unpkg ESM. Absent on `404.html`. |
 | Styling | Inline `<style>` per HTML file, plus `seal-menu.css` | Page chrome stays inline. The seal index is the one shared stylesheet. No Tailwind or CSS Modules. |
-| Fonts | Google Fonts | `Orbitron` + `Rajdhani` + `Cormorant Garamond` 500/italic 500 (index; Cormorant is the Library limen plaques and the Khaeos label); `Cormorant Garamond` 500/italic 500 + `Source Sans 3` 400/500/600 on `services.html` (Orbitron still loaded for the seal index only); `Orbitron` + `Rajdhani` (contact and `vault/opening.html`); `Orbitron` + `Rajdhani` + `Cormorant Garamond` italic 500 (branding: The Work mast and sand titles; business_strategy: strategy-scroll title); `Orbitron` + `Cormorant Garamond` (gallery, physicalus, cartomancy, bio, cv, gate_left, gate_right). Seal index uses Cormorant italic 500 + Orbitron on the twelve public seal pages and the vaulted manifesto. `Cinzel` on gate_right folios. On the Khaeos Metalogs hall (`diy_realities.html`): odd `#logs` articles (`.folio--terminal`) use the System Log block — `Orbitron` headings, `Courier Prime` body, `#00ff00`, frame, `>>> SYSTEM_ROOT_ACCESS`, and the `glitch` skew. Even articles stay `Orbitron` + `Cormorant Garamond` in gold/bone. There is no separate System Log page. |
+| Fonts | Google Fonts | `Orbitron` + `Rajdhani` + `Cormorant Garamond` 500/italic 500 (index; Cormorant is the Library limen plaques and the Khaeos label); `Cormorant Garamond` 500/italic 500 + `Source Sans 3` 400/500/600 on `services.html` (Orbitron still loaded for the seal index only); `Orbitron` + `Rajdhani` (contact and `vault/opening.html`); `Orbitron` + `Rajdhani` + `Cormorant Garamond` italic 500 (branding: The Work mast and sand titles; business_strategy: strategy-scroll title); `Orbitron` + `Cormorant Garamond` (gallery, physicalus, cartomancy, bio, cv, gate_left, gate_right). Seal index uses Cormorant italic 500 + Orbitron on the twelve public seal pages and the vaulted manifesto. `Cinzel` on gate_right folios. On the Khaeos Metalogs hall (`diy_realities.html`): `Cormorant Garamond` 500/italic 500 for the title and the four logs. `Orbitron` 700 is loaded for the seal index only. There is no System Log terminal on this page. |
 | Database / ORM | None | All content is hardcoded in HTML/JS. |
 | Build tools | None | No Vite, Webpack, Turbopack, or bundler. Netlify publishes the repo root as-is. |
 | Runtime | Browser (WebGL) | Static files on Netlify CDN. No Node.js app runtime, no edge functions, no serverless functions. |
@@ -164,10 +164,10 @@ Taikoi/
 │   │   ├── fragment-hanging.png # Unused. Same cassetta; right stile broken; well punched
 │   │   ├── codex-study.png    # Unused. Sealed scroll; transparent ground
 │   │   └── fragment-study.png # Unused. Torn cipher scrap; transparent ground
-│   └── khaeos/                # diy_realities.html shows the emblem, the wordmark, and khaeos-well.jpg
-│       ├── khaeos-emblem.png  # Hex star sigil. Hall oculus and seal face, and the Library choose vanishing point. Not a circle crop
-│       ├── khaeos-metalogs.png # Two-line gold wordmark, Goudy Old Style, transparent
-│       ├── khaeos-well.jpg    # Painted hyperspace well, 1024². Black ground, screen-blended behind the oculus
+│   └── khaeos/                # Unused by diy_realities.html. The emblem is still the Library choose mark on index.html
+│       ├── khaeos-emblem.png  # Hex star sigil. Library choose vanishing point on index.html. Not shown on the Metalogs hall
+│       ├── khaeos-metalogs.png # Unused. Two-line gold wordmark, Goudy Old Style, transparent
+│       ├── khaeos-well.jpg    # Unused. Painted hyperspace well, 1024²
 │       ├── khaeos-logo.png    # Unused. Earlier Greek KHAEOΣ plane texture
 │       ├── chlos.png          # Unused. Black ΧΛΟΣ
 │       ├── hexxacro.png       # Unused. Green hexagram
@@ -177,7 +177,7 @@ Taikoi/
 │       ├── parchment-left.jpg # Unused
 │       ├── parchment-right.jpg # Unused
 │       └── nebula.jpg         # Unused night window
-├── diy_realities.html         # Khaeos Metalogs: oculus over a painted well, seven rings, coasting tunnel, staggered scroll
+├── diy_realities.html         # Khaeos Metalogs: type title, four logs in one column, dim point field
 ├── gate_left.html             # Crimson left aperture; two sealed thesis scrolls
 ├── gate_right.html            # Fragmenta Apocrypha; gold starfield + unfinished folio nave
 ├── i18n.js                    # Language bootstrap, JSON apply, FI/EN switcher. Contract: window.__aivoinkoI18n
@@ -217,7 +217,7 @@ No `.gitignore` in the current tree (removed in `85d5131`).
 | `cartomancy.html` | `/cartomancy.html` | Beliefs, Changes, Powers, and Relations suits of the tarot fork. Black starfield, land dropdown, thirteen cards with English readings under each image. Seal opens the gallery index. Return reverse-warps → `gallery.html`. All four lands are open. |
 | `bio.html` | `/bio.html` | Multimieli, the default Bio hall. Black starfield + scroll hall. Opening name plate, four CSS-framed portraits (`art/bio/`), Finnish draft plaques, three chronicle scrolls (`#minusta`) under the first portrait, a Verkko manuscript scroll of outbound work links, closing plate. Seal lists Multimieli and CV. Return reverse-warps → `index.html`. Portraits are not under a `bio/` root folder. |
 | `cv.html` | `/cv.html` | CV hall. Same black starfield as Bio. English vita from the 2024–present curriculum: summary, six competency groups, three roles, education, three projects. Phone and email from that CV. Seal lists Multimieli and CV. Return reverse-warps → `bio.html`. |
-| `diy_realities.html` | `/diy_realities.html` | Khaeos Metalogs. Home nav label stays Library. Default wormhole timeout destination. DOM emblem and wordmark over `art/khaeos/khaeos-well.jpg`, seven smooth rings tracking the wordmark, coasting warp streaks after arrival, scroll hall with plates staggered off a center axis. Odd folios are green System Log terminals (Multimieli, then Log Entry 2). Even folios stay gold/bone (Log Entry 1, then Log Entry 3). Seal opens the index; Return reverse-warps → `index.html`. |
+| `diy_realities.html` | `/diy_realities.html` | Khaeos Metalogs. Home nav label stays Library. Default wormhole timeout destination. In-flow seal, then the words Khaeos Metalogs, then four logs in one column on a dim point field. No emblem, wordmark, rings, or green terminal. Seal opens the index; Return fades to `index.html`. |
 | `gate_left.html` | `/gate_left.html` | Crimson vertical slit. Entered by left seal. Two sealed thesis scrolls unfurl from wax-stamped rollers (`art/liber/*.pdf`). Seal opens the index; Return reverse-warps → `index.html`. |
 | `gate_right.html` | `/gate_right.html` | Fragmenta Apocrypha: gold/zinc starfield + scrollable nave of six unfinished folios. Entered by right seal. Seal opens the index; Return reverse-warps → `index.html`. |
 | `404.html` | any unknown path | Netlify not-found. Static chrome, no import map, no WebGL, `noindex`. Link returns to `index.html`. |
@@ -225,7 +225,7 @@ No `.gitignore` in the current tree (removed in `85d5131`).
 | `sitemap.xml` | `/sitemap.xml` | The thirteen public routes. Not `404.html`, not `vault/opening.html`. |
 | `netlify.toml` | n/a | Deployment contract: publish directory, HTTP headers, and force 404 for `/brain`, `/brain.html`, `/vault`, and `/vault/*`. |
 
-Thirteen public scene pages plus `vault/opening.html` are each a **layout wrapper for themselves**: `<head>` (meta, import map, fail-open script, fonts, CSS) + `<body>` (chrome + `#canvas-container` + page content) + trailing `<script type="module">` (Three.js scene). On `services.html` the canvas is `position: fixed` under document-scrolled practice chrome; the copy is not hidden for the enter beat. `404.html` is static chrome only. `vault/opening.html` is the WebGL wrapper, unpublished. There is no shared layout partial or middleware. The twelve public subpages and `vault/opening.html` share `seal-menu.css` and `seal-menu.js` for the logo index. The trigger is `art/seal-stone.png` (punched obsidian salmiakki, 132×216px, 104×170px under 768px); the page logo sits in the well, circle-cropped except the Khaeos emblem. `index.html` does not.
+Thirteen public scene pages plus `vault/opening.html` are each a **layout wrapper for themselves**: `<head>` (meta, import map, fail-open script, fonts, CSS) + `<body>` (chrome + `#canvas-container` + page content) + trailing `<script type="module">` (Three.js scene). On `services.html` the canvas is `position: fixed` under document-scrolled practice chrome; the copy is not hidden for the enter beat. `404.html` is static chrome only. `vault/opening.html` is the WebGL wrapper, unpublished. There is no shared layout partial or middleware. The twelve public subpages and `vault/opening.html` share `seal-menu.css` and `seal-menu.js` for the logo index. The trigger is `art/seal-stone.png` (punched obsidian salmiakki, 132×216px, 104×170px under 768px); the page logo sits in the well, circle-cropped. Khaeos uses the same `AiiAold.8dde82cb.jpg` face as Bio. `index.html` does not.
 
 ### Navigation graph
 
@@ -401,7 +401,7 @@ No `sessionStorage`, cookies, or IndexedDB. `localStorage` holds only `taikoi.la
 | **Netlify** | Static hosting, TLS, header injection | Site down if deploy/CDN fails |
 | **Netlify Forms** | `contact.html` form name `contact`. AJAX POST `/`. No-JS POST `action="/contact.html"` so the `/fi` and `/en` rewrites do not swallow it. Honeypot `bot-field`. | The hall shows the error line; `tel:` and `mailto:` remain. A static preview server does not deliver the mail. Deploy registers the form. The notification mailbox is a Netlify UI setting, not an env var. |
 | **unpkg.com** | Three.js ESM + addons | 3D fails; fail-open UI still reveals chrome after 2.5s / on error |
-| **Google Fonts** | Orbitron, Rajdhani, Courier Prime, Cormorant Garamond, Cinzel | Fallback to `sans-serif` / `serif` / `monospace` |
+| **Google Fonts** | Orbitron, Rajdhani, Cormorant Garamond, Source Sans 3, Cinzel | Fallback to `sans-serif` / `serif` |
 | **DeviantArt** | `bio.html` outbound (`#verkko`) | Link only |
 | **Etsy** | `bio.html` outbound (Kiomra Trionfi listing) | Link only |
 | **SoundCloud** | `bio.html` outbound | Link only |
@@ -431,8 +431,8 @@ Redirects: force 404 (`to = "/404.html"`, `status = 404`, `force = true`) for `/
 ### Conventions in force
 
 - **One file = one route.** Page CSS and the Three.js module stay in the HTML they serve. Duplication of the Three.js bootstrap (renderer, loop, visibility pause, fail-open) is intentional. The seal index is the exception: `seal-menu.css` and `seal-menu.js` are shared by the twelve public subpages and `vault/opening.html`. Those same files also define the in-flow hall closer (`.hall-closer`, `#hall-return`) on the twelve public subpages. `vault/opening.html` has the index, not the closer.
-- **Header seal:** In-flow at the top of the scroll container (`position: relative`), not `fixed` and not `absolute` over later material. Services rooms put it inside `.floating-container`; halls put it inside `#hall` / `#nave` / `#liber-stage`. It sits at the top of the page and scrolls away. Index HUD stays `position: fixed`. Khaeos emblem stays absolute in the hero (it already leaves with that first screen).
-- **Hall closer:** In-flow `<footer class="hall-closer">` after the page material: the page name, then the obsidian return stone. Not sticky, not `position: fixed`. Desktop `min-height` 72vh; mobile 70svh with safe-area padding. Click calls `goHome()` → `__aivoinkoSealExit` (same destination as seal Return). Khaeos closer uses `art/khaeos/khaeos-emblem.png` without a circle crop. Header seal still opens the index.
+- **Header seal:** In-flow at the top of the scroll container (`position: relative`), not `fixed` and not `absolute` over later material. Services rooms put it inside `.floating-container`; halls put it inside `#hall` / `#nave` / `#liber-stage`. It sits at the top of the page and scrolls away. Index HUD stays `position: fixed`. The Khaeos seal is in-flow at the top of `#hall`, same as the other halls.
+- **Hall closer:** In-flow `<footer class="hall-closer">` after the page material: the page name, then the obsidian return stone. Not sticky, not `position: fixed`. Desktop `min-height` 72vh; mobile 70svh with safe-area padding. Click calls `goHome()` → `__aivoinkoSealExit` (same destination as seal Return). Khaeos closer uses `AiiAold.8dde82cb.jpg`, circle-cropped. Header seal still opens the index.
 - **Pin Three.js in every import map together.** Version drift between pages is a defect. The vaulted manifesto keeps the same pin.
 - **Hardcoded content.** Copy and planet stats are source, not CMS.
 - **WebGL is optional for readability.** Subpage text and index chrome must remain reachable if WebGL/CDN fails (`__aivoinkoReveal`).
@@ -444,7 +444,7 @@ Redirects: force 404 (`to = "/404.html"`, `status = 404`, `force = true`) for `/
 
 - DOM ids: kebab-case (`canvas-container`, `planet-name`).
 - JS locals: camelCase (`planetMeshes`, `startTransition`).
-- CSS custom properties: `--glass-bg`, `--accent-color` (cyan `#00f3ff` on index, the three service halls, and `vault/opening.html`; brass `#c4a06a` on `services.html`; bronze `#c48c40` on gallery; steel `#b7c3d1` on physicalus; gold `#d9a441` + green `#2f6d3a` on diy_realities; crimson `#ff2d55` on gate_left; gold `#d4af37` on gate_right; amethyst `#c9a6e0` on cartomancy).
+- CSS custom properties: `--glass-bg`, `--accent-color` (cyan `#00f3ff` on index, the three service halls, and `vault/opening.html`; brass `#c4a06a` on `services.html`; bronze `#c48c40` on gallery; steel `#b7c3d1` on physicalus; bone `#e7e4dc` on diy_realities; crimson `#ff2d55` on gate_left; gold `#d4af37` on gate_right; amethyst `#c9a6e0` on cartomancy).
 - Global flags: `window.__aivoinko3d`, `window.__aivoinkoReveal`, `window.__aivoinkoSealExit` (double-underscore prefix = cross-script contract between the head snippet, the seal index, and the module). `window.__aivoinkoLiberClose` is `gate_left.html` only and rolls up an open thesis sheet.
 
 ### Error handling
@@ -461,7 +461,7 @@ There is no API response schema.
 2. **Do not introduce a backend, env secrets, or Netlify functions without a new architecture section** (auth, data store, API contract).
 3. **Do not unpin or CDN-swap Three.js on one page only.**
 4. **Do not assume `taikoi-sun-portal.png` is wired.** It is unused; `AiiAold.8dde82cb.jpg` is the live logo/favicon/sun sprite.
-5. **Do not restyle `diy_realities.html` as the index solar system or the green System Log terminal.** The route is the Khaeos Metalogs hall: DOM images `art/khaeos/khaeos-emblem.png`, `art/khaeos/khaeos-metalogs.png`, and `art/khaeos/khaeos-well.jpg`, seven smooth rings tracking the wordmark, a coasting tunnel, and a scroll that alternates: odd folios reuse the System Log terminal frame (`Courier Prime`, `#00ff00`, `>>> SYSTEM_ROOT_ACCESS`, glitch), even folios stay gold/bone, set to either side of a center axis. The page itself is not a separate System Log route. The green terminal lives only in this hall. Outbound work links live in the Bio Verkko scroll. `contact.html` posts the enquiry form and also shows `tel:`, `mailto:`, and LinkedIn. `services.html` and `cv.html` also expose `tel:` / `mailto:`. `khaeos-logo.png` and the other `art/khaeos/` planes are unused. The home nav label stays Library. If WebGL fails, the emblem, wordmark, and log text stay visible.
+5. **Do not restyle `diy_realities.html` as the index solar system, and do not restore the green System Log terminal, the oculus, the wordmark image, or the seven rings.** The route is a reading room: an in-flow seal, the words Khaeos Metalogs, then four logs in one column (`Cormorant Garamond`, bone on `#090a0c`). Idle WebGL is a dim point field. Return fades to `index.html`. Log copy is unchanged. `art/khaeos/` is unused by this page; `khaeos-emblem.png` remains the Library choose mark on `index.html`. Outbound work links live in the Bio Verkko scroll. `contact.html` posts the enquiry form and also shows `tel:`, `mailto:`, and LinkedIn. `services.html` and `cv.html` also expose `tel:` / `mailto:`. The home nav label stays Library. If WebGL fails, the title and the logs stay visible.
 6. **Do not persist user state across pages** except the language store: URL prefix `/fi` or `/en`, plus `localStorage` key `taikoi.lang`. MPA navigations still wipe scene memory.
 7. **Do not raise `setPixelRatio` uncapped** or run the animation loop in background tabs — thermal/battery regressions on mobile.
 8. **Do not load Three.js from a second CDN or a different major** without verifying import-map + OrbitControls paths.
@@ -477,7 +477,7 @@ There is no API response schema.
 
 | Item | Status |
 |---|---|
-| Khaeos prose | Odd folios are green terminals: Finnish Multimieli (Entry 001.7, eight paragraphs; pipe-run sentences cut) then English Log Entry 2. The Finnish article is `lang="fi"`; its English signature is `lang="en"`. Even folios are gold/bone Log Entries 1 and 3. Those folios are the only remaining System Log text |
+| Khaeos prose | Four logs in one column. The first article is Finnish Multimieli (`lang="fi"`, eight paragraphs). Log entries 1–3 follow. Copy is unchanged |
 | `gate_left.html` copy | Two thesis abstracts (English 2024 perfusion study; Finnish 2026 RAG/NLI diplomityö). Full PDFs in `art/liber/` |
 | `gate_right.html` folios | Six English drafts with lacunae; not final |
 | `taikoi-sun-portal.png` | Unreferenced binary |
@@ -638,3 +638,4 @@ Append-only. Newest rows at the **bottom**. Do not rewrite prior rows.
 | 2026-11-17 | Turn Minusta into three shrinking chronicle scrolls | bio.html, locales/fi.json, locales/en.json, architecture.md | The sand tray needed the same roller parchment as Business Strategy, plus a seal-menu shrink, and two later volumes | `#minusta` is Chronicles I–III. I starts open with the Minusta draft. Clicking a drum unfurls (`is-open`, then `is-framed` at 700 ms) or rolls the sheet up. II and III start closed. Verkko, portraits, and the sand tray on CV are unchanged. Verify: I is a käärö under Tie; click shrinks it; II and III unfurl; Escape and the seal close the open sheet. |
 | 2026-11-17 | Solid Bio plates; identity card replaces the corner frame | bio.html, locales/fi.json, locales/en.json, architecture.md | The gilt L-corners read as wire, and the name fought the frame | Opening plate is `.calling`: walnut slab, brass band, wrapped name, stacked epithets. Chapter plaques and the closer use an 8px walnut rail. Portrait corner ticks are gone. Gallery, CV, and Cartomancy corners are unchanged. Chronicles and Verkko unchanged. Verify: Bio opens on a solid name plate; Tie and the closer have a thick rail and no corner diamonds. |
 | 2026-11-17 | Finnish left-gate name is Vasen krypta; mid-page title removed | gate_left.html, locales/fi.json, architecture.md | "Aukko" was the wrong Finnish name, and the same title was painted above the scrolls and again in the closer | Upper `#realm-title` is gone. Footer h1 stays. English title is still Left Aperture. Scrolls, PDFs, and Return unchanged. Verify: no title between the seal and the rollers; scroll to the end and the closer reads VASEN KRYPTA. |
+| 2026-11-17 | Quiet the Khaeos hall into a reading column | diy_realities.html, locales/fi.json, locales/en.json, README.md, architecture.md | The oculus, rings, green terminal, and warp streaks read as clutter around the logs | Title is the words Khaeos Metalogs. Four logs stack in one column, same bone face. Emblem, wordmark, well, rings, glitch, and `>>> SYSTEM_ROOT_ACCESS` are gone. Idle field is dim points. Return still fades to `index.html`. Seal uses `AiiAold.8dde82cb.jpg`. Log copy unchanged. `art/khaeos/khaeos-emblem.png` stays on the Library choice in `index.html`. Verify: the hall opens on the title, then the four entries in order; no green frame; the seal still opens the index. |
