@@ -66,3 +66,96 @@
   to = "/404.html"
   status = 404
   force = true
+
+[[redirects]]
+  from = "/fi/brain"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/en/brain"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/fi/brain.html"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/en/brain.html"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/fi/vault"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/en/vault"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/fi/vault/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/en/vault/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/fi"
+  to = "/fi/"
+  status = 301
+
+[[redirects]]
+  from = "/en"
+  to = "/en/"
+  status = 301
+
+[[redirects]]
+  from = "/fi/"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/en/"
+  to = "/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/fi/*"
+  to = "/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/en/*"
+  to = "/:splat"
+  status = 200
+
+[[headers]]
+  for = "/locales/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/i18n.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/i18n.css"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"

@@ -3,16 +3,21 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="/i18n.css">
+    <script src="/i18n.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="gallery.title">Galleria</title>
     <meta name="description" data-i18n-attr="content:gallery.description" content="Galleria: kuusitoista kehystettyä teosta mustalla tähtikentällä, Vanhimmasta Relikvaarioon.">
     <meta name="theme-color" content="#c48c40">
-    <link rel="canonical" href="https://taikoi.netlify.app/gallery.html">
+    <link rel="canonical" href="https://taikoi.netlify.app/fi/gallery.html">
+    <link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/gallery.html">
+    <link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/gallery.html">
+    <link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/gallery.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Aivoinko">
     <meta property="og:title" data-i18n-attr="content:gallery.title" content="Galleria">
     <meta property="og:description" data-i18n-attr="content:gallery.description" content="Galleria: kuusitoista kehystettyä teosta mustalla tähtikentällä, Vanhimmasta Relikvaarioon.">
-    <meta property="og:url" content="https://taikoi.netlify.app/gallery.html">
+    <meta property="og:url" content="https://taikoi.netlify.app/fi/gallery.html">
     <meta property="og:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" data-i18n-attr="content:gallery.title" content="Galleria">
@@ -867,82 +872,98 @@
         const ARTWORKS = [
             {
                 src: 'art/hangings/01-elder-gilt.png',
-                alt: 'The Elder',
+                altKey: 'gallery.elder.alt',
+                alt: 'Vanhin',
                 frame: 'gilt'
             },
             {
                 src: 'art/hangings/02-nautilus-walnut.png',
-                alt: 'The Nautilus',
+                altKey: 'gallery.nautilus.alt',
+                alt: 'Nautilus',
                 frame: 'walnutCarved'
             },
             {
                 src: 'art/hangings/03-altar-bronze.png',
-                alt: 'The Altar',
+                altKey: 'gallery.altar.alt',
+                alt: 'Alttari',
                 frame: 'bronze'
             },
             {
                 src: 'art/hangings/21-totem-wood.png',
-                alt: 'The Totem',
+                altKey: 'gallery.totem.alt',
+                alt: 'Toteemi',
                 frame: 'woodTotem'
             },
             {
                 src: 'art/hangings/04-throne-dark.png',
-                alt: 'The Throne',
+                altKey: 'gallery.throne.alt',
+                alt: 'Valtaistuin',
                 frame: 'ebonized'
             },
             {
                 src: 'art/hangings/06-yantra-cassetta.png',
-                alt: 'The Yantra',
+                altKey: 'gallery.yantra.alt',
+                alt: 'Jantra',
                 frame: 'cassetta'
             },
             {
                 src: 'art/hangings/08-visage-baroque.png',
-                alt: 'The Visage',
+                altKey: 'gallery.visage.alt',
+                alt: 'Kasvot',
                 frame: 'baroqueBronze'
             },
             {
                 src: 'art/hangings/09-axis-ivory.png',
-                alt: 'The Axis',
+                altKey: 'gallery.axis.alt',
+                alt: 'Akseli',
                 frame: 'palaceIvory'
             },
             {
                 src: 'art/hangings/11-sigil-victorian.png',
-                alt: 'The Sigil',
+                altKey: 'gallery.sigil.alt',
+                alt: 'Sigilli',
                 frame: 'victorianGilt'
             },
             {
                 src: 'art/hangings/20-signal-grown.png',
-                alt: 'The Signal',
+                altKey: 'gallery.signal.alt',
+                alt: 'Signaali',
                 frame: 'grownSignal'
             },
             {
                 src: 'art/hangings/15-phaeton-gilt.png',
-                alt: 'The Phaeton',
+                altKey: 'gallery.phaeton.alt',
+                alt: 'Faeton',
                 frame: 'giltPhaeton'
             },
             {
                 src: 'art/hangings/16-spore-nouveau.png',
-                alt: 'The Spore',
+                altKey: 'gallery.spore.alt',
+                alt: 'Itiö',
                 frame: 'nouveauSpore'
             },
             {
                 src: 'art/hangings/24-potential-stone.png',
-                alt: 'The Potential',
+                altKey: 'gallery.potential.alt',
+                alt: 'Potentiaali',
                 frame: 'stoneSpire'
             },
             {
                 src: 'art/hangings/18-valkyrie-iron.png',
-                alt: 'The Valkyrie',
+                altKey: 'gallery.valkyrie.alt',
+                alt: 'Valkyyria',
                 frame: 'ironValkyrie'
             },
             {
                 src: 'art/hangings/23-futility-oak.png',
-                alt: 'Futility',
+                altKey: 'gallery.futility.alt',
+                alt: 'Turhuus',
                 frame: 'oakConclave'
             },
             {
                 src: 'art/hangings/22-reliquary-pewter.png',
-                alt: 'The Reliquary',
+                altKey: 'gallery.reliquary.alt',
+                alt: 'Relikvaario',
                 frame: 'pewterReliquary'
             }
         ];
@@ -956,6 +977,7 @@
                 const img = document.createElement('img');
                 img.src = spec.src;
                 img.alt = spec.alt || '';
+                if (spec.altKey) img.setAttribute('data-i18n-attr', 'alt:' + spec.altKey);
                 img.decoding = 'async';
                 figure.appendChild(img);
                 hall.appendChild(figure);

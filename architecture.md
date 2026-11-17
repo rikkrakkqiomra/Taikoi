@@ -20,7 +20,7 @@ Authoritative description of the live repository as of 2026-11-17. This file is 
 
 | Layer | Choice | Version / notes |
 |---|---|---|
-| Languages | HTML5, CSS3, vanilla JavaScript (ES modules) | No TypeScript. No `package.json`. |
+| Languages | HTML5, CSS3, vanilla JavaScript (ES modules) | No TypeScript. No `package.json`. UI copy is Finnish in the HTML and English in `locales/en.json`. |
 | Frameworks | None | No React/Svelte/Vue/Next. |
 | 3D | Three.js + OrbitControls | **Pinned `0.160.0`** via HTML import maps → unpkg ESM. Absent on `404.html`. |
 | Styling | Inline `<style>` per HTML file, plus `seal-menu.css` | Page chrome stays inline. The seal index is the one shared stylesheet. No Tailwind or CSS Modules. |
@@ -39,7 +39,7 @@ Authoritative description of the live repository as of 2026-11-17. This file is 
 | HTML5 Canvas 2D | Procedural planet/sun/glow textures; circular crop of the sun logo | Created at runtime; shipped stills are the logo JPEG, `art/*.jpg`, and `art/frames/*.png` |
 | Google Fonts | Display / body / terminal typography | CSS `<link>` after `preconnect` to `fonts.googleapis.com` / `fonts.gstatic.com` |
 
-**Not in the live tree:** npm packages, service workers, analytics SDKs, i18n runtime. Commit `85d5131` (2026-09-15) removed `i18n.js`, `translations/*.json`, `script.js`, `styles.css`, and `Analysis.md`. Do not assume those layers still exist.
+**Not in the live tree:** npm packages, service workers, analytics SDKs. Commit `85d5131` (2026-09-15) removed an earlier `i18n.js`, `translations/*.json`, `script.js`, `styles.css`, and `Analysis.md`. The live i18n layer is the later vanilla pair `locales/fi.json` and `locales/en.json` plus `i18n.js`. There is still no i18n library and no build step.
 
 ---
 
@@ -181,6 +181,11 @@ Taikoi/
 ├── diy_realities.html         # Khaeos Metalogs: oculus over a painted well, seven rings, coasting tunnel, staggered scroll
 ├── gate_left.html             # Crimson left aperture; two sealed thesis scrolls
 ├── gate_right.html            # Fragmenta Apocrypha; gold starfield + unfinished folio nave
+├── i18n.js                    # Language bootstrap, JSON apply, FI/EN switcher. Contract: window.__aivoinkoI18n
+├── i18n.css                   # Switcher chrome and the English paint-hold
+├── locales/
+│   ├── fi.json                # Finnish strings. Same key tree as en.json
+│   └── en.json                # English strings
 ├── seal-menu.css              # Shared seal-index styles plus in-flow hall closer. Thirteen public subpages + vault/opening.html (vault has the index, not the closer)
 ├── seal-menu.js               # Builds the seal index. Gallery halls on gallery/physicalus/cartomancy; Library rooms on diy_realities/gate_left/gate_right; Offerings, Business Strategy, Pricing, Contact on the five Services pages; Multimieli and CV on bio/cv; Section 1–4 on vault/opening.html. Return and `#hall-return` call __aivoinkoSealExit
 ├── AiiAold.8dde82cb.jpg       # Favicon, preload, sun-portal sprite, header logos, wormhole seals, apple-touch icon
@@ -188,10 +193,10 @@ Taikoi/
 ├── vault/
 │   └── opening.html           # Vaulted manifesto (“The Opening of Reality”). noindex. Netlify 404s /vault/*
 ├── robots.txt                 # Allow all crawlers except /brain and /vault/; points at sitemap.xml
-├── sitemap.xml                # Fourteen public routes. Origin https://taikoi.netlify.app
+├── sitemap.xml                # Fourteen public routes, each at /fi and /en. Origin https://taikoi.netlify.app
 ├── 404.html                   # Netlify not-found page. Static chrome only; no Three.js; noindex
 ├── LICENSE                    # MIT. Copyright 2026 Riku Korpiaho
-├── netlify.toml               # Publish root + security + cache headers + force 404 for /brain and /vault/*
+├── netlify.toml               # Publish root + security + cache headers + force 404 for /brain and /vault/* + /fi and /en rewrites
 ├── README.md                  # Human-facing project description
 └── architecture.md            # This file
 ```
@@ -266,6 +271,7 @@ index.html  --nav "Library"------>  warp boost → on-page choice hold (seals)
 2. Resolves the import map and fetches Three.js from unpkg (network, CORS).
 3. Runs the inline module: constructs scene, starts the render loop.
 4. Optionally fetches `AiiAold.8dde82cb.jpg` (TextureLoader on index; `<img>` on subpages) and `art/hangings/*.png` on `gallery.html`.
+5. Fetches `/locales/fi.json` or `/locales/en.json` and writes the strings into `[data-i18n]` nodes. Default visible HTML is Finnish.
 
 There are no server components, no hydration boundary, no BFF, and no form POSTs.
 
@@ -274,15 +280,15 @@ There are no server components, no hydration boundary, no BFF, and no form POSTs
 ```
 User gesture / page load
   → DOM + inline module execute
-  → in-memory PLANETS / copy (hardcoded)
+  → in-memory PLANETS; copy from locales/{lang}.json
   → Three.js scene + Canvas-generated textures
   → WebGLRenderer.render each frame
   → Raycaster (index only) maps pointer/touch → planet tooltip or sun transition
   → Full navigation via window.location.href or <a>
-  → Previous page JS heap discarded (MPA; no shared client store)
+  → Previous page JS heap discarded (MPA). Language survives in the URL prefix `/fi` or `/en`, and in localStorage key `taikoi.lang` when the prefix is absent.
 ```
 
-Planet science fields (`mass`, `diameter`, `temp`) live in the `PLANETS` array inside `index.html`. Manifesto/log copy lives in HTML. Nothing is fetched from an API.
+Planet science fields (`mass`, `diameter`, `temp`) live in the `PLANETS` array inside `index.html`. Names and the rest of the UI copy live in `locales/fi.json` and `locales/en.json`. Nothing is fetched from an application API.
 
 ### State management
 
@@ -303,8 +309,10 @@ State is **page-local closures**:
 | `window.__aivoinko3d` | All WebGL pages | `true` after module starts; `false` if WebGL constructor throws. Unset on `404.html`. |
 | `window.__aivoinkoReveal` | All WebGL pages | Fail-open UI if the module never sets `__aivoinko3d`. Unset on `404.html`. |
 | `window.__aivoinkoSealExit` | Thirteen public subpages and `vault/opening.html` | Page module assigns its `exitAnimation`. Seal index Return calls it. Unset → `location.href = 'index.html'`. `services.html` reverse-scales the dim field then `location.href = 'index.html'`. `physicalus.html` and `cartomancy.html` assign an exit whose href is `gallery.html`. `branding.html`, `business_strategy.html`, `pricing.html`, and `contact.html` assign an exit whose href is `services.html`. `cv.html` assigns `bio.html`. `vault/opening.html` assigns `../index.html`. |
+| `window.__aivoinkoI18n` | Every HTML page | `{ lang, t(key) }`. `t` returns a string from the active locale, or `''` if the key is missing. Event `aivoinko:lang` fires after apply. |
+| `taikoi.lang` | `localStorage` | `fi` or `en`. Written when a prefixed URL is opened and when the switcher is used. Read only if the path has no `/fi` or `/en` prefix. |
 
-No `localStorage`, `sessionStorage`, cookies, or IndexedDB.
+No `sessionStorage`, cookies, or IndexedDB. `localStorage` holds only `taikoi.lang`.
 
 ### Auth / session
 
@@ -450,7 +458,7 @@ There is no API response schema.
 3. **Do not unpin or CDN-swap Three.js on one page only.**
 4. **Do not assume `taikoi-sun-portal.png` is wired.** It is unused; `AiiAold.8dde82cb.jpg` is the live logo/favicon/sun sprite.
 5. **Do not restyle `diy_realities.html` as the index solar system or the green System Log terminal.** The route is the Khaeos Metalogs hall: DOM images `art/khaeos/khaeos-emblem.png`, `art/khaeos/khaeos-metalogs.png`, and `art/khaeos/khaeos-well.jpg`, seven smooth rings tracking the wordmark, a coasting tunnel, and a scroll that alternates: odd folios reuse the System Log terminal frame (`Courier Prime`, `#00ff00`, `>>> SYSTEM_ROOT_ACCESS`, glitch), even folios stay gold/bone, set to either side of a center axis. The page itself is not a separate System Log route. The green terminal lives only in this hall. Outbound work links live in the Bio Verkko cabinet, on `contact.html`, and as `tel:` / `mailto:` on `cv.html`. `khaeos-logo.png` and the other `art/khaeos/` planes are unused. The home nav label stays Library. If WebGL fails, the emblem, wordmark, and log text stay visible.
-6. **Do not persist user state across pages** unless you add an explicit store; MPA navigations wipe memory.
+6. **Do not persist user state across pages** except the language store: URL prefix `/fi` or `/en`, plus `localStorage` key `taikoi.lang`. MPA navigations still wipe scene memory.
 7. **Do not raise `setPixelRatio` uncapped** or run the animation loop in background tabs — thermal/battery regressions on mobile.
 8. **Do not load Three.js from a second CDN or a different major** without verifying import-map + OrbitControls paths.
 9. **Do not cache-bust HTML via long `max-age` on `/*.html`** — `netlify.toml` currently forces revalidation for a reason.
@@ -473,7 +481,7 @@ There is no API response schema.
 | Shared CSS/JS modules | `seal-menu.css` / `seal-menu.js` on the thirteen public subpages and `vault/opening.html`. Closer CSS/click live there too. Three.js bootstrap is still copied per WebGL page. |
 | Seal index realms | Gallery index (`gallery.html`, `physicalus.html`, `cartomancy.html`): Physical Arts → `physicalus.html`, Artificial Arts → `gallery.html`, Cartomancy → `cartomancy.html`. Musical Theatre and Mineralogy do not navigate. Library index (`diy_realities.html`, `gate_left.html`, `gate_right.html`): Liber / Ready → `gate_left.html`; Manuscript / Foul Papers → `gate_right.html`; Metalog → `diy_realities.html`. Services index (`services.html`, `branding.html`, `business_strategy.html`, `pricing.html`, `contact.html`): Offerings, Business Strategy, Pricing, Contact. Bio index (`bio.html`, `cv.html`): Multimieli, CV. `vault/opening.html` lists Section 1–4 and those items do not navigate |
 | Gallery hangings | Sixteen hangings on the hall (`01`–`04`, `06`, `08`–`09`, `11`, `15`–`16`, `18`, `20`–`24`). The Totem (`21`) is the fourth bay. The Signal (`20`) is the tenth bay, after The Sigil. The Potential (`24`) is the thirteenth bay, in the old Spire slot. Futility (`23`) is the fifteenth bay, in the old Conclave slot. The Reliquary (`22`) is the last bay. The Totem replaced The Chorus. The Chorus hanging, `layered-gilt.png`, and `art/12-chorus.jpg` were deleted | The Prism (`13`), The Grove (`10`), The Threshold (`14`), The Conclave hanging, and The Spire hanging were removed. Unused stills `05-pact.jpg`, `07-window.jpg`, `10-grove.jpg`, `13-prism.jpg`, `14-threshold.jpg`, `17-spire.jpg`, and `19-conclave.jpg` remain under `art/`; the `13-prism-spectrum.png` hanging and `spectrum-gilt.png` frame were deleted; the `10-grove-oak.png` hanging and `grove-oak.png` frame were deleted; the self-framed `14-threshold-baroque.png` hanging was deleted; `19-conclave-oak.png` and `17-spire-stone.png` were deleted |
-| i18n | Shell and other pages are English. `bio.html` body copy is Finnish. `cv.html` body copy is English. The 2026 Left Aperture sheet is Finnish (`lang="fi"`). |
+| i18n | Live. Finnish is the HTML source. English is `locales/en.json`. Public URLs are `/fi/...` and `/en/...` via Netlify 200 rewrites. `404.html` and `vault/opening.html` do not redirect. |
 | Analytics | None |
 | Automated tests | None |
 
@@ -611,3 +619,4 @@ Append-only. Newest rows at the **bottom**. Do not rewrite prior rows.
 | 2026-11-17 | Dim starfield behind the Services practice page | services.html, README.md, architecture.md | Removing the field left a flat `#0c0b09` slab; the halls still sit on stars | Same 5000-point bootstrap, pinned canvas, bone points at opacity 0.28, fog `#0c0b09`. Copy stays visible on enter. Return reverse-scales to `index.html`. Practice layout, seal size, and rooms unchanged. |
 | 2026-11-17 | Clarify the Services catalogue | services.html, branding.html, architecture.md | A visitor could not tell this was Services, LinkedIn opened Contact, all four lines dumped onto one brochure, and Contact was written three times | Kicker is Services. Lede names the four engagements. Numbered rows link to `branding.html#brand` / `#course` / `#ai` / `#geo`. LinkedIn is the public profile. In-page rooms are Strategy and Pricing. Seal Contact is unchanged. |
 | 2026-11-17 | Restore shared seal and hall closer on Services | services.html, README.md, architecture.md | The shrunk stone and text Return broke the same chrome as the other halls | Header uses the shared 132×216px trigger. Closer is Services plus the obsidian stone, full-width after `.practice`. Copy, starfield, and rooms unchanged. |
+| 2026-11-17 | Finnish and English without a build | i18n.js, i18n.css, locales/fi.json, locales/en.json, netlify.toml, sitemap.xml, seal-menu.js, every HTML page, architecture.md, README.md | The site had one language in the HTML and no shared dictionary | Vanilla JSON i18n. Default copy is Finnish. `/fi/*` and `/en/*` rewrite to the same files. `html lang` follows the prefix. Switcher is flag plus FI/EN. Vault and 404 stay on the current URL. Three.js pins unchanged. Verify: `/fi/services.html` is Finnish; `/en/gallery.html` is English; the seal labels follow; `/fi/vault/*` is still 404. |

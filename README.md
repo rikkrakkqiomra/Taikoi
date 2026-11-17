@@ -32,6 +32,10 @@ Artwork stills, frames, and hangings live under `art/`. The live logo, favicon, 
 - Three.js `0.160.0` from unpkg, pinned in every page import map except `404.html`. OrbitControls is used on the home page only.
 - Google Fonts: Orbitron, Rajdhani, Cormorant Garamond, Source Sans 3, Courier Prime, and Cinzel.
 
+## Languages
+
+Finnish is the default text in the HTML. English lives in `locales/en.json`. Public URLs use `/fi/` and `/en/` (`/fi/gallery.html`, `/en/`). The choice is kept in that prefix and, when the prefix is missing, in `localStorage` key `taikoi.lang`. A static file server without the Netlify rewrites still opens the HTML files; the language then switches in place.
+
 ## Getting started
 
 1. Clone the repository:

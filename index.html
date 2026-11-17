@@ -1,22 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" href="/i18n.css">
+  <script src="/i18n.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Aivoinko Machine Metaphysics</title>
-  <meta name="description" content="An interactive 3D solar system. Orbit the planets, then open services or warp into the gallery, the library, and the biography.">
+  <title data-i18n="index.title">Aivoinko — Koneen metafysiikka</title>
+  <meta name="description" data-i18n-attr="content:index.description" content="Vuorovaikutteinen kolmiulotteinen aurinkokunta. Kierrä planeettoja, avaa sitten palvelut tai siirry galleriaan, kirjastoon ja elämäkertaan.">
   <meta name="theme-color" content="#00f3ff">
-  <link rel="canonical" href="https://taikoi.netlify.app/">
+  <link rel="canonical" href="https://taikoi.netlify.app/fi/">
+    <link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/">
+    <link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/">
+    <link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Aivoinko">
-  <meta property="og:title" content="Aivoinko Machine Metaphysics">
-  <meta property="og:description" content="An interactive 3D solar system. Orbit the planets, then open services or warp into the gallery, the library, and the biography.">
-  <meta property="og:url" content="https://taikoi.netlify.app/">
+  <meta property="og:title" data-i18n-attr="content:index.title" content="Aivoinko — Koneen metafysiikka">
+  <meta property="og:description" data-i18n-attr="content:index.description" content="Vuorovaikutteinen kolmiulotteinen aurinkokunta. Kierrä planeettoja, avaa sitten palvelut tai siirry galleriaan, kirjastoon ja elämäkertaan.">
+  <meta property="og:url" content="https://taikoi.netlify.app/fi/">
   <meta property="og:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Aivoinko Machine Metaphysics">
-  <meta name="twitter:description" content="An interactive 3D solar system. Orbit the planets, then open services or warp into the gallery, the library, and the biography.">
+  <meta name="twitter:title" data-i18n-attr="content:index.title" content="Aivoinko — Koneen metafysiikka">
+  <meta name="twitter:description" data-i18n-attr="content:index.description" content="Vuorovaikutteinen kolmiulotteinen aurinkokunta. Kierrä planeettoja, avaa sitten palvelut tai siirry galleriaan, kirjastoon ja elämäkertaan.">
   <meta name="twitter:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
   <link rel="apple-touch-icon" href="AiiAold.8dde82cb.jpg">
   <link rel="preconnect" href="https://unpkg.com" crossorigin>
@@ -969,7 +974,7 @@
 
 <body>
 
-  <a href="services.html" id="enter-opening" class="sr-only">Enter Services</a>
+  <a href="services.html" id="enter-opening" class="sr-only" data-i18n="index.enter">Avaa palvelut</a>
 
   <div id="loading">
     <div class="loader"></div>
@@ -978,36 +983,36 @@
   <div id="tooltip">
     <div id="tooltip-line"></div>
     <div id="tooltip-content">
-      <h2 id="planet-name">Planet</h2>
-      <div class="data-row"><span>Mass:</span> <span id="planet-mass" class="data-value"></span></div>
-      <div class="data-row"><span>Diameter:</span> <span id="planet-diameter" class="data-value"></span></div>
-      <div class="data-row"><span>Temp:</span> <span id="planet-temp" class="data-value"></span></div>
+      <h2 id="planet-name" data-i18n="index.planet">Planeetta</h2>
+      <div class="data-row"><span data-i18n="index.mass">Massa:</span> <span id="planet-mass" class="data-value"></span></div>
+      <div class="data-row"><span data-i18n="index.diameter">Halkaisija:</span> <span id="planet-diameter" class="data-value"></span></div>
+      <div class="data-row"><span data-i18n="index.temp">Lämpö:</span> <span id="planet-temp" class="data-value"></span></div>
     </div>
   </div>
 
   <header class="glass">
     <div class="logo-container">
       <h1>Aivoinko</h1>
-      <h2 class="subtitle">Machine Metaphysics</h2>
+      <h2 class="subtitle" data-i18n="index.subtitle">Koneen metafysiikka</h2>
     </div>
     <nav>
-      <a href="services.html" id="nav-services">Services</a>
-      <a href="gallery.html" id="nav-gallery">Gallery</a>
-      <a href="diy_realities.html" id="nav-diy">Library</a>
-      <a href="bio.html" id="nav-bio">Bio</a>
+      <a href="services.html" id="nav-services" data-i18n="nav.services">Palvelut</a>
+      <a href="gallery.html" id="nav-gallery" data-i18n="nav.gallery">Galleria</a>
+      <a href="diy_realities.html" id="nav-diy" data-i18n="nav.library">Kirjasto</a>
+      <a href="bio.html" id="nav-bio" data-i18n="nav.bio">Bio</a>
     </nav>
   </header>
 
   <div id="canvas-container"></div>
   <div id="warp-flash" aria-hidden="true"></div>
   <div id="wormhole-choice" aria-hidden="true">
-    <button type="button" id="seal-left" class="gate gate--codex" aria-label="Codex Operum — scrolls that have been closed">
+    <button type="button" id="seal-left" class="gate gate--codex" data-i18n-attr="aria-label:index.codexLabel" aria-label="Codex Operum — kääröt, jotka on suljettu">
       <img class="portal" src="art/limen/codex-portal.png" alt="" width="720" height="1280" decoding="async" draggable="false">
       <span class="plaque">
         <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-        <span class="kicker">Codex</span>
-        <span class="name">Operum</span>
-        <em class="line">Scrolls that have been closed.</em>
+        <span class="kicker" data-i18n="index.codexKicker">Codex</span>
+        <span class="name" data-i18n="index.codexName">Operum</span>
+        <em class="line" data-i18n="index.codexLine">Kääröt, jotka on suljettu.</em>
       </span>
       <span class="chevron chevron--left" aria-hidden="true"></span>
     </button>
@@ -1017,13 +1022,13 @@
       <img class="emblem" src="art/khaeos/khaeos-emblem.png" alt="" width="999" height="1004" decoding="async" draggable="false">
     </div>
 
-    <button type="button" id="seal-right" class="gate gate--fragment" aria-label="Fragmenta Apocrypha — hands that have not finished">
+    <button type="button" id="seal-right" class="gate gate--fragment" data-i18n-attr="aria-label:index.fragmentLabel" aria-label="Fragmenta Apocrypha — kädet, jotka eivät ole lopettaneet">
       <img class="portal" src="art/limen/fragment-portal.png" alt="" width="720" height="1280" decoding="async" draggable="false">
       <span class="plaque">
         <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-        <span class="kicker">Fragmenta</span>
-        <span class="name">Apocrypha</span>
-        <em class="line">Hands that have not finished.</em>
+        <span class="kicker" data-i18n="index.fragmentKicker">Fragmenta</span>
+        <span class="name" data-i18n="index.fragmentName">Apocrypha</span>
+        <em class="line" data-i18n="index.fragmentLine">Kädet, jotka eivät ole lopettaneet.</em>
       </span>
       <span class="chevron chevron--right" aria-hidden="true"></span>
     </button>
@@ -1032,13 +1037,13 @@
   <footer class="glass">
     <div class="status-item">
       <div class="dot"></div>
-      <span>System Online</span>
+      <span data-i18n="index.online">Järjestelmä verkossa</span>
     </div>
     <div class="status-item">
-      <span>Speed: 1x</span>
+      <span data-i18n="index.speed">Nopeus: 1×</span>
     </div>
     <div class="status-item">
-      <span>Drag to Rotate &bull; Scroll to Zoom</span>
+      <span data-i18n="index.hint">Vedä kiertääksesi · Vieritä lähentääksesi</span>
     </div>
   </footer>
 
@@ -1048,10 +1053,10 @@
       <div class="node-rail-track">
         <div class="node-rail-marquee">
           <p class="node-rail-line">
-            <span class="node-label">Node: Northern Europe, Sub-Tampere, RÄMSÖÖ</span><span class="node-sep">·</span>61.3413° N<span class="node-sep">·</span>23.3017° E<span class="node-sep">·</span>TZ Europe/Helsinki<span class="node-sep">·</span><span class="node-utc">UTC+03:00</span><span class="node-sep">·</span><span class="node-clock">--:--:--</span>
+            <span class="node-label" data-i18n="index.node">Solmu: Pohjois-Eurooppa, Tampereen seutu, RÄMSÖÖ</span><span class="node-sep">·</span>61.3413° N<span class="node-sep">·</span>23.3017° E<span class="node-sep">·</span>TZ Europe/Helsinki<span class="node-sep">·</span><span class="node-utc">UTC+03:00</span><span class="node-sep">·</span><span class="node-clock">--:--:--</span>
           </p>
           <p class="node-rail-line" aria-hidden="true">
-            <span class="node-label">Node: Northern Europe, Sub-Tampere, RÄMSÖÖ</span><span class="node-sep">·</span>61.3413° N<span class="node-sep">·</span>23.3017° E<span class="node-sep">·</span>TZ Europe/Helsinki<span class="node-sep">·</span><span class="node-utc">UTC+03:00</span><span class="node-sep">·</span><span class="node-clock">--:--:--</span>
+            <span class="node-label" data-i18n="index.node">Solmu: Pohjois-Eurooppa, Tampereen seutu, RÄMSÖÖ</span><span class="node-sep">·</span>61.3413° N<span class="node-sep">·</span>23.3017° E<span class="node-sep">·</span>TZ Europe/Helsinki<span class="node-sep">·</span><span class="node-utc">UTC+03:00</span><span class="node-sep">·</span><span class="node-clock">--:--:--</span>
           </p>
         </div>
       </div>
@@ -1064,12 +1069,21 @@
       var clocks = document.querySelectorAll('.node-clock');
       var offsets = document.querySelectorAll('.node-utc');
       var timer = null;
-      var timeFmt = new Intl.DateTimeFormat('en-GB', {
-        timeZone: TZ,
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit',
-        hour12: false
+      function clockLocale() {
+        return document.documentElement.lang === 'en' ? 'en-GB' : 'fi-FI';
+      }
+      function makeTimeFmt() {
+        return new Intl.DateTimeFormat(clockLocale(), {
+          timeZone: TZ,
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: false
+        });
+      }
+      var timeFmt = makeTimeFmt();
+      document.addEventListener('aivoinko:lang', function () {
+        timeFmt = makeTimeFmt();
       });
       var offsetFmt = new Intl.DateTimeFormat('en-US', {
         timeZone: TZ,
@@ -1263,39 +1277,39 @@
     // Planet Data
     const PLANETS = [
       {
-        name: "Mercury", radius: 0.8, distance: 10, speed: 4.1, type: 'rocky', colors: ['#A5A5A5', '#808080', '#D3D3D3'],
+        nameKey: 'planets.mercury', name: "Merkurius", radius: 0.8, distance: 10, speed: 4.1, type: 'rocky', colors: ['#A5A5A5', '#808080', '#D3D3D3'],
         mass: "3.30 × 10^23 kg", diameter: "4,879 km", temp: "167 °C"
       },
       {
-        name: "Venus", radius: 1.5, distance: 15, speed: 1.6, type: 'gas', colors: ['#E3BB76', '#D4AF37', '#C2B280'],
+        nameKey: 'planets.venus', name: "Venus", radius: 1.5, distance: 15, speed: 1.6, type: 'gas', colors: ['#E3BB76', '#D4AF37', '#C2B280'],
         mass: "4.87 × 10^24 kg", diameter: "12,104 km", temp: "464 °C"
       },
       {
-        name: "Earth", radius: 1.6, distance: 22, speed: 1.0, type: 'earth', colors: ['#1E90FF', '#228B22', '#FFFFFF'],
+        nameKey: 'planets.earth', name: "Maa", radius: 1.6, distance: 22, speed: 1.0, type: 'earth', colors: ['#1E90FF', '#228B22', '#FFFFFF'],
         mass: "5.97 × 10^24 kg", diameter: "12,742 km", temp: "15 °C"
       },
       {
-        name: "Mars", radius: 0.9, distance: 30, speed: 0.53, type: 'rocky', colors: ['#DD4C22', '#B22222', '#CD5C5C'],
+        nameKey: 'planets.mars', name: "Mars", radius: 0.9, distance: 30, speed: 0.53, type: 'rocky', colors: ['#DD4C22', '#B22222', '#CD5C5C'],
         mass: "6.39 × 10^23 kg", diameter: "6,779 km", temp: "-65 °C"
       },
       {
-        name: "Jupiter", radius: 3.5, distance: 45, speed: 0.08, type: 'gas', colors: ['#D6A566', '#8B4513', '#F4A460', '#DEB887'],
+        nameKey: 'planets.jupiter', name: "Jupiter", radius: 3.5, distance: 45, speed: 0.08, type: 'gas', colors: ['#D6A566', '#8B4513', '#F4A460', '#DEB887'],
         mass: "1.90 × 10^27 kg", diameter: "139,820 km", temp: "-110 °C"
       },
       {
-        name: "Saturn", radius: 3.0, distance: 65, speed: 0.03, type: 'gas', colors: ['#F4D03F', '#DAA520', '#EEE8AA'], hasRings: true,
+        nameKey: 'planets.saturn', name: "Saturnus", radius: 3.0, distance: 65, speed: 0.03, type: 'gas', colors: ['#F4D03F', '#DAA520', '#EEE8AA'], hasRings: true,
         mass: "5.68 × 10^26 kg", diameter: "116,460 km", temp: "-140 °C"
       },
       {
-        name: "Uranus", radius: 2.0, distance: 85, speed: 0.01, type: 'gas', colors: ['#ACE5EE', '#00CED1', '#40E0D0'],
+        nameKey: 'planets.uranus', name: "Uranus", radius: 2.0, distance: 85, speed: 0.01, type: 'gas', colors: ['#ACE5EE', '#00CED1', '#40E0D0'],
         mass: "8.68 × 10^25 kg", diameter: "50,724 km", temp: "-195 °C"
       },
       {
-        name: "Neptune", radius: 1.9, distance: 100, speed: 0.006, type: 'gas', colors: ['#3F54BA', '#4169E1', '#000080'],
+        nameKey: 'planets.neptune', name: "Neptunus", radius: 1.9, distance: 100, speed: 0.006, type: 'gas', colors: ['#3F54BA', '#4169E1', '#000080'],
         mass: "1.02 × 10^26 kg", diameter: "49,244 km", temp: "-200 °C"
       },
       {
-        name: "Astroteles Aivoinko II", radius: 2.5, distance: 160, speed: 0.002, type: 'synthetic', colors: ['#C0C0C0', '#E8E8E8', '#A9A9A9'],
+        nameKey: 'planets.astroteles', name: "Astroteles Aivoinko II", radius: 2.5, distance: 160, speed: 0.002, type: 'synthetic', colors: ['#C0C0C0', '#E8E8E8', '#A9A9A9'],
         mass: "9.99 × 10^99 kg", diameter: "1,000,000 km", temp: "NaN °C"
       }
     ];
@@ -1589,15 +1603,27 @@
       tooltip.style.display = visible ? 'block' : 'none';
     }
 
+    function planetLabel(data) {
+      const api = window.__aivoinkoI18n;
+      const value = api && typeof api.t === 'function' ? api.t(data.nameKey) : '';
+      return value || data.name;
+    }
+
     function updateTooltipContent(planetObj) {
       if (displayedPlanet === planetObj) return;
       displayedPlanet = planetObj;
       const data = planetObj.data;
-      planetNameEl.textContent = data.name;
+      planetNameEl.textContent = planetLabel(data);
       planetMassEl.textContent = data.mass;
       planetDiameterEl.textContent = data.diameter;
       planetTempEl.textContent = data.temp;
     }
+
+    document.addEventListener('aivoinko:lang', function () {
+      const current = displayedPlanet;
+      displayedPlanet = null;
+      if (current) updateTooltipContent(current);
+    });
 
     // --- Transition Animation ---
     let isTransitioning = false;

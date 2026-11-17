@@ -1,59 +1,200 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://taikoi.netlify.app/</loc>
-    <lastmod>2026-10-18</lastmod>
+    <loc>https://taikoi.netlify.app/fi/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/"/>
   </url>
   <url>
-    <loc>https://taikoi.netlify.app/services.html</loc>
-    <lastmod>2026-11-13</lastmod>
+    <loc>https://taikoi.netlify.app/en/</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/"/>
   </url>
   <url>
-    <loc>https://taikoi.netlify.app/branding.html</loc>
-    <lastmod>2026-11-13</lastmod>
+    <loc>https://taikoi.netlify.app/fi/services.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/services.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/services.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/services.html"/>
   </url>
   <url>
-    <loc>https://taikoi.netlify.app/business_strategy.html</loc>
-    <lastmod>2026-11-13</lastmod>
+    <loc>https://taikoi.netlify.app/en/services.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/services.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/services.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/services.html"/>
   </url>
   <url>
-    <loc>https://taikoi.netlify.app/pricing.html</loc>
-    <lastmod>2026-11-13</lastmod>
+    <loc>https://taikoi.netlify.app/fi/branding.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/branding.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/branding.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/branding.html"/>
   </url>
   <url>
-    <loc>https://taikoi.netlify.app/contact.html</loc>
-    <lastmod>2026-11-13</lastmod>
+    <loc>https://taikoi.netlify.app/en/branding.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/branding.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/branding.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/branding.html"/>
   </url>
   <url>
-    <loc>https://taikoi.netlify.app/gallery.html</loc>
-    <lastmod>2026-10-18</lastmod>
+    <loc>https://taikoi.netlify.app/fi/business_strategy.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/business_strategy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/business_strategy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/business_strategy.html"/>
   </url>
   <url>
-    <loc>https://taikoi.netlify.app/physicalus.html</loc>
-    <lastmod>2026-10-18</lastmod>
+    <loc>https://taikoi.netlify.app/en/business_strategy.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/business_strategy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/business_strategy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/business_strategy.html"/>
   </url>
   <url>
-    <loc>https://taikoi.netlify.app/cartomancy.html</loc>
-    <lastmod>2026-10-18</lastmod>
+    <loc>https://taikoi.netlify.app/fi/pricing.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/pricing.html"/>
   </url>
   <url>
-    <loc>https://taikoi.netlify.app/bio.html</loc>
-    <lastmod>2026-11-13</lastmod>
+    <loc>https://taikoi.netlify.app/en/pricing.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/pricing.html"/>
   </url>
   <url>
-    <loc>https://taikoi.netlify.app/cv.html</loc>
-    <lastmod>2026-11-13</lastmod>
+    <loc>https://taikoi.netlify.app/fi/contact.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/contact.html"/>
   </url>
   <url>
-    <loc>https://taikoi.netlify.app/diy_realities.html</loc>
-    <lastmod>2026-10-18</lastmod>
+    <loc>https://taikoi.netlify.app/en/contact.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/contact.html"/>
   </url>
   <url>
-    <loc>https://taikoi.netlify.app/gate_left.html</loc>
-    <lastmod>2026-10-18</lastmod>
+    <loc>https://taikoi.netlify.app/fi/gallery.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/gallery.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/gallery.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/gallery.html"/>
   </url>
   <url>
-    <loc>https://taikoi.netlify.app/gate_right.html</loc>
-    <lastmod>2026-10-18</lastmod>
+    <loc>https://taikoi.netlify.app/en/gallery.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/gallery.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/gallery.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/gallery.html"/>
+  </url>
+  <url>
+    <loc>https://taikoi.netlify.app/fi/physicalus.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/physicalus.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/physicalus.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/physicalus.html"/>
+  </url>
+  <url>
+    <loc>https://taikoi.netlify.app/en/physicalus.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/physicalus.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/physicalus.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/physicalus.html"/>
+  </url>
+  <url>
+    <loc>https://taikoi.netlify.app/fi/cartomancy.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/cartomancy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/cartomancy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/cartomancy.html"/>
+  </url>
+  <url>
+    <loc>https://taikoi.netlify.app/en/cartomancy.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/cartomancy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/cartomancy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/cartomancy.html"/>
+  </url>
+  <url>
+    <loc>https://taikoi.netlify.app/fi/bio.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/bio.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/bio.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/bio.html"/>
+  </url>
+  <url>
+    <loc>https://taikoi.netlify.app/en/bio.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/bio.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/bio.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/bio.html"/>
+  </url>
+  <url>
+    <loc>https://taikoi.netlify.app/fi/cv.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/cv.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/cv.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/cv.html"/>
+  </url>
+  <url>
+    <loc>https://taikoi.netlify.app/en/cv.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/cv.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/cv.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/cv.html"/>
+  </url>
+  <url>
+    <loc>https://taikoi.netlify.app/fi/diy_realities.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/diy_realities.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/diy_realities.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/diy_realities.html"/>
+  </url>
+  <url>
+    <loc>https://taikoi.netlify.app/en/diy_realities.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/diy_realities.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/diy_realities.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/diy_realities.html"/>
+  </url>
+  <url>
+    <loc>https://taikoi.netlify.app/fi/gate_left.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/gate_left.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/gate_left.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/gate_left.html"/>
+  </url>
+  <url>
+    <loc>https://taikoi.netlify.app/en/gate_left.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/gate_left.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/gate_left.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/gate_left.html"/>
+  </url>
+  <url>
+    <loc>https://taikoi.netlify.app/fi/gate_right.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/gate_right.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/gate_right.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/gate_right.html"/>
+  </url>
+  <url>
+    <loc>https://taikoi.netlify.app/en/gate_right.html</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/gate_right.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/gate_right.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/gate_right.html"/>
   </url>
 </urlset>

@@ -1,35 +1,35 @@
 (function () {
     var GALLERY_REALMS = [
-        { label: 'Physical Arts', href: 'physicalus.html' },
-        { label: 'Artificial Arts', href: 'gallery.html' },
-        { label: 'Cartomancy', href: 'cartomancy.html' },
-        { label: 'Musical Theatre' },
-        { label: 'Mineralogy' }
+        { key: 'seal.physicalArts', label: 'Fyysiset taiteet', href: 'physicalus.html' },
+        { key: 'seal.artificialArts', label: 'Keinotekoiset taiteet', href: 'gallery.html' },
+        { key: 'seal.cartomancy', label: 'Kartomantia', href: 'cartomancy.html' },
+        { key: 'seal.musicalTheatre', label: 'Musiikkiteatteri' },
+        { key: 'seal.mineralogy', label: 'Mineralogia' }
     ];
 
     var LIBRARY_REALMS = [
-        { label: 'Liber / Ready', href: 'gate_left.html' },
-        { label: 'Manuscript / Foul Papers', href: 'gate_right.html' },
-        { label: 'Metalog', href: 'diy_realities.html' }
+        { key: 'seal.liber', label: 'Liber / Valmis', href: 'gate_left.html' },
+        { key: 'seal.manuscript', label: 'Käsikirjoitus / Raakavedokset', href: 'gate_right.html' },
+        { key: 'seal.metalog', label: 'Metalogi', href: 'diy_realities.html' }
     ];
 
     var SECTION_REALMS = [
-        { label: 'Section 1' },
-        { label: 'Section 2' },
-        { label: 'Section 3' },
-        { label: 'Section 4' }
+        { key: 'seal.section1', label: 'Osa 1' },
+        { key: 'seal.section2', label: 'Osa 2' },
+        { key: 'seal.section3', label: 'Osa 3' },
+        { key: 'seal.section4', label: 'Osa 4' }
     ];
 
     var SERVICE_REALMS = [
-        { label: 'Offerings', href: 'branding.html' },
-        { label: 'Business Strategy', href: 'business_strategy.html' },
-        { label: 'Pricing', href: 'pricing.html' },
-        { label: 'Contact', href: 'contact.html' }
+        { key: 'seal.offerings', label: 'Tarjonta', href: 'branding.html' },
+        { key: 'seal.strategy', label: 'Liiketoimintastrategia', href: 'business_strategy.html' },
+        { key: 'seal.pricing', label: 'Hinnoittelu', href: 'pricing.html' },
+        { key: 'seal.contact', label: 'Yhteys', href: 'contact.html' }
     ];
 
     var BIO_REALMS = [
-        { label: 'Multimieli', href: 'bio.html' },
-        { label: 'CV', href: 'cv.html' }
+        { key: 'seal.bio', label: 'Multimieli', href: 'bio.html' },
+        { key: 'seal.cv', label: 'CV', href: 'cv.html' }
     ];
 
     function pageStem() {
@@ -67,7 +67,8 @@
     trigger.className = 'seal-trigger';
     trigger.setAttribute('aria-expanded', 'false');
     trigger.setAttribute('aria-controls', 'seal-menu');
-    trigger.setAttribute('aria-label', 'Menu');
+    trigger.setAttribute('aria-label', 'Valikko');
+    trigger.setAttribute('data-i18n-attr', 'aria-label:seal.menu');
     anchor.appendChild(trigger);
     trigger.appendChild(img);
 
@@ -109,7 +110,16 @@
         menu.appendChild(rule);
     }
 
-    function addItem(label, kind, action, href) {
+    function textFor(key, fallback) {
+        var api = window.__aivoinkoI18n;
+        if (key && api && typeof api.t === 'function') {
+            var value = api.t(key);
+            if (value) return value;
+        }
+        return fallback;
+    }
+
+    function addItem(key, label, kind, action, href) {
         var button = document.createElement('button');
         button.type = 'button';
         button.className = 'seal-item seal-item--' + kind;
@@ -131,7 +141,8 @@
         gem.setAttribute('aria-hidden', 'true');
         var text = document.createElement('span');
         text.className = 'seal-label';
-        text.textContent = label;
+        if (key) text.setAttribute('data-i18n', key);
+        text.textContent = textFor(key, label);
         button.appendChild(gem);
         button.appendChild(text);
         menu.appendChild(button);
@@ -139,13 +150,13 @@
         return button;
     }
 
-    addItem('Return', 'meta', 'return');
+    addItem('seal.return', 'Palaa', 'meta', 'return');
     addRule();
     REALMS.forEach(function (realm) {
-        addItem(realm.label, 'realm', '', realm.href || '');
+        addItem(realm.key, realm.label, 'realm', '', realm.href || '');
     });
     addRule();
-    addItem('Close Menu', 'meta', 'close');
+    addItem('seal.close', 'Sulje valikko', 'meta', 'close');
 
     if ('inert' in menu) menu.inert = true;
 
