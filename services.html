@@ -102,32 +102,12 @@
         }
 
         header img {
-            width: 36px;
-            height: 36px;
+            max-width: 150px;
             border-radius: 50%;
             outline: none;
             -webkit-tap-highlight-color: transparent;
             user-select: none;
             -webkit-user-select: none;
-        }
-
-        .practice header .seal-trigger {
-            width: 72px;
-            height: 118px;
-            filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.45));
-        }
-
-        .practice header .seal-trigger:hover,
-        .practice header .seal-trigger:focus-visible,
-        .practice header.is-seal-open .seal-trigger {
-            filter: drop-shadow(0 8px 8px rgba(0, 0, 0, 0.45));
-        }
-
-        @media (max-width: 768px) {
-            .practice header .seal-trigger {
-                width: 56px;
-                height: 92px;
-            }
         }
 
         main {
@@ -322,52 +302,10 @@
             outline: none;
         }
 
-        .practice .hall-closer {
-            min-height: 0;
-            align-items: flex-start;
-            justify-content: flex-start;
-            gap: 0;
-            margin: 0;
-            padding: 2.6rem 0 3.4rem;
-            text-align: left;
-        }
-
-        .practice .hall-return {
-            width: auto;
-            height: auto;
-            background: none;
-            filter: none;
-            line-height: 1.4;
-            font-family: 'Source Sans 3', 'Segoe UI', sans-serif;
-            font-size: 0.72rem;
-            font-weight: 600;
-            letter-spacing: 0.28em;
-            text-transform: uppercase;
-            color: var(--brass);
-        }
-
-        .practice .hall-return:hover,
-        .practice .hall-return:focus-visible,
-        .practice .hall-return:active {
-            transform: none;
-            filter: none;
-            color: var(--text);
-        }
-
         @media (max-width: 768px) {
             .practice {
                 width: min(40rem, calc(100% - 2rem));
                 padding-top: 1.1rem;
-            }
-
-            .practice .hall-closer {
-                min-height: 0;
-                padding: 2.2rem 0 calc(2.6rem + env(safe-area-inset-bottom, 0px));
-            }
-
-            .practice .hall-return {
-                width: auto;
-                height: auto;
             }
         }
     </style>
@@ -377,7 +315,7 @@
     <div id="canvas-container"></div>
     <div class="practice">
         <header>
-            <img src="AiiAold.8dde82cb.jpg" alt="Aivoinko Logo" width="36" height="36" fetchpriority="high" decoding="async">
+            <img src="AiiAold.8dde82cb.jpg" alt="Aivoinko Logo" width="150" height="150" fetchpriority="high" decoding="async">
         </header>
 
         <main>
@@ -442,11 +380,14 @@
                 </a>
             </nav>
         </main>
-
-        <footer class="hall-closer">
-            <button type="button" id="hall-return" class="hall-return">Return</button>
-        </footer>
     </div>
+
+    <footer class="hall-closer">
+        <h1>Services</h1>
+        <button type="button" id="hall-return" class="hall-return" aria-label="Return">
+            <img src="AiiAold.8dde82cb.jpg" alt="" width="48" height="48" decoding="async">
+        </button>
+    </footer>
 
     <script type="module">
         import * as THREE from 'three';
@@ -511,7 +452,7 @@
         }));
         scene.add(starMesh);
 
-        const practice = document.querySelector('.practice');
+        const chrome = [document.querySelector('.practice'), document.querySelector('.hall-closer')];
 
         function exitAnimation() {
             const header = document.querySelector('header');
@@ -526,7 +467,10 @@
                 const scale = 1 - ease;
                 scene.scale.set(scale, scale, scale);
                 scene.rotation.z = ease * 1.0;
-                practice.style.opacity = String(1 - ease);
+                const fade = String(1 - ease);
+                chrome.forEach(function (el) {
+                    if (el) el.style.opacity = fade;
+                });
                 if (progress < 1) {
                     requestAnimationFrame(exitLoop);
                 } else {
