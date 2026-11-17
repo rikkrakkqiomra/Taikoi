@@ -123,21 +123,6 @@
                 rgba(18, 0, 6, 1) 100%);
         }
 
-        #liber-veil {
-            position: fixed;
-            inset: 0;
-            z-index: 7;
-            pointer-events: none;
-            opacity: 0;
-            background:
-                radial-gradient(ellipse at 50% 42%, rgba(40, 0, 10, 0.18) 0%, rgba(10, 0, 4, 0.78) 100%);
-            transition: opacity 420ms ease;
-        }
-
-        #liber-veil.is-on {
-            opacity: 1;
-        }
-
         #liber-stage {
             position: fixed;
             inset: 0;
@@ -145,7 +130,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 0 1.1rem 1.4rem;
+            padding: 0 1.1rem 0;
             pointer-events: auto;
             opacity: 0;
             overflow-x: hidden;
@@ -153,57 +138,52 @@
             overscroll-behavior: contain;
         }
 
-        #liber-stage.is-reading .hall-closer {
-            opacity: 0.22;
-        }
-
-        #liber-stage.is-reading .hall-return {
-            pointer-events: none;
-        }
-
         .hall-closer h1 {
             color: #ff2d55;
             text-shadow: 0 0 22px rgba(255, 45, 85, 0.55);
         }
 
-        #liber {
+        #liber-stage > .hall-closer {
+            margin-top: 18vh;
+        }
+
+        #crypt {
             position: relative;
-            z-index: 2;
+            z-index: 1;
+            width: min(38rem, 100%);
+            margin: 7vh auto 0;
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: stretch;
+        }
+
+        .crypt-well {
+            height: 22vh;
+            min-height: 7.5rem;
+            display: flex;
+            align-items: center;
             justify-content: center;
-            align-items: flex-start;
-            gap: 1.35rem 2.1rem;
-            width: min(54rem, 100%);
-        }
-
-        .liber-codex {
-            position: relative;
-            width: min(23rem, 100%);
-            flex: 1 1 16rem;
-            max-width: 24rem;
-            transition: opacity 360ms ease, filter 360ms ease;
-        }
-
-        #liber-stage.is-reading .liber-codex:not(.is-open) {
-            opacity: 0.16;
-            filter: blur(1.2px);
             pointer-events: none;
         }
 
-        .liber-codex.is-open {
-            position: fixed;
-            left: 50%;
-            top: 7.4rem;
-            z-index: 3;
-            width: min(34rem, 92vw);
-            max-width: 34rem;
-            transform: translateX(-50%);
+        .crypt-well i {
+            display: block;
+            width: 7px;
+            height: 7px;
+            background: #ff2d55;
+            transform: rotate(45deg);
+            box-shadow: 0 0 18px rgba(255, 45, 85, 0.72);
         }
 
-        .liber-seal {
+        .tomb {
             position: relative;
-            z-index: 2;
+            width: 100%;
+            scroll-margin-top: 1rem;
+        }
+
+        .tomb-seal {
+            position: relative;
+            z-index: 3;
             display: block;
             width: 100%;
             margin: 0;
@@ -214,65 +194,65 @@
             color: inherit;
             text-align: center;
             -webkit-tap-highlight-color: transparent;
-            pointer-events: auto;
         }
 
-        .liber-seal:focus {
+        .tomb-seal:focus {
             outline: none;
         }
 
-        .liber-seal:focus-visible .liber-drum {
+        .tomb-seal:focus-visible .tomb-drum {
             filter:
                 drop-shadow(0 10px 12px rgba(0, 0, 0, 0.55))
-                drop-shadow(0 0 10px rgba(255, 45, 85, 0.7));
+                drop-shadow(0 0 12px rgba(255, 45, 85, 0.7));
         }
 
-        .liber-drum {
+        .tomb-drum {
             position: relative;
             display: block;
-            filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 16px rgba(255, 45, 85, 0.28));
+            filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 18px rgba(255, 45, 85, 0.22));
             transition:
                 transform 180ms cubic-bezier(0.22, 1, 0.36, 1),
                 filter 180ms ease;
         }
 
-        .liber-seal:hover .liber-drum,
-        .liber-seal:focus-visible .liber-drum {
+        .tomb-seal:hover .tomb-drum,
+        .tomb-seal:focus-visible .tomb-drum {
             transform: translateY(-3px);
             filter:
-                brightness(1.07)
+                brightness(1.06)
                 drop-shadow(0 16px 14px rgba(0, 0, 0, 0.6))
-                drop-shadow(0 0 22px rgba(255, 45, 85, 0.48));
+                drop-shadow(0 0 22px rgba(255, 45, 85, 0.42));
         }
 
-        .liber-seal:active .liber-drum {
+        .tomb-seal:active .tomb-drum {
             transform: translateY(2px) scale(0.985);
             filter: brightness(0.94) drop-shadow(0 4px 4px rgba(0, 0, 0, 0.7));
             transition-duration: 70ms;
         }
 
-        .liber-codex.is-open .liber-seal:hover .liber-drum,
-        .liber-codex.is-open .liber-seal:focus-visible .liber-drum,
-        .liber-codex.is-open .liber-seal:active .liber-drum {
+        .tomb.is-open .tomb-seal:hover .tomb-drum,
+        .tomb.is-open .tomb-seal:focus-visible .tomb-drum,
+        .tomb.is-open .tomb-seal:active .tomb-drum {
             transform: none;
-            filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 16px rgba(255, 45, 85, 0.28));
+            filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 16px rgba(255, 45, 85, 0.22));
         }
 
-        .liber-roll {
+        .tomb-roll {
             display: block;
             width: 100%;
             height: auto;
+            max-width: none;
             pointer-events: none;
             user-select: none;
             -webkit-user-select: none;
         }
 
-        .liber-wax {
+        .tomb-wax {
             position: absolute;
             left: 50%;
-            top: 30%;
-            width: 2.85rem;
-            height: 2.85rem;
+            top: 34%;
+            width: 3.15rem;
+            height: 3.15rem;
             border-radius: 48% 52% 49% 51% / 51% 47% 53% 49%;
             background:
                 radial-gradient(circle at 32% 28%, #ff8a96 0%, #ff2d55 40%, #8a001c 76%, #43000d 100%);
@@ -284,10 +264,10 @@
                 inset 0 -6px 8px rgba(40, 0, 8, 0.55);
             transform: translate(-50%, -50%);
             pointer-events: none;
-            animation: wax-breath 4.2s ease-in-out infinite;
+            animation: tomb-wax-breath 4.2s ease-in-out infinite;
         }
 
-        .liber-wax::after {
+        .tomb-wax::after {
             content: "";
             position: absolute;
             left: 50%;
@@ -299,26 +279,34 @@
             box-shadow: 0 0 8px rgba(255, 45, 85, 0.75);
         }
 
-        @keyframes wax-breath {
+        @keyframes tomb-wax-breath {
             0%, 100% { box-shadow: 0 0 0 2px rgba(72, 0, 14, 0.92), 0 5px 10px rgba(0, 0, 0, 0.5), 0 0 14px rgba(255, 45, 85, 0.42), inset 0 2px 3px rgba(255, 210, 218, 0.38), inset 0 -6px 8px rgba(40, 0, 8, 0.55); }
-            50% { box-shadow: 0 0 0 2px rgba(72, 0, 14, 0.92), 0 5px 10px rgba(0, 0, 0, 0.5), 0 0 24px rgba(255, 45, 85, 0.72), inset 0 2px 3px rgba(255, 210, 218, 0.38), inset 0 -6px 8px rgba(40, 0, 8, 0.55); }
+            50% { box-shadow: 0 0 0 2px rgba(72, 0, 14, 0.92), 0 5px 10px rgba(0, 0, 0, 0.5), 0 0 26px rgba(255, 45, 85, 0.75), inset 0 2px 3px rgba(255, 210, 218, 0.38), inset 0 -6px 8px rgba(40, 0, 8, 0.55); }
         }
 
-        .liber-meta {
+        .tomb-meta {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 0.18rem;
-            margin-top: -0.15rem;
-            transition: opacity 280ms ease;
+            gap: 0.2rem;
+            max-height: 6.5rem;
+            margin-top: -0.35rem;
+            overflow: hidden;
+            opacity: 1;
+            transition:
+                opacity 280ms ease,
+                max-height 320ms cubic-bezier(0.22, 1, 0.36, 1),
+                margin 280ms ease;
         }
 
-        .liber-codex.is-open .liber-meta {
+        .tomb.is-open .tomb-meta {
             opacity: 0;
+            max-height: 0;
+            margin: 0;
             pointer-events: none;
         }
 
-        .liber-year {
+        .tomb-year {
             font-family: 'Orbitron', sans-serif;
             font-weight: 700;
             font-size: 0.62rem;
@@ -329,59 +317,58 @@
             text-shadow: 0 0 12px rgba(0, 0, 0, 0.95);
         }
 
-        .liber-name {
+        .tomb-name {
+            max-width: 28rem;
             font-family: 'Cormorant Garamond', Georgia, serif;
             font-style: italic;
             font-weight: 500;
-            font-size: clamp(1.15rem, 2.4vw, 1.48rem);
-            line-height: 1.18;
+            font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+            line-height: 1.16;
             letter-spacing: 0.01em;
             color: #f3ead8;
             text-wrap: balance;
             text-shadow: 0 0 16px rgba(0, 0, 0, 0.95), 0 1px 2px rgba(0, 0, 0, 0.9);
         }
 
-        .liber-sheet {
-            position: absolute;
-            left: 0;
-            width: 100%;
+        .tomb-sheet {
+            display: grid;
+            grid-template-rows: 0fr;
+            margin-top: 0;
+            position: relative;
             z-index: 1;
-            box-sizing: border-box;
-            padding: 1.55rem 1.45rem 3.35rem;
-            overflow-x: hidden;
-            overflow-y: auto;
-            overscroll-behavior: contain;
-            isolation: isolate;
-            visibility: hidden;
             pointer-events: none;
-            scrollbar-width: thin;
-            scrollbar-color: rgba(255, 45, 85, 0.35) transparent;
-            transition: visibility 0s linear 280ms;
+            transition:
+                grid-template-rows 640ms cubic-bezier(0.22, 1, 0.36, 1),
+                margin-top 640ms cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        .liber-sheet::-webkit-scrollbar { width: 6px; }
-        .liber-sheet::-webkit-scrollbar-track { background: transparent; }
-        .liber-sheet::-webkit-scrollbar-thumb {
-            background: rgba(255, 45, 85, 0.35);
-            border-radius: 3px;
-        }
-
-        .liber-codex.is-open .liber-sheet {
-            visibility: visible;
+        .tomb.is-open .tomb-sheet {
+            grid-template-rows: 1fr;
+            margin-top: -2.7rem;
             pointer-events: auto;
-            transition-delay: 0s;
         }
 
-        .liber-sheet::before {
+        .tomb-sheet-clip {
+            overflow: hidden;
+            min-height: 0;
+        }
+
+        .tomb-sheet-body {
+            position: relative;
+            isolation: isolate;
+            padding: 2.85rem 2.2rem 0;
+        }
+
+        .tomb-sheet-body::before {
             content: "";
             position: absolute;
             z-index: 0;
             left: 0;
             right: 0;
-            top: 0;
-            bottom: 14px;
+            top: 18px;
+            bottom: 16px;
             pointer-events: none;
-            background: rgba(8, 6, 4, 0.94);
+            background: #12060a;
             transition: background 640ms ease;
             -webkit-mask-image:
                 linear-gradient(180deg, transparent 0, #000 18px, #000 calc(100% - 16px), transparent 100%),
@@ -393,17 +380,17 @@
             mask-composite: intersect;
         }
 
-        .liber-sheet.is-framed::before {
-            background: rgba(18, 12, 6, 0.97);
+        .tomb.is-framed .tomb-sheet-body::before {
+            background: #16080c;
         }
 
-        .liber-sheet-roll,
-        .liber-sheet-rail {
+        .tomb-sheet-roll,
+        .tomb-sheet-rail {
             position: absolute;
             pointer-events: none;
         }
 
-        .liber-sheet-roll {
+        .tomb-sheet-roll {
             z-index: 2;
             left: 0;
             width: 100%;
@@ -419,19 +406,19 @@
                 transform 640ms cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        .liber-sheet-roll--bottom {
+        .tomb-sheet-roll--bottom {
             bottom: 0;
         }
 
-        .liber-sheet.is-framed .liber-sheet-roll {
+        .tomb.is-framed .tomb-sheet-roll {
             opacity: 1;
             transform: none;
         }
 
-        .liber-sheet-rail {
+        .tomb-sheet-rail {
             z-index: 2;
-            top: 1.15rem;
-            bottom: 2.8rem;
+            top: 2.6rem;
+            bottom: 2.9rem;
             width: 1px;
             background: linear-gradient(
                 to bottom,
@@ -444,65 +431,34 @@
             transition: transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        .liber-sheet-rail--left {
-            left: 0.48rem;
+        .tomb-sheet-rail--left {
+            left: 0.5rem;
             transform-origin: top center;
         }
 
-        .liber-sheet-rail--right {
-            right: 0.48rem;
+        .tomb-sheet-rail--right {
+            right: 0.5rem;
             transform-origin: bottom center;
         }
 
-        .liber-sheet.is-framed .liber-sheet-rail {
+        .tomb.is-framed .tomb-sheet-rail {
             transform: scaleY(1);
         }
 
-        .liber-field {
+        .tomb-field {
             position: relative;
             z-index: 3;
-            color: #d8d2c6;
-            text-align: center;
+            color: #e6dccb;
+            text-align: left;
+            padding-bottom: calc(100% * 217 / 1149 + 1.35rem);
         }
 
-        .liber-meridian {
-            display: block;
-            width: 1px;
-            height: 22px;
-            margin: 0 auto 0.35rem;
-            background: linear-gradient(to bottom, rgba(255, 90, 110, 0.95), rgba(255, 45, 85, 0.12));
-            transform: scaleY(0);
-            transform-origin: top center;
-            transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .liber-codex.is-open .liber-meridian {
-            transform: scaleY(1);
-            transition-duration: 260ms;
-            transition-delay: 20ms;
-        }
-
-        .liber-gem {
-            display: block;
-            width: 6px;
-            height: 6px;
-            margin: 0 auto 0.85rem;
-            background: #ff5a73;
-            transform: rotate(45deg);
-            box-shadow: 0 0 8px rgba(255, 45, 85, 0.55);
-            opacity: 0;
-            transition: opacity 260ms cubic-bezier(0.22, 1, 0.36, 1);
-        }
-
-        .liber-codex.is-open .liber-gem {
-            opacity: 0.85;
-            transition-delay: 40ms;
-        }
-
-        .liber-kicker,
-        .liber-field h2,
-        .liber-field p,
-        .liber-act {
+        .tomb-gem,
+        .tomb-kicker,
+        .tomb-field h2,
+        .tomb-field p,
+        .tomb-act,
+        .tomb-rule {
             opacity: 0;
             transform: translateY(8px);
             transition:
@@ -511,71 +467,79 @@
             transition-delay: calc(28ms + var(--i, 0) * 38ms);
         }
 
-        .liber-codex.is-open .liber-kicker,
-        .liber-codex.is-open .liber-field h2,
-        .liber-codex.is-open .liber-field p,
-        .liber-codex.is-open .liber-act {
+        .tomb.is-open .tomb-gem,
+        .tomb.is-open .tomb-kicker,
+        .tomb.is-open .tomb-field h2,
+        .tomb.is-open .tomb-field p,
+        .tomb.is-open .tomb-act,
+        .tomb.is-open .tomb-rule {
             opacity: 1;
             transform: none;
         }
 
-        .liber-kicker {
-            margin-bottom: 0.65rem;
+        .tomb-gem {
+            display: block;
+            width: 6px;
+            height: 6px;
+            margin: 0 auto 0.95rem;
+            background: #ff5a73;
+            transform: rotate(45deg);
+            box-shadow: 0 0 8px rgba(255, 45, 85, 0.55);
+        }
+
+        .tomb.is-open .tomb-gem {
+            transform: rotate(45deg);
+        }
+
+        .tomb-kicker {
+            margin-bottom: 0.85rem;
             font-family: 'Orbitron', sans-serif;
             font-weight: 700;
-            font-size: 0.6rem;
-            letter-spacing: 0.26em;
+            font-size: 0.62rem;
+            letter-spacing: 0.28em;
             text-transform: uppercase;
+            text-align: center;
             color: #c48c40;
         }
 
-        .liber-field h2 {
-            margin-bottom: 0.85rem;
+        .tomb-field h2 {
+            margin-bottom: 1.25rem;
             font-family: 'Cormorant Garamond', Georgia, serif;
             font-style: italic;
             font-weight: 500;
-            font-size: clamp(1.35rem, 2.8vw, 1.85rem);
-            line-height: 1.2;
+            font-size: clamp(1.65rem, 3.2vw, 2.15rem);
+            line-height: 1.18;
             letter-spacing: 0.01em;
+            text-align: center;
             text-wrap: balance;
             color: #f3ead8;
             text-shadow: 0 0 16px rgba(0, 0, 0, 0.95), 0 1px 2px rgba(0, 0, 0, 0.9);
         }
 
-        .liber-field p {
-            font-size: 1.04rem;
+        .tomb-field p {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-weight: 500;
+            font-size: 1.12rem;
             line-height: 1.72;
-            margin-bottom: 0.7rem;
+            margin-bottom: 0;
         }
 
-        .liber-field p:last-of-type {
-            margin-bottom: 0.35rem;
-        }
-
-        .liber-actions {
-            margin-top: 0.55rem;
+        .tomb-actions {
+            margin-top: 1.6rem;
             display: flex;
             flex-direction: column;
             align-items: center;
+            gap: 0.15rem;
         }
 
-        .liber-rule {
+        .tomb-rule {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 16px;
-            opacity: 0;
-            transform: translateY(8px);
-            transition: opacity 260ms cubic-bezier(0.22, 1, 0.36, 1), transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
-            transition-delay: calc(28ms + var(--i, 0) * 38ms);
+            height: 18px;
         }
 
-        .liber-codex.is-open .liber-rule {
-            opacity: 1;
-            transform: none;
-        }
-
-        .liber-rule i {
+        .tomb-rule i {
             display: block;
             width: 5px;
             height: 5px;
@@ -584,14 +548,14 @@
             opacity: 0.72;
         }
 
-        .liber-act {
+        .tomb-act {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 0.7rem;
             width: 100%;
             margin: 0;
-            padding: 0.34rem 0.2rem;
+            padding: 0.42rem 0.2rem;
             border: 0;
             background: none;
             cursor: pointer;
@@ -601,11 +565,11 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        .liber-act:focus {
+        .tomb-act:focus {
             outline: none;
         }
 
-        .liber-act .liber-spark {
+        .tomb-act .tomb-spark {
             flex: 0 0 auto;
             width: 5px;
             height: 5px;
@@ -616,7 +580,7 @@
             transition: opacity 200ms ease, box-shadow 200ms ease;
         }
 
-        .liber-label {
+        .tomb-label {
             position: relative;
             display: inline-block;
             font-family: 'Orbitron', sans-serif;
@@ -629,7 +593,7 @@
             text-shadow: 0 0 14px rgba(0, 0, 0, 0.95), 0 1px 2px rgba(0, 0, 0, 0.9);
         }
 
-        .liber-label::after {
+        .tomb-label::after {
             content: "";
             position: absolute;
             left: 0;
@@ -642,19 +606,19 @@
             transition: transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        .liber-act:hover .liber-spark,
-        .liber-act:focus-visible .liber-spark {
+        .tomb-act:hover .tomb-spark,
+        .tomb-act:focus-visible .tomb-spark {
             opacity: 1;
             box-shadow: 0 0 8px rgba(212, 164, 90, 0.9);
         }
 
-        .liber-act:hover .liber-label,
-        .liber-act:focus-visible .liber-label {
+        .tomb-act:hover .tomb-label,
+        .tomb-act:focus-visible .tomb-label {
             color: #f0d7a4;
         }
 
-        .liber-act:hover .liber-label::after,
-        .liber-act:focus-visible .liber-label::after {
+        .tomb-act:hover .tomb-label::after,
+        .tomb-act:focus-visible .tomb-label::after {
             transform: scaleX(1);
         }
 
@@ -663,150 +627,165 @@
         html.ui-ready #warp-flash { opacity: 0 !important; }
 
         @media (max-width: 768px) {
-            #liber-stage {
-                padding-top: 11.2rem;
+            #crypt {
+                margin-top: 3vh;
             }
 
-            #liber {
-                flex-direction: column;
-                align-items: center;
+            .crypt-well {
+                height: 16vh;
+                min-height: 5.5rem;
             }
 
-            .liber-codex {
-                flex: 0 0 auto;
-                width: min(22.5rem, 100%);
-                max-width: 22.5rem;
+            #liber-stage > .hall-closer {
+                margin-top: 10vh;
             }
 
-            .liber-wax {
-                width: 2.4rem;
-                height: 2.4rem;
+            .tomb-sheet-body {
+                padding: 2.4rem 1.25rem 0;
+            }
+
+            .tomb-field h2 {
+                font-size: clamp(1.45rem, 6.4vw, 1.9rem);
+            }
+
+            .tomb-field p {
+                font-size: 1.05rem;
+            }
+
+            .tomb-wax {
+                width: 2.55rem;
+                height: 2.55rem;
             }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            .liber-drum,
-            .liber-meta,
-            .liber-wax,
-            #liber-veil,
-            .liber-codex,
-            .liber-sheet,
-            .liber-sheet::before,
-            .liber-sheet-roll,
-            .liber-sheet-rail,
-            .liber-meridian,
-            .liber-gem,
-            .liber-kicker,
-            .liber-field h2,
-            .liber-field p,
-            .liber-act,
-            .liber-rule,
-            .liber-label::after {
+            .tomb-drum,
+            .tomb-meta,
+            .tomb-wax,
+            .tomb-sheet,
+            .tomb-sheet-body::before,
+            .tomb-sheet-roll,
+            .tomb-sheet-rail,
+            .tomb-gem,
+            .tomb-kicker,
+            .tomb-field h2,
+            .tomb-field p,
+            .tomb-act,
+            .tomb-rule,
+            .tomb-label::after {
                 animation: none;
                 transition: none;
             }
 
-            .liber-seal:hover .liber-drum,
-            .liber-seal:focus-visible .liber-drum,
-            .liber-seal:active .liber-drum {
+            .tomb-seal:hover .tomb-drum,
+            .tomb-seal:focus-visible .tomb-drum,
+            .tomb-seal:active .tomb-drum {
                 transform: none;
             }
         }
+
     </style>
 </head>
 
 <body>
     <div id="canvas-container"></div>
     <div id="warp-flash" aria-hidden="true"></div>
-        <div id="liber-veil" aria-hidden="true"></div>
     <div id="liber-stage">
         <header>
             <img src="AiiAold.8dde82cb.jpg" alt="Aivoinkon logo" data-i18n-attr="alt:common.logoAlt" width="110" height="110" fetchpriority="high" decoding="async">
         </header>
-        <div id="liber">
-            <article class="liber-codex" data-codex="chip">
-                <button type="button" class="liber-seal" aria-expanded="false" aria-controls="sheet-chip" aria-label="Avaa vuoden 2024 opinnäyte, Neurovaskulaariset verkot sirulla" data-i18n-attr="aria-label:gateLeft.chip.open">
-                    <span class="liber-drum">
-                        <img class="liber-roll" src="art/seal-scroll-top.png" alt="" width="1161" height="194" decoding="async">
-                        <span class="liber-wax" aria-hidden="true"></span>
+        <div id="crypt">
+            <article class="tomb" data-codex="chip">
+                <button type="button" class="tomb-seal" aria-expanded="false" aria-controls="sheet-chip" aria-label="Avaa vuoden 2024 opinnäyte, Neurovaskulaariset verkot sirulla" data-i18n-attr="aria-label:gateLeft.chip.open">
+                    <span class="tomb-drum">
+                        <img class="tomb-roll" src="art/seal-scroll-top.png" alt="" width="1161" height="194" decoding="async">
+                        <span class="tomb-wax" aria-hidden="true"></span>
                     </span>
-                    <span class="liber-meta">
-                        <span class="liber-year" data-i18n="gateLeft.chip.year">2024</span>
-                        <span class="liber-name" data-i18n="gateLeft.chip.name">Neurovaskulaariset verkot sirulla</span>
+                    <span class="tomb-meta">
+                        <span class="tomb-year" data-i18n="gateLeft.chip.year">2024</span>
+                        <span class="tomb-name" data-i18n="gateLeft.chip.name">Neurovaskulaariset verkot sirulla</span>
                     </span>
                 </button>
-                <div class="liber-sheet" id="sheet-chip" role="dialog" aria-modal="true" aria-labelledby="title-chip" aria-hidden="true" hidden>
-                    <img class="liber-sheet-roll liber-sheet-roll--bottom" src="art/seal-scroll-bottom.png" alt="" width="1149" height="217" decoding="async">
-                    <i class="liber-sheet-rail liber-sheet-rail--left" aria-hidden="true"></i>
-                    <i class="liber-sheet-rail liber-sheet-rail--right" aria-hidden="true"></i>
-                    <div class="liber-field" lang="fi" data-i18n-lang>
-                        <span class="liber-meridian" aria-hidden="true"></span>
-                        <i class="liber-gem" aria-hidden="true"></i>
-                        <p class="liber-kicker" style="--i:0" data-i18n="gateLeft.chip.kicker">Kandidaatintyö · Tampereen yliopisto · 37 s.</p>
-                        <h2 id="title-chip" style="--i:1" data-i18n="gateLeft.chip.title">Perfuusio-olosuhteiden optimointi kolmiulotteisille neurovaskulaarisille verkoille sirulla</h2>
-                        <p style="--i:2" data-i18n="gateLeft.chip.abstract">Keinualustaa pyydettiin antamaan kolmiulotteisille neurovaskulaarisille viljelmille elävä, kaksisuuntainen virtaus. Sirut, joilla oli yksi hydrogeeli, yksi elatusaine ja yksi geometria — pelkät neuronit, luuytimen strooman ja endoteelin suonet, ja nämä kolme yhdessä — eivät kasvaneet hydrostaattisia kaksosiaan suuremmiksi. Perfuusiolla on yhä merkitystä. Tällä nimenomaisella liikkeellä ei.</p>
-                        <div class="liber-actions">
-                            <span class="liber-rule" style="--i:3" aria-hidden="true"><i></i></span>
-                            <a class="liber-act" style="--i:4" href="art/liber/neurovascular-on-chip.pdf" target="_blank" rel="noopener noreferrer">
-                                <i class="liber-spark" aria-hidden="true"></i>
-                                <span class="liber-label" data-i18n="gateLeft.read">Lue</span>
-                            </a>
-                            <span class="liber-rule" style="--i:5" aria-hidden="true"><i></i></span>
-                            <a class="liber-act" style="--i:6" href="art/liber/neurovascular-on-chip.pdf" download="Korpiaho_neurovascular_on_chip.pdf">
-                                <i class="liber-spark" aria-hidden="true"></i>
-                                <span class="liber-label" data-i18n="gateLeft.download">Lataa kokonaan</span>
-                            </a>
-                            <span class="liber-rule" style="--i:7" aria-hidden="true"><i></i></span>
-                            <button type="button" class="liber-act" style="--i:8" data-liber-close>
-                                <i class="liber-spark" aria-hidden="true"></i>
-                                <span class="liber-label" data-i18n="gateLeft.close">Sulje</span>
-                            </button>
+                <div class="tomb-sheet" id="sheet-chip" aria-hidden="true">
+                    <div class="tomb-sheet-clip">
+                        <div class="tomb-sheet-body">
+                            <img class="tomb-sheet-roll tomb-sheet-roll--bottom" src="art/seal-scroll-bottom.png" alt="" width="1149" height="217" decoding="async">
+                            <i class="tomb-sheet-rail tomb-sheet-rail--left" aria-hidden="true"></i>
+                            <i class="tomb-sheet-rail tomb-sheet-rail--right" aria-hidden="true"></i>
+                            <div class="tomb-field" lang="fi" data-i18n-lang>
+                                <i class="tomb-gem" style="--i:0" aria-hidden="true"></i>
+                                <p class="tomb-kicker" style="--i:0" data-i18n="gateLeft.chip.kicker">Kandidaatintyö · Tampereen yliopisto · 37 s.</p>
+                                <h2 id="title-chip" style="--i:1" data-i18n="gateLeft.chip.title">Perfuusio-olosuhteiden optimointi kolmiulotteisille neurovaskulaarisille verkoille sirulla</h2>
+                                <p style="--i:2" data-i18n="gateLeft.chip.abstract">Keinualustaa pyydettiin antamaan kolmiulotteisille neurovaskulaarisille viljelmille elävä, kaksisuuntainen virtaus. Sirut, joilla oli yksi hydrogeeli, yksi elatusaine ja yksi geometria — pelkät neuronit, luuytimen strooman ja endoteelin suonet, ja nämä kolme yhdessä — eivät kasvaneet hydrostaattisia kaksosiaan suuremmiksi. Perfuusiolla on yhä merkitystä. Tällä nimenomaisella liikkeellä ei.</p>
+                                <div class="tomb-actions">
+                                    <span class="tomb-rule" style="--i:3" aria-hidden="true"><i></i></span>
+                                    <a class="tomb-act" style="--i:4" href="art/liber/neurovascular-on-chip.pdf" target="_blank" rel="noopener noreferrer">
+                                        <i class="tomb-spark" aria-hidden="true"></i>
+                                        <span class="tomb-label" data-i18n="gateLeft.read">Lue</span>
+                                    </a>
+                                    <span class="tomb-rule" style="--i:5" aria-hidden="true"><i></i></span>
+                                    <a class="tomb-act" style="--i:6" href="art/liber/neurovascular-on-chip.pdf" download="Korpiaho_neurovascular_on_chip.pdf">
+                                        <i class="tomb-spark" aria-hidden="true"></i>
+                                        <span class="tomb-label" data-i18n="gateLeft.download">Lataa kokonaan</span>
+                                    </a>
+                                    <span class="tomb-rule" style="--i:7" aria-hidden="true"><i></i></span>
+                                    <button type="button" class="tomb-act" style="--i:8" data-liber-close>
+                                        <i class="tomb-spark" aria-hidden="true"></i>
+                                        <span class="tomb-label" data-i18n="gateLeft.close">Sulje</span>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </article>
-            <article class="liber-codex" data-codex="control">
-                <button type="button" class="liber-seal" aria-expanded="false" aria-controls="sheet-control" aria-label="Avaa vuoden 2026 opinnäyte, Hallusinaatioista hallintaan" data-i18n-attr="aria-label:gateLeft.control.open">
-                    <span class="liber-drum">
-                        <img class="liber-roll" src="art/seal-scroll-top.png" alt="" width="1161" height="194" decoding="async">
-                        <span class="liber-wax" aria-hidden="true"></span>
+            <div class="crypt-well" aria-hidden="true"><i></i></div>
+            <article class="tomb" data-codex="control">
+                <button type="button" class="tomb-seal" aria-expanded="false" aria-controls="sheet-control" aria-label="Avaa vuoden 2026 opinnäyte, Hallusinaatioista hallintaan" data-i18n-attr="aria-label:gateLeft.control.open">
+                    <span class="tomb-drum">
+                        <img class="tomb-roll" src="art/seal-scroll-top.png" alt="" width="1161" height="194" decoding="async">
+                        <span class="tomb-wax" aria-hidden="true"></span>
                     </span>
-                    <span class="liber-meta">
-                        <span class="liber-year" data-i18n="gateLeft.control.year">2026</span>
-                        <span class="liber-name" data-i18n="gateLeft.control.title">Hallusinaatioista hallintaan</span>
+                    <span class="tomb-meta">
+                        <span class="tomb-year" data-i18n="gateLeft.control.year">2026</span>
+                        <span class="tomb-name" data-i18n="gateLeft.control.title">Hallusinaatioista hallintaan</span>
                     </span>
                 </button>
-                <div class="liber-sheet" id="sheet-control" role="dialog" aria-modal="true" aria-labelledby="title-control" aria-hidden="true" hidden>
-                    <img class="liber-sheet-roll liber-sheet-roll--bottom" src="art/seal-scroll-bottom.png" alt="" width="1149" height="217" decoding="async">
-                    <i class="liber-sheet-rail liber-sheet-rail--left" aria-hidden="true"></i>
-                    <i class="liber-sheet-rail liber-sheet-rail--right" aria-hidden="true"></i>
-                    <div class="liber-field" lang="fi" data-i18n-lang>
-                        <span class="liber-meridian" aria-hidden="true"></span>
-                        <i class="liber-gem" aria-hidden="true"></i>
-                        <p class="liber-kicker" style="--i:0" data-i18n="gateLeft.control.kicker">Diplomityö · Tampereen yliopisto · 91 s.</p>
-                        <h2 id="title-control" style="--i:1" data-i18n="gateLeft.control.title">Hallusinaatioista hallintaan</h2>
-                        <p style="--i:2" data-i18n="gateLeft.control.abstract">Paikallinen RAG- ja NLI-yhdistelmä lukee ISO-standardien versioita ilman pilveä. Pelkkä vektorisimilaarisuus sokeutuu lähes samalle normitekstille; suunnattu looginen päättely näkee, missä vaatimus kutistuu. Terveydenhuollon data jää koneelle.</p>
-                        <div class="liber-actions">
-                            <span class="liber-rule" style="--i:3" aria-hidden="true"><i></i></span>
-                            <a class="liber-act" style="--i:4" href="art/liber/hallucinations-to-control.pdf" target="_blank" rel="noopener noreferrer">
-                                <i class="liber-spark" aria-hidden="true"></i>
-                                <span class="liber-label" data-i18n="gateLeft.read">Lue</span>
-                            </a>
-                            <span class="liber-rule" style="--i:5" aria-hidden="true"><i></i></span>
-                            <a class="liber-act" style="--i:6" href="art/liber/hallucinations-to-control.pdf" download="Korpiaho_hallusinaatioista_hallintaan.pdf">
-                                <i class="liber-spark" aria-hidden="true"></i>
-                                <span class="liber-label" data-i18n="gateLeft.download">Lataa kokonaan</span>
-                            </a>
-                            <span class="liber-rule" style="--i:7" aria-hidden="true"><i></i></span>
-                            <button type="button" class="liber-act" style="--i:8" data-liber-close>
-                                <i class="liber-spark" aria-hidden="true"></i>
-                                <span class="liber-label" data-i18n="gateLeft.close">Sulje</span>
-                            </button>
+                <div class="tomb-sheet" id="sheet-control" aria-hidden="true">
+                    <div class="tomb-sheet-clip">
+                        <div class="tomb-sheet-body">
+                            <img class="tomb-sheet-roll tomb-sheet-roll--bottom" src="art/seal-scroll-bottom.png" alt="" width="1149" height="217" decoding="async">
+                            <i class="tomb-sheet-rail tomb-sheet-rail--left" aria-hidden="true"></i>
+                            <i class="tomb-sheet-rail tomb-sheet-rail--right" aria-hidden="true"></i>
+                            <div class="tomb-field" lang="fi" data-i18n-lang>
+                                <i class="tomb-gem" style="--i:0" aria-hidden="true"></i>
+                                <p class="tomb-kicker" style="--i:0" data-i18n="gateLeft.control.kicker">Diplomityö · Tampereen yliopisto · 91 s.</p>
+                                <h2 id="title-control" style="--i:1" data-i18n="gateLeft.control.title">Hallusinaatioista hallintaan</h2>
+                                <p style="--i:2" data-i18n="gateLeft.control.abstract">Paikallinen RAG- ja NLI-yhdistelmä lukee ISO-standardien versioita ilman pilveä. Pelkkä vektorisimilaarisuus sokeutuu lähes samalle normitekstille; suunnattu looginen päättely näkee, missä vaatimus kutistuu. Terveydenhuollon data jää koneelle.</p>
+                                <div class="tomb-actions">
+                                    <span class="tomb-rule" style="--i:3" aria-hidden="true"><i></i></span>
+                                    <a class="tomb-act" style="--i:4" href="art/liber/hallucinations-to-control.pdf" target="_blank" rel="noopener noreferrer">
+                                        <i class="tomb-spark" aria-hidden="true"></i>
+                                        <span class="tomb-label" data-i18n="gateLeft.read">Lue</span>
+                                    </a>
+                                    <span class="tomb-rule" style="--i:5" aria-hidden="true"><i></i></span>
+                                    <a class="tomb-act" style="--i:6" href="art/liber/hallucinations-to-control.pdf" download="Korpiaho_hallusinaatioista_hallintaan.pdf">
+                                        <i class="tomb-spark" aria-hidden="true"></i>
+                                        <span class="tomb-label" data-i18n="gateLeft.download">Lataa kokonaan</span>
+                                    </a>
+                                    <span class="tomb-rule" style="--i:7" aria-hidden="true"><i></i></span>
+                                    <button type="button" class="tomb-act" style="--i:8" data-liber-close>
+                                        <i class="tomb-spark" aria-hidden="true"></i>
+                                        <span class="tomb-label" data-i18n="gateLeft.close">Sulje</span>
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </article>
         </div>
+
         <footer class="hall-closer">
             <h1 data-i18n="gateLeft.title">Vasen krypta</h1>
             <button type="button" id="hall-return" class="hall-return" aria-label="Palaa" data-i18n-attr="aria-label:seal.return">
@@ -818,87 +797,70 @@
     <script>
         (function () {
             var stage = document.getElementById('liber-stage');
-            var veil = document.getElementById('liber-veil');
+            var root = document.getElementById('crypt');
+            if (!stage || !root) return;
             var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
             var open = null;
             var frameTimer = 0;
-            var restoreFocus = null;
 
             function closeSealMenu() {
                 var trigger = document.querySelector('header.is-seal-open .seal-trigger');
                 if (trigger) trigger.click();
             }
 
-            function placeSheet(codex) {
-                var drum = codex.querySelector('.liber-drum');
-                var sheet = codex.querySelector('.liber-sheet');
-                if (!drum || !sheet) return;
-                var header = document.querySelector('header');
-                var sealBottom = header ? header.getBoundingClientRect().bottom : 96;
-                var stageTop = Math.max(10, sealBottom - 12);
-                codex.style.top = stageTop + 'px';
-                var drumH = drum.getBoundingClientRect().height;
-                var sheetTop = drumH * 0.52;
-                sheet.style.top = sheetTop + 'px';
-                sheet.style.left = '0';
-                sheet.style.width = '100%';
-                var maxH = window.innerHeight - stageTop - sheetTop - 12;
-                sheet.style.maxHeight = Math.max(80, maxH) + 'px';
-            }
-
             function shut(codex) {
                 if (!codex) return;
-                var sheet = codex.querySelector('.liber-sheet');
-                var seal = codex.querySelector('.liber-seal');
+                var sheet = codex.querySelector('.tomb-sheet');
+                var seal = codex.querySelector('.tomb-seal');
                 codex.classList.remove('is-open');
+                codex.classList.remove('is-framed');
                 if (sheet) {
-                    sheet.classList.remove('is-framed');
                     sheet.setAttribute('aria-hidden', 'true');
-                    sheet.hidden = true;
                     if ('inert' in sheet) sheet.inert = true;
                 }
                 if (seal) seal.setAttribute('aria-expanded', 'false');
-                codex.style.top = '';
             }
 
             function closeAll(options) {
                 if (!open) return;
                 clearTimeout(frameTimer);
+                var seal = open.querySelector('.tomb-seal');
                 shut(open);
                 open = null;
-                stage.classList.remove('is-reading');
-                veil.classList.remove('is-on');
-                if (options && options.focus && restoreFocus && typeof restoreFocus.focus === 'function') {
-                    restoreFocus.focus();
-                }
-                restoreFocus = null;
+                if (options && options.focus && seal && typeof seal.focus === 'function') seal.focus();
+            }
+
+            function park(codex) {
+                var delta = codex.getBoundingClientRect().top - stage.getBoundingClientRect().top;
+                stage.scrollTo({
+                    top: Math.max(0, stage.scrollTop + delta - 18),
+                    behavior: reduced ? 'auto' : 'smooth'
+                });
             }
 
             function show(codex) {
                 closeSealMenu();
                 if (open && open !== codex) shut(open);
-                var sheet = codex.querySelector('.liber-sheet');
-                var seal = codex.querySelector('.liber-seal');
-                restoreFocus = seal;
+                var sheet = codex.querySelector('.tomb-sheet');
+                var seal = codex.querySelector('.tomb-seal');
                 open = codex;
-                stage.classList.add('is-reading');
-                veil.classList.add('is-on');
-                placeSheet(codex);
                 codex.classList.add('is-open');
                 if (seal) seal.setAttribute('aria-expanded', 'true');
                 if (sheet) {
-                    sheet.hidden = false;
                     sheet.setAttribute('aria-hidden', 'false');
                     if ('inert' in sheet) sheet.inert = false;
-                    sheet.scrollTop = 0;
                 }
                 clearTimeout(frameTimer);
                 if (reduced) {
-                    if (sheet) sheet.classList.add('is-framed');
+                    codex.classList.add('is-framed');
+                    park(codex);
                     return;
                 }
                 frameTimer = setTimeout(function () {
-                    if (open === codex && sheet) sheet.classList.add('is-framed');
+                    if (open === codex) {
+                        codex.classList.add('is-framed');
+                        park(codex);
+                    }
                 }, 700);
             }
 
@@ -911,65 +873,35 @@
                 closeAll({ focus: false });
             };
 
-            stage.addEventListener('click', function (event) {
-                var seal = event.target.closest('.liber-seal');
-                if (seal) {
+            root.addEventListener('click', function (event) {
+                var seal = event.target.closest('.tomb-seal');
+                if (seal && root.contains(seal)) {
                     event.preventDefault();
-                    toggle(seal.closest('.liber-codex'));
+                    toggle(seal.closest('.tomb'));
                     return;
                 }
-                if (event.target.closest('[data-liber-close]')) {
+                var shutBtn = event.target.closest('[data-liber-close]');
+                if (shutBtn && root.contains(shutBtn)) {
                     event.preventDefault();
-                    closeAll({ focus: true });
-                    return;
-                }
-                if (open && !event.target.closest('.liber-codex.is-open')) {
                     closeAll({ focus: true });
                 }
             });
 
             document.addEventListener('click', function (event) {
-                if (event.target.closest('.seal-trigger') && open) {
-                    closeAll({ focus: false });
-                }
+                if (event.target.closest('.seal-trigger') && open) closeAll({ focus: false });
             }, true);
 
             document.addEventListener('keydown', function (event) {
-                if (!open) return;
-                if (event.key === 'Escape') {
-                    event.preventDefault();
-                    closeAll({ focus: true });
-                    return;
-                }
-                if (event.key !== 'Tab') return;
-                var sheet = open.querySelector('.liber-sheet');
-                if (!sheet) return;
-                var nodes = Array.prototype.slice.call(sheet.querySelectorAll('a, button')).filter(function (el) {
-                    return !el.hidden && el.offsetParent !== null;
-                });
-                var seal = open.querySelector('.liber-seal');
-                if (seal) nodes.unshift(seal);
-                if (!nodes.length) return;
-                var first = nodes[0];
-                var last = nodes[nodes.length - 1];
-                if (event.shiftKey && document.activeElement === first) {
-                    event.preventDefault();
-                    last.focus();
-                } else if (!event.shiftKey && document.activeElement === last) {
-                    event.preventDefault();
-                    first.focus();
-                }
-            });
-
-            window.addEventListener('resize', function () {
-                if (open) placeSheet(open);
+                if (!open || event.key !== 'Escape') return;
+                event.preventDefault();
+                closeAll({ focus: true });
             });
 
             window.addEventListener('pageshow', function () {
                 closeAll({ focus: false });
             });
 
-            document.querySelectorAll('.liber-sheet').forEach(function (sheet) {
+            root.querySelectorAll('.tomb-sheet').forEach(function (sheet) {
                 if ('inert' in sheet) sheet.inert = true;
             });
         })();
