@@ -202,137 +202,90 @@
             box-shadow: inset 0 0 0 1px rgba(60, 44, 24, 0.28);
         }
 
-        .portrait-corners {
-            position: absolute;
-            inset: -3px;
-            pointer-events: none;
-        }
-
-        .portrait-corners i {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            border-color: #d4b483;
-            border-style: solid;
-            border-width: 0;
-        }
-
-        .portrait-corners i:nth-child(1) {
-            top: 0;
-            left: 0;
-            border-top-width: 1.5px;
-            border-left-width: 1.5px;
-        }
-
-        .portrait-corners i:nth-child(2) {
-            top: 0;
-            right: 0;
-            border-top-width: 1.5px;
-            border-right-width: 1.5px;
-        }
-
-        .portrait-corners i:nth-child(3) {
-            bottom: 0;
-            left: 0;
-            border-bottom-width: 1.5px;
-            border-left-width: 1.5px;
-        }
-
-        .portrait-corners i:nth-child(4) {
-            bottom: 0;
-            right: 0;
-            border-bottom-width: 1.5px;
-            border-right-width: 1.5px;
-        }
-
         .plaque {
             position: relative;
             flex: 0 1 28rem;
-            width: min(28rem, 34vw);
-            padding: 1.5rem 1.45rem 1.6rem;
-            background: rgba(16, 12, 8, 0.82);
-            border: 1px solid rgba(196, 140, 64, 0.48);
-            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(236, 226, 210, 0.08);
+            width: min(28rem, 36vw);
+            padding: 1.25rem 1.35rem 1.4rem;
+            background: #14110e;
+            border: 8px solid #2a2118;
+            box-shadow:
+                0 0 0 1px rgba(212, 164, 90, 0.82),
+                inset 0 0 0 1px rgba(212, 164, 90, 0.4),
+                0 16px 32px rgba(0, 0, 0, 0.45);
             color: #efe6d4;
         }
 
         .folio .plaque {
-            flex: 0 1 36rem;
-            width: min(36rem, 78vw);
+            flex: 0 1 34rem;
+            width: min(34rem, 78vw);
             text-align: center;
-            padding: 2rem 1.8rem 2.1rem;
+            padding: 1.55rem 1.6rem 1.7rem;
         }
 
-        .plaque-corners {
-            position: absolute;
-            inset: -5px;
-            pointer-events: none;
+        .calling {
+            width: min(32rem, 86vw);
+            background: #120e0a;
+            border: 14px solid #2a2118;
+            box-shadow:
+                0 0 0 1px #d4a45a,
+                inset 0 0 0 1px rgba(212, 164, 90, 0.55),
+                0 28px 48px rgba(0, 0, 0, 0.55);
+            text-align: center;
+            overflow: hidden;
         }
 
-        .plaque-corners i {
-            position: absolute;
-            width: 13px;
-            height: 13px;
-            border-color: #d4a45a;
-            border-style: solid;
-            border-width: 0;
+        .calling-band {
+            margin: 0;
+            padding: 0.72rem 1rem 0.64rem;
+            background: linear-gradient(180deg, #c4924e 0%, #7a4e28 52%, #4a2e18 100%);
+            border-bottom: 1px solid #f0d7a4;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 0.68rem;
+            letter-spacing: 0.48em;
+            text-indent: 0.48em;
+            text-transform: uppercase;
+            color: #f7efe2;
+            text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
         }
 
-        .plaque-corners i:nth-child(1) {
-            top: 0;
-            left: 0;
-            border-top-width: 1.5px;
-            border-left-width: 1.5px;
+        .calling-body {
+            padding: 1.65rem 1.5rem 1.45rem;
         }
 
-        .plaque-corners i:nth-child(2) {
-            top: 0;
-            right: 0;
-            border-top-width: 1.5px;
-            border-right-width: 1.5px;
+        .calling h1 {
+            max-width: 10.5ch;
+            margin: 0 auto;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 500;
+            font-size: clamp(2.35rem, 5vw, 3.45rem);
+            line-height: 0.94;
+            letter-spacing: 0.01em;
+            color: #f3ead8;
+            text-wrap: balance;
         }
 
-        .plaque-corners i:nth-child(3) {
-            bottom: 0;
-            left: 0;
-            border-bottom-width: 1.5px;
-            border-left-width: 1.5px;
+        .calling-epithets {
+            list-style: none;
+            max-width: 22rem;
+            margin: 1.2rem auto 0;
+            padding: 0.15rem 0 0;
+            border-top: 2px solid #d4a45a;
         }
 
-        .plaque-corners i:nth-child(4) {
-            bottom: 0;
-            right: 0;
-            border-bottom-width: 1.5px;
-            border-right-width: 1.5px;
+        .calling-epithets li {
+            padding: 0.42rem 0.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: clamp(1.12rem, 2vw, 1.38rem);
+            line-height: 1.25;
+            color: #e7dcc8;
         }
 
-        .plaque-corners i::after {
-            content: "";
-            position: absolute;
-            width: 5px;
-            height: 5px;
-            background: #d4a45a;
-            transform: rotate(45deg);
-        }
-
-        .plaque-corners i:nth-child(1)::after {
-            top: -3px;
-            left: -3px;
-        }
-
-        .plaque-corners i:nth-child(2)::after {
-            top: -3px;
-            right: -3px;
-        }
-
-        .plaque-corners i:nth-child(3)::after {
-            bottom: -3px;
-            left: -3px;
-        }
-
-        .plaque-corners i:nth-child(4)::after {
-            bottom: -3px;
-            right: -3px;
+        .calling-epithets li + li {
+            border-top: 1px solid rgba(212, 164, 90, 0.38);
         }
 
         .plaque h2 {
@@ -341,34 +294,9 @@
             letter-spacing: 0.28em;
             text-transform: uppercase;
             margin-bottom: 0.85rem;
+            padding-bottom: 0.55rem;
+            border-bottom: 1px solid rgba(212, 164, 90, 0.55);
             color: #c48c40;
-        }
-
-        .folio h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 500;
-            font-size: clamp(1.35rem, 5.4vw, 3.15rem);
-            letter-spacing: 0.02em;
-            line-height: 1.08;
-            color: #f3ead8;
-            text-wrap: balance;
-        }
-
-        .epithet {
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            font-weight: 500;
-            font-size: clamp(1.2rem, 2vw, 1.55rem);
-            line-height: 1.35;
-            color: #e7dcc8;
-        }
-
-        .folio h1 + .epithet {
-            margin-top: 1.15rem;
-        }
-
-        .epithet + .epithet {
-            margin-top: 0.2rem;
         }
 
         .plaque blockquote {
@@ -1002,6 +930,29 @@
                 padding: 1.15rem 1.1rem 1.25rem;
             }
 
+            .calling {
+                width: 100%;
+                border-width: 10px;
+            }
+
+            .calling-band {
+                letter-spacing: 0.32em;
+                text-indent: 0.32em;
+                font-size: 0.6rem;
+            }
+
+            .calling-body {
+                padding: 1.35rem 1.05rem 1.2rem;
+            }
+
+            .calling h1 {
+                font-size: clamp(2rem, 11vw, 2.7rem);
+            }
+
+            .calling-epithets li {
+                font-size: 1.05rem;
+            }
+
             .verkko-scroll {
                 width: 100%;
                 padding: 3.1rem 1.35rem 0;
@@ -1023,8 +974,7 @@
                 margin-bottom: 0.55rem;
             }
 
-            .plaque p,
-            .epithet {
+            .plaque p {
                 font-size: 0.98rem;
             }
 
@@ -1080,22 +1030,24 @@
         </header>
 
         <section class="folio">
-            <article class="plaque">
-                <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                <h1 data-i18n="bio.name">Riku Richard Multimieli</h1>
-                <p class="epithet" data-i18n="bio.epithet.father">Isä Unheimlich</p>
-                <p class="epithet" data-i18n="bio.epithet.licker">kaikkien taajuuksien nuoleskelija</p>
-                <p class="epithet" data-i18n="bio.epithet.flayer">jumalten nylkijä</p>
+            <article class="calling">
+                <p class="calling-band"><span data-i18n="bio.band">Multimieli</span></p>
+                <div class="calling-body">
+                    <h1 data-i18n="bio.name">Riku Richard Multimieli</h1>
+                    <ul class="calling-epithets">
+                        <li data-i18n="bio.epithet.father">Isä Unheimlich</li>
+                        <li data-i18n="bio.epithet.licker">kaikkien taajuuksien nuoleskelija</li>
+                        <li data-i18n="bio.epithet.flayer">jumalten nylkijä</li>
+                    </ul>
+                </div>
             </article>
         </section>
 
         <section class="bay bay--left bay--origin" id="tie">
             <figure class="portrait">
-                <span class="portrait-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
                 <img src="art/bio/01-tie.jpg" alt="Riku Richard Multimieli tiellä" data-i18n-attr="alt:bio.tie.alt" width="768" height="1024" decoding="async">
             </figure>
             <article class="plaque">
-                <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
                 <h2 data-i18n="bio.tie.heading">Tie</h2>
                 <blockquote data-i18n="bio.tie.quote">Lasi päättää, mitkä kasvot saapuvat.</blockquote>
                 <p data-i18n="bio.tie.p1">Hän istuu vyön alla, takki kaulassa, ja katsoo ohi. Tie ei kysy nimeä. Se tarjoaa taajuuden, ja hän kulkee sen läpi, kunnes metsänreuna on pelkkää valoa.</p>
@@ -1189,11 +1141,9 @@
 
         <section class="bay bay--right">
             <figure class="portrait">
-                <span class="portrait-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
                 <img src="art/bio/02-kaari.jpg" alt="Riku Richard Multimieli kaaren alla" data-i18n-attr="alt:bio.kaari.alt" width="768" height="1024" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
-                <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
                 <h2 data-i18n="bio.kaari.heading">Kaari</h2>
                 <blockquote data-i18n="bio.kaari.quote">Läheisyys ei ole vaakuna.</blockquote>
                 <p data-i18n="bio.kaari.p1">Kahden posken välissä on kaari, joka ei tarvitse kattoa. Toiset kasvot jäävät nimettömiksi, koska nimi olisi jo etäisyys.</p>
@@ -1203,11 +1153,9 @@
 
         <section class="bay bay--left">
             <figure class="portrait">
-                <span class="portrait-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
                 <img src="art/bio/03-vesi.jpg" alt="Riku Richard Multimieli rannassa" data-i18n-attr="alt:bio.vesi.alt" width="768" height="1024" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
-                <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
                 <h2 data-i18n="bio.vesi.heading">Vesi</h2>
                 <blockquote data-i18n="bio.vesi.quote">Suu on ovi, josta jumala yritti lähteä.</blockquote>
                 <p data-i18n="bio.vesi.p1">Rannassa vartalo suostuu olemaan ranta. Parta on sää. Ääni avautuu, ja vesi ottaa sen vastaan ilman alttaria.</p>
@@ -1217,11 +1165,9 @@
 
         <section class="bay bay--right">
             <figure class="portrait">
-                <span class="portrait-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
                 <img src="art/bio/04-metsa.jpg" alt="Riku Richard Multimieli metsässä" data-i18n-attr="alt:bio.metsa.alt" width="768" height="1024" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
-                <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
                 <h2 data-i18n="bio.metsa.heading">Metsä</h2>
                 <blockquote data-i18n="bio.metsa.quote">Hattu on varjo, jonka metsä lainasi.</blockquote>
                 <p data-i18n="bio.metsa.p1">Hiukset ovat sää, joka kieltäytyi loppumasta. Täällä tuttu ja vieras asuvat samassa rungossa.</p>
@@ -1297,7 +1243,6 @@
 
         <section class="folio folio--close">
             <article class="plaque">
-                <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
                 <blockquote data-i18n="bio.close.quote">Nimet eivät ole arvonimiä.</blockquote>
                 <p data-i18n="bio.close.p">Ne ovat työkaluja, joilla yksi mies pitää monta mieltä yhdessä paikassa. Taajuudet tulevat. Jumalat lähtevät nahoitta. Hän jää.</p>
             </article>
