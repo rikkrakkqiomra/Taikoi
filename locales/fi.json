@@ -917,6 +917,7 @@
   },
   "bio": {
     "description": "Riku Richard Multimieli: neljä muotokuvaa, minämuotoinen kaivo ja linkit työhön.",
+    "band": "Multimieli",
     "name": "Riku Richard Multimieli",
     "epithet": {
       "father": "Isä Unheimlich",
@@ -1151,7 +1152,7 @@
     }
   },
   "gateLeft": {
-    "title": "Vasen aukko",
+    "title": "Vasen krypta",
     "chip": {
       "year": "2024",
       "name": "Neurovaskulaariset verkot sirulla",
@@ -1170,7 +1171,7 @@
     "read": "Lue",
     "download": "Lataa kokonaan",
     "close": "Sulje",
-    "description": "Vasen aukko: kaksi sinetöityä opinnäytettä Codex Operum -sinetin tuolla puolen."
+    "description": "Vasen krypta: kaksi sinetöityä opinnäytettä Codex Operum -sinetin tuolla puolen."
   },
   "gateRight": {
     "title": "Fragmenta Apocrypha",
