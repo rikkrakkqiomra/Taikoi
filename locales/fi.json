@@ -86,7 +86,7 @@
     },
     "course": {
       "title": "Filosofinen ja teknologinen mielen laajentaminen",
-      "term": "Neljä kuukautta tai kahdeksan",
+      "term": "Psykofilosofian historia, uskomusten valjastaminen käytännössä",
       "body": "Työskentelevä kurssi: filosofia, psykologia ja systeeminen ajattelu, käytössä samalla kun olosuhteet liikkuvat."
     },
     "ai": {
@@ -124,9 +124,9 @@
     },
     "course": {
       "title": "Filosofinen ja teknologinen mielen laajentaminen",
-      "term": "Neljä kuukautta tai kahdeksan",
-      "p1": "Näky epäonnistuu, kun se on vain lause seinällä. Tämä on työskentelevä kurssi siinä, miten ajatella sellaista, ja miten toimia samalla kun olosuhteet liikkuvat. Tapaamme kun viikot antavat myöten, emme jäykällä aikataululla, ja työ tapaamisten välillä on osa kurssia.",
-      "p2": "Lukemisto on realistinen. Filosofian ja psykologian historia, niin kuin ne perinteet todella kulkivat, järjestelmäajattelun rinnalle sellaisena kuin sitä nyt käytetään. Ei mystiikkaa menetelmän sijaan. Kun kuukaudet päättyvät, aineisto jää teille, ja oikeus käyttää sitä on teidän."
+      "term": "Psykofilosofian historia, uskomusten valjastaminen käytännössä",
+      "p1": "Näky epäonnistuu, kun silmän ja todellisuuden välissä on väärät linssit. Uskomukset ovat linssejä, jotka muuntavat todellisuuden kokemusta. Tämä on työskentelevä kurssi siinä, miten ajatella sellaista mitä ei näe, ja miten toimia samalla kun olosuhteet liikkuvat tauotta. Tapaamme kun viikot antavat myöten, emme jäykällä aikataululla, ja työ tapaamisten välillä on osa kurssia.",
+      "p2": "Filosofian ja psykologian historia on tiivistetty kokonaisuudeksi, ja siitä jatketaan teknologiaan, niin kuin ne aivotiede modernisti meille kertoo, järjestelmäajattelun rinnalle sellaisena kuin sitä nyt käytetään. Menetelmät kirkastaa mieli. Kun kuukaudet päättyvät, aineisto jää teille."
     },
     "ai": {
       "title": "Suvereeni tekoälyarkkitehtuuri",
@@ -172,7 +172,7 @@
     "brandName": "Brändin kasvot ja kokonaisuus.",
     "brandTerm": "Visionäärinen uudistuminen ja pullonkaulojen etsintä.",
     "courseName": "Filosofinen ja teknologinen mielen laajentaminen.",
-    "courseTerm": "Neljä kuukautta tai kahdeksan.",
+    "courseTerm": "Psykofilosofian historia, uskomusten valjastaminen käytännössä.",
     "aiName": "Suvereeni tekoälyarkkitehtuuri.",
     "aiTerm": "Puhdas tekoäly.",
     "geoName": "GEO / markkinointistrategi.",
