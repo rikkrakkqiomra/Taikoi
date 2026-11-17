@@ -158,6 +158,23 @@
             line-height: 1.62;
             margin-bottom: 0.95rem;
             color: var(--ink);
+            animation: warp 3s infinite;
+        }
+
+        .folio p:nth-of-type(2) { animation-delay: 0.35s; }
+        .folio p:nth-of-type(3) { animation-delay: 0.7s; }
+        .folio p:nth-of-type(4) { animation-delay: 1.05s; }
+        .folio p:nth-of-type(5) { animation-delay: 1.4s; }
+        .folio p:nth-of-type(6) { animation-delay: 1.75s; }
+        .folio p:nth-of-type(7) { animation-delay: 2.1s; }
+        .folio p:nth-of-type(8) { animation-delay: 2.45s; }
+
+        @keyframes warp {
+            0%, 94% { opacity: 1; transform: none; }
+            95% { opacity: 0.8; transform: skewX(2deg); }
+            96% { opacity: 1; transform: none; }
+            97% { opacity: 0.9; transform: skewX(-2deg); }
+            100% { opacity: 1; transform: none; }
         }
 
         .folio .signature {
@@ -180,6 +197,12 @@
 
             .folio p {
                 font-size: 1.16rem;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .folio p {
+                animation: none;
             }
         }
 
