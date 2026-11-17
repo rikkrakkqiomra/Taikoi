@@ -1,0 +1,578 @@
+{
+  "title": "Kartomantia",
+  "description": "Kartomantia: Uskomusten, Muutosten, Voimien ja Suhteiden maat, kolmetoista korttia kussakin, luettuna tarotin haarana.",
+  "landLabel": "Maa",
+  "reading": "Luettaessa",
+  "lands": {
+    "beliefs": "Uskomukset",
+    "changes": "Muutokset",
+    "powers": "Voimat",
+    "relations": "Suhteet"
+  },
+  "select": {
+    "beliefs": "I · Uskomukset",
+    "changes": "II · Muutokset",
+    "powers": "III · Voimat",
+    "relations": "IV · Suhteet"
+  },
+  "nav": {
+    "beliefs": "Uskomusten kortit",
+    "changes": "Muutosten kortit",
+    "powers": "Voimien kortit",
+    "relations": "Suhteiden kortit"
+  },
+  "intro": {
+    "beliefs": {
+      "kicker": "Maa I",
+      "quote": "Uskomus ei ole mielipide. Se on huone, jossa mieli suostuu asumaan.",
+      "p1": "Tämä on haaran ensimmäinen maa. Kolmetoista korttia, eikä minkään vanhemman pakan asu. Kymmenen vakaumuksen säätä, sitten kolme, jotka kävelevät niiden halki: Etsijä, Haltija, Mestari.",
+      "p2": "Lue kortti rakenteesta, jonka se nimeää. Kuva on jo väite. Ennustus saa odottaa."
+    },
+    "changes": {
+      "kicker": "Maa II",
+      "quote": "Muutos ei ole tapahtuma. Se on väli, jossa asia suostuu tulemaan toiseksi asiaksi.",
+      "p1": "Tämä on toinen maa. Kolmetoista korttia, eikä minkään vanhemman pakan asu. Kymmenen käänteen säätä, sitten kolme, jotka kävelevät niiden halki: Etsijä, Haltija, Mestari.",
+      "p2": "Lue kortti liikkeestä, jonka se nimeää. Kuva on jo käänne. Ennustus saa odottaa."
+    },
+    "powers": {
+      "kicker": "Maa III",
+      "quote": "Voima ei ole väki. Se on kyky, joka on löytänyt ruumiin valmiin kantamaan sen.",
+      "p1": "Tämä on kolmas maa. Kolmetoista korttia, eikä minkään vanhemman pakan asu. Kymmenen kyvyn säätä, sitten kolme, jotka kävelevät niiden halki: Etsijä, Haltija, Mestari.",
+      "p2": "Lue kortti kyvystä, jonka se nimeää. Kuva on jo käyttö. Ennustus saa odottaa."
+    },
+    "relations": {
+      "kicker": "Maa IV",
+      "quote": "Suhde ei ole tunne kahden ihmisen välillä. Se on kolmas asia, joka alkaa kun he eivät käännä katsettaan pois.",
+      "p1": "Tämä on neljäs maa. Kolmetoista korttia, eikä minkään vanhemman pakan asu. Kymmenen siteen säätä, sitten kolme, jotka kävelevät niiden halki: Etsijä, Haltija, Mestari.",
+      "p2": "Lue kortti siteestä, jonka se nimeää. Kuva on jo väli. Ennustus saa odottaa."
+    }
+  },
+  "sealed": {
+    "kicker": "Avaamaton",
+    "title": "Tätä maata ei ole vielä piirretty.",
+    "p1": "Haaralla on muita maita. Niiden kortit ovat yhä pimeässä, ja liian aikaisin annettu nimi olisi valhe, jolla on raja.",
+    "p2": "Palaa avoimeen maahan. Uskomukset, Muutokset, Voimat ja Suhteet voidaan lukea."
+  },
+  "cards": {
+    "imagination": {
+      "rank": "I · Uskomusten juuri",
+      "title": "Mielikuvitus",
+      "index": "I Mielikuvitus",
+      "quote": "Ennen kuin uskomuksella on todiste, sillä on kasvot.",
+      "p1": "Linssi otsalla on väline, joka tekee tunteesta jotain katsottavaa. Pilvi, metalli ja vihreä pimeä kurkussa ovat sama sää: ajatus ennen kuin se on valinnut puolen.",
+      "p2": "Mielikuvitus on juuri, koska mikään myöhempi tässä maassa ei seiso ennen kuin kuva on uskallettu. Uskomus jota ei saa kuvaksi on vain huhu itsestään.",
+      "use": "Asia on vielä muotoutumaton, ja se on sen voima. Anna sille kuva ennen kuin annat sille lain.",
+      "alt": "Uskomusten juuri, Mielikuvitus"
+    },
+    "bias": {
+      "rank": "II · Uskomukset",
+      "title": "Vinouma",
+      "index": "II Vinouma",
+      "quote": "Toinen silmä lepää, jotta toinen voi olla varma.",
+      "p1": "Kasvot ovat posliinia joka on jo haljennut, ja halkeama on kasvattanut kaarnan. Vinouma on lasin juova: suljettu silmä, avoin silmä, suu joka on jähmettynyt.",
+      "p2": "Tämän kortin kohtaaminen on huomata, kumpaan kasvojen puoliskoon olet luottanut. Puu ei pyydä anteeksi sitä, että on puuta.",
+      "use": "Nimeä linssi ennen kuin nimeät tosiasian. Se mitä kutsut ilmeiseksi on silmä, joka jäi auki.",
+      "alt": "Uskomukset, Vinouma"
+    },
+    "dogma": {
+      "rank": "III · Uskomukset",
+      "title": "Dogmi",
+      "index": "III Dogmi",
+      "quote": "Opetus istuu. Pelko riippuu sen yllä.",
+      "p1": "Vanhus valtaistuimella, seurakunta portailla, ja holvissa suu jossa on liikaa hampaita. Dogmi on uskomus, joka on palkannut huoneen, yleisön ja hirviön pitämään katon kiinnostavana.",
+      "p2": "Se on totuus joka unohti olleensa kerran kysymys, ja rakensi temppelin ettei sitä kysyttäisi uudestaan.",
+      "use": "Jotain täällä suojellaan seremonialla. Kysy ketä palvellaan, jos kysymys pysyy istumassa.",
+      "alt": "Uskomukset, Dogmi"
+    },
+    "doubt": {
+      "rank": "IV · Uskomukset",
+      "title": "Epäilys",
+      "index": "IV Epäilys",
+      "quote": "Savu on väite, joka yhä lähtee suusta.",
+      "p1": "Kalpeat kasvot, lehtikruunu, kolmas silmä joka aukesi koska kaksi tavallista lakkasi olemasta yhtä mieltä. Epäilys savuaa. Se pitää hiillosta siinä, missä hengitys näkee sen.",
+      "p2": "Epäilys on uskomus, joka suostuu jäämään keskeneräiseksi. Maan rehellinen kortti.",
+      "use": "Älä kiirehdi savua tuomioksi. Kolmas silmä on auki. Anna kahden muun ehtiä perässä.",
+      "alt": "Uskomukset, Epäilys"
+    },
+    "interpretation": {
+      "rank": "V · Uskomukset",
+      "title": "Tulkinta",
+      "index": "V Tulkinta",
+      "quote": "Merkitys on lanka, jonka annat jollekin joka osaa lentää.",
+      "p1": "Hupullinen kirjuri, naru, varisten raati, kasvojen kartta, tuli alla. Tulkinta on ammatti, jossa linnuille annetaan lanka ja takaisin tuotu luetaan kuin se olisi ollut omaa.",
+      "p2": "Tuli on todellinen. Kartta on arvaus, joka oppi näyttämään viralliselta. Niiden välissä seisoo ainoa rehellinen hahmo: se, joka ei näytä kasvoja.",
+      "use": "Olet antamassa kuviolle viestin nimen. Huomaa mitä lintua kuuntelet, ja minkä olet jo päättänyt olevan pelkkää säätä.",
+      "alt": "Uskomukset, Tulkinta"
+    },
+    "dream": {
+      "rank": "VI · Uskomukset",
+      "title": "Uni",
+      "index": "VI Uni",
+      "quote": "Metsä sanelee. Kirjurilla ei ole vielä kasvoja.",
+      "p1": "Sarvekas kirjoittaja istuu juurissa, ja hupullinen kirjuri kopioi, huppu auki siinä missä kasvojen pitäisi olla. Uni on uskomus, joka saapuu ennen kuin sen vaatijalla on piirteitä.",
+      "p2": "Polvella olevaa kirjaa kirjoittaa jo jokin kättä vanhempi. Kirjurin työ on pysyä mukana keksimättä nimeä liian aikaisin.",
+      "use": "Kuva on selitystäsi edellä. Kirjoita se ylös ennen kuin tulkitset. Kasvot voivat tulla myöhemmin.",
+      "alt": "Uskomukset, Uni"
+    },
+    "reverence": {
+      "rank": "VII · Uskomukset",
+      "title": "Kunnioitus",
+      "index": "VII Kunnioitus",
+      "quote": "Tarkkaavaisuus, joka on suostunut olemaan kohdettaan pienempi.",
+      "p1": "Valkoiset hiukset, parta kuin hidas joki, merkki otsalla, geometria pään takana jota ei tarvitse ratkaista. Kunnioitus on asento, jossa mieli on lakannut yrittämästä olla huoneen suurin asia.",
+      "p2": "Valokaulus on horisontti puettuna. Kunnioitettu pysyy nimeämättä, koska nimi kutistaisi sen takaisin työkaluksi.",
+      "use": "Lähesty tarttumatta. Seiso paikallasi niin kauan, että asia ehtii olla itsensä.",
+      "alt": "Uskomukset, Kunnioitus"
+    },
+    "assumption": {
+      "rank": "VIII · Uskomukset",
+      "title": "Oletus",
+      "index": "VIII Oletus",
+      "quote": "Otat polun, koska puu näyttää jo asutulta.",
+      "p1": "Nainen vihreässä rungon luona, joka on täynnä koloja, ja yksi koloista on silmä. Oletus on askel, joka otetaan ennen kysymystä. Puku, kukat ja noja kohtelevat puuta talona.",
+      "p2": "Joskus silmä on todella siellä. Joskus pimeä on vain pahka. Kortti ei sano kumpaa. Se sanoo, että olet jo päättänyt.",
+      "use": "Etsi askel, jota et huomannut ottaneesi. Se askel kantaa päätelmän.",
+      "alt": "Uskomukset, Oletus"
+    },
+    "story": {
+      "rank": "IX · Uskomukset",
+      "title": "Tarina",
+      "index": "IX Tarina",
+      "quote": "Ruumis koottu vieraista kivistä, jotta rinta voi jatkaa kävelyä.",
+      "p1": "Pää on laattojen pyramidi, kurkku ketjujen aarre, hartiat monumenttien sää. Tarina on tapa, jolla uskomus selviää tekijästään: muuttumalla arkkitehtuuriksi, jonka sisällä joku toinen voi seistä.",
+      "p2": "Kasvot näkyvät yhä, juuri ja juuri, monumentin alta. Tarina joka unohtaa että sillä on kasvot, muuttuu raunioksi joka antaa käskyjä.",
+      "use": "Olet kertomuksen sisällä. Kysy oletko kertoja, kivi, vai se jota varten monumentti rakennettiin.",
+      "alt": "Uskomukset, Tarina"
+    },
+    "trust": {
+      "rank": "X · Uskomukset",
+      "title": "Luottamus",
+      "index": "X Luottamus",
+      "quote": "Kädet kohtaavat eivätkä tarkista otetta.",
+      "p1": "Kukkia, kalpea röyhelö, sormet lomittain rintalastalla. Luottamus on kymmenestä viimeinen, koska se on uskomus joka on lakannut tutkimasta itseään. Koriste on rohkeus näkyä vartioimatta.",
+      "p2": "Silmät ovat auki ja tasassa. Kuvassa mikään ei piile, siksi sen voi luulla turvaksi.",
+      "use": "Jokin voidaan antaa ilman sopimusta. Ota se vastaan sellaisenaan. Älä koristele lahjaa todisteeksi.",
+      "alt": "Uskomukset, Luottamus"
+    },
+    "openness": {
+      "rank": "XI · Uskomusten etsijä",
+      "title": "Avoimuus",
+      "index": "XI Avoimuus",
+      "quote": "Hän pitää ikkunan auki ja antaa eläimen seistä kytkemättä.",
+      "p1": "Etsijä suitsutusastian kanssa, savu joka lähtee kohti petojen tummaa kruunua, kalpea karitsa olalla jota kukaan ei pidä. Avoimuus on kuri olla sulkematta kättä sen ympärille, mikä on tullut seisomaan viereen.",
+      "p2": "Hovi alkaa tästä. Kymmenen kuvasi sään. Etsijä on se, joka kävelee siihen tuli mukanaan ja kieltäytyy hihnasta.",
+      "use": "Pysy läpäisevänä. Älä ota uskomusta vielä, äläkä aja sitä pois. Anna sen jäädä vieraaksi.",
+      "alt": "Uskomusten etsijä, Avoimuus"
+    },
+    "self": {
+      "rank": "XII · Uskomusten haltija",
+      "title": "Itse",
+      "index": "XII Itse",
+      "quote": "Silmät sulkeutuvat, ja koneisto jatkaa kasvoina.",
+      "p1": "Naamio hohtavaa metallia, silmät kiinni, rattaiden ja pienten hahmojen temppeli joka kannattelee kuvaa. Itse on se, mitä Haltija vartioi: relikvaario. Identiteetti jatkuu sen jälkeen, kun katse joka teki sen on päättynyt.",
+      "p2": "Vaara on kotelon palvonta. Itse jota ei voi avata, muuttuu yhden ihmisen dogmiksi.",
+      "use": "Pidä omasi, äläkä sekoita astiaa reliikkiin. Sulje silmät. Jätä ovi salvasta auki.",
+      "alt": "Uskomusten haltija, Itse"
+    },
+    "freedom": {
+      "rank": "XIII · Uskomusten mestari",
+      "title": "Vapaus",
+      "index": "XIII Vapaus",
+      "quote": "Molemmat kasvot katsovat. Maailma riippuu yhdestä pisteestä.",
+      "p1": "Kaksikasvoinen istuja kartion alla, saarella joka on myös nurin käännetty vuori, planeettoja ja pieniä aluksia langalla lumen yllä. Vapaus on tasapaino, jossa uskomus ei enää tarvitse maata ollakseen tosi.",
+      "p2": "Mestari ei lakkauta maata. Mielikuvitus, vinouma, dogmi, epäilys — ne ovat yhä taivaalla, astioina. Ne ovat lakanneet olemasta lattia.",
+      "use": "Saat laskea uskomuksen alas kavaltaamatta sitä. Jäljelle jää istuin, ja istuin riittää.",
+      "alt": "Uskomusten mestari, Vapaus"
+    },
+    "time": {
+      "rank": "I · Muutosten juuri",
+      "title": "Aika",
+      "index": "I Aika",
+      "quote": "Ennen kuin mikään liikkuu, keston on suostuttava.",
+      "p1": "Kaaren hahmo ei ole puettu. Lihas, suoni ja piikkinen sädekehä ovat ruumis, näytettynä kellona jota pidetään sisäpuolella. Pienemmät kasvot katsovat ylös portaalta, koska aika näkyy vain sille joka on jo sen sisällä.",
+      "p2": "Muutoksella ei ole juurta ennen kuin yksi hetki voidaan erottaa seuraavasta. Ilman sitä eroa pelko ja uudistus ovat sama sää.",
+      "use": "Asialla on kesto, ja se on koko lupa. Anna yhden hetken loppua ennen kuin pyydät seuraavaa alkamaan.",
+      "alt": "Muutosten juuri, Aika"
+    },
+    "fear": {
+      "rank": "II · Muutokset",
+      "title": "Pelko",
+      "index": "II Pelko",
+      "quote": "Ensimmäinen muoto, jonka muutos ottaa, on ase.",
+      "p1": "Violetti savu on oppinut olemaan kruunu. Kultalevyt istuvat ruumiilla joka on jo puoliksi piikki, ja sauva on reliikki joka yhä odottaa että sitä totellaan. Pelko on tapa, jolla hermosto ilmoittaa että huone ei ole enää se huone.",
+      "p2": "Se on toinen kortti, koska käännettä jota ei voi pelätä ei ole tunnettu. Kruunu on säätä. Sauvan voi laskea.",
+      "use": "Nimeä se, mille ruumis varautuu. Hälytys on tietoa. Se ei ole vielä päätös.",
+      "alt": "Muutokset, Pelko"
+    },
+    "attachment": {
+      "rank": "III · Muutokset",
+      "title": "Kiintymys",
+      "index": "III Kiintymys",
+      "quote": "Se mikä ei putoa, pidetään ylhäällä.",
+      "p1": "Hymyilevä ruumis violetissa riippuu köysistä, eivätkä kaikki köysien kädet ole elossa. Yksi mies tummassa puvussa nauraa vetäessään. Loput ovat luuta. Kiintymys pitää muutoksen ilmassa kuluttamalla muita ihmisiä naruissa.",
+      "p2": "Hahmo näyttää seremonialliselta. Alla oleva työ on työtä. Korkeus on tässä lasku.",
+      "use": "Kysy kuka pitää köydestä, ja onko korkeus heidän käsivarsiensa arvoinen. Löysyys on eräänlaista rehellisyyttä.",
+      "alt": "Muutokset, Kiintymys"
+    },
+    "opportunity": {
+      "rank": "IV · Muutokset",
+      "title": "Tilaisuus",
+      "index": "IV Tilaisuus",
+      "quote": "Sään pieksemät kasvot voivat yhä katsoa sinua suoraan.",
+      "p1": "Höyhenet avautuvat useampaan suuntaan. Helmet, tähti olalla, kolikko rinnassa: vanhus on puettu siihen, mitä aiemmat käänteet jättivät. Tilaisuus ei ole tyhjä ovi. Se on suunta, joka säilyi.",
+      "p2": "Muotokuva ei hymyile. Se tarjoaa katseen, joka on tiukempi kuin kutsu.",
+      "use": "Aukko kantaa jo historiaa. Astu sitä kohti teeskentelemättä olevasi ensimmäinen.",
+      "alt": "Muutokset, Tilaisuus"
+    },
+    "manifestation": {
+      "rank": "V · Muutokset",
+      "title": "Ilmentymä",
+      "index": "V Ilmentymä",
+      "quote": "Toiveesta tulee ruumis, jonka ympäri voi kävellä.",
+      "p1": "Koneistetun kullan siivet täyttävät rattaiden katedraalin. Hahmo pitää sormusta oviaukon kokoista, ja sormus on piiri jonka muutos sulkee kun se lakkaa olemasta kuviteltu. Vihreä jaloissa on elävä asia, jonka kone suostui kantamaan.",
+      "p2": "Käänne joka ei koskaan ota muotoa on vain huhu liikkeestä. Paino on todiste.",
+      "use": "Anna muutokselle muoto, jonka vieressä voi seistä. Ennen kuin sillä on paino, se on yhä toive.",
+      "alt": "Muutokset, Ilmentymä"
+    },
+    "inspiration": {
+      "rank": "VI · Muutokset",
+      "title": "Innoitus",
+      "index": "VI Innoitus",
+      "quote": "Lintu laskeutuu, koska tuli pidettiin pienenä.",
+      "p1": "Polvistuva mies vanhassa takissa, valkoista kurkussa, ojentaa kätensä töyhtölinnulle. Puu kallistuu lähelle, ja matala liekki tekee työtään hiilipannussa. Innoitus on vieras. Se tarvitsee paikan mihin istua, ja jotain joka jo palaa.",
+      "p2": "Hymy on riski tulla muutetuksi siitä, mitä kutsuit. Suurempi tuli olisi lähettänyt linnun takaisin lehtiin.",
+      "use": "Tee tuli pienemmäksi, älä suuremmaksi. Se mikä on tulossa tarvitsee ranteen, ei lavaa.",
+      "alt": "Muutokset, Innoitus"
+    },
+    "futility": {
+      "rank": "VII · Muutokset",
+      "title": "Turhuus",
+      "index": "VII Turhuus",
+      "quote": "Soitin on kaunis. Joki ei kuunnellut.",
+      "p1": "Nainen istuu juurella liikkuvan veden yllä, harppu aukiota suurempi selän takana, pieni esine kupissa käsissä. Sammal, orkideat ja virta jatkavat omaa työtään. Laulu ei ole tyhjä. Se vain ei ole joki.",
+      "p2": "Turhuus on ponnistus, joka on suunnattu väärään aineeseen. Harppu ei epäonnistunut. Virrasta ei ollut koskaan tulossa musiikkia.",
+      "use": "Lakkaa pyytämästä vettä harpuksi. Siirrä musiikki, tai anna virran pitää nimensä.",
+      "alt": "Muutokset, Turhuus"
+    },
+    "sacrifice": {
+      "rank": "VIII · Muutokset",
+      "title": "Uhraus",
+      "index": "VIII Uhraus",
+      "quote": "Valkoinen on lattia, jonka raivaat sille mikä tulee seuraavaksi.",
+      "p1": "Istuva hahmo, kasvot varjossa, kädet painettuina, sinisiä helmiä putoaa sormien välistä. Viitta on merkitty pienillä risteillä ja ympyröillä, ja tumma suu aukeaa seinässä takana. Valkoinen ei ole viattomuutta. Se on se, mikä laskettiin jotta muutoksella olisi paikka seistä.",
+      "p2": "Huone voi olla valmis ja silti tyhjä. Tyhjentäminen ei ole sama asia kuin saapuminen.",
+      "use": "Laske se yksi asia, jonka käänne todella tarvitsee. Uhri joka maksaa kaiken on yleensä pelko valkoiseen puettuna.",
+      "alt": "Muutokset, Uhraus"
+    },
+    "renewal": {
+      "rank": "IX · Muutokset",
+      "title": "Uudistus",
+      "index": "IX Uudistus",
+      "quote": "Sama ruumis, koottu uudelleen sen ympärille mikä yhä johtaa virtaa.",
+      "p1": "Luinen vanhus istuu rikkinäisessä seinässä, parta kuin joki, toinen käsivarsi kytkinten kaappi, johdot kiveen. Toinen käsi on yhä käsi. Uudistus ei ole uusi alku. Se on sopimus tulla korjatuksi paikallaan, raunio näkyvissä.",
+      "p2": "Se mikä johtaa virtaa pidetään. Se mikä vain muisti johtaneensa virtaa saa muuttua johdoksi.",
+      "use": "Korjaa liitos, joka yhä kantaa virtaa. Älä hio seinää takaisin vuoteen, joka on mennyt.",
+      "alt": "Muutokset, Uudistus"
+    },
+    "adjustment": {
+      "rank": "X · Muutokset",
+      "title": "Säätö",
+      "index": "X Säätö",
+      "quote": "Pieni korjaus estää suurta rakennetta valehtelemasta.",
+      "p1": "Hattu on torni: messinkiä, kerroksia, mitta päässä. Siniset tupsut putoavat sinne missä parta olisi, ja kasvoissa on merkkejä silmien alla kuin kalibrointi joka hyväksyttiin. Takana ovien käytävä. Muutos jota ei voi virittää muuttuu dogmiksi, jolla on jalat.",
+      "p2": "Kasvot ovat tyynet. Hattu tekee työn. Kymmenestä säästä viimeinen on kymmenesosa käänteestä.",
+      "use": "Korjaa mitta, älä ihmistä. Pieni käännös on joskus koko käänne.",
+      "alt": "Muutokset, Säätö"
+    },
+    "curiosity": {
+      "rank": "XI · Muutosten etsijä",
+      "title": "Uteliaisuus",
+      "index": "XI Uteliaisuus",
+      "quote": "Väline, ei tuomio.",
+      "p1": "Profiili sukelluskypärässä, yksi linssi sinisenä, kaapeleita ja pieniä mekanismeja riippuen kuin toinen parta. Kasvot ovat sen verran paljaat että ovat ihmisen, ja sen verran kiinni että voivat mennä alle. Uteliaisuus on lähestymisen hovi: halu tulla muutetuksi siitä mitä linssi löytää, ennen kuin nimi annetaan.",
+      "p2": "Kypärä on tapa pysyä läsnä tuntemattomassa. Se ei ole panssari sitä vastaan.",
+      "use": "Katso kauemmin kuin on mukavaa, äläkä päätä ensimmäisellä hengenvedolla. Linssi on jo auki.",
+      "alt": "Muutosten etsijä, Uteliaisuus"
+    },
+    "vision": {
+      "rank": "XII · Muutosten haltija",
+      "title": "Näky",
+      "index": "XII Näky",
+      "quote": "Spiraali, ei ennuste.",
+      "p1": "Kasvot profiilissa, silmät kiinni, kasvaneet terien ja kammioiden kotiloksi. Turkoosia ja luuta, toinen kierre pimeässä. Näky on kyky pitää useampi kuin yksi tulevaisuus samassa kuoressa. Silmät ovat kiinni, koska silmäys litistäisi kuvan.",
+      "p2": "Haltija ei kuluta näkyä. Sen kuluttaminen tekisi siitä suunnitelman, ja suunnitelma on pienempi huone.",
+      "use": "Pidä kuva pakottamatta sitä yhteen oveen. Näky joka voi olla vain yksi asia on jo muuttunut peloksi.",
+      "alt": "Muutosten haltija, Näky"
+    },
+    "adaptation": {
+      "rank": "XIII · Muutosten mestari",
+      "title": "Sopeutuminen",
+      "index": "XIII Sopeutuminen",
+      "quote": "Muoto, joka voi elää käänteen kanssa.",
+      "p1": "Pylväs konetta ja kasvoja, kaapeleita kuin juuria, lamppuja silminä. Ympärillä muita kasvoja — jotkut katsovat ylös, jotkut profiilissa, jotkut puoliksi imeytyneinä samaan koneistoon. Sopeutuminen ei ole voitto muutoksesta. Se on ruumis, joka ei enää tarvitse vanhaa ääriviivaa jatkaakseen.",
+      "p2": "Kasvot eivät ole yleisö. Ne ovat aiemmat versiot, jotka jäivät. Mestari pitää sen mikä yhä johtaa virtaa, ja päästää ääriviivan menemään.",
+      "use": "Pidä versiot, jotka yhä kantavat virtaa. Jäljelle jää tapa jatkaa.",
+      "alt": "Muutosten mestari, Sopeutuminen"
+    },
+    "potential": {
+      "rank": "I · Voimien juuri",
+      "title": "Potentiaali",
+      "index": "I Potentiaali",
+      "quote": "Pylväs palaa jo. Lamppu on vain tapa, jolla lähestyt sitä.",
+      "p1": "Vanhus vaaleissa viitoissa istuu kallojen keskellä ja ojentaa pientä valoa kohti pylvästä, jossa on kultaa, luuta ja riippuvia kelloja. Kallot eivät ole uhka. Ne ovat muotoja, joiden läpi kyky on jo kulkenut. Lamppu on pieni, koska pylvästä ei tarvitse sytyttää.",
+      "p2": "Potentiaali on juuri, koska voima joka ei ole vielä valinnut käyttöä on yhä voima. Liian aikainen nimeäminen kuluttaa sen.",
+      "use": "Kyky on läsnä ja käyttämätön. Lähesty sitä. Älä anna sille tehtävää ennen kuin olet seisonut sen valossa.",
+      "alt": "Voimien juuri, Potentiaali"
+    },
+    "avoidance": {
+      "rank": "II · Voimat",
+      "title": "Välttely",
+      "index": "II Välttely",
+      "quote": "Asu on hieno, koska kieltäytymisellä on ollut aikaa muuttua tyyliksi.",
+      "p1": "Korkea huppu, suippo kullattu lakki, kasvot työstetty naamioiksi, silmät jotka eivät aivan kohtaa sinua. Kivien ketjut putoavat sinne, missä ääni olisi. Välttely on voima, joka kuluu saapumatta. Metalli on todiste siitä, että kieltäytymistä on harjoitettu.",
+      "p2": "Se on toinen kortti, koska kykyä jota ei voi kieltäytyä ei ole valittu. Huppu on päätös, jota pidetään päässä.",
+      "use": "Huomaa, mitä loisto pitää etäällä. Välttely on taitavaa. Kysy, onko etäisyys yhä se työ.",
+      "alt": "Voimat, Välttely"
+    },
+    "pain": {
+      "rank": "III · Voimat",
+      "title": "Kipu",
+      "index": "III Kipu",
+      "quote": "Valtaistuin on mukava. Sillä tavoin oppi pysyy.",
+      "p1": "Kalpea hahmo istuu korkeassa kauluksessa ja kuvioidussa takissa, toinen jalka edessä, karttapallo polvella. Kipu on kyky, joka opettaa ruumiin rajan asuttamalla sen. Tuoli ei ole rangaistus. Se on istuin, joka on tehty tarpeeksi helpoksi jotta siinä voi jäädä.",
+      "p2": "Voima joka sattuu voidaan silti annostella. Karttapallo sanoo, että kivulla on maailma, ei vain hermo.",
+      "use": "Epämukavuus on tietoa, jolla on valtaistuin. Älä koristele sitä, äläkä teeskentele että tuoli on tyhjä.",
+      "alt": "Voimat, Kipu"
+    },
+    "failure": {
+      "rank": "IV · Voimat",
+      "title": "Epäonnistuminen",
+      "index": "IV Epäonnistuminen",
+      "quote": "Lippu on yhä suurenmoinen. Maa on pitänyt työkalut.",
+      "p1": "Vanhus seisoo valtavan keltaisen kankaan alla hylättyjen astioiden leirissä, pieni olento jaloissa, autiomaa kirkkaana takana. Epäonnistuminen on tunti sen jälkeen, kun työ on lakannut suostumasta. Lippu ei tullut alas. Se mitä se ei kyennyt kantamaan makaa hiekassa.",
+      "p2": "Tämä on kyky, ei tuomio. Voima joka ei voi epäonnistua ei ole koskaan käytetty siellä, missä sää on todellinen.",
+      "use": "Jätä lippu ylös jos on pakko, ja penko se mikä putosi. Epäonnistuminen on luettelo, ei häpeä.",
+      "alt": "Voimat, Epäonnistuminen"
+    },
+    "struggle": {
+      "rank": "V · Voimat",
+      "title": "Kamppailu",
+      "index": "V Kamppailu",
+      "quote": "Terä pidetään ruumiin poikki, koska taistelusta on tullut viiva.",
+      "p1": "Hahmo seisoo vaaleassa kaaressa, yksi miekka pystyssä, toinen vaakasuorassa käsien läpi, ruostetta tai verta metallissa, kärkien kruunu. Kamppailu on kyky, jonka kohtaa yhtä suuri kyky. Kaari ei ota puolta. Vaakasuora terä on paikka, jossa on elettävä.",
+      "p2": "Kumpikaan kärki ei ole voittanut. Siksi kortti on maan keskellä, siinä missä voima oppii ettei ole yksin.",
+      "use": "Pysy viivalla. Kamppailu on kahden voiman työtä, ja sen lopettaminen aikaisin tuhlaisi molemmat.",
+      "alt": "Voimat, Kamppailu"
+    },
+    "play": {
+      "rank": "VI · Voimat",
+      "title": "Leikki",
+      "index": "VI Leikki",
+      "quote": "Sormi huulilla on sääntö, ei salaisuus.",
+      "p1": "Sarvekkaat kasvot, maalatut kalpeiksi, koruja riippuen otsalta, toinen käsi nostettuna suulle ja toinen laskee helmiä. Leikki on voima, joka kieltäytyy juhlallisuudesta. Hiljaisuus tarkoittaa, että peli on jo käynnissä, ja puhuminen rikkoisi siirron.",
+      "p2": "Sarvet eivät ole uhka. Ne ovat asu, jonka kyky pukee kun se tanssisi mieluummin kuin säätäisi.",
+      "use": "Kohtele asiaa pelinä, jolla on todellinen panos. Vakavuus ei ole sama asia kuin tarkkaavaisuus.",
+      "alt": "Voimat, Leikki"
+    },
+    "swiftness": {
+      "rank": "VII · Voimat",
+      "title": "Nopeus",
+      "index": "VII Nopeus",
+      "quote": "Hymy kuuluu jollekulle, joka on jo liikkunut.",
+      "p1": "Valkopartainen insinööri nojaa taakse putkien, mittarien ja messingin pesässä, suojalasit päässä, molemmat kädet ohjaimissa. Nopeus on kyky, joka saapuu ennen väitettä. Kone ei ole koriste. Se on tapa, jolla päätös ehtii rinnassa olevan komitean edelle.",
+      "p2": "Nopeus ilman mittaria on vain paniikkia. Tässä kellotaulut palavat, ja kasvot ovat iloiset.",
+      "use": "Liiku kun luku on vielä lämmin. Epäröinti olisi toinen kone, eikä sille ole tilaa.",
+      "alt": "Voimat, Nopeus"
+    },
+    "pleasure": {
+      "rank": "VIII · Voimat",
+      "title": "Nautinto",
+      "index": "VIII Nautinto",
+      "quote": "Kallo on istuin. Hinta on jo maksettu.",
+      "p1": "Tyyni hahmo istuu suurella torahampaisella kallolla, kukkia ja sarvia hiuksissa, sauva yhdessä kädessä, luun ja kukan tiheikkö takana. Nautinto on kyky, joka saa ihmisen jäämään. Kasvot eivät ole juovuksissa. Ne tietävät, mistä tuoli on tehty.",
+      "p2": "Asiasta nauttiminen ja sen hinnan sivuuttaminen ovat eri voimia. Tämä kortti on niistä ensimmäinen.",
+      "use": "Ota nautinto, ja nimeä kallo jolla istut. Jääminen on sallittua. Unohtaminen ei.",
+      "alt": "Voimat, Nautinto"
+    },
+    "control": {
+      "rank": "IX · Voimat",
+      "title": "Hallinta",
+      "index": "IX Hallinta",
+      "quote": "Paikallaanolo on työ. Kädet pysyvät tuolin käsinojilla.",
+      "p1": "Panssaroitu hahmo istuu metallirenkaan sisällä, terä kulkee ruumiin keskeltä alas, sarvet nousevat kypärästä, valtaistuin on kasvanut kynsiksi. Hallinta on kyky, joka suostuu istumaan paikallaan jotta kaikki muu voidaan järjestää. Kuvassa mikään ei kiirehdi.",
+      "p2": "Vaara on luulla istuinta maailmaksi. Hallinta joka ei voi nousta, on muuttunut tuoliksi.",
+      "use": "Järjestä, ja jätä sitten yksi käsi vapaaksi. Se mitä et voi päästää irti ei ole enää hallinnassa.",
+      "alt": "Voimat, Hallinta"
+    },
+    "courage": {
+      "rank": "X · Voimat",
+      "title": "Rohkeus",
+      "index": "X Rohkeus",
+      "quote": "Arvet ovat muistiinmerkintä. Savu on tauko.",
+      "p1": "Sarvekas, merkitty naama vetää henkeä pienestä palavasta kukasta, savu nousee, kallo ja sirppi pimeässä otsan yllä. Rohkeus ei ole vaurion poissaoloa. Se on päätös pitää suu varattuna jollain pelkoa pienemmällä, niin kauan että seuraava teko voidaan valita.",
+      "p2": "Kymmenestä säästä viimeinen, koska kykyä jota ei ole pelotettu ei ole vielä koeteltu.",
+      "use": "Kannat jäljet jo. Ota henkäys, ja liiku sitten. Rohkeus on tauko, joka ei muutu asunnoksi.",
+      "alt": "Voimat, Rohkeus"
+    },
+    "clarity": {
+      "rank": "XI · Voimien etsijä",
+      "title": "Kirkkaus",
+      "index": "XI Kirkkaus",
+      "quote": "Pöllö katsoo sinne, minne hän ei katso.",
+      "p1": "Nainen siivekkäässä kypärässä seisoo lumessa, letit sidottuina, pöllö raskaana käsivarrella, sauva toisessa kädessä, pieni tuli näkyy helmasta. Kirkkaus on sen hovi, joka voi nähdä voiman tulematta siksi. Kaksi katsetta, yksi sää.",
+      "p2": "Etsijä ei kuluta kykyä. Hän pitää sen näkyvissä, kunnes sillä on oikea nimi.",
+      "use": "Katso kahdesti, ja toisella silmäparilla. Se mikä on kirkasta kestää toisen katseen.",
+      "alt": "Voimien etsijä, Kirkkaus"
+    },
+    "resilience": {
+      "rank": "XII · Voimien haltija",
+      "title": "Kestävyys",
+      "index": "XII Kestävyys",
+      "quote": "Taivas on haljennut. Leuka ei.",
+      "p1": "Panssaroidut kasvot haljenneen maailman alla, valo murtaa kiven kypärän takana, metallin siivet hartioilla. Kestävyys on se, mitä Haltija pitää: ei voittoa, vaan kykyä jäädä kun yläpuolinen asia on jo pettänyt. Virnistys on leuka lukossa, ei riemuvoitto.",
+      "p2": "Voima jota ei voi rikkoa on vain koettelematon. Tämä on koeteltu ja seisoo yhä raunioissa.",
+      "use": "Jää. Halkeama on taivaassa, ei asennossa. Jääminen on koko ohje.",
+      "alt": "Voimien haltija, Kestävyys"
+    },
+    "focus": {
+      "rank": "XIII · Voimien mestari",
+      "title": "Keskittyminen",
+      "index": "XIII Keskittyminen",
+      "quote": "Hiukset ovat ylimäärä. Kädet ovat päätös.",
+      "p1": "Nainen sinisten hiusten myrskyssä, pieni jalokivi otsalla, kädet ristissä, silmät jotka eivät harhaile. Keskittyminen on voiman mestaruutta: maan jokainen sää koottuna yhteen katseeseen. Kuvassa mikään ei kulu. Ylimäärä on puettuna. Valinta on sormien otteessa.",
+      "p2": "Mestari ei lakkauta maata. Potentiaali, kipu, leikki, rohkeus — ne ovat yhä hiuksissa. Ne ovat lakanneet kilpailemasta silmistä.",
+      "use": "Valitse yksi käyttö ja pidä se. Loput saavat pysyä kauniina. Se ei saa liikuttaa käsiäsi.",
+      "alt": "Voimien mestari, Keskittyminen"
+    },
+    "fate": {
+      "rank": "I · Suhteiden juuri",
+      "title": "Kohtalo",
+      "index": "I Kohtalo",
+      "quote": "Et valitse puuta. Huomaat olevasi jo oksa.",
+      "p1": "Kasvot kaarnaa ja sammalta, paljaan puun sarvet, juurten parta, lehtiä koottuna rintaan. Kohtalo on suhde, joka kasvoi ennen kuin kumpikaan henkilö saapui. Oksat eivät pyydä lupaa. Ne merkitsevät, minne side jo meni.",
+      "p2": "Tämä on juuri, koska siteellä jolla ei ole historiaa on vain kohtaaminen. Kohtalo on historia, joka oli jo käynnissä.",
+      "use": "Yhteys on vanhempi kuin päätös huomata se. Hoida sitä, mikä jo kasvaa. Älä teeskentele istuttaneesi sitä tänään.",
+      "alt": "Suhteiden juuri, Kohtalo"
+    },
+    "duality": {
+      "rank": "II · Suhteet",
+      "title": "Kahtalaisuus",
+      "index": "II Kahtalaisuus",
+      "quote": "Kaksi kättä. Savu on kolmas asia, jonka ne tekevät.",
+      "p1": "Vanhus valtavan vihreän turbaanin alla, kultainen kallo rinnassa, toinen käsi suljettuna varteen ja toinen auki, kalpea savu nousee niiden välistä. Kahtalaisuus on kahden suhde, jotka kieltäytyvät luhistumasta yhdeksi. Turbaani on sää, jonka ne jakavat. Kasvot pysyvät ominaan.",
+      "p2": "Side joka pyyhkii pois yhden jäsenistään ei ole enää suhde. Se on miehitys.",
+      "use": "Pidä molemmat puolet ehjinä. Työ on savu niiden välissä, ei kummankaan käden voitto.",
+      "alt": "Suhteet, Kahtalaisuus"
+    },
+    "tension": {
+      "rank": "III · Suhteet",
+      "title": "Jännite",
+      "index": "III Jännite",
+      "quote": "Uhrilahja ja haava ovat sama virta.",
+      "p1": "Vanha mies kaataa kupista elävän puun suuhun, ja se mikä lähtee kupista on punaista. Teepannu odottaa lattialla. Jännite on suhde, joka jatkuu koska kumpikaan puoli ei laske astiaa. Huolenpito ja vamma kulkevat samassa linjassa.",
+      "p2": "Puu ei ole vieras. Se on toinen osapuoli, juurtunut, ja se juo.",
+      "use": "Nimeä se, mitä kaadetaan. Side kestää punaisen virran. Se ei kestä teeskentelyä, että virta on teetä.",
+      "alt": "Suhteet, Jännite"
+    },
+    "authenticity": {
+      "rank": "IV · Suhteet",
+      "title": "Aitous",
+      "index": "IV Aitous",
+      "quote": "Kukaan pöydässä ei esitä lajia, jota toinen odotti.",
+      "p1": "Valkopartainen mies istuu kolmen karhun kanssa papereiden ja kynttilän ääressä. Koira nukkuu kankaan alla. Purkit ja irtolehdet peittävät lattian. Aitous on suhde, jossa kukin jäsen saapuu siksi mitä on. Karhut eivät ole vieraita asussa. Mies ei ole karhu. He lukevat samaa sivua.",
+      "p2": "Side joka vaatii valepukua on neuvottelu naamion kanssa. Tämä pöytä on pannut naamiot lattialle.",
+      "use": "Tule siksi mikä olet, ja anna toisen tehdä samoin. Keskellä oleva sivu toimii vain, jos molemmat kädet ovat todelliset.",
+      "alt": "Suhteet, Aitous"
+    },
+    "exploration": {
+      "rank": "V · Suhteet",
+      "title": "Tutkiminen",
+      "index": "V Tutkiminen",
+      "quote": "Meri on toinen osapuoli. Pullot ovat yritykset.",
+      "p1": "Hahmo nojaa värillisen lasin pöytään laiturilla, laivoja horisontissa, kallo katsoo seinältä, pieni pullo pidettynä valoa vasten. Tutkiminen on suhde, jota pidät siihen mitä et ole vielä nimennyt. Jokainen pullo on aiempi arvaus. Vesi ei korjaa niitä. Se pysyy.",
+      "p2": "Työ ei ole saattaa toista valmiiksi. Se on pitää lasi puhtaana ja katsoa uudestaan.",
+      "use": "Kohtele sidettä tarkoituksella keskeneräisenä. Kysy vielä yksi kysymys ennen kuin korkit pullon.",
+      "alt": "Suhteet, Tutkiminen"
+    },
+    "reflection": {
+      "rank": "VI · Suhteet",
+      "title": "Heijastus",
+      "index": "VI Heijastus",
+      "quote": "Yöperhoset laskeutuivat, koska valo oli hiljainen.",
+      "p1": "Kalpea nainen profiilissa, katse alas, valkoisia yöperhosia hiusten ja olkapään ympärillä. Heijastus on ihmisen suhde kuvaan, joka tulee takaisin. Perhoset eivät ole yleisö. Ne ovat ajatuksia, jotka löysivät lepopaikan koska kukaan ei esiintynyt niille.",
+      "p2": "Side joka ei kestä hiljaisuutta ei ole vielä kohdannut itseään. Tämä kortti on se kohtaaminen, nähtynä sivulta.",
+      "use": "Lakkaa järjestelemästä kasvojasi. Anna toisen, tai oman kuvasi, saapua ilman ohjausta.",
+      "alt": "Suhteet, Heijastus"
+    },
+    "language": {
+      "rank": "VII · Suhteet",
+      "title": "Kieli",
+      "index": "VII Kieli",
+      "quote": "Käsi tarjoaa lausetta, joka ei ole valinnut sanaansa.",
+      "p1": "Istuva vanhus sinivihreässä, toinen kämmen auki, merkkejä jo leikattuna seinään takana, astioita ja pieniä tulia jaloissa. Kieli on suhde, joka antaa kahden sisäpuolen asua yhdessä äänessä. Seinään on kirjoitettu. Käsi ei ole vielä päättänyt, mitä lisätä.",
+      "p2": "Puhe ei ole siteen vastakohta. Se on yksi tavoista, joilla siteestä tulee paikka jossa molemmat voivat seistä.",
+      "use": "Sano asia muodossa, johon toinen voi astua. Yksityinen kieli on lukittu huone, jonka ulkopuolella seisoo kaksi ihmistä.",
+      "alt": "Suhteet, Kieli"
+    },
+    "celebration": {
+      "rank": "VIII · Suhteet",
+      "title": "Juhla",
+      "index": "VIII Juhla",
+      "quote": "Soihtu ei ole johtaja. Se on tekosyy, jonka piiri tarvitsi.",
+      "p1": "Väki seisoo metsässä hahmon ympärillä, joka nostaa liekin, kädet ylhäällä, vettä etualalla, monet ruumiit kääntyneinä samaan valoon. Juhla on suhde, joka tulee näkyväksi vasta kun useampi kuin kaksi suostuu olemaan iloinen julkisesti. Ilo on jaettu, tai se on vain mieliala.",
+      "p2": "Piiri ei pyyhi ketään sisällään. Se antaa siteelle yön, jolloin se voidaan nähdä.",
+      "use": "Merkitse side sinne, missä muut voivat todistaa sen. Yksityinen ilo on todellinen. Juhlitulla ilolla on paikka, johon palata.",
+      "alt": "Suhteet, Juhla"
+    },
+    "solitude": {
+      "rank": "IX · Suhteet",
+      "title": "Yksinäisyys",
+      "index": "IX Yksinäisyys",
+      "quote": "Vaaka on yhä käytössä. Toinen tuoli on tyhjä.",
+      "p1": "Vanhus istuu yksin pöydässä, jossa on kolikoita, pieniä kuppeja, liekki ja vaaka, soittimia riippuen pimeässä. Yksinäisyys on suhde poissaolevaan. Punnitus jatkuu. Jotakuta mitataan, joka ei ole huoneessa, ja mittaaja tietää painon ulkoa.",
+      "p2": "Yksin oleminen ei ole siteen loppu. Se on muoto, jonka side ottaa kun yksi sen jäsenistä on muualla, tai poissa, tai ei ole vielä tullut.",
+      "use": "Pidä pöytä katettuna, äläkä teeskentele että tyhjä puoli on epäonnistuminen. Yksinäisyys on side, jota harjoitetaan etäältä.",
+      "alt": "Suhteet, Yksinäisyys"
+    },
+    "equilibrium": {
+      "rank": "X · Suhteet",
+      "title": "Tasapaino",
+      "index": "X Tasapaino",
+      "quote": "Hän ei ole yksin. Linnut ja vesi tekevät oman puolensa.",
+      "p1": "Nainen valkoisessa istuu riippuvassa puutarhassa, paljain jaloin, hiukset sidottuina, lintuja ylittämässä kalpeaa palloa, vihreitä tasanteita sumussa. Tasapaino on suhde, jonka ei tarvitse liikkua ollakseen vastavuoroinen. Mitään ei voiteta. Puutarha pysyy, koska jokainen osa pitää oman painonsa.",
+      "p2": "Kymmenestä säästä viimeinen, koska side joka ei voi levätä ei ole vielä tullut paikaksi.",
+      "use": "Lakkaa säätämästä. Tasapaino on jo side. Korjaus nyt olisi uusi väite.",
+      "alt": "Suhteet, Tasapaino"
+    },
+    "acceptance": {
+      "rank": "XI · Suhteiden etsijä",
+      "title": "Hyväksyntä",
+      "index": "XI Hyväksyntä",
+      "quote": "Keihäs on maassa. Sarvet ovat se, mikä kasvoi.",
+      "p1": "Hahmo, jolla on sammalparta ja sarvikruunu, istuu elävässä tuolissa, keihäs levossa, pieni kallo saniaisissa. Hyväksyntä on sen hovi, joka lakkaa väittämästä vastaan sitä mitä suhde jo on. Asetta ei ole nostettu. Ruumis on ottanut paikan muodon.",
+      "p2": "Etsijä ei paranna sidettä. Etsijä suostuu näkemään sen.",
+      "use": "Laske keihäs. Se mikä jää väittelyn jälkeen on suhde, joka sinulla todella on.",
+      "alt": "Suhteiden etsijä, Hyväksyntä"
+    },
+    "love": {
+      "rank": "XII · Suhteiden haltija",
+      "title": "Rakkaus",
+      "index": "XII Rakkaus",
+      "quote": "Kukat eivät ole koriste. Ne ovat side muuttumassa näkyväksi.",
+      "p1": "Kasvot kohtaavat sinut, hiukset kuin kalpea joki, lehtiä ja kukkia niihin tarttuneina, kurkku kasvanut köynnöksen läpi. Rakkaus on se, mitä Haltija pitää: ei tunnetta joka käy ja lähtee, vaan rakennetta joka jatkaa kasvuaan sen ihmisen läpi, joka suostui olemaan sen maaperä.",
+      "p2": "Silmät ovat auki. Rakkaus joka ei voi katsoa on vain nälkä pehmeämmällä nimellä.",
+      "use": "Anna siteen näkyä sinussa. Sen pitäminen on pysymistä näkyvissä sille, johon se sinut liittää.",
+      "alt": "Suhteiden haltija, Rakkaus"
+    },
+    "unity": {
+      "rank": "XIII · Suhteiden mestari",
+      "title": "Ykseys",
+      "index": "XIII Ykseys",
+      "quote": "Halkeamat ovat saumat. Valo on se, mitä saumat suostuivat kantamaan.",
+      "p1": "Ruumis leikattua kiveä ja virtapiiriä, köynnöksiä olalla, valkoinen virta rinnassa, yksi käsi nostettuna lehtien keskellä. Ykseys ei ole kahden pyyhkiminen. Se on muuraus, jossa ero yhä näkyy ja yhä johtaa. Jokainen laatta pitää reunansa.",
+      "p2": "Mestari ei lakkauta maata. Kohtalo, jännite, yksinäisyys, rakkaus — ne ovat muurin kerrokset. Ne ovat lakanneet olemasta kilpailijoita kokonaisuudesta.",
+      "use": "Liity hiomatta eroja sileiksi. Se mikä johtaa saumojen läpi on side. Saumat itse jäävät.",
+      "alt": "Suhteiden mestari, Ykseys"
+    }
+  }
+}

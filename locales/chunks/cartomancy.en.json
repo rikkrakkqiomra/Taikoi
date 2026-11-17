@@ -1,0 +1,578 @@
+{
+  "title": "Cartomancy",
+  "description": "Cartomancy: the lands of Beliefs, Changes, Powers, and Relations, thirteen cards each, read as a fork of the tarot.",
+  "landLabel": "Land",
+  "reading": "In a reading",
+  "lands": {
+    "beliefs": "Beliefs",
+    "changes": "Changes",
+    "powers": "Powers",
+    "relations": "Relations"
+  },
+  "select": {
+    "beliefs": "I · Beliefs",
+    "changes": "II · Changes",
+    "powers": "III · Powers",
+    "relations": "IV · Relations"
+  },
+  "nav": {
+    "beliefs": "Cards of Beliefs",
+    "changes": "Cards of Changes",
+    "powers": "Cards of Powers",
+    "relations": "Cards of Relations"
+  },
+  "intro": {
+    "beliefs": {
+      "kicker": "Land I",
+      "quote": "A belief is not an opinion. It is a room the mind agrees to live in.",
+      "p1": "This is the first land of the fork. Thirteen cards, and not a costume of any older deck. Ten weathers of a conviction, then three who walk them: the Seeker, the Keeper, the Master.",
+      "p2": "Read a card for the structure it names. The picture is already the argument. Fortune can wait."
+    },
+    "changes": {
+      "kicker": "Land II",
+      "quote": "A change is not an event. It is the interval in which a thing agrees to become another thing.",
+      "p1": "This is the second land. Thirteen cards, and not a costume of any older deck. Ten weathers of a turning, then three who walk them: the Seeker, the Keeper, the Master.",
+      "p2": "Read a card for the motion it names. The picture is already the turning. Fortune can wait."
+    },
+    "powers": {
+      "kicker": "Land III",
+      "quote": "A power is not a force. It is a capacity that has found a body willing to carry it.",
+      "p1": "This is the third land. Thirteen cards, and not a costume of any older deck. Ten weathers of a capacity, then three who walk them: the Seeker, the Keeper, the Master.",
+      "p2": "Read a card for the capacity it names. The picture is already the use. Fortune can wait."
+    },
+    "relations": {
+      "kicker": "Land IV",
+      "quote": "A relation is not a feeling between two people. It is the third thing that begins when they do not look away.",
+      "p1": "This is the fourth land. Thirteen cards, and not a costume of any older deck. Ten weathers of a bond, then three who walk them: the Seeker, the Keeper, the Master.",
+      "p2": "Read a card for the bond it names. The picture is already the between. Fortune can wait."
+    }
+  },
+  "sealed": {
+    "kicker": "Unopened",
+    "title": "This land is not yet drawn.",
+    "p1": "The fork has other countries. Their cards are still in the dark, and a name given too early would be a lie with a border.",
+    "p2": "Return to an open land. Beliefs, Changes, Powers, and Relations can be read."
+  },
+  "cards": {
+    "imagination": {
+      "rank": "I · Root of Beliefs",
+      "title": "Imagination",
+      "index": "I Imagination",
+      "quote": "Before a belief has evidence, it has a face.",
+      "p1": "The lens on the brow is the instrument that turns a feeling into something that can be looked at. Cloud, metal, and the green dark at the throat are one weather: thought before it has chosen a side.",
+      "p2": "Imagination is the root, because nothing later in the suit can stand until an image has been risked. A belief that cannot be pictured is only a rumor about itself.",
+      "use": "The matter is still unformed, and that is its strength. Give it a picture before you give it a law.",
+      "alt": "Root of Beliefs, Imagination"
+    },
+    "bias": {
+      "rank": "II · Beliefs",
+      "title": "Bias",
+      "index": "II Bias",
+      "quote": "One eye rests so the other can be certain.",
+      "p1": "The face is porcelain that has already cracked, and the crack has grown a bark. Bias is the grain in the glass: the closed eye, the open eye, the mouth that has set.",
+      "p2": "To meet this card is to notice which half of the face you have been trusting. The wood does not apologize for being wood.",
+      "use": "Name the lens before you name the fact. What you call obvious is the eye that stayed open.",
+      "alt": "Beliefs, Bias"
+    },
+    "dogma": {
+      "rank": "III · Beliefs",
+      "title": "Dogma",
+      "index": "III Dogma",
+      "quote": "The teaching sits. The fear hangs above it.",
+      "p1": "An elder on a throne, a congregation at the steps, and in the vault a mouth with too many teeth. Dogma is a belief that has hired a room, an audience, and a monster to keep the ceiling interesting.",
+      "p2": "It is a truth that forgot it was once a question, and built a temple so it would not be asked again.",
+      "use": "Something here is being protected by ceremony. Ask who is served if the question stays seated.",
+      "alt": "Beliefs, Dogma"
+    },
+    "doubt": {
+      "rank": "IV · Beliefs",
+      "title": "Doubt",
+      "index": "IV Doubt",
+      "quote": "The smoke is the argument still leaving the mouth.",
+      "p1": "A pale face, a crown of leaves, a third eye that opened because the two ordinary ones stopped agreeing. Doubt smokes. It holds the ember where the breath can see it.",
+      "p2": "Doubt is belief agreeing to stay unfinished. The honest card of the suit.",
+      "use": "Do not rush the smoke into a verdict. The third eye is open. Let the other two catch up.",
+      "alt": "Beliefs, Doubt"
+    },
+    "interpretation": {
+      "rank": "V · Beliefs",
+      "title": "Interpretation",
+      "index": "V Interpretation",
+      "quote": "Meaning is a thread you hand to something that can fly.",
+      "p1": "A hooded clerk, a string, a jury of crows, a chart of faces, a fire underneath. Interpretation is the trade of giving the birds a line and then reading whatever they carry back as if it had been yours.",
+      "p2": "The fire is real. The chart is a guess that learned to look official. Between them stands the only honest figure: the one who does not show a face.",
+      "use": "You are about to call a pattern a message. Notice which bird you are listening to, and which you have already decided is only weather.",
+      "alt": "Beliefs, Interpretation"
+    },
+    "dream": {
+      "rank": "VI · Beliefs",
+      "title": "Dream",
+      "index": "VI Dream",
+      "quote": "The forest dictates. The clerk has no face yet.",
+      "p1": "An antlered writer sits in the roots, and a hooded scribe copies, the hood open where a face should be. Dream is belief arriving before the one who will claim it has features.",
+      "p2": "The book on the knee is already being written by something older than the hand. The scribe's work is to keep up without inventing a name too early.",
+      "use": "A picture is ahead of your explanation. Write it down before you interpret it. The face can come later.",
+      "alt": "Beliefs, Dream"
+    },
+    "reverence": {
+      "rank": "VII · Beliefs",
+      "title": "Reverence",
+      "index": "VII Reverence",
+      "quote": "Attention that has agreed to be smaller than its object.",
+      "p1": "White hair, a beard like a slow river, a mark on the brow, a geometry behind the head that does not need to be solved. Reverence is the posture of a mind that has stopped trying to be the largest thing in the room.",
+      "p2": "The collar of light is a horizon worn as clothing. What is revered stays unnamed, because a name would shrink it back into a tool.",
+      "use": "Approach without grasping. Stand still long enough that the thing can be itself.",
+      "alt": "Beliefs, Reverence"
+    },
+    "assumption": {
+      "rank": "VIII · Beliefs",
+      "title": "Assumption",
+      "index": "VIII Assumption",
+      "quote": "You take the path because the tree already looks inhabited.",
+      "p1": "A woman in green at a trunk full of holes, and one of the holes is an eye. Assumption is the step taken before the question. Dress, flowers, and the lean all treat the tree as a house.",
+      "p2": "Sometimes the eye is really there. Sometimes the dark is only a knot. The card will not say which. It says that you have already decided.",
+      "use": "Find the step you did not notice taking. That step is carrying the conclusion.",
+      "alt": "Beliefs, Assumption"
+    },
+    "story": {
+      "rank": "IX · Beliefs",
+      "title": "Story",
+      "index": "IX Story",
+      "quote": "A body built of other stones, so the chest can keep walking.",
+      "p1": "The head is a pyramid of tiles, the throat a treasury of chains, the shoulders a weather of monuments. Story is how a belief survives its author: by becoming architecture someone else can stand inside.",
+      "p2": "The face is still visible, barely, under the monument. A story that forgets it has a face becomes a ruin that gives orders.",
+      "use": "You are inside a telling. Ask whether you are the teller, the stone, or the one the monument was built to impress.",
+      "alt": "Beliefs, Story"
+    },
+    "trust": {
+      "rank": "X · Beliefs",
+      "title": "Trust",
+      "index": "X Trust",
+      "quote": "The hands meet, and do not check the clasp.",
+      "p1": "Flowers, a pale ruff, fingers interlaced at the sternum. Trust is the last of the ten because it is the belief that has stopped inspecting itself. The ornament is the courage to be seen while unguarded.",
+      "p2": "The eyes are open and level. Nothing in the picture is hiding, which is why it can be mistaken for safety.",
+      "use": "Something may be given without a contract. Receive it plainly. Do not decorate the gift into a proof.",
+      "alt": "Beliefs, Trust"
+    },
+    "openness": {
+      "rank": "XI · Seeker of Beliefs",
+      "title": "Openness",
+      "index": "XI Openness",
+      "quote": "She keeps the window open and lets the animal stand unleashed.",
+      "p1": "A seeker with a censer, smoke leaving toward a dark crown of beasts, a pale lamb at her shoulder that nobody is holding. Openness is the discipline of not closing the hand around what has come to stand beside you.",
+      "p2": "The court begins here. The ten described the weather. The Seeker is the one who walks into it carrying fire and refusing a leash.",
+      "use": "Stay permeable. Do not adopt the belief yet, and do not drive it off. Let it remain a guest.",
+      "alt": "Seeker of Beliefs, Openness"
+    },
+    "self": {
+      "rank": "XII · Keeper of Beliefs",
+      "title": "Self",
+      "index": "XII Self",
+      "quote": "The eyes close, and the machinery goes on being a face.",
+      "p1": "A mask of iridescent metal, eyes shut, a temple of gears and small figures holding the likeness up. Self is what the Keeper guards: a reliquary. Identity continues after the glance that made it has ended.",
+      "p2": "The danger is worship of the housing. A self that cannot be opened becomes the dogma of one person.",
+      "use": "Keep what is yours without mistaking the vessel for the relic. Close the eyes. Leave the door unlatched.",
+      "alt": "Keeper of Beliefs, Self"
+    },
+    "freedom": {
+      "rank": "XIII · Master of Beliefs",
+      "title": "Freedom",
+      "index": "XIII Freedom",
+      "quote": "Both faces look. The world hangs from a point.",
+      "p1": "A two-faced sitter under a cone, on an island that is also an inverted mountain, planets and small craft strung on a line above the snow. Freedom is the balance in which a belief no longer needs the ground in order to be true.",
+      "p2": "The Master does not abolish the suit. Imagination, bias, dogma, doubt — they are still in the sky, as vessels. They have stopped being the floor.",
+      "use": "You may set the belief down without betraying it. What remains is the seat, and the seat is enough.",
+      "alt": "Master of Beliefs, Freedom"
+    },
+    "time": {
+      "rank": "I · Root of Changes",
+      "title": "Time",
+      "index": "I Time",
+      "quote": "Before anything moves, duration has to agree.",
+      "p1": "The figure in the arch is not dressed. Muscle, vessel, and a spiked halo are the body shown as a clock worn on the inside. A smaller face looks up from the step, because time is only visible to someone who is already inside it.",
+      "p2": "Change has no root until one moment can be told from the next. Without that difference, fear and renewal are the same weather.",
+      "use": "The matter has duration, and that is the whole permission. Let one moment finish before you ask the next to begin.",
+      "alt": "Root of Changes, Time"
+    },
+    "fear": {
+      "rank": "II · Changes",
+      "title": "Fear",
+      "index": "II Fear",
+      "quote": "The first shape a change takes is a weapon.",
+      "p1": "Purple smoke has learned to be a crown. Gold plates sit on a body that is already half thorn, and the staff is a relic that still expects to be obeyed. Fear is how the nervous system announces that the room is no longer the room.",
+      "p2": "It is the second card because a turning that cannot be feared has not been felt. The crown is weather. The staff can be set down.",
+      "use": "Name what the body is bracing for. The alarm is information. It is not yet a decision.",
+      "alt": "Changes, Fear"
+    },
+    "attachment": {
+      "rank": "III · Changes",
+      "title": "Attachment",
+      "index": "III Attachment",
+      "quote": "What will not fall is being held up.",
+      "p1": "A smiling corpse in violet hangs from ropes, and the hands on the ropes are not all alive. One man in a dark suit laughs as he pulls. The rest are bone. Attachment keeps a change in the air by spending other people on the strings.",
+      "p2": "The figure looks ceremonial. The work underneath is labor. Height, here, is a bill.",
+      "use": "Ask who is holding the rope, and whether the height is worth their arms. Slack is a kind of honesty.",
+      "alt": "Changes, Attachment"
+    },
+    "opportunity": {
+      "rank": "IV · Changes",
+      "title": "Opportunity",
+      "index": "IV Opportunity",
+      "quote": "The weathered face can still look straight at you.",
+      "p1": "Feathers open in more than one direction. Beads, a star on the shoulder, a coin at the chest: the elder is dressed in what earlier turnings left behind. Opportunity is not a blank door. It is a direction that survived.",
+      "p2": "The portrait does not smile. It offers the look, which is stricter than an invitation.",
+      "use": "The opening is already wearing a history. Step toward it without pretending you are the first.",
+      "alt": "Changes, Opportunity"
+    },
+    "manifestation": {
+      "rank": "V · Changes",
+      "title": "Manifestation",
+      "index": "V Manifestation",
+      "quote": "A wish becomes a body you can walk around.",
+      "p1": "Wings of machined gold fill a cathedral of gears. The figure holds a ring the size of a doorway, and the ring is the circuit a change closes when it stops being imagined. Green at the legs is the living thing the machine agreed to carry.",
+      "p2": "A turning that never takes a shape is only a rumor of motion. Weight is the proof.",
+      "use": "Give the change a form that can be stood next to. Until it has weight, it is still a wish.",
+      "alt": "Changes, Manifestation"
+    },
+    "inspiration": {
+      "rank": "VI · Changes",
+      "title": "Inspiration",
+      "index": "VI Inspiration",
+      "quote": "The bird lands because the fire was kept small.",
+      "p1": "A kneeling man in an old coat, white at the throat, offers his hands to a crested bird. A tree leans in, and a low flame works in a brazier. Inspiration is a visitor. It requires a place to perch and something already burning.",
+      "p2": "The smile is the risk of being altered by what you invited. A larger fire would have sent the bird back into the leaves.",
+      "use": "Make the fire smaller, not larger. What is coming needs a wrist, not a stage.",
+      "alt": "Changes, Inspiration"
+    },
+    "futility": {
+      "rank": "VII · Changes",
+      "title": "Futility",
+      "index": "VII Futility",
+      "quote": "The instrument is beautiful. The river was not listening.",
+      "p1": "A woman sits on a root above moving water, a harp larger than the clearing behind her, a small object cupped in her hands. Moss, orchids, and the stream continue their own work. The song is not nothing. It is simply not the river.",
+      "p2": "Futility is an effort aimed at the wrong element. The harp did not fail. The current was never going to become music.",
+      "use": "Stop asking the water to become the harp. Move the music, or let the current keep its name.",
+      "alt": "Changes, Futility"
+    },
+    "sacrifice": {
+      "rank": "VIII · Changes",
+      "title": "Sacrifice",
+      "index": "VIII Sacrifice",
+      "quote": "White is the floor you clear for what comes next.",
+      "p1": "A seated figure, face shadowed, hands pressed, blue beads falling between the fingers. The robe is marked with small crosses and circles, and a dark mouth opens in the wall behind. The white is not innocence. It is what was set down so a change would have a place to stand.",
+      "p2": "The room can be ready and still be empty. Emptying is not the same thing as arrival.",
+      "use": "Set down the one thing the turning actually needs. An offering that costs everything is usually a fear wearing white.",
+      "alt": "Changes, Sacrifice"
+    },
+    "renewal": {
+      "rank": "IX · Changes",
+      "title": "Renewal",
+      "index": "IX Renewal",
+      "quote": "The same body, rebuilt around what still conducts.",
+      "p1": "A skeletal elder sits in a broken wall, beard like a river, one arm a cabinet of switches, wires running into the stone. The other hand is still a hand. Renewal is not a fresh start. It is the agreement to be repaired in place, with the ruin left visible.",
+      "p2": "What conducts is kept. What only remembered conducting is allowed to become wire.",
+      "use": "Repair the joint that still carries a current. Do not sand the wall back to a year that is gone.",
+      "alt": "Changes, Renewal"
+    },
+    "adjustment": {
+      "rank": "X · Changes",
+      "title": "Adjustment",
+      "index": "X Adjustment",
+      "quote": "A small correction keeps a large structure from lying.",
+      "p1": "The hat is a tower: brass, tiers, a measure worn on the head. Blue tassels fall where a beard would be, and the face carries marks under the eyes like a calibration that was accepted. Behind, a corridor of doors. A change that cannot be tuned becomes a dogma with legs.",
+      "p2": "The face is calm. The hat is doing the work. The last of the ten weathers is a tenth of a turn.",
+      "use": "Correct the measure, not the person. A small turn is sometimes the whole turning.",
+      "alt": "Changes, Adjustment"
+    },
+    "curiosity": {
+      "rank": "XI · Seeker of Changes",
+      "title": "Curiosity",
+      "index": "XI Curiosity",
+      "quote": "An instrument, not a verdict.",
+      "p1": "A profile in a diving helm, one lens lit blue, cables and small mechanisms hanging like a second beard. The face is uncovered enough to be human and closed enough to go under. Curiosity is the court of approach: the willingness to be changed by what the lens finds, before a name is given.",
+      "p2": "The helm is how you stay present inside the unknown. It is not armor against it.",
+      "use": "Look longer than is comfortable, and do not decide in the first breath. The lens is already open.",
+      "alt": "Seeker of Changes, Curiosity"
+    },
+    "vision": {
+      "rank": "XII · Keeper of Changes",
+      "title": "Vision",
+      "index": "XII Vision",
+      "quote": "A spiral, not a forecast.",
+      "p1": "A face in profile, eyes closed, grown into a nautilus of blades and chambers. Turquoise and bone, a second coil in the dark. Vision is the capacity to keep more than one future in the same shell. The eyes are shut because a glance would flatten the picture.",
+      "p2": "The Keeper does not spend the vision. Spending it would make it a plan, and a plan is a smaller room.",
+      "use": "Hold the picture without forcing it into a single door. A vision that can only be one thing has already become a fear.",
+      "alt": "Keeper of Changes, Vision"
+    },
+    "adaptation": {
+      "rank": "XIII · Master of Changes",
+      "title": "Adaptation",
+      "index": "XIII Adaptation",
+      "quote": "The shape that can live with the turning.",
+      "p1": "A column of machine and face, cables like roots, lamps for eyes. Around it, other faces — some looking up, some in profile, some half absorbed into the same machinery. Adaptation is not a victory over change. It is the body that no longer needs the old outline in order to continue.",
+      "p2": "The faces are not an audience. They are the earlier versions that stayed. The Master keeps what still conducts and lets the outline go.",
+      "use": "Keep the versions that still carry a current. What remains is a way of going on.",
+      "alt": "Master of Changes, Adaptation"
+    },
+    "potential": {
+      "rank": "I · Root of Powers",
+      "title": "Potential",
+      "index": "I Potential",
+      "quote": "The column is already burning. The lamp is only how you approach it.",
+      "p1": "An elder in pale robes sits among skulls and offers a small light toward a pillar of gold, bone, and hanging bells. The skulls are not a threat. They are forms a capacity has already passed through. The lamp is small because the column does not need to be lit.",
+      "p2": "Potential is the root, because a power that has not yet chosen a use is still a power. Naming it too early spends it.",
+      "use": "The capacity is present and unspent. Approach it. Do not assign it a task until you have stood in its light.",
+      "alt": "Root of Powers, Potential"
+    },
+    "avoidance": {
+      "rank": "II · Powers",
+      "title": "Avoidance",
+      "index": "II Avoidance",
+      "quote": "The costume is exquisite because the refusal has had time to become a style.",
+      "p1": "A tall hood, a pointed gilt cap, a face worked into a mask, eyes that do not quite meet you. Chains of stones fall where a voice would be. Avoidance is power spent on not arriving. The metal is the proof that the refusal has been practiced.",
+      "p2": "It is the second card because a capacity that cannot be declined has not been chosen. The hood is a decision worn on the head.",
+      "use": "Notice what the splendor is keeping at a distance. The avoidance is skilled. Ask whether the distance is still the work.",
+      "alt": "Powers, Avoidance"
+    },
+    "pain": {
+      "rank": "III · Powers",
+      "title": "Pain",
+      "index": "III Pain",
+      "quote": "The throne is comfortable. That is how the lesson stays.",
+      "p1": "A pale figure sits in a high collar and a patterned coat, one foot forward, a globe at the knee. Pain is the capacity that teaches the limit of a body by occupying it. The chair is not a punishment. It is a seat that has been made easy enough to remain in.",
+      "p2": "Power that hurts can still be administered. The globe says the hurt has a world, not only a nerve.",
+      "use": "The discomfort is information with a throne. Do not decorate it, and do not pretend the chair is empty.",
+      "alt": "Powers, Pain"
+    },
+    "failure": {
+      "rank": "IV · Powers",
+      "title": "Failure",
+      "index": "IV Failure",
+      "quote": "The banner is still magnificent. The ground has kept the tools.",
+      "p1": "An elder stands under a huge yellow cloth in a camp of abandoned vessels, a small creature at the feet, the desert bright behind. Failure is the hour after the work has stopped agreeing. The banner did not come down. What it could not carry is lying in the sand.",
+      "p2": "This is a capacity, not a verdict. A power that cannot fail has never been used where the weather is real.",
+      "use": "Leave the banner up if you must, and pick through what fell. The failure is the inventory, not the shame.",
+      "alt": "Powers, Failure"
+    },
+    "struggle": {
+      "rank": "V · Powers",
+      "title": "Struggle",
+      "index": "V Struggle",
+      "quote": "The blade is held across the body because the fight has become a line.",
+      "p1": "A figure stands in a pale arch, one sword upright, another laid horizontal through the hands, rust or blood on the metal, a crown of points. Struggle is a capacity met by an equal capacity. The arch does not take a side. The horizontal blade is the place you have to live.",
+      "p2": "Neither point has won. That is why the card is in the middle of the suit, where a power learns it is not alone.",
+      "use": "Stay on the line. The struggle is the work of two strengths, and ending it early would waste both.",
+      "alt": "Powers, Struggle"
+    },
+    "play": {
+      "rank": "VI · Powers",
+      "title": "Play",
+      "index": "VI Play",
+      "quote": "The finger at the lips is a rule, not a secret.",
+      "p1": "A horned face, painted pale, jewelry hanging from the brow, one hand raised to the mouth and the other counting beads. Play is power that refuses to be solemn. The hush means a game is already underway, and speaking would break the move.",
+      "p2": "The horns are not a threat. They are the costume the capacity wears when it would rather dance than decree.",
+      "use": "Treat the matter as a game with a real stake. Seriousness is not the same thing as attention.",
+      "alt": "Powers, Play"
+    },
+    "swiftness": {
+      "rank": "VII · Powers",
+      "title": "Swiftness",
+      "index": "VII Swiftness",
+      "quote": "The smile belongs to someone who has already moved.",
+      "p1": "A white-bearded engineer leans back in a nest of pipes, gauges, and brass, goggles on, both hands on the controls. Swiftness is the capacity that arrives before the argument. The machine is not decoration. It is how a decision gets ahead of the committee in the chest.",
+      "p2": "Speed without a gauge is only panic. Here the dials are lit, and the face is glad.",
+      "use": "Move while the reading is still warm. Hesitation would be a second machine, and you do not have room for it.",
+      "alt": "Powers, Swiftness"
+    },
+    "pleasure": {
+      "rank": "VIII · Powers",
+      "title": "Pleasure",
+      "index": "VIII Pleasure",
+      "quote": "The skull is the seat. The cost has already been paid.",
+      "p1": "A calm figure sits on a great fanged skull, flowers and antlers in the hair, a staff in one hand, a thicket of bone and blossom behind. Pleasure is the capacity that makes a person stay. The face is not drunk. It knows what the chair is made of.",
+      "p2": "To enjoy a thing and to ignore its price are different powers. This card is the first of those.",
+      "use": "Take the pleasure, and name the skull you are sitting on. Staying is allowed. Forgetting is not.",
+      "alt": "Powers, Pleasure"
+    },
+    "control": {
+      "rank": "IX · Powers",
+      "title": "Control",
+      "index": "IX Control",
+      "quote": "Stillness is the work. The hands stay on the arms of the chair.",
+      "p1": "An armored figure sits inside a ring of metal, a blade running down the center of the body, horns rising from the helm, the throne grown into claws. Control is the capacity that agrees to sit still so everything else can be arranged. Nothing in the picture is rushing.",
+      "p2": "The danger is to mistake the seat for the world. A control that cannot stand up has become the chair.",
+      "use": "Arrange, and then leave one hand free. What you cannot release is no longer being governed.",
+      "alt": "Powers, Control"
+    },
+    "courage": {
+      "rank": "X · Powers",
+      "title": "Courage",
+      "index": "X Courage",
+      "quote": "The scars are the record. The smoke is the pause.",
+      "p1": "A horned, marked face draws on a small burning flower, smoke rising, a skull and a crescent in the dark above the brow. Courage is not the absence of damage. It is the decision to keep the mouth occupied with something smaller than the fear, long enough to choose the next act.",
+      "p2": "The last of the ten weathers, because a capacity that has not been frightened has not yet been proved.",
+      "use": "You already carry the marks. Take the breath, and then move. Courage is the pause that does not become a residence.",
+      "alt": "Powers, Courage"
+    },
+    "clarity": {
+      "rank": "XI · Seeker of Powers",
+      "title": "Clarity",
+      "index": "XI Clarity",
+      "quote": "The owl looks where she is not looking.",
+      "p1": "A woman in a winged helm stands in the snow, braids bound, an owl heavy on the arm, a staff in the other hand, a small fire showing at the hem. Clarity is the court of the one who can see a power without becoming it. Two gazes, one weather.",
+      "p2": "The Seeker does not spend the capacity. She keeps it in view until it has a true name.",
+      "use": "Look twice, and from a second pair of eyes. What is clear will survive the second look.",
+      "alt": "Seeker of Powers, Clarity"
+    },
+    "resilience": {
+      "rank": "XII · Keeper of Powers",
+      "title": "Resilience",
+      "index": "XII Resilience",
+      "quote": "The sky has split. The jaw has not.",
+      "p1": "An armored face under a cracked world, light breaking through the stone behind the helm, wings of metal at the shoulders. Resilience is what the Keeper holds: not victory, the capacity to remain when the thing overhead has already failed. The grin is the jaw set, not a triumph.",
+      "p2": "A power that cannot be broken is only untested. This one has been tested and is still standing in the rubble.",
+      "use": "Stay. The break is in the sky, not in the stance. Remaining is the whole instruction.",
+      "alt": "Keeper of Powers, Resilience"
+    },
+    "focus": {
+      "rank": "XIII · Master of Powers",
+      "title": "Focus",
+      "index": "XIII Focus",
+      "quote": "The hair is the excess. The hands are the decision.",
+      "p1": "A woman with a storm of blue hair, a small jewel at the brow, hands folded, eyes that do not wander. Focus is the mastery of power: every weather of the suit gathered into one gaze. Nothing in the picture is being spent. The excess is worn. The choice is in the clasp of the fingers.",
+      "p2": "The Master does not abolish the suit. Potential, pain, play, courage — they are still in the hair. They have stopped competing for the eyes.",
+      "use": "Choose one use and hold it. The rest may remain beautiful. It does not get to move your hands.",
+      "alt": "Master of Powers, Focus"
+    },
+    "fate": {
+      "rank": "I · Root of Relations",
+      "title": "Fate",
+      "index": "I Fate",
+      "quote": "You do not choose the tree. You notice you are already a branch.",
+      "p1": "A face of bark and moss, antlers of bare wood, a beard of roots, leaves gathered at the chest. Fate is the relation that was growing before either person arrived. The branches do not ask permission. They record where the bond already went.",
+      "p2": "This is the root, because a bond that has no history is only a meeting. Fate is the history that was underway.",
+      "use": "The connection is older than the decision to notice it. Tend what is already growing. Do not pretend you planted it today.",
+      "alt": "Root of Relations, Fate"
+    },
+    "duality": {
+      "rank": "II · Relations",
+      "title": "Duality",
+      "index": "II Duality",
+      "quote": "Two hands. The smoke is the third thing they make.",
+      "p1": "An elder under a huge green turban, a gold skull at the chest, one hand closed on a stem and the other open, pale smoke rising between them. Duality is the relation of two that refuse to collapse into one. The turban is the weather they share. The face stays its own.",
+      "p2": "A bond that erases one of its members is no longer a relation. It is an occupation.",
+      "use": "Keep both sides intact. The work is the smoke between them, not the victory of either hand.",
+      "alt": "Relations, Duality"
+    },
+    "tension": {
+      "rank": "III · Relations",
+      "title": "Tension",
+      "index": "III Tension",
+      "quote": "The offering and the wound are the same stream.",
+      "p1": "An old man pours from a cup into the mouth of a living tree, and what leaves the cup is red. A teapot waits on the floor. Tension is the relation that continues because neither side will set the vessel down. Care and injury are traveling in one line.",
+      "p2": "The tree is not a guest. It is the other party, rooted, and it is drinking.",
+      "use": "Name what is being poured. The bond can survive the red stream. It cannot survive pretending the stream is tea.",
+      "alt": "Relations, Tension"
+    },
+    "authenticity": {
+      "rank": "IV · Relations",
+      "title": "Authenticity",
+      "index": "IV Authenticity",
+      "quote": "No one at the table is performing the species the other expected.",
+      "p1": "A white-bearded man sits with three bears over papers and a candle. A dog sleeps under the cloth. Jars and loose pages cover the floor. Authenticity is the relation in which each member arrives as what they are. The bears are not guests in costume. The man is not a bear. They are reading the same page.",
+      "p2": "A bond that requires a disguise is a negotiation with a mask. This table has put the masks on the floor.",
+      "use": "Come as you are, and let the other do the same. The page in the middle only works if both hands are real.",
+      "alt": "Relations, Authenticity"
+    },
+    "exploration": {
+      "rank": "V · Relations",
+      "title": "Exploration",
+      "index": "V Exploration",
+      "quote": "The sea is the other party. The bottles are the attempts.",
+      "p1": "A figure leans over a table of colored glass on a pier, ships at the horizon, a skull watching from the wall, a small vial held to the light. Exploration is the relation you keep with what you have not yet named. Each bottle is a previous guess. The water does not correct them. It stays.",
+      "p2": "The work is not to finish the other. It is to keep a clean glass and look again.",
+      "use": "Treat the bond as unfinished on purpose. Ask one more question before you cork the bottle.",
+      "alt": "Relations, Exploration"
+    },
+    "reflection": {
+      "rank": "VI · Relations",
+      "title": "Reflection",
+      "index": "VI Reflection",
+      "quote": "The moths landed because the light was quiet.",
+      "p1": "A pale woman in profile, eyes lowered, white moths moving around her hair and shoulder. Reflection is the relation of a person to the image that comes back. The moths are not an audience. They are the thoughts that found a place to rest because no one was performing for them.",
+      "p2": "A bond that cannot bear a silence has not yet met itself. This card is that meeting, seen from the side.",
+      "use": "Stop arranging your face. Let the other, or your own image, arrive without being directed.",
+      "alt": "Relations, Reflection"
+    },
+    "language": {
+      "rank": "VII · Relations",
+      "title": "Language",
+      "index": "VII Language",
+      "quote": "The hand is offering a sentence that has not chosen its word.",
+      "p1": "A seated elder in teal, one palm open, glyphs already cut into the wall behind, vessels and small fires at the feet. Language is the relation that lets two interiors occupy one sound. The wall has been written on. The hand has not yet decided what to add.",
+      "p2": "Speech is not the opposite of the bond. It is one of the ways the bond becomes a place both can stand.",
+      "use": "Say the thing in a form the other can enter. A private language is a locked room with two people outside it.",
+      "alt": "Relations, Language"
+    },
+    "celebration": {
+      "rank": "VIII · Relations",
+      "title": "Celebration",
+      "index": "VIII Celebration",
+      "quote": "The torch is not a leader. It is the excuse the circle needed.",
+      "p1": "A crowd stands in a forest around a figure who lifts a flame, arms raised, water in the foreground, many bodies turned toward the same light. Celebration is the relation that becomes visible only when more than two agree to be glad in public. The joy is shared, or it is only a mood.",
+      "p2": "The circle does not erase anyone in it. It gives the bond a night it can be seen.",
+      "use": "Mark the bond where others can witness it. A private gladness is real. A celebrated one has a place to return to.",
+      "alt": "Relations, Celebration"
+    },
+    "solitude": {
+      "rank": "IX · Relations",
+      "title": "Solitude",
+      "index": "IX Solitude",
+      "quote": "The scales are still in use. The other chair is empty.",
+      "p1": "An elder sits alone at a table of coins, small cups, a flame, and a balance, with instruments hanging in the dark. Solitude is a relation with the absent. The weighing continues. Someone is being measured who is not in the room, and the measurer knows their weight by heart.",
+      "p2": "Being alone is not the end of a bond. It is the form a bond takes when one of its members is elsewhere, or gone, or not yet come.",
+      "use": "Keep the table set, and do not pretend the empty side is a failure. Solitude is the bond practiced at a distance.",
+      "alt": "Relations, Solitude"
+    },
+    "equilibrium": {
+      "rank": "X · Relations",
+      "title": "Equilibrium",
+      "index": "X Equilibrium",
+      "quote": "She is not alone. The birds and the water are doing their half.",
+      "p1": "A woman in white sits in a hanging garden, bare feet, hair bound, birds crossing a pale sphere, platforms of green suspended in mist. Equilibrium is the relation that does not need to move in order to be mutual. Nothing is being won. The garden holds because each part keeps its own weight.",
+      "p2": "The last of the ten weathers, because a bond that cannot rest has not yet become a place.",
+      "use": "Stop adjusting. The balance is already the bond. A correction now would be a new argument.",
+      "alt": "Relations, Equilibrium"
+    },
+    "acceptance": {
+      "rank": "XI · Seeker of Relations",
+      "title": "Acceptance",
+      "index": "XI Acceptance",
+      "quote": "The spear is grounded. The antlers are what grew.",
+      "p1": "A figure with a beard of moss and a crown of antlers sits in a living chair, a spear at rest, a small skull in the ferns. Acceptance is the court of the one who stops arguing with what the relation already is. The weapon is not raised. The body has taken the shape of the place.",
+      "p2": "The Seeker does not improve the bond. The Seeker agrees to see it.",
+      "use": "Put the spear down. What remains after the argument is the relation you actually have.",
+      "alt": "Seeker of Relations, Acceptance"
+    },
+    "love": {
+      "rank": "XII · Keeper of Relations",
+      "title": "Love",
+      "index": "XII Love",
+      "quote": "The flowers are not decoration. They are the bond becoming visible.",
+      "p1": "A face meets you, hair like a pale river, leaves and blossoms caught in it, the throat grown through with vine. Love is what the Keeper holds: not a feeling that visits and leaves, a structure that keeps growing through the person who agreed to be its ground.",
+      "p2": "The eyes are open. A love that cannot look is only a hunger with a softer name.",
+      "use": "Let the bond show on you. Keeping it means remaining visible to the one it joins you to.",
+      "alt": "Keeper of Relations, Love"
+    },
+    "unity": {
+      "rank": "XIII · Master of Relations",
+      "title": "Unity",
+      "index": "XIII Unity",
+      "quote": "The cracks are the joints. The light is what the joints agreed to carry.",
+      "p1": "A body of cut stone and circuit, vines at the shoulder, a white current in the chest, one hand raised among leaves. Unity is not the erasure of the two. It is the masonry in which difference still shows, and still conducts. Each tile keeps its edge.",
+      "p2": "The Master does not abolish the suit. Fate, tension, solitude, love — they are the courses of the wall. They have stopped being rivals for the whole.",
+      "use": "Join without sanding the differences flat. What conducts through the joints is the bond. The joints themselves stay.",
+      "alt": "Master of Relations, Unity"
+    }
+  }
+}

@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cartomancy</title>
-    <meta name="description" content="Cartomancy: the lands of Beliefs, Changes, Powers, and Relations, thirteen cards each, read as a fork of the tarot.">
+    <title data-i18n="cartomancy.title">Kartomantia</title>
+    <meta name="description" content="Kartomantia: Uskomusten, Muutosten, Voimien ja Suhteiden maat, kolmetoista korttia kussakin, luettuna tarotin haarana." data-i18n-attr="content:cartomancy.description">
     <meta name="theme-color" content="#8d6aae">
     <link rel="canonical" href="https://taikoi.netlify.app/cartomancy.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Aivoinko">
-    <meta property="og:title" content="Cartomancy">
-    <meta property="og:description" content="Cartomancy: the lands of Beliefs, Changes, Powers, and Relations, thirteen cards each, read as a fork of the tarot.">
+    <meta property="og:title" content="Kartomantia" data-i18n-attr="content:cartomancy.title">
+    <meta property="og:description" content="Kartomantia: Uskomusten, Muutosten, Voimien ja Suhteiden maat, kolmetoista korttia kussakin, luettuna tarotin haarana." data-i18n-attr="content:cartomancy.description">
     <meta property="og:url" content="https://taikoi.netlify.app/cartomancy.html">
     <meta property="og:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Cartomancy">
-    <meta name="twitter:description" content="Cartomancy: the lands of Beliefs, Changes, Powers, and Relations, thirteen cards each, read as a fork of the tarot.">
+    <meta name="twitter:title" content="Kartomantia" data-i18n-attr="content:cartomancy.title">
+    <meta name="twitter:description" content="Kartomantia: Uskomusten, Muutosten, Voimien ja Suhteiden maat, kolmetoista korttia kussakin, luettuna tarotin haarana." data-i18n-attr="content:cartomancy.description">
     <meta name="twitter:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <link rel="apple-touch-icon" href="AiiAold.8dde82cb.jpg">
     <link rel="preconnect" href="https://unpkg.com" crossorigin>
@@ -421,7 +421,7 @@
             border-top: 1px solid rgba(176, 138, 212, 0.28);
         }
 
-        .reading-use span {
+        .reading-use > span:first-child {
             font-family: 'Orbitron', sans-serif;
             font-weight: 700;
             font-size: 0.58rem;
@@ -564,899 +564,899 @@
 
     <div id="hall">
         <header>
-            <img src="AiiAold.8dde82cb.jpg" alt="Aivoinko Logo" width="120" height="120" fetchpriority="high" decoding="async">
+            <img src="AiiAold.8dde82cb.jpg" alt="Aivoinkon logo" data-i18n-attr="alt:common.logoAlt" width="120" height="120" fetchpriority="high" decoding="async">
         </header>
 
         <div class="land-bar">
-            <label for="land-select">Maa / Land</label>
+            <label for="land-select" data-i18n="cartomancy.landLabel">Maa</label>
             <select id="land-select" autocomplete="off">
-                <option value="beliefs" selected>I · Beliefs</option>
-                <option value="changes">II · Changes</option>
-                <option value="powers">III · Powers</option>
-                <option value="relations">IV · Relations</option>
+                <option value="beliefs" selected data-i18n="cartomancy.select.beliefs">I · Uskomukset</option>
+                <option value="changes" data-i18n="cartomancy.select.changes">II · Muutokset</option>
+                <option value="powers" data-i18n="cartomancy.select.powers">III · Voimat</option>
+                <option value="relations" data-i18n="cartomancy.select.relations">IV · Suhteet</option>
             </select>
         </div>
 
         <article id="suit-intro" class="suit-intro">
-            <p class="suit-kicker">Maa I</p>
-            <h2>Beliefs</h2>
-            <blockquote>A belief is not an opinion. It is a room the mind agrees to live in.</blockquote>
-            <p>This is the first land of the fork. Thirteen cards, and not a costume of any older deck. Ten weathers of a conviction, then three who walk them: the Seeker, the Keeper, the Master.</p>
-            <p>Read a card for the structure it names. The picture is already the argument. Fortune can wait.</p>
+            <p class="suit-kicker" data-i18n="cartomancy.intro.beliefs.kicker">Maa I</p>
+            <h2 data-i18n="cartomancy.lands.beliefs">Uskomukset</h2>
+            <blockquote data-i18n="cartomancy.intro.beliefs.quote">Uskomus ei ole mielipide. Se on huone, jossa mieli suostuu asumaan.</blockquote>
+            <p data-i18n="cartomancy.intro.beliefs.p1">Tämä on haaran ensimmäinen maa. Kolmetoista korttia, eikä minkään vanhemman pakan asu. Kymmenen vakaumuksen säätä, sitten kolme, jotka kävelevät niiden halki: Etsijä, Haltija, Mestari.</p>
+            <p data-i18n="cartomancy.intro.beliefs.p2">Lue kortti rakenteesta, jonka se nimeää. Kuva on jo väite. Ennustus saa odottaa.</p>
         </article>
 
-        <nav class="suit-index" id="index-beliefs" aria-label="Cards of Beliefs">
-            <a href="#imagination">I Imagination</a>
-            <a href="#bias">II Bias</a>
-            <a href="#dogma">III Dogma</a>
-            <a href="#doubt">IV Doubt</a>
-            <a href="#interpretation">V Interpretation</a>
-            <a href="#dream">VI Dream</a>
-            <a href="#reverence">VII Reverence</a>
-            <a href="#assumption">VIII Assumption</a>
-            <a href="#story">IX Story</a>
-            <a href="#trust">X Trust</a>
-            <a href="#openness">XI Openness</a>
-            <a href="#self">XII Self</a>
-            <a href="#freedom">XIII Freedom</a>
+        <nav class="suit-index" id="index-beliefs" aria-label="Uskomusten kortit" data-i18n-attr="aria-label:cartomancy.nav.beliefs">
+            <a href="#imagination" data-i18n="cartomancy.cards.imagination.index">I Mielikuvitus</a>
+            <a href="#bias" data-i18n="cartomancy.cards.bias.index">II Vinouma</a>
+            <a href="#dogma" data-i18n="cartomancy.cards.dogma.index">III Dogmi</a>
+            <a href="#doubt" data-i18n="cartomancy.cards.doubt.index">IV Epäilys</a>
+            <a href="#interpretation" data-i18n="cartomancy.cards.interpretation.index">V Tulkinta</a>
+            <a href="#dream" data-i18n="cartomancy.cards.dream.index">VI Uni</a>
+            <a href="#reverence" data-i18n="cartomancy.cards.reverence.index">VII Kunnioitus</a>
+            <a href="#assumption" data-i18n="cartomancy.cards.assumption.index">VIII Oletus</a>
+            <a href="#story" data-i18n="cartomancy.cards.story.index">IX Tarina</a>
+            <a href="#trust" data-i18n="cartomancy.cards.trust.index">X Luottamus</a>
+            <a href="#openness" data-i18n="cartomancy.cards.openness.index">XI Avoimuus</a>
+            <a href="#self" data-i18n="cartomancy.cards.self.index">XII Itse</a>
+            <a href="#freedom" data-i18n="cartomancy.cards.freedom.index">XIII Vapaus</a>
         </nav>
 
         <div id="deck-beliefs">
             <section class="card" id="imagination">
                 <figure>
-                    <img src="art/cartomancy/01-imagination.png" alt="Root of Beliefs, Imagination" width="613" height="1024" decoding="async">
+                    <img src="art/cartomancy/01-imagination.png" alt="Uskomusten juuri, Mielikuvitus" data-i18n-attr="alt:cartomancy.cards.imagination.alt" width="613" height="1024" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">I · Root of Beliefs</p>
-                    <h2>Imagination</h2>
-                    <blockquote>Before a belief has evidence, it has a face.</blockquote>
-                    <p>The lens on the brow is the instrument that turns a feeling into something that can be looked at. Cloud, metal, and the green dark at the throat are one weather: thought before it has chosen a side.</p>
-                    <p>Imagination is the root, because nothing later in the suit can stand until an image has been risked. A belief that cannot be pictured is only a rumor about itself.</p>
-                    <p class="reading-use"><span>In a reading</span> The matter is still unformed, and that is its strength. Give it a picture before you give it a law.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.imagination.rank">I · Uskomusten juuri</p>
+                    <h2 data-i18n="cartomancy.cards.imagination.title">Mielikuvitus</h2>
+                    <blockquote data-i18n="cartomancy.cards.imagination.quote">Ennen kuin uskomuksella on todiste, sillä on kasvot.</blockquote>
+                    <p data-i18n="cartomancy.cards.imagination.p1">Linssi otsalla on väline, joka tekee tunteesta jotain katsottavaa. Pilvi, metalli ja vihreä pimeä kurkussa ovat sama sää: ajatus ennen kuin se on valinnut puolen.</p>
+                    <p data-i18n="cartomancy.cards.imagination.p2">Mielikuvitus on juuri, koska mikään myöhempi tässä maassa ei seiso ennen kuin kuva on uskallettu. Uskomus jota ei saa kuvaksi on vain huhu itsestään.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.imagination.use">Asia on vielä muotoutumaton, ja se on sen voima. Anna sille kuva ennen kuin annat sille lain.</span></p>
                 </article>
             </section>
 
             <section class="card" id="bias">
                 <figure>
-                    <img src="art/cartomancy/02-bias.png" alt="Beliefs, Bias" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/02-bias.png" alt="Uskomukset, Vinouma" data-i18n-attr="alt:cartomancy.cards.bias.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">II · Beliefs</p>
-                    <h2>Bias</h2>
-                    <blockquote>One eye rests so the other can be certain.</blockquote>
-                    <p>The face is porcelain that has already cracked, and the crack has grown a bark. Bias is the grain in the glass: the closed eye, the open eye, the mouth that has set.</p>
-                    <p>To meet this card is to notice which half of the face you have been trusting. The wood does not apologize for being wood.</p>
-                    <p class="reading-use"><span>In a reading</span> Name the lens before you name the fact. What you call obvious is the eye that stayed open.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.bias.rank">II · Uskomukset</p>
+                    <h2 data-i18n="cartomancy.cards.bias.title">Vinouma</h2>
+                    <blockquote data-i18n="cartomancy.cards.bias.quote">Toinen silmä lepää, jotta toinen voi olla varma.</blockquote>
+                    <p data-i18n="cartomancy.cards.bias.p1">Kasvot ovat posliinia joka on jo haljennut, ja halkeama on kasvattanut kaarnan. Vinouma on lasin juova: suljettu silmä, avoin silmä, suu joka on jähmettynyt.</p>
+                    <p data-i18n="cartomancy.cards.bias.p2">Tämän kortin kohtaaminen on huomata, kumpaan kasvojen puoliskoon olet luottanut. Puu ei pyydä anteeksi sitä, että on puuta.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.bias.use">Nimeä linssi ennen kuin nimeät tosiasian. Se mitä kutsut ilmeiseksi on silmä, joka jäi auki.</span></p>
                 </article>
             </section>
 
             <section class="card" id="dogma">
                 <figure>
-                    <img src="art/cartomancy/03-dogma.png" alt="Beliefs, Dogma" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/03-dogma.png" alt="Uskomukset, Dogmi" data-i18n-attr="alt:cartomancy.cards.dogma.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">III · Beliefs</p>
-                    <h2>Dogma</h2>
-                    <blockquote>The teaching sits. The fear hangs above it.</blockquote>
-                    <p>An elder on a throne, a congregation at the steps, and in the vault a mouth with too many teeth. Dogma is a belief that has hired a room, an audience, and a monster to keep the ceiling interesting.</p>
-                    <p>It is a truth that forgot it was once a question, and built a temple so it would not be asked again.</p>
-                    <p class="reading-use"><span>In a reading</span> Something here is being protected by ceremony. Ask who is served if the question stays seated.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.dogma.rank">III · Uskomukset</p>
+                    <h2 data-i18n="cartomancy.cards.dogma.title">Dogmi</h2>
+                    <blockquote data-i18n="cartomancy.cards.dogma.quote">Opetus istuu. Pelko riippuu sen yllä.</blockquote>
+                    <p data-i18n="cartomancy.cards.dogma.p1">Vanhus valtaistuimella, seurakunta portailla, ja holvissa suu jossa on liikaa hampaita. Dogmi on uskomus, joka on palkannut huoneen, yleisön ja hirviön pitämään katon kiinnostavana.</p>
+                    <p data-i18n="cartomancy.cards.dogma.p2">Se on totuus joka unohti olleensa kerran kysymys, ja rakensi temppelin ettei sitä kysyttäisi uudestaan.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.dogma.use">Jotain täällä suojellaan seremonialla. Kysy ketä palvellaan, jos kysymys pysyy istumassa.</span></p>
                 </article>
             </section>
 
             <section class="card" id="doubt">
                 <figure>
-                    <img src="art/cartomancy/04-doubt.png" alt="Beliefs, Doubt" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/04-doubt.png" alt="Uskomukset, Epäilys" data-i18n-attr="alt:cartomancy.cards.doubt.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">IV · Beliefs</p>
-                    <h2>Doubt</h2>
-                    <blockquote>The smoke is the argument still leaving the mouth.</blockquote>
-                    <p>A pale face, a crown of leaves, a third eye that opened because the two ordinary ones stopped agreeing. Doubt smokes. It holds the ember where the breath can see it.</p>
-                    <p>Doubt is belief agreeing to stay unfinished. The honest card of the suit.</p>
-                    <p class="reading-use"><span>In a reading</span> Do not rush the smoke into a verdict. The third eye is open. Let the other two catch up.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.doubt.rank">IV · Uskomukset</p>
+                    <h2 data-i18n="cartomancy.cards.doubt.title">Epäilys</h2>
+                    <blockquote data-i18n="cartomancy.cards.doubt.quote">Savu on väite, joka yhä lähtee suusta.</blockquote>
+                    <p data-i18n="cartomancy.cards.doubt.p1">Kalpeat kasvot, lehtikruunu, kolmas silmä joka aukesi koska kaksi tavallista lakkasi olemasta yhtä mieltä. Epäilys savuaa. Se pitää hiillosta siinä, missä hengitys näkee sen.</p>
+                    <p data-i18n="cartomancy.cards.doubt.p2">Epäilys on uskomus, joka suostuu jäämään keskeneräiseksi. Maan rehellinen kortti.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.doubt.use">Älä kiirehdi savua tuomioksi. Kolmas silmä on auki. Anna kahden muun ehtiä perässä.</span></p>
                 </article>
             </section>
 
             <section class="card" id="interpretation">
                 <figure>
-                    <img src="art/cartomancy/05-interpretation.png" alt="Beliefs, Interpretation" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/05-interpretation.png" alt="Uskomukset, Tulkinta" data-i18n-attr="alt:cartomancy.cards.interpretation.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">V · Beliefs</p>
-                    <h2>Interpretation</h2>
-                    <blockquote>Meaning is a thread you hand to something that can fly.</blockquote>
-                    <p>A hooded clerk, a string, a jury of crows, a chart of faces, a fire underneath. Interpretation is the trade of giving the birds a line and then reading whatever they carry back as if it had been yours.</p>
-                    <p>The fire is real. The chart is a guess that learned to look official. Between them stands the only honest figure: the one who does not show a face.</p>
-                    <p class="reading-use"><span>In a reading</span> You are about to call a pattern a message. Notice which bird you are listening to, and which you have already decided is only weather.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.interpretation.rank">V · Uskomukset</p>
+                    <h2 data-i18n="cartomancy.cards.interpretation.title">Tulkinta</h2>
+                    <blockquote data-i18n="cartomancy.cards.interpretation.quote">Merkitys on lanka, jonka annat jollekin joka osaa lentää.</blockquote>
+                    <p data-i18n="cartomancy.cards.interpretation.p1">Hupullinen kirjuri, naru, varisten raati, kasvojen kartta, tuli alla. Tulkinta on ammatti, jossa linnuille annetaan lanka ja takaisin tuotu luetaan kuin se olisi ollut omaa.</p>
+                    <p data-i18n="cartomancy.cards.interpretation.p2">Tuli on todellinen. Kartta on arvaus, joka oppi näyttämään viralliselta. Niiden välissä seisoo ainoa rehellinen hahmo: se, joka ei näytä kasvoja.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.interpretation.use">Olet antamassa kuviolle viestin nimen. Huomaa mitä lintua kuuntelet, ja minkä olet jo päättänyt olevan pelkkää säätä.</span></p>
                 </article>
             </section>
 
             <section class="card" id="dream">
                 <figure>
-                    <img src="art/cartomancy/06-dream.png" alt="Beliefs, Dream" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/06-dream.png" alt="Uskomukset, Uni" data-i18n-attr="alt:cartomancy.cards.dream.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">VI · Beliefs</p>
-                    <h2>Dream</h2>
-                    <blockquote>The forest dictates. The clerk has no face yet.</blockquote>
-                    <p>An antlered writer sits in the roots, and a hooded scribe copies, the hood open where a face should be. Dream is belief arriving before the one who will claim it has features.</p>
-                    <p>The book on the knee is already being written by something older than the hand. The scribe's work is to keep up without inventing a name too early.</p>
-                    <p class="reading-use"><span>In a reading</span> A picture is ahead of your explanation. Write it down before you interpret it. The face can come later.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.dream.rank">VI · Uskomukset</p>
+                    <h2 data-i18n="cartomancy.cards.dream.title">Uni</h2>
+                    <blockquote data-i18n="cartomancy.cards.dream.quote">Metsä sanelee. Kirjurilla ei ole vielä kasvoja.</blockquote>
+                    <p data-i18n="cartomancy.cards.dream.p1">Sarvekas kirjoittaja istuu juurissa, ja hupullinen kirjuri kopioi, huppu auki siinä missä kasvojen pitäisi olla. Uni on uskomus, joka saapuu ennen kuin sen vaatijalla on piirteitä.</p>
+                    <p data-i18n="cartomancy.cards.dream.p2">Polvella olevaa kirjaa kirjoittaa jo jokin kättä vanhempi. Kirjurin työ on pysyä mukana keksimättä nimeä liian aikaisin.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.dream.use">Kuva on selitystäsi edellä. Kirjoita se ylös ennen kuin tulkitset. Kasvot voivat tulla myöhemmin.</span></p>
                 </article>
             </section>
 
             <section class="card" id="reverence">
                 <figure>
-                    <img src="art/cartomancy/07-reverence.png" alt="Beliefs, Reverence" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/07-reverence.png" alt="Uskomukset, Kunnioitus" data-i18n-attr="alt:cartomancy.cards.reverence.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">VII · Beliefs</p>
-                    <h2>Reverence</h2>
-                    <blockquote>Attention that has agreed to be smaller than its object.</blockquote>
-                    <p>White hair, a beard like a slow river, a mark on the brow, a geometry behind the head that does not need to be solved. Reverence is the posture of a mind that has stopped trying to be the largest thing in the room.</p>
-                    <p>The collar of light is a horizon worn as clothing. What is revered stays unnamed, because a name would shrink it back into a tool.</p>
-                    <p class="reading-use"><span>In a reading</span> Approach without grasping. Stand still long enough that the thing can be itself.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.reverence.rank">VII · Uskomukset</p>
+                    <h2 data-i18n="cartomancy.cards.reverence.title">Kunnioitus</h2>
+                    <blockquote data-i18n="cartomancy.cards.reverence.quote">Tarkkaavaisuus, joka on suostunut olemaan kohdettaan pienempi.</blockquote>
+                    <p data-i18n="cartomancy.cards.reverence.p1">Valkoiset hiukset, parta kuin hidas joki, merkki otsalla, geometria pään takana jota ei tarvitse ratkaista. Kunnioitus on asento, jossa mieli on lakannut yrittämästä olla huoneen suurin asia.</p>
+                    <p data-i18n="cartomancy.cards.reverence.p2">Valokaulus on horisontti puettuna. Kunnioitettu pysyy nimeämättä, koska nimi kutistaisi sen takaisin työkaluksi.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.reverence.use">Lähesty tarttumatta. Seiso paikallasi niin kauan, että asia ehtii olla itsensä.</span></p>
                 </article>
             </section>
 
             <section class="card" id="assumption">
                 <figure>
-                    <img src="art/cartomancy/08-assumption.png" alt="Beliefs, Assumption" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/08-assumption.png" alt="Uskomukset, Oletus" data-i18n-attr="alt:cartomancy.cards.assumption.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">VIII · Beliefs</p>
-                    <h2>Assumption</h2>
-                    <blockquote>You take the path because the tree already looks inhabited.</blockquote>
-                    <p>A woman in green at a trunk full of holes, and one of the holes is an eye. Assumption is the step taken before the question. Dress, flowers, and the lean all treat the tree as a house.</p>
-                    <p>Sometimes the eye is really there. Sometimes the dark is only a knot. The card will not say which. It says that you have already decided.</p>
-                    <p class="reading-use"><span>In a reading</span> Find the step you did not notice taking. That step is carrying the conclusion.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.assumption.rank">VIII · Uskomukset</p>
+                    <h2 data-i18n="cartomancy.cards.assumption.title">Oletus</h2>
+                    <blockquote data-i18n="cartomancy.cards.assumption.quote">Otat polun, koska puu näyttää jo asutulta.</blockquote>
+                    <p data-i18n="cartomancy.cards.assumption.p1">Nainen vihreässä rungon luona, joka on täynnä koloja, ja yksi koloista on silmä. Oletus on askel, joka otetaan ennen kysymystä. Puku, kukat ja noja kohtelevat puuta talona.</p>
+                    <p data-i18n="cartomancy.cards.assumption.p2">Joskus silmä on todella siellä. Joskus pimeä on vain pahka. Kortti ei sano kumpaa. Se sanoo, että olet jo päättänyt.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.assumption.use">Etsi askel, jota et huomannut ottaneesi. Se askel kantaa päätelmän.</span></p>
                 </article>
             </section>
 
             <section class="card" id="story">
                 <figure>
-                    <img src="art/cartomancy/09-story.png" alt="Beliefs, Story" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/09-story.png" alt="Uskomukset, Tarina" data-i18n-attr="alt:cartomancy.cards.story.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">IX · Beliefs</p>
-                    <h2>Story</h2>
-                    <blockquote>A body built of other stones, so the chest can keep walking.</blockquote>
-                    <p>The head is a pyramid of tiles, the throat a treasury of chains, the shoulders a weather of monuments. Story is how a belief survives its author: by becoming architecture someone else can stand inside.</p>
-                    <p>The face is still visible, barely, under the monument. A story that forgets it has a face becomes a ruin that gives orders.</p>
-                    <p class="reading-use"><span>In a reading</span> You are inside a telling. Ask whether you are the teller, the stone, or the one the monument was built to impress.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.story.rank">IX · Uskomukset</p>
+                    <h2 data-i18n="cartomancy.cards.story.title">Tarina</h2>
+                    <blockquote data-i18n="cartomancy.cards.story.quote">Ruumis koottu vieraista kivistä, jotta rinta voi jatkaa kävelyä.</blockquote>
+                    <p data-i18n="cartomancy.cards.story.p1">Pää on laattojen pyramidi, kurkku ketjujen aarre, hartiat monumenttien sää. Tarina on tapa, jolla uskomus selviää tekijästään: muuttumalla arkkitehtuuriksi, jonka sisällä joku toinen voi seistä.</p>
+                    <p data-i18n="cartomancy.cards.story.p2">Kasvot näkyvät yhä, juuri ja juuri, monumentin alta. Tarina joka unohtaa että sillä on kasvot, muuttuu raunioksi joka antaa käskyjä.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.story.use">Olet kertomuksen sisällä. Kysy oletko kertoja, kivi, vai se jota varten monumentti rakennettiin.</span></p>
                 </article>
             </section>
 
             <section class="card" id="trust">
                 <figure>
-                    <img src="art/cartomancy/10-trust.png" alt="Beliefs, Trust" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/10-trust.png" alt="Uskomukset, Luottamus" data-i18n-attr="alt:cartomancy.cards.trust.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">X · Beliefs</p>
-                    <h2>Trust</h2>
-                    <blockquote>The hands meet, and do not check the clasp.</blockquote>
-                    <p>Flowers, a pale ruff, fingers interlaced at the sternum. Trust is the last of the ten because it is the belief that has stopped inspecting itself. The ornament is the courage to be seen while unguarded.</p>
-                    <p>The eyes are open and level. Nothing in the picture is hiding, which is why it can be mistaken for safety.</p>
-                    <p class="reading-use"><span>In a reading</span> Something may be given without a contract. Receive it plainly. Do not decorate the gift into a proof.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.trust.rank">X · Uskomukset</p>
+                    <h2 data-i18n="cartomancy.cards.trust.title">Luottamus</h2>
+                    <blockquote data-i18n="cartomancy.cards.trust.quote">Kädet kohtaavat eivätkä tarkista otetta.</blockquote>
+                    <p data-i18n="cartomancy.cards.trust.p1">Kukkia, kalpea röyhelö, sormet lomittain rintalastalla. Luottamus on kymmenestä viimeinen, koska se on uskomus joka on lakannut tutkimasta itseään. Koriste on rohkeus näkyä vartioimatta.</p>
+                    <p data-i18n="cartomancy.cards.trust.p2">Silmät ovat auki ja tasassa. Kuvassa mikään ei piile, siksi sen voi luulla turvaksi.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.trust.use">Jokin voidaan antaa ilman sopimusta. Ota se vastaan sellaisenaan. Älä koristele lahjaa todisteeksi.</span></p>
                 </article>
             </section>
 
             <section class="card card--court" id="openness">
                 <figure>
-                    <img src="art/cartomancy/11-openness.png" alt="Seeker of Beliefs, Openness" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/11-openness.png" alt="Uskomusten etsijä, Avoimuus" data-i18n-attr="alt:cartomancy.cards.openness.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">XI · Seeker of Beliefs</p>
-                    <h2>Openness</h2>
-                    <blockquote>She keeps the window open and lets the animal stand unleashed.</blockquote>
-                    <p>A seeker with a censer, smoke leaving toward a dark crown of beasts, a pale lamb at her shoulder that nobody is holding. Openness is the discipline of not closing the hand around what has come to stand beside you.</p>
-                    <p>The court begins here. The ten described the weather. The Seeker is the one who walks into it carrying fire and refusing a leash.</p>
-                    <p class="reading-use"><span>In a reading</span> Stay permeable. Do not adopt the belief yet, and do not drive it off. Let it remain a guest.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.openness.rank">XI · Uskomusten etsijä</p>
+                    <h2 data-i18n="cartomancy.cards.openness.title">Avoimuus</h2>
+                    <blockquote data-i18n="cartomancy.cards.openness.quote">Hän pitää ikkunan auki ja antaa eläimen seistä kytkemättä.</blockquote>
+                    <p data-i18n="cartomancy.cards.openness.p1">Etsijä suitsutusastian kanssa, savu joka lähtee kohti petojen tummaa kruunua, kalpea karitsa olalla jota kukaan ei pidä. Avoimuus on kuri olla sulkematta kättä sen ympärille, mikä on tullut seisomaan viereen.</p>
+                    <p data-i18n="cartomancy.cards.openness.p2">Hovi alkaa tästä. Kymmenen kuvasi sään. Etsijä on se, joka kävelee siihen tuli mukanaan ja kieltäytyy hihnasta.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.openness.use">Pysy läpäisevänä. Älä ota uskomusta vielä, äläkä aja sitä pois. Anna sen jäädä vieraaksi.</span></p>
                 </article>
             </section>
 
             <section class="card card--court" id="self">
                 <figure>
-                    <img src="art/cartomancy/12-self.png" alt="Keeper of Beliefs, Self" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/12-self.png" alt="Uskomusten haltija, Itse" data-i18n-attr="alt:cartomancy.cards.self.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">XII · Keeper of Beliefs</p>
-                    <h2>Self</h2>
-                    <blockquote>The eyes close, and the machinery goes on being a face.</blockquote>
-                    <p>A mask of iridescent metal, eyes shut, a temple of gears and small figures holding the likeness up. Self is what the Keeper guards: a reliquary. Identity continues after the glance that made it has ended.</p>
-                    <p>The danger is worship of the housing. A self that cannot be opened becomes the dogma of one person.</p>
-                    <p class="reading-use"><span>In a reading</span> Keep what is yours without mistaking the vessel for the relic. Close the eyes. Leave the door unlatched.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.self.rank">XII · Uskomusten haltija</p>
+                    <h2 data-i18n="cartomancy.cards.self.title">Itse</h2>
+                    <blockquote data-i18n="cartomancy.cards.self.quote">Silmät sulkeutuvat, ja koneisto jatkaa kasvoina.</blockquote>
+                    <p data-i18n="cartomancy.cards.self.p1">Naamio hohtavaa metallia, silmät kiinni, rattaiden ja pienten hahmojen temppeli joka kannattelee kuvaa. Itse on se, mitä Haltija vartioi: relikvaario. Identiteetti jatkuu sen jälkeen, kun katse joka teki sen on päättynyt.</p>
+                    <p data-i18n="cartomancy.cards.self.p2">Vaara on kotelon palvonta. Itse jota ei voi avata, muuttuu yhden ihmisen dogmiksi.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.self.use">Pidä omasi, äläkä sekoita astiaa reliikkiin. Sulje silmät. Jätä ovi salvasta auki.</span></p>
                 </article>
             </section>
 
             <section class="card card--court" id="freedom">
                 <figure>
-                    <img src="art/cartomancy/13-freedom.png" alt="Master of Beliefs, Freedom" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/13-freedom.png" alt="Uskomusten mestari, Vapaus" data-i18n-attr="alt:cartomancy.cards.freedom.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">XIII · Master of Beliefs</p>
-                    <h2>Freedom</h2>
-                    <blockquote>Both faces look. The world hangs from a point.</blockquote>
-                    <p>A two-faced sitter under a cone, on an island that is also an inverted mountain, planets and small craft strung on a line above the snow. Freedom is the balance in which a belief no longer needs the ground in order to be true.</p>
-                    <p>The Master does not abolish the suit. Imagination, bias, dogma, doubt — they are still in the sky, as vessels. They have stopped being the floor.</p>
-                    <p class="reading-use"><span>In a reading</span> You may set the belief down without betraying it. What remains is the seat, and the seat is enough.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.freedom.rank">XIII · Uskomusten mestari</p>
+                    <h2 data-i18n="cartomancy.cards.freedom.title">Vapaus</h2>
+                    <blockquote data-i18n="cartomancy.cards.freedom.quote">Molemmat kasvot katsovat. Maailma riippuu yhdestä pisteestä.</blockquote>
+                    <p data-i18n="cartomancy.cards.freedom.p1">Kaksikasvoinen istuja kartion alla, saarella joka on myös nurin käännetty vuori, planeettoja ja pieniä aluksia langalla lumen yllä. Vapaus on tasapaino, jossa uskomus ei enää tarvitse maata ollakseen tosi.</p>
+                    <p data-i18n="cartomancy.cards.freedom.p2">Mestari ei lakkauta maata. Mielikuvitus, vinouma, dogmi, epäilys — ne ovat yhä taivaalla, astioina. Ne ovat lakanneet olemasta lattia.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.freedom.use">Saat laskea uskomuksen alas kavaltaamatta sitä. Jäljelle jää istuin, ja istuin riittää.</span></p>
                 </article>
             </section>
         </div>
 
         <article id="suit-intro-changes" class="suit-intro" hidden>
-            <p class="suit-kicker">Maa II</p>
-            <h2>Changes</h2>
-            <blockquote>A change is not an event. It is the interval in which a thing agrees to become another thing.</blockquote>
-            <p>This is the second land. Thirteen cards, and not a costume of any older deck. Ten weathers of a turning, then three who walk them: the Seeker, the Keeper, the Master.</p>
-            <p>Read a card for the motion it names. The picture is already the turning. Fortune can wait.</p>
+            <p class="suit-kicker" data-i18n="cartomancy.intro.changes.kicker">Maa II</p>
+            <h2 data-i18n="cartomancy.lands.changes">Muutokset</h2>
+            <blockquote data-i18n="cartomancy.intro.changes.quote">Muutos ei ole tapahtuma. Se on väli, jossa asia suostuu tulemaan toiseksi asiaksi.</blockquote>
+            <p data-i18n="cartomancy.intro.changes.p1">Tämä on toinen maa. Kolmetoista korttia, eikä minkään vanhemman pakan asu. Kymmenen käänteen säätä, sitten kolme, jotka kävelevät niiden halki: Etsijä, Haltija, Mestari.</p>
+            <p data-i18n="cartomancy.intro.changes.p2">Lue kortti liikkeestä, jonka se nimeää. Kuva on jo käänne. Ennustus saa odottaa.</p>
         </article>
 
-        <nav class="suit-index" id="index-changes" aria-label="Cards of Changes" hidden>
-            <a href="#time">I Time</a>
-            <a href="#fear">II Fear</a>
-            <a href="#attachment">III Attachment</a>
-            <a href="#opportunity">IV Opportunity</a>
-            <a href="#manifestation">V Manifestation</a>
-            <a href="#inspiration">VI Inspiration</a>
-            <a href="#futility">VII Futility</a>
-            <a href="#sacrifice">VIII Sacrifice</a>
-            <a href="#renewal">IX Renewal</a>
-            <a href="#adjustment">X Adjustment</a>
-            <a href="#curiosity">XI Curiosity</a>
-            <a href="#vision">XII Vision</a>
-            <a href="#adaptation">XIII Adaptation</a>
+        <nav class="suit-index" id="index-changes" aria-label="Muutosten kortit" data-i18n-attr="aria-label:cartomancy.nav.changes" hidden>
+            <a href="#time" data-i18n="cartomancy.cards.time.index">I Aika</a>
+            <a href="#fear" data-i18n="cartomancy.cards.fear.index">II Pelko</a>
+            <a href="#attachment" data-i18n="cartomancy.cards.attachment.index">III Kiintymys</a>
+            <a href="#opportunity" data-i18n="cartomancy.cards.opportunity.index">IV Tilaisuus</a>
+            <a href="#manifestation" data-i18n="cartomancy.cards.manifestation.index">V Ilmentymä</a>
+            <a href="#inspiration" data-i18n="cartomancy.cards.inspiration.index">VI Innoitus</a>
+            <a href="#futility" data-i18n="cartomancy.cards.futility.index">VII Turhuus</a>
+            <a href="#sacrifice" data-i18n="cartomancy.cards.sacrifice.index">VIII Uhraus</a>
+            <a href="#renewal" data-i18n="cartomancy.cards.renewal.index">IX Uudistus</a>
+            <a href="#adjustment" data-i18n="cartomancy.cards.adjustment.index">X Säätö</a>
+            <a href="#curiosity" data-i18n="cartomancy.cards.curiosity.index">XI Uteliaisuus</a>
+            <a href="#vision" data-i18n="cartomancy.cards.vision.index">XII Näky</a>
+            <a href="#adaptation" data-i18n="cartomancy.cards.adaptation.index">XIII Sopeutuminen</a>
         </nav>
 
         <div id="deck-changes" hidden>
             <section class="card" id="time">
                 <figure>
-                    <img src="art/cartomancy/changes/01-time.png" alt="Root of Changes, Time" width="613" height="1024" decoding="async">
+                    <img src="art/cartomancy/changes/01-time.png" alt="Muutosten juuri, Aika" data-i18n-attr="alt:cartomancy.cards.time.alt" width="613" height="1024" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">I · Root of Changes</p>
-                    <h2>Time</h2>
-                    <blockquote>Before anything moves, duration has to agree.</blockquote>
-                    <p>The figure in the arch is not dressed. Muscle, vessel, and a spiked halo are the body shown as a clock worn on the inside. A smaller face looks up from the step, because time is only visible to someone who is already inside it.</p>
-                    <p>Change has no root until one moment can be told from the next. Without that difference, fear and renewal are the same weather.</p>
-                    <p class="reading-use"><span>In a reading</span> The matter has duration, and that is the whole permission. Let one moment finish before you ask the next to begin.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.time.rank">I · Muutosten juuri</p>
+                    <h2 data-i18n="cartomancy.cards.time.title">Aika</h2>
+                    <blockquote data-i18n="cartomancy.cards.time.quote">Ennen kuin mikään liikkuu, keston on suostuttava.</blockquote>
+                    <p data-i18n="cartomancy.cards.time.p1">Kaaren hahmo ei ole puettu. Lihas, suoni ja piikkinen sädekehä ovat ruumis, näytettynä kellona jota pidetään sisäpuolella. Pienemmät kasvot katsovat ylös portaalta, koska aika näkyy vain sille joka on jo sen sisällä.</p>
+                    <p data-i18n="cartomancy.cards.time.p2">Muutoksella ei ole juurta ennen kuin yksi hetki voidaan erottaa seuraavasta. Ilman sitä eroa pelko ja uudistus ovat sama sää.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.time.use">Asialla on kesto, ja se on koko lupa. Anna yhden hetken loppua ennen kuin pyydät seuraavaa alkamaan.</span></p>
                 </article>
             </section>
 
             <section class="card" id="fear">
                 <figure>
-                    <img src="art/cartomancy/changes/02-fear.png" alt="Changes, Fear" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/changes/02-fear.png" alt="Muutokset, Pelko" data-i18n-attr="alt:cartomancy.cards.fear.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">II · Changes</p>
-                    <h2>Fear</h2>
-                    <blockquote>The first shape a change takes is a weapon.</blockquote>
-                    <p>Purple smoke has learned to be a crown. Gold plates sit on a body that is already half thorn, and the staff is a relic that still expects to be obeyed. Fear is how the nervous system announces that the room is no longer the room.</p>
-                    <p>It is the second card because a turning that cannot be feared has not been felt. The crown is weather. The staff can be set down.</p>
-                    <p class="reading-use"><span>In a reading</span> Name what the body is bracing for. The alarm is information. It is not yet a decision.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.fear.rank">II · Muutokset</p>
+                    <h2 data-i18n="cartomancy.cards.fear.title">Pelko</h2>
+                    <blockquote data-i18n="cartomancy.cards.fear.quote">Ensimmäinen muoto, jonka muutos ottaa, on ase.</blockquote>
+                    <p data-i18n="cartomancy.cards.fear.p1">Violetti savu on oppinut olemaan kruunu. Kultalevyt istuvat ruumiilla joka on jo puoliksi piikki, ja sauva on reliikki joka yhä odottaa että sitä totellaan. Pelko on tapa, jolla hermosto ilmoittaa että huone ei ole enää se huone.</p>
+                    <p data-i18n="cartomancy.cards.fear.p2">Se on toinen kortti, koska käännettä jota ei voi pelätä ei ole tunnettu. Kruunu on säätä. Sauvan voi laskea.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.fear.use">Nimeä se, mille ruumis varautuu. Hälytys on tietoa. Se ei ole vielä päätös.</span></p>
                 </article>
             </section>
 
             <section class="card" id="attachment">
                 <figure>
-                    <img src="art/cartomancy/changes/03-attachment.png" alt="Changes, Attachment" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/changes/03-attachment.png" alt="Muutokset, Kiintymys" data-i18n-attr="alt:cartomancy.cards.attachment.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">III · Changes</p>
-                    <h2>Attachment</h2>
-                    <blockquote>What will not fall is being held up.</blockquote>
-                    <p>A smiling corpse in violet hangs from ropes, and the hands on the ropes are not all alive. One man in a dark suit laughs as he pulls. The rest are bone. Attachment keeps a change in the air by spending other people on the strings.</p>
-                    <p>The figure looks ceremonial. The work underneath is labor. Height, here, is a bill.</p>
-                    <p class="reading-use"><span>In a reading</span> Ask who is holding the rope, and whether the height is worth their arms. Slack is a kind of honesty.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.attachment.rank">III · Muutokset</p>
+                    <h2 data-i18n="cartomancy.cards.attachment.title">Kiintymys</h2>
+                    <blockquote data-i18n="cartomancy.cards.attachment.quote">Se mikä ei putoa, pidetään ylhäällä.</blockquote>
+                    <p data-i18n="cartomancy.cards.attachment.p1">Hymyilevä ruumis violetissa riippuu köysistä, eivätkä kaikki köysien kädet ole elossa. Yksi mies tummassa puvussa nauraa vetäessään. Loput ovat luuta. Kiintymys pitää muutoksen ilmassa kuluttamalla muita ihmisiä naruissa.</p>
+                    <p data-i18n="cartomancy.cards.attachment.p2">Hahmo näyttää seremonialliselta. Alla oleva työ on työtä. Korkeus on tässä lasku.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.attachment.use">Kysy kuka pitää köydestä, ja onko korkeus heidän käsivarsiensa arvoinen. Löysyys on eräänlaista rehellisyyttä.</span></p>
                 </article>
             </section>
 
             <section class="card" id="opportunity">
                 <figure>
-                    <img src="art/cartomancy/changes/04-opportunity.png" alt="Changes, Opportunity" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/changes/04-opportunity.png" alt="Muutokset, Tilaisuus" data-i18n-attr="alt:cartomancy.cards.opportunity.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">IV · Changes</p>
-                    <h2>Opportunity</h2>
-                    <blockquote>The weathered face can still look straight at you.</blockquote>
-                    <p>Feathers open in more than one direction. Beads, a star on the shoulder, a coin at the chest: the elder is dressed in what earlier turnings left behind. Opportunity is not a blank door. It is a direction that survived.</p>
-                    <p>The portrait does not smile. It offers the look, which is stricter than an invitation.</p>
-                    <p class="reading-use"><span>In a reading</span> The opening is already wearing a history. Step toward it without pretending you are the first.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.opportunity.rank">IV · Muutokset</p>
+                    <h2 data-i18n="cartomancy.cards.opportunity.title">Tilaisuus</h2>
+                    <blockquote data-i18n="cartomancy.cards.opportunity.quote">Sään pieksemät kasvot voivat yhä katsoa sinua suoraan.</blockquote>
+                    <p data-i18n="cartomancy.cards.opportunity.p1">Höyhenet avautuvat useampaan suuntaan. Helmet, tähti olalla, kolikko rinnassa: vanhus on puettu siihen, mitä aiemmat käänteet jättivät. Tilaisuus ei ole tyhjä ovi. Se on suunta, joka säilyi.</p>
+                    <p data-i18n="cartomancy.cards.opportunity.p2">Muotokuva ei hymyile. Se tarjoaa katseen, joka on tiukempi kuin kutsu.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.opportunity.use">Aukko kantaa jo historiaa. Astu sitä kohti teeskentelemättä olevasi ensimmäinen.</span></p>
                 </article>
             </section>
 
             <section class="card" id="manifestation">
                 <figure>
-                    <img src="art/cartomancy/changes/05-manifestation.png" alt="Changes, Manifestation" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/changes/05-manifestation.png" alt="Muutokset, Ilmentymä" data-i18n-attr="alt:cartomancy.cards.manifestation.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">V · Changes</p>
-                    <h2>Manifestation</h2>
-                    <blockquote>A wish becomes a body you can walk around.</blockquote>
-                    <p>Wings of machined gold fill a cathedral of gears. The figure holds a ring the size of a doorway, and the ring is the circuit a change closes when it stops being imagined. Green at the legs is the living thing the machine agreed to carry.</p>
-                    <p>A turning that never takes a shape is only a rumor of motion. Weight is the proof.</p>
-                    <p class="reading-use"><span>In a reading</span> Give the change a form that can be stood next to. Until it has weight, it is still a wish.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.manifestation.rank">V · Muutokset</p>
+                    <h2 data-i18n="cartomancy.cards.manifestation.title">Ilmentymä</h2>
+                    <blockquote data-i18n="cartomancy.cards.manifestation.quote">Toiveesta tulee ruumis, jonka ympäri voi kävellä.</blockquote>
+                    <p data-i18n="cartomancy.cards.manifestation.p1">Koneistetun kullan siivet täyttävät rattaiden katedraalin. Hahmo pitää sormusta oviaukon kokoista, ja sormus on piiri jonka muutos sulkee kun se lakkaa olemasta kuviteltu. Vihreä jaloissa on elävä asia, jonka kone suostui kantamaan.</p>
+                    <p data-i18n="cartomancy.cards.manifestation.p2">Käänne joka ei koskaan ota muotoa on vain huhu liikkeestä. Paino on todiste.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.manifestation.use">Anna muutokselle muoto, jonka vieressä voi seistä. Ennen kuin sillä on paino, se on yhä toive.</span></p>
                 </article>
             </section>
 
             <section class="card" id="inspiration">
                 <figure>
-                    <img src="art/cartomancy/changes/06-inspiration.png" alt="Changes, Inspiration" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/changes/06-inspiration.png" alt="Muutokset, Innoitus" data-i18n-attr="alt:cartomancy.cards.inspiration.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">VI · Changes</p>
-                    <h2>Inspiration</h2>
-                    <blockquote>The bird lands because the fire was kept small.</blockquote>
-                    <p>A kneeling man in an old coat, white at the throat, offers his hands to a crested bird. A tree leans in, and a low flame works in a brazier. Inspiration is a visitor. It requires a place to perch and something already burning.</p>
-                    <p>The smile is the risk of being altered by what you invited. A larger fire would have sent the bird back into the leaves.</p>
-                    <p class="reading-use"><span>In a reading</span> Make the fire smaller, not larger. What is coming needs a wrist, not a stage.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.inspiration.rank">VI · Muutokset</p>
+                    <h2 data-i18n="cartomancy.cards.inspiration.title">Innoitus</h2>
+                    <blockquote data-i18n="cartomancy.cards.inspiration.quote">Lintu laskeutuu, koska tuli pidettiin pienenä.</blockquote>
+                    <p data-i18n="cartomancy.cards.inspiration.p1">Polvistuva mies vanhassa takissa, valkoista kurkussa, ojentaa kätensä töyhtölinnulle. Puu kallistuu lähelle, ja matala liekki tekee työtään hiilipannussa. Innoitus on vieras. Se tarvitsee paikan mihin istua, ja jotain joka jo palaa.</p>
+                    <p data-i18n="cartomancy.cards.inspiration.p2">Hymy on riski tulla muutetuksi siitä, mitä kutsuit. Suurempi tuli olisi lähettänyt linnun takaisin lehtiin.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.inspiration.use">Tee tuli pienemmäksi, älä suuremmaksi. Se mikä on tulossa tarvitsee ranteen, ei lavaa.</span></p>
                 </article>
             </section>
 
             <section class="card" id="futility">
                 <figure>
-                    <img src="art/cartomancy/changes/07-futility.png" alt="Changes, Futility" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/changes/07-futility.png" alt="Muutokset, Turhuus" data-i18n-attr="alt:cartomancy.cards.futility.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">VII · Changes</p>
-                    <h2>Futility</h2>
-                    <blockquote>The instrument is beautiful. The river was not listening.</blockquote>
-                    <p>A woman sits on a root above moving water, a harp larger than the clearing behind her, a small object cupped in her hands. Moss, orchids, and the stream continue their own work. The song is not nothing. It is simply not the river.</p>
-                    <p>Futility is an effort aimed at the wrong element. The harp did not fail. The current was never going to become music.</p>
-                    <p class="reading-use"><span>In a reading</span> Stop asking the water to become the harp. Move the music, or let the current keep its name.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.futility.rank">VII · Muutokset</p>
+                    <h2 data-i18n="cartomancy.cards.futility.title">Turhuus</h2>
+                    <blockquote data-i18n="cartomancy.cards.futility.quote">Soitin on kaunis. Joki ei kuunnellut.</blockquote>
+                    <p data-i18n="cartomancy.cards.futility.p1">Nainen istuu juurella liikkuvan veden yllä, harppu aukiota suurempi selän takana, pieni esine kupissa käsissä. Sammal, orkideat ja virta jatkavat omaa työtään. Laulu ei ole tyhjä. Se vain ei ole joki.</p>
+                    <p data-i18n="cartomancy.cards.futility.p2">Turhuus on ponnistus, joka on suunnattu väärään aineeseen. Harppu ei epäonnistunut. Virrasta ei ollut koskaan tulossa musiikkia.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.futility.use">Lakkaa pyytämästä vettä harpuksi. Siirrä musiikki, tai anna virran pitää nimensä.</span></p>
                 </article>
             </section>
 
             <section class="card" id="sacrifice">
                 <figure>
-                    <img src="art/cartomancy/changes/08-sacrifice.png" alt="Changes, Sacrifice" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/changes/08-sacrifice.png" alt="Muutokset, Uhraus" data-i18n-attr="alt:cartomancy.cards.sacrifice.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">VIII · Changes</p>
-                    <h2>Sacrifice</h2>
-                    <blockquote>White is the floor you clear for what comes next.</blockquote>
-                    <p>A seated figure, face shadowed, hands pressed, blue beads falling between the fingers. The robe is marked with small crosses and circles, and a dark mouth opens in the wall behind. The white is not innocence. It is what was set down so a change would have a place to stand.</p>
-                    <p>The room can be ready and still be empty. Emptying is not the same thing as arrival.</p>
-                    <p class="reading-use"><span>In a reading</span> Set down the one thing the turning actually needs. An offering that costs everything is usually a fear wearing white.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.sacrifice.rank">VIII · Muutokset</p>
+                    <h2 data-i18n="cartomancy.cards.sacrifice.title">Uhraus</h2>
+                    <blockquote data-i18n="cartomancy.cards.sacrifice.quote">Valkoinen on lattia, jonka raivaat sille mikä tulee seuraavaksi.</blockquote>
+                    <p data-i18n="cartomancy.cards.sacrifice.p1">Istuva hahmo, kasvot varjossa, kädet painettuina, sinisiä helmiä putoaa sormien välistä. Viitta on merkitty pienillä risteillä ja ympyröillä, ja tumma suu aukeaa seinässä takana. Valkoinen ei ole viattomuutta. Se on se, mikä laskettiin jotta muutoksella olisi paikka seistä.</p>
+                    <p data-i18n="cartomancy.cards.sacrifice.p2">Huone voi olla valmis ja silti tyhjä. Tyhjentäminen ei ole sama asia kuin saapuminen.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.sacrifice.use">Laske se yksi asia, jonka käänne todella tarvitsee. Uhri joka maksaa kaiken on yleensä pelko valkoiseen puettuna.</span></p>
                 </article>
             </section>
 
             <section class="card" id="renewal">
                 <figure>
-                    <img src="art/cartomancy/changes/09-renewal.png" alt="Changes, Renewal" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/changes/09-renewal.png" alt="Muutokset, Uudistus" data-i18n-attr="alt:cartomancy.cards.renewal.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">IX · Changes</p>
-                    <h2>Renewal</h2>
-                    <blockquote>The same body, rebuilt around what still conducts.</blockquote>
-                    <p>A skeletal elder sits in a broken wall, beard like a river, one arm a cabinet of switches, wires running into the stone. The other hand is still a hand. Renewal is not a fresh start. It is the agreement to be repaired in place, with the ruin left visible.</p>
-                    <p>What conducts is kept. What only remembered conducting is allowed to become wire.</p>
-                    <p class="reading-use"><span>In a reading</span> Repair the joint that still carries a current. Do not sand the wall back to a year that is gone.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.renewal.rank">IX · Muutokset</p>
+                    <h2 data-i18n="cartomancy.cards.renewal.title">Uudistus</h2>
+                    <blockquote data-i18n="cartomancy.cards.renewal.quote">Sama ruumis, koottu uudelleen sen ympärille mikä yhä johtaa virtaa.</blockquote>
+                    <p data-i18n="cartomancy.cards.renewal.p1">Luinen vanhus istuu rikkinäisessä seinässä, parta kuin joki, toinen käsivarsi kytkinten kaappi, johdot kiveen. Toinen käsi on yhä käsi. Uudistus ei ole uusi alku. Se on sopimus tulla korjatuksi paikallaan, raunio näkyvissä.</p>
+                    <p data-i18n="cartomancy.cards.renewal.p2">Se mikä johtaa virtaa pidetään. Se mikä vain muisti johtaneensa virtaa saa muuttua johdoksi.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.renewal.use">Korjaa liitos, joka yhä kantaa virtaa. Älä hio seinää takaisin vuoteen, joka on mennyt.</span></p>
                 </article>
             </section>
 
             <section class="card" id="adjustment">
                 <figure>
-                    <img src="art/cartomancy/changes/10-adjustment.png" alt="Changes, Adjustment" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/changes/10-adjustment.png" alt="Muutokset, Säätö" data-i18n-attr="alt:cartomancy.cards.adjustment.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">X · Changes</p>
-                    <h2>Adjustment</h2>
-                    <blockquote>A small correction keeps a large structure from lying.</blockquote>
-                    <p>The hat is a tower: brass, tiers, a measure worn on the head. Blue tassels fall where a beard would be, and the face carries marks under the eyes like a calibration that was accepted. Behind, a corridor of doors. A change that cannot be tuned becomes a dogma with legs.</p>
-                    <p>The face is calm. The hat is doing the work. The last of the ten weathers is a tenth of a turn.</p>
-                    <p class="reading-use"><span>In a reading</span> Correct the measure, not the person. A small turn is sometimes the whole turning.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.adjustment.rank">X · Muutokset</p>
+                    <h2 data-i18n="cartomancy.cards.adjustment.title">Säätö</h2>
+                    <blockquote data-i18n="cartomancy.cards.adjustment.quote">Pieni korjaus estää suurta rakennetta valehtelemasta.</blockquote>
+                    <p data-i18n="cartomancy.cards.adjustment.p1">Hattu on torni: messinkiä, kerroksia, mitta päässä. Siniset tupsut putoavat sinne missä parta olisi, ja kasvoissa on merkkejä silmien alla kuin kalibrointi joka hyväksyttiin. Takana ovien käytävä. Muutos jota ei voi virittää muuttuu dogmiksi, jolla on jalat.</p>
+                    <p data-i18n="cartomancy.cards.adjustment.p2">Kasvot ovat tyynet. Hattu tekee työn. Kymmenestä säästä viimeinen on kymmenesosa käänteestä.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.adjustment.use">Korjaa mitta, älä ihmistä. Pieni käännös on joskus koko käänne.</span></p>
                 </article>
             </section>
 
             <section class="card card--court" id="curiosity">
                 <figure>
-                    <img src="art/cartomancy/changes/11-curiosity.png" alt="Seeker of Changes, Curiosity" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/changes/11-curiosity.png" alt="Muutosten etsijä, Uteliaisuus" data-i18n-attr="alt:cartomancy.cards.curiosity.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">XI · Seeker of Changes</p>
-                    <h2>Curiosity</h2>
-                    <blockquote>An instrument, not a verdict.</blockquote>
-                    <p>A profile in a diving helm, one lens lit blue, cables and small mechanisms hanging like a second beard. The face is uncovered enough to be human and closed enough to go under. Curiosity is the court of approach: the willingness to be changed by what the lens finds, before a name is given.</p>
-                    <p>The helm is how you stay present inside the unknown. It is not armor against it.</p>
-                    <p class="reading-use"><span>In a reading</span> Look longer than is comfortable, and do not decide in the first breath. The lens is already open.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.curiosity.rank">XI · Muutosten etsijä</p>
+                    <h2 data-i18n="cartomancy.cards.curiosity.title">Uteliaisuus</h2>
+                    <blockquote data-i18n="cartomancy.cards.curiosity.quote">Väline, ei tuomio.</blockquote>
+                    <p data-i18n="cartomancy.cards.curiosity.p1">Profiili sukelluskypärässä, yksi linssi sinisenä, kaapeleita ja pieniä mekanismeja riippuen kuin toinen parta. Kasvot ovat sen verran paljaat että ovat ihmisen, ja sen verran kiinni että voivat mennä alle. Uteliaisuus on lähestymisen hovi: halu tulla muutetuksi siitä mitä linssi löytää, ennen kuin nimi annetaan.</p>
+                    <p data-i18n="cartomancy.cards.curiosity.p2">Kypärä on tapa pysyä läsnä tuntemattomassa. Se ei ole panssari sitä vastaan.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.curiosity.use">Katso kauemmin kuin on mukavaa, äläkä päätä ensimmäisellä hengenvedolla. Linssi on jo auki.</span></p>
                 </article>
             </section>
 
             <section class="card card--court" id="vision">
                 <figure>
-                    <img src="art/cartomancy/changes/12-vision.png" alt="Keeper of Changes, Vision" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/changes/12-vision.png" alt="Muutosten haltija, Näky" data-i18n-attr="alt:cartomancy.cards.vision.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">XII · Keeper of Changes</p>
-                    <h2>Vision</h2>
-                    <blockquote>A spiral, not a forecast.</blockquote>
-                    <p>A face in profile, eyes closed, grown into a nautilus of blades and chambers. Turquoise and bone, a second coil in the dark. Vision is the capacity to keep more than one future in the same shell. The eyes are shut because a glance would flatten the picture.</p>
-                    <p>The Keeper does not spend the vision. Spending it would make it a plan, and a plan is a smaller room.</p>
-                    <p class="reading-use"><span>In a reading</span> Hold the picture without forcing it into a single door. A vision that can only be one thing has already become a fear.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.vision.rank">XII · Muutosten haltija</p>
+                    <h2 data-i18n="cartomancy.cards.vision.title">Näky</h2>
+                    <blockquote data-i18n="cartomancy.cards.vision.quote">Spiraali, ei ennuste.</blockquote>
+                    <p data-i18n="cartomancy.cards.vision.p1">Kasvot profiilissa, silmät kiinni, kasvaneet terien ja kammioiden kotiloksi. Turkoosia ja luuta, toinen kierre pimeässä. Näky on kyky pitää useampi kuin yksi tulevaisuus samassa kuoressa. Silmät ovat kiinni, koska silmäys litistäisi kuvan.</p>
+                    <p data-i18n="cartomancy.cards.vision.p2">Haltija ei kuluta näkyä. Sen kuluttaminen tekisi siitä suunnitelman, ja suunnitelma on pienempi huone.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.vision.use">Pidä kuva pakottamatta sitä yhteen oveen. Näky joka voi olla vain yksi asia on jo muuttunut peloksi.</span></p>
                 </article>
             </section>
 
             <section class="card card--court" id="adaptation">
                 <figure>
-                    <img src="art/cartomancy/changes/13-adaptation.png" alt="Master of Changes, Adaptation" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/changes/13-adaptation.png" alt="Muutosten mestari, Sopeutuminen" data-i18n-attr="alt:cartomancy.cards.adaptation.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">XIII · Master of Changes</p>
-                    <h2>Adaptation</h2>
-                    <blockquote>The shape that can live with the turning.</blockquote>
-                    <p>A column of machine and face, cables like roots, lamps for eyes. Around it, other faces — some looking up, some in profile, some half absorbed into the same machinery. Adaptation is not a victory over change. It is the body that no longer needs the old outline in order to continue.</p>
-                    <p>The faces are not an audience. They are the earlier versions that stayed. The Master keeps what still conducts and lets the outline go.</p>
-                    <p class="reading-use"><span>In a reading</span> Keep the versions that still carry a current. What remains is a way of going on.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.adaptation.rank">XIII · Muutosten mestari</p>
+                    <h2 data-i18n="cartomancy.cards.adaptation.title">Sopeutuminen</h2>
+                    <blockquote data-i18n="cartomancy.cards.adaptation.quote">Muoto, joka voi elää käänteen kanssa.</blockquote>
+                    <p data-i18n="cartomancy.cards.adaptation.p1">Pylväs konetta ja kasvoja, kaapeleita kuin juuria, lamppuja silminä. Ympärillä muita kasvoja — jotkut katsovat ylös, jotkut profiilissa, jotkut puoliksi imeytyneinä samaan koneistoon. Sopeutuminen ei ole voitto muutoksesta. Se on ruumis, joka ei enää tarvitse vanhaa ääriviivaa jatkaakseen.</p>
+                    <p data-i18n="cartomancy.cards.adaptation.p2">Kasvot eivät ole yleisö. Ne ovat aiemmat versiot, jotka jäivät. Mestari pitää sen mikä yhä johtaa virtaa, ja päästää ääriviivan menemään.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.adaptation.use">Pidä versiot, jotka yhä kantavat virtaa. Jäljelle jää tapa jatkaa.</span></p>
                 </article>
             </section>
         </div>
 
         <article id="suit-intro-powers" class="suit-intro" hidden>
-            <p class="suit-kicker">Maa III</p>
-            <h2>Powers</h2>
-            <blockquote>A power is not a force. It is a capacity that has found a body willing to carry it.</blockquote>
-            <p>This is the third land. Thirteen cards, and not a costume of any older deck. Ten weathers of a capacity, then three who walk them: the Seeker, the Keeper, the Master.</p>
-            <p>Read a card for the capacity it names. The picture is already the use. Fortune can wait.</p>
+            <p class="suit-kicker" data-i18n="cartomancy.intro.powers.kicker">Maa III</p>
+            <h2 data-i18n="cartomancy.lands.powers">Voimat</h2>
+            <blockquote data-i18n="cartomancy.intro.powers.quote">Voima ei ole väki. Se on kyky, joka on löytänyt ruumiin valmiin kantamaan sen.</blockquote>
+            <p data-i18n="cartomancy.intro.powers.p1">Tämä on kolmas maa. Kolmetoista korttia, eikä minkään vanhemman pakan asu. Kymmenen kyvyn säätä, sitten kolme, jotka kävelevät niiden halki: Etsijä, Haltija, Mestari.</p>
+            <p data-i18n="cartomancy.intro.powers.p2">Lue kortti kyvystä, jonka se nimeää. Kuva on jo käyttö. Ennustus saa odottaa.</p>
         </article>
 
-        <nav class="suit-index" id="index-powers" aria-label="Cards of Powers" hidden>
-            <a href="#potential">I Potential</a>
-            <a href="#avoidance">II Avoidance</a>
-            <a href="#pain">III Pain</a>
-            <a href="#failure">IV Failure</a>
-            <a href="#struggle">V Struggle</a>
-            <a href="#play">VI Play</a>
-            <a href="#swiftness">VII Swiftness</a>
-            <a href="#pleasure">VIII Pleasure</a>
-            <a href="#control">IX Control</a>
-            <a href="#courage">X Courage</a>
-            <a href="#clarity">XI Clarity</a>
-            <a href="#resilience">XII Resilience</a>
-            <a href="#focus">XIII Focus</a>
+        <nav class="suit-index" id="index-powers" aria-label="Voimien kortit" data-i18n-attr="aria-label:cartomancy.nav.powers" hidden>
+            <a href="#potential" data-i18n="cartomancy.cards.potential.index">I Potentiaali</a>
+            <a href="#avoidance" data-i18n="cartomancy.cards.avoidance.index">II Välttely</a>
+            <a href="#pain" data-i18n="cartomancy.cards.pain.index">III Kipu</a>
+            <a href="#failure" data-i18n="cartomancy.cards.failure.index">IV Epäonnistuminen</a>
+            <a href="#struggle" data-i18n="cartomancy.cards.struggle.index">V Kamppailu</a>
+            <a href="#play" data-i18n="cartomancy.cards.play.index">VI Leikki</a>
+            <a href="#swiftness" data-i18n="cartomancy.cards.swiftness.index">VII Nopeus</a>
+            <a href="#pleasure" data-i18n="cartomancy.cards.pleasure.index">VIII Nautinto</a>
+            <a href="#control" data-i18n="cartomancy.cards.control.index">IX Hallinta</a>
+            <a href="#courage" data-i18n="cartomancy.cards.courage.index">X Rohkeus</a>
+            <a href="#clarity" data-i18n="cartomancy.cards.clarity.index">XI Kirkkaus</a>
+            <a href="#resilience" data-i18n="cartomancy.cards.resilience.index">XII Kestävyys</a>
+            <a href="#focus" data-i18n="cartomancy.cards.focus.index">XIII Keskittyminen</a>
         </nav>
 
         <div id="deck-powers" hidden>
             <section class="card" id="potential">
                 <figure>
-                    <img src="art/cartomancy/powers/01-potential.png" alt="Root of Powers, Potential" width="613" height="1024" decoding="async">
+                    <img src="art/cartomancy/powers/01-potential.png" alt="Voimien juuri, Potentiaali" data-i18n-attr="alt:cartomancy.cards.potential.alt" width="613" height="1024" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">I · Root of Powers</p>
-                    <h2>Potential</h2>
-                    <blockquote>The column is already burning. The lamp is only how you approach it.</blockquote>
-                    <p>An elder in pale robes sits among skulls and offers a small light toward a pillar of gold, bone, and hanging bells. The skulls are not a threat. They are forms a capacity has already passed through. The lamp is small because the column does not need to be lit.</p>
-                    <p>Potential is the root, because a power that has not yet chosen a use is still a power. Naming it too early spends it.</p>
-                    <p class="reading-use"><span>In a reading</span> The capacity is present and unspent. Approach it. Do not assign it a task until you have stood in its light.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.potential.rank">I · Voimien juuri</p>
+                    <h2 data-i18n="cartomancy.cards.potential.title">Potentiaali</h2>
+                    <blockquote data-i18n="cartomancy.cards.potential.quote">Pylväs palaa jo. Lamppu on vain tapa, jolla lähestyt sitä.</blockquote>
+                    <p data-i18n="cartomancy.cards.potential.p1">Vanhus vaaleissa viitoissa istuu kallojen keskellä ja ojentaa pientä valoa kohti pylvästä, jossa on kultaa, luuta ja riippuvia kelloja. Kallot eivät ole uhka. Ne ovat muotoja, joiden läpi kyky on jo kulkenut. Lamppu on pieni, koska pylvästä ei tarvitse sytyttää.</p>
+                    <p data-i18n="cartomancy.cards.potential.p2">Potentiaali on juuri, koska voima joka ei ole vielä valinnut käyttöä on yhä voima. Liian aikainen nimeäminen kuluttaa sen.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.potential.use">Kyky on läsnä ja käyttämätön. Lähesty sitä. Älä anna sille tehtävää ennen kuin olet seisonut sen valossa.</span></p>
                 </article>
             </section>
 
             <section class="card" id="avoidance">
                 <figure>
-                    <img src="art/cartomancy/powers/02-avoidance.png" alt="Powers, Avoidance" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/powers/02-avoidance.png" alt="Voimat, Välttely" data-i18n-attr="alt:cartomancy.cards.avoidance.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">II · Powers</p>
-                    <h2>Avoidance</h2>
-                    <blockquote>The costume is exquisite because the refusal has had time to become a style.</blockquote>
-                    <p>A tall hood, a pointed gilt cap, a face worked into a mask, eyes that do not quite meet you. Chains of stones fall where a voice would be. Avoidance is power spent on not arriving. The metal is the proof that the refusal has been practiced.</p>
-                    <p>It is the second card because a capacity that cannot be declined has not been chosen. The hood is a decision worn on the head.</p>
-                    <p class="reading-use"><span>In a reading</span> Notice what the splendor is keeping at a distance. The avoidance is skilled. Ask whether the distance is still the work.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.avoidance.rank">II · Voimat</p>
+                    <h2 data-i18n="cartomancy.cards.avoidance.title">Välttely</h2>
+                    <blockquote data-i18n="cartomancy.cards.avoidance.quote">Asu on hieno, koska kieltäytymisellä on ollut aikaa muuttua tyyliksi.</blockquote>
+                    <p data-i18n="cartomancy.cards.avoidance.p1">Korkea huppu, suippo kullattu lakki, kasvot työstetty naamioiksi, silmät jotka eivät aivan kohtaa sinua. Kivien ketjut putoavat sinne, missä ääni olisi. Välttely on voima, joka kuluu saapumatta. Metalli on todiste siitä, että kieltäytymistä on harjoitettu.</p>
+                    <p data-i18n="cartomancy.cards.avoidance.p2">Se on toinen kortti, koska kykyä jota ei voi kieltäytyä ei ole valittu. Huppu on päätös, jota pidetään päässä.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.avoidance.use">Huomaa, mitä loisto pitää etäällä. Välttely on taitavaa. Kysy, onko etäisyys yhä se työ.</span></p>
                 </article>
             </section>
 
             <section class="card" id="pain">
                 <figure>
-                    <img src="art/cartomancy/powers/03-pain.png" alt="Powers, Pain" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/powers/03-pain.png" alt="Voimat, Kipu" data-i18n-attr="alt:cartomancy.cards.pain.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">III · Powers</p>
-                    <h2>Pain</h2>
-                    <blockquote>The throne is comfortable. That is how the lesson stays.</blockquote>
-                    <p>A pale figure sits in a high collar and a patterned coat, one foot forward, a globe at the knee. Pain is the capacity that teaches the limit of a body by occupying it. The chair is not a punishment. It is a seat that has been made easy enough to remain in.</p>
-                    <p>Power that hurts can still be administered. The globe says the hurt has a world, not only a nerve.</p>
-                    <p class="reading-use"><span>In a reading</span> The discomfort is information with a throne. Do not decorate it, and do not pretend the chair is empty.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.pain.rank">III · Voimat</p>
+                    <h2 data-i18n="cartomancy.cards.pain.title">Kipu</h2>
+                    <blockquote data-i18n="cartomancy.cards.pain.quote">Valtaistuin on mukava. Sillä tavoin oppi pysyy.</blockquote>
+                    <p data-i18n="cartomancy.cards.pain.p1">Kalpea hahmo istuu korkeassa kauluksessa ja kuvioidussa takissa, toinen jalka edessä, karttapallo polvella. Kipu on kyky, joka opettaa ruumiin rajan asuttamalla sen. Tuoli ei ole rangaistus. Se on istuin, joka on tehty tarpeeksi helpoksi jotta siinä voi jäädä.</p>
+                    <p data-i18n="cartomancy.cards.pain.p2">Voima joka sattuu voidaan silti annostella. Karttapallo sanoo, että kivulla on maailma, ei vain hermo.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.pain.use">Epämukavuus on tietoa, jolla on valtaistuin. Älä koristele sitä, äläkä teeskentele että tuoli on tyhjä.</span></p>
                 </article>
             </section>
 
             <section class="card" id="failure">
                 <figure>
-                    <img src="art/cartomancy/powers/04-failure.png" alt="Powers, Failure" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/powers/04-failure.png" alt="Voimat, Epäonnistuminen" data-i18n-attr="alt:cartomancy.cards.failure.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">IV · Powers</p>
-                    <h2>Failure</h2>
-                    <blockquote>The banner is still magnificent. The ground has kept the tools.</blockquote>
-                    <p>An elder stands under a huge yellow cloth in a camp of abandoned vessels, a small creature at the feet, the desert bright behind. Failure is the hour after the work has stopped agreeing. The banner did not come down. What it could not carry is lying in the sand.</p>
-                    <p>This is a capacity, not a verdict. A power that cannot fail has never been used where the weather is real.</p>
-                    <p class="reading-use"><span>In a reading</span> Leave the banner up if you must, and pick through what fell. The failure is the inventory, not the shame.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.failure.rank">IV · Voimat</p>
+                    <h2 data-i18n="cartomancy.cards.failure.title">Epäonnistuminen</h2>
+                    <blockquote data-i18n="cartomancy.cards.failure.quote">Lippu on yhä suurenmoinen. Maa on pitänyt työkalut.</blockquote>
+                    <p data-i18n="cartomancy.cards.failure.p1">Vanhus seisoo valtavan keltaisen kankaan alla hylättyjen astioiden leirissä, pieni olento jaloissa, autiomaa kirkkaana takana. Epäonnistuminen on tunti sen jälkeen, kun työ on lakannut suostumasta. Lippu ei tullut alas. Se mitä se ei kyennyt kantamaan makaa hiekassa.</p>
+                    <p data-i18n="cartomancy.cards.failure.p2">Tämä on kyky, ei tuomio. Voima joka ei voi epäonnistua ei ole koskaan käytetty siellä, missä sää on todellinen.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.failure.use">Jätä lippu ylös jos on pakko, ja penko se mikä putosi. Epäonnistuminen on luettelo, ei häpeä.</span></p>
                 </article>
             </section>
 
             <section class="card" id="struggle">
                 <figure>
-                    <img src="art/cartomancy/powers/05-struggle.png" alt="Powers, Struggle" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/powers/05-struggle.png" alt="Voimat, Kamppailu" data-i18n-attr="alt:cartomancy.cards.struggle.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">V · Powers</p>
-                    <h2>Struggle</h2>
-                    <blockquote>The blade is held across the body because the fight has become a line.</blockquote>
-                    <p>A figure stands in a pale arch, one sword upright, another laid horizontal through the hands, rust or blood on the metal, a crown of points. Struggle is a capacity met by an equal capacity. The arch does not take a side. The horizontal blade is the place you have to live.</p>
-                    <p>Neither point has won. That is why the card is in the middle of the suit, where a power learns it is not alone.</p>
-                    <p class="reading-use"><span>In a reading</span> Stay on the line. The struggle is the work of two strengths, and ending it early would waste both.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.struggle.rank">V · Voimat</p>
+                    <h2 data-i18n="cartomancy.cards.struggle.title">Kamppailu</h2>
+                    <blockquote data-i18n="cartomancy.cards.struggle.quote">Terä pidetään ruumiin poikki, koska taistelusta on tullut viiva.</blockquote>
+                    <p data-i18n="cartomancy.cards.struggle.p1">Hahmo seisoo vaaleassa kaaressa, yksi miekka pystyssä, toinen vaakasuorassa käsien läpi, ruostetta tai verta metallissa, kärkien kruunu. Kamppailu on kyky, jonka kohtaa yhtä suuri kyky. Kaari ei ota puolta. Vaakasuora terä on paikka, jossa on elettävä.</p>
+                    <p data-i18n="cartomancy.cards.struggle.p2">Kumpikaan kärki ei ole voittanut. Siksi kortti on maan keskellä, siinä missä voima oppii ettei ole yksin.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.struggle.use">Pysy viivalla. Kamppailu on kahden voiman työtä, ja sen lopettaminen aikaisin tuhlaisi molemmat.</span></p>
                 </article>
             </section>
 
             <section class="card" id="play">
                 <figure>
-                    <img src="art/cartomancy/powers/06-play.png" alt="Powers, Play" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/powers/06-play.png" alt="Voimat, Leikki" data-i18n-attr="alt:cartomancy.cards.play.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">VI · Powers</p>
-                    <h2>Play</h2>
-                    <blockquote>The finger at the lips is a rule, not a secret.</blockquote>
-                    <p>A horned face, painted pale, jewelry hanging from the brow, one hand raised to the mouth and the other counting beads. Play is power that refuses to be solemn. The hush means a game is already underway, and speaking would break the move.</p>
-                    <p>The horns are not a threat. They are the costume the capacity wears when it would rather dance than decree.</p>
-                    <p class="reading-use"><span>In a reading</span> Treat the matter as a game with a real stake. Seriousness is not the same thing as attention.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.play.rank">VI · Voimat</p>
+                    <h2 data-i18n="cartomancy.cards.play.title">Leikki</h2>
+                    <blockquote data-i18n="cartomancy.cards.play.quote">Sormi huulilla on sääntö, ei salaisuus.</blockquote>
+                    <p data-i18n="cartomancy.cards.play.p1">Sarvekkaat kasvot, maalatut kalpeiksi, koruja riippuen otsalta, toinen käsi nostettuna suulle ja toinen laskee helmiä. Leikki on voima, joka kieltäytyy juhlallisuudesta. Hiljaisuus tarkoittaa, että peli on jo käynnissä, ja puhuminen rikkoisi siirron.</p>
+                    <p data-i18n="cartomancy.cards.play.p2">Sarvet eivät ole uhka. Ne ovat asu, jonka kyky pukee kun se tanssisi mieluummin kuin säätäisi.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.play.use">Kohtele asiaa pelinä, jolla on todellinen panos. Vakavuus ei ole sama asia kuin tarkkaavaisuus.</span></p>
                 </article>
             </section>
 
             <section class="card" id="swiftness">
                 <figure>
-                    <img src="art/cartomancy/powers/07-swiftness.png" alt="Powers, Swiftness" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/powers/07-swiftness.png" alt="Voimat, Nopeus" data-i18n-attr="alt:cartomancy.cards.swiftness.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">VII · Powers</p>
-                    <h2>Swiftness</h2>
-                    <blockquote>The smile belongs to someone who has already moved.</blockquote>
-                    <p>A white-bearded engineer leans back in a nest of pipes, gauges, and brass, goggles on, both hands on the controls. Swiftness is the capacity that arrives before the argument. The machine is not decoration. It is how a decision gets ahead of the committee in the chest.</p>
-                    <p>Speed without a gauge is only panic. Here the dials are lit, and the face is glad.</p>
-                    <p class="reading-use"><span>In a reading</span> Move while the reading is still warm. Hesitation would be a second machine, and you do not have room for it.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.swiftness.rank">VII · Voimat</p>
+                    <h2 data-i18n="cartomancy.cards.swiftness.title">Nopeus</h2>
+                    <blockquote data-i18n="cartomancy.cards.swiftness.quote">Hymy kuuluu jollekulle, joka on jo liikkunut.</blockquote>
+                    <p data-i18n="cartomancy.cards.swiftness.p1">Valkopartainen insinööri nojaa taakse putkien, mittarien ja messingin pesässä, suojalasit päässä, molemmat kädet ohjaimissa. Nopeus on kyky, joka saapuu ennen väitettä. Kone ei ole koriste. Se on tapa, jolla päätös ehtii rinnassa olevan komitean edelle.</p>
+                    <p data-i18n="cartomancy.cards.swiftness.p2">Nopeus ilman mittaria on vain paniikkia. Tässä kellotaulut palavat, ja kasvot ovat iloiset.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.swiftness.use">Liiku kun luku on vielä lämmin. Epäröinti olisi toinen kone, eikä sille ole tilaa.</span></p>
                 </article>
             </section>
 
             <section class="card" id="pleasure">
                 <figure>
-                    <img src="art/cartomancy/powers/08-pleasure.png" alt="Powers, Pleasure" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/powers/08-pleasure.png" alt="Voimat, Nautinto" data-i18n-attr="alt:cartomancy.cards.pleasure.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">VIII · Powers</p>
-                    <h2>Pleasure</h2>
-                    <blockquote>The skull is the seat. The cost has already been paid.</blockquote>
-                    <p>A calm figure sits on a great fanged skull, flowers and antlers in the hair, a staff in one hand, a thicket of bone and blossom behind. Pleasure is the capacity that makes a person stay. The face is not drunk. It knows what the chair is made of.</p>
-                    <p>To enjoy a thing and to ignore its price are different powers. This card is the first of those.</p>
-                    <p class="reading-use"><span>In a reading</span> Take the pleasure, and name the skull you are sitting on. Staying is allowed. Forgetting is not.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.pleasure.rank">VIII · Voimat</p>
+                    <h2 data-i18n="cartomancy.cards.pleasure.title">Nautinto</h2>
+                    <blockquote data-i18n="cartomancy.cards.pleasure.quote">Kallo on istuin. Hinta on jo maksettu.</blockquote>
+                    <p data-i18n="cartomancy.cards.pleasure.p1">Tyyni hahmo istuu suurella torahampaisella kallolla, kukkia ja sarvia hiuksissa, sauva yhdessä kädessä, luun ja kukan tiheikkö takana. Nautinto on kyky, joka saa ihmisen jäämään. Kasvot eivät ole juovuksissa. Ne tietävät, mistä tuoli on tehty.</p>
+                    <p data-i18n="cartomancy.cards.pleasure.p2">Asiasta nauttiminen ja sen hinnan sivuuttaminen ovat eri voimia. Tämä kortti on niistä ensimmäinen.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.pleasure.use">Ota nautinto, ja nimeä kallo jolla istut. Jääminen on sallittua. Unohtaminen ei.</span></p>
                 </article>
             </section>
 
             <section class="card" id="control">
                 <figure>
-                    <img src="art/cartomancy/powers/09-control.png" alt="Powers, Control" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/powers/09-control.png" alt="Voimat, Hallinta" data-i18n-attr="alt:cartomancy.cards.control.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">IX · Powers</p>
-                    <h2>Control</h2>
-                    <blockquote>Stillness is the work. The hands stay on the arms of the chair.</blockquote>
-                    <p>An armored figure sits inside a ring of metal, a blade running down the center of the body, horns rising from the helm, the throne grown into claws. Control is the capacity that agrees to sit still so everything else can be arranged. Nothing in the picture is rushing.</p>
-                    <p>The danger is to mistake the seat for the world. A control that cannot stand up has become the chair.</p>
-                    <p class="reading-use"><span>In a reading</span> Arrange, and then leave one hand free. What you cannot release is no longer being governed.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.control.rank">IX · Voimat</p>
+                    <h2 data-i18n="cartomancy.cards.control.title">Hallinta</h2>
+                    <blockquote data-i18n="cartomancy.cards.control.quote">Paikallaanolo on työ. Kädet pysyvät tuolin käsinojilla.</blockquote>
+                    <p data-i18n="cartomancy.cards.control.p1">Panssaroitu hahmo istuu metallirenkaan sisällä, terä kulkee ruumiin keskeltä alas, sarvet nousevat kypärästä, valtaistuin on kasvanut kynsiksi. Hallinta on kyky, joka suostuu istumaan paikallaan jotta kaikki muu voidaan järjestää. Kuvassa mikään ei kiirehdi.</p>
+                    <p data-i18n="cartomancy.cards.control.p2">Vaara on luulla istuinta maailmaksi. Hallinta joka ei voi nousta, on muuttunut tuoliksi.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.control.use">Järjestä, ja jätä sitten yksi käsi vapaaksi. Se mitä et voi päästää irti ei ole enää hallinnassa.</span></p>
                 </article>
             </section>
 
             <section class="card" id="courage">
                 <figure>
-                    <img src="art/cartomancy/powers/10-courage.png" alt="Powers, Courage" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/powers/10-courage.png" alt="Voimat, Rohkeus" data-i18n-attr="alt:cartomancy.cards.courage.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">X · Powers</p>
-                    <h2>Courage</h2>
-                    <blockquote>The scars are the record. The smoke is the pause.</blockquote>
-                    <p>A horned, marked face draws on a small burning flower, smoke rising, a skull and a crescent in the dark above the brow. Courage is not the absence of damage. It is the decision to keep the mouth occupied with something smaller than the fear, long enough to choose the next act.</p>
-                    <p>The last of the ten weathers, because a capacity that has not been frightened has not yet been proved.</p>
-                    <p class="reading-use"><span>In a reading</span> You already carry the marks. Take the breath, and then move. Courage is the pause that does not become a residence.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.courage.rank">X · Voimat</p>
+                    <h2 data-i18n="cartomancy.cards.courage.title">Rohkeus</h2>
+                    <blockquote data-i18n="cartomancy.cards.courage.quote">Arvet ovat muistiinmerkintä. Savu on tauko.</blockquote>
+                    <p data-i18n="cartomancy.cards.courage.p1">Sarvekas, merkitty naama vetää henkeä pienestä palavasta kukasta, savu nousee, kallo ja sirppi pimeässä otsan yllä. Rohkeus ei ole vaurion poissaoloa. Se on päätös pitää suu varattuna jollain pelkoa pienemmällä, niin kauan että seuraava teko voidaan valita.</p>
+                    <p data-i18n="cartomancy.cards.courage.p2">Kymmenestä säästä viimeinen, koska kykyä jota ei ole pelotettu ei ole vielä koeteltu.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.courage.use">Kannat jäljet jo. Ota henkäys, ja liiku sitten. Rohkeus on tauko, joka ei muutu asunnoksi.</span></p>
                 </article>
             </section>
 
             <section class="card card--court" id="clarity">
                 <figure>
-                    <img src="art/cartomancy/powers/11-clarity.png" alt="Seeker of Powers, Clarity" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/powers/11-clarity.png" alt="Voimien etsijä, Kirkkaus" data-i18n-attr="alt:cartomancy.cards.clarity.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">XI · Seeker of Powers</p>
-                    <h2>Clarity</h2>
-                    <blockquote>The owl looks where she is not looking.</blockquote>
-                    <p>A woman in a winged helm stands in the snow, braids bound, an owl heavy on the arm, a staff in the other hand, a small fire showing at the hem. Clarity is the court of the one who can see a power without becoming it. Two gazes, one weather.</p>
-                    <p>The Seeker does not spend the capacity. She keeps it in view until it has a true name.</p>
-                    <p class="reading-use"><span>In a reading</span> Look twice, and from a second pair of eyes. What is clear will survive the second look.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.clarity.rank">XI · Voimien etsijä</p>
+                    <h2 data-i18n="cartomancy.cards.clarity.title">Kirkkaus</h2>
+                    <blockquote data-i18n="cartomancy.cards.clarity.quote">Pöllö katsoo sinne, minne hän ei katso.</blockquote>
+                    <p data-i18n="cartomancy.cards.clarity.p1">Nainen siivekkäässä kypärässä seisoo lumessa, letit sidottuina, pöllö raskaana käsivarrella, sauva toisessa kädessä, pieni tuli näkyy helmasta. Kirkkaus on sen hovi, joka voi nähdä voiman tulematta siksi. Kaksi katsetta, yksi sää.</p>
+                    <p data-i18n="cartomancy.cards.clarity.p2">Etsijä ei kuluta kykyä. Hän pitää sen näkyvissä, kunnes sillä on oikea nimi.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.clarity.use">Katso kahdesti, ja toisella silmäparilla. Se mikä on kirkasta kestää toisen katseen.</span></p>
                 </article>
             </section>
 
             <section class="card card--court" id="resilience">
                 <figure>
-                    <img src="art/cartomancy/powers/12-resilience.png" alt="Keeper of Powers, Resilience" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/powers/12-resilience.png" alt="Voimien haltija, Kestävyys" data-i18n-attr="alt:cartomancy.cards.resilience.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">XII · Keeper of Powers</p>
-                    <h2>Resilience</h2>
-                    <blockquote>The sky has split. The jaw has not.</blockquote>
-                    <p>An armored face under a cracked world, light breaking through the stone behind the helm, wings of metal at the shoulders. Resilience is what the Keeper holds: not victory, the capacity to remain when the thing overhead has already failed. The grin is the jaw set, not a triumph.</p>
-                    <p>A power that cannot be broken is only untested. This one has been tested and is still standing in the rubble.</p>
-                    <p class="reading-use"><span>In a reading</span> Stay. The break is in the sky, not in the stance. Remaining is the whole instruction.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.resilience.rank">XII · Voimien haltija</p>
+                    <h2 data-i18n="cartomancy.cards.resilience.title">Kestävyys</h2>
+                    <blockquote data-i18n="cartomancy.cards.resilience.quote">Taivas on haljennut. Leuka ei.</blockquote>
+                    <p data-i18n="cartomancy.cards.resilience.p1">Panssaroidut kasvot haljenneen maailman alla, valo murtaa kiven kypärän takana, metallin siivet hartioilla. Kestävyys on se, mitä Haltija pitää: ei voittoa, vaan kykyä jäädä kun yläpuolinen asia on jo pettänyt. Virnistys on leuka lukossa, ei riemuvoitto.</p>
+                    <p data-i18n="cartomancy.cards.resilience.p2">Voima jota ei voi rikkoa on vain koettelematon. Tämä on koeteltu ja seisoo yhä raunioissa.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.resilience.use">Jää. Halkeama on taivaassa, ei asennossa. Jääminen on koko ohje.</span></p>
                 </article>
             </section>
 
             <section class="card card--court" id="focus">
                 <figure>
-                    <img src="art/cartomancy/powers/13-focus.png" alt="Master of Powers, Focus" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/powers/13-focus.png" alt="Voimien mestari, Keskittyminen" data-i18n-attr="alt:cartomancy.cards.focus.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">XIII · Master of Powers</p>
-                    <h2>Focus</h2>
-                    <blockquote>The hair is the excess. The hands are the decision.</blockquote>
-                    <p>A woman with a storm of blue hair, a small jewel at the brow, hands folded, eyes that do not wander. Focus is the mastery of power: every weather of the suit gathered into one gaze. Nothing in the picture is being spent. The excess is worn. The choice is in the clasp of the fingers.</p>
-                    <p>The Master does not abolish the suit. Potential, pain, play, courage — they are still in the hair. They have stopped competing for the eyes.</p>
-                    <p class="reading-use"><span>In a reading</span> Choose one use and hold it. The rest may remain beautiful. It does not get to move your hands.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.focus.rank">XIII · Voimien mestari</p>
+                    <h2 data-i18n="cartomancy.cards.focus.title">Keskittyminen</h2>
+                    <blockquote data-i18n="cartomancy.cards.focus.quote">Hiukset ovat ylimäärä. Kädet ovat päätös.</blockquote>
+                    <p data-i18n="cartomancy.cards.focus.p1">Nainen sinisten hiusten myrskyssä, pieni jalokivi otsalla, kädet ristissä, silmät jotka eivät harhaile. Keskittyminen on voiman mestaruutta: maan jokainen sää koottuna yhteen katseeseen. Kuvassa mikään ei kulu. Ylimäärä on puettuna. Valinta on sormien otteessa.</p>
+                    <p data-i18n="cartomancy.cards.focus.p2">Mestari ei lakkauta maata. Potentiaali, kipu, leikki, rohkeus — ne ovat yhä hiuksissa. Ne ovat lakanneet kilpailemasta silmistä.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.focus.use">Valitse yksi käyttö ja pidä se. Loput saavat pysyä kauniina. Se ei saa liikuttaa käsiäsi.</span></p>
                 </article>
             </section>
         </div>
 
         <article id="suit-intro-relations" class="suit-intro" hidden>
-            <p class="suit-kicker">Maa IV</p>
-            <h2>Relations</h2>
-            <blockquote>A relation is not a feeling between two people. It is the third thing that begins when they do not look away.</blockquote>
-            <p>This is the fourth land. Thirteen cards, and not a costume of any older deck. Ten weathers of a bond, then three who walk them: the Seeker, the Keeper, the Master.</p>
-            <p>Read a card for the bond it names. The picture is already the between. Fortune can wait.</p>
+            <p class="suit-kicker" data-i18n="cartomancy.intro.relations.kicker">Maa IV</p>
+            <h2 data-i18n="cartomancy.lands.relations">Suhteet</h2>
+            <blockquote data-i18n="cartomancy.intro.relations.quote">Suhde ei ole tunne kahden ihmisen välillä. Se on kolmas asia, joka alkaa kun he eivät käännä katsettaan pois.</blockquote>
+            <p data-i18n="cartomancy.intro.relations.p1">Tämä on neljäs maa. Kolmetoista korttia, eikä minkään vanhemman pakan asu. Kymmenen siteen säätä, sitten kolme, jotka kävelevät niiden halki: Etsijä, Haltija, Mestari.</p>
+            <p data-i18n="cartomancy.intro.relations.p2">Lue kortti siteestä, jonka se nimeää. Kuva on jo väli. Ennustus saa odottaa.</p>
         </article>
 
-        <nav class="suit-index" id="index-relations" aria-label="Cards of Relations" hidden>
-            <a href="#fate">I Fate</a>
-            <a href="#duality">II Duality</a>
-            <a href="#tension">III Tension</a>
-            <a href="#authenticity">IV Authenticity</a>
-            <a href="#exploration">V Exploration</a>
-            <a href="#reflection">VI Reflection</a>
-            <a href="#language">VII Language</a>
-            <a href="#celebration">VIII Celebration</a>
-            <a href="#solitude">IX Solitude</a>
-            <a href="#equilibrium">X Equilibrium</a>
-            <a href="#acceptance">XI Acceptance</a>
-            <a href="#love">XII Love</a>
-            <a href="#unity">XIII Unity</a>
+        <nav class="suit-index" id="index-relations" aria-label="Suhteiden kortit" data-i18n-attr="aria-label:cartomancy.nav.relations" hidden>
+            <a href="#fate" data-i18n="cartomancy.cards.fate.index">I Kohtalo</a>
+            <a href="#duality" data-i18n="cartomancy.cards.duality.index">II Kahtalaisuus</a>
+            <a href="#tension" data-i18n="cartomancy.cards.tension.index">III Jännite</a>
+            <a href="#authenticity" data-i18n="cartomancy.cards.authenticity.index">IV Aitous</a>
+            <a href="#exploration" data-i18n="cartomancy.cards.exploration.index">V Tutkiminen</a>
+            <a href="#reflection" data-i18n="cartomancy.cards.reflection.index">VI Heijastus</a>
+            <a href="#language" data-i18n="cartomancy.cards.language.index">VII Kieli</a>
+            <a href="#celebration" data-i18n="cartomancy.cards.celebration.index">VIII Juhla</a>
+            <a href="#solitude" data-i18n="cartomancy.cards.solitude.index">IX Yksinäisyys</a>
+            <a href="#equilibrium" data-i18n="cartomancy.cards.equilibrium.index">X Tasapaino</a>
+            <a href="#acceptance" data-i18n="cartomancy.cards.acceptance.index">XI Hyväksyntä</a>
+            <a href="#love" data-i18n="cartomancy.cards.love.index">XII Rakkaus</a>
+            <a href="#unity" data-i18n="cartomancy.cards.unity.index">XIII Ykseys</a>
         </nav>
 
         <div id="deck-relations" hidden>
             <section class="card" id="fate">
                 <figure>
-                    <img src="art/cartomancy/relations/01-fate.png" alt="Root of Relations, Fate" width="613" height="1024" decoding="async">
+                    <img src="art/cartomancy/relations/01-fate.png" alt="Suhteiden juuri, Kohtalo" data-i18n-attr="alt:cartomancy.cards.fate.alt" width="613" height="1024" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">I · Root of Relations</p>
-                    <h2>Fate</h2>
-                    <blockquote>You do not choose the tree. You notice you are already a branch.</blockquote>
-                    <p>A face of bark and moss, antlers of bare wood, a beard of roots, leaves gathered at the chest. Fate is the relation that was growing before either person arrived. The branches do not ask permission. They record where the bond already went.</p>
-                    <p>This is the root, because a bond that has no history is only a meeting. Fate is the history that was underway.</p>
-                    <p class="reading-use"><span>In a reading</span> The connection is older than the decision to notice it. Tend what is already growing. Do not pretend you planted it today.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.fate.rank">I · Suhteiden juuri</p>
+                    <h2 data-i18n="cartomancy.cards.fate.title">Kohtalo</h2>
+                    <blockquote data-i18n="cartomancy.cards.fate.quote">Et valitse puuta. Huomaat olevasi jo oksa.</blockquote>
+                    <p data-i18n="cartomancy.cards.fate.p1">Kasvot kaarnaa ja sammalta, paljaan puun sarvet, juurten parta, lehtiä koottuna rintaan. Kohtalo on suhde, joka kasvoi ennen kuin kumpikaan henkilö saapui. Oksat eivät pyydä lupaa. Ne merkitsevät, minne side jo meni.</p>
+                    <p data-i18n="cartomancy.cards.fate.p2">Tämä on juuri, koska siteellä jolla ei ole historiaa on vain kohtaaminen. Kohtalo on historia, joka oli jo käynnissä.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.fate.use">Yhteys on vanhempi kuin päätös huomata se. Hoida sitä, mikä jo kasvaa. Älä teeskentele istuttaneesi sitä tänään.</span></p>
                 </article>
             </section>
 
             <section class="card" id="duality">
                 <figure>
-                    <img src="art/cartomancy/relations/02-duality.png" alt="Relations, Duality" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/relations/02-duality.png" alt="Suhteet, Kahtalaisuus" data-i18n-attr="alt:cartomancy.cards.duality.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">II · Relations</p>
-                    <h2>Duality</h2>
-                    <blockquote>Two hands. The smoke is the third thing they make.</blockquote>
-                    <p>An elder under a huge green turban, a gold skull at the chest, one hand closed on a stem and the other open, pale smoke rising between them. Duality is the relation of two that refuse to collapse into one. The turban is the weather they share. The face stays its own.</p>
-                    <p>A bond that erases one of its members is no longer a relation. It is an occupation.</p>
-                    <p class="reading-use"><span>In a reading</span> Keep both sides intact. The work is the smoke between them, not the victory of either hand.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.duality.rank">II · Suhteet</p>
+                    <h2 data-i18n="cartomancy.cards.duality.title">Kahtalaisuus</h2>
+                    <blockquote data-i18n="cartomancy.cards.duality.quote">Kaksi kättä. Savu on kolmas asia, jonka ne tekevät.</blockquote>
+                    <p data-i18n="cartomancy.cards.duality.p1">Vanhus valtavan vihreän turbaanin alla, kultainen kallo rinnassa, toinen käsi suljettuna varteen ja toinen auki, kalpea savu nousee niiden välistä. Kahtalaisuus on kahden suhde, jotka kieltäytyvät luhistumasta yhdeksi. Turbaani on sää, jonka ne jakavat. Kasvot pysyvät ominaan.</p>
+                    <p data-i18n="cartomancy.cards.duality.p2">Side joka pyyhkii pois yhden jäsenistään ei ole enää suhde. Se on miehitys.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.duality.use">Pidä molemmat puolet ehjinä. Työ on savu niiden välissä, ei kummankaan käden voitto.</span></p>
                 </article>
             </section>
 
             <section class="card" id="tension">
                 <figure>
-                    <img src="art/cartomancy/relations/03-tension.png" alt="Relations, Tension" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/relations/03-tension.png" alt="Suhteet, Jännite" data-i18n-attr="alt:cartomancy.cards.tension.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">III · Relations</p>
-                    <h2>Tension</h2>
-                    <blockquote>The offering and the wound are the same stream.</blockquote>
-                    <p>An old man pours from a cup into the mouth of a living tree, and what leaves the cup is red. A teapot waits on the floor. Tension is the relation that continues because neither side will set the vessel down. Care and injury are traveling in one line.</p>
-                    <p>The tree is not a guest. It is the other party, rooted, and it is drinking.</p>
-                    <p class="reading-use"><span>In a reading</span> Name what is being poured. The bond can survive the red stream. It cannot survive pretending the stream is tea.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.tension.rank">III · Suhteet</p>
+                    <h2 data-i18n="cartomancy.cards.tension.title">Jännite</h2>
+                    <blockquote data-i18n="cartomancy.cards.tension.quote">Uhrilahja ja haava ovat sama virta.</blockquote>
+                    <p data-i18n="cartomancy.cards.tension.p1">Vanha mies kaataa kupista elävän puun suuhun, ja se mikä lähtee kupista on punaista. Teepannu odottaa lattialla. Jännite on suhde, joka jatkuu koska kumpikaan puoli ei laske astiaa. Huolenpito ja vamma kulkevat samassa linjassa.</p>
+                    <p data-i18n="cartomancy.cards.tension.p2">Puu ei ole vieras. Se on toinen osapuoli, juurtunut, ja se juo.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.tension.use">Nimeä se, mitä kaadetaan. Side kestää punaisen virran. Se ei kestä teeskentelyä, että virta on teetä.</span></p>
                 </article>
             </section>
 
             <section class="card" id="authenticity">
                 <figure>
-                    <img src="art/cartomancy/relations/04-authenticity.png" alt="Relations, Authenticity" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/relations/04-authenticity.png" alt="Suhteet, Aitous" data-i18n-attr="alt:cartomancy.cards.authenticity.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">IV · Relations</p>
-                    <h2>Authenticity</h2>
-                    <blockquote>No one at the table is performing the species the other expected.</blockquote>
-                    <p>A white-bearded man sits with three bears over papers and a candle. A dog sleeps under the cloth. Jars and loose pages cover the floor. Authenticity is the relation in which each member arrives as what they are. The bears are not guests in costume. The man is not a bear. They are reading the same page.</p>
-                    <p>A bond that requires a disguise is a negotiation with a mask. This table has put the masks on the floor.</p>
-                    <p class="reading-use"><span>In a reading</span> Come as you are, and let the other do the same. The page in the middle only works if both hands are real.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.authenticity.rank">IV · Suhteet</p>
+                    <h2 data-i18n="cartomancy.cards.authenticity.title">Aitous</h2>
+                    <blockquote data-i18n="cartomancy.cards.authenticity.quote">Kukaan pöydässä ei esitä lajia, jota toinen odotti.</blockquote>
+                    <p data-i18n="cartomancy.cards.authenticity.p1">Valkopartainen mies istuu kolmen karhun kanssa papereiden ja kynttilän ääressä. Koira nukkuu kankaan alla. Purkit ja irtolehdet peittävät lattian. Aitous on suhde, jossa kukin jäsen saapuu siksi mitä on. Karhut eivät ole vieraita asussa. Mies ei ole karhu. He lukevat samaa sivua.</p>
+                    <p data-i18n="cartomancy.cards.authenticity.p2">Side joka vaatii valepukua on neuvottelu naamion kanssa. Tämä pöytä on pannut naamiot lattialle.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.authenticity.use">Tule siksi mikä olet, ja anna toisen tehdä samoin. Keskellä oleva sivu toimii vain, jos molemmat kädet ovat todelliset.</span></p>
                 </article>
             </section>
 
             <section class="card" id="exploration">
                 <figure>
-                    <img src="art/cartomancy/relations/05-exploration.png" alt="Relations, Exploration" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/relations/05-exploration.png" alt="Suhteet, Tutkiminen" data-i18n-attr="alt:cartomancy.cards.exploration.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">V · Relations</p>
-                    <h2>Exploration</h2>
-                    <blockquote>The sea is the other party. The bottles are the attempts.</blockquote>
-                    <p>A figure leans over a table of colored glass on a pier, ships at the horizon, a skull watching from the wall, a small vial held to the light. Exploration is the relation you keep with what you have not yet named. Each bottle is a previous guess. The water does not correct them. It stays.</p>
-                    <p>The work is not to finish the other. It is to keep a clean glass and look again.</p>
-                    <p class="reading-use"><span>In a reading</span> Treat the bond as unfinished on purpose. Ask one more question before you cork the bottle.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.exploration.rank">V · Suhteet</p>
+                    <h2 data-i18n="cartomancy.cards.exploration.title">Tutkiminen</h2>
+                    <blockquote data-i18n="cartomancy.cards.exploration.quote">Meri on toinen osapuoli. Pullot ovat yritykset.</blockquote>
+                    <p data-i18n="cartomancy.cards.exploration.p1">Hahmo nojaa värillisen lasin pöytään laiturilla, laivoja horisontissa, kallo katsoo seinältä, pieni pullo pidettynä valoa vasten. Tutkiminen on suhde, jota pidät siihen mitä et ole vielä nimennyt. Jokainen pullo on aiempi arvaus. Vesi ei korjaa niitä. Se pysyy.</p>
+                    <p data-i18n="cartomancy.cards.exploration.p2">Työ ei ole saattaa toista valmiiksi. Se on pitää lasi puhtaana ja katsoa uudestaan.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.exploration.use">Kohtele sidettä tarkoituksella keskeneräisenä. Kysy vielä yksi kysymys ennen kuin korkit pullon.</span></p>
                 </article>
             </section>
 
             <section class="card" id="reflection">
                 <figure>
-                    <img src="art/cartomancy/relations/06-reflection.png" alt="Relations, Reflection" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/relations/06-reflection.png" alt="Suhteet, Heijastus" data-i18n-attr="alt:cartomancy.cards.reflection.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">VI · Relations</p>
-                    <h2>Reflection</h2>
-                    <blockquote>The moths landed because the light was quiet.</blockquote>
-                    <p>A pale woman in profile, eyes lowered, white moths moving around her hair and shoulder. Reflection is the relation of a person to the image that comes back. The moths are not an audience. They are the thoughts that found a place to rest because no one was performing for them.</p>
-                    <p>A bond that cannot bear a silence has not yet met itself. This card is that meeting, seen from the side.</p>
-                    <p class="reading-use"><span>In a reading</span> Stop arranging your face. Let the other, or your own image, arrive without being directed.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.reflection.rank">VI · Suhteet</p>
+                    <h2 data-i18n="cartomancy.cards.reflection.title">Heijastus</h2>
+                    <blockquote data-i18n="cartomancy.cards.reflection.quote">Yöperhoset laskeutuivat, koska valo oli hiljainen.</blockquote>
+                    <p data-i18n="cartomancy.cards.reflection.p1">Kalpea nainen profiilissa, katse alas, valkoisia yöperhosia hiusten ja olkapään ympärillä. Heijastus on ihmisen suhde kuvaan, joka tulee takaisin. Perhoset eivät ole yleisö. Ne ovat ajatuksia, jotka löysivät lepopaikan koska kukaan ei esiintynyt niille.</p>
+                    <p data-i18n="cartomancy.cards.reflection.p2">Side joka ei kestä hiljaisuutta ei ole vielä kohdannut itseään. Tämä kortti on se kohtaaminen, nähtynä sivulta.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.reflection.use">Lakkaa järjestelemästä kasvojasi. Anna toisen, tai oman kuvasi, saapua ilman ohjausta.</span></p>
                 </article>
             </section>
 
             <section class="card" id="language">
                 <figure>
-                    <img src="art/cartomancy/relations/07-language.png" alt="Relations, Language" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/relations/07-language.png" alt="Suhteet, Kieli" data-i18n-attr="alt:cartomancy.cards.language.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">VII · Relations</p>
-                    <h2>Language</h2>
-                    <blockquote>The hand is offering a sentence that has not chosen its word.</blockquote>
-                    <p>A seated elder in teal, one palm open, glyphs already cut into the wall behind, vessels and small fires at the feet. Language is the relation that lets two interiors occupy one sound. The wall has been written on. The hand has not yet decided what to add.</p>
-                    <p>Speech is not the opposite of the bond. It is one of the ways the bond becomes a place both can stand.</p>
-                    <p class="reading-use"><span>In a reading</span> Say the thing in a form the other can enter. A private language is a locked room with two people outside it.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.language.rank">VII · Suhteet</p>
+                    <h2 data-i18n="cartomancy.cards.language.title">Kieli</h2>
+                    <blockquote data-i18n="cartomancy.cards.language.quote">Käsi tarjoaa lausetta, joka ei ole valinnut sanaansa.</blockquote>
+                    <p data-i18n="cartomancy.cards.language.p1">Istuva vanhus sinivihreässä, toinen kämmen auki, merkkejä jo leikattuna seinään takana, astioita ja pieniä tulia jaloissa. Kieli on suhde, joka antaa kahden sisäpuolen asua yhdessä äänessä. Seinään on kirjoitettu. Käsi ei ole vielä päättänyt, mitä lisätä.</p>
+                    <p data-i18n="cartomancy.cards.language.p2">Puhe ei ole siteen vastakohta. Se on yksi tavoista, joilla siteestä tulee paikka jossa molemmat voivat seistä.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.language.use">Sano asia muodossa, johon toinen voi astua. Yksityinen kieli on lukittu huone, jonka ulkopuolella seisoo kaksi ihmistä.</span></p>
                 </article>
             </section>
 
             <section class="card" id="celebration">
                 <figure>
-                    <img src="art/cartomancy/relations/08-celebration.png" alt="Relations, Celebration" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/relations/08-celebration.png" alt="Suhteet, Juhla" data-i18n-attr="alt:cartomancy.cards.celebration.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">VIII · Relations</p>
-                    <h2>Celebration</h2>
-                    <blockquote>The torch is not a leader. It is the excuse the circle needed.</blockquote>
-                    <p>A crowd stands in a forest around a figure who lifts a flame, arms raised, water in the foreground, many bodies turned toward the same light. Celebration is the relation that becomes visible only when more than two agree to be glad in public. The joy is shared, or it is only a mood.</p>
-                    <p>The circle does not erase anyone in it. It gives the bond a night it can be seen.</p>
-                    <p class="reading-use"><span>In a reading</span> Mark the bond where others can witness it. A private gladness is real. A celebrated one has a place to return to.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.celebration.rank">VIII · Suhteet</p>
+                    <h2 data-i18n="cartomancy.cards.celebration.title">Juhla</h2>
+                    <blockquote data-i18n="cartomancy.cards.celebration.quote">Soihtu ei ole johtaja. Se on tekosyy, jonka piiri tarvitsi.</blockquote>
+                    <p data-i18n="cartomancy.cards.celebration.p1">Väki seisoo metsässä hahmon ympärillä, joka nostaa liekin, kädet ylhäällä, vettä etualalla, monet ruumiit kääntyneinä samaan valoon. Juhla on suhde, joka tulee näkyväksi vasta kun useampi kuin kaksi suostuu olemaan iloinen julkisesti. Ilo on jaettu, tai se on vain mieliala.</p>
+                    <p data-i18n="cartomancy.cards.celebration.p2">Piiri ei pyyhi ketään sisällään. Se antaa siteelle yön, jolloin se voidaan nähdä.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.celebration.use">Merkitse side sinne, missä muut voivat todistaa sen. Yksityinen ilo on todellinen. Juhlitulla ilolla on paikka, johon palata.</span></p>
                 </article>
             </section>
 
             <section class="card" id="solitude">
                 <figure>
-                    <img src="art/cartomancy/relations/09-solitude.png" alt="Relations, Solitude" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/relations/09-solitude.png" alt="Suhteet, Yksinäisyys" data-i18n-attr="alt:cartomancy.cards.solitude.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">IX · Relations</p>
-                    <h2>Solitude</h2>
-                    <blockquote>The scales are still in use. The other chair is empty.</blockquote>
-                    <p>An elder sits alone at a table of coins, small cups, a flame, and a balance, with instruments hanging in the dark. Solitude is a relation with the absent. The weighing continues. Someone is being measured who is not in the room, and the measurer knows their weight by heart.</p>
-                    <p>Being alone is not the end of a bond. It is the form a bond takes when one of its members is elsewhere, or gone, or not yet come.</p>
-                    <p class="reading-use"><span>In a reading</span> Keep the table set, and do not pretend the empty side is a failure. Solitude is the bond practiced at a distance.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.solitude.rank">IX · Suhteet</p>
+                    <h2 data-i18n="cartomancy.cards.solitude.title">Yksinäisyys</h2>
+                    <blockquote data-i18n="cartomancy.cards.solitude.quote">Vaaka on yhä käytössä. Toinen tuoli on tyhjä.</blockquote>
+                    <p data-i18n="cartomancy.cards.solitude.p1">Vanhus istuu yksin pöydässä, jossa on kolikoita, pieniä kuppeja, liekki ja vaaka, soittimia riippuen pimeässä. Yksinäisyys on suhde poissaolevaan. Punnitus jatkuu. Jotakuta mitataan, joka ei ole huoneessa, ja mittaaja tietää painon ulkoa.</p>
+                    <p data-i18n="cartomancy.cards.solitude.p2">Yksin oleminen ei ole siteen loppu. Se on muoto, jonka side ottaa kun yksi sen jäsenistä on muualla, tai poissa, tai ei ole vielä tullut.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.solitude.use">Pidä pöytä katettuna, äläkä teeskentele että tyhjä puoli on epäonnistuminen. Yksinäisyys on side, jota harjoitetaan etäältä.</span></p>
                 </article>
             </section>
 
             <section class="card" id="equilibrium">
                 <figure>
-                    <img src="art/cartomancy/relations/10-equilibrium.png" alt="Relations, Equilibrium" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/relations/10-equilibrium.png" alt="Suhteet, Tasapaino" data-i18n-attr="alt:cartomancy.cards.equilibrium.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">X · Relations</p>
-                    <h2>Equilibrium</h2>
-                    <blockquote>She is not alone. The birds and the water are doing their half.</blockquote>
-                    <p>A woman in white sits in a hanging garden, bare feet, hair bound, birds crossing a pale sphere, platforms of green suspended in mist. Equilibrium is the relation that does not need to move in order to be mutual. Nothing is being won. The garden holds because each part keeps its own weight.</p>
-                    <p>The last of the ten weathers, because a bond that cannot rest has not yet become a place.</p>
-                    <p class="reading-use"><span>In a reading</span> Stop adjusting. The balance is already the bond. A correction now would be a new argument.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.equilibrium.rank">X · Suhteet</p>
+                    <h2 data-i18n="cartomancy.cards.equilibrium.title">Tasapaino</h2>
+                    <blockquote data-i18n="cartomancy.cards.equilibrium.quote">Hän ei ole yksin. Linnut ja vesi tekevät oman puolensa.</blockquote>
+                    <p data-i18n="cartomancy.cards.equilibrium.p1">Nainen valkoisessa istuu riippuvassa puutarhassa, paljain jaloin, hiukset sidottuina, lintuja ylittämässä kalpeaa palloa, vihreitä tasanteita sumussa. Tasapaino on suhde, jonka ei tarvitse liikkua ollakseen vastavuoroinen. Mitään ei voiteta. Puutarha pysyy, koska jokainen osa pitää oman painonsa.</p>
+                    <p data-i18n="cartomancy.cards.equilibrium.p2">Kymmenestä säästä viimeinen, koska side joka ei voi levätä ei ole vielä tullut paikaksi.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.equilibrium.use">Lakkaa säätämästä. Tasapaino on jo side. Korjaus nyt olisi uusi väite.</span></p>
                 </article>
             </section>
 
             <section class="card card--court" id="acceptance">
                 <figure>
-                    <img src="art/cartomancy/relations/11-acceptance.png" alt="Seeker of Relations, Acceptance" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/relations/11-acceptance.png" alt="Suhteiden etsijä, Hyväksyntä" data-i18n-attr="alt:cartomancy.cards.acceptance.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">XI · Seeker of Relations</p>
-                    <h2>Acceptance</h2>
-                    <blockquote>The spear is grounded. The antlers are what grew.</blockquote>
-                    <p>A figure with a beard of moss and a crown of antlers sits in a living chair, a spear at rest, a small skull in the ferns. Acceptance is the court of the one who stops arguing with what the relation already is. The weapon is not raised. The body has taken the shape of the place.</p>
-                    <p>The Seeker does not improve the bond. The Seeker agrees to see it.</p>
-                    <p class="reading-use"><span>In a reading</span> Put the spear down. What remains after the argument is the relation you actually have.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.acceptance.rank">XI · Suhteiden etsijä</p>
+                    <h2 data-i18n="cartomancy.cards.acceptance.title">Hyväksyntä</h2>
+                    <blockquote data-i18n="cartomancy.cards.acceptance.quote">Keihäs on maassa. Sarvet ovat se, mikä kasvoi.</blockquote>
+                    <p data-i18n="cartomancy.cards.acceptance.p1">Hahmo, jolla on sammalparta ja sarvikruunu, istuu elävässä tuolissa, keihäs levossa, pieni kallo saniaisissa. Hyväksyntä on sen hovi, joka lakkaa väittämästä vastaan sitä mitä suhde jo on. Asetta ei ole nostettu. Ruumis on ottanut paikan muodon.</p>
+                    <p data-i18n="cartomancy.cards.acceptance.p2">Etsijä ei paranna sidettä. Etsijä suostuu näkemään sen.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.acceptance.use">Laske keihäs. Se mikä jää väittelyn jälkeen on suhde, joka sinulla todella on.</span></p>
                 </article>
             </section>
 
             <section class="card card--court" id="love">
                 <figure>
-                    <img src="art/cartomancy/relations/12-love.png" alt="Keeper of Relations, Love" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/relations/12-love.png" alt="Suhteiden haltija, Rakkaus" data-i18n-attr="alt:cartomancy.cards.love.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">XII · Keeper of Relations</p>
-                    <h2>Love</h2>
-                    <blockquote>The flowers are not decoration. They are the bond becoming visible.</blockquote>
-                    <p>A face meets you, hair like a pale river, leaves and blossoms caught in it, the throat grown through with vine. Love is what the Keeper holds: not a feeling that visits and leaves, a structure that keeps growing through the person who agreed to be its ground.</p>
-                    <p>The eyes are open. A love that cannot look is only a hunger with a softer name.</p>
-                    <p class="reading-use"><span>In a reading</span> Let the bond show on you. Keeping it means remaining visible to the one it joins you to.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.love.rank">XII · Suhteiden haltija</p>
+                    <h2 data-i18n="cartomancy.cards.love.title">Rakkaus</h2>
+                    <blockquote data-i18n="cartomancy.cards.love.quote">Kukat eivät ole koriste. Ne ovat side muuttumassa näkyväksi.</blockquote>
+                    <p data-i18n="cartomancy.cards.love.p1">Kasvot kohtaavat sinut, hiukset kuin kalpea joki, lehtiä ja kukkia niihin tarttuneina, kurkku kasvanut köynnöksen läpi. Rakkaus on se, mitä Haltija pitää: ei tunnetta joka käy ja lähtee, vaan rakennetta joka jatkaa kasvuaan sen ihmisen läpi, joka suostui olemaan sen maaperä.</p>
+                    <p data-i18n="cartomancy.cards.love.p2">Silmät ovat auki. Rakkaus joka ei voi katsoa on vain nälkä pehmeämmällä nimellä.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.love.use">Anna siteen näkyä sinussa. Sen pitäminen on pysymistä näkyvissä sille, johon se sinut liittää.</span></p>
                 </article>
             </section>
 
             <section class="card card--court" id="unity">
                 <figure>
-                    <img src="art/cartomancy/relations/13-unity.png" alt="Master of Relations, Unity" width="613" height="1024" loading="lazy" decoding="async">
+                    <img src="art/cartomancy/relations/13-unity.png" alt="Suhteiden mestari, Ykseys" data-i18n-attr="alt:cartomancy.cards.unity.alt" width="613" height="1024" loading="lazy" decoding="async">
                 </figure>
                 <article class="reading">
                     <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                    <p class="rank">XIII · Master of Relations</p>
-                    <h2>Unity</h2>
-                    <blockquote>The cracks are the joints. The light is what the joints agreed to carry.</blockquote>
-                    <p>A body of cut stone and circuit, vines at the shoulder, a white current in the chest, one hand raised among leaves. Unity is not the erasure of the two. It is the masonry in which difference still shows, and still conducts. Each tile keeps its edge.</p>
-                    <p>The Master does not abolish the suit. Fate, tension, solitude, love — they are the courses of the wall. They have stopped being rivals for the whole.</p>
-                    <p class="reading-use"><span>In a reading</span> Join without sanding the differences flat. What conducts through the joints is the bond. The joints themselves stay.</p>
+                    <p class="rank" data-i18n="cartomancy.cards.unity.rank">XIII · Suhteiden mestari</p>
+                    <h2 data-i18n="cartomancy.cards.unity.title">Ykseys</h2>
+                    <blockquote data-i18n="cartomancy.cards.unity.quote">Halkeamat ovat saumat. Valo on se, mitä saumat suostuivat kantamaan.</blockquote>
+                    <p data-i18n="cartomancy.cards.unity.p1">Ruumis leikattua kiveä ja virtapiiriä, köynnöksiä olalla, valkoinen virta rinnassa, yksi käsi nostettuna lehtien keskellä. Ykseys ei ole kahden pyyhkiminen. Se on muuraus, jossa ero yhä näkyy ja yhä johtaa. Jokainen laatta pitää reunansa.</p>
+                    <p data-i18n="cartomancy.cards.unity.p2">Mestari ei lakkauta maata. Kohtalo, jännite, yksinäisyys, rakkaus — ne ovat muurin kerrokset. Ne ovat lakanneet olemasta kilpailijoita kokonaisuudesta.</p>
+                    <p class="reading-use"><span data-i18n="cartomancy.reading">Luettaessa</span><span data-i18n="cartomancy.cards.unity.use">Liity hiomatta eroja sileiksi. Se mikä johtaa saumojen läpi on side. Saumat itse jäävät.</span></p>
                 </article>
             </section>
         </div>
@@ -1464,16 +1464,16 @@
         <div id="deck-sealed" hidden>
             <article class="sealed-plate">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                <p class="suit-kicker">Unopened</p>
-                <h2>This land is not yet drawn.</h2>
-                <p>The fork has other countries. Their cards are still in the dark, and a name given too early would be a lie with a border.</p>
-                <p>Return to an open land. Beliefs, Changes, Powers, and Relations can be read.</p>
+                <p class="suit-kicker" data-i18n="cartomancy.sealed.kicker">Avaamaton</p>
+                <h2 data-i18n="cartomancy.sealed.title">Tätä maata ei ole vielä piirretty.</h2>
+                <p data-i18n="cartomancy.sealed.p1">Haaralla on muita maita. Niiden kortit ovat yhä pimeässä, ja liian aikaisin annettu nimi olisi valhe, jolla on raja.</p>
+                <p data-i18n="cartomancy.sealed.p2">Palaa avoimeen maahan. Uskomukset, Muutokset, Voimat ja Suhteet voidaan lukea.</p>
             </article>
         </div>
 
         <footer class="hall-closer" id="realm-title">
-            <h1>Cartomancy</h1>
-            <button type="button" id="hall-return" class="hall-return" aria-label="Return">
+            <h1 data-i18n="cartomancy.title">Kartomantia</h1>
+            <button type="button" id="hall-return" class="hall-return" aria-label="Palaa" data-i18n-attr="aria-label:seal.return">
                 <img src="AiiAold.8dde82cb.jpg" alt="" width="48" height="48" decoding="async">
             </button>
         </footer>
