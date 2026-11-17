@@ -7,11 +7,10 @@ A public artistic site. The home page is an interactive 3D solar system. Service
 | File | What it is |
 |---|---|
 | `index.html` | Home. Three.js solar system. Services and the sun collapse into Services. Gallery and Bio warp directly. Library holds, then offers Codex Operum, Fragmenta Apocrypha, or Khaeos Metalogs. |
-| `services.html` | Services practice page on a dim starfield. Name, contact, four engagements, then Business Strategy, Pricing, Contact. |
+| `services.html` | Services practice page on a dim starfield. Name, contact, four engagements, then Business Strategy and Contact. |
 | `vault/opening.html` | The Opening of Reality manifesto. Vaulted. Netlify serves 404 for `/brain` and `/vault/*`. |
 | `branding.html` | The Work brochure. Four service sands on the starfield. Return goes to Services. |
 | `business_strategy.html` | Business Strategy. Centered scroll: vision and four instruments. Return goes to Services. |
-| `pricing.html` | Pricing. Four engagements and their durations. A line links to Contact. Return goes to Services. |
 | `contact.html` | Contact. Enquiry form, phone, email, and LinkedIn. Return goes to Services. |
 | `gallery.html` | Sixteen framed hangings on a black starfield. |
 | `physicalus.html` | Side hall of the gallery. Workshop photographs. |
@@ -22,7 +21,7 @@ A public artistic site. The home page is an interactive 3D solar system. Service
 | `gate_left.html` | Left Aperture. Entered from the left seal. |
 | `gate_right.html` | Fragmenta Apocrypha. Entered from the right seal. |
 
-The subpages share `seal-menu.css` and `seal-menu.js`. The seal opens an index. Return reverse-warps home. From Physicalus and Cartomancy, Return reverse-warps to the gallery. From The Work, Business Strategy, Pricing, and Contact, Return reverse-warps to Services. From CV, Return reverse-warps to Bio. Each public subpage ends with an in-flow closer: the page name and the obsidian return stone. The stone is the same Return as the seal. The vaulted manifesto has no closer.
+The subpages share `seal-menu.css` and `seal-menu.js`. The seal opens an index. Return reverse-warps home. From Physicalus and Cartomancy, Return reverse-warps to the gallery. From The Work, Business Strategy, and Contact, Return reverse-warps to Services. From CV, Return reverse-warps to Bio. Each public subpage ends with an in-flow closer: the page name and the obsidian return stone. The stone is the same Return as the seal. The vaulted manifesto has no closer.
 
 Artwork stills, frames, and hangings live under `art/`. The live logo, favicon, and sun sprite are `AiiAold.8dde82cb.jpg`.
 

@@ -27,7 +27,6 @@
     "metalog": "Metalogi",
     "offerings": "Tarjonta",
     "strategy": "Liiketoimintastrategia",
-    "pricing": "Hinnoittelu",
     "contact": "Yhteys",
     "bio": "Multimieli",
     "cv": "CV",
@@ -78,7 +77,7 @@
     "lede": "Neljä puhdasta toimeksiantoa, tarjoamme: yrityksen brändin nahanluonti ja visionäärinen uudistuminen, yksityinen privaatti tekoälykielimalli alusta / suvereenin, sensuurivapaan tekoälyn perehdytys, psykofilosofian kurssi mielen rajoitteista ja uskomuksista, viimeisenä tuotteena markkinointi/GEO konsultointi. Kesto toimeksiannoille 4- 8kk. Palkkio sovitaan, kun aloitamme - Aivoinko voi tehdä mitä ikinä halutaan.",
     "workHeading": "Neljä toimeksiantoa",
     "workNote": "Avaa yksi, niin näet koko toimeksiannon.",
-    "roomsLabel": "Liiketoimintastrategia, hinnoittelu ja yhteys",
+    "roomsLabel": "Liiketoimintastrategia ja yhteys",
     "brand": {
       "title": "Brändin kasvot ja kokonaisuus",
       "term": "Visionäärinen uudistuminen ja pullonkaulojen etsintä",
@@ -102,10 +101,6 @@
     "strategy": {
       "title": "Liiketoimintastrategia",
       "body": "Miten nämä neljä toimeksiantoa estävät yrityksen omaa strategiaa haurastumasta."
-    },
-    "pricing": {
-      "title": "Hinnoittelu",
-      "body": "Kuinka kauan kukin kestää. Palkkio sovitaan alussa, ei listata tariffina."
     },
     "contact": {
       "title": "Yhteys",
@@ -164,20 +159,6 @@
     "geoBody": "Sivusto, jota vastauskone ei voi siteerata, puuttuu keskustelusta. Jäsennämme sivut niin, että malli voi toistaa yrityksen keksimättä sitä. Meta-mainokset ja muut maksetut huoneet ovat työkaluja sen strategian sisällä; käytämme niitä tilillä. Jatkuva, niin kauan kuin yritys liikkuu.",
     "stance": "Asento",
     "stanceBody": "Emme luovuta tiedostoa ja lähde. Emme vuokraa kognitiota. Emme jätä suunnitelmaa ja tunnusta ja pyydä taloa arvaamaan, kumpi on työ. Galleria, kirjasto ja metallityö eivät ole koriste. Muoto ja ajatus ovat sama ammatti. Mitta ei ole neljännesvuosikaavio. Mitta on se, pystyykö talo kirjoittamaan seuraavan strategiansa lainaamatta jurisdiktiota, mallipohjaa tai mieltä, jota se ei omista."
-  },
-  "pricing": {
-    "title": "Hinnoittelu",
-    "description": "Hinnoittelu. Neljä toimeksiantoa ja se, kuinka kauan ne kestävät. Summa sovitaan työssä.",
-    "lede": "Kesto on se, mikä voidaan kirjoittaa tähän. Summa sovitaan toimeksiannossa.",
-    "brandName": "Brändin kasvot ja kokonaisuus.",
-    "brandTerm": "Visionäärinen uudistuminen ja pullonkaulojen etsintä.",
-    "courseName": "Filosofinen ja teknologinen mielen laajentaminen.",
-    "courseTerm": "Psykofilosofian historia, uskomusten valjastaminen käytännössä.",
-    "aiName": "Suvereeni tekoälyarkkitehtuuri.",
-    "aiTerm": "Puhdas tekoäly.",
-    "geoName": "GEO / markkinointistrategi.",
-    "geoTerm": "Jatkuva.",
-    "contact": "Kirjoita yhteys, jos jokin näistä on ajankohtainen."
   },
   "contact": {
     "title": "Yhteys",

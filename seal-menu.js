@@ -23,7 +23,6 @@
     var SERVICE_REALMS = [
         { key: 'seal.offerings', label: 'Tarjonta', href: 'branding.html' },
         { key: 'seal.strategy', label: 'Liiketoimintastrategia', href: 'business_strategy.html' },
-        { key: 'seal.pricing', label: 'Hinnoittelu', href: 'pricing.html' },
         { key: 'seal.contact', label: 'Yhteys', href: 'contact.html' }
     ];
 
@@ -44,7 +43,7 @@
         ? GALLERY_REALMS
         : (stem === 'diy_realities' || stem === 'gate_left' || stem === 'gate_right')
             ? LIBRARY_REALMS
-            : (stem === 'services' || stem === 'branding' || stem === 'business_strategy' || stem === 'pricing' || stem === 'contact')
+            : (stem === 'services' || stem === 'branding' || stem === 'business_strategy' || stem === 'contact')
                 ? SERVICE_REALMS
                 : (stem === 'bio' || stem === 'cv')
                     ? BIO_REALMS

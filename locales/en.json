@@ -27,7 +27,6 @@
     "metalog": "Metalog",
     "offerings": "Offerings",
     "strategy": "Business Strategy",
-    "pricing": "Pricing",
     "contact": "Contact",
     "bio": "Multimieli",
     "cv": "CV",
@@ -78,7 +77,7 @@
     "lede": "Four engagements: the company’s public face, a working course in judgment, a private AI on your machines, and how the company is found. Duration is written here. The fee is agreed when we begin.",
     "workHeading": "Four engagements",
     "workNote": "Open one for the full brief.",
-    "roomsLabel": "Business Strategy, Pricing, and Contact",
+    "roomsLabel": "Business Strategy and Contact",
     "brand": {
       "title": "Brand Enrichment and Wholeness",
       "term": "Six months, at least",
@@ -102,10 +101,6 @@
     "strategy": {
       "title": "Business Strategy",
       "body": "How those four engagements keep a firm’s own strategy from going brittle."
-    },
-    "pricing": {
-      "title": "Pricing",
-      "body": "How long each runs. The fee is agreed at the start, not listed as a tariff."
     },
     "contact": {
       "title": "Contact",
@@ -164,20 +159,6 @@
     "geoBody": "A site an answer engine cannot quote is missing from the conversation. We structure the pages so a model can repeat the company without inventing it. Meta ads and the other paid rooms are tools inside that strategy; we use them in the account. Ongoing, for as long as the business moves.",
     "stance": "Stance",
     "stanceBody": "We do not hand over a file and leave. We do not rent cognition. We do not leave a plan and a login and ask the house to guess which one is the work. The gallery, the library, and the metalwork are not decoration. Form and thought are the same trade. The measure is not a quarterly chart. The measure is whether the house can write its next strategy without borrowing a jurisdiction, a template, or a mind it does not own."
-  },
-  "pricing": {
-    "title": "Pricing",
-    "description": "Pricing. Four engagements and how long they run. The sum is agreed in the work.",
-    "lede": "Duration is what can be written here. The sum is agreed in the engagement.",
-    "brandName": "Brand Enrichment and Wholeness.",
-    "brandTerm": "Six months, at least.",
-    "courseName": "Philosophical and Technological Mind Expansion.",
-    "courseTerm": "Four months, or eight.",
-    "aiName": "Sovereign AI Intelligence Architecture.",
-    "aiTerm": "Pure AI.",
-    "geoName": "GEO / Marketing Strategist.",
-    "geoTerm": "Ongoing.",
-    "contact": "Write to Contact if one of these is timely."
   },
   "contact": {
     "title": "Contact",
