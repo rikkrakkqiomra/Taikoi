@@ -142,8 +142,17 @@
             color: var(--brass);
         }
 
+        .kicker {
+            margin-top: 0.4rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
         h1 {
-            margin-top: 0.55rem;
+            margin-top: 0.7rem;
             font-family: 'Cormorant Garamond', Georgia, serif;
             font-weight: 500;
             font-size: clamp(2.35rem, 7vw, 3.35rem);
@@ -212,8 +221,15 @@
             color: var(--brass);
         }
 
+        .block-note {
+            margin-top: 0.45rem;
+            color: var(--muted);
+            font-size: 0.98rem;
+        }
+
         .engagement {
-            display: block;
+            display: flex;
+            gap: 1rem;
             margin-top: 1.35rem;
             padding-bottom: 1.35rem;
             border-bottom: 1px solid var(--line);
@@ -224,6 +240,19 @@
         .engagement:last-child {
             padding-bottom: 0;
             border-bottom: 0;
+        }
+
+        .num {
+            flex: 0 0 1.7rem;
+            padding-top: 0.28rem;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            color: var(--brass);
+        }
+
+        .engagement-body {
+            min-width: 0;
         }
 
         .engagement h3 {
@@ -353,53 +382,63 @@
 
         <main>
             <p class="firm">Aivoinko</p>
+            <p class="kicker">Services</p>
             <h1>Riku Korpiaho</h1>
             <p class="role">Enterprise AI Solution Architect &amp; CTO</p>
             <p class="place">Pirkanmaa, Finland</p>
-            <p class="lede">The practice is for a company that intends to own its public face, the judgment of its decision-makers, its machines, and the way it is found.</p>
+            <p class="lede">Four engagements: the company’s public face, a working course in judgment, a private AI on your machines, and how the company is found. Duration is written here. The fee is agreed when we begin.</p>
 
             <p class="vita">
                 <a href="tel:+358405056974">+358 40 505 6974</a>
                 <a href="mailto:Aivoinko@gmail.com">Aivoinko@gmail.com</a>
-                <a href="contact.html">LinkedIn</a>
+                <a href="https://fi.linkedin.com/in/riku-korpiaho-a465bb251" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             </p>
 
             <section class="block" aria-labelledby="work-heading">
-                <h2 id="work-heading">The work</h2>
-                <a class="engagement" href="branding.html">
-                    <h3>Brand Enrichment and Wholeness</h3>
-                    <p class="term">Six months, at least</p>
-                    <p>The site, the mark, and the quiet failures underneath. Design and counsel sit in the same agreement.</p>
+                <h2 id="work-heading">Four engagements</h2>
+                <p class="block-note">Open one for the full brief.</p>
+                <a class="engagement" href="branding.html#brand">
+                    <span class="num" aria-hidden="true">01</span>
+                    <span class="engagement-body">
+                        <h3>Brand Enrichment and Wholeness</h3>
+                        <p class="term">Six months, at least</p>
+                        <p>The site, the mark, and the failures underneath. Design and counsel in one agreement.</p>
+                    </span>
                 </a>
-                <a class="engagement" href="branding.html">
-                    <h3>Philosophical and Technological Mind Expansion</h3>
-                    <p class="term">Four months, or eight</p>
-                    <p>A working course in philosophy, psychology, and systems thinking, used while the conditions keep moving.</p>
+                <a class="engagement" href="branding.html#course">
+                    <span class="num" aria-hidden="true">02</span>
+                    <span class="engagement-body">
+                        <h3>Philosophical and Technological Mind Expansion</h3>
+                        <p class="term">Four months, or eight</p>
+                        <p>A working course: philosophy, psychology, and systems thinking, used while conditions keep moving.</p>
+                    </span>
                 </a>
-                <a class="engagement" href="branding.html">
-                    <h3>Sovereign AI Intelligence Architecture</h3>
-                    <p class="term">Pure AI</p>
-                    <p>A model-agnostic system on the client’s own machines. On-premises as a rule. Air-gapped if asked.</p>
+                <a class="engagement" href="branding.html#ai">
+                    <span class="num" aria-hidden="true">03</span>
+                    <span class="engagement-body">
+                        <h3>Sovereign AI Intelligence Architecture</h3>
+                        <p class="term">On your machines</p>
+                        <p>A private, model-agnostic system on the client’s metal. On-premises as a rule. Air-gapped if asked.</p>
+                    </span>
                 </a>
-                <a class="engagement" href="branding.html">
-                    <h3>GEO / Marketing Strategist</h3>
-                    <p class="term">Ongoing</p>
-                    <p>Pages an answer engine can quote without inventing the company. Paid media sits inside that strategy.</p>
+                <a class="engagement" href="branding.html#geo">
+                    <span class="num" aria-hidden="true">04</span>
+                    <span class="engagement-body">
+                        <h3>GEO / Marketing Strategist</h3>
+                        <p class="term">Ongoing</p>
+                        <p>Generative engine optimisation and paid media. Pages an answer engine can quote without inventing the company.</p>
+                    </span>
                 </a>
             </section>
 
-            <nav class="block rooms" aria-label="Business Strategy, Pricing, and Contact">
+            <nav class="block rooms" aria-label="Business Strategy and Pricing">
                 <a href="business_strategy.html">
                     <h2>Business Strategy</h2>
-                    <p>The method that keeps a firm’s own strategy from going brittle.</p>
+                    <p>How those four engagements keep a firm’s own strategy from going brittle.</p>
                 </a>
                 <a href="pricing.html">
                     <h2>Pricing</h2>
-                    <p>Duration is written here. The fee is agreed when the work begins.</p>
-                </a>
-                <a href="contact.html">
-                    <h2>Contact</h2>
-                    <p>The conversation starts on LinkedIn.</p>
+                    <p>How long each runs. The fee is agreed at the start, not listed as a tariff.</p>
                 </a>
             </nav>
         </main>
