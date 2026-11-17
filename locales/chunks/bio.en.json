@@ -1,0 +1,76 @@
+{
+  "description": "Riku Richard Multimieli: four portraits, a first-person well, and links to the work.",
+  "name": "Riku Richard Multimieli",
+  "epithet": {
+    "father": "Father Unheimlich",
+    "licker": "licker of every frequency",
+    "flayer": "flayer of gods"
+  },
+  "tie": {
+    "heading": "Road",
+    "quote": "The glass decides which faces arrive.",
+    "p1": "He sits belted in, coat on, and looks past. The road does not ask a name. It offers a frequency, and he passes through it until the edge of the forest is nothing but light.",
+    "p2": "The coat is liturgy. The story is not driven. It is allowed to come.",
+    "alt": "Riku Richard Multimieli on the road"
+  },
+  "minusta": {
+    "heading": "Of Me",
+    "p1": "In a medieval register, the register that does not beg leave of its own century.",
+    "p2": "I grew up in the fever of the Nokia boom, at the Hervanta Research Center, in a melting pot of cultures. I played there while my mother was at work. The terrain was strange: glass, concrete, foreign languages, and the quiet pride of machines. There I learned that the world is a laboratory before anyone consents to call it one.",
+    "p3": "Later I returned on my own to that same strange terrain. I completed a degree in biotechnology and specialized in artificial intelligence: a return to the same yard, this time with an adult's keys.",
+    "p4": "I have spent most of my life thinking. The world, psychology, and the sciences have not been side paths. They have been the climate I have lived in.",
+    "p5": "I have made two-month journeys, to Bali, Italy, Thailand, and Mexico, and drawn my soul from ancient ruins and from art. The ruins were not attractions. They were mirrors that remembered me before I was.",
+    "p6": "Around the age of twenty I led a brain-chemistry group of ten thousand people. Its purpose was psychonautics and self-inquiry: a shared attempt to look inward until the map begins to answer.",
+    "coda": "The saga continues."
+  },
+  "kaari": {
+    "heading": "Arch",
+    "quote": "Nearness is not a coat of arms.",
+    "p1": "Between two cheeks there is an arch that needs no roof. The other face stays unnamed, because a name would already be distance.",
+    "p2": "He keeps that face beside him the way he keeps a frequency: quietly, cheek to cheek.",
+    "alt": "Riku Richard Multimieli under the arch"
+  },
+  "vesi": {
+    "heading": "Water",
+    "quote": "The mouth is a door a god tried to leave by.",
+    "p1": "On the shore the body agrees to be a shore. The beard is weather. The voice opens, and the water receives it without an altar.",
+    "p2": "The flaying is not done with a knife. It is done by laughter refusing holiness.",
+    "alt": "Riku Richard Multimieli on the shore"
+  },
+  "metsa": {
+    "heading": "Forest",
+    "quote": "The hat is a shadow the forest lent.",
+    "p1": "The hair is weather that refused to end. Here the familiar and the stranger live in the same trunk.",
+    "p2": "Father Unheimlich does not rule the grove. He stands in it until the trees remember the name for him.",
+    "alt": "Riku Richard Multimieli in the forest"
+  },
+  "verkko": {
+    "heading": "Net",
+    "lead": "The jobs that live elsewhere.",
+    "deviant": {
+      "name": "DeviantArt",
+      "line": "images · rikkrakk"
+    },
+    "etsy": {
+      "name": "Etsy",
+      "line": "Kiomra Trionfi"
+    },
+    "sound": {
+      "name": "SoundCloud",
+      "line": "sound · liquid licker"
+    },
+    "linkedin": {
+      "name": "LinkedIn",
+      "line": "work · Riku Korpiaho"
+    },
+    "trepo": {
+      "name": "Trepo",
+      "line": "thesis"
+    }
+  },
+  "close": {
+    "quote": "Names are not ranks.",
+    "p": "They are tools by which one man keeps many minds in one place. Frequencies come. Gods leave without their skins. He stays."
+  },
+  "title": "Bio"
+}

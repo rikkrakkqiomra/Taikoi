@@ -1,0 +1,103 @@
+{
+  "description": "Riku Korpiaho: Enterprise AI Solution Architect and CTO. Curriculum vitae.",
+  "name": "Riku Korpiaho",
+  "role": "Enterprise AI Solution Architect & CTO",
+  "place": "Pirkanmaa, Finland",
+  "phone": "+358 40 505 6974",
+  "email": "Aivoinko@gmail.com",
+  "summary": {
+    "heading": "Professional Summary",
+    "body": "Enterprise AI Solution Architect & Strategist (M.Sc. Tech, Biomedical Engineering & AI, 5/5 Thesis) specializing in building production-ready multi-agent platforms and hybrid architectures from scratch. Bridges deep technical execution in GenAI, black-box Bayesian optimization, and surrogate modeling for industrial R&D and life sciences with enterprise-grade deployment across local edge and cloud. Proven track record in solving complex industry challenges while ensuring strict regulatory compliance (EU AI Act, MDR/IVDR), high data sovereignty, and clear C-level business impact."
+  },
+  "stack": {
+    "heading": "Core Competencies / Technical Stack",
+    "ai": {
+      "heading": "AI & Agentic Architectures",
+      "body": "Multi-Agent Systems, Hybrid AI, LLM Orchestration, Hallucination Minimization, Agentic RAG, Query Expansion, Prompt Engineering, Model Fine-tuning & Evaluation, Model Context Protocol (MCP)."
+    },
+    "dev": {
+      "heading": "Modern AI Development",
+      "body": "Full-Stack Architecture, Python, Rust, R, MATLAB, Java, Linux / POSIX, Asynchronous Architecture (Celery/Redis, FastAPI), Git / CI/CD, TDD & Automated Evaluation Pipelines, Open-Source ML/DL Libraries (PyTorch, Hugging Face), AI-Native Tooling, Claude Code, Cursor, Antigravity."
+    },
+    "model": {
+      "heading": "Modeling, Optimization and Analytics",
+      "body": "Advanced Statistical Modeling, Bayesian & Multi-Objective Optimization, Surrogate Modeling (Gaussian Processes), Uncertainty Quantification, Stochastic Methods, Algorithmic & Mathematical Modeling (Also Neuroinformatics), Signal Processing, Semantic Clustering."
+    },
+    "infra": {
+      "heading": "Infrastructure and Cloud",
+      "body": "NVIDIA ARM GB10 Spark Clusters (Local/Air-gapped), Cloud PCs, Microsoft Azure, AWS, MLOps, Docker Containerization, Local LLM Inference Engines."
+    },
+    "domain": {
+      "heading": "Domain and Regulatory Expertise",
+      "body": "Medical Bioinformatics, Statistics, Life Sciences, Synthetic Biology, RegTech, Systems Engineering in Regulated Environments (EU AI Act, MDR/IVDR, ISO/IEC), Data Sovereignty & Privacy-by-Design (GDPR)."
+    },
+    "lead": {
+      "heading": "Leadership and Strategy",
+      "body": "CTO Leadership, Tech Roadmapping, Investor Relations & Funding, Cross-functional Stakeholder Management, Lead Developer, Managing partners."
+    }
+  },
+  "experience": {
+    "heading": "Experience"
+  },
+  "aivoinko": {
+    "title": "Founder & AI Consultant",
+    "dates": "Aivoinko · 2024 – Present",
+    "li1": "Provided specialized AI architecture and development consulting for complex technical and enterprise problems.",
+    "li2": "Architected domain-specific GenAI workflows, custom pipelines, and black-box optimization microservices (Live industrial pilot currently underway under NDA).",
+    "li3": "Delivered cloud AI consultation focused on Databricks and Azure architectures."
+  },
+  "louhi": {
+    "title": "Co-Founder & CTO / AI Architect",
+    "dates": "Louhi Cognitive Technologies Oy · 2026 – Present",
+    "li1": "Architected and developed enterprise-grade hybrid AI and multi-agent platforms from concept to 100% production-ready deployment with modular design. Engineered for cross-domain synthesis and analysis of complex technical and regulatory data.",
+    "li2": "Engineered secure, air-gapped local AI environments (running on local NVIDIA Spark ARM clusters) to ensure complete data confidentiality and zero external API dependencies for sensitive business data.",
+    "li3": "Led core technical strategy while actively collaborating on funding, investor relations, and strategic technical negotiations with partners and enterprise clients. (Live pilots currently underway)."
+  },
+  "gold": {
+    "title": "Co-Founder & RDI + CTO",
+    "dates": "Gold Digger Technologies Oy · 2025 – Present",
+    "li1": "Designed and built targeted AI/ML solutions and automation architectures focused on industrial applications on cloud.",
+    "li2": "Led software architecture and algorithmic modeling from proof-of-concept to active industrial pilot testing."
+  },
+  "education": {
+    "heading": "Education & Academic Achievements",
+    "msc": {
+      "title": "Master of Science in Technology (M.Sc. Tech / DI)",
+      "dates": "Tampere University · Graduated 2026",
+      "major": "Major: Biomedical Informatics (Biotechnology and Biomedical Engineering). Specialization: Artificial Intelligence, Deep Learning, Informatics, Data Analysis, Signal Processing.",
+      "thesis": "Master’s Thesis: Grade 5/5. Topic: Minimization of Hallucinations in Custom RegTech AI Systems Using Agentic Architectures. Conducted in partnership with ABB and Taipuva. Evaluated by: Prof. Joni Kämäräinen (AI/Computer Vision) and Research Director Alpo Värri (Health Technology).",
+      "coursework": "Advanced Coursework: Synthetic Biology, Gene Technology, Pharmacology, and Biomaterials."
+    },
+    "bsc": {
+      "title": "Bachelor of Science in Technology (B.Sc. Tech)",
+      "dates": "Tampere University",
+      "thesis": "Bachelor's Thesis: Tissue Modeling and Simulation, conducted within the Neuroscience Research Group."
+    },
+    "mentor": {
+      "heading": "Key Mentorship & Training",
+      "body": "Advanced AI & Machine Learning Architecture under the instruction of Pekka Abrahamsson, Joni Kämäräinen and Tuomas Virtanen.",
+      "network": "Interdisciplinary Sparring Network: Continuously enriched by an active, high-caliber peer network spanning computational medicine, chemistry, and cutting-edge software development."
+    }
+  },
+  "projects": {
+    "heading": "Notable Projects & Technical Highlights",
+    "regtech": {
+      "title": "Local-First Compound RegTech AI Engine",
+      "body": "Built a fully offline Compound AI platform for regulatory compliance analysis. Engineered a deterministic-to-generative pipeline featuring clustering neural network, graphs, hybrid retrieval (HNSW + BM25), BGE pairwise batch reranking, DeBERTa-v3 directional NLI logic, and bipartite matching, eliminating hallucinations in regulated contexts and generating automated regulatory impact matrices. (Commercial scaling & continued development under NDA)."
+    },
+    "edge": {
+      "title": "Autonomous Edge AI Cluster",
+      "body": "Configured and deployed localized high-performance inference pipelines on NVIDIA GB10 ARM Spark hardware, achieving ultra-low latency and full offline data privacy. Engineered an autonomous multi-agent core featuring audit-grade, compliance-by-design telemetry and logging with modular design. Query expansion fans one prompt into a structured set of probes; those probes then run concurrently as distinct professional personas on different models—physician, counsel, and peers answering the same question at once rather than in a single voice."
+    },
+    "bayes": {
+      "title": "Multi-Objective Bayesian Optimization Engine",
+      "body": "Architected a black-box optimization microservice for industrial formulations. Significantly reducing experimental iterations while maintaining regulatory parameter bounds (Architecture and proprietary details protected under NDA)."
+    },
+    "backtest": {
+      "title": "AI-Assisted Automatic Backtester & Trading Platform",
+      "body": "Architected an AI-assisted automatic backtesting and execution-research platform for a short-biased systematic book. The signal grammar is Ichimoku Kinko Hyo treated as a full equilibrium map, not a single oscillator: the kumo is future consensus, and shorts arm only when price trades beneath that cloud, Tenkan and Kijun have crossed and aligned bearish, and Chikou is clear of both price and kumo—with Kijun as the invalidation and trailing spine. A multi-model layer (Ichimoku parameter families, timeframes, and complementary regime filters) votes on each setup; an assistant expands the market query and withholds size unless the ensemble can jointly defend the short. The backtester walks history forward without look-ahead, applying fill and slippage, and emits expectancy, drawdown, and hit-rate so the book is audited before capital is at risk."
+    }
+  },
+  "title": "CV",
+  "sep": " · "
+}

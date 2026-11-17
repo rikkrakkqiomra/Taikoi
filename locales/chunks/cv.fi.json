@@ -1,0 +1,103 @@
+{
+  "description": "Riku Korpiaho: yritysten tekoälyn ratkaisuarkkitehti ja teknologiajohtaja. Ansioluettelo.",
+  "name": "Riku Korpiaho",
+  "role": "Yritysten tekoälyn ratkaisuarkkitehti ja teknologiajohtaja",
+  "place": "Pirkanmaa, Suomi",
+  "phone": "+358 40 505 6974",
+  "email": "Aivoinko@gmail.com",
+  "summary": {
+    "heading": "Ammatillinen yhteenveto",
+    "body": "Yritysten tekoälyn ratkaisuarkkitehti ja strategi (DI, biolääketieteen tekniikka ja tekoäly, tutkielma 5/5). Erikoistunut rakentamaan tuotantovalmiita moniagenttialustoja ja hybridiarkkitehtuureja alusta asti. Yhdistää generatiivisen tekoälyn, musta laatikko -Bayes-optimoinnin ja surrogaattimallinnuksen teknisen toteutuksen teollisessa tutkimuksessa ja kehityksessä sekä biotieteissä yritystason käyttöönottoon paikallisesta reunasta pilveen. Näyttöä monimutkaisten toimialaongelmien ratkaisemisesta ja samalla tiukasta sääntelynmukaisuudesta (EU:n tekoälyasetus, MDR/IVDR), korkeasta datasuvereniteetista ja selkeästä vaikutuksesta ylimmän johdon liiketoimintaan."
+  },
+  "stack": {
+    "heading": "Ydinosaaminen / tekninen pino",
+    "ai": {
+      "heading": "Tekoäly ja agenttiarkkitehtuurit",
+      "body": "Moniagenttijärjestelmät, hybridi-tekoäly, LLM-orkestrointi, hallusinaatioiden minimointi, agenttinen RAG, kyselyn laajennus, prompt-suunnittelu, mallien hienosäätö ja arviointi, Model Context Protocol (MCP)."
+    },
+    "dev": {
+      "heading": "Moderni tekoälykehitys",
+      "body": "Full-stack-arkkitehtuuri, Python, Rust, R, MATLAB, Java, Linux / POSIX, asynkroninen arkkitehtuuri (Celery/Redis, FastAPI), Git / CI/CD, TDD ja automatisoidut arviointiputket, avoimen lähdekoodin ML/DL-kirjastot (PyTorch, Hugging Face), tekoälynatiivit työkalut, Claude Code, Cursor, Antigravity."
+    },
+    "model": {
+      "heading": "Mallinnus, optimointi ja analytiikka",
+      "body": "Edistynyt tilastollinen mallinnus, Bayes- ja monitavoiteoptimointi, surrogaattimallinnus (gaussiset prosessit), epävarmuuden kvantifiointi, stokastiset menetelmät, algoritminen ja matemaattinen mallinnus (myös neuroinformatiikka), signaalinkäsittely, semanttinen klusterointi."
+    },
+    "infra": {
+      "heading": "Infrastruktuuri ja pilvi",
+      "body": "NVIDIA ARM GB10 Spark -klusterit (paikalliset / ilmarakoiset), Cloud PCs, Microsoft Azure, AWS, MLOps, Docker-kontitus, paikalliset LLM-päättelymoottorit."
+    },
+    "domain": {
+      "heading": "Toimiala- ja sääntelyosaaminen",
+      "body": "Lääketieteellinen bioinformatiikka, tilastotiede, biotieteet, synteettinen biologia, RegTech, järjestelmäsuunnittelu säännellyissä ympäristöissä (EU:n tekoälyasetus, MDR/IVDR, ISO/IEC), datasuvereniteetti ja sisäänrakennettu tietosuoja (GDPR)."
+    },
+    "lead": {
+      "heading": "Johtaminen ja strategia",
+      "body": "Teknologiajohtajuus, tekninen tiekartta, sijoittajasuhteet ja rahoitus, poikkitoiminen sidosryhmien hallinta, johtava kehittäjä, kumppanien johtaminen."
+    }
+  },
+  "experience": {
+    "heading": "Työkokemus"
+  },
+  "aivoinko": {
+    "title": "Perustaja ja tekoälykonsultti",
+    "dates": "Aivoinko · 2024 – Present",
+    "li1": "Tarjosin erikoistunutta tekoälyarkkitehtuurin ja -kehityksen konsultointia monimutkaisiin teknisiin ja yritystason ongelmiin.",
+    "li2": "Suunnittelin toimialakohtaisia GenAI-työnkulkuja, räätälöityjä putkia ja musta laatikko -optimoinnin mikropalveluja (teollinen pilotti käynnissä NDA:n alla).",
+    "li3": "Toimitin pilvitekoälyn konsultointia, painopisteenä Databricks- ja Azure-arkkitehtuurit."
+  },
+  "louhi": {
+    "title": "Yhteisperustaja ja teknologiajohtaja / tekoälyarkkitehti",
+    "dates": "Louhi Cognitive Technologies Oy · 2026 – Present",
+    "li1": "Suunnittelin ja kehitin yritystason hybridi-tekoälyn ja moniagenttialustat konseptista modulaariseen käyttöönottoon, 100 % tuotantovalmiina. Alustat on tehty monimutkaisen teknisen ja sääntelydatan toimialarajat ylittävään synteesiin ja analyysiin.",
+    "li2": "Rakensin turvalliset, ilmarakoiset paikalliset tekoäly-ympäristöt (paikallisilla NVIDIA Spark ARM -klustereilla), jotta arkaluonteinen liiketoimintadata pysyy täysin luottamuksellisena eikä riipu ulkoisista rajapinnoista.",
+    "li3": "Vedin teknistä ydinstrategiaa ja osallistuin samalla rahoitukseen, sijoittajasuhteisiin ja strategisiin teknisiin neuvotteluihin kumppaneiden ja yritysasiakkaiden kanssa. (Pilotit käynnissä.)"
+  },
+  "gold": {
+    "title": "Yhteisperustaja ja TKI + teknologiajohtaja",
+    "dates": "Gold Digger Technologies Oy · 2025 – Present",
+    "li1": "Suunnittelin ja rakensin kohdennettuja AI/ML-ratkaisuja ja automaatioarkkitehtuureja teollisiin sovelluksiin pilvessä.",
+    "li2": "Vedin ohjelmistoarkkitehtuuria ja algoritmista mallinnusta konseptitodistuksesta käynnissä olevaan teolliseen pilotointiin."
+  },
+  "education": {
+    "heading": "Koulutus ja akateemiset suoritukset",
+    "msc": {
+      "title": "Diplomi-insinööri (M.Sc. Tech / DI)",
+      "dates": "Tampere University · Graduated 2026",
+      "major": "Pääaine: biolääketieteellinen informatiikka (bioteknologia ja biolääketieteen tekniikka). Erikoistuminen: tekoäly, syväoppiminen, informatiikka, data-analyysi, signaalinkäsittely.",
+      "thesis": "Diplomityö: arvosana 5/5. Aihe: Minimization of Hallucinations in Custom RegTech AI Systems Using Agentic Architectures. Tehty yhteistyössä ABB:n ja Taipuvan kanssa. Arvioijat: professori Joni Kämäräinen (tekoäly / konenäkö) ja tutkimusjohtaja Alpo Värri (terveysteknologia).",
+      "coursework": "Edistyneet kurssit: synteettinen biologia, geenitekniikka, farmakologia ja biomateriaalit."
+    },
+    "bsc": {
+      "title": "Tekniikan kandidaatti (B.Sc. Tech)",
+      "dates": "Tampere University",
+      "thesis": "Kandidaatintyö: Tissue Modeling and Simulation. Tehty neurotieteen tutkimusryhmässä (Neuroscience Research Group)."
+    },
+    "mentor": {
+      "heading": "Keskeinen mentorointi ja koulutus",
+      "body": "Edistynyt tekoälyn ja koneoppimisen arkkitehtuuri Pekka Abrahamssonin, Joni Kämäräisen ja Tuomas Virtasen ohjauksessa.",
+      "network": "Tieteidenvälinen sparrausverkosto: rikastuu jatkuvasti aktiivisesta, korkeatasoisesta vertaisverkostosta, joka ulottuu laskennalliseen lääketieteeseen, kemiaan ja ohjelmistokehityksen kärkeen."
+    }
+  },
+  "projects": {
+    "heading": "Merkittävät projektit ja tekniset pääkohdat",
+    "regtech": {
+      "title": "Local-first Compound RegTech -tekoälymoottori",
+      "body": "Rakensin täysin offline-tilassa toimivan Compound AI -alustan sääntelynmukaisuuden analyysiin. Putki kulkee deterministisestä generatiiviseen: klusteroiva neuroverkko, graafit, hybridihaku (HNSW + BM25), BGE-parien eräpohjainen uudelleenjärjestys, DeBERTa-v3:n suuntaava NLI-logiikka ja kaksijakoinen täsmäytys. Hallusinaatiot poistuvat säädellyssä kontekstissa, ja alusta tuottaa automaattiset sääntelyvaikutusten matriisit. (Kaupallinen skaalaus ja jatkokehitys NDA:n alla.)"
+    },
+    "edge": {
+      "title": "Autonominen reunatekoälyklusteri",
+      "body": "Konfiguroin ja otin käyttöön paikalliset suurtehopäättelyputket NVIDIA GB10 ARM Spark -laitteistolla. Viive on erittäin matala ja datan yksityisyys täysi offline-tilassa. Autonominen moniagenttiydin: modulaarinen rakenne sekä audit-tasoinen telemetria ja lokitus, vaatimustenmukaisuus suunnittelussa. Kyselyn laajennus hajauttaa yhden promptin jäsennellyksi luotainjoukoksi; luotaimet ajetaan rinnakkain eri malleilla erillisinä ammatillisina persoonina — lääkäri, juristi ja vertaiset vastaavat samaan kysymykseen yhtä aikaa, eivät yhtenä äänenä."
+    },
+    "bayes": {
+      "title": "Monitavoitteinen Bayes-optimointimoottori",
+      "body": "Suunnittelin musta laatikko -optimoinnin mikropalvelun teollisiin formulaatioihin. Koekierrokset vähenivät selvästi, sääntelyn parametrirajat säilyivät. (Arkkitehtuuri ja omistetut yksityiskohdat suojattu NDA:n alla.)"
+    },
+    "backtest": {
+      "title": "Tekoälyavusteinen automaattinen backtester ja kaupankäyntialusta",
+      "body": "Suunnittelin tekoälyavusteisen automaattisen backtestaus- ja toteutustutkimusalustan short-painotteiselle systemaattiselle kirjalle. Signaalikielioppi on Ichimoku Kinko Hyo koko tasapainokarttana, ei yhtenä oskillaattorina: kumo on tuleva konsensus, ja shortti virittyy vain, kun hinta käy sen pilven alla, Tenkan ja Kijun ovat risteytyneet ja asettuneet laskeviksi ja Chikou on irti sekä hinnasta että kumosta — Kijun on mitätöinti ja trailing-selkäranka. Monimallikerros (Ichimoku-parametriperheet, aikakehykset ja täydentävät regime-suodattimet) äänestää jokaisesta asetelmasta; avustaja laajentaa markkinakyselyn ja pidättää koon, ellei ensemble kykene yhdessä puolustamaan shorttia. Backtester kulkee historiassa eteenpäin ilman look-aheadia, soveltaa fillin ja slippagen ja tuottaa expectancyn, drawdownin ja hit-raten, jotta kirja on auditoitu ennen kuin pääoma on riskissä."
+    }
+  },
+  "title": "CV",
+  "sep": " · "
+}
