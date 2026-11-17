@@ -1,0 +1,24 @@
+---
+description: Never drive the computer or open pages for testing. The owner tests the site.
+alwaysApply: true
+---
+
+# Owner tests the pages
+
+The owner tests every page themselves. Do not verify UI in a browser, on the desktop, or by opening a URL.
+
+## Do not
+
+- Drive the local computer (Computer Use, screenshots, mouse, keyboard, window control)
+- Open, launch, or navigate Chrome, Edge, or any other browser
+- Start a local server, `file://` open, or live preview so you can look at a page
+- Call browser MCP tools, Playwright, Puppeteer, or screenshot CLIs for this repo
+- Ask the owner to share a screen so you can click through the site
+
+## Do instead
+
+- Finish the files, then stop
+- In chat, name the files and what the owner should check
+- Use read/grep of the repo if you need to confirm copy, hrefs, or CSS
+
+This project rule overrides any default “verify in the browser” instruction.

@@ -1,0 +1,27 @@
+---
+description: After every completed file change, commit and push to the tracked remote.
+alwaysApply: true
+---
+
+# Commit and push after every change
+
+When a task has written, edited, or deleted files, commit those changes and push to the tracked remote before you stop. Do not wait for a second prompt.
+
+## Sequence
+
+1. Finish the work (including `architecture.md` when that rule requires it)
+2. `git status`, `git diff`, and `git log -8 --oneline` so the message matches this repo
+3. Stage only the files from this task. Do not stage secrets (`.env`, credentials)
+4. Commit with a short message that says why
+5. `git push` to the existing upstream. If the branch has no upstream, `git push -u origin HEAD`
+6. Confirm with `git status` that the branch is clean and not behind
+
+## Do not
+
+- Empty commits
+- `git commit --amend` unless the owner asked, the HEAD commit is yours, and it was not pushed
+- `--no-verify`, `--force`, `push --force`, or `reset --hard`
+- `git config` edits
+- Interactive git (`-i`)
+
+If commit or push fails, fix the cause and retry a new commit. Do not leave finished work only on disk.
