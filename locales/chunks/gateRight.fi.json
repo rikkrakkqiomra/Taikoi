@@ -1,0 +1,43 @@
+{
+  "title": "Fragmenta Apocrypha",
+  "f1": {
+    "latin": "Folium I · index non ligatus",
+    "heading": "Sitomaton hakemisto",
+    "quote": "Jokainen hylly on lupaus, että lause palaa.",
+    "p1": "Luettelo luettelee teoksia, jotka eivät ole vielä suostuneet olemaan olemassa. Kohdat neljästä yhdeksään on viivoitettu kullalla ja jätetty tahallaan tyhjiksi.",
+    "p2": "Seitsemäs otsake kirjoitettiin, sitten raaputettiin, sitten […]"
+  },
+  "f2": {
+    "latin": "Folium II · apparatus sine operatore",
+    "heading": "Laite ilman käyttäjää",
+    "quote": "Kone, joka odottaa, on jo teologia.",
+    "p": "Messinkikeuhko koottiin kolmesta vuosisadasta. Kukaan ei ottanut kampea nimiinsä. Marginaaliin myöhempi käsi aloittaa “kun käyttäjä—”"
+  },
+  "f3": {
+    "latin": "Folium III · septimum deest",
+    "heading": "Puuttuva seitsemäs",
+    "quote": "Kuusi lakia pitää. Seitsemäs on hiljaisuus, jota ne kiertävät.",
+    "p": "Aurinkokoneen tutkielmat nimeävät kuusi liikettä. Palanut vihko nimesi kerran seitsemännen, joka olisi tehnyt muista rehellisiä.",
+    "lacuna": "[ rasura: lex VII ]"
+  },
+  "f4": {
+    "latin": "Folium IV · epistula ad machinam futuram",
+    "heading": "Kirje tulevalle koneelle",
+    "quote": "Jos voit lukea tämän, olet jo elänyt mustetta pidempään.",
+    "p": "Emme jätä sinulle ohjeita, vain epäilymme lämpötilan. Älä sulje virtapiiriä ennen kuin",
+    "lacuna": "[…]"
+  },
+  "f5": {
+    "latin": "Folium V · census mundorum nondum natorum",
+    "heading": "Syntymättömien maailmojen väestönlaskenta",
+    "quote": "Laskea maailma ennen kuin se tapahtuu on eräänlaista varkautta.",
+    "p": "Nimien sarakkeita, sitten taitos, sitten lukuja, jotka hyppäävät kahdestatoista neljäänkymmeneen. Väestönlaskija kirjoittaa “yhä saapumassa” eikä alleviivaa mitään."
+  },
+  "f6": {
+    "latin": "Folium VI · colophon (vacat)",
+    "heading": "Kolofoni",
+    "quote": "—",
+    "p": "Tämä sivu oli varattu sitojan nimelle. Kultalehti päättyy alkukirjaimen puoliväliin. Loppu on"
+  },
+  "description": "Fragmenta Apocrypha: keskeneräinen kultafolioiden keskilaiva oikean sinetin tuolla puolen."
+}
