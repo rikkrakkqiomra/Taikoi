@@ -80,8 +80,8 @@
     "workNote": "Avaa yksi, niin näet koko toimeksiannon.",
     "roomsLabel": "Liiketoimintastrategia, hinnoittelu ja yhteys",
     "brand": {
-      "title": "Brändin eheys ja kokonaisuus",
-      "term": "Vähintään kuusi kuukautta",
+      "title": "Brändin kasvot ja kokonaisuus",
+      "term": "Visionäärinen uudistuminen ja pullonkaulojen etsintä",
       "body": "Sivusto, merkki ja niiden alla olevat virheet. Suunnittelu ja neuvonta samassa sopimuksessa."
     },
     "course": {
@@ -117,10 +117,10 @@
     "description": "Työ. Neljä tapaa pysyä: yritys, mieli, kone joka ei lähde talosta, ja se miten talo löydetään.",
     "kicker": "Neljä tapaa pysyä. Yritys, mieli, kone joka ei lähde talosta, ja se miten talo löydetään.",
     "brand": {
-      "title": "Brändin eheys ja kokonaisuus",
-      "term": "Vähintään kuusi kuukautta",
-      "p1": "Yrityksen julkinen kasvo ei ole logo pudotettuna mallipohjaan. Se on sivusto, merkki, se miten sivu on sommiteltu, ja jokainen hiljainen virhe niiden alla. Otamme sen jatkuvaksi toimeksiannoksi: lyhimmillään puoli vuotta, ja pidempään kun työ sitä pyytää.",
-      "p2": "Oli pino mikä tahansa — käsin kirjoitettu sivusto, WordPress tai jotain vähemmän kohteliasta — menemme sen sisään ja löydämme ansat ennen kuin ne löytävät kävijänne. Suunnittelu ja neuvonta ovat samassa sopimuksessa. Teille ei anneta tiedostoa ja jätetä tulkitsemaan sitä."
+      "title": "Brändin kasvot ja kokonaisuus",
+      "term": "Visionäärinen uudistuminen ja pullonkaulojen etsintä",
+      "p1": "Yrityksen julkinen kasvo ei ole logo pudotettuna mallipohjaan. Se on olohuone, symbolien teatteri, se miten sivu on sommiteltu, ja jokainen hiljainen vihje niiden alla. Otamme sen jatkuvaksi toimeksiannoksi: lyhimmillään puoli vuotta, ja pidempään kun työ sitä pyytää.",
+      "p2": "Oli rakenne mikä tahansa; käsin kirjoitettu sivusto, WordPress tai mitkä tahansa ulkosivut: menemme sen sisään ja löydämme ansat ennen kuin ne löytävät kävijänne. Suunnittelu ja neuvonta ovat samassa sopimuksessa. Teille ei anneta tiedostoa ja jätetä tulkitsemaan sitä. Aivoinko voi ja vastaa kaikesta prosessin aikana."
     },
     "course": {
       "title": "Filosofinen ja teknologinen mielen laajentaminen",
@@ -154,7 +154,7 @@
     "visionBody": "Talo, joka osaa ajatella, ilmestyä, laskea ja tulla löydetyksi omilla ehdoillaan. Julkinen kasvo ei ole mallipohja. Äly ei ole vuokrasopimus. Näky ei ole lause seinällä. Sivusto, jota vastauskone ei voi siteerata, puuttuu keskustelusta. Koneen metafysiikka nimeää asennon: kone on paikallinen, mieli on harjoitettu, brändi on riittävän kokonainen tunnistettavaksi itsekseen, ja talo löydetään ilman että sen keksii malli, joka ei ole koskaan tavannut sitä.",
     "method": "Menetelmä",
     "methodBody": "Työskentelemme strategian synnyttäjien parissa, emme viisivuotisen käsikirjoituksen. Neljä instrumenttia, yksi tarkoitus.",
-    "brandName": "Brändin eheys ja kokonaisuus.",
+    "brandName": "Brändin kasvot ja kokonaisuus.",
     "brandBody": "Yritys, joka ei näe omaa kasvoaan, ei osaa ohjata. Otamme sivuston, merkin, sommittelun ja niiden alla olevat virheet, ja jäämme. Suunnittelu ja neuvonta ovat yksi sopimus. Pino on yhdentekevä. Kesto on lyhimmillään kuusi kuukautta, koska rakenne ei liiku sprintissä.",
     "courseName": "Filosofinen ja teknologinen mielen laajentaminen.",
     "courseBody": "Suunnitelmat pettävät, kun niiden kirjoittajat eivät osaa ajatella samalla kun olosuhteet liikkuvat. Tämä on työskentelevä kurssi: filosofian ja psykologian historia niin kuin ne perinteet todella kulkivat, järjestelmäajattelun rinnalle sellaisena kuin sitä nyt käytetään. Neljä kuukautta tai kahdeksan. Aineisto jää talolle, käyttöoikeuksineen.",
@@ -169,8 +169,8 @@
     "title": "Hinnoittelu",
     "description": "Hinnoittelu. Neljä toimeksiantoa ja se, kuinka kauan ne kestävät. Summa sovitaan työssä.",
     "lede": "Kesto on se, mikä voidaan kirjoittaa tähän. Summa sovitaan toimeksiannossa.",
-    "brandName": "Brändin eheys ja kokonaisuus.",
-    "brandTerm": "Vähintään kuusi kuukautta.",
+    "brandName": "Brändin kasvot ja kokonaisuus.",
+    "brandTerm": "Visionäärinen uudistuminen ja pullonkaulojen etsintä.",
     "courseName": "Filosofinen ja teknologinen mielen laajentaminen.",
     "courseTerm": "Neljä kuukautta tai kahdeksan.",
     "aiName": "Suvereeni tekoälyarkkitehtuuri.",
