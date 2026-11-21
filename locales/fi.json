@@ -67,14 +67,14 @@
     "speed": "Nopeus: 1×",
     "hint": "Vedä kiertääksesi · Vieritä lähentääksesi",
     "node": "Solmu: Pohjois-Eurooppa, Tampereen seutu, RÄMSÖÖ",
-    "codexLabel": "Codex Operum — kääröt, jotka on suljettu",
-    "fragmentLabel": "Fragmenta Apocrypha — kädet, jotka eivät ole lopettaneet",
-    "codexKicker": "Codex",
-    "codexName": "Operum",
-    "codexLine": "Kääröt, jotka on suljettu.",
-    "fragmentKicker": "Fragmenta",
-    "fragmentName": "Apocrypha",
-    "fragmentLine": "Kädet, jotka eivät ole lopettaneet."
+    "codexLabel": "Codex Operum — suljettu rata, kaksi sinetöityä opinnäytettä",
+    "fragmentLabel": "Fragmenta Apocrypha — avoin rata, kuusi keskeneräistä foliota",
+    "codexKicker": "Suljettu rata",
+    "codexName": "Codex Operum",
+    "codexLine": "Kaksi sinettiä painon takana.",
+    "fragmentKicker": "Avoin rata",
+    "fragmentName": "Fragmenta Apocrypha",
+    "fragmentLine": "Kuusi foliota, ja seitsemäs hiljaisuus."
   },
   "services": {
     "title": "Palvelut",

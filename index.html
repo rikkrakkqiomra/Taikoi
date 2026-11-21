@@ -656,8 +656,8 @@
       left: 50%;
       top: 50%;
       z-index: 2;
-      width: clamp(76px, 9vw, 118px);
-      height: clamp(76px, 9vw, 118px);
+      width: clamp(64px, 7vw, 96px);
+      height: clamp(64px, 7vw, 96px);
       transform: translate(-50%, -50%);
       display: grid;
       place-items: center;
@@ -681,289 +681,187 @@
     }
 
     .limen-core .emblem {
-      width: 48%;
+      width: 42%;
       height: auto;
-      transform: scale(calc(0.85 + var(--choose) * 0.2));
-      filter: drop-shadow(0 0 12px rgba(217, 164, 65, 0.45));
+      opacity: 0.82;
+      transform: scale(calc(0.88 + var(--choose) * 0.14));
+      filter: drop-shadow(0 0 10px rgba(217, 164, 65, 0.28));
     }
 
-    .gate {
+    .aperture {
       position: absolute;
-      top: 0;
-      bottom: 0;
-      width: 46vw;
+      top: 47%;
       z-index: 3;
-      display: flex;
-      align-items: center;
+      width: clamp(10.5rem, 30vw, 20rem);
       margin: 0;
       padding: 0;
       border: 0;
       background: none;
-      color: inherit;
+      color: var(--well);
       font: inherit;
       cursor: pointer;
       appearance: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.85rem;
+      transform: translateY(-50%);
       -webkit-tap-highlight-color: transparent;
       touch-action: manipulation;
       outline: none;
-      transition: opacity 0.3s ease;
+      transition: opacity 0.45s ease;
     }
 
-    .gate--codex {
-      left: 0;
-      justify-content: flex-start;
+    .aperture--operum {
+      left: max(4vw, calc(50% - 32rem));
+      --well: #e25a72;
     }
 
-    .gate--fragment {
-      right: 0;
-      justify-content: flex-end;
+    .aperture--fragment {
+      right: max(4vw, calc(50% - 32rem));
+      --well: #d7b56a;
     }
 
-    .portal {
-      position: absolute;
-      top: 50%;
-      height: 114vh;
-      width: auto;
-      pointer-events: none;
-      user-select: none;
-      filter: brightness(0.96) saturate(1);
-      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease;
-    }
-
-    .gate--codex .portal {
-      left: -4vw;
-      transform: translateY(-50%) scale(1);
-      transform-origin: left center;
-    }
-
-    .gate--fragment .portal {
-      right: -4vw;
-      transform: translateY(-50%) scale(1);
-      transform-origin: right center;
-    }
-
-    .gate .plaque {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 4;
-      transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.4s ease;
-    }
-
-    .gate--codex .plaque { left: clamp(2rem, 11vw, 15rem); }
-    .gate--fragment .plaque { right: clamp(2rem, 11vw, 15rem); text-align: right; }
-
-    .chevron {
-      position: absolute;
-      top: 50%;
-      width: 24px;
-      height: 24px;
-      border-style: solid;
-      border-width: 0;
-      z-index: 4;
-      pointer-events: none;
-    }
-
-    .chevron--left {
-      right: clamp(1.5rem, 7vw, 8rem);
-      border-left-width: 3px;
-      border-bottom-width: 3px;
-      border-color: rgba(255, 96, 116, 0.9);
-      filter: drop-shadow(0 0 6px rgba(255, 60, 90, 0.6));
-      animation: nudgeL 1.9s ease-in-out infinite;
-    }
-
-    .chevron--right {
-      left: clamp(1.5rem, 7vw, 8rem);
-      border-right-width: 3px;
-      border-top-width: 3px;
-      border-color: rgba(232, 197, 110, 0.9);
-      filter: drop-shadow(0 0 6px rgba(217, 164, 65, 0.6));
-      animation: nudgeR 1.9s ease-in-out infinite;
-    }
-
-    @keyframes nudgeL {
-      0%, 100% { transform: translateY(-50%) translateX(0) rotate(45deg); opacity: 0.5; }
-      50% { transform: translateY(-50%) translateX(-9px) rotate(45deg); opacity: 0.95; }
-    }
-
-    @keyframes nudgeR {
-      0%, 100% { transform: translateY(-50%) translateX(0) rotate(45deg); opacity: 0.5; }
-      50% { transform: translateY(-50%) translateX(9px) rotate(45deg); opacity: 0.95; }
-    }
-
-    .gate--codex:hover .portal,
-    .gate--codex:focus-visible .portal {
-      filter: brightness(1.15) saturate(1.05) drop-shadow(0 0 48px rgba(255, 45, 85, 0.3));
-      transform: translateY(-50%) scale(1.035);
-    }
-
-    .gate--fragment:hover .portal,
-    .gate--fragment:focus-visible .portal {
-      filter: brightness(1.15) saturate(1.05) drop-shadow(0 0 48px rgba(217, 164, 65, 0.3));
-      transform: translateY(-50%) scale(1.035);
-    }
-
-    .gate:hover .plaque,
-    .gate:focus-visible .plaque {
-      transform: translateY(-50%) scale(1.04);
-    }
-
-    .gate--codex:hover .plaque,
-    .gate--codex:focus-visible .plaque {
-      border-color: rgba(255, 96, 116, 0.75);
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45), 0 0 26px rgba(255, 45, 85, 0.28);
-    }
-
-    .gate--fragment:hover .plaque,
-    .gate--fragment:focus-visible .plaque {
-      border-color: rgba(232, 197, 110, 0.8);
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45), 0 0 26px rgba(217, 164, 65, 0.3);
-    }
-
-    #wormhole-choice:has(.gate:hover) .gate:not(:hover),
-    #wormhole-choice:has(.gate:focus-visible) .gate:not(:focus-visible) {
-      opacity: 0.38;
-    }
-
-    .plaque {
+    .horizon {
       position: relative;
-      flex: 0 0 auto;
-      width: min(11.5rem, 16vw);
-      padding: 0.72rem 0.78rem 0.82rem;
-      background: rgba(16, 12, 8, 0.72);
-      border: 1px solid rgba(196, 140, 64, 0.48);
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(236, 226, 210, 0.08);
-      color: #efe6d4;
+      width: min(16rem, 100%);
+      aspect-ratio: 1;
+      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
-    .plaque-corners {
-      position: absolute;
-      inset: -5px;
-      pointer-events: none;
-    }
-
-    .plaque-corners i {
-      position: absolute;
-      width: 11px;
-      height: 11px;
-      border-color: #d4a45a;
-      border-style: solid;
-      border-width: 0;
-    }
-
-    .plaque-corners i:nth-child(1) { top: 0; left: 0; border-top-width: 1.5px; border-left-width: 1.5px; }
-    .plaque-corners i:nth-child(2) { top: 0; right: 0; border-top-width: 1.5px; border-right-width: 1.5px; }
-    .plaque-corners i:nth-child(3) { bottom: 0; left: 0; border-bottom-width: 1.5px; border-left-width: 1.5px; }
-    .plaque-corners i:nth-child(4) { bottom: 0; right: 0; border-bottom-width: 1.5px; border-right-width: 1.5px; }
-
-    .plaque-corners i::after {
+    .horizon::before {
       content: "";
       position: absolute;
-      width: 5px;
-      height: 5px;
-      background: #d4a45a;
-      transform: rotate(45deg);
+      inset: -22%;
+      border-radius: 50%;
+      background: radial-gradient(circle, color-mix(in srgb, var(--well) 22%, transparent) 0%, transparent 68%);
+      pointer-events: none;
     }
 
-    .plaque-corners i:nth-child(1)::after { top: -3px; left: -3px; }
-    .plaque-corners i:nth-child(2)::after { top: -3px; right: -3px; }
-    .plaque-corners i:nth-child(3)::after { bottom: -3px; left: -3px; }
-    .plaque-corners i:nth-child(4)::after { bottom: -3px; right: -3px; }
+    .horizon svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .figure {
+      opacity: 0.55;
+      transition: opacity 0.4s ease;
+    }
+
+    .spark-arm {
+      position: absolute;
+      inset: 0;
+      animation: photon 32s linear infinite;
+    }
+
+    .spark {
+      position: absolute;
+      left: 63.2%;
+      top: 50%;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: #f7f1e6;
+      box-shadow: 0 0 8px 1px var(--well);
+      transform: translate(-50%, -50%);
+    }
+
+    @keyframes photon {
+      to { transform: rotate(360deg); }
+    }
+
+    .aperture:hover .horizon,
+    .aperture:focus-visible .horizon {
+      transform: scale(1.045);
+    }
+
+    .aperture:hover .figure,
+    .aperture:focus-visible .figure {
+      opacity: 0.95;
+    }
+
+    .aperture:hover .photon,
+    .aperture:focus-visible .photon {
+      stroke-width: 1.45;
+    }
+
+    #wormhole-choice:has(.aperture:hover) .aperture:not(:hover),
+    #wormhole-choice:has(.aperture:focus-visible) .aperture:not(:focus-visible) {
+      opacity: 0.32;
+    }
+
+    .legend {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 18rem;
+      text-wrap: balance;
+    }
 
     .kicker {
       display: block;
       font-family: 'Orbitron', sans-serif;
       font-weight: 700;
-      font-size: 0.62rem;
-      letter-spacing: 0.28em;
+      font-size: 0.56rem;
+      letter-spacing: 0.34em;
       text-transform: uppercase;
-      color: #c48c40;
+      color: var(--well);
     }
 
     .name {
       display: block;
-      margin-top: 0.18rem;
+      margin-top: 0.28rem;
       font-family: 'Cormorant Garamond', serif;
       font-weight: 500;
-      font-size: 1.65rem;
-      line-height: 1.05;
-      color: #f3ead8;
+      font-size: 1.7rem;
+      line-height: 1.02;
+      color: #f4efe4;
     }
 
     .line {
       display: block;
-      margin-top: 0.38rem;
+      margin-top: 0.42rem;
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-weight: 500;
-      font-size: 0.98rem;
+      font-size: 1.02rem;
       line-height: 1.3;
-      color: #d8cfbe;
+      color: rgba(236, 228, 214, 0.72);
     }
 
-    @media (max-width: 1100px) {
-      .portal {
-        height: 94vh;
+    @media (max-width: 720px) {
+      .aperture {
+        width: 40vw;
+        gap: 0.55rem;
       }
 
-      .gate--codex .plaque { left: clamp(1rem, 7vw, 12rem); }
-      .gate--fragment .plaque { right: clamp(1rem, 7vw, 12rem); }
-    }
+      .aperture--operum { left: 3vw; }
+      .aperture--fragment { right: 3vw; }
 
-    @media (max-width: 768px) {
-      .line {
-        display: none;
-      }
-
-      .gate {
-        width: 50vw;
-      }
-
-      .portal {
-        height: 64vh;
-      }
-
-      .gate--codex .portal { left: -14vw; }
-      .gate--fragment .portal { right: -14vw; }
-
-      .plaque {
-        width: 34vw;
-        padding: 0.4rem 0.42rem 0.5rem;
-      }
-
-      .gate--codex .plaque { left: 3vw; }
-      .gate--fragment .plaque { right: 3vw; }
+      .horizon { width: 74%; }
 
       .kicker {
-        font-size: 0.5rem;
-        letter-spacing: 0.16em;
+        font-size: 0.46rem;
+        letter-spacing: 0.18em;
       }
 
-      .name {
-        font-size: 1.1rem;
-      }
+      .name { font-size: 1.12rem; }
 
-      .chevron--left { right: clamp(0.5rem, 4vw, 3rem); }
-      .chevron--right { left: clamp(0.5rem, 4vw, 3rem); }
+      .line { font-size: 0.84rem; }
 
       .limen-core {
-        width: 58px;
-        height: 58px;
+        width: 44px;
+        height: 44px;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .chevron--left,
-      .chevron--right {
-        animation: none;
-        opacity: 0.85;
-        transform: translateY(-50%) rotate(45deg);
-      }
+      .spark-arm { animation: none; }
 
-      .portal {
-        transition: filter 0.4s ease;
-      }
+      .horizon { transition: none; }
     }
 
     .sr-only {
@@ -1014,15 +912,40 @@
   <div id="canvas-container"></div>
   <div id="warp-flash" aria-hidden="true"></div>
   <div id="wormhole-choice" aria-hidden="true">
-    <button type="button" id="seal-left" class="gate gate--codex" data-i18n-attr="aria-label:index.codexLabel" aria-label="Codex Operum — kääröt, jotka on suljettu">
-      <img class="portal" src="art/limen/codex-portal.png" alt="" width="720" height="1280" decoding="async" draggable="false">
-      <span class="plaque">
-        <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-        <span class="kicker" data-i18n="index.codexKicker">Codex</span>
-        <span class="name" data-i18n="index.codexName">Operum</span>
-        <em class="line" data-i18n="index.codexLine">Kääröt, jotka on suljettu.</em>
+    <button type="button" id="seal-left" class="aperture aperture--operum" data-i18n-attr="aria-label:index.codexLabel" aria-label="Codex Operum — suljettu rata, kaksi sinetöityä opinnäytettä">
+      <span class="horizon" aria-hidden="true">
+        <svg viewBox="0 0 220 220">
+          <defs>
+            <radialGradient id="well-operum" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#000"/>
+              <stop offset="70%" stop-color="#14060c"/>
+              <stop offset="100%" stop-color="#14060c" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <g class="figure" fill="currentColor" stroke="currentColor" stroke-width="0.7">
+            <path d="M58 34 L92 14 L128 32 L116 62 L66 64 Z" fill="none"/>
+            <circle cx="58" cy="34" r="1.45" stroke="none"/>
+            <circle cx="92" cy="14" r="1.15" stroke="none"/>
+            <circle cx="128" cy="32" r="1.65" stroke="none"/>
+            <circle cx="116" cy="62" r="1.2" stroke="none"/>
+            <circle cx="66" cy="64" r="1.3" stroke="none"/>
+            <circle cx="40" cy="48" r="0.7" stroke="none" opacity="0.45"/>
+            <circle cx="146" cy="22" r="0.6" stroke="none" opacity="0.35"/>
+          </g>
+          <g fill="none" stroke="currentColor">
+            <ellipse cx="110" cy="110" rx="76" ry="17" stroke-width="1.05" opacity="0.62"/>
+            <ellipse cx="110" cy="110" rx="58" ry="11" stroke-width="0.4" opacity="0.38"/>
+          </g>
+          <circle cx="110" cy="110" r="36" fill="url(#well-operum)"/>
+          <circle class="photon" cx="110" cy="110" r="29" fill="none" stroke="currentColor" stroke-width="0.85"/>
+        </svg>
+        <span class="spark-arm"><span class="spark"></span></span>
       </span>
-      <span class="chevron chevron--left" aria-hidden="true"></span>
+      <span class="legend">
+        <span class="kicker" data-i18n="index.codexKicker">Suljettu rata</span>
+        <span class="name" data-i18n="index.codexName">Codex Operum</span>
+        <em class="line" data-i18n="index.codexLine">Kaksi sinettiä painon takana.</em>
+      </span>
     </button>
 
     <div class="limen-core" aria-hidden="true">
@@ -1030,15 +953,41 @@
       <img class="emblem" src="art/khaeos/khaeos-emblem.png" alt="" width="999" height="1004" decoding="async" draggable="false">
     </div>
 
-    <button type="button" id="seal-right" class="gate gate--fragment" data-i18n-attr="aria-label:index.fragmentLabel" aria-label="Fragmenta Apocrypha — kädet, jotka eivät ole lopettaneet">
-      <img class="portal" src="art/limen/fragment-portal.png" alt="" width="720" height="1280" decoding="async" draggable="false">
-      <span class="plaque">
-        <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-        <span class="kicker" data-i18n="index.fragmentKicker">Fragmenta</span>
-        <span class="name" data-i18n="index.fragmentName">Apocrypha</span>
-        <em class="line" data-i18n="index.fragmentLine">Kädet, jotka eivät ole lopettaneet.</em>
+    <button type="button" id="seal-right" class="aperture aperture--fragment" data-i18n-attr="aria-label:index.fragmentLabel" aria-label="Fragmenta Apocrypha — avoin rata, kuusi keskeneräistä foliota">
+      <span class="horizon" aria-hidden="true">
+        <svg viewBox="0 0 220 220">
+          <defs>
+            <radialGradient id="well-fragment" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#000"/>
+              <stop offset="70%" stop-color="#141006"/>
+              <stop offset="100%" stop-color="#141006" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <g class="figure" fill="currentColor" stroke="currentColor" stroke-width="0.7">
+            <path d="M78 28 L112 12 L150 30 L158 60 L126 74" fill="none"/>
+            <circle cx="78" cy="28" r="1.35" stroke="none"/>
+            <circle cx="112" cy="12" r="1.15" stroke="none"/>
+            <circle cx="150" cy="30" r="1.6" stroke="none"/>
+            <circle cx="158" cy="60" r="1.2" stroke="none"/>
+            <circle cx="126" cy="74" r="1.25" stroke="none"/>
+            <circle cx="92" cy="70" r="2.3" fill="none" stroke-width="0.55" opacity="0.55"/>
+            <circle cx="46" cy="40" r="0.65" stroke="none" opacity="0.4"/>
+            <circle cx="176" cy="18" r="0.6" stroke="none" opacity="0.35"/>
+          </g>
+          <g fill="none" stroke="currentColor">
+            <ellipse cx="110" cy="110" rx="76" ry="17" stroke-width="1.05" opacity="0.62"/>
+            <ellipse cx="110" cy="110" rx="58" ry="11" stroke-width="0.4" opacity="0.38"/>
+          </g>
+          <circle cx="110" cy="110" r="36" fill="url(#well-fragment)"/>
+          <circle class="photon" cx="110" cy="110" r="29" fill="none" stroke="currentColor" stroke-width="0.85"/>
+        </svg>
+        <span class="spark-arm"><span class="spark"></span></span>
       </span>
-      <span class="chevron chevron--right" aria-hidden="true"></span>
+      <span class="legend">
+        <span class="kicker" data-i18n="index.fragmentKicker">Avoin rata</span>
+        <span class="name" data-i18n="index.fragmentName">Fragmenta Apocrypha</span>
+        <em class="line" data-i18n="index.fragmentLine">Kuusi foliota, ja seitsemäs hiljaisuus.</em>
+      </span>
     </button>
   </div>
 
