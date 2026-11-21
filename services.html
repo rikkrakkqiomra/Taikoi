@@ -37,6 +37,7 @@
     <link rel="modulepreload" href="https://unpkg.com/three@0.160.0/build/three.module.js" crossorigin>
     <script>
         (function () {
+            if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
             function revealUi() {
                 if (window.__aivoinko3d) return;
                 document.documentElement.classList.add('ui-ready');
@@ -49,7 +50,7 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Orbitron:wght@700&amp;family=Source+Sans+3:ital,wght@0,400;0,500;0,600&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Orbitron:wght@700;900&amp;family=Source+Sans+3:ital,wght@0,400;0,500;0,600&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="seal-menu.css">
     <script src="seal-menu.js" defer></script>
     <style>
@@ -307,6 +308,16 @@
             outline: none;
         }
 
+        .hall-closer {
+            position: relative;
+            z-index: 6;
+        }
+
+        .hall-closer h1 {
+            color: #efe6d4;
+            text-shadow: 0 0 18px rgba(196, 140, 64, 0.35);
+        }
+
         @media (max-width: 768px) {
             .practice {
                 width: min(40rem, calc(100% - 2rem));
@@ -458,10 +469,15 @@
         scene.add(starMesh);
 
         const chrome = [document.querySelector('.practice'), document.querySelector('.hall-closer')];
+        const closerTitle = document.querySelector('.hall-closer h1');
+        let exiting = false;
 
         function exitAnimation() {
+            if (exiting) return;
+            exiting = true;
             const header = document.querySelector('header');
             if (header) header.style.pointerEvents = 'none';
+            if (closerTitle) closerTitle.style.opacity = '0';
             const startTime = Date.now();
             const duration = 1000;
 
@@ -474,7 +490,7 @@
                 scene.rotation.z = ease * 1.0;
                 const fade = String(1 - ease);
                 chrome.forEach(function (el) {
-                    if (el) el.style.opacity = fade;
+                    if (el) el.style.setProperty('opacity', fade, 'important');
                 });
                 if (progress < 1) {
                     requestAnimationFrame(exitLoop);
@@ -486,6 +502,16 @@
         }
 
         window.__aivoinkoSealExit = exitAnimation;
+
+        window.addEventListener('pageshow', function () {
+            exiting = false;
+            window.scrollTo(0, 0);
+            if (closerTitle) closerTitle.style.opacity = '';
+            chrome.forEach(function (el) {
+                if (el) el.style.removeProperty('opacity');
+            });
+        });
+        window.scrollTo(0, 0);
 
         let lastFrameTime = 0;
         function animate(time) {
