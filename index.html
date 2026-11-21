@@ -651,6 +651,16 @@
       opacity: 1;
     }
 
+    #wormhole-choice:not(.is-open) .fractures,
+    #wormhole-choice:not(.is-open) .photon-ring {
+      animation: none;
+      filter: none;
+    }
+
+    #wormhole-choice:not(.is-open) .cracks {
+      filter: none;
+    }
+
     .limen-core {
       position: absolute;
       left: 50%;
@@ -732,59 +742,103 @@
     .horizon::before {
       content: "";
       position: absolute;
-      inset: -22%;
+      inset: -28%;
       border-radius: 50%;
-      background: radial-gradient(circle, color-mix(in srgb, var(--well) 22%, transparent) 0%, transparent 68%);
+      background: radial-gradient(circle,
+          transparent 0 30%,
+          color-mix(in srgb, var(--well) 16%, transparent) 46%,
+          transparent 72%);
       pointer-events: none;
     }
 
-    .horizon svg {
-      display: block;
+    .fractures {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       overflow: visible;
+      pointer-events: none;
+      opacity: 0.8;
+      transform-origin: 50% 50%;
+      animation: shear 22s ease-in-out infinite;
+      filter: drop-shadow(0 0 2px color-mix(in srgb, var(--well) 65%, transparent));
     }
 
-    .figure {
-      opacity: 0.55;
-      transition: opacity 0.4s ease;
+    .aperture--fragment .fractures {
+      animation-duration: 27s;
+      animation-direction: reverse;
     }
 
-    .spark-arm {
+    .photon-ring {
       position: absolute;
-      inset: 0;
-      animation: photon 32s linear infinite;
-    }
-
-    .spark {
-      position: absolute;
-      left: 63.2%;
-      top: 50%;
-      width: 3px;
-      height: 3px;
+      inset: 20%;
       border-radius: 50%;
-      background: #f7f1e6;
-      box-shadow: 0 0 8px 1px var(--well);
-      transform: translate(-50%, -50%);
+      pointer-events: none;
+      background:
+        conic-gradient(from 206deg,
+          transparent 0deg,
+          color-mix(in srgb, var(--well) 88%, white) 14deg,
+          #f6f1e6 28deg,
+          var(--well) 46deg,
+          transparent 96deg,
+          transparent 360deg),
+        color-mix(in srgb, var(--well) 42%, transparent);
+      -webkit-mask: radial-gradient(farthest-side, transparent 58%, #000 63%, #000 70%, transparent 78%);
+      mask: radial-gradient(farthest-side, transparent 58%, #000 63%, #000 70%, transparent 78%);
+      filter: drop-shadow(0 0 6px var(--well));
+      animation: limb 42s linear infinite;
     }
 
-    @keyframes photon {
+    .aperture--fragment .photon-ring {
+      animation-direction: reverse;
+      background:
+        conic-gradient(from 18deg,
+          transparent 0deg,
+          color-mix(in srgb, var(--well) 88%, white) 14deg,
+          #f6f1e6 28deg,
+          var(--well) 46deg,
+          transparent 96deg,
+          transparent 360deg),
+        color-mix(in srgb, var(--well) 42%, transparent);
+    }
+
+    .void {
+      position: absolute;
+      inset: 33%;
+      border-radius: 50%;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 36% 34%,
+          color-mix(in srgb, var(--well) 22%, transparent) 0%,
+          transparent 34%),
+        radial-gradient(circle at 50% 54%, #000 0 64%, #05040a 82%, transparent 100%);
+      box-shadow:
+        inset 0 0 18px 5px #000,
+        0 0 0 1px color-mix(in srgb, var(--well) 70%, transparent);
+    }
+
+    @keyframes limb {
       to { transform: rotate(360deg); }
+    }
+
+    @keyframes shear {
+      0%, 100% { transform: rotate(-2.2deg) scale(1); }
+      50% { transform: rotate(2.2deg) scale(1.028); }
     }
 
     .aperture:hover .horizon,
     .aperture:focus-visible .horizon {
-      transform: scale(1.045);
+      transform: scale(1.04);
     }
 
-    .aperture:hover .figure,
-    .aperture:focus-visible .figure {
-      opacity: 0.95;
+    .aperture:hover .fractures,
+    .aperture:focus-visible .fractures {
+      opacity: 1;
     }
 
-    .aperture:hover .photon,
-    .aperture:focus-visible .photon {
-      stroke-width: 1.45;
+    .aperture:hover .photon-ring,
+    .aperture:focus-visible .photon-ring {
+      filter: drop-shadow(0 0 12px var(--well));
     }
 
     #wormhole-choice:has(.aperture:hover) .aperture:not(:hover),
@@ -859,7 +913,10 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .spark-arm { animation: none; }
+      .photon-ring,
+      .fractures { animation: none; }
+
+      .fractures .cracks { filter: none; }
 
       .horizon { transition: none; }
     }
@@ -914,32 +971,45 @@
   <div id="wormhole-choice" aria-hidden="true">
     <button type="button" id="seal-left" class="aperture aperture--operum" data-i18n-attr="aria-label:index.codexLabel" aria-label="Codex Operum — suljettu rata, kaksi sinetöityä opinnäytettä">
       <span class="horizon" aria-hidden="true">
-        <svg viewBox="0 0 220 220">
+        <svg class="fractures" viewBox="0 0 400 400">
           <defs>
-            <radialGradient id="well-operum" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#000"/>
-              <stop offset="70%" stop-color="#14060c"/>
-              <stop offset="100%" stop-color="#14060c" stop-opacity="0"/>
-            </radialGradient>
+            <filter id="shear-operum" x="-18%" y="-18%" width="136%" height="136%" color-interpolation-filters="sRGB">
+              <feTurbulence type="fractalNoise" baseFrequency="0.011 0.017" numOctaves="2" seed="3" result="noise">
+                <animate attributeName="baseFrequency" values="0.009 0.014;0.016 0.026;0.009 0.014" dur="24s" repeatCount="indefinite"/>
+              </feTurbulence>
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="11" xChannelSelector="R" yChannelSelector="G"/>
+            </filter>
           </defs>
-          <g class="figure" fill="currentColor" stroke="currentColor" stroke-width="0.7">
-            <path d="M58 34 L92 14 L128 32 L116 62 L66 64 Z" fill="none"/>
-            <circle cx="58" cy="34" r="1.45" stroke="none"/>
-            <circle cx="92" cy="14" r="1.15" stroke="none"/>
-            <circle cx="128" cy="32" r="1.65" stroke="none"/>
-            <circle cx="116" cy="62" r="1.2" stroke="none"/>
-            <circle cx="66" cy="64" r="1.3" stroke="none"/>
-            <circle cx="40" cy="48" r="0.7" stroke="none" opacity="0.45"/>
-            <circle cx="146" cy="22" r="0.6" stroke="none" opacity="0.35"/>
+          <g class="cracks" filter="url(#shear-operum)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M168 142 C132 96, 96 74, 58 46" stroke-width="1.7"/>
+            <path d="M58 46 C40 28, 26 24, 14 32" stroke-width="1"/>
+            <path d="M58 46 C46 62, 34 70, 22 64" stroke-width="0.9"/>
+            <path d="M236 148 C274 104, 308 82, 342 58" stroke-width="1.7"/>
+            <path d="M342 58 C358 42, 372 40, 386 32" stroke-width="0.95"/>
+            <path d="M308 86 C324 70, 332 54, 328 40" stroke-width="0.85"/>
+            <path d="M252 236 C292 268, 322 304, 346 338" stroke-width="1.65"/>
+            <path d="M346 338 C360 356, 362 372, 350 386" stroke-width="0.9"/>
+            <path d="M322 304 C338 312, 346 330, 336 346" stroke-width="0.8"/>
+            <path d="M152 252 C112 286, 74 308, 40 332" stroke-width="1.6"/>
+            <path d="M40 332 C24 344, 14 340, 8 324" stroke-width="0.9"/>
+            <path d="M74 308 C58 322, 52 342, 62 358" stroke-width="0.85"/>
+            <path d="M136 186 C92 162, 58 168, 26 150" stroke-width="1.35"/>
+            <path d="M26 150 C12 138, 10 122, 22 112" stroke-width="0.8"/>
+            <path d="M118 112 C156 74, 248 78, 292 140" stroke-width="1.15" opacity="0.72"/>
+            <path d="M292 140 C328 196, 300 262, 214 286" stroke-width="0.85" opacity="0.5"/>
+            <path d="M96 246 C82 258, 74 254, 68 268" stroke-width="0.75" opacity="0.7"/>
+            <path d="M304 168 C316 156, 326 160, 322 174" stroke-width="0.7" opacity="0.65"/>
           </g>
-          <g fill="none" stroke="currentColor">
-            <ellipse cx="110" cy="110" rx="76" ry="17" stroke-width="1.05" opacity="0.62"/>
-            <ellipse cx="110" cy="110" rx="58" ry="11" stroke-width="0.4" opacity="0.38"/>
+          <g fill="currentColor">
+            <circle cx="58" cy="46" r="2.1"/>
+            <circle cx="342" cy="58" r="1.7"/>
+            <circle cx="346" cy="338" r="2"/>
+            <circle cx="40" cy="332" r="1.6"/>
+            <circle cx="292" cy="140" r="1.8"/>
           </g>
-          <circle cx="110" cy="110" r="36" fill="url(#well-operum)"/>
-          <circle class="photon" cx="110" cy="110" r="29" fill="none" stroke="currentColor" stroke-width="0.85"/>
         </svg>
-        <span class="spark-arm"><span class="spark"></span></span>
+        <span class="photon-ring"></span>
+        <span class="void"></span>
       </span>
       <span class="legend">
         <span class="kicker" data-i18n="index.codexKicker">Suljettu rata</span>
@@ -955,33 +1025,41 @@
 
     <button type="button" id="seal-right" class="aperture aperture--fragment" data-i18n-attr="aria-label:index.fragmentLabel" aria-label="Fragmenta Apocrypha — avoin rata, kuusi keskeneräistä foliota">
       <span class="horizon" aria-hidden="true">
-        <svg viewBox="0 0 220 220">
+        <svg class="fractures" viewBox="0 0 400 400">
           <defs>
-            <radialGradient id="well-fragment" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#000"/>
-              <stop offset="70%" stop-color="#141006"/>
-              <stop offset="100%" stop-color="#141006" stop-opacity="0"/>
-            </radialGradient>
+            <filter id="shear-fragment" x="-18%" y="-18%" width="136%" height="136%" color-interpolation-filters="sRGB">
+              <feTurbulence type="fractalNoise" baseFrequency="0.013 0.02" numOctaves="2" seed="11" result="noise">
+                <animate attributeName="baseFrequency" values="0.011 0.016;0.018 0.03;0.011 0.016" dur="29s" repeatCount="indefinite"/>
+              </feTurbulence>
+              <feDisplacementMap in="SourceGraphic" in2="noise" scale="12" xChannelSelector="R" yChannelSelector="G"/>
+            </filter>
           </defs>
-          <g class="figure" fill="currentColor" stroke="currentColor" stroke-width="0.7">
-            <path d="M78 28 L112 12 L150 30 L158 60 L126 74" fill="none"/>
-            <circle cx="78" cy="28" r="1.35" stroke="none"/>
-            <circle cx="112" cy="12" r="1.15" stroke="none"/>
-            <circle cx="150" cy="30" r="1.6" stroke="none"/>
-            <circle cx="158" cy="60" r="1.2" stroke="none"/>
-            <circle cx="126" cy="74" r="1.25" stroke="none"/>
-            <circle cx="92" cy="70" r="2.3" fill="none" stroke-width="0.55" opacity="0.55"/>
-            <circle cx="46" cy="40" r="0.65" stroke="none" opacity="0.4"/>
-            <circle cx="176" cy="18" r="0.6" stroke="none" opacity="0.35"/>
+          <g class="cracks" filter="url(#shear-fragment)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M156 124 C186 78, 246 66, 304 98" stroke-width="1.65"/>
+            <path d="M304 98 C332 78, 356 70, 378 64" stroke-width="0.95"/>
+            <path d="M304 98 C318 116, 330 124, 348 118" stroke-width="0.85"/>
+            <path d="M246 162 C300 176, 334 214, 358 258" stroke-width="1.7"/>
+            <path d="M358 258 C372 280, 376 302, 364 318" stroke-width="0.95"/>
+            <path d="M334 214 C352 206, 366 214, 370 232" stroke-width="0.8"/>
+            <path d="M228 252 C252 294, 278 332, 296 364" stroke-width="1.5"/>
+            <path d="M296 364 C308 380, 322 386, 334 376" stroke-width="0.85"/>
+            <path d="M164 156 C118 124, 76 112, 42 96" stroke-width="1.6"/>
+            <path d="M42 96 C24 82, 16 66, 22 50" stroke-width="0.9"/>
+            <path d="M76 112 C60 128, 58 146, 72 158" stroke-width="0.8"/>
+            <path d="M132 228 C108 252, 96 274, 104 298" stroke-width="1.35"/>
+            <path d="M268 70 C282 58, 296 62, 294 78" stroke-width="0.75" opacity="0.7"/>
+            <path d="M348 186 C362 176, 374 184, 366 198" stroke-width="0.7" opacity="0.65"/>
           </g>
-          <g fill="none" stroke="currentColor">
-            <ellipse cx="110" cy="110" rx="76" ry="17" stroke-width="1.05" opacity="0.62"/>
-            <ellipse cx="110" cy="110" rx="58" ry="11" stroke-width="0.4" opacity="0.38"/>
+          <g fill="currentColor">
+            <circle cx="304" cy="98" r="2"/>
+            <circle cx="358" cy="258" r="1.7"/>
+            <circle cx="42" cy="96" r="1.8"/>
+            <circle cx="296" cy="364" r="1.6"/>
+            <circle cx="104" cy="298" r="4.2" fill="none" stroke="currentColor" stroke-width="0.9" opacity="0.8"/>
           </g>
-          <circle cx="110" cy="110" r="36" fill="url(#well-fragment)"/>
-          <circle class="photon" cx="110" cy="110" r="29" fill="none" stroke="currentColor" stroke-width="0.85"/>
         </svg>
-        <span class="spark-arm"><span class="spark"></span></span>
+        <span class="photon-ring"></span>
+        <span class="void"></span>
       </span>
       <span class="legend">
         <span class="kicker" data-i18n="index.fragmentKicker">Avoin rata</span>
@@ -1598,6 +1676,39 @@
     const CHOOSE_MS = 4200;
     const COMMIT_MS = 900;
     const choiceEl = document.getElementById('wormhole-choice');
+    const lensLeftEl = document.querySelector('#seal-left .horizon');
+    const lensRightEl = document.querySelector('#seal-right .horizon');
+
+    function lensNdc(el) {
+      if (!el) return null;
+      const rect = el.getBoundingClientRect();
+      if (rect.width < 8 || rect.height < 8) return null;
+      const cx = (rect.left + rect.width * 0.5) / window.innerWidth;
+      const cy = (rect.top + rect.height * 0.5) / window.innerHeight;
+      return { x: cx * 2 - 1, y: -(cy * 2 - 1) };
+    }
+
+    function bendTowardWells(x, y, z, wells, gain) {
+      if (!wells || z > -4) return { x: x, y: y };
+      const dist = -z;
+      const halfH = Math.tan(camera.fov * Math.PI / 360) * dist;
+      const halfW = halfH * camera.aspect;
+      if (halfW < 1 || halfH < 1) return { x: x, y: y };
+      let ndcX = x / halfW;
+      let ndcY = y / halfH;
+      for (let w = 0; w < wells.length; w++) {
+        const well = wells[w];
+        if (!well) continue;
+        const dx = ndcX - well.x;
+        const dy = ndcY - well.y;
+        const r2 = dx * dx + dy * dy + 0.02;
+        const pull = Math.min(gain / r2, 0.34);
+        const twist = Math.min(gain * 0.55 / r2, 0.1);
+        ndcX += -dx * pull - dy * twist;
+        ndcY += -dy * pull + dx * twist;
+      }
+      return { x: ndcX * halfW, y: ndcY * halfH };
+    }
 
     function disposeWarp(state) {
       if (!state) return;
@@ -1652,9 +1763,10 @@
       hideChoice();
     }
 
-    function writeWarpStreaks(dt, stretch, rushZ, rushX) {
+    function writeWarpStreaks(dt, stretch, rushZ, rushX, lens) {
       const arr = warpState.warpGeom.attributes.position.array;
       const lateral = rushX !== 0;
+      const wells = lens && lens.wells;
       for (let i = 0; i < warpState.warpCount; i++) {
         let z = warpState.starZ[i] + rushZ * dt;
         let x = warpState.starXY[i * 2] + rushX * dt;
@@ -1674,11 +1786,23 @@
         warpState.starXY[i * 2 + 1] = y;
         const dx = lateral ? -Math.sign(rushX) * stretch : 0;
         const dz = lateral ? -stretch * 0.35 : -stretch;
-        arr[i * 6] = x;
-        arr[i * 6 + 1] = y;
+        let x0 = x;
+        let y0 = y;
+        let x1 = x + dx;
+        let y1 = y;
+        if (wells) {
+          const near = bendTowardWells(x, y, z, wells, lens.gain * 0.4);
+          const far = bendTowardWells(x + dx, y, z + dz, wells, lens.gain);
+          x0 = near.x;
+          y0 = near.y;
+          x1 = far.x;
+          y1 = far.y;
+        }
+        arr[i * 6] = x0;
+        arr[i * 6 + 1] = y0;
         arr[i * 6 + 2] = z;
-        arr[i * 6 + 3] = x + dx;
-        arr[i * 6 + 4] = y;
+        arr[i * 6 + 3] = x1;
+        arr[i * 6 + 4] = y1;
         arr[i * 6 + 5] = z + dz;
       }
       warpState.warpGeom.attributes.position.needsUpdate = true;
@@ -1838,11 +1962,14 @@
       if (warpState.phase === 'choose') {
         const progress = Math.min(elapsed / CHOOSE_MS, 1);
         if (choiceEl) choiceEl.style.setProperty('--choose', progress.toFixed(4));
-        writeWarpStreaks(dt, 28, 18, 0);
-        warpState.warpMat.opacity = 0.7;
-        scene.fog.density = baseFogDensity + 0.06;
         camera.fov = baseFov + 52;
         camera.updateProjectionMatrix();
+        writeWarpStreaks(dt, 28, 18, 0, {
+          wells: [lensNdc(lensLeftEl), lensNdc(lensRightEl)],
+          gain: 0.016 + progress * 0.034
+        });
+        warpState.warpMat.opacity = 0.7;
+        scene.fog.density = baseFogDensity + 0.06;
         if (warpState.flash) warpState.flash.style.opacity = '0.4';
         if (progress >= 1) commitWarp('forward');
         return;
