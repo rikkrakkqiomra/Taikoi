@@ -1,3 +1,7 @@
+html.i18n-pending {
+    background: #000;
+}
+
 html.i18n-pending body {
     visibility: hidden;
 }

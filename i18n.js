@@ -5,13 +5,15 @@
     var root = document.documentElement;
     var stay = root.hasAttribute('data-i18n-stay');
     var dict = null;
+    var cache = {};
     var lang = 'fi';
     var prefixed = false;
     var domReady = document.readyState !== 'loading';
     var applied = false;
+    var loadSeq = 0;
 
     var pendingStyle = document.createElement('style');
-    pendingStyle.textContent = 'html.i18n-pending body{visibility:hidden}';
+    pendingStyle.textContent = 'html.i18n-pending{background:#000}html.i18n-pending body{visibility:hidden}';
     document.head.appendChild(pendingStyle);
 
     function storageGet() {
@@ -146,7 +148,9 @@
         link.lang = code;
         link.setAttribute('data-lang', code);
         link.setAttribute('aria-label', label);
-        link.innerHTML = flag + '<span aria-hidden="true">' + (code === 'fi' ? 'FI' : 'EN') + '</span>';
+        if (!link.querySelector('svg')) {
+            link.innerHTML = flag + '<span aria-hidden="true">' + (code === 'fi' ? 'FI' : 'EN') + '</span>';
+        }
         if (code === lang) link.setAttribute('aria-current', 'page');
         else link.removeAttribute('aria-current');
         link.onclick = onSwitch;
@@ -171,6 +175,34 @@
         fillLink(en, 'en', EN_FLAG, t('lang.en') || 'English');
     }
 
+    function isModifiedClick(event) {
+        return event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.which > 1 || event.button > 0;
+    }
+
+    function pageHref(code) {
+        return langPath(code) + location.search + location.hash;
+    }
+
+    function syncHistory(code) {
+        if (!prefixed) return;
+        var next = pageHref(code);
+        var now = location.pathname + location.search + location.hash;
+        if (now === next) return;
+        try {
+            history.pushState({ lang: code }, '', next);
+        } catch (err) {
+            /* file: or sandboxed history */
+        }
+    }
+
+    function switchTo(code) {
+        lang = code;
+        root.lang = code;
+        root.setAttribute('data-lang', code);
+        applied = false;
+        load(code);
+    }
+
     function onSwitch(event) {
         var code = event.currentTarget.getAttribute('data-lang');
         if (!LANGS[code] || code === lang) {
@@ -178,17 +210,19 @@
             return;
         }
         storageSet(code);
-        if (prefixed) return;
+        if (isModifiedClick(event)) return;
         event.preventDefault();
-        lang = code;
-        root.lang = code;
-        root.setAttribute('data-lang', code);
-        applied = false;
-        if (code === 'en') root.classList.add('i18n-pending');
-        load(code);
+        syncHistory(code);
+        switchTo(code);
     }
 
     function load(code) {
+        var seq = ++loadSeq;
+        if (cache[code]) {
+            dict = cache[code];
+            tryApply();
+            return;
+        }
         var url = new URL('/locales/' + code + '.json', location.origin);
         fetch(url.href, { credentials: 'same-origin' })
             .then(function (res) {
@@ -196,10 +230,13 @@
                 return res.json();
             })
             .then(function (json) {
+                cache[code] = json;
+                if (seq !== loadSeq) return;
                 dict = json;
                 tryApply();
             })
             .catch(function () {
+                if (seq !== loadSeq) return;
                 show();
             });
     }
@@ -230,6 +267,14 @@
         domReady = true;
         mountSwitch();
         tryApply();
+    });
+
+    window.addEventListener('popstate', function () {
+        var match = pathname().match(/^\/(fi|en)(?=\/|$)/);
+        var code = match ? match[1] : '';
+        if (!LANGS[code] || code === lang) return;
+        storageSet(code);
+        switchTo(code);
     });
 
     if (location.protocol === 'file:') {
