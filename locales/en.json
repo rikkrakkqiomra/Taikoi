@@ -30,6 +30,7 @@
     "contact": "Contact",
     "bio": "Multimieli",
     "cv": "CV",
+    "onkalo": "The Hollow",
     "section1": "Section 1",
     "section2": "Section 2",
     "section3": "Section 3",
@@ -1106,6 +1107,28 @@
     },
     "title": "CV",
     "sep": " · "
+  },
+  "astroteles": {
+    "title": "The Hollow",
+    "description": "A cave of AI-coding wonders. A changing Chinese room, where signs follow rules and do not understand.",
+    "kicker": "Astroteles Aivoinko II",
+    "hint": "Drag to look · Click a wall, a slip, or the well",
+    "closer": "The Hollow",
+    "fail": "This is a changing Chinese room. The browser could not open the hollow; the rules are still here.",
+    "rule1": "If the signs are the same, turn the wall.",
+    "rule2": "Do not understand. Follow the rule.",
+    "rule3": "When the jade burns, write a new door.",
+    "rule4": "Copy the left pillar onto the right, and mirror it.",
+    "rule5": "If you see your own name, it is an error. Delete it.",
+    "rule6": "Wait until the room answers. It will not.",
+    "rooms": {
+      "cinnabar": "Cinnabar Lacquer",
+      "jade": "Jade Chamber",
+      "ink": "Ink Rain",
+      "void": "Gold Vacuum",
+      "ice": "Ice Code",
+      "dawn": "Dawn Silk"
+    }
   },
   "diy": {
     "title": "Khaeos Metalogs",

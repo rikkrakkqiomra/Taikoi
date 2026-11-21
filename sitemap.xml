@@ -183,4 +183,18 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/gate_right.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/gate_right.html"/>
   </url>
+  <url>
+    <loc>https://taikoi.netlify.app/fi/astroteles.html</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/astroteles.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/astroteles.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/astroteles.html"/>
+  </url>
+  <url>
+    <loc>https://taikoi.netlify.app/en/astroteles.html</loc>
+    <lastmod>2026-11-21</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/astroteles.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/astroteles.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/astroteles.html"/>
+  </url>
 </urlset>

@@ -31,6 +31,10 @@
         { key: 'seal.cv', label: 'CV', href: 'cv.html' }
     ];
 
+    var ASTROTELES_REALMS = [
+        { key: 'seal.onkalo', label: 'Onkalo', href: 'astroteles.html' }
+    ];
+
     function pageStem() {
         var path = window.location.pathname.replace(/\\/g, '/');
         var parts = path.split('/').filter(Boolean);
@@ -47,7 +51,9 @@
                 ? SERVICE_REALMS
                 : (stem === 'bio' || stem === 'cv')
                     ? BIO_REALMS
-                    : SECTION_REALMS;
+                    : (stem === 'astroteles')
+                        ? ASTROTELES_REALMS
+                        : SECTION_REALMS;
 
     var img = document.querySelector('header img');
     if (!img) return;
