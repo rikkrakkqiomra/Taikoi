@@ -473,6 +473,14 @@
         display: none;
       }
 
+      .status-wide {
+        display: none;
+      }
+
+      .status-narrow {
+        display: inline;
+      }
+
       /* Ensure tooltip doesn't cause overflow */
       #tooltip {
         max-width: 200px;
@@ -490,6 +498,10 @@
       display: flex;
       align-items: center;
       gap: 8px;
+    }
+
+    .status-narrow {
+      display: none;
     }
 
     .dot {
@@ -1260,10 +1272,12 @@
       <span data-i18n="index.online">Järjestelmä verkossa</span>
     </div>
     <div class="status-item">
-      <span data-i18n="index.speed">1×</span>
+      <span class="status-wide" data-i18n="index.speed">Nopeus: 1×</span>
+      <span class="status-narrow" data-i18n="index.speedShort">1×</span>
     </div>
     <div class="status-item">
-      <span data-i18n="index.hint">Vedä · Vieritä</span>
+      <span class="status-wide" data-i18n="index.hint">Vedä kiertääksesi · Vieritä lähentääksesi</span>
+      <span class="status-narrow" data-i18n="index.hintShort">Vedä · Vieritä</span>
     </div>
   </footer>
 
