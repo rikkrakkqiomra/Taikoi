@@ -69,6 +69,8 @@
       --accent-color: #00f3ff;
       --silver-gradient: linear-gradient(to bottom, #ffffff 0%, #c0c0c0 50%, #8a8a8a 100%);
       --node-rail-h: 32px;
+      --shake-x: 0px;
+      --shake-y: 0px;
     }
 
     * {
@@ -606,6 +608,19 @@
       opacity: 1 !important;
     }
 
+    html.is-warping header,
+    html.is-warping footer,
+    html.is-warping #node-rail {
+      opacity: 0 !important;
+      pointer-events: none;
+    }
+
+    html.is-limen #canvas-container,
+    html.is-limen #warp-flash,
+    html.is-limen #wormhole-choice {
+      transform: translate3d(var(--shake-x), var(--shake-y), 0);
+    }
+
     #warp-flash {
       position: fixed;
       inset: 0;
@@ -637,13 +652,14 @@
 
     #wormhole-choice {
       --choose: 0;
+      --glitch: 0;
       position: fixed;
       inset: 0;
       z-index: 90;
       overflow: hidden;
       pointer-events: none;
       opacity: 0;
-      transition: opacity 0.4s ease;
+      transition: opacity 0.45s ease;
     }
 
     #wormhole-choice.is-open {
@@ -651,14 +667,51 @@
       opacity: 1;
     }
 
-    #wormhole-choice:not(.is-open) .fractures,
-    #wormhole-choice:not(.is-open) .photon-ring {
-      animation: none;
-      filter: none;
+    #wormhole-choice.is-open::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: radial-gradient(ellipse at 50% 50%,
+          transparent 10%,
+          rgba(5, 0, 10, 0.22) 48%,
+          rgba(3, 0, 8, 0.55) 100%);
     }
 
-    #wormhole-choice:not(.is-open) .cracks {
-      filter: none;
+    .limen-grain,
+    .limen-crackle {
+      position: absolute;
+      pointer-events: none;
+    }
+
+    .limen-grain {
+      inset: -12%;
+      z-index: 6;
+      width: 124%;
+      height: 124%;
+      opacity: calc(0.06 + var(--choose) * 0.13);
+      mix-blend-mode: overlay;
+      animation: grainShift 0.26s steps(2) infinite;
+    }
+
+    .limen-crackle {
+      inset: 0;
+      z-index: 7;
+      opacity: var(--glitch);
+      mix-blend-mode: screen;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent 0 2px,
+        rgba(255, 214, 214, 0.045) 2px 3px
+      );
+      transform: translate3d(calc(var(--glitch) * 4px), calc(var(--glitch) * -2px), 0);
+    }
+
+    @keyframes grainShift {
+      0% { transform: translate3d(0, 0, 0); }
+      50% { transform: translate3d(-14px, 9px, 0); }
+      100% { transform: translate3d(8px, -11px, 0); }
     }
 
     .limen-core {
@@ -666,259 +719,344 @@
       left: 50%;
       top: 50%;
       z-index: 2;
-      width: clamp(64px, 7vw, 96px);
-      height: clamp(64px, 7vw, 96px);
+      width: clamp(92px, 11vw, 128px);
+      height: clamp(92px, 11vw, 128px);
       transform: translate(-50%, -50%);
       display: grid;
       place-items: center;
       pointer-events: none;
     }
 
-    .orrery,
+    .limen-core .seal,
     .limen-core .emblem {
       grid-area: 1 / 1;
     }
 
-    .orrery {
+    .limen-core .seal {
       width: 100%;
       height: 100%;
-      border-radius: 50%;
-      background: conic-gradient(from -90deg,
-          rgba(217, 164, 65, 0.92) calc(var(--choose) * 1turn),
-          transparent 0);
-      -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 1.5px), #000 calc(100% - 1px));
-      mask: radial-gradient(farthest-side, transparent calc(100% - 1.5px), #000 calc(100% - 1px));
+    }
+
+    .seal-track {
+      fill: none;
+      stroke: rgba(217, 164, 65, 0.22);
+      stroke-width: 0.6;
+    }
+
+    .seal-track--inner {
+      stroke-width: 0.4;
+      stroke: rgba(217, 164, 65, 0.16);
+    }
+
+    .seal-arc {
+      fill: none;
+      stroke: rgba(232, 197, 110, 0.95);
+      stroke-width: 1.15;
+      stroke-linecap: round;
+      transform-box: view-box;
+      transform-origin: 50% 50%;
+    }
+
+    .seal-arc--outer {
+      stroke-dasharray: 326.73;
+      stroke-dashoffset: calc(326.73 * (1 - var(--choose)));
+      transform: rotate(-90deg);
+    }
+
+    .seal-arc--inner {
+      stroke: rgba(217, 164, 65, 0.72);
+      stroke-width: 0.85;
+      stroke-dasharray: 251.33;
+      stroke-dashoffset: calc(251.33 * (1 - var(--choose)));
+      transform: rotate(90deg);
+    }
+
+    .seal-cardinals {
+      stroke: rgba(217, 164, 65, 0.5);
+      stroke-width: 0.7;
     }
 
     .limen-core .emblem {
       width: 42%;
       height: auto;
-      opacity: 0.82;
-      transform: scale(calc(0.88 + var(--choose) * 0.14));
-      filter: drop-shadow(0 0 10px rgba(217, 164, 65, 0.28));
+      opacity: calc(0.78 + var(--choose) * 0.22);
+      filter: drop-shadow(0 0 10px rgba(217, 164, 65, calc(0.16 + var(--choose) * 0.5)));
     }
 
     .aperture {
       position: absolute;
-      top: 47%;
+      top: 50%;
       z-index: 3;
-      width: clamp(10.5rem, 30vw, 20rem);
+      display: grid;
+      justify-items: center;
+      width: min(32vw, 268px);
       margin: 0;
       padding: 0;
       border: 0;
       background: none;
-      color: var(--well);
       font: inherit;
       cursor: pointer;
       appearance: none;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.85rem;
-      transform: translateY(-50%);
       -webkit-tap-highlight-color: transparent;
       touch-action: manipulation;
       outline: none;
-      transition: opacity 0.45s ease;
+      transform: translateY(-52%);
+      transition: opacity 0.35s ease;
     }
 
     .aperture--operum {
-      left: max(4vw, calc(50% - 32rem));
-      --well: #e25a72;
+      left: clamp(3.5vw, 9vw, 13vw);
+      color: #ff6b88;
     }
 
     .aperture--fragment {
-      right: max(4vw, calc(50% - 32rem));
-      --well: #d7b56a;
+      right: clamp(3.5vw, 9vw, 13vw);
+      color: #e8c56e;
     }
 
-    .horizon {
+    .aperture .veil,
+    .aperture .well {
+      grid-area: 1 / 1;
+    }
+
+    .aperture .veil {
       position: relative;
-      width: min(16rem, 100%);
-      aspect-ratio: 1;
-      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .horizon::before {
-      content: "";
-      position: absolute;
-      inset: -28%;
-      border-radius: 50%;
-      background: radial-gradient(circle,
-          transparent 0 30%,
-          color-mix(in srgb, var(--well) 16%, transparent) 46%,
-          transparent 72%);
-      pointer-events: none;
-    }
-
-    .fractures {
-      position: absolute;
-      inset: 0;
+      z-index: 0;
       width: 100%;
-      height: 100%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      pointer-events: none;
+      transform: scale(1.48);
+      transform-origin: 50% 42%;
+    }
+
+    .aperture--operum .veil {
+      background: radial-gradient(circle at 50% 48%,
+          rgba(0, 0, 0, 0.94) 0%,
+          rgba(18, 0, 6, 0.72) 34%,
+          rgba(255, 45, 85, 0.14) 54%,
+          transparent 72%);
+    }
+
+    .aperture--fragment .veil {
+      background: radial-gradient(circle at 50% 48%,
+          rgba(0, 0, 0, 0.94) 0%,
+          rgba(16, 12, 0, 0.7) 34%,
+          rgba(212, 175, 55, 0.14) 54%,
+          transparent 72%);
+    }
+
+    .aperture .well {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: auto;
       overflow: visible;
+      filter: drop-shadow(calc(var(--glitch) * -2.6px) 0 0 rgba(255, 45, 85, 0.5))
+              drop-shadow(calc(var(--glitch) * 2.6px) 0 0 rgba(120, 190, 255, 0.38));
+      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), filter 0.35s ease;
+    }
+
+    .aperture .legend {
+      grid-area: 2 / 1;
+      position: relative;
+      z-index: 2;
+      margin-top: 0.15rem;
+      max-width: 16.5rem;
+      text-align: center;
       pointer-events: none;
-      opacity: 0.8;
+    }
+
+    .lens {
+      fill: none;
+      stroke-width: 0.4;
+    }
+
+    .aperture--operum .lens { stroke: rgba(255, 90, 120, 0.22); }
+    .aperture--fragment .lens { stroke: rgba(232, 197, 110, 0.22); }
+
+    .disk {
+      fill: none;
+    }
+
+    .shadow {
+      fill: #000;
+    }
+
+    .photon {
+      fill: none;
+      stroke-width: 1.15;
+      animation: photonPulse 2.8s ease-in-out infinite;
+    }
+
+    .aperture--operum .photon { stroke: #ff5a78; }
+    .aperture--fragment .photon { stroke: #e8c56e; }
+
+    .photon--inner {
+      stroke-width: 0.5;
+      opacity: 0.42;
+      animation-duration: 3.6s;
+    }
+
+    .spark-orbit {
+      transform-box: view-box;
       transform-origin: 50% 50%;
-      animation: shear 22s ease-in-out infinite;
-      filter: drop-shadow(0 0 2px color-mix(in srgb, var(--well) 65%, transparent));
+      animation: wellSpin 5.6s linear infinite;
     }
 
-    .aperture--fragment .fractures {
-      animation-duration: 27s;
+    .aperture--fragment .spark-orbit {
+      animation-duration: 7.4s;
       animation-direction: reverse;
     }
 
-    .photon-ring {
-      position: absolute;
-      inset: 20%;
-      border-radius: 50%;
-      pointer-events: none;
-      background:
-        conic-gradient(from 206deg,
-          transparent 0deg,
-          color-mix(in srgb, var(--well) 88%, white) 14deg,
-          #f6f1e6 28deg,
-          var(--well) 46deg,
-          transparent 96deg,
-          transparent 360deg),
-        color-mix(in srgb, var(--well) 42%, transparent);
-      -webkit-mask: radial-gradient(farthest-side, transparent 58%, #000 63%, #000 70%, transparent 78%);
-      mask: radial-gradient(farthest-side, transparent 58%, #000 63%, #000 70%, transparent 78%);
-      filter: drop-shadow(0 0 6px var(--well));
-      animation: limb 42s linear infinite;
+    .spark {
+      fill: #fff8ee;
     }
 
-    .aperture--fragment .photon-ring {
-      animation-direction: reverse;
-      background:
-        conic-gradient(from 18deg,
-          transparent 0deg,
-          color-mix(in srgb, var(--well) 88%, white) 14deg,
-          #f6f1e6 28deg,
-          var(--well) 46deg,
-          transparent 96deg,
-          transparent 360deg),
-        color-mix(in srgb, var(--well) 42%, transparent);
+    .asterism {
+      fill: currentColor;
     }
 
-    .void {
-      position: absolute;
-      inset: 33%;
-      border-radius: 50%;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 36% 34%,
-          color-mix(in srgb, var(--well) 22%, transparent) 0%,
-          transparent 34%),
-        radial-gradient(circle at 50% 54%, #000 0 64%, #05040a 82%, transparent 100%);
-      box-shadow:
-        inset 0 0 18px 5px #000,
-        0 0 0 1px color-mix(in srgb, var(--well) 70%, transparent);
+    .asterism-path {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 0.7;
+      stroke-linejoin: miter;
+      opacity: 0.55;
     }
 
-    @keyframes limb {
+    .star--void {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 0.75;
+      stroke-dasharray: 1.5 1.7;
+      opacity: 0.7;
+    }
+
+    @keyframes wellSpin {
       to { transform: rotate(360deg); }
     }
 
-    @keyframes shear {
-      0%, 100% { transform: rotate(-2.2deg) scale(1); }
-      50% { transform: rotate(2.2deg) scale(1.028); }
+    @keyframes photonPulse {
+      0%, 100% { stroke-opacity: 0.55; }
+      50% { stroke-opacity: 0.95; }
     }
 
-    .aperture:hover .horizon,
-    .aperture:focus-visible .horizon {
-      transform: scale(1.04);
+    .aperture:hover .well,
+    .aperture:focus-visible .well {
+      transform: scale(1.055);
     }
 
-    .aperture:hover .fractures,
-    .aperture:focus-visible .fractures {
-      opacity: 1;
+    .aperture:hover .asterism-path,
+    .aperture:focus-visible .asterism-path {
+      opacity: 0.9;
     }
 
-    .aperture:hover .photon-ring,
-    .aperture:focus-visible .photon-ring {
-      filter: drop-shadow(0 0 12px var(--well));
+    .aperture--operum:hover .well,
+    .aperture--operum:focus-visible .well {
+      filter: drop-shadow(0 0 22px rgba(255, 45, 85, 0.38));
+    }
+
+    .aperture--fragment:hover .well,
+    .aperture--fragment:focus-visible .well {
+      filter: drop-shadow(0 0 22px rgba(217, 164, 65, 0.38));
     }
 
     #wormhole-choice:has(.aperture:hover) .aperture:not(:hover),
     #wormhole-choice:has(.aperture:focus-visible) .aperture:not(:focus-visible) {
-      opacity: 0.32;
-    }
-
-    .legend {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      max-width: 18rem;
-      text-wrap: balance;
+      opacity: 0.34;
     }
 
     .kicker {
       display: block;
       font-family: 'Orbitron', sans-serif;
       font-weight: 700;
-      font-size: 0.56rem;
-      letter-spacing: 0.34em;
+      font-size: 0.58rem;
+      letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: var(--well);
     }
+
+    .aperture--operum .kicker { color: #ff6b88; }
+    .aperture--fragment .kicker { color: #d4af37; }
 
     .name {
       display: block;
-      margin-top: 0.28rem;
+      margin-top: 0.22rem;
       font-family: 'Cormorant Garamond', serif;
       font-weight: 500;
-      font-size: 1.7rem;
-      line-height: 1.02;
-      color: #f4efe4;
+      font-size: clamp(1.2rem, 2.15vw, 1.58rem);
+      line-height: 1.08;
+      color: #f3ead8;
     }
 
     .line {
       display: block;
-      margin-top: 0.42rem;
+      margin-top: 0.38rem;
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
       font-weight: 500;
-      font-size: 1.02rem;
-      line-height: 1.3;
-      color: rgba(236, 228, 214, 0.72);
+      font-size: 0.95rem;
+      line-height: 1.35;
+      color: rgba(232, 220, 200, 0.78);
     }
 
     @media (max-width: 720px) {
       .aperture {
         width: 40vw;
-        gap: 0.55rem;
       }
 
       .aperture--operum { left: 3vw; }
       .aperture--fragment { right: 3vw; }
 
-      .horizon { width: 74%; }
-
       .kicker {
-        font-size: 0.46rem;
+        font-size: 0.5rem;
         letter-spacing: 0.18em;
       }
 
-      .name { font-size: 1.12rem; }
+      .name {
+        font-size: 1.05rem;
+      }
 
-      .line { font-size: 0.84rem; }
+      .line {
+        font-size: 0.82rem;
+      }
 
       .limen-core {
-        width: 44px;
-        height: 44px;
+        width: 64px;
+        height: 64px;
+      }
+    }
+
+    @media (max-height: 500px) {
+      .aperture {
+        width: min(28vw, 180px);
+      }
+
+      .limen-core {
+        width: 54px;
+        height: 54px;
+      }
+
+      .line {
+        font-size: 0.78rem;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .photon-ring,
-      .fractures { animation: none; }
+      .spark-orbit,
+      .photon,
+      .limen-grain {
+        animation: none;
+      }
 
-      .fractures .cracks { filter: none; }
+      .limen-grain,
+      .limen-crackle {
+        opacity: 0;
+      }
 
-      .horizon { transition: none; }
+      .aperture .well {
+        transition: filter 0.35s ease;
+      }
     }
 
     .sr-only {
@@ -969,98 +1107,141 @@
   <div id="canvas-container"></div>
   <div id="warp-flash" aria-hidden="true"></div>
   <div id="wormhole-choice" aria-hidden="true">
+    <svg class="limen-grain" viewBox="0 0 160 160" preserveAspectRatio="none" aria-hidden="true">
+      <filter id="limen-noise" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.82" numOctaves="4" seed="3" stitchTiles="stitch"/>
+      </filter>
+      <rect width="160" height="160" filter="url(#limen-noise)"/>
+    </svg>
+    <div class="limen-crackle" aria-hidden="true"></div>
+
     <button type="button" id="seal-left" class="aperture aperture--operum" data-i18n-attr="aria-label:index.codexLabel" aria-label="Codex Operum — suljettu rata, kaksi sinetöityä opinnäytettä">
-      <span class="horizon" aria-hidden="true">
-        <svg class="fractures" viewBox="0 0 400 400">
-          <defs>
-            <filter id="shear-operum" x="-18%" y="-18%" width="136%" height="136%" color-interpolation-filters="sRGB">
-              <feTurbulence type="fractalNoise" baseFrequency="0.011 0.017" numOctaves="2" seed="3" result="noise">
-                <animate attributeName="baseFrequency" values="0.009 0.014;0.016 0.026;0.009 0.014" dur="24s" repeatCount="indefinite"/>
-              </feTurbulence>
-              <feDisplacementMap in="SourceGraphic" in2="noise" scale="11" xChannelSelector="R" yChannelSelector="G"/>
-            </filter>
-          </defs>
-          <g class="cracks" filter="url(#shear-operum)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M168 142 C132 96, 96 74, 58 46" stroke-width="1.7"/>
-            <path d="M58 46 C40 28, 26 24, 14 32" stroke-width="1"/>
-            <path d="M58 46 C46 62, 34 70, 22 64" stroke-width="0.9"/>
-            <path d="M236 148 C274 104, 308 82, 342 58" stroke-width="1.7"/>
-            <path d="M342 58 C358 42, 372 40, 386 32" stroke-width="0.95"/>
-            <path d="M308 86 C324 70, 332 54, 328 40" stroke-width="0.85"/>
-            <path d="M252 236 C292 268, 322 304, 346 338" stroke-width="1.65"/>
-            <path d="M346 338 C360 356, 362 372, 350 386" stroke-width="0.9"/>
-            <path d="M322 304 C338 312, 346 330, 336 346" stroke-width="0.8"/>
-            <path d="M152 252 C112 286, 74 308, 40 332" stroke-width="1.6"/>
-            <path d="M40 332 C24 344, 14 340, 8 324" stroke-width="0.9"/>
-            <path d="M74 308 C58 322, 52 342, 62 358" stroke-width="0.85"/>
-            <path d="M136 186 C92 162, 58 168, 26 150" stroke-width="1.35"/>
-            <path d="M26 150 C12 138, 10 122, 22 112" stroke-width="0.8"/>
-            <path d="M118 112 C156 74, 248 78, 292 140" stroke-width="1.15" opacity="0.72"/>
-            <path d="M292 140 C328 196, 300 262, 214 286" stroke-width="0.85" opacity="0.5"/>
-            <path d="M96 246 C82 258, 74 254, 68 268" stroke-width="0.75" opacity="0.7"/>
-            <path d="M304 168 C316 156, 326 160, 322 174" stroke-width="0.7" opacity="0.65"/>
+      <span class="veil" aria-hidden="true"></span>
+      <svg class="well" viewBox="0 0 240 240" aria-hidden="true">
+        <defs>
+          <radialGradient id="horizon-operum" cx="50%" cy="48%" r="52%">
+            <stop offset="0%" stop-color="#000"/>
+            <stop offset="62%" stop-color="#070103"/>
+            <stop offset="100%" stop-color="#1a040a"/>
+          </radialGradient>
+          <linearGradient id="disk-operum" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#ff2d55" stop-opacity="0"/>
+            <stop offset="18%" stop-color="#ff2d55" stop-opacity="0.9"/>
+            <stop offset="50%" stop-color="#ffd0da" stop-opacity="0.35"/>
+            <stop offset="82%" stop-color="#ff2d55" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#ff2d55" stop-opacity="0"/>
+          </linearGradient>
+          <clipPath id="near-operum">
+            <rect x="0" y="122" width="240" height="118"/>
+          </clipPath>
+        </defs>
+        <ellipse class="lens" cx="120" cy="120" rx="110" ry="104"/>
+        <ellipse class="lens" cx="120" cy="120" rx="96" ry="90"/>
+        <ellipse class="disk" cx="120" cy="122" rx="88" ry="24" transform="rotate(-18 120 122)" stroke="url(#disk-operum)" stroke-width="3.1" opacity="0.42"/>
+        <circle class="shadow" cx="120" cy="120" r="44"/>
+        <circle class="photon" cx="120" cy="120" r="46"/>
+        <circle class="photon photon--inner" cx="120" cy="120" r="40"/>
+        <ellipse class="disk" cx="120" cy="122" rx="88" ry="24" transform="rotate(-18 120 122)" stroke="url(#disk-operum)" stroke-width="4.6" clip-path="url(#near-operum)"/>
+        <circle cx="120" cy="120" r="36" fill="url(#horizon-operum)"/>
+        <g class="spark-orbit">
+          <circle class="spark" cx="166" cy="120" r="2.05"/>
+        </g>
+        <path class="asterism-path" d="M120,52 L159.97,175.01 L55.33,98.99 L184.67,98.99 L80.03,175.01 Z"/>
+        <g class="asterism">
+          <g transform="translate(120,52) scale(1.32)">
+            <circle r="1.55"/><path d="M0,-5 L0.42,-0.42 L5,0 L0.42,0.42 L0,5 L-0.42,0.42 L-5,0 L-0.42,-0.42 Z"/>
           </g>
-          <g fill="currentColor">
-            <circle cx="58" cy="46" r="2.1"/>
-            <circle cx="342" cy="58" r="1.7"/>
-            <circle cx="346" cy="338" r="2"/>
-            <circle cx="40" cy="332" r="1.6"/>
-            <circle cx="292" cy="140" r="1.8"/>
+          <g transform="translate(184.67,98.99)">
+            <circle r="1.55"/><path d="M0,-5 L0.42,-0.42 L5,0 L0.42,0.42 L0,5 L-0.42,0.42 L-5,0 L-0.42,-0.42 Z"/>
           </g>
-        </svg>
-        <span class="photon-ring"></span>
-        <span class="void"></span>
-      </span>
+          <g transform="translate(159.97,175.01)">
+            <circle r="1.55"/><path d="M0,-5 L0.42,-0.42 L5,0 L0.42,0.42 L0,5 L-0.42,0.42 L-5,0 L-0.42,-0.42 Z"/>
+          </g>
+          <g transform="translate(80.03,175.01) scale(1.32)">
+            <circle r="1.55"/><path d="M0,-5 L0.42,-0.42 L5,0 L0.42,0.42 L0,5 L-0.42,0.42 L-5,0 L-0.42,-0.42 Z"/>
+          </g>
+          <g transform="translate(55.33,98.99)">
+            <circle r="1.55"/><path d="M0,-5 L0.42,-0.42 L5,0 L0.42,0.42 L0,5 L-0.42,0.42 L-5,0 L-0.42,-0.42 Z"/>
+          </g>
+        </g>
+      </svg>
       <span class="legend">
         <span class="kicker" data-i18n="index.codexKicker">Suljettu rata</span>
         <span class="name" data-i18n="index.codexName">Codex Operum</span>
-        <em class="line" data-i18n="index.codexLine">Kaksi sinettiä painon takana.</em>
+        <em class="line" data-i18n="index.codexLine">Kaksi sinetöityä opinnäytettä painon takana.</em>
       </span>
     </button>
 
     <div class="limen-core" aria-hidden="true">
-      <div class="orrery"></div>
+      <svg class="seal" viewBox="0 0 120 120">
+        <circle class="seal-track" cx="60" cy="60" r="52"/>
+        <circle class="seal-track seal-track--inner" cx="60" cy="60" r="40"/>
+        <circle class="seal-arc seal-arc--outer" cx="60" cy="60" r="52"/>
+        <circle class="seal-arc seal-arc--inner" cx="60" cy="60" r="40"/>
+        <g class="seal-cardinals">
+          <line x1="60" y1="5" x2="60" y2="12"/>
+          <line x1="60" y1="108" x2="60" y2="115"/>
+          <line x1="5" y1="60" x2="12" y2="60"/>
+          <line x1="108" y1="60" x2="115" y2="60"/>
+        </g>
+      </svg>
       <img class="emblem" src="art/khaeos/khaeos-emblem.png" alt="" width="999" height="1004" decoding="async" draggable="false">
     </div>
 
     <button type="button" id="seal-right" class="aperture aperture--fragment" data-i18n-attr="aria-label:index.fragmentLabel" aria-label="Fragmenta Apocrypha — avoin rata, kuusi keskeneräistä foliota">
-      <span class="horizon" aria-hidden="true">
-        <svg class="fractures" viewBox="0 0 400 400">
-          <defs>
-            <filter id="shear-fragment" x="-18%" y="-18%" width="136%" height="136%" color-interpolation-filters="sRGB">
-              <feTurbulence type="fractalNoise" baseFrequency="0.013 0.02" numOctaves="2" seed="11" result="noise">
-                <animate attributeName="baseFrequency" values="0.011 0.016;0.018 0.03;0.011 0.016" dur="29s" repeatCount="indefinite"/>
-              </feTurbulence>
-              <feDisplacementMap in="SourceGraphic" in2="noise" scale="12" xChannelSelector="R" yChannelSelector="G"/>
-            </filter>
-          </defs>
-          <g class="cracks" filter="url(#shear-fragment)" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M156 124 C186 78, 246 66, 304 98" stroke-width="1.65"/>
-            <path d="M304 98 C332 78, 356 70, 378 64" stroke-width="0.95"/>
-            <path d="M304 98 C318 116, 330 124, 348 118" stroke-width="0.85"/>
-            <path d="M246 162 C300 176, 334 214, 358 258" stroke-width="1.7"/>
-            <path d="M358 258 C372 280, 376 302, 364 318" stroke-width="0.95"/>
-            <path d="M334 214 C352 206, 366 214, 370 232" stroke-width="0.8"/>
-            <path d="M228 252 C252 294, 278 332, 296 364" stroke-width="1.5"/>
-            <path d="M296 364 C308 380, 322 386, 334 376" stroke-width="0.85"/>
-            <path d="M164 156 C118 124, 76 112, 42 96" stroke-width="1.6"/>
-            <path d="M42 96 C24 82, 16 66, 22 50" stroke-width="0.9"/>
-            <path d="M76 112 C60 128, 58 146, 72 158" stroke-width="0.8"/>
-            <path d="M132 228 C108 252, 96 274, 104 298" stroke-width="1.35"/>
-            <path d="M268 70 C282 58, 296 62, 294 78" stroke-width="0.75" opacity="0.7"/>
-            <path d="M348 186 C362 176, 374 184, 366 198" stroke-width="0.7" opacity="0.65"/>
+      <span class="veil" aria-hidden="true"></span>
+      <svg class="well" viewBox="0 0 240 240" aria-hidden="true">
+        <defs>
+          <radialGradient id="horizon-fragment" cx="50%" cy="48%" r="52%">
+            <stop offset="0%" stop-color="#000"/>
+            <stop offset="62%" stop-color="#070601"/>
+            <stop offset="100%" stop-color="#1a1504"/>
+          </radialGradient>
+          <linearGradient id="disk-fragment" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#d4af37" stop-opacity="0"/>
+            <stop offset="18%" stop-color="#d4af37" stop-opacity="0.9"/>
+            <stop offset="50%" stop-color="#f3e6c0" stop-opacity="0.38"/>
+            <stop offset="82%" stop-color="#d4af37" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#d4af37" stop-opacity="0"/>
+          </linearGradient>
+          <clipPath id="near-fragment">
+            <rect x="0" y="122" width="240" height="118"/>
+          </clipPath>
+        </defs>
+        <ellipse class="lens" cx="120" cy="120" rx="110" ry="104"/>
+        <ellipse class="lens" cx="120" cy="120" rx="96" ry="90"/>
+        <ellipse class="disk" cx="120" cy="122" rx="88" ry="24" transform="rotate(18 120 122)" stroke="url(#disk-fragment)" stroke-width="3.1" opacity="0.42"/>
+        <circle class="shadow" cx="120" cy="120" r="44"/>
+        <circle class="photon" cx="120" cy="120" r="46"/>
+        <circle class="photon photon--inner" cx="120" cy="120" r="40"/>
+        <ellipse class="disk" cx="120" cy="122" rx="88" ry="24" transform="rotate(18 120 122)" stroke="url(#disk-fragment)" stroke-width="4.6" clip-path="url(#near-fragment)"/>
+        <circle cx="120" cy="120" r="36" fill="url(#horizon-fragment)"/>
+        <g class="spark-orbit">
+          <circle class="spark" cx="166" cy="120" r="2.05"/>
+        </g>
+        <path class="asterism-path" d="M120,52 L178.89,86 L178.89,154 L120,188 L61.11,154 L61.11,86" fill="none"/>
+        <g class="asterism">
+          <g transform="translate(120,52)">
+            <circle r="1.55"/><path d="M0,-5 L0.42,-0.42 L5,0 L0.42,0.42 L0,5 L-0.42,0.42 L-5,0 L-0.42,-0.42 Z"/>
           </g>
-          <g fill="currentColor">
-            <circle cx="304" cy="98" r="2"/>
-            <circle cx="358" cy="258" r="1.7"/>
-            <circle cx="42" cy="96" r="1.8"/>
-            <circle cx="296" cy="364" r="1.6"/>
-            <circle cx="104" cy="298" r="4.2" fill="none" stroke="currentColor" stroke-width="0.9" opacity="0.8"/>
+          <g transform="translate(178.89,86)">
+            <circle r="1.55"/><path d="M0,-5 L0.42,-0.42 L5,0 L0.42,0.42 L0,5 L-0.42,0.42 L-5,0 L-0.42,-0.42 Z"/>
           </g>
-        </svg>
-        <span class="photon-ring"></span>
-        <span class="void"></span>
-      </span>
+          <g transform="translate(178.89,154)">
+            <circle r="1.55"/><path d="M0,-5 L0.42,-0.42 L5,0 L0.42,0.42 L0,5 L-0.42,0.42 L-5,0 L-0.42,-0.42 Z"/>
+          </g>
+          <g transform="translate(120,188)">
+            <circle r="1.55"/><path d="M0,-5 L0.42,-0.42 L5,0 L0.42,0.42 L0,5 L-0.42,0.42 L-5,0 L-0.42,-0.42 Z"/>
+          </g>
+          <g transform="translate(61.11,154)">
+            <circle r="1.55"/><path d="M0,-5 L0.42,-0.42 L5,0 L0.42,0.42 L0,5 L-0.42,0.42 L-5,0 L-0.42,-0.42 Z"/>
+          </g>
+          <g transform="translate(61.11,86)">
+            <circle r="1.55"/><path d="M0,-5 L0.42,-0.42 L5,0 L0.42,0.42 L0,5 L-0.42,0.42 L-5,0 L-0.42,-0.42 Z"/>
+          </g>
+        </g>
+        <circle class="star--void" cx="194.07" cy="62.13" r="4.4"/>
+      </svg>
       <span class="legend">
         <span class="kicker" data-i18n="index.fragmentKicker">Avoin rata</span>
         <span class="name" data-i18n="index.fragmentName">Fragmenta Apocrypha</span>
@@ -1673,11 +1854,12 @@
     let warpState = null;
     let didPrefetchGates = false;
     const BOOST_MS = 1500;
-    const CHOOSE_MS = 4200;
+    const CHOOSE_MS = 6400;
     const COMMIT_MS = 900;
     const choiceEl = document.getElementById('wormhole-choice');
-    const lensLeftEl = document.querySelector('#seal-left .horizon');
-    const lensRightEl = document.querySelector('#seal-right .horizon');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const lensLeftEl = document.querySelector('#seal-left .well');
+    const lensRightEl = document.querySelector('#seal-right .well');
 
     function lensNdc(el) {
       if (!el) return null;
@@ -1740,17 +1922,50 @@
       if (nodeRail) nodeRail.style.opacity = '0';
     }
 
-    function showChoice() {
+    function setLimenField(progress, time) {
+      if (!choiceEl) return;
+      choiceEl.style.setProperty('--choose', progress.toFixed(4));
+      const root = document.documentElement;
+      if (reduceMotion.matches) {
+        root.style.setProperty('--shake-x', '0px');
+        root.style.setProperty('--shake-y', '0px');
+        choiceEl.style.setProperty('--glitch', '0');
+        return;
+      }
+      const amp = 0.22 + progress * progress * 3.2;
+      const t = time * 0.001;
+      const nx = Math.sin(t * 21.7) * 0.55 + Math.sin(t * 47.3) * 0.28 + (Math.random() - 0.5) * 0.35;
+      const ny = Math.cos(t * 18.1) * 0.5 + Math.sin(t * 39.9) * 0.24 + (Math.random() - 0.5) * 0.35;
+      root.style.setProperty('--shake-x', (nx * amp).toFixed(2) + 'px');
+      root.style.setProperty('--shake-y', (ny * amp).toFixed(2) + 'px');
+      const gNow = parseFloat(choiceEl.style.getPropertyValue('--glitch') || '0');
+      const burst = Math.random() < (0.012 + progress * progress * 0.07);
+      const next = burst ? (0.4 + Math.random() * 0.6) : gNow * 0.48;
+      choiceEl.style.setProperty('--glitch', next.toFixed(3));
+    }
+
+    function clearLimenField() {
+      const root = document.documentElement;
+      root.style.setProperty('--shake-x', '0px');
+      root.style.setProperty('--shake-y', '0px');
+      root.classList.remove('is-limen');
       if (!choiceEl) return;
       choiceEl.style.setProperty('--choose', '0');
+      choiceEl.style.setProperty('--glitch', '0');
+    }
+
+    function showChoice() {
+      if (!choiceEl) return;
+      clearLimenField();
+      document.documentElement.classList.add('is-limen');
       choiceEl.classList.add('is-open');
       choiceEl.setAttribute('aria-hidden', 'false');
       dimWarpChrome();
     }
 
     function hideChoice() {
+      clearLimenField();
       if (!choiceEl) return;
-      choiceEl.style.setProperty('--choose', '0');
       choiceEl.classList.remove('is-open');
       choiceEl.setAttribute('aria-hidden', 'true');
     }
@@ -1811,6 +2026,7 @@
     function startWarpTransition(directHref) {
       if (isTransitioning) return;
       isTransitioning = true;
+      document.documentElement.classList.add('is-warping');
 
       const header = document.querySelector('header');
       const footer = document.querySelector('footer');
@@ -1961,16 +2177,20 @@
 
       if (warpState.phase === 'choose') {
         const progress = Math.min(elapsed / CHOOSE_MS, 1);
-        if (choiceEl) choiceEl.style.setProperty('--choose', progress.toFixed(4));
-        camera.fov = baseFov + 52;
-        camera.updateProjectionMatrix();
-        writeWarpStreaks(dt, 28, 18, 0, {
+        setLimenField(progress, time);
+        const rumble = reduceMotion.matches ? 0 : Math.sin(time * 0.012) * (0.6 + progress * 2.2);
+        writeWarpStreaks(dt, 26 + progress * 16, 16 + progress * 18, rumble, {
           wells: [lensNdc(lensLeftEl), lensNdc(lensRightEl)],
           gain: 0.016 + progress * 0.034
         });
         warpState.warpMat.opacity = 0.7;
         scene.fog.density = baseFogDensity + 0.06;
-        if (warpState.flash) warpState.flash.style.opacity = '0.4';
+        camera.fov = baseFov + 52;
+        camera.updateProjectionMatrix();
+        if (warpState.flash) {
+          const g = parseFloat(choiceEl && choiceEl.style.getPropertyValue('--glitch') || '0');
+          warpState.flash.style.opacity = String(0.34 + g * 0.18);
+        }
         if (progress >= 1) commitWarp('forward');
         return;
       }
@@ -2066,6 +2286,7 @@
         flash.classList.remove('is-gallery', 'is-astroteles');
       }
       hideChoice();
+      document.documentElement.classList.remove('is-warping');
       if (warpState) {
         disposeWarp(warpState);
         warpState = null;
@@ -2229,7 +2450,7 @@
       });
 
       window.addEventListener('click', (event) => {
-        if (pointerMoved) return;
+        if (pointerMoved || isTransitioning) return;
         if (event.target.closest && event.target.closest('a, header, #wormhole-choice')) return;
         mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
         mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
@@ -2244,6 +2465,7 @@
       });
     } else {
       window.addEventListener('touchstart', (event) => {
+        if (isTransitioning) return;
         if (event.target.closest && event.target.closest('a, header, #wormhole-choice')) return;
         if (event.touches.length > 0) {
           const touch = event.touches[0];
