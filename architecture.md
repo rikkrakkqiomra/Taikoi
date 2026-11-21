@@ -282,7 +282,7 @@ User gesture / page load
   → in-memory PLANETS; copy from locales/{lang}.json
   → Three.js scene + Canvas-generated textures
   → WebGLRenderer.render each frame
-  → Raycaster (index only) maps pointer/touch → planet tooltip or sun transition
+  → Raycaster (index only) maps click/tap → pinned planet tooltip or sun transition
   → Full navigation via window.location.href or <a>
   → Previous page JS heap discarded (MPA). Language survives in the URL prefix `/fi` or `/en`, and in localStorage key `taikoi.lang` when the prefix is absent.
   → Contact submit: `fetch('/', { method: 'POST' })` with `application/x-www-form-urlencoded`. No-JS posts to `/contact.html`. The language prefix is not the form action.
@@ -299,7 +299,7 @@ State is **page-local closures**:
 | State | Location | Lifetime |
 |---|---|---|
 | Scene, camera, renderer, meshes | Module scope per page | Until unload |
-| `activePlanet` / tooltip DOM | `index.html` | Frame-to-frame; cleared on transition |
+| `activePlanet` / tooltip DOM | `index.html` | Pinned by planet click (desktop) or tap (mobile) until an empty pick or a transition |
 | `isTransitioning` | `index.html` | Guards double-fire of sun/Services → Services, Gallery → direct warp, Bio → direct warp, and DIY → warp navigation |
 | `warpState` | `index.html` | Warp machine: `phase` `boost` / `choose` / `commit`, `destination` `forward`/`left`/`right`/`direct`, optional `directHref` (Gallery and Bio skip `choose` and seals). DIY choice is DOM `#wormhole-choice`, not a separate route. |
 | `mode` (`enter` / `idle` / `exit`) | `gallery.html`, `physicalus.html`, `cartomancy.html`, `bio.html`, `cv.html`, `diy_realities.html`, `gate_left.html`, `gate_right.html` | Warp-in, settled scene, reverse-warp. Physicalus and Cartomancy exit href is `gallery.html`; `cv.html` exits to `bio.html`; the others go to `index.html`. |
@@ -332,7 +332,7 @@ No `sessionStorage`, cookies, or IndexedDB. `localStorage` holds only `taikoi.la
 
 - **Sun:** procedural Canvas texture + additive glow sprite + invisible collider (`radius * 0.9`) for picking. Logo JPEG is cropped to a circle and applied to a pulsing `THREE.Sprite`.
 - **Planets:** 8 solar-system bodies + fictional `Astroteles Aivoinko II` (`type: 'synthetic'`). Saturn has a `RingGeometry`. Orbits are `EllipseCurve` line loops.
-- **Desktop:** camera starts at `(0, 0, 280)` (edge-on / side view). `mousemove` updates NDC mouse; click on sun collider starts transition; hover raycast drives tooltip + cursor. `#nav-services` and a clipped link `#enter-opening` (“Enter Services”) call the same `startTransition()`. The hrefs stay `services.html` when JavaScript does not run. Nothing in the clipped link is painted on screen.
+- **Desktop:** camera starts at `(0, 0, 280)` (edge-on / side view). Pointer NDC starts at `(2, 2)` so the first frames do not raycast the screen center. `mousemove` updates NDC mouse and the pointer cursor on planet or sun. Click on a planet pins the tooltip until a later empty click; click on sun collider (no planet in front) starts transition. Orbit drag does not count as a click. `#nav-services` and a clipped link `#enter-opening` (“Enter Services”) call the same `startTransition()`. The hrefs stay `services.html` when JavaScript does not run. Nothing in the clipped link is painted on screen.
 - **Mobile:** camera starts top-down at `(0, 250, 6)` so orbits read as circles; `touchstart` (passive) raycasts planets + sun; tap planet locks tooltip; tap empty space clears; tap sun transitions to Services. Header nav is full-width with four centered labels (CSS `max-width: 768px` only): Services, Gallery, Library, and Bio. Type is `0.64rem`.
 - **Node rail:** `#node-rail` is a full-bleed HUD under the existing status footer. Copy is the site node (`Northern Europe, Sub-Tampere, RÄMSÖÖ` at `61.3413° N, 23.3017° E`) plus a live `Europe/Helsinki` clock and UTC offset. No geolocation. Mobile (`max-width: 899px`) CSS-marquee of two identical lines; desktop is static and centered. `prefers-reduced-motion: reduce` stops the marquee and lets the track scroll horizontally. A non-module inline script ticks the clock; it is not inside the Three.js module. The rail is `aria-hidden`, so the once-per-second clock is not announced. Pinch-zoom is allowed (`viewport` has no `maximum-scale` or `user-scalable=no`).
 - **bfcache:** `pageshow` resets `isTransitioning`, camera pose, warp overlay, and replays entry animation.
@@ -643,3 +643,4 @@ Append-only. Newest rows at the **bottom**. Do not rewrite prior rows.
 | 2026-11-17 | Rebuild the left crypt as a vertical shaft | gate_left.html, architecture.md | Side-by-side rollers opened as a fixed sheet, so the hall closer (VASEN KRYPTA and the obsidian stone) painted through the parchment | `#crypt` stacks two in-flow tombs with a star well between them. The sheet grows down, same grid as Bio chronicles. Parchment is solid. The closer stays after an 18vh gap. No veil, no dialog, no fixed sheet. Copy, PDFs, warp, and Return unchanged. Verify: open either drum; the stone is not in the text; scroll past the second tomb and the closer is its own chamber. |
 | 2026-11-17 | Replace the Bio name plate with an astral ring | bio.html, architecture.md | The walnut slab and brass band read as a hotel card | `.nimbus` is a double ring, Cinzel name, four cardinal sparks, epithets under the circle. Chapter plates lose the walnut rail and keep one brass axis. Portraits keep a single hairline. Chronicles and Verkko unchanged. Verify: Bio opens on a circle in the starfield; Tie is open text with a side rule. |
 | 2026-11-21 | Desktop home camera edge-on | index.html, architecture.md | Default `(0, 140, 280)` 3/4 view hid the side-on planet line; user wanted that pose as the desktop default | Camera `(0, 0, 280)`. Mobile `(0, 250, 6)` unchanged. Polar angle still not reset on resize. Verify: desktop load shows planets on a horizontal line; drag/zoom still work. |
+| 2026-11-21 | Pin planet tooltip on desktop click | index.html, architecture.md | Edge-on camera put every planet through NDC `(0, 0)`, and hover opened the card, so names flashed at screen center before the first mousemove | Pointer starts at `(2, 2)`. Hover sets cursor only. Click pins a planet card; empty click hides it; sun click still goes to Services. Drag does not pin or hide. Mobile tap lock is unchanged. |

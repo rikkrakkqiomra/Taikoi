@@ -1377,7 +1377,7 @@
 
     // --- Raycaster Setup ---
     const raycaster = new THREE.Raycaster();
-    const mouse = new THREE.Vector2();
+    const mouse = new THREE.Vector2(2, 2);
     let activePlanet = null;
 
     // --- Tooltip Elements ---
@@ -2086,20 +2086,44 @@
 
     // --- Event Listeners (Defined here to access objects) ---
     if (!isMobile) {
+      let pointerMoved = false;
+      let pointerStartX = 0;
+      let pointerStartY = 0;
+
+      window.addEventListener('pointerdown', (event) => {
+        pointerMoved = false;
+        pointerStartX = event.clientX;
+        pointerStartY = event.clientY;
+      });
+
       window.addEventListener('mousemove', (event) => {
         mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
         mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+        if (Math.hypot(event.clientX - pointerStartX, event.clientY - pointerStartY) > 6) {
+          pointerMoved = true;
+        }
       });
 
       window.addEventListener('click', (event) => {
+        if (pointerMoved) return;
         if (event.target.closest && event.target.closest('a, header, #wormhole-choice')) return;
         mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
         mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
         raycaster.setFromCamera(mouse, camera);
-        const sunIntersects = raycaster.intersectObject(sunCollider);
-        if (sunIntersects.length > 0) {
-          startTransition();
+        const intersects = raycaster.intersectObjects(touchRaycastTargets);
+        if (intersects.length > 0) {
+          const object = intersects[0].object;
+          if (object === sunCollider) {
+            startTransition();
+          } else {
+            const planetObj = planetMeshes.find(p => p.mesh === object);
+            if (planetObj) {
+              activePlanet = planetObj;
+            }
+          }
+        } else {
+          activePlanet = null;
         }
       });
     } else {
@@ -2153,25 +2177,13 @@
         controls.update();
       }
 
-      // Raycasting for Hover (Desktop)
+      // Raycasting for Hover (Desktop): cursor only
       if (!isMobile && !isTransitioning) {
         raycaster.setFromCamera(mouse, camera);
         let cursor = 'default';
-        activePlanet = null;
-
-        const sunIntersects = raycaster.intersectObject(sunCollider);
-        if (sunIntersects.length > 0) {
+        const hoverHits = raycaster.intersectObjects(touchRaycastTargets);
+        if (hoverHits.length > 0) {
           cursor = 'pointer';
-        }
-
-        const intersects = raycaster.intersectObjects(planetRaycastTargets);
-        if (intersects.length > 0) {
-          const object = intersects[0].object;
-          const planetObj = planetMeshes.find(p => p.mesh === object);
-          if (planetObj) {
-            activePlanet = planetObj;
-            cursor = 'pointer';
-          }
         }
         setCursor(cursor);
       }
