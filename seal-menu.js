@@ -233,6 +233,21 @@
         else show();
     }
 
+    function goBack(fallback) {
+        try {
+            if (document.referrer) {
+                var ref = new URL(document.referrer);
+                if (ref.origin === location.origin) {
+                    history.back();
+                    return;
+                }
+            }
+        } catch (err) { /* fall through */ }
+        window.location.href = fallback || 'index.html';
+    }
+
+    window.__aivoinkoHistoryExit = goBack;
+
     function goHome() {
         close({ scroll: false, focus: false });
         var exit = window.__aivoinkoSealExit;
@@ -240,7 +255,7 @@
             exit();
             return;
         }
-        window.location.href = 'index.html';
+        goBack('index.html');
     }
 
     function isHere(href) {

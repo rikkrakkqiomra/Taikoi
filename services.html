@@ -37,7 +37,6 @@
     <link rel="modulepreload" href="https://unpkg.com/three@0.160.0/build/three.module.js" crossorigin>
     <script>
         (function () {
-            if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
             function revealUi() {
                 if (window.__aivoinko3d) return;
                 document.documentElement.classList.add('ui-ready');
@@ -468,50 +467,11 @@
         }));
         scene.add(starMesh);
 
-        const chrome = [document.querySelector('.practice'), document.querySelector('.hall-closer')];
-        const closerTitle = document.querySelector('.hall-closer h1');
-        let exiting = false;
-
-        function exitAnimation() {
-            if (exiting) return;
-            exiting = true;
-            const header = document.querySelector('header');
-            if (header) header.style.pointerEvents = 'none';
-            if (closerTitle) closerTitle.style.opacity = '0';
-            const startTime = Date.now();
-            const duration = 1000;
-
-            function exitLoop() {
-                const elapsed = Date.now() - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-                const ease = progress * progress * progress;
-                const scale = 1 - ease;
-                scene.scale.set(scale, scale, scale);
-                scene.rotation.z = ease * 1.0;
-                const fade = String(1 - ease);
-                chrome.forEach(function (el) {
-                    if (el) el.style.setProperty('opacity', fade, 'important');
-                });
-                if (progress < 1) {
-                    requestAnimationFrame(exitLoop);
-                } else {
-                    window.location.href = 'index.html';
-                }
-            }
-            exitLoop();
-        }
-
-        window.__aivoinkoSealExit = exitAnimation;
-
-        window.addEventListener('pageshow', function () {
-            exiting = false;
-            window.scrollTo(0, 0);
-            if (closerTitle) closerTitle.style.opacity = '';
-            chrome.forEach(function (el) {
-                if (el) el.style.removeProperty('opacity');
-            });
-        });
-        window.scrollTo(0, 0);
+        window.__aivoinkoSealExit = function () {
+            const back = window.__aivoinkoHistoryExit;
+            if (typeof back === 'function') back('index.html');
+            else window.location.href = 'index.html';
+        };
 
         let lastFrameTime = 0;
         function animate(time) {

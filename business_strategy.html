@@ -503,58 +503,11 @@
         // Start entry animation
         entryLoop();
 
-        // # Exit Animation Logic
-        const closerTitle = document.querySelector('.hall-closer h1');
-        let exiting = false;
-
-        function exitAnimation() {
-            if (exiting) return;
-            exiting = true;
-            header.style.pointerEvents = 'none';
-            if (closerTitle) closerTitle.style.opacity = '0';
-
-            const startTime = Date.now();
-            const duration = 1000; // 1 second
-
-            function exitLoop() {
-                const elapsed = Date.now() - startTime;
-                const progress = Math.min(elapsed / duration, 1);
-
-                // Easing: Cubic In (starts slow, ends fast)
-                const ease = progress * progress * progress;
-
-                // Scale down 1 -> 0
-                const scale = 1 - ease;
-                scene.scale.set(scale, scale, scale);
-
-                // Spin effect (reverse of entry)
-                scene.rotation.z = ease * 1.0;
-
-                // Fade out UI
-                const fade = String(1 - ease);
-                header.style.setProperty('opacity', fade, 'important');
-                floatingContainer.style.setProperty('opacity', fade, 'important');
-
-                if (progress < 1) {
-                    requestAnimationFrame(exitLoop);
-                } else {
-                    // Navigate back
-                    window.location.href = 'services.html';
-                }
-            }
-            exitLoop();
-        }
-
-        // # Event Listeners
-        // Make header clickable for exit
-        window.__aivoinkoSealExit = exitAnimation;
-
-        window.addEventListener('pageshow', function () {
-            exiting = false;
-            if (closerTitle) closerTitle.style.opacity = '';
-            header.style.removeProperty('opacity');
-            floatingContainer.style.removeProperty('opacity');
-        });
+        window.__aivoinkoSealExit = function () {
+            const back = window.__aivoinkoHistoryExit;
+            if (typeof back === 'function') back('services.html');
+            else window.location.href = 'services.html';
+        };
 
         // # Main Animation Loop
         let lastFrameTime = 0;
