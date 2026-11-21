@@ -629,10 +629,10 @@
 
     #warp-flash.is-astroteles {
       background: radial-gradient(circle at center,
-          rgba(255, 248, 230, 0.95) 0%,
-          rgba(46, 214, 154, 0.7) 28%,
-          rgba(168, 32, 28, 0.38) 58%,
-          rgba(10, 4, 3, 1) 100%);
+          rgba(255, 255, 255, 0.95) 0%,
+          rgba(140, 178, 220, 0.7) 28%,
+          rgba(70, 90, 130, 0.35) 58%,
+          rgba(2, 3, 8, 1) 100%);
     }
 
     #wormhole-choice {
@@ -1317,7 +1317,7 @@
         mass: "1.02 × 10^26 kg", diameter: "49,244 km", temp: "-200 °C"
       },
       {
-        nameKey: 'planets.astroteles', name: "Astroteles Aivoinko II", radius: 0.4, pickRadius: 3.2, distance: 160, speed: 0.002, type: 'synthetic', portal: 'astroteles.html', colors: ['#C0C0C0', '#E8E8E8', '#A9A9A9'],
+        nameKey: 'planets.astroteles', name: "Astroteles Aivoinko II", radius: 0.4, distance: 160, speed: 0.002, type: 'synthetic', colors: ['#C0C0C0', '#E8E8E8', '#A9A9A9'],
         mass: "9.99 × 10^99 kg", diameter: "1,000,000 km", temp: "NaN °C"
       }
     ];
@@ -1553,25 +1553,11 @@
       const texture = createPlanetTexture(data.type, data.colors);
       const planetMaterial = new THREE.MeshStandardMaterial({
         map: texture,
-        roughness: data.type === 'synthetic' ? 0.18 : data.type === 'gas' ? 0.4 : 0.8,
-        metalness: data.type === 'synthetic' ? 0.92 : data.type === 'earth' ? 0.2 : 0.1
+        roughness: data.type === 'gas' ? 0.4 : 0.8,
+        metalness: data.type === 'earth' ? 0.2 : 0.1
       });
       const planet = new THREE.Mesh(planetGeometry, planetMaterial);
       planet.position.x = data.distance;
-
-      if (data.portal) {
-        const halo = new THREE.Mesh(
-          new THREE.SphereGeometry(data.radius * 2.6, 24, 24),
-          new THREE.MeshBasicMaterial({
-            color: 0x9ef0d0,
-            transparent: true,
-            opacity: 0.28,
-            blending: THREE.AdditiveBlending,
-            depthWrite: false
-          })
-        );
-        planet.add(halo);
-      }
 
       const pivot = new THREE.Object3D();
       pivot.rotation.y = Math.random() * Math.PI * 2;
@@ -1593,18 +1579,16 @@
         planet.add(ring);
       }
 
-      let pickMesh = planet;
-      if (data.pickRadius && data.pickRadius > data.radius) {
-        pickMesh = new THREE.Mesh(
-          new THREE.SphereGeometry(data.pickRadius, 16, 16),
+      if (data.nameKey === 'planets.astroteles') {
+        const gate = new THREE.Mesh(
+          new THREE.SphereGeometry(2.8, 16, 16),
           new THREE.MeshBasicMaterial({ transparent: true, opacity: 0, depthWrite: false })
         );
-        planet.add(pickMesh);
+        planet.add(gate);
       }
 
       planetMeshes.push({
         mesh: planet,
-        pickMesh: pickMesh,
         pivot: pivot,
         speed: data.speed * SCENE_CONFIG.speedScale,
         selfRotationSpeed: 0.01 + Math.random() * 0.02,
@@ -1613,7 +1597,7 @@
       });
     });
 
-    const planetRaycastTargets = planetMeshes.map(p => p.pickMesh);
+    const planetRaycastTargets = planetMeshes.map(p => p.mesh);
     const touchRaycastTargets = planetRaycastTargets.concat(sunCollider);
     const tooltipWorldPos = new THREE.Vector3();
     let displayedPlanet = null;
@@ -1759,7 +1743,7 @@
       const footer = document.querySelector('footer');
       const nodeRail = document.getElementById('node-rail');
       const flash = document.getElementById('warp-flash');
-      const isGallery = Boolean(directHref) && directHref !== 'astroteles.html';
+      const isGallery = directHref === 'gallery.html' || directHref === 'bio.html';
       const isAstroteles = directHref === 'astroteles.html';
 
       if (header) {
@@ -1807,19 +1791,17 @@
 
         const pick = Math.random();
         let r = 1, g = 1, b = 1;
-        if (isAstroteles) {
-          if (pick > 0.45 && pick <= 0.72) {
-            r = 0.18; g = 0.82; b = 0.55;
-          } else if (pick > 0.72 && pick <= 0.9) {
-            r = 0.86; g = 0.18; b = 0.16;
-          } else if (pick > 0.9) {
-            r = 0.90; g = 0.72; b = 0.28;
-          }
-        } else if (isGallery) {
+        if (isGallery) {
           if (pick > 0.55 && pick <= 0.82) {
             r = 0.22; g = 0.72; b = 0.68;
           } else if (pick > 0.82) {
             r = 0.80; g = 0.55; b = 0.28;
+          }
+        } else if (isAstroteles) {
+          if (pick > 0.55 && pick <= 0.82) {
+            r = 0.55; g = 0.72; b = 1;
+          } else if (pick > 0.82) {
+            r = 0.82; g = 0.82; b = 0.88;
           }
         } else if (pick > 0.55 && pick <= 0.82) {
           r = 0.88; g = 0.25; b = 0.98;
@@ -1854,7 +1836,7 @@
       warpState = {
         phase: 'boost',
         phaseStart: 0,
-        destination: isGallery ? 'direct' : 'forward',
+        destination: directHref ? 'direct' : 'forward',
         directHref: directHref || null,
         warpGroup,
         warpGeom,
@@ -2126,6 +2108,30 @@
       if (event.key === 'ArrowRight') commitWarp('right');
     });
 
+    function planetFromHit(object) {
+      let node = object;
+      while (node) {
+        const found = planetMeshes.find(p => p.mesh === node);
+        if (found) return found;
+        node = node.parent;
+      }
+      return null;
+    }
+
+    function onPick(object) {
+      if (object === sunCollider) {
+        startTransition();
+        return;
+      }
+      const planetObj = planetFromHit(object);
+      if (!planetObj) return;
+      if (planetObj.data.nameKey === 'planets.astroteles') {
+        startWarpTransition('astroteles.html');
+        return;
+      }
+      activePlanet = planetObj;
+    }
+
     // --- Event Listeners (Defined here to access objects) ---
     if (!isMobile) {
       let pointerMoved = false;
@@ -2153,21 +2159,9 @@
         mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
         raycaster.setFromCamera(mouse, camera);
-        const intersects = raycaster.intersectObjects(touchRaycastTargets);
+        const intersects = raycaster.intersectObjects(touchRaycastTargets, true);
         if (intersects.length > 0) {
-          const object = intersects[0].object;
-          if (object === sunCollider) {
-            startTransition();
-          } else {
-            const planetObj = planetMeshes.find(p => p.mesh === object || p.pickMesh === object);
-            if (planetObj) {
-              if (planetObj.data.portal) {
-                startWarpTransition(planetObj.data.portal);
-              } else {
-                activePlanet = planetObj;
-              }
-            }
-          }
+          onPick(intersects[0].object);
         } else {
           activePlanet = null;
         }
@@ -2181,22 +2175,10 @@
           mouse.y = -(touch.clientY / window.innerHeight) * 2 + 1;
 
           raycaster.setFromCamera(mouse, camera);
-          const intersects = raycaster.intersectObjects(touchRaycastTargets);
+          const intersects = raycaster.intersectObjects(touchRaycastTargets, true);
 
           if (intersects.length > 0) {
-            const object = intersects[0].object;
-            if (object === sunCollider) {
-              startTransition();
-            } else {
-              const planetObj = planetMeshes.find(p => p.mesh === object || p.pickMesh === object);
-              if (planetObj) {
-                if (planetObj.data.portal) {
-                  startWarpTransition(planetObj.data.portal);
-                } else {
-                  activePlanet = planetObj;
-                }
-              }
-            }
+            onPick(intersects[0].object);
           } else {
             activePlanet = null;
           }
@@ -2231,7 +2213,7 @@
       if (!isMobile && !isTransitioning) {
         raycaster.setFromCamera(mouse, camera);
         let cursor = 'default';
-        const hoverHits = raycaster.intersectObjects(touchRaycastTargets);
+        const hoverHits = raycaster.intersectObjects(touchRaycastTargets, true);
         if (hoverHits.length > 0) {
           cursor = 'pointer';
         }

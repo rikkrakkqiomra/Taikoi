@@ -30,7 +30,7 @@
     "contact": "Yhteys",
     "bio": "Multimieli",
     "cv": "CV",
-    "onkalo": "Onkalo",
+    "astroteles": "Astroteles",
     "section1": "Osa 1",
     "section2": "Osa 2",
     "section3": "Osa 3",
@@ -46,6 +46,13 @@
     "uranus": "Uranus",
     "neptune": "Neptunus",
     "astroteles": "Astroteles Aivoinko II"
+  },
+  "astroteles": {
+    "title": "Astroteles",
+    "description": "Tyhjä avaruus. Planeettoja ja galakseja. Zoom ilman pohjaa.",
+    "hint": "Vedä kiertääksesi · Vieritä äärettömyyteen",
+    "fail": "Selain ei avannut tätä avaruutta.",
+    "closer": "Astroteles"
   },
   "index": {
     "title": "Aivoinko",
@@ -1107,28 +1114,6 @@
     },
     "title": "CV",
     "sep": " · "
-  },
-  "astroteles": {
-    "title": "Onkalo",
-    "description": "Tekoälykoodauksen ihmeiden onkalo. Muuttuva kiinalainen huone, jossa merkit seuraavat sääntöjä eivätkä ymmärrä.",
-    "kicker": "Astroteles Aivoinko II",
-    "hint": "Vedä kiertääksesi · Napsauta seinää, lippua tai kaivoa",
-    "closer": "Onkalo",
-    "fail": "Tämä on muuttuva kiinalainen huone. Selaimen WebGL ei avannut onkaloa; säännöt ovat silti täällä.",
-    "rule1": "Jos merkit ovat samat, käännä seinä.",
-    "rule2": "Älä ymmärrä. Seuraa sääntöä.",
-    "rule3": "Kun jade palaa, kirjoita uusi ovi.",
-    "rule4": "Kopioi vasemman pylvään merkit oikeaan ja peilaa ne.",
-    "rule5": "Jos näet oman nimesi, se on virhe. Poista se.",
-    "rule6": "Odota kunnes huone vastaa. Se ei vastaa.",
-    "rooms": {
-      "cinnabar": "Sinoperilakka",
-      "jade": "Jadekammio",
-      "ink": "Mustesade",
-      "void": "Kultatyhjiö",
-      "ice": "Jääkoodi",
-      "dawn": "Aamusilkki"
-    }
   },
   "diy": {
     "title": "Khaeos Metalogs",

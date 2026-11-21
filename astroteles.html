@@ -6,22 +6,22 @@
     <link rel="stylesheet" href="/i18n.css">
     <script src="/i18n.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title data-i18n="astroteles.title">Onkalo</title>
-    <meta name="description" data-i18n-attr="content:astroteles.description" content="Tekoälykoodauksen ihmeiden onkalo. Muuttuva kiinalainen huone, jossa merkit seuraavat sääntöjä eivätkä ymmärrä.">
-    <meta name="theme-color" content="#140806">
+    <title data-i18n="astroteles.title">Astroteles</title>
+    <meta name="description" data-i18n-attr="content:astroteles.description" content="Tyhjä avaruus. Planeettoja ja galakseja. Zoom ilman pohjaa.">
+    <meta name="theme-color" content="#020308">
     <link rel="canonical" href="https://taikoi.netlify.app/fi/astroteles.html">
     <link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/astroteles.html">
     <link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/astroteles.html">
     <link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/astroteles.html">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Aivoinko">
-    <meta property="og:title" data-i18n-attr="content:astroteles.title" content="Onkalo">
-    <meta property="og:description" data-i18n-attr="content:astroteles.description" content="Tekoälykoodauksen ihmeiden onkalo. Muuttuva kiinalainen huone, jossa merkit seuraavat sääntöjä eivätkä ymmärrä.">
+    <meta property="og:title" data-i18n-attr="content:astroteles.title" content="Astroteles">
+    <meta property="og:description" data-i18n-attr="content:astroteles.description" content="Tyhjä avaruus. Planeettoja ja galakseja. Zoom ilman pohjaa.">
     <meta property="og:url" content="https://taikoi.netlify.app/fi/astroteles.html">
     <meta property="og:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" data-i18n-attr="content:astroteles.title" content="Onkalo">
-    <meta name="twitter:description" data-i18n-attr="content:astroteles.description" content="Tekoälykoodauksen ihmeiden onkalo. Muuttuva kiinalainen huone, jossa merkit seuraavat sääntöjä eivätkä ymmärrä.">
+    <meta name="twitter:title" data-i18n-attr="content:astroteles.title" content="Astroteles">
+    <meta name="twitter:description" data-i18n-attr="content:astroteles.description" content="Tyhjä avaruus. Planeettoja ja galakseja. Zoom ilman pohjaa.">
     <meta name="twitter:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <link rel="apple-touch-icon" href="AiiAold.8dde82cb.jpg">
     <link rel="preconnect" href="https://unpkg.com" crossorigin>
@@ -50,15 +50,13 @@
     <link rel="icon" type="image/jpeg" href="AiiAold.8dde82cb.jpg">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=IBM+Plex+Mono:wght@400&family=Orbitron:wght@700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500&display=swap&text=%E9%81%93%E6%9C%BA%E5%AE%A4%E7%AC%A6%E7%81%B5%E7%A0%81%E7%A9%BA%E9%97%A8%E5%8F%98%E5%85%89%E5%BF%83%E9%95%9C%E7%AE%97%E6%A2%A6%E9%AA%A8%E6%98%9F%E4%BA%91%E9%9B%A8%E9%87%91%E7%8E%89%E7%81%AB%E6%B0%B4%E9%A3%8E%E9%9B%B7%E7%94%B2%E4%B9%99%E4%B8%99%E4%B8%81%E5%AD%90%E5%8D%88%E5%8D%AF%E9%85%89%E7%84%A1%E7%82%BA%E6%9C%BA%E5%99%A8%E4%B8%8D%E9%9C%80%E7%90%86%E8%A7%A3" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Rajdhani:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="seal-menu.css">
     <script src="seal-menu.js" defer></script>
     <style>
         :root {
-            --ink: #f3ead6;
-            --muted: #c4b496;
-            --ground: #140806;
+            --ink: #dce6f0;
+            --ground: #020308;
         }
 
         * {
@@ -71,7 +69,7 @@
             margin: 0;
             overflow: hidden;
             background: var(--ground);
-            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-family: 'Rajdhani', sans-serif;
             color: var(--ink);
         }
 
@@ -93,30 +91,12 @@
             inset: 0;
             z-index: 80;
             pointer-events: none;
-            opacity: 0.4;
+            opacity: 0.34;
             background: radial-gradient(circle at center,
-                rgba(255, 248, 230, 0.92) 0%,
-                rgba(46, 214, 154, 0.55) 26%,
-                rgba(168, 32, 28, 0.38) 58%,
-                rgba(10, 4, 3, 1) 100%);
-        }
-
-        #grain {
-            position: fixed;
-            inset: 0;
-            z-index: 6;
-            pointer-events: none;
-            opacity: 0.09;
-            mix-blend-mode: overlay;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
-        }
-
-        #hall {
-            position: fixed;
-            inset: 0;
-            z-index: 8;
-            pointer-events: none;
-            opacity: 0;
+                rgba(255, 255, 255, 0.88) 0%,
+                rgba(140, 178, 220, 0.42) 28%,
+                rgba(8, 14, 28, 0.55) 58%,
+                rgba(2, 3, 8, 1) 100%);
         }
 
         header {
@@ -124,123 +104,77 @@
             top: 0;
             left: 0;
             right: 0;
-            z-index: 9;
+            z-index: 10;
             padding-top: 2.2vh;
             text-align: center;
             pointer-events: none;
+            opacity: 0;
         }
 
         header .seal-anchor {
             pointer-events: auto;
         }
 
-        #plaque {
+        #hint {
             position: absolute;
-            top: 22vh;
             left: 50%;
+            bottom: calc(22vh + env(safe-area-inset-bottom, 0px));
             transform: translateX(-50%);
-            width: min(34rem, calc(100% - 2.4rem));
-            text-align: center;
+            z-index: 9;
+            margin: 0;
             pointer-events: none;
-            text-shadow: 0 0 18px rgba(8, 4, 2, 0.85);
-        }
-
-        #plaque .kicker {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 0.62rem;
-            letter-spacing: 0.28em;
+            opacity: 0;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 0.92rem;
+            letter-spacing: 0.16em;
             text-transform: uppercase;
-            color: var(--muted);
-            margin-bottom: 0.55rem;
-        }
-
-        #plaque h1 {
-            font-weight: 500;
-            font-size: clamp(2.4rem, 7vw, 4.4rem);
-            letter-spacing: 0.04em;
-            line-height: 0.92;
-            margin-bottom: 0.7rem;
-        }
-
-        #plaque .room {
-            font-style: italic;
-            font-size: 1.12rem;
-            color: #e8d7a4;
-            margin-bottom: 1.1rem;
-        }
-
-        #plaque .rule {
-            font-size: 1.28rem;
-            line-height: 1.45;
-            max-width: 28ch;
-            margin: 0 auto 0.85rem;
-        }
-
-        #plaque .hint {
-            font-family: 'IBM Plex Mono', monospace;
-            font-size: 0.68rem;
-            letter-spacing: 0.04em;
-            color: var(--muted);
+            color: rgba(220, 230, 240, 0.55);
+            white-space: nowrap;
         }
 
         #fail-copy {
             display: none;
-            position: relative;
-            z-index: 5;
-            width: min(38rem, calc(100% - 2.4rem));
-            margin: 18vh auto 4rem;
+            position: absolute;
+            left: 50%;
+            top: 42%;
+            transform: translate(-50%, -50%);
+            z-index: 8;
+            width: min(28rem, calc(100% - 2.4rem));
             text-align: center;
         }
 
-        #fail-copy h1 {
-            font-size: clamp(2.4rem, 7vw, 4.4rem);
-            font-weight: 500;
-            margin-bottom: 1rem;
-        }
-
         #fail-copy p {
-            font-size: 1.2rem;
-            line-height: 1.55;
-            margin-bottom: 0.8rem;
+            font-size: 1.05rem;
+            line-height: 1.5;
+            color: rgba(220, 230, 240, 0.7);
         }
 
         .hall-closer {
-            position: absolute;
+            position: fixed;
             bottom: 0;
             left: 0;
             right: 0;
+            z-index: 9;
             min-height: 0;
-            padding: 0.4rem 0 max(1.1rem, env(safe-area-inset-bottom));
-            gap: 0.55rem;
-            background: linear-gradient(transparent, rgba(10, 4, 3, 0.78));
-        }
-
-        .hall-closer h1 {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-weight: 500;
-            letter-spacing: 0.22em;
-            color: #f3ead6;
-            text-shadow: 0 0 16px rgba(46, 214, 154, 0.28);
+            padding: 0 0 calc(14px + env(safe-area-inset-bottom, 0px));
+            gap: 0;
+            opacity: 0;
         }
 
         .hall-return {
-            width: 72px;
-            height: 118px;
+            width: 78px;
+            height: 128px;
+            opacity: 0.55;
         }
 
-        .hall-return img {
-            width: 28px;
-            height: 28px;
+        .hall-return:hover,
+        .hall-return:focus-visible {
+            opacity: 1;
         }
 
-        html.ui-ready #hall,
-        html.ui-ready header {
-            opacity: 1 !important;
-            pointer-events: auto !important;
-        }
-
-        html.ui-ready body {
-            overflow-y: auto !important;
+        html.ui-ready header,
+        html.ui-ready .hall-closer {
+            opacity: 1;
         }
 
         html.ui-ready #fail-copy {
@@ -251,28 +185,22 @@
             opacity: 0 !important;
         }
 
-        html.ui-ready #canvas-container {
-            pointer-events: none;
-        }
-
         @media (max-width: 768px) {
-            #plaque {
-                top: 18vh;
-            }
-
-            #plaque .rule {
-                font-size: 1.12rem;
+            #hint {
+                bottom: calc(18vh + env(safe-area-inset-bottom, 0px));
+                font-size: 0.78rem;
+                letter-spacing: 0.12em;
             }
 
             .hall-return {
-                width: 60px;
-                height: 98px;
+                width: 64px;
+                height: 105px;
             }
         }
 
         @media (prefers-reduced-motion: reduce) {
-            #grain {
-                opacity: 0.04;
+            #hint {
+                opacity: 0.55;
             }
         }
     </style>
@@ -281,31 +209,19 @@
 <body>
     <div id="canvas-container"></div>
     <div id="warp-flash" aria-hidden="true"></div>
-    <div id="grain" aria-hidden="true"></div>
 
-    <main id="hall">
-        <header>
-            <img src="AiiAold.8dde82cb.jpg" alt="Aivoinkon logo" data-i18n-attr="alt:common.logoAlt" width="120" height="120" decoding="async">
-        </header>
-        <div id="plaque">
-            <p class="kicker" data-i18n="astroteles.kicker">Astroteles Aivoinko II</p>
-            <h1 data-i18n="astroteles.title">Onkalo</h1>
-            <p class="room" id="room-name">Sinoperilakka</p>
-            <p class="rule" id="rule-text">Älä ymmärrä. Seuraa sääntöä.</p>
-            <p class="hint" data-i18n="astroteles.hint">Vedä kiertääksesi · Napsauta seinää, lippua tai kaivoa</p>
-        </div>
-        <section id="fail-copy">
-            <h1 data-i18n="astroteles.title">Onkalo</h1>
-            <p data-i18n="astroteles.fail">Tämä on muuttuva kiinalainen huone. Selaimen WebGL ei avannut onkaloa; säännöt ovat silti täällä.</p>
-            <p data-i18n="astroteles.description">Tekoälykoodauksen ihmeiden onkalo. Muuttuva kiinalainen huone, jossa merkit seuraavat sääntöjä eivätkä ymmärrä.</p>
-        </section>
-        <footer class="hall-closer">
-            <h1 data-i18n="astroteles.closer">Onkalo</h1>
-            <button type="button" id="hall-return" class="hall-return" aria-label="Palaa" data-i18n-attr="aria-label:seal.return">
-                <img src="AiiAold.8dde82cb.jpg" alt="" width="48" height="48" decoding="async">
-            </button>
-        </footer>
-    </main>
+    <header>
+        <img src="AiiAold.8dde82cb.jpg" alt="Aivoinkon logo" data-i18n-attr="alt:common.logoAlt" width="120" height="120" decoding="async">
+    </header>
+    <p id="hint" data-i18n="astroteles.hint">Vedä kiertääksesi · Vieritä äärettömyyteen</p>
+    <section id="fail-copy">
+        <p data-i18n="astroteles.fail">Selain ei avannut tätä avaruutta.</p>
+    </section>
+    <footer class="hall-closer">
+        <button type="button" id="hall-return" class="hall-return" aria-label="Palaa" data-i18n-attr="aria-label:seal.return">
+            <img src="AiiAold.8dde82cb.jpg" alt="" width="48" height="48" decoding="async">
+        </button>
+    </footer>
 
     <script type="module">
         import * as THREE from 'three';
@@ -314,74 +230,34 @@
         window.__aivoinko3d = true;
 
         const FRAME_MS = 1000 / 60;
-        const SIDES = 8;
-        const RADIUS = 7.35;
-        const WALL_H = 9.1;
-        const WALL_W = 2 * RADIUS * Math.tan(Math.PI / SIDES);
-        const STAR_COUNT = 2200;
-        const DUST_COUNT = 420;
-        const SLIP_COUNT = 22;
+        const WRAP = 10;
+        const STAR_COUNT = 520;
+        const WARP_COUNT = 900;
         const ENTER_MS = 1600;
         const EXIT_MS = 780;
-        const MUTATE_MS = 16000;
-        const HAN = '道机室符灵码空门变光心镜算梦骨星云雨金玉火水风雷甲乙丙丁子午卯酉無為';
-        const CODE = ['fn', 'await', 'const', 'yield', 'map', 'fold', 'void', 'null', 'this', '=>', 'if', 'ret', 'let', 'λ', '∴', '::', '[]', '{}', '0x'];
-        const SLIP_LINES = [
-            'if (sign === sign) rotate(wall)',
-            'while (!meaning) follow(rule)',
-            'return undefined; // understanding',
-            'copy(left, mirror(right))',
-            'for (const glyph of room) emit(glyph)',
-            'the man does not know Chinese',
-            '机器不需理解',
-            'huone kirjoittaa itsensä',
-            'await room.rewrite()',
-            'if (name === self) delete name',
-            'jade ? door++ : wait',
-            'Seale: symbols in, symbols out'
-        ];
-        const ROOMS = [
-            { key: 'cinnabar', silk: '#6a1810', silk2: '#2a0806', gold: '#d4b056', ink: '#f4e6c1', well: 0x3edfa8, fog: 0x140806, ambient: 0x3a1812 },
-            { key: 'jade', silk: '#0d3b32', silk2: '#051611', gold: '#c6b07a', ink: '#d7f3e8', well: 0x7cffce, fog: 0x071410, ambient: 0x16352c },
-            { key: 'ink', silk: '#12100e', silk2: '#070605', gold: '#e8d7a0', ink: '#f7f1e4', well: 0xd23a2c, fog: 0x080706, ambient: 0x1c1814 },
-            { key: 'void', silk: '#0b0a12', silk2: '#04040a', gold: '#f0d078', ink: '#efe6c8', well: 0x6ea8ff, fog: 0x07060f, ambient: 0x12141f },
-            { key: 'ice', silk: '#14202c', silk2: '#070b12', gold: '#c9d4e0', ink: '#e8f2ff', well: 0x9ad8ff, fog: 0x0a1018, ambient: 0x1a2836 },
-            { key: 'dawn', silk: '#4a1f24', silk2: '#1a0a0c', gold: '#e0b07a', ink: '#ffe8d6', well: 0xff9a6a, fog: 0x16080a, ambient: 0x3a1c1a }
-        ];
-        const RULES = [
-            { key: 'astroteles.rule1', fallback: 'Jos merkit ovat samat, käännä seinä.' },
-            { key: 'astroteles.rule2', fallback: 'Älä ymmärrä. Seuraa sääntöä.' },
-            { key: 'astroteles.rule3', fallback: 'Kun jade palaa, kirjoita uusi ovi.' },
-            { key: 'astroteles.rule4', fallback: 'Kopioi vasemman pylvään merkit oikeaan ja peilaa ne.' },
-            { key: 'astroteles.rule5', fallback: 'Jos näet oman nimesi, se on virhe. Poista se.' },
-            { key: 'astroteles.rule6', fallback: 'Odota kunnes huone vastaa. Se ei vastaa.' }
-        ];
-        const ROOM_NAMES = [
-            { key: 'astroteles.rooms.cinnabar', fallback: 'Sinoperilakka' },
-            { key: 'astroteles.rooms.jade', fallback: 'Jadekammio' },
-            { key: 'astroteles.rooms.ink', fallback: 'Mustesade' },
-            { key: 'astroteles.rooms.void', fallback: 'Kultatyhjiö' },
-            { key: 'astroteles.rooms.ice', fallback: 'Jääkoodi' },
-            { key: 'astroteles.rooms.dawn', fallback: 'Aamusilkki' }
+        const PALETTES = [
+            { type: 'rocky', colors: ['#8a8a8a', '#5c5c5c', '#cfcfcf'] },
+            { type: 'ice', colors: ['#9bb8c9', '#dfeaf1', '#6a8a9a'] },
+            { type: 'gas', colors: ['#c4a574', '#8b5a2b', '#e6d0a8'] },
+            { type: 'gas', colors: ['#6b8cae', '#3d5a80', '#b8c9e0'] },
+            { type: 'rocky', colors: ['#b35a3a', '#7a2e1e', '#d08060'] }
         ];
 
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         const scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x140806);
-        scene.fog = new THREE.FogExp2(0x140806, 0.046);
+        scene.background = new THREE.Color(0x020308);
+        scene.fog = new THREE.FogExp2(0x020308, 0.012);
 
         const container = document.getElementById('canvas-container');
-        const camera = new THREE.PerspectiveCamera(62, window.innerWidth / window.innerHeight, 0.08, 220);
-        const restPos = new THREE.Vector3(0, 1.62, 4.15);
-        const enterPos = new THREE.Vector3(0, 11.2, 0.35);
-        camera.position.copy(reduceMotion ? restPos : enterPos);
+        const camera = new THREE.PerspectiveCamera(58, window.innerWidth / window.innerHeight, 0.12, 6000);
+        camera.position.set(0, 9, 42);
 
         let renderer;
         try {
             renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-            renderer.setClearColor(0x140806, 1);
+            renderer.setClearColor(0x020308, 1);
             renderer.outputColorSpace = THREE.SRGBColorSpace;
             container.appendChild(renderer.domElement);
         } catch (err) {
@@ -413,569 +289,511 @@
 
         const controls = new OrbitControls(camera, renderer.domElement);
         controls.enablePan = false;
+        controls.enableZoom = false;
         controls.enableDamping = !reduceMotion;
-        controls.dampingFactor = 0.06;
-        controls.minDistance = 1.15;
-        controls.maxDistance = 6.6;
-        controls.minPolarAngle = 0.22;
-        controls.maxPolarAngle = 1.72;
-        controls.target.set(0, 1.35, 0);
+        controls.dampingFactor = 0.055;
+        controls.minPolarAngle = 0.18;
+        controls.maxPolarAngle = Math.PI - 0.18;
+        controls.target.set(0, 0, 0);
         controls.enabled = false;
 
-        const ambient = new THREE.AmbientLight(0x3a1812, 0.7);
-        scene.add(ambient);
-        const hemi = new THREE.HemisphereLight(0x6a88ff, 0x1a0806, 0.42);
-        scene.add(hemi);
-        const wellLight = new THREE.PointLight(0x3edfa8, 2.6, 18, 1.8);
-        wellLight.position.set(0, 0.55, 0);
-        scene.add(wellLight);
-        const oculusLight = new THREE.PointLight(0xf0d078, 1.1, 22, 2);
-        oculusLight.position.set(0, 8.4, 0);
-        scene.add(oculusLight);
+        scene.add(new THREE.AmbientLight(0x6a7388, 0.42));
+        scene.add(new THREE.HemisphereLight(0x8aa4c8, 0x08060c, 0.55));
+        const keyLight = new THREE.DirectionalLight(0xf2f0ea, 0.85);
+        keyLight.position.set(18, 22, 14);
+        scene.add(keyLight);
 
-        const starGeom = new THREE.BufferGeometry();
-        const starPos = new Float32Array(STAR_COUNT * 3);
-        const starCol = new Float32Array(STAR_COUNT * 3);
-        for (let i = 0; i < STAR_COUNT; i++) {
-            const r = 28 + Math.random() * 70;
-            const theta = Math.random() * Math.PI * 2;
-            const phi = Math.acos(2 * Math.random() - 1);
-            starPos[i * 3] = r * Math.sin(phi) * Math.cos(theta);
-            starPos[i * 3 + 1] = r * Math.cos(phi);
-            starPos[i * 3 + 2] = r * Math.sin(phi) * Math.sin(theta);
-            const warm = Math.random() > 0.72;
-            const c = warm ? 0.82 + Math.random() * 0.18 : 0.55 + Math.random() * 0.4;
-            starCol[i * 3] = c;
-            starCol[i * 3 + 1] = warm ? c * 0.86 : c;
-            starCol[i * 3 + 2] = warm ? c * 0.62 : c;
-        }
-        starGeom.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
-        starGeom.setAttribute('color', new THREE.BufferAttribute(starCol, 3));
-        const stars = new THREE.Points(starGeom, new THREE.PointsMaterial({
-            vertexColors: true,
-            size: 0.09,
-            transparent: true,
-            opacity: 0.85,
-            depthWrite: false,
-            fog: false
-        }));
-        scene.add(stars);
-
-        function noiseFill(ctx, w, h, a, b) {
-            const g = ctx.createLinearGradient(0, 0, w * 0.15, h);
-            g.addColorStop(0, a);
-            g.addColorStop(1, b);
-            ctx.fillStyle = g;
-            ctx.fillRect(0, 0, w, h);
-            const img = ctx.getImageData(0, 0, w, h);
-            const d = img.data;
-            for (let i = 0; i < d.length; i += 16) {
-                const n = (Math.random() - 0.5) * 22;
-                d[i] = Math.max(0, Math.min(255, d[i] + n));
-                d[i + 1] = Math.max(0, Math.min(255, d[i + 1] + n));
-                d[i + 2] = Math.max(0, Math.min(255, d[i + 2] + n));
-            }
-            ctx.putImageData(img, 0, 0);
+        function mulberry32(seed) {
+            let a = seed >>> 0;
+            return function () {
+                a |= 0;
+                a = a + 0x6D2B79F5 | 0;
+                let t = Math.imul(a ^ a >>> 15, 1 | a);
+                t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+                return ((t ^ t >>> 14) >>> 0) / 4294967296;
+            };
         }
 
-        function paintWall(canvas, room, punched) {
+        function seedFor(depth, slot) {
+            return (Math.imul(depth + 17, 374761393) ^ Math.imul(slot + 3, 668265263) ^ 0x9e3779b9) >>> 0;
+        }
+
+        function createPlanetTexture(type, colors, rng) {
+            const size = 128;
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
             const ctx = canvas.getContext('2d');
-            const w = canvas.width;
-            const h = canvas.height;
-            noiseFill(ctx, w, h, room.silk, room.silk2);
-            ctx.strokeStyle = room.gold;
-            ctx.globalAlpha = 0.28;
-            ctx.lineWidth = 1;
-            for (let x = 24; x < w; x += 34) {
+            ctx.fillStyle = colors[0];
+            ctx.fillRect(0, 0, size, size);
+            const blobs = type === 'gas' ? 90 : 160;
+            for (let i = 0; i < blobs; i++) {
+                ctx.globalAlpha = type === 'gas' ? 0.12 : 0.22;
+                ctx.fillStyle = rng() > 0.5 ? colors[1] : colors[2];
                 ctx.beginPath();
-                ctx.moveTo(x, 18);
-                ctx.lineTo(x, h - 18);
-                ctx.stroke();
-            }
-            ctx.globalAlpha = 0.9;
-            ctx.strokeStyle = room.gold;
-            ctx.lineWidth = 10;
-            ctx.strokeRect(10, 10, w - 20, h - 20);
-            ctx.lineWidth = 2;
-            ctx.strokeRect(22, 22, w - 44, h - 44);
-            const cols = 5;
-            for (let c = 0; c < cols; c++) {
-                const x = 56 + c * ((w - 100) / (cols - 1));
-                ctx.textAlign = 'center';
-                for (let row = 0; row < 18; row++) {
-                    const useHan = Math.random() > 0.38;
-                    ctx.fillStyle = room.ink;
-                    ctx.globalAlpha = 0.55 + Math.random() * 0.4;
-                    if (useHan) {
-                        ctx.font = '500 28px "Noto Serif SC", serif';
-                        ctx.fillText(HAN[Math.floor(Math.random() * HAN.length)], x, 70 + row * 52);
-                    } else {
-                        ctx.font = '400 13px "IBM Plex Mono", monospace';
-                        ctx.fillText(CODE[Math.floor(Math.random() * CODE.length)], x, 70 + row * 52);
-                    }
-                }
+                ctx.arc(rng() * size, rng() * size, rng() * (type === 'gas' ? 28 : 8) + 2, 0, Math.PI * 2);
+                ctx.fill();
             }
             ctx.globalAlpha = 1;
-            if (punched) {
-                ctx.globalCompositeOperation = 'destination-out';
+            const tex = new THREE.CanvasTexture(canvas);
+            tex.colorSpace = THREE.SRGBColorSpace;
+            return tex;
+        }
+
+        function createGalaxyTexture(rng) {
+            const size = 256;
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+            const cx = size / 2;
+            const cy = size / 2;
+            const spiral = rng() > 0.32;
+            const arms = 2 + Math.floor(rng() * 3);
+            const hue = 185 + rng() * 95;
+            for (let i = 0; i < 1600; i++) {
+                const t = rng();
+                const r = Math.pow(t, 0.62) * (size * 0.46);
+                let a = rng() * Math.PI * 2;
+                if (spiral) {
+                    const arm = Math.floor(rng() * arms);
+                    a = arm * (Math.PI * 2 / arms) + r * 0.08 + (rng() - 0.5) * 0.4;
+                }
+                const x = cx + Math.cos(a) * r;
+                const y = cy + Math.sin(a) * r * (0.52 + rng() * 0.22);
+                const rad = 1.1 + rng() * 2.1;
+                const g = ctx.createRadialGradient(x, y, 0, x, y, rad);
+                const alpha = 0.035 + rng() * 0.16;
+                g.addColorStop(0, 'hsla(' + (hue + rng() * 36) + ', 72%, ' + (58 + rng() * 28) + '%, ' + alpha + ')');
+                g.addColorStop(1, 'rgba(0,0,0,0)');
+                ctx.fillStyle = g;
                 ctx.beginPath();
-                ctx.arc(w * 0.5, h * 0.4, w * 0.2, 0, Math.PI * 2);
+                ctx.arc(x, y, rad, 0, Math.PI * 2);
                 ctx.fill();
-                ctx.globalCompositeOperation = 'source-over';
-                ctx.strokeStyle = room.gold;
-                ctx.lineWidth = 7;
-                ctx.beginPath();
-                ctx.arc(w * 0.5, h * 0.4, w * 0.2, 0, Math.PI * 2);
-                ctx.stroke();
             }
-        }
-
-        function paintFloor(canvas, room) {
-            const ctx = canvas.getContext('2d');
-            const w = canvas.width;
-            const h = canvas.height;
-            noiseFill(ctx, w, h, room.silk2, room.silk);
-            ctx.translate(w / 2, h / 2);
-            ctx.strokeStyle = room.gold;
-            ctx.lineWidth = 6;
-            ctx.beginPath();
-            ctx.arc(0, 0, w * 0.42, 0, Math.PI * 2);
-            ctx.stroke();
-            ctx.lineWidth = 2;
-            for (let i = 0; i < 8; i++) {
-                const a = (i / 8) * Math.PI * 2;
-                ctx.beginPath();
-                ctx.moveTo(Math.cos(a) * w * 0.08, Math.sin(a) * w * 0.08);
-                ctx.lineTo(Math.cos(a) * w * 0.4, Math.sin(a) * w * 0.4);
-                ctx.stroke();
-            }
-            ctx.setTransform(1, 0, 0, 1, 0, 0);
-            ctx.globalCompositeOperation = 'destination-out';
-            ctx.beginPath();
-            ctx.arc(w / 2, h / 2, w * 0.07, 0, Math.PI * 2);
-            ctx.fill();
-            ctx.globalCompositeOperation = 'source-over';
-        }
-
-        function paintSlip(canvas, room, line) {
-            const ctx = canvas.getContext('2d');
-            const w = canvas.width;
-            const h = canvas.height;
-            ctx.fillStyle = room.ink;
-            ctx.fillRect(0, 0, w, h);
-            ctx.strokeStyle = room.gold;
-            ctx.lineWidth = 4;
-            ctx.strokeRect(3, 3, w - 6, h - 6);
-            ctx.fillStyle = room.silk2;
-            ctx.font = '400 22px "IBM Plex Mono", monospace';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText(line, w / 2, h / 2, w - 24);
-        }
-
-        const walls = [];
-        const pickables = [];
-        const roomGroup = new THREE.Group();
-        scene.add(roomGroup);
-
-        for (let i = 0; i < SIDES; i++) {
-            const angle = (i + 0.5) * (Math.PI * 2 / SIDES);
-            const canvas = document.createElement('canvas');
-            canvas.width = 512;
-            canvas.height = 1024;
+            const core = ctx.createRadialGradient(cx, cy, 0, cx, cy, size * 0.13);
+            core.addColorStop(0, 'rgba(255,248,230,0.8)');
+            core.addColorStop(0.35, 'hsla(' + hue + ', 78%, 68%, 0.32)');
+            core.addColorStop(1, 'rgba(0,0,0,0)');
+            ctx.fillStyle = core;
+            ctx.fillRect(0, 0, size, size);
             const tex = new THREE.CanvasTexture(canvas);
             tex.colorSpace = THREE.SRGBColorSpace;
-            tex.anisotropy = 4;
-            const mat = new THREE.MeshStandardMaterial({
-                map: tex,
-                roughness: 0.58,
-                metalness: 0.22,
+            return tex;
+        }
+
+        function clearGroup(group) {
+            while (group.children.length) {
+                const child = group.children[0];
+                group.remove(child);
+                child.traverse(function (obj) {
+                    if (obj.geometry) obj.geometry.dispose();
+                    const mats = obj.material ? [].concat(obj.material) : [];
+                    mats.forEach(function (m) {
+                        if (m.map) m.map.dispose();
+                        m.dispose();
+                    });
+                });
+            }
+            group.userData.spin = [];
+            group.userData.fade = [];
+        }
+
+        function setLayerOpacity(group, opacity) {
+            const fade = group.userData.fade || [];
+            for (let i = 0; i < fade.length; i++) {
+                fade[i].mat.opacity = fade[i].base * opacity;
+            }
+        }
+
+        function layerOpacity(scale) {
+            const log = Math.log(scale) / Math.log(WRAP);
+            const t = Math.min(1, Math.abs(log) / 1.08);
+            return Math.max(0, 1 - t * t);
+        }
+
+        function fillLayer(group, seed) {
+            clearGroup(group);
+            const rng = mulberry32(seed);
+            const fade = [];
+            const spin = [];
+
+            const starPos = new Float32Array(STAR_COUNT * 3);
+            const starCol = new Float32Array(STAR_COUNT * 3);
+            for (let i = 0; i < STAR_COUNT; i++) {
+                const radius = 18 + rng() * 220;
+                const theta = rng() * Math.PI * 2;
+                const phi = Math.acos(2 * rng() - 1);
+                starPos[i * 3] = radius * Math.sin(phi) * Math.cos(theta);
+                starPos[i * 3 + 1] = radius * Math.cos(phi);
+                starPos[i * 3 + 2] = radius * Math.sin(phi) * Math.sin(theta);
+                const warm = rng() > 0.78;
+                const c = 0.45 + rng() * 0.55;
+                starCol[i * 3] = c;
+                starCol[i * 3 + 1] = warm ? c * 0.86 : c;
+                starCol[i * 3 + 2] = warm ? c * 0.72 : (rng() > 0.7 ? Math.min(1, c * 1.15) : c);
+            }
+            const starGeom = new THREE.BufferGeometry();
+            starGeom.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+            starGeom.setAttribute('color', new THREE.BufferAttribute(starCol, 3));
+            const starMat = new THREE.PointsMaterial({
+                size: 0.28,
+                vertexColors: true,
                 transparent: true,
-                alphaTest: 0.04
+                opacity: 0.72,
+                depthWrite: false,
+                sizeAttenuation: true
             });
-            const mesh = new THREE.Mesh(new THREE.PlaneGeometry(WALL_W, WALL_H), mat);
-            mesh.position.set(Math.sin(angle) * RADIUS, WALL_H * 0.46, Math.cos(angle) * RADIUS);
-            mesh.lookAt(0, mesh.position.y, 0);
-            mesh.userData.kind = 'wall';
-            mesh.userData.canvas = canvas;
-            mesh.userData.texture = tex;
-            mesh.userData.punched = i === 0 || i === 4;
-            roomGroup.add(mesh);
-            walls.push(mesh);
-            pickables.push(mesh);
+            const stars = new THREE.Points(starGeom, starMat);
+            group.add(stars);
+            fade.push({ mat: starMat, base: 0.72 });
+
+            const galaxyCount = 2 + Math.floor(rng() * 2);
+            for (let i = 0; i < galaxyCount; i++) {
+                const sprite = new THREE.Sprite(new THREE.SpriteMaterial({
+                    map: createGalaxyTexture(rng),
+                    transparent: true,
+                    depthWrite: false,
+                    blending: THREE.AdditiveBlending,
+                    opacity: 0.82
+                }));
+                const spread = 28 + rng() * 70;
+                const theta = rng() * Math.PI * 2;
+                const phi = Math.acos(2 * rng() - 1);
+                sprite.position.set(
+                    spread * Math.sin(phi) * Math.cos(theta),
+                    spread * Math.cos(phi) * 0.55,
+                    spread * Math.sin(phi) * Math.sin(theta)
+                );
+                const gSize = 22 + rng() * 38;
+                sprite.scale.set(gSize, gSize * (0.55 + rng() * 0.35), 1);
+                sprite.material.rotation = rng() * Math.PI;
+                group.add(sprite);
+                fade.push({ mat: sprite.material, base: 0.82 });
+                spin.push({ obj: sprite, y: (rng() - 0.5) * 0.0007 });
+            }
+
+            const planetCount = 3 + Math.floor(rng() * 3);
+            for (let i = 0; i < planetCount; i++) {
+                const palette = PALETTES[Math.floor(rng() * PALETTES.length)];
+                const radius = 0.35 + rng() * 1.35;
+                const mesh = new THREE.Mesh(
+                    new THREE.SphereGeometry(radius, 32, 32),
+                    new THREE.MeshStandardMaterial({
+                        map: createPlanetTexture(palette.type, palette.colors, rng),
+                        roughness: palette.type === 'gas' ? 0.42 : 0.82,
+                        metalness: 0.08,
+                        transparent: true,
+                        opacity: 1
+                    })
+                );
+                const dist = 10 + rng() * 48;
+                const theta = rng() * Math.PI * 2;
+                const phi = Math.acos(2 * rng() - 1);
+                mesh.position.set(
+                    dist * Math.sin(phi) * Math.cos(theta),
+                    dist * Math.cos(phi) * 0.45,
+                    dist * Math.sin(phi) * Math.sin(theta)
+                );
+                group.add(mesh);
+                fade.push({ mat: mesh.material, base: 1 });
+                spin.push({ obj: mesh, y: 0.002 + rng() * 0.01 });
+                if (rng() > 0.72) {
+                    const ring = new THREE.Mesh(
+                        new THREE.RingGeometry(radius * 1.35, radius * 2.05, 48),
+                        new THREE.MeshBasicMaterial({
+                            color: 0xb8a888,
+                            side: THREE.DoubleSide,
+                            transparent: true,
+                            opacity: 0.45
+                        })
+                    );
+                    ring.rotation.x = Math.PI / 2.2;
+                    ring.rotation.y = rng() * 0.4;
+                    mesh.add(ring);
+                    fade.push({ mat: ring.material, base: 0.45 });
+                }
+            }
+
+            group.userData.fade = fade;
+            group.userData.spin = spin;
         }
 
-        const floorCanvas = document.createElement('canvas');
-        floorCanvas.width = 1024;
-        floorCanvas.height = 1024;
-        const floorTex = new THREE.CanvasTexture(floorCanvas);
-        floorTex.colorSpace = THREE.SRGBColorSpace;
-        const floorMat = new THREE.MeshStandardMaterial({
-            map: floorTex,
-            roughness: 0.7,
-            metalness: 0.28,
+        const layers = [new THREE.Group(), new THREE.Group(), new THREE.Group()];
+        layers.forEach(function (layer) { scene.add(layer); });
+
+        let u = 0.18;
+        let depth = 0;
+
+        function rebuild(index, slot) {
+            fillLayer(layers[index], seedFor(depth, slot));
+        }
+
+        function bootLayers() {
+            rebuild(0, -1);
+            rebuild(1, 0);
+            rebuild(2, 1);
+        }
+
+        function applyScales() {
+            for (let i = 0; i < 3; i++) {
+                const scale = Math.pow(WRAP, u + i - 1);
+                layers[i].scale.setScalar(scale);
+                const opacity = layerOpacity(scale);
+                layers[i].visible = opacity > 0.03;
+                setLayerOpacity(layers[i], opacity);
+            }
+        }
+
+        function wrapZoom() {
+            while (u >= 1) {
+                u -= 1;
+                depth += 1;
+                const discarded = layers[2];
+                layers[2] = layers[1];
+                layers[1] = layers[0];
+                layers[0] = discarded;
+                rebuild(0, -1);
+            }
+            while (u < 0) {
+                u += 1;
+                depth -= 1;
+                const discarded = layers[0];
+                layers[0] = layers[1];
+                layers[1] = layers[2];
+                layers[2] = discarded;
+                rebuild(2, 1);
+            }
+            applyScales();
+        }
+
+        bootLayers();
+        wrapZoom();
+
+        function addZoom(delta) {
+            u -= delta;
+            wrapZoom();
+        }
+
+        renderer.domElement.addEventListener('wheel', function (event) {
+            event.preventDefault();
+            if (exiting || mode !== 'idle') return;
+            const step = Math.sign(event.deltaY) * Math.min(Math.abs(event.deltaY), 90);
+            addZoom(step * 0.00135);
+        }, { passive: false });
+
+        let pinch0 = 0;
+        renderer.domElement.addEventListener('touchstart', function (event) {
+            if (event.touches.length === 2) {
+                controls.enableRotate = false;
+                const dx = event.touches[0].clientX - event.touches[1].clientX;
+                const dy = event.touches[0].clientY - event.touches[1].clientY;
+                pinch0 = Math.hypot(dx, dy);
+            }
+        }, { passive: true });
+        renderer.domElement.addEventListener('touchend', function (event) {
+            if (event.touches.length < 2) controls.enableRotate = true;
+        }, { passive: true });
+        renderer.domElement.addEventListener('touchcancel', function () {
+            controls.enableRotate = true;
+        }, { passive: true });
+        renderer.domElement.addEventListener('touchmove', function (event) {
+            if (event.touches.length !== 2 || exiting || mode !== 'idle') return;
+            event.preventDefault();
+            const dx = event.touches[0].clientX - event.touches[1].clientX;
+            const dy = event.touches[0].clientY - event.touches[1].clientY;
+            const dist = Math.hypot(dx, dy);
+            if (pinch0 > 0 && dist > 0) {
+                addZoom(-Math.log(dist / pinch0) / Math.log(WRAP));
+            }
+            pinch0 = dist;
+        }, { passive: false });
+
+        const warpPos = new Float32Array(WARP_COUNT * 6);
+        const warpCol = new Float32Array(WARP_COUNT * 6);
+        const warpZ = new Float32Array(WARP_COUNT);
+        const warpXY = new Float32Array(WARP_COUNT * 2);
+        function placeWarp(i) {
+            const x = (Math.random() - 0.5) * 120;
+            const y = (Math.random() - 0.5) * 120;
+            const z = -(Math.random() * 380 + 18);
+            warpXY[i * 2] = x;
+            warpXY[i * 2 + 1] = y;
+            warpZ[i] = z;
+            const pick = Math.random();
+            let r = 0.85, g = 0.9, b = 1;
+            if (pick > 0.62 && pick <= 0.86) { r = 0.55; g = 0.72; b = 1; }
+            else if (pick > 0.86) { r = 0.78; g = 0.78; b = 0.82; }
+            warpCol[i * 6] = r;
+            warpCol[i * 6 + 1] = g;
+            warpCol[i * 6 + 2] = b;
+            warpCol[i * 6 + 3] = r * 0.2;
+            warpCol[i * 6 + 4] = g * 0.2;
+            warpCol[i * 6 + 5] = b * 0.2;
+        }
+        for (let i = 0; i < WARP_COUNT; i++) placeWarp(i);
+        const warpGeom = new THREE.BufferGeometry();
+        warpGeom.setAttribute('position', new THREE.BufferAttribute(warpPos, 3));
+        warpGeom.setAttribute('color', new THREE.BufferAttribute(warpCol, 3));
+        const warpMat = new THREE.LineBasicMaterial({
+            vertexColors: true,
             transparent: true,
-            alphaTest: 0.05,
-            side: THREE.DoubleSide
-        });
-        const floor = new THREE.Mesh(new THREE.CircleGeometry(RADIUS + 0.35, 48), floorMat);
-        floor.rotation.x = -Math.PI / 2;
-        floor.userData.kind = 'floor';
-        roomGroup.add(floor);
-
-        const goldMat = new THREE.MeshStandardMaterial({ color: 0xc9a24a, roughness: 0.28, metalness: 0.86 });
-        for (let i = 0; i < SIDES; i++) {
-            const angle = i * (Math.PI * 2 / SIDES);
-            const col = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.18, WALL_H, 12), goldMat);
-            col.position.set(Math.sin(angle) * (RADIUS + 0.06), WALL_H * 0.46, Math.cos(angle) * (RADIUS + 0.06));
-            roomGroup.add(col);
-            const lantern = new THREE.Mesh(
-                new THREE.SphereGeometry(0.11, 12, 12),
-                new THREE.MeshBasicMaterial({ color: 0xffe6a0, transparent: true, opacity: 0.85 })
-            );
-            lantern.position.set(Math.sin(angle) * (RADIUS - 0.55), 2.15, Math.cos(angle) * (RADIUS - 0.55));
-            roomGroup.add(lantern);
-        }
-
-        const oculus = new THREE.Mesh(
-            new THREE.TorusGeometry(2.35, 0.12, 12, 48),
-            goldMat
-        );
-        oculus.rotation.x = Math.PI / 2;
-        oculus.position.y = WALL_H - 0.35;
-        roomGroup.add(oculus);
-
-        const wellRing = new THREE.Mesh(
-            new THREE.TorusGeometry(0.72, 0.06, 10, 40),
-            goldMat
-        );
-        wellRing.rotation.x = Math.PI / 2;
-        wellRing.position.y = 0.04;
-        wellRing.userData.kind = 'well';
-        roomGroup.add(wellRing);
-        pickables.push(wellRing);
-
-        const wellCore = new THREE.Mesh(
-            new THREE.CylinderGeometry(0.55, 0.55, 4.2, 24, 1, true),
-            new THREE.MeshStandardMaterial({
-                color: 0x0a1a16,
-                emissive: 0x123d32,
-                roughness: 0.4,
-                metalness: 0.5,
-                side: THREE.DoubleSide
-            })
-        );
-        wellCore.position.y = -2.05;
-        wellCore.userData.kind = 'well';
-        roomGroup.add(wellCore);
-        pickables.push(wellCore);
-
-        const dustGeom = new THREE.BufferGeometry();
-        const dustPos = new Float32Array(DUST_COUNT * 3);
-        const dustVel = new Float32Array(DUST_COUNT);
-        for (let i = 0; i < DUST_COUNT; i++) {
-            dustPos[i * 3] = (Math.random() - 0.5) * 1.1;
-            dustPos[i * 3 + 1] = Math.random() * 7.5;
-            dustPos[i * 3 + 2] = (Math.random() - 0.5) * 1.1;
-            dustVel[i] = 0.004 + Math.random() * 0.01;
-        }
-        dustGeom.setAttribute('position', new THREE.BufferAttribute(dustPos, 3));
-        const dust = new THREE.Points(dustGeom, new THREE.PointsMaterial({
-            color: 0x8dffc9,
-            size: 0.035,
-            transparent: true,
-            opacity: 0.7,
+            opacity: 0.85,
             blending: THREE.AdditiveBlending,
-            depthWrite: false
-        }));
-        scene.add(dust);
+            depthWrite: false,
+            fog: false
+        });
+        const warpMesh = new THREE.LineSegments(warpGeom, warpMat);
+        warpMesh.frustumCulled = false;
+        warpMesh.visible = false;
+        const warpGroup = new THREE.Group();
+        warpGroup.add(warpMesh);
+        scene.add(warpGroup);
 
-        const slips = [];
-        for (let i = 0; i < SLIP_COUNT; i++) {
-            const canvas = document.createElement('canvas');
-            canvas.width = 512;
-            canvas.height = 96;
-            const tex = new THREE.CanvasTexture(canvas);
-            tex.colorSpace = THREE.SRGBColorSpace;
-            const mat = new THREE.MeshBasicMaterial({
-                map: tex,
-                side: THREE.DoubleSide,
-                transparent: true
-            });
-            const mesh = new THREE.Mesh(new THREE.PlaneGeometry(1.05, 0.2), mat);
-            mesh.userData.kind = 'slip';
-            mesh.userData.canvas = canvas;
-            mesh.userData.texture = tex;
-            mesh.userData.radius = 2.1 + (i % 5) * 0.55;
-            mesh.userData.height = 0.9 + (i % 7) * 0.55;
-            mesh.userData.speed = 0.12 + (i % 6) * 0.04;
-            mesh.userData.phase = (i / SLIP_COUNT) * Math.PI * 2;
-            roomGroup.add(mesh);
-            slips.push(mesh);
-            pickables.push(mesh);
+        function writeWarp(stretch, rush, dt) {
+            for (let i = 0; i < WARP_COUNT; i++) {
+                let z = warpZ[i] + rush * dt;
+                if (z > 10) {
+                    placeWarp(i);
+                    z = warpZ[i];
+                }
+                warpZ[i] = z;
+                const x = warpXY[i * 2];
+                const y = warpXY[i * 2 + 1];
+                warpPos[i * 6] = x;
+                warpPos[i * 6 + 1] = y;
+                warpPos[i * 6 + 2] = z;
+                warpPos[i * 6 + 3] = x;
+                warpPos[i * 6 + 4] = y;
+                warpPos[i * 6 + 5] = z - stretch;
+            }
+            warpGeom.attributes.position.needsUpdate = true;
+            warpGeom.attributes.color.needsUpdate = true;
         }
 
         const header = document.querySelector('header');
-        const hall = document.getElementById('hall');
+        const closer = document.querySelector('.hall-closer');
+        const hint = document.getElementById('hint');
         const flash = document.getElementById('warp-flash');
-        const roomNameEl = document.getElementById('room-name');
-        const ruleTextEl = document.getElementById('rule-text');
         header.style.opacity = '0';
-        hall.style.opacity = '0';
+        closer.style.opacity = '0';
+        hint.style.opacity = '0';
 
         let mode = 'enter';
         let phaseStart = 0;
         let exiting = false;
-        let roomIndex = 0;
-        let lastMutate = 0;
-        let dragged = false;
-        let lastFrameTime = 0;
-        const raycaster = new THREE.Raycaster();
-        const pointer = new THREE.Vector2();
-        const streakCount = 900;
-        const streakPos = new Float32Array(streakCount * 6);
-        const streakCol = new Float32Array(streakCount * 6);
-        const streakZ = new Float32Array(streakCount);
-        const streakXY = new Float32Array(streakCount * 2);
-        for (let i = 0; i < streakCount; i++) {
-            streakXY[i * 2] = (Math.random() - 0.5) * 40;
-            streakXY[i * 2 + 1] = (Math.random() - 0.5) * 40;
-            streakZ[i] = -(Math.random() * 180 + 10);
-            const jade = Math.random() > 0.55;
-            const r = jade ? 0.22 : 0.85;
-            const g = jade ? 0.85 : 0.2;
-            const b = jade ? 0.58 : 0.16;
-            streakCol[i * 6] = r;
-            streakCol[i * 6 + 1] = g;
-            streakCol[i * 6 + 2] = b;
-            streakCol[i * 6 + 3] = r;
-            streakCol[i * 6 + 4] = g;
-            streakCol[i * 6 + 5] = b;
-        }
-        const streakGeom = new THREE.BufferGeometry();
-        streakGeom.setAttribute('position', new THREE.BufferAttribute(streakPos, 3));
-        streakGeom.setAttribute('color', new THREE.BufferAttribute(streakCol, 3));
-        const streakMat = new THREE.LineBasicMaterial({
-            vertexColors: true,
-            transparent: true,
-            opacity: 0.85,
-            blending: THREE.AdditiveBlending,
-            depthWrite: false,
-            fog: false
-        });
-        const streaks = new THREE.LineSegments(streakGeom, streakMat);
-        streaks.visible = false;
-        streaks.frustumCulled = false;
-        scene.add(streaks);
+        let hintShown = 0;
+        const baseFov = camera.fov;
 
-        function t(key, fallback) {
-            const api = window.__aivoinkoI18n;
-            const value = api && typeof api.t === 'function' ? api.t(key) : '';
-            return value || fallback;
-        }
-
-        function writePlaque() {
-            const room = ROOM_NAMES[roomIndex];
-            const rule = RULES[roomIndex];
-            if (roomNameEl) roomNameEl.textContent = t(room.key, room.fallback);
-            if (ruleTextEl) ruleTextEl.textContent = t(rule.key, rule.fallback);
-        }
-
-        function applyRoom(room) {
-            scene.background.setHex(room.fog);
-            scene.fog.color.setHex(room.fog);
-            ambient.color.setHex(room.ambient);
-            wellLight.color.setHex(room.well);
-            dust.material.color.setHex(room.well);
-            goldMat.color.setHex(parseInt(room.gold.slice(1), 16));
-            walls.forEach((wall) => {
-                paintWall(wall.userData.canvas, room, wall.userData.punched);
-                wall.userData.texture.needsUpdate = true;
-            });
-            paintFloor(floorCanvas, room);
-            floorTex.needsUpdate = true;
-            slips.forEach((slip, i) => {
-                paintSlip(slip.userData.canvas, room, SLIP_LINES[i % SLIP_LINES.length]);
-                slip.userData.texture.needsUpdate = true;
-            });
-            writePlaque();
-        }
-
-        function mutate() {
-            if (exiting || mode !== 'idle') return;
-            roomIndex = (roomIndex + 1) % ROOMS.length;
-            applyRoom(ROOMS[roomIndex]);
-            lastMutate = performance.now();
-            if (flash) {
-                flash.style.opacity = '0.16';
-                window.setTimeout(() => {
-                    if (mode === 'idle' && flash) flash.style.opacity = '0';
-                }, 160);
-            }
-        }
-
-        function paintNow() {
-            applyRoom(ROOMS[roomIndex]);
-        }
-
-        if (document.fonts && document.fonts.ready) {
-            document.fonts.ready.then(paintNow);
-        } else {
-            paintNow();
-        }
-
-        document.addEventListener('aivoinko:lang', writePlaque);
-
-        controls.addEventListener('start', () => { dragged = false; });
-        controls.addEventListener('change', () => { dragged = true; });
-
-        function onCanvasClick(event) {
-            if (dragged || exiting || mode !== 'idle') return;
-            const rect = renderer.domElement.getBoundingClientRect();
-            pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-            pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-            raycaster.setFromCamera(pointer, camera);
-            const hits = raycaster.intersectObjects(pickables, false);
-            if (hits.length) mutate();
-        }
-        renderer.domElement.addEventListener('click', onCanvasClick);
-
-        window.addEventListener('keydown', (event) => {
-            if (event.key === ' ' && !event.repeat) {
-                event.preventDefault();
-                mutate();
-            }
-        });
-
-        window.addEventListener('pointermove', (event) => {
-            if (exiting || mode !== 'idle') {
-                renderer.domElement.style.cursor = 'default';
-                return;
-            }
-            const rect = renderer.domElement.getBoundingClientRect();
-            pointer.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-            pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-            raycaster.setFromCamera(pointer, camera);
-            const hits = raycaster.intersectObjects(pickables, false);
-            renderer.domElement.style.cursor = hits.length ? 'pointer' : 'grab';
-        });
-
-        function writeStreaks(stretch, rush, dt) {
-            const arr = streakGeom.attributes.position.array;
-            for (let i = 0; i < streakCount; i++) {
-                let z = streakZ[i] + rush * dt;
-                if (z > 8) {
-                    z = -180 - Math.random() * 40;
-                    streakXY[i * 2] = (Math.random() - 0.5) * 40;
-                    streakXY[i * 2 + 1] = (Math.random() - 0.5) * 40;
-                }
-                streakZ[i] = z;
-                const x = streakXY[i * 2];
-                const y = streakXY[i * 2 + 1];
-                arr[i * 6] = x;
-                arr[i * 6 + 1] = y;
-                arr[i * 6 + 2] = z;
-                arr[i * 6 + 3] = x;
-                arr[i * 6 + 4] = y;
-                arr[i * 6 + 5] = z - stretch;
-            }
-            streakGeom.attributes.position.needsUpdate = true;
-        }
-
-        function showHall() {
-            header.style.transition = reduceMotion ? 'none' : 'opacity 0.7s ease';
-            hall.style.transition = reduceMotion ? 'none' : 'opacity 0.7s ease';
+        function showChrome() {
+            const fade = reduceMotion ? 'none' : 'opacity 0.7s ease';
+            header.style.transition = fade;
+            closer.style.transition = fade;
+            hint.style.transition = fade;
             header.style.opacity = '1';
-            hall.style.opacity = '1';
+            closer.style.opacity = '1';
+            hint.style.opacity = reduceMotion ? '0.55' : '0.7';
+            header.style.pointerEvents = 'auto';
             if (flash) flash.style.opacity = '0';
+        }
+
+        function hideChrome() {
+            header.style.pointerEvents = 'none';
+            header.style.opacity = '0';
+            closer.style.opacity = '0';
+            hint.style.opacity = '0';
         }
 
         function exitAnimation() {
             if (exiting) return;
             exiting = true;
             controls.enabled = false;
+            hideChrome();
             mode = 'exit';
             phaseStart = 0;
-            streaks.visible = true;
-            roomGroup.visible = reduceMotion;
-            dust.visible = false;
+            warpMesh.visible = !reduceMotion;
+            warpMat.opacity = 0.4;
+            for (let i = 0; i < WARP_COUNT; i++) placeWarp(i);
         }
 
         window.__aivoinkoSealExit = exitAnimation;
 
-        window.addEventListener('pageshow', () => {
+        window.addEventListener('pageshow', function () {
             exiting = false;
             mode = 'enter';
             phaseStart = 0;
-            roomIndex = 0;
-            dragged = false;
+            hintShown = 0;
+            u = 0.18;
+            depth = 0;
+            bootLayers();
+            wrapZoom();
+            camera.position.set(0, 9, 42);
+            camera.fov = baseFov;
+            camera.updateProjectionMatrix();
+            controls.target.set(0, 0, 0);
             controls.enabled = false;
-            camera.position.copy(reduceMotion ? restPos : enterPos);
-            controls.target.set(0, 1.35, 0);
+            header.style.pointerEvents = 'none';
             header.style.opacity = '0';
-            hall.style.opacity = '0';
-            roomGroup.visible = true;
-            dust.visible = true;
-            streaks.visible = false;
-            if (flash) flash.style.opacity = '0.4';
-            applyRoom(ROOMS[0]);
+            closer.style.opacity = '0';
+            hint.style.opacity = '0';
+            if (flash) flash.style.opacity = '0.34';
+            warpMesh.visible = false;
         });
 
+        let lastFrameTime = 0;
         function animate(time) {
             const deltaMs = lastFrameTime ? time - lastFrameTime : FRAME_MS;
             lastFrameTime = time;
             const dt = Math.min(deltaMs, 50) / FRAME_MS;
+
             if (!phaseStart) phaseStart = time;
 
+            layers.forEach(function (layer) {
+                const spin = layer.userData.spin || [];
+                for (let i = 0; i < spin.length; i++) {
+                    spin[i].obj.rotation.y += spin[i].y * dt;
+                }
+            });
+
             if (mode === 'enter') {
-                const progress = Math.min((time - phaseStart) / (reduceMotion ? 1 : ENTER_MS), 1);
+                const progress = Math.min((time - phaseStart) / ENTER_MS, 1);
                 const ease = 1 - Math.pow(1 - progress, 3);
-                camera.position.lerpVectors(enterPos, restPos, ease);
-                camera.lookAt(controls.target);
-                if (flash) flash.style.opacity = String(0.4 * (1 - ease));
+                if (!reduceMotion) {
+                    warpMesh.visible = true;
+                    writeWarp(8 + (1 - ease) * 70, 16 + (1 - ease) * 140, dt);
+                    warpMat.opacity = 0.85 * (1 - ease);
+                    warpGroup.position.copy(camera.position);
+                    warpGroup.quaternion.copy(camera.quaternion);
+                    camera.fov = baseFov + (1 - ease) * 18;
+                    camera.updateProjectionMatrix();
+                }
+                if (flash) flash.style.opacity = String(0.34 * (1 - ease));
                 if (progress >= 1) {
-                    camera.position.copy(restPos);
+                    warpMesh.visible = false;
+                    camera.fov = baseFov;
+                    camera.updateProjectionMatrix();
                     controls.enabled = true;
-                    showHall();
+                    showChrome();
+                    hintShown = time;
                     mode = 'idle';
-                    lastMutate = time;
                 }
             } else if (mode === 'idle') {
-                if (!reduceMotion) {
-                    const arr = dustGeom.attributes.position.array;
-                    for (let i = 0; i < DUST_COUNT; i++) {
-                        arr[i * 3 + 1] += dustVel[i] * dt;
-                        if (arr[i * 3 + 1] > 7.6) {
-                            arr[i * 3] = (Math.random() - 0.5) * 1.1;
-                            arr[i * 3 + 1] = 0.05;
-                            arr[i * 3 + 2] = (Math.random() - 0.5) * 1.1;
-                        }
-                    }
-                    dustGeom.attributes.position.needsUpdate = true;
-                    const tSec = time * 0.001;
-                    slips.forEach((slip) => {
-                        const a = slip.userData.phase + tSec * slip.userData.speed;
-                        slip.position.set(
-                            Math.cos(a) * slip.userData.radius,
-                            slip.userData.height + Math.sin(a * 1.7) * 0.12,
-                            Math.sin(a) * slip.userData.radius
-                        );
-                        slip.lookAt(camera.position);
-                    });
-                    wellRing.rotation.z += 0.003 * dt;
-                    stars.rotation.y += 0.00012 * dt;
-                    if (time - lastMutate > MUTATE_MS) mutate();
+                if (!reduceMotion && hintShown && time - hintShown > 5200 && hint.style.opacity !== '0') {
+                    hint.style.opacity = '0';
                 }
-                controls.update();
+                if (controls.enabled) controls.update();
             } else if (mode === 'exit') {
                 const progress = Math.min((time - phaseStart) / EXIT_MS, 1);
                 const ease = progress * progress;
-                if (!reduceMotion) writeStreaks(8 + ease * 36, 22 + ease * 90, dt);
-                hall.style.opacity = String(1 - ease);
-                header.style.opacity = String(1 - ease);
-                if (flash) flash.style.opacity = String(ease * 0.55);
-                camera.fov = 62 + ease * 18;
-                camera.updateProjectionMatrix();
+                if (!reduceMotion) {
+                    writeWarp(8 + ease * 70, 20 + ease * 160, dt);
+                    warpGroup.position.copy(camera.position);
+                    warpGroup.quaternion.copy(camera.quaternion);
+                    warpMat.opacity = 0.4 + ease * 0.5;
+                    camera.fov = baseFov + ease * 22;
+                    camera.updateProjectionMatrix();
+                }
+                if (flash) flash.style.opacity = String(ease * 0.7);
                 if (progress >= 1) {
                     window.location.href = 'index.html';
                     mode = 'gone';
@@ -987,7 +805,7 @@
 
         startLoop(animate);
 
-        document.addEventListener('visibilitychange', () => {
+        document.addEventListener('visibilitychange', function () {
             if (document.hidden) {
                 stopLoop();
                 lastFrameTime = 0;
@@ -996,7 +814,7 @@
             }
         });
 
-        window.addEventListener('resize', () => {
+        window.addEventListener('resize', function () {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);

@@ -32,7 +32,7 @@
     ];
 
     var ASTROTELES_REALMS = [
-        { key: 'seal.onkalo', label: 'Onkalo', href: 'astroteles.html' }
+        { key: 'seal.astroteles', label: 'Astroteles', href: 'astroteles.html' }
     ];
 
     function pageStem() {
