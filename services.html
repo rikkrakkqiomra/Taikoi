@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="services.title">Palvelut</title>
     <meta name="description" data-i18n-attr="content:services.description" content="Aivoinko. Neljä toimeksiantoa yritykselle, joka omistaa julkisen kasvonsa, harkintansa, koneensa ja sen, miten se löydetään.">
-    <meta name="theme-color" content="#0c0b09">
+    <meta name="theme-color" content="#05070d">
     <link rel="canonical" href="https://taikoi.netlify.app/fi/services.html">
     <link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/services.html">
     <link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/services.html">
@@ -49,16 +49,20 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&amp;family=Orbitron:wght@700;900&amp;family=Source+Sans+3:ital,wght@0,400;0,500;0,600&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500&amp;family=Orbitron:wght@700;900&amp;family=Rajdhani:wght@500;600;700&amp;display=swap" rel="stylesheet">
     <link rel="stylesheet" href="seal-menu.css">
     <script src="seal-menu.js" defer></script>
     <style>
         :root {
-            --bg: #0c0b09;
-            --text: #efe6d4;
-            --muted: #b7aea0;
-            --brass: #c4a06a;
-            --line: rgba(196, 160, 106, 0.28);
+            --bg: #05070d;
+            --text: #e8eef4;
+            --muted: #a9b7c6;
+            --ice: #8ef0f7;
+            --sun: #e7b07a;
+            --silver: #d5deea;
+            --violet: #c4b2f0;
+            --line: rgba(186, 214, 228, 0.18);
+            --glass: rgba(8, 14, 22, 0.58);
         }
 
         * {
@@ -75,11 +79,22 @@
             margin: 0;
             background: var(--bg);
             color: var(--text);
-            font-family: 'Source Sans 3', 'Segoe UI', sans-serif;
-            font-weight: 400;
-            font-size: 1.05rem;
-            line-height: 1.65;
+            font-family: 'Rajdhani', 'Segoe UI', sans-serif;
+            font-weight: 500;
+            font-size: 1.14rem;
+            line-height: 1.45;
             -webkit-font-smoothing: antialiased;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: 1;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse 58% 42% at 50% -10%, rgba(142, 240, 247, 0.16), transparent 68%),
+                radial-gradient(ellipse 42% 30% at 12% 108%, rgba(231, 176, 122, 0.18), transparent 70%);
         }
 
         #canvas-container {
@@ -89,12 +104,12 @@
             pointer-events: none;
         }
 
-        .practice {
+        .observatory {
             position: relative;
             z-index: 5;
-            width: min(40rem, calc(100% - 2.4rem));
+            width: min(72rem, calc(100% - 3.2rem));
             margin: 0 auto;
-            padding: 1.4rem 0 0;
+            padding: 0.6rem 0 3.2rem;
         }
 
         header {
@@ -115,212 +130,339 @@
             -webkit-user-select: none;
         }
 
-        main {
-            padding-top: 1.6rem;
+        .mast {
+            padding-top: 0.35rem;
+        }
+
+        .mast-index {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1rem;
+        }
+
+        .firm,
+        .kicker,
+        .place,
+        .atlas-head h2,
+        .term,
+        .num {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .firm,
+        .kicker {
+            font-size: 0.72rem;
+            letter-spacing: 0.34em;
         }
 
         .firm {
-            font-size: 0.72rem;
-            font-weight: 600;
-            letter-spacing: 0.34em;
-            text-transform: uppercase;
-            color: var(--brass);
+            color: var(--sun);
         }
 
         .kicker {
-            margin-top: 0.4rem;
-            font-size: 0.72rem;
-            font-weight: 600;
-            letter-spacing: 0.28em;
-            text-transform: uppercase;
-            color: var(--muted);
+            color: var(--ice);
         }
 
-        h1 {
-            margin-top: 0.7rem;
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-weight: 500;
-            font-size: clamp(2.35rem, 7vw, 3.35rem);
-            letter-spacing: 0.01em;
-            line-height: 1.05;
-            color: var(--text);
+        .mast h1 {
+            margin-top: 0.55rem;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: clamp(2.5rem, 6.6vw, 5.35rem);
+            letter-spacing: 0.045em;
+            line-height: 0.96;
+            text-transform: uppercase;
+            background: linear-gradient(180deg, #ffffff 0%, #d5e2ee 46%, #8ea4b8 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .mast-line {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1.5rem;
+            margin-top: 1.05rem;
+            padding-top: 0.85rem;
+        }
+
+        .mast-line::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            height: 1px;
+            background: linear-gradient(90deg, var(--sun), var(--ice) 48%, transparent 94%);
         }
 
         .role {
-            margin-top: 0.85rem;
             font-family: 'Cormorant Garamond', Georgia, serif;
             font-style: italic;
             font-weight: 500;
-            font-size: clamp(1.15rem, 2.4vw, 1.4rem);
-            line-height: 1.35;
-            color: #e4d8c4;
+            font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+            line-height: 1.25;
+            color: #d5dee8;
         }
 
         .place {
-            margin-top: 0.35rem;
+            flex: 0 0 auto;
+            font-size: 0.68rem;
+            letter-spacing: 0.22em;
             color: var(--muted);
-            font-size: 0.98rem;
         }
 
         .lede {
-            margin-top: 1.55rem;
-            max-width: 36rem;
-            color: var(--text);
-            font-size: 1.08rem;
-            line-height: 1.7;
+            margin-top: 1.45rem;
+            padding: 1.2rem 1.4rem 1.25rem 1.3rem;
+            border-left: 2px solid var(--sun);
+            background: var(--glass);
+            column-count: 2;
+            column-gap: 2.6rem;
+            color: #d7e1ea;
+            font-size: 1.16rem;
+            font-weight: 500;
+            line-height: 1.5;
+            hyphens: auto;
         }
 
         .vita {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.45rem 1.35rem;
-            margin-top: 1.5rem;
-            padding-bottom: 1.85rem;
-            border-bottom: 1px solid var(--line);
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.75rem;
+            margin-top: 0.85rem;
         }
 
         .vita a {
-            color: var(--brass);
-            text-decoration: none;
-            font-size: 0.98rem;
-        }
-
-        .vita a:hover,
-        .vita a:focus-visible {
+            display: flex;
+            align-items: center;
+            min-height: 3.35rem;
+            padding: 0.65rem 1rem;
             color: var(--text);
-            text-decoration: underline;
-            text-underline-offset: 0.18em;
-            outline: none;
-        }
-
-        .block {
-            padding: 2.1rem 0 0;
-        }
-
-        .block h2 {
-            font-family: 'Source Sans 3', 'Segoe UI', sans-serif;
-            font-size: 0.72rem;
+            text-decoration: none;
             font-weight: 600;
+            font-size: 1.12rem;
+            letter-spacing: 0.01em;
+            overflow-wrap: anywhere;
+            background: var(--glass);
+            border: 1px solid var(--line);
+        }
+
+        .vita a:hover {
+            color: var(--ice);
+            border-color: rgba(142, 240, 247, 0.72);
+        }
+
+        .vita a:focus-visible {
+            outline: 1px solid var(--ice);
+            outline-offset: 3px;
+        }
+
+        .atlas {
+            margin-top: 2.8rem;
+        }
+
+        .atlas-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .atlas-head h2 {
+            font-size: 0.74rem;
             letter-spacing: 0.28em;
-            text-transform: uppercase;
-            color: var(--brass);
+            color: var(--ice);
         }
 
         .block-note {
-            margin-top: 0.45rem;
             color: var(--muted);
-            font-size: 0.98rem;
+            font-size: 1.05rem;
+            text-align: right;
         }
 
-        .engagement {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.35rem;
-            padding-bottom: 1.35rem;
-            border-bottom: 1px solid var(--line);
+        .chambers {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.85rem;
+        }
+
+        .chamber {
+            --ink: var(--ice);
+            position: relative;
+            display: block;
+            min-height: 15.5rem;
+            padding: 1.35rem 1.4rem 1.4rem 1.45rem;
+            overflow: hidden;
             color: inherit;
             text-decoration: none;
+            background: linear-gradient(160deg, rgba(16, 28, 40, 0.72), rgba(6, 10, 16, 0.5));
+            border: 1px solid var(--line);
+            transition: transform 180ms ease, border-color 180ms ease;
         }
 
-        .engagement:last-child {
-            padding-bottom: 0;
-            border-bottom: 0;
+        .chamber::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 1rem;
+            bottom: 1rem;
+            width: 2px;
+            background: var(--ink);
         }
+
+        .chamber--brand { --ink: var(--sun); }
+        .chamber--ai { --ink: var(--ice); }
+        .chamber--geo { --ink: var(--silver); }
+        .chamber--mind { --ink: var(--violet); }
 
         .num {
-            flex: 0 0 1.7rem;
-            padding-top: 0.28rem;
-            font-size: 0.72rem;
-            font-weight: 600;
+            position: absolute;
+            top: 0.85rem;
+            right: 0.95rem;
+            font-size: 1.55rem;
             letter-spacing: 0.12em;
-            color: var(--brass);
+            color: var(--ink);
         }
 
-        .engagement-body {
-            min-width: 0;
-        }
-
-        .engagement h3 {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-weight: 500;
-            font-size: clamp(1.28rem, 2.6vw, 1.55rem);
-            line-height: 1.2;
+        .chamber h3 {
+            max-width: 22ch;
+            padding-right: 3.6rem;
+            font-family: 'Rajdhani', 'Segoe UI', sans-serif;
+            font-weight: 600;
+            font-size: clamp(1.45rem, 2.1vw, 1.85rem);
+            line-height: 1.12;
+            letter-spacing: 0.01em;
             color: var(--text);
         }
 
         .term {
-            margin-top: 0.28rem;
-            font-size: 0.72rem;
-            font-weight: 600;
+            margin-top: 0.55rem;
+            max-width: 36ch;
+            font-size: 0.64rem;
             letter-spacing: 0.16em;
-            text-transform: uppercase;
-            color: var(--brass);
+            line-height: 1.45;
+            color: var(--ink);
         }
 
-        .engagement p:last-child {
-            margin-top: 0.45rem;
+        .chamber p:last-child {
+            margin-top: 0.75rem;
+            max-width: 42ch;
             color: var(--muted);
+            font-size: 1.08rem;
+            line-height: 1.4;
         }
 
-        .engagement:hover h3,
-        .engagement:focus-visible h3 {
-            color: var(--brass);
+        .chamber:hover {
+            transform: translateY(-3px);
+            border-color: color-mix(in srgb, var(--ink) 72%, transparent);
         }
 
-        .engagement:focus-visible {
-            outline: none;
+        .chamber:focus-visible {
+            outline: 1px solid var(--ink);
+            outline-offset: 3px;
         }
 
-        .rooms {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-            border-top: 1px solid var(--line);
+        .gates {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.85rem;
+            margin-top: 0.85rem;
         }
 
-        .rooms a {
+        .gate {
+            display: block;
+            min-height: 9.2rem;
+            padding: 1.35rem 1.4rem 1.3rem;
             color: inherit;
             text-decoration: none;
+            background: linear-gradient(180deg, rgba(142, 240, 247, 0.07), transparent 58%);
+            border-top: 1px solid rgba(142, 240, 247, 0.55);
         }
 
-        .rooms a h2 {
-            font-family: 'Cormorant Garamond', Georgia, serif;
-            font-weight: 500;
-            font-size: 1.28rem;
-            letter-spacing: 0;
-            text-transform: none;
-            line-height: 1.2;
+        .gate:last-child {
+            background: linear-gradient(180deg, rgba(231, 176, 122, 0.08), transparent 58%);
+            border-top-color: rgba(231, 176, 122, 0.7);
+        }
+
+        .gate h2 {
+            font-family: 'Rajdhani', 'Segoe UI', sans-serif;
+            font-weight: 600;
+            font-size: clamp(1.4rem, 2vw, 1.75rem);
+            letter-spacing: 0.01em;
+            line-height: 1.15;
             color: var(--text);
         }
 
-        .rooms p {
-            margin-top: 0.28rem;
+        .gate p {
+            margin-top: 0.45rem;
+            max-width: 38ch;
             color: var(--muted);
+            font-size: 1.08rem;
         }
 
-        .rooms a:hover h2,
-        .rooms a:focus-visible h2 {
-            color: var(--brass);
+        .gate:hover h2 {
+            color: var(--ice);
         }
 
-        .rooms a:focus-visible {
-            outline: none;
+        .gate:last-child:hover h2 {
+            color: var(--sun);
         }
 
-        .hall-closer {
-            position: relative;
-            z-index: 6;
+        .gate:focus-visible {
+            outline: 1px solid var(--ice);
+            outline-offset: 3px;
         }
 
         .hall-closer h1 {
-            color: #efe6d4;
-            text-shadow: 0 0 18px rgba(196, 140, 64, 0.35);
+            color: #e8eef4;
+            text-shadow: 0 0 22px rgba(142, 240, 247, 0.35);
         }
 
         @media (max-width: 768px) {
-            .practice {
-                width: min(40rem, calc(100% - 2rem));
-                padding-top: 1.1rem;
+            .observatory {
+                width: min(72rem, calc(100% - 1.4rem));
+                padding-bottom: 2.4rem;
+            }
+
+            .lede {
+                column-count: 1;
+            }
+
+            .mast-line,
+            .atlas-head {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.4rem;
+            }
+
+            .block-note {
+                text-align: left;
+            }
+
+            .vita,
+            .chambers,
+            .gates {
+                grid-template-columns: 1fr;
+            }
+
+            .mast h1 {
+                letter-spacing: 0.03em;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .chamber {
+                transition: none;
+            }
+
+            .chamber:hover {
+                transform: none;
             }
         }
     </style>
@@ -328,68 +470,69 @@
 
 <body>
     <div id="canvas-container"></div>
-    <div class="practice">
+    <div class="observatory">
         <header>
             <img src="AiiAold.8dde82cb.jpg" alt="Aivoinkon logo" data-i18n-attr="alt:common.logoAlt" width="150" height="150" fetchpriority="high" decoding="async">
         </header>
 
         <main>
-            <p class="firm">Aivoinko</p>
-            <p class="kicker" data-i18n="services.kicker">Palvelut</p>
-            <h1>Riku Korpiaho</h1>
-            <p class="role" data-i18n="services.role">Tekoälyarkkitehti ja teknologiajohtaja</p>
-            <p class="place" data-i18n="services.place">Pirkanmaa, Suomi</p>
-            <p class="lede" data-i18n="services.lede">Neljä puhdasta toimeksiantoa, tarjoamme: yrityksen brändin nahanluonti ja visionäärinen uudistuminen, yksityinen privaatti tekoälykielimalli alusta / suvereenin, sensuurivapaan tekoälyn perehdytys, psykofilosofian kurssi mielen rajoitteista ja uskomuksista, viimeisenä tuotteena markkinointi/GEO konsultointi. Kesto toimeksiannoille 4- 8kk. Palkkio sovitaan, kun aloitamme - Aivoinko voi tehdä mitä ikinä halutaan.</p>
+            <section class="mast">
+                <div class="mast-index">
+                    <p class="firm">Aivoinko</p>
+                    <p class="kicker" data-i18n="services.kicker">Palvelut</p>
+                </div>
+                <h1>Riku Korpiaho</h1>
+                <div class="mast-line">
+                    <p class="role" data-i18n="services.role">Tekoälyarkkitehti ja teknologiajohtaja</p>
+                    <p class="place" data-i18n="services.place">Pirkanmaa, Suomi</p>
+                </div>
+                <p class="lede" data-i18n="services.lede">Neljä puhdasta toimeksiantoa, tarjoamme: yrityksen brändin nahanluonti ja visionäärinen uudistuminen, yksityinen privaatti tekoälykielimalli alusta / suvereenin, sensuurivapaan tekoälyn perehdytys, psykofilosofian kurssi mielen rajoitteista ja uskomuksista, viimeisenä tuotteena markkinointi/GEO konsultointi. Kesto toimeksiannoille 4- 8kk. Palkkio sovitaan, kun aloitamme - Aivoinko voi tehdä mitä ikinä halutaan.</p>
+                <p class="vita">
+                    <a href="tel:+358405056974">+358 40 505 6974</a>
+                    <a href="mailto:Aivoinko@gmail.com">Aivoinko@gmail.com</a>
+                    <a href="https://fi.linkedin.com/in/riku-korpiaho-a465bb251" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </p>
+            </section>
 
-            <p class="vita">
-                <a href="tel:+358405056974">+358 40 505 6974</a>
-                <a href="mailto:Aivoinko@gmail.com">Aivoinko@gmail.com</a>
-                <a href="https://fi.linkedin.com/in/riku-korpiaho-a465bb251" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            </p>
-
-            <section class="block" aria-labelledby="work-heading">
-                <h2 id="work-heading" data-i18n="services.workHeading">Neljä toimeksiantoa</h2>
-                <p class="block-note" data-i18n="services.workNote">Avaa yksi, niin näet koko toimeksiannon.</p>
-                <a class="engagement" href="branding.html#brand">
-                    <span class="num" aria-hidden="true">01</span>
-                    <span class="engagement-body">
+            <section class="atlas" aria-labelledby="work-heading">
+                <div class="atlas-head">
+                    <h2 id="work-heading" data-i18n="services.workHeading">Neljä toimeksiantoa</h2>
+                    <p class="block-note" data-i18n="services.workNote">Avaa yksi, niin näet koko toimeksiannon.</p>
+                </div>
+                <div class="chambers">
+                    <a class="chamber chamber--brand" href="branding.html#brand">
+                        <span class="num" aria-hidden="true">01</span>
                         <h3 data-i18n="services.brand.title">Brändin kasvot ja kokonaisuus</h3>
                         <p class="term" data-i18n="services.brand.term">Visionäärinen uudistuminen ja pullonkaulojen etsintä</p>
                         <p data-i18n="services.brand.body">Sivusto, merkki ja niiden alla olevat virheet. Suunnittelu ja neuvonta samassa sopimuksessa.</p>
-                    </span>
-                </a>
-                <a class="engagement" href="branding.html#ai">
-                    <span class="num" aria-hidden="true">02</span>
-                    <span class="engagement-body">
+                    </a>
+                    <a class="chamber chamber--ai" href="branding.html#ai">
+                        <span class="num" aria-hidden="true">02</span>
                         <h3 data-i18n="services.ai.title">Suvereeni tekoälyarkkitehtuuri</h3>
                         <p class="term" data-i18n="services.ai.term">Sinun koneillasi</p>
                         <p data-i18n="services.ai.body">Yksityinen, malliriippumaton järjestelmä asiakkaan metallilla. Lähtökohtaisesti omassa tilassa. Ilmaraotettu, jos niin pyydetään.</p>
-                    </span>
-                </a>
-                <a class="engagement" href="branding.html#geo">
-                    <span class="num" aria-hidden="true">03</span>
-                    <span class="engagement-body">
+                    </a>
+                    <a class="chamber chamber--geo" href="branding.html#geo">
+                        <span class="num" aria-hidden="true">03</span>
                         <h3 data-i18n="services.geo.title">GEO / markkinointistrategi</h3>
                         <p class="term" data-i18n="services.geo.term">Jatkuva</p>
                         <p data-i18n="services.geo.body">Generatiivisten hakukoneiden optimointi ja maksettu media. Sivuja, jotka vastauskone voi siteerata keksimättä yritystä.</p>
-                    </span>
-                </a>
-                <a class="engagement" href="branding.html#course">
-                    <span class="num" aria-hidden="true">04</span>
-                    <span class="engagement-body">
+                    </a>
+                    <a class="chamber chamber--mind" href="branding.html#course">
+                        <span class="num" aria-hidden="true">04</span>
                         <h3 data-i18n="services.course.title">Filosofinen ja teknologinen mielen laajentaminen</h3>
                         <p class="term" data-i18n="services.course.term">Psykofilosofian historia, uskomusten valjastaminen käytännössä</p>
                         <p data-i18n="services.course.body">Työskentelevä kurssi: filosofia, psykologia ja systeeminen ajattelu, käytössä samalla kun olosuhteet liikkuvat.</p>
-                    </span>
-                </a>
+                    </a>
+                </div>
             </section>
 
-            <nav class="block rooms" data-i18n-attr="aria-label:services.roomsLabel" aria-label="Liiketoimintastrategia ja yhteys">
-                <a href="business_strategy.html">
+            <nav class="gates" data-i18n-attr="aria-label:services.roomsLabel" aria-label="Liiketoimintastrategia ja yhteys">
+                <a class="gate" href="business_strategy.html">
                     <h2 data-i18n="services.strategy.title">Liiketoimintastrategia</h2>
                     <p data-i18n="services.strategy.body">Miten nämä neljä toimeksiantoa estävät yrityksen omaa strategiaa haurastumasta.</p>
                 </a>
-                <a href="contact.html">
+                <a class="gate" href="contact.html">
                     <h2 data-i18n="services.contact.title">Yhteys</h2>
                     <p data-i18n="services.contact.body">Kirjoita toimeksiannosta. Puhelin, posti ja LinkedIn ovat samassa salissa.</p>
                 </a>
@@ -411,7 +554,7 @@
 
         const FRAME_MS = 1000 / 60;
         const scene = new THREE.Scene();
-        scene.fog = new THREE.FogExp2(0x0c0b09, 0.003);
+        scene.fog = new THREE.FogExp2(0x05070d, 0.0026);
 
         const container = document.getElementById('canvas-container');
         const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -420,7 +563,7 @@
         let renderer;
         try {
             renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-            renderer.setClearColor(0x0c0b09, 1);
+            renderer.setClearColor(0x05070d, 1);
             renderer.setSize(window.innerWidth, window.innerHeight);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
             container.appendChild(renderer.domElement);
@@ -451,21 +594,32 @@
             cancelAnimationFrame(rafId);
         }
 
-        const starsGeometry = new THREE.BufferGeometry();
-        const starsCount = 5000;
-        const posArray = new Float32Array(starsCount * 3);
-        for (let i = 0; i < starsCount * 3; i++) {
-            posArray[i] = (Math.random() - 0.5) * 500;
+        function scatter(count, spread) {
+            const positions = new Float32Array(count * 3);
+            for (let i = 0; i < count * 3; i++) {
+                positions[i] = (Math.random() - 0.5) * spread;
+            }
+            const geometry = new THREE.BufferGeometry();
+            geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            return geometry;
         }
-        starsGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-        const starMesh = new THREE.Points(starsGeometry, new THREE.PointsMaterial({
-            size: 0.18,
-            color: 0xe8e0d4,
+
+        const starMesh = new THREE.Points(scatter(5000, 500), new THREE.PointsMaterial({
+            size: 0.22,
+            color: 0xd7f3ff,
             transparent: true,
-            opacity: 0.28,
+            opacity: 0.4,
+            depthWrite: false
+        }));
+        const emberMesh = new THREE.Points(scatter(700, 460), new THREE.PointsMaterial({
+            size: 0.42,
+            color: 0xe7b07a,
+            transparent: true,
+            opacity: 0.2,
             depthWrite: false
         }));
         scene.add(starMesh);
+        scene.add(emberMesh);
 
         window.__aivoinkoSealExit = function () {
             const back = window.__aivoinkoHistoryExit;
@@ -479,6 +633,7 @@
             lastFrameTime = time;
             const dt = Math.min(deltaMs, 50) / FRAME_MS;
             starMesh.rotation.y += 0.0005 * dt;
+            emberMesh.rotation.y -= 0.00022 * dt;
             renderer.render(scene, camera);
         }
 

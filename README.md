@@ -8,7 +8,7 @@ A public artistic site. The home page is an interactive 3D solar system. Service
 |---|---|
 | `index.html` | Home. Three.js solar system. Services and the sun collapse into Services. Gallery and Bio warp directly. Library holds, then offers Codex Operum, Fragmenta Apocrypha, or Khaeos Metalogs. Astroteles is a Pluto-scale bead beyond Neptune; click warps into the Hollow. |
 | `astroteles.html` | Astroteles. Secret empty space: sparse planets and galaxies, infinite zoom loop. Not in the home nav. Entered from the Astroteles planet. Return reverse-warps home. |
-| `services.html` | Services practice page on a dim starfield. Name, contact, four engagements, then Business Strategy and Contact. |
+| `services.html` | Services observatory on an ice and amber starfield. Name, contact plates, four colored chambers, then Business Strategy and Contact. |
 | `vault/opening.html` | The Opening of Reality manifesto. Vaulted. Netlify serves 404 for `/brain` and `/vault/*`. |
 | `branding.html` | The Work brochure. Four service sands on the starfield. Return goes to Services. |
 | `business_strategy.html` | Business Strategy. Centered scroll: vision and four instruments. Return goes to Services. |
@@ -30,7 +30,7 @@ Artwork stills, frames, and hangings live under `art/`. The live logo, favicon, 
 
 - HTML, CSS, and vanilla JavaScript (ES modules). No bundler and no `package.json`.
 - Three.js `0.160.0` from unpkg, pinned in every page import map except `404.html`. OrbitControls is used on the home page only.
-- Google Fonts: Orbitron, Rajdhani, Cormorant Garamond, Source Sans 3, and Cinzel.
+- Google Fonts: Orbitron, Rajdhani, Cormorant Garamond, and Cinzel.
 
 ## Languages
 
