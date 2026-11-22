@@ -17,7 +17,7 @@ A public artistic site. The home page is an interactive 3D solar system. Service
 | `physicalus.html` | Side hall of the gallery. Workshop photographs. |
 | `cartomancy.html` | Cartomancy. The suit of Beliefs: thirteen cards, from Imagination to Freedom. |
 | `bio.html` | Multimieli. Finnish copy, portraits, and outbound work links. |
-| `cv.html` | CV. English vita. Return goes to Bio. |
+| `cv.html` | CV. Finnish and English vita. Return goes to Bio. |
 | `diy_realities.html` | Khaeos Metalogs. The Library destination. |
 | `gate_left.html` | Left Aperture. Entered from the left seal. |
 | `gate_right.html` | Fragmenta Apocrypha. Entered from the right seal. |

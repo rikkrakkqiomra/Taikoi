@@ -7,7 +7,7 @@
     <script src="/i18n.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="cv.title">CV</title>
-    <meta name="description" content="Riku Korpiaho: yritysten tekoälyn ratkaisuarkkitehti ja teknologiajohtaja. Ansioluettelo." data-i18n-attr="content:cv.description">
+    <meta name="description" content="Riku Korpiaho: tekoälyalustan arkkitehti, johtava LLMOps-insinööri ja teknologiajohtaja (DI). Ansioluettelo." data-i18n-attr="content:cv.description">
     <meta name="theme-color" content="#c48c40">
     <link rel="canonical" href="https://taikoi.netlify.app/fi/cv.html">
     <link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/cv.html">
@@ -17,12 +17,12 @@
     <meta property="og:locale" content="fi_FI">
     <meta property="og:site_name" content="Aivoinko">
     <meta property="og:title" content="CV" data-i18n-attr="content:cv.title">
-    <meta property="og:description" content="Riku Korpiaho: yritysten tekoälyn ratkaisuarkkitehti ja teknologiajohtaja. Ansioluettelo." data-i18n-attr="content:cv.description">
+    <meta property="og:description" content="Riku Korpiaho: tekoälyalustan arkkitehti, johtava LLMOps-insinööri ja teknologiajohtaja (DI). Ansioluettelo." data-i18n-attr="content:cv.description">
     <meta property="og:url" content="https://taikoi.netlify.app/fi/cv.html">
     <meta property="og:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="CV" data-i18n-attr="content:cv.title">
-    <meta name="twitter:description" content="Riku Korpiaho: yritysten tekoälyn ratkaisuarkkitehti ja teknologiajohtaja. Ansioluettelo." data-i18n-attr="content:cv.description">
+    <meta name="twitter:description" content="Riku Korpiaho: tekoälyalustan arkkitehti, johtava LLMOps-insinööri ja teknologiajohtaja (DI). Ansioluettelo." data-i18n-attr="content:cv.description">
     <meta name="twitter:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <link rel="apple-touch-icon" href="AiiAold.8dde82cb.jpg">
     <link rel="preconnect" href="https://unpkg.com" crossorigin>
@@ -190,6 +190,25 @@
             letter-spacing: 0.18em;
             text-transform: uppercase;
             color: #c48c40;
+        }
+
+        .vita-note,
+        .vita-status {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: 1.02rem;
+            line-height: 1.45;
+            color: #e0d2b4;
+        }
+
+        .vita-note {
+            margin: 0 0 0.35rem;
+        }
+
+        .vita-status {
+            margin: 0 0 0.75rem;
+            color: #d4a45a;
         }
 
         .vita-stack {
@@ -840,47 +859,51 @@
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
                 <h1 data-i18n="cv.name">Riku Korpiaho</h1>
-                <p class="epithet" data-i18n="cv.role">Yritysten tekoälyn ratkaisuarkkitehti ja teknologiajohtaja</p>
+                <p class="epithet" data-i18n="cv.role">Tekoälyalustan arkkitehti ja johtava tekoäly-, koneoppimis- ja LLMOps-insinööri</p>
+                <p class="epithet" data-i18n="cv.roleNext">Ohjelmistokehityspäällikkö ja teknologiajohtaja (DI)</p>
                 <p class="vita-contact" data-i18n="cv.place">Pirkanmaa, Suomi</p>
                 <p class="vita-contact"><a href="tel:+358405056974" data-i18n="cv.phone">+358 40 505 6974</a><span data-i18n="cv.sep"> · </span><a href="mailto:Aivoinko@gmail.com" data-i18n="cv.email">Aivoinko@gmail.com</a></p>
+                <p class="vita-contact" data-i18n="cv.langs">suomi (äidinkieli), englanti (sujuva)</p>
             </article>
         </section>
 
         <section class="folio folio--vita">
             <article class="cabinet">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                <h2 data-i18n="cv.summary.heading">Ammatillinen yhteenveto</h2>
-                <p data-i18n="cv.summary.body">Yritysten tekoälyn ratkaisuarkkitehti ja strategi (DI, biolääketieteen tekniikka ja tekoäly, tutkielma 5/5). Erikoistunut rakentamaan tuotantovalmiita moniagenttialustoja ja hybridiarkkitehtuureja alusta asti. Yhdistää generatiivisen tekoälyn, musta laatikko -Bayes-optimoinnin ja surrogaattimallinnuksen teknisen toteutuksen teollisessa tutkimuksessa ja kehityksessä sekä biotieteissä yritystason käyttöönottoon paikallisesta reunasta pilveen. Näyttöä monimutkaisten toimialaongelmien ratkaisemisesta ja samalla tiukasta sääntelynmukaisuudesta (EU:n tekoälyasetus, MDR/IVDR), korkeasta datasuvereniteetista ja selkeästä vaikutuksesta ylimmän johdon liiketoimintaan.</p>
+                <h2 data-i18n="cv.summary.heading">Profiili</h2>
+                <p data-i18n="cv.summary.body">Käytännön tekoälyalustan arkkitehti, johtava tekoäly-, koneoppimis- ja LLMOps-insinööri, ohjelmistokehityspäällikkö ja teknologiajohtaja (DI, Tampereen yliopisto, diplomityö 5/5). Omistaa tuotannossa olevan koneoppimisen, generatiivisen tekoälyn ja full-stack-ohjelmistot päästä päähän. Alusta-, pilvi- ja paradigmariippumaton: ajonaikainen ympäristö valitaan pullonkaulan mukaan, eikä kielimallia pakoteta numeeriseen tai säätötehtävään.</p>
+                <p data-i18n="cv.summary.scope">Monimutkaisuus on budjetti. Ensin toimitetaan yksinkertaisin deterministinen tai tilastollinen perustaso, joka täyttää ehdon. Skaala moniagentiksi tai hajautetuksi GPU-arkkitehtuuriksi tulee sen jälkeen. Työ yhdistää ei-kielimallisen todennäköisyyspohjaisen koneoppimisen (otostehokas monitavoitteinen Bayes-optimointi, gaussisten prosessien surrogaatit, rajoitettu käänteissuunnittelu) suvereeniin paikalliseen GPU-päättelyyn, hybridi- ja graafi-RAGiin, kestäviin moniagenttialustoihin, yrityksen data-alustoihin (Azure, Databricks, Snowflake, AWS, GCP), polyglottijärjestelmiin (Python, C#/.NET, Rust, TypeScript) ja EU:n tekoälyasetuksen mukaiseen hallintaan. Perustetut yhtiöt toimivat omalla vauhdillaan, joten tarjottu sitoumus on kokoaikainen, ilman eturistiriitaa.</p>
+                <p data-i18n="cv.summary.mandates">Kohdemandaatit: tekoälyalustan arkkitehti; johtava tai Staff-tason koneoppimis- ja Bayes-optimointi-insinööri; johtava tekoäly- ja LLMOps-insinööri (pilvi ja paikallinen GPU); kvantitatiivisten järjestelmien sekä FinTech- ja WealthTech-arkkitehti; RAG- ja agenttijärjestelmien arkkitehti; teknisen tekoälyhallinnan arkkitehti; ohjelmistokehityspäällikkö, tekoälyjohtaja tai teknologiajohtaja.</p>
             </article>
         </section>
 
         <section class="folio folio--vita">
             <article class="cabinet">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                <h2 data-i18n="cv.stack.heading">Ydinosaaminen / tekninen pino</h2>
+                <h2 data-i18n="cv.stack.heading">Ydinosaaminen</h2>
                 <div class="vita-stack">
-                    <h3 data-i18n="cv.stack.ai.heading">Tekoäly ja agenttiarkkitehtuurit</h3>
-                    <p data-i18n="cv.stack.ai.body">Moniagenttijärjestelmät, hybridi-tekoäly, LLM-orkestrointi, hallusinaatioiden minimointi, agenttinen RAG, kyselyn laajennus, prompt-suunnittelu, mallien hienosäätö ja arviointi, Model Context Protocol (MCP).</p>
+                    <h3 data-i18n="cv.stack.model.heading">Otostehokas koneoppiminen ja rajoitettu käänteissuunnittelu</h3>
+                    <p data-i18n="cv.stack.model.body">Tuotannon koneoppimista ilman kielimallia: PyTorch, GPyTorch, BoTorch, SciPy ja scikit-learn. Kalliit jatkuvat musta laatikko -optimoinnit, gaussisten prosessien surrogaatit, Pareto-rintama ja hypertilavuus, PCA-latenssiavaruus, SLSQP-rajoitettu käänteiskuvaus sekä tilattomat CPU- ja CUDA-mikropalvelut. Sama ydin käy teolliseen tutkimukseen, prosessin säätöön, hyperparametrihakuun ja kvantitatiiviseen optimointiin.</p>
                 </div>
                 <div class="vita-stack">
-                    <h3 data-i18n="cv.stack.dev.heading">Moderni tekoälykehitys</h3>
-                    <p data-i18n="cv.stack.dev.body">Full-stack-arkkitehtuuri, Python, Rust, R, MATLAB, Java, Linux / POSIX, asynkroninen arkkitehtuuri (Celery/Redis, FastAPI), Git / CI/CD, TDD ja automatisoidut arviointiputket, avoimen lähdekoodin ML/DL-kirjastot (PyTorch, Hugging Face), tekoälynatiivit työkalut, Claude Code, Cursor, Antigravity.</p>
+                    <h3 data-i18n="cv.stack.ai.heading">Hybridi-RAG, graafi-RAG ja lähteisiin ankkurointi</h3>
+                    <p data-i18n="cv.stack.ai.body">Modulaarinen haku ominaisuuslipuilla: multimodaalinen sisäänotto, tiheä vektori- ja kokotekstihaku, tietämysgraafi, cross-encoder-uudelleenjärjestys, suunnattu NLI ja malliriippumaton jälkikäteinen virketason sitaattitarkistus. Hallusinaatio katkaistaan arkkitehtuurissa.</p>
                 </div>
                 <div class="vita-stack">
-                    <h3 data-i18n="cv.stack.model.heading">Mallinnus, optimointi ja analytiikka</h3>
-                    <p data-i18n="cv.stack.model.body">Edistynyt tilastollinen mallinnus, Bayes- ja monitavoiteoptimointi, surrogaattimallinnus (gaussiset prosessit), epävarmuuden kvantifiointi, stokastiset menetelmät, algoritminen ja matemaattinen mallinnus (myös neuroinformatiikka), signaalinkäsittely, semanttinen klusterointi.</p>
+                    <h3 data-i18n="cv.stack.infra.heading">Paikallinen GPU ja pilven LLMOps</h3>
+                    <p data-i18n="cv.stack.infra.body">Yksi OpenAI-yhteensopiva päättelykerros paljaalla metallilla (vLLM, NVIDIA Triton, Kubernetesin GPU-rajat) ja yrityspilessä (Azure, Databricks, Snowflake, AWS, GCP). Tuotannossa MLflow, GitOps, moniarkkitehtuurinen Docker Compose, Prometheus ja OpenTelemetry. Telemetria voidaan katkaista kokonaan.</p>
                 </div>
                 <div class="vita-stack">
-                    <h3 data-i18n="cv.stack.infra.heading">Infrastruktuuri ja pilvi</h3>
-                    <p data-i18n="cv.stack.infra.body">NVIDIA ARM GB10 Spark -klusterit (paikalliset / ilmarakoiset), Cloud PCs, Microsoft Azure, AWS, MLOps, Docker-kontitus, paikalliset LLM-päättelymoottorit.</p>
+                    <h3 data-i18n="cv.stack.dev.heading">Agentit, polyglotti-sopimukset ja kvantitatiiviset järjestelmät</h3>
+                    <p data-i18n="cv.stack.dev.body">Deterministinen esivaihe ja kestävä PostgreSQL-jono Plan-Act-Observe- ja ReAct-ajoille. Työkalut ilman uudelleenasennusta: MCP, OpenAPI ja hiekkalaatikko-Python. Simulaatio Pythonilla, C#/.NET:llä ja Rustilla, sidottu JSON Schema -sopimuksilla ja SHA-256-linjauksella. QuantConnect Lean ja riskitietoinen osakestrategia.</p>
                 </div>
                 <div class="vita-stack">
-                    <h3 data-i18n="cv.stack.domain.heading">Toimiala- ja sääntelyosaaminen</h3>
-                    <p data-i18n="cv.stack.domain.body">Lääketieteellinen bioinformatiikka, tilastotiede, biotieteet, synteettinen biologia, RegTech, järjestelmäsuunnittelu säännellyissä ympäristöissä (EU:n tekoälyasetus, MDR/IVDR, ISO/IEC), datasuvereniteetti ja sisäänrakennettu tietosuoja (GDPR).</p>
+                    <h3 data-i18n="cv.stack.domain.heading">Hallinta suunnittelussa</h3>
+                    <p data-i18n="cv.stack.domain.body">EU:n tekoälyasetuksen artiklat 12–14 suoraan koodissa: audit-tilannevedokset, kryptografinen alkuperä, rajapinnan kovennus, RBAC ja resurssikohtainen ACL. Mukana GDPR, ISO/IEC 27001, 42001 ja 23894, NIST AI RMF sekä MDR/IVDR. Laatu on pytest, Ruff, GitHub Actions ja TDD-pohjainen tekoäly-SDLC.</p>
                 </div>
                 <div class="vita-stack">
-                    <h3 data-i18n="cv.stack.lead.heading">Johtaminen ja strategia</h3>
-                    <p data-i18n="cv.stack.lead.body">Teknologiajohtajuus, tekninen tiekartta, sijoittajasuhteet ja rahoitus, poikkitoiminen sidosryhmien hallinta, johtava kehittäjä, kumppanien johtaminen.</p>
+                    <h3 data-i18n="cv.stack.lead.heading">Johtaminen</h3>
+                    <p data-i18n="cv.stack.lead.body">Tekninen tiekartta, pilottien rajaus ja sijoittajaneuvottelut. Tiimit Agile-, Lean- ja Kanban-rytmissä. Avoin lähdekoodi Apache-2.0-lisenssillä ja jatkuva, työkaluriippumaton oppiminen.</p>
                 </div>
             </article>
         </section>
@@ -889,12 +912,13 @@
             <article class="cabinet">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
                 <h2 data-i18n="cv.experience.heading">Työkokemus</h2>
-                <h3 class="vita-title" data-i18n="cv.aivoinko.title">Perustaja ja tekoälykonsultti</h3>
-                <p class="vita-dates" data-i18n="cv.aivoinko.dates">Aivoinko · 2024 – Present</p>
+                <h3 class="vita-title" data-i18n="cv.louhi.title">Perustaja, teknologiajohtaja ja tekoälyalustan pääarkkitehti</h3>
+                <p class="vita-dates" data-i18n="cv.louhi.dates">Louhi Cognitive Technologies Oy · 2026 – nykyinen</p>
+                <p class="vita-note" data-i18n="cv.louhi.note">Ydinarkkitehtuurit toimivat itsenäisesti omalla vauhdillaan. Käytettävissä täysin kokoaikaisesti, ilman eturistiriitoja.</p>
                 <ul>
-                    <li data-i18n="cv.aivoinko.li1">Tarjosin erikoistunutta tekoälyarkkitehtuurin ja -kehityksen konsultointia monimutkaisiin teknisiin ja yritystason ongelmiin.</li>
-                    <li data-i18n="cv.aivoinko.li2">Suunnittelin toimialakohtaisia GenAI-työnkulkuja, räätälöityjä putkia ja musta laatikko -optimoinnin mikropalveluja (teollinen pilotti käynnissä NDA:n alla).</li>
-                    <li data-i18n="cv.aivoinko.li3">Toimitin pilvitekoälyn konsultointia, painopisteenä Databricks- ja Azure-arkkitehtuurit.</li>
+                    <li data-i18n="cv.louhi.li1">Määritti teknisen tiekartan, yritysarkkitehtuurin ja LLMOps-standardit suvereenille paikalliselle GPU-RAG- ja moniagenttityötilalle (lippuarkkitehtuuri 01). Veti yritysasiakkaiden pilotteja, ratkaisun rajausta ja sijoittajaneuvotteluja.</li>
+                    <li data-i18n="cv.louhi.li2">Arkkitehtoi tuotannon paikallisen kielimallipalvelun (vLLM, NVIDIA Triton, MLflow, GitOps, Kubernetesin GPU-rajat), kaksoishaun vektorilla ja graafilla, PostgreSQL-pohjaisen agenttiorkestroinnin sekä OpenTelemetry- ja Langfuse-havainnoinnin.</li>
+                    <li data-i18n="cv.louhi.li3">Sisällytti järjestelmään EU:n tekoälyasetuksen artiklojen 12–14 mukaisen jäljen ja kryptografisen alkuperän.</li>
                 </ul>
             </article>
         </section>
@@ -902,12 +926,12 @@
         <section class="folio folio--vita">
             <article class="cabinet">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                <h3 class="vita-title" data-i18n="cv.louhi.title">Yhteisperustaja ja teknologiajohtaja / tekoälyarkkitehti</h3>
-                <p class="vita-dates" data-i18n="cv.louhi.dates">Louhi Cognitive Technologies Oy · 2026 – Present</p>
+                <h3 class="vita-title" data-i18n="cv.gold.title">Perustaja, teknologiajohtaja ja TKI-johtaja</h3>
+                <p class="vita-dates" data-i18n="cv.gold.dates">Gold Digger Technologies Oy · 2025 – nykyinen</p>
+                <p class="vita-note" data-i18n="cv.gold.note">Ydinarkkitehtuurit toimivat itsenäisesti omalla vauhdillaan. Käytettävissä täysin kokoaikaisesti.</p>
                 <ul>
-                    <li data-i18n="cv.louhi.li1">Suunnittelin ja kehitin yritystason hybridi-tekoälyn ja moniagenttialustat konseptista modulaariseen käyttöönottoon, 100 % tuotantovalmiina. Alustat on tehty monimutkaisen teknisen ja sääntelydatan toimialarajat ylittävään synteesiin ja analyysiin.</li>
-                    <li data-i18n="cv.louhi.li2">Rakensin turvalliset, ilmarakoiset paikalliset tekoäly-ympäristöt (paikallisilla NVIDIA Spark ARM -klustereilla), jotta arkaluonteinen liiketoimintadata pysyy täysin luottamuksellisena eikä riipu ulkoisista rajapinnoista.</li>
-                    <li data-i18n="cv.louhi.li3">Vedin teknistä ydinstrategiaa ja osallistuin samalla rahoitukseen, sijoittajasuhteisiin ja strategisiin teknisiin neuvotteluihin kumppaneiden ja yritysasiakkaiden kanssa. (Pilotit käynnissä.)</li>
+                    <li data-i18n="cv.gold.li1">Suunnitteli, toteutti ja toimitti pilvipohjaiset tekoäly-, koneoppimis- ja älykkään automaation arkkitehtuurit konseptista käynnissä olevaan teolliseen pilottiin.</li>
+                    <li data-i18n="cv.gold.li2">Omisti ohjelmistoarkkitehtuurin, algoritmisen mallinnuksen, tuotannon luotettavuuden ja teollisen työnkulun integroinnin.</li>
                 </ul>
             </article>
         </section>
@@ -915,11 +939,12 @@
         <section class="folio folio--vita">
             <article class="cabinet">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                <h3 class="vita-title" data-i18n="cv.gold.title">Yhteisperustaja ja TKI + teknologiajohtaja</h3>
-                <p class="vita-dates" data-i18n="cv.gold.dates">Gold Digger Technologies Oy · 2025 – Present</p>
+                <h3 class="vita-title" data-i18n="cv.aivoinko.title">Perustaja ja johtava tekoäly- ja koneoppimisarkkitehtuurin konsultti</h3>
+                <p class="vita-dates" data-i18n="cv.aivoinko.dates">Aivoinko · 2024 – nykyinen</p>
                 <ul>
-                    <li data-i18n="cv.gold.li1">Suunnittelin ja rakensin kohdennettuja AI/ML-ratkaisuja ja automaatioarkkitehtuureja teollisiin sovelluksiin pilvessä.</li>
-                    <li data-i18n="cv.gold.li2">Vedin ohjelmistoarkkitehtuuria ja algoritmista mallinnusta konseptitodistuksesta käynnissä olevaan teolliseen pilotointiin.</li>
+                    <li data-i18n="cv.aivoinko.li1">Toimitti käytännön, alustariippumatonta tekoäly- ja pilviarkkitehtuurin konsultointia Azuressa, Databricksissa ja AWS:ssä. Liitti kielimalli- ja tilastolliset koneoppimisputket yritysten data-alustoihin ja tuotannon rajapintoihin.</li>
+                    <li data-i18n="cv.aivoinko.li2">Arkkitehtoi, otti käyttöön ja julkaisi Apache-2.0-lisenssillä tilattoman monitavoitteisen Bayes-optimoinnin mikropalvelun (GPyTorch, BoTorch, FastAPI, CPU- ja CUDA-Docker; lippuarkkitehtuuri 03). Tukee teollisia tutkimuspilotkeja ja toimialarajat ylittävää musta laatikko -optimointia.</li>
+                    <li data-i18n="cv.aivoinko.li3">Toimittaa ilmaraotettuja paikallisia kielimalliasennuksia sekä johdon ja suunnittelutiimien perehdytystä.</li>
                 </ul>
             </article>
         </section>
@@ -927,33 +952,63 @@
         <section class="folio folio--vita">
             <article class="cabinet">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                <h2 data-i18n="cv.education.heading">Koulutus ja akateemiset suoritukset</h2>
-                <h3 class="vita-title" data-i18n="cv.education.msc.title">Diplomi-insinööri (M.Sc. Tech / DI)</h3>
-                <p class="vita-dates" data-i18n="cv.education.msc.dates">Tampere University · Graduated 2026</p>
-                <p data-i18n="cv.education.msc.major">Pääaine: biolääketieteellinen informatiikka (bioteknologia ja biolääketieteen tekniikka). Erikoistuminen: tekoäly, syväoppiminen, informatiikka, data-analyysi, signaalinkäsittely.</p>
-                <p data-i18n="cv.education.msc.thesis">Diplomityö: arvosana 5/5. Aihe: Minimization of Hallucinations in Custom RegTech AI Systems Using Agentic Architectures. Tehty yhteistyössä ABB:n ja Taipuvan kanssa. Arvioijat: professori Joni Kämäräinen (tekoäly / konenäkö) ja tutkimusjohtaja Alpo Värri (terveysteknologia).</p>
-                <p data-i18n="cv.education.msc.coursework">Edistyneet kurssit: synteettinen biologia, geenitekniikka, farmakologia ja biomateriaalit.</p>
-                <h3 class="vita-title" data-i18n="cv.education.bsc.title">Tekniikan kandidaatti (B.Sc. Tech)</h3>
-                <p class="vita-dates" data-i18n="cv.education.bsc.dates">Tampere University</p>
-                <p data-i18n="cv.education.bsc.thesis">Kandidaatintyö: Tissue Modeling and Simulation. Tehty neurotieteen tutkimusryhmässä (Neuroscience Research Group).</p>
-                <h3 class="vita-title" data-i18n="cv.education.mentor.heading">Keskeinen mentorointi ja koulutus</h3>
-                <p data-i18n="cv.education.mentor.body">Edistynyt tekoälyn ja koneoppimisen arkkitehtuuri Pekka Abrahamssonin, Joni Kämäräisen ja Tuomas Virtasen ohjauksessa.</p>
-                <p data-i18n="cv.education.mentor.network">Tieteidenvälinen sparrausverkosto: rikastuu jatkuvasti aktiivisesta, korkeatasoisesta vertaisverkostosta, joka ulottuu laskennalliseen lääketieteeseen, kemiaan ja ohjelmistokehityksen kärkeen.</p>
+                <h3 class="vita-title" data-i18n="cv.independent.title">Itsenäinen full-stack- ja kvantitatiivisten järjestelmien rakentaja, kouluttaja ja yhteisön perustaja</h3>
+                <p class="vita-dates" data-i18n="cv.independent.dates">Monialainen näyttö · usean vuoden historia</p>
+                <ul>
+                    <li data-i18n="cv.independent.li1">Rakensi kokonaisia tuotantojärjestelmiä alusta asti, itsenäisesti ja vanhempien ohjelmistovetäjien rinnalla. Itsenäisiin töihin kuuluu Trolldom, polyglotti kvantitatiivinen tutkimusalusta (Tradegoren, lippuarkkitehtuuri 04). Yhteistyökumppaneihin kuuluu Helsingin kaupungin johtava ohjelmistokehittäjä Jesse Juvonen. Pohja on TDD, CI/CD ja kurinalainen tekoäly-SDLC.</li>
+                    <li data-i18n="cv.independent.li2">Kirjoitti alkuperäisiä kurssisisältöjä ja luennoi yliopistoille, festivaaleille ja yrityksille tekoälystä, jatkuvan oppimisen psykologiasta, filosofiasta, luovasta stoalaisuudesta ja ketterästä verkostoitumisesta.</li>
+                    <li data-i18n="cv.independent.li3">Perusti yhdessä muiden kanssa digitaalisia yhteisöjä psykologian, filosofian ja neurotieteen ympärille ja kasvatti ne orgaanisesti: vuonna 2018 nollasta yli 9 000 jäseneen, itseohjautuvalla hallinnalla.</li>
+                </ul>
+            </article>
+        </section>
+
+        <section class="folio folio--vita">
+            <article class="cabinet">
+                <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                <h2 data-i18n="cv.education.heading">Koulutus ja tutkimus</h2>
+                <h3 class="vita-title" data-i18n="cv.education.msc.title">Diplomi-insinööri</h3>
+                <p class="vita-dates" data-i18n="cv.education.msc.dates">Tampereen yliopisto · valmistunut toukokuussa 2026</p>
+                <p data-i18n="cv.education.msc.major">Pääaine: biolääketieteellinen informatiikka (bioteknologia ja biolääketieteen tekniikka). Erikoistuminen: tekoäly, syväoppiminen, koneoppiminen, signaalinkäsittely ja data-analyysi.</p>
+                <p data-i18n="cv.education.msc.thesis">Diplomityö, arvosana 5/5: ”From Hallucinations to Control: Development and Testing of an Experimental Compound Artificial Intelligence System in a Healthcare Context.” Toteutettu ABB:n ja Taipuva Consulting Oy:n kanssa. Arvioijat: professori Joni Kämäräinen, tutkimusjohtaja Alpo Värri ja johtava ratkaisuarkkitehti Petri Näppi.</p>
+                <p data-i18n="cv.education.msc.grant">Tutkimusapuraha, itse hankittu: Teknologiateollisuuden 100-vuotissäätiö. Rahoitti soveltavan tekoälyn diplomityön tutkimusta ja ohjelmistokehitystä.</p>
+                <p data-i18n="cv.education.msc.coursework">Valikoituja DI-opintoja: johdatus neuroinformatiikkaan, pienten otosten data-analyysi, syväoppiminen, johdatus koneoppimiseen, edistynyt signaalinkäsittely, biosignaalien käsittely, mobiilirobottien perusteet, terveysohjelmiston kehitysprojekti sekä standardit, yhteentoimivuus ja sääntely terveysinformatiikassa.</p>
+                <p data-i18n="cv.education.msc.studies">Johtaminen, tietoturva ja kognitio: johtamisen ja organisaatioiden perusteet (LITO, Vaasan yliopisto), Cyber Security I: perusteet, sekä neuro- ja kognitiivinen psykologia.</p>
+                <h3 class="vita-title" data-i18n="cv.education.bsc.title">Tekniikan kandidaatti ja ammatillinen perusta</h3>
+                <p class="vita-dates" data-i18n="cv.education.bsc.dates">Tampereen yliopisto ja konepajatausta</p>
+                <p data-i18n="cv.education.bsc.thesis">Kandidaatintyö neurotieteen tutkimusryhmässä: märkälaboratorion kudosmallinnusta, jossa tekoälypohjaista optimointia sovellettiin kokeelliseen työnkulkuun. Syventävät opinnot: synteettinen biologia, geenitekniikka, farmakologia ja biomateriaalit.</p>
+                <p data-i18n="cv.education.bsc.vocational">Aiempi ammatillinen tutkinto ja käytännön näyttö CNC-tarkkuuskoneistuksesta, CAD/CAM-mallinnuksesta ja metallityöstä. Sitoo ohjelmiston, optimoinnin ja matemaattisen mallinnuksen fyysiseen teolliseen työhön.</p>
+                <h3 class="vita-title" data-i18n="cv.education.mentor.heading">Akateeminen mentorointi</h3>
+                <p data-i18n="cv.education.mentor.body">Edistynyt tekoälyn ja koneoppimisen arkkitehtuuri professori Pekka Abrahamssonin, professori Joni Kämäräisen ja professori Tuomas Virtasen ohjauksessa (Tampereen yliopisto).</p>
+            </article>
+        </section>
+
+        <section class="folio folio--vita">
+            <article class="cabinet">
+                <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                <h2 data-i18n="cv.projects.heading">Lippuarkkitehtuurit</h2>
+                <h3 class="vita-title" data-i18n="cv.projects.sovereign.title">01 Suvereeni paikallinen GPU-RAG ja moniagenttinen yritysalusta</h3>
+                <p class="vita-status" data-i18n="cv.projects.sovereign.status">Louhi Cognitive Technologies Oy · tuotanto, yrityspilotit käynnissä</p>
+                <p data-i18n="cv.projects.sovereign.body">FastAPI- ja SvelteKit-yritystyötila paljaalle NVIDIA DGX Sparkille (GB10, ARM64), x86-CUDAlle ja AMD-GPU:lle. Arkkitehtuuri on johdettu Open WebUI:sta. Moniprofiilinen Docker Compose, Caddy ja Kubernetesin GPU-rajat. OpenAI-yhteensopiva päättely: paikallinen vLLM (Mistral Small 4, 119B, NVFP4, 262k konteksti, etuliitevälimuisti ja ajattelutokenien eristys; Qwen2.5-Instruct), NVIDIA Triton ja valinnainen pilvi. Ominaisuuslipuilla ohjattu kaksoishaku: Docling ja Unstructured, hierarkkinen ja RAPTOR-paloittelu, InfiniFlow Infinity, PostgreSQL 16, Apache AGE ja pgvector, LightRAG sekä virketason kosiniankkurointi sitaateille. Kestävä Plan-Act-Observe PostgreSQL-jonolla, MCP, OpenAPI ja työtilan Python-työkalut, hiekkalaatikko, RBAC ja EU:n tekoälyasetuksen artiklojen 12–14 audit-tilannevedokset. Telemetria voidaan katkaista kokonaan.</p>
+                <h3 class="vita-title" data-i18n="cv.projects.regtech.title">02 Paikallinen yhdistetty RegTech-tekoälymoottori</h3>
+                <p class="vita-status" data-i18n="cv.projects.regtech.status">ABB ja Taipuva Consulting · tuotantovalmis prototyyppi, kaupallinen skaalaus NDA:n alla · diplomityö 5/5</p>
+                <p data-i18n="cv.projects.regtech.body">Täysin paikallinen kontitettu pino: Next.js ja SSE, FastAPI, PostgreSQL, Celery ja Redis, Docker. Rahoittaja on Teknologiateollisuuden 100-vuotissäätiö. Tavoite on GDPR ja terveystiedon datasuvereniteetti. Putki kulkee deterministisestä generatiiviseen: PyMuPDF ja python-docx, HNSW ja BM25, eräpohjainen BGE-cross-encoder (noin 5–10-kertainen nopeus), ahne kaksijakoinen 1:1-kohdistus, sanatason erotus ja kaksisuuntainen DeBERTa-v3-NLI. ISO/IEC 27001 -versiovertailu valmistui noin 13 minuutissa keskitason paikallisella GPU:lla (NVIDIA RTX 2060 Super). Sokeassa satunnaisotoksessa kohdistustarkkuus oli 100 prosenttia, myös poistettujen kohtien todelliset negatiiviset, ja jälki on lähteisiin ankkuroitu.</p>
+                <h3 class="vita-title" data-i18n="cv.projects.bayes.title">03 Teollinen monitavoitteinen Bayes-optimoinnin mikropalvelu</h3>
+                <p class="vita-status" data-i18n="cv.projects.bayes.status">Aivoinko · avoin lähdekoodi, Apache-2.0 · tuotantomikropalvelu ja käynnissä oleva teollinen pilotti</p>
+                <p data-i18n="cv.projects.bayes.body">Koneoppimismoottori ilman kielimallia, Python ja PyTorch (GPyTorch, BoTorch): kalliit jatkuvat musta laatikko -funktiot vähillä kokeilla. Matérn 5/2- ja RBF-ytimet ARD-pituusskaaloilla, float64-vakautus, Sobol-monikäynnistys, Pareto ja hypertilavuus sekä hankintafunktiot qEI, qPI, qUCB, qEHVI, qNEHVI (qNoisyEHVI) ja ParEGO (Chebyshev). PCA-latenssi ja SciPy SLSQP palauttavat alkuperäiset fysikaaliset muuttujat seos-, suhde- ja rajaehdoilla. Varmennettu formulaatio-, pinnoite-, emulsio-, tabletti- ja akkuelektrolyyttidemoilla. Tilaton FastAPI-mikropalvelu, CPU- ja CUDA-Docker, vakioaikainen API-avain, pytest, Ruff ja GitHub Actions.</p>
+                <h3 class="vita-title" data-i18n="cv.projects.tradegoren.title">04 Tradegoren — polyglotti kvantitatiivinen kaupankäynti- ja varainhoitotutkimusalusta</h3>
+                <p class="vita-status" data-i18n="cv.projects.tradegoren.status">Itsenäinen tuotantoydin · toteutettu</p>
+                <p data-i18n="cv.projects.tradegoren.body">Paikallinen monorepo: Python 3.10 tai uudempi, C# / .NET 9–10, Rust (Tauri 2), TypeScript ja React 19. Kielirajat pitävät JSON Schema -sopimukset, ja Polygon on eristetty adapteri. Idempotentti YAML-putki kirjoittaa Lean-muotoiset OHLCV-sarjat, yhtiötapahtumat ja SHA-256-linjauksen. QuantConnect Lean ja Python.NET ajavat Python- ja C#-strategioita Rust-IPC:n kautta Tauri-työpöydällä. Yhdysvaltalaiset osakestrategiat: SMA/ATR, keskiarvoon palautuminen, Opening Range Breakout sekä Minervini Trend Template ja VCP. Positiokoko, ATR-stopit, osallistumiskatto, osittainen voiton kotiutus sekä komissio ja slippage. Salaisuudet vain .env-eristyksessä.</p>
             </article>
         </section>
 
         <section class="folio folio--vita folio--close">
             <article class="cabinet">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-                <h2 data-i18n="cv.projects.heading">Merkittävät projektit ja tekniset pääkohdat</h2>
-                <h3 class="vita-title" data-i18n="cv.projects.regtech.title">Local-first Compound RegTech -tekoälymoottori</h3>
-                <p data-i18n="cv.projects.regtech.body">Rakensin täysin offline-tilassa toimivan Compound AI -alustan sääntelynmukaisuuden analyysiin. Putki kulkee deterministisestä generatiiviseen: klusteroiva neuroverkko, graafit, hybridihaku (HNSW + BM25), BGE-parien eräpohjainen uudelleenjärjestys, DeBERTa-v3:n suuntaava NLI-logiikka ja kaksijakoinen täsmäytys. Hallusinaatiot poistuvat säädellyssä kontekstissa, ja alusta tuottaa automaattiset sääntelyvaikutusten matriisit. (Kaupallinen skaalaus ja jatkokehitys NDA:n alla.)</p>
-                <h3 class="vita-title" data-i18n="cv.projects.edge.title">Autonominen reunatekoälyklusteri</h3>
-                <p data-i18n="cv.projects.edge.body">Konfiguroin ja otin käyttöön paikalliset suurtehopäättelyputket NVIDIA GB10 ARM Spark -laitteistolla. Viive on erittäin matala ja datan yksityisyys täysi offline-tilassa. Autonominen moniagenttiydin: modulaarinen rakenne sekä audit-tasoinen telemetria ja lokitus, vaatimustenmukaisuus suunnittelussa. Kyselyn laajennus hajauttaa yhden promptin jäsennellyksi luotainjoukoksi; luotaimet ajetaan rinnakkain eri malleilla erillisinä ammatillisina persoonina — lääkäri, juristi ja vertaiset vastaavat samaan kysymykseen yhtä aikaa, eivät yhtenä äänenä.</p>
-                <h3 class="vita-title" data-i18n="cv.projects.bayes.title">Monitavoitteinen Bayes-optimointimoottori</h3>
-                <p data-i18n="cv.projects.bayes.body">Suunnittelin musta laatikko -optimoinnin mikropalvelun teollisiin formulaatioihin. Koekierrokset vähenivät selvästi, sääntelyn parametrirajat säilyivät. (Arkkitehtuuri ja omistetut yksityiskohdat suojattu NDA:n alla.)</p>
-                <h3 class="vita-title" data-i18n="cv.projects.backtest.title">Tekoälyavusteinen automaattinen backtester ja kaupankäyntialusta</h3>
-                <p data-i18n="cv.projects.backtest.body">Suunnittelin tekoälyavusteisen automaattisen backtestaus- ja toteutustutkimusalustan short-painotteiselle systemaattiselle kirjalle. Signaalikielioppi on Ichimoku Kinko Hyo koko tasapainokarttana, ei yhtenä oskillaattorina: kumo on tuleva konsensus, ja shortti virittyy vain, kun hinta käy sen pilven alla, Tenkan ja Kijun ovat risteytyneet ja asettuneet laskeviksi ja Chikou on irti sekä hinnasta että kumosta — Kijun on mitätöinti ja trailing-selkäranka. Monimallikerros (Ichimoku-parametriperheet, aikakehykset ja täydentävät regime-suodattimet) äänestää jokaisesta asetelmasta; avustaja laajentaa markkinakyselyn ja pidättää koon, ellei ensemble kykene yhdessä puolustamaan shorttia. Backtester kulkee historiassa eteenpäin ilman look-aheadia, soveltaa fillin ja slippagen ja tuottaa expectancyn, drawdownin ja hit-raten, jotta kirja on auditoitu ennen kuin pääoma on riskissä.</p>
+                <h2 data-i18n="cv.stance.heading">Paradigma, oppiminen ja suosittelijat</h2>
+                <p data-i18n="cv.stance.paradigm">Lähtökohta on ongelma. Kullekin alueelle valitaan puhtain todennettava paradigma: deterministinen algoritmi, gaussinen prosessi, tapahtumapohjainen simulaatio tai suvereeni paikallinen kielimalli ja moniagenttijärjestelmä.</p>
+                <p data-i18n="cv.stance.community">Yhteisöarkkitehtuuri vuonna 2018: orgaaninen kasvu nollasta yli 9 000 aktiiviseen jäseneen soveltavan psykologian, neurotieteen ja luovan stoalaisuuden ympärillä. Itseohjautuva hallinta, hajautettu moderointi ja korkean luottamuksen keskustelu.</p>
+                <p data-i18n="cv.stance.reference">Tekninen suosittelija: Jesse Juvonen, johtava ohjelmistokehittäjä, Helsingin kaupunki. Yhteystiedot pyydettäessä. Akateeminen mentorointi: professori Pekka Abrahamsson, professori Joni Kämäräinen ja professori Tuomas Virtanen.</p>
+                <p data-i18n="cv.stance.clearance">Valmis turvallisuusselvitykseen ja huumausainetestaukseen puolustuksen, rahoituksen ja säänneltyjen toimeksiantojen tehtäviin. Käytettävissä täysin kokoaikaisesti.</p>
             </article>
         </section>
 

@@ -1006,107 +1006,133 @@
     "title": "Bio"
   },
   "cv": {
-    "description": "Riku Korpiaho: Enterprise AI Solution Architect and CTO. Curriculum vitae.",
+    "description": "Riku Korpiaho: AI Platform Architect, Lead LLMOps Engineer, and CTO (M.Sc. Tech). Curriculum vitae.",
+    "title": "CV",
     "name": "Riku Korpiaho",
-    "role": "Enterprise AI Solution Architect & CTO",
+    "role": "AI Platform Architect and Lead AI / ML & LLMOps Engineer",
+    "roleNext": "Software Development Manager and CTO (M.Sc. Tech)",
     "place": "Pirkanmaa, Finland",
     "phone": "+358 40 505 6974",
     "email": "Aivoinko@gmail.com",
+    "langs": "Finnish (native), English (fluent)",
+    "sep": " · ",
     "summary": {
-      "heading": "Professional Summary",
-      "body": "Enterprise AI Solution Architect & Strategist (M.Sc. Tech, Biomedical Engineering & AI, 5/5 Thesis) specializing in building production-ready multi-agent platforms and hybrid architectures from scratch. Bridges deep technical execution in GenAI, black-box Bayesian optimization, and surrogate modeling for industrial R&D and life sciences with enterprise-grade deployment across local edge and cloud. Proven track record in solving complex industry challenges while ensuring strict regulatory compliance (EU AI Act, MDR/IVDR), high data sovereignty, and clear C-level business impact."
+      "heading": "Profile",
+      "body": "Hands-on AI Platform Architect, Lead AI / ML and LLMOps Engineer, Software Development Manager, and CTO (M.Sc. Tech, Tampere University, thesis graded 5/5). Owns production machine learning, generative AI, and full-stack software end to end. Platform-, cloud-, and paradigm-agnostic: the runtime is chosen for the bottleneck, and a language model is not forced onto a numerical or control problem.",
+      "scope": "Complexity is a budget. The first shipment is the simplest deterministic or statistical baseline that meets the constraint. A multi-agent or distributed GPU architecture comes after that. The work joins non-LLM probabilistic machine learning (sample-efficient multi-objective Bayesian optimization, Gaussian-process surrogates, constrained inverse design) with sovereign on-premises GPU inference, hybrid RAG and graph RAG, durable multi-agent platforms, enterprise data platforms (Azure, Databricks, Snowflake, AWS, GCP), polyglot systems (Python, C#/.NET, Rust, TypeScript), and EU AI Act governance. The founded companies run on their own momentum, so the commitment on offer is full-time, with no conflict of interest.",
+      "mandates": "Target mandates: AI Platform Architect; Lead or Staff machine-learning and Bayesian-optimization engineer; Lead AI and LLMOps engineer (cloud and on-premises GPU); quantitative, FinTech, and WealthTech systems architect; RAG and agentic-systems architect; technical AI-governance architect; Software Development Manager, Head of AI, or CTO."
     },
     "stack": {
-      "heading": "Core Competencies / Technical Stack",
-      "ai": {
-        "heading": "AI & Agentic Architectures",
-        "body": "Multi-Agent Systems, Hybrid AI, LLM Orchestration, Hallucination Minimization, Agentic RAG, Query Expansion, Prompt Engineering, Model Fine-tuning & Evaluation, Model Context Protocol (MCP)."
-      },
-      "dev": {
-        "heading": "Modern AI Development",
-        "body": "Full-Stack Architecture, Python, Rust, R, MATLAB, Java, Linux / POSIX, Asynchronous Architecture (Celery/Redis, FastAPI), Git / CI/CD, TDD & Automated Evaluation Pipelines, Open-Source ML/DL Libraries (PyTorch, Hugging Face), AI-Native Tooling, Claude Code, Cursor, Antigravity."
-      },
+      "heading": "Core capabilities",
       "model": {
-        "heading": "Modeling, Optimization and Analytics",
-        "body": "Advanced Statistical Modeling, Bayesian & Multi-Objective Optimization, Surrogate Modeling (Gaussian Processes), Uncertainty Quantification, Stochastic Methods, Algorithmic & Mathematical Modeling (Also Neuroinformatics), Signal Processing, Semantic Clustering."
+        "heading": "Sample-efficient machine learning and constrained inverse design",
+        "body": "Production machine learning without a language model: PyTorch, GPyTorch, BoTorch, SciPy, and scikit-learn. Expensive continuous black-box optimization, Gaussian-process surrogates, Pareto fronts and hypervolume, PCA latent space, SLSQP constrained inverse mapping, and stateless CPU and CUDA microservices. The same core covers industrial research, process tuning, hyperparameter search, and quantitative optimization."
+      },
+      "ai": {
+        "heading": "Hybrid RAG, graph RAG, and citation grounding",
+        "body": "Modular retrieval behind feature flags: multimodal ingestion, dense vector and full-text search, a knowledge graph, cross-encoder reranking, directional NLI, and model-agnostic post-hoc sentence-level citation checks. Hallucination is cut off in the architecture."
       },
       "infra": {
-        "heading": "Infrastructure and Cloud",
-        "body": "NVIDIA ARM GB10 Spark Clusters (Local/Air-gapped), Cloud PCs, Microsoft Azure, AWS, MLOps, Docker Containerization, Local LLM Inference Engines."
+        "heading": "On-premises GPU and cloud LLMOps",
+        "body": "One OpenAI-compatible inference layer on bare metal (vLLM, NVIDIA Triton, Kubernetes GPU limits) and on enterprise cloud (Azure, Databricks, Snowflake, AWS, GCP). Production uses MLflow, GitOps, multi-architecture Docker Compose, Prometheus, and OpenTelemetry. Telemetry can be switched off entirely."
+      },
+      "dev": {
+        "heading": "Agents, polyglot contracts, and quantitative systems",
+        "body": "A deterministic pre-pass and a durable PostgreSQL queue for Plan-Act-Observe and ReAct runtimes. Tools without a redeploy: MCP, OpenAPI, and sandboxed Python. Simulation in Python, C#/.NET, and Rust, bound by JSON Schema contracts and SHA-256 lineage. QuantConnect Lean and risk-aware equity strategy."
       },
       "domain": {
-        "heading": "Domain and Regulatory Expertise",
-        "body": "Medical Bioinformatics, Statistics, Life Sciences, Synthetic Biology, RegTech, Systems Engineering in Regulated Environments (EU AI Act, MDR/IVDR, ISO/IEC), Data Sovereignty & Privacy-by-Design (GDPR)."
+        "heading": "Governance in the design",
+        "body": "EU AI Act Articles 12–14 in the code: audit snapshots, cryptographic provenance, API hardening, RBAC, and per-resource ACL. Also GDPR, ISO/IEC 27001, 42001, and 23894, the NIST AI RMF, and MDR/IVDR. Quality is pytest, Ruff, GitHub Actions, and a TDD-backed AI-SDLC."
       },
       "lead": {
-        "heading": "Leadership and Strategy",
-        "body": "CTO Leadership, Tech Roadmapping, Investor Relations & Funding, Cross-functional Stakeholder Management, Lead Developer, Managing partners."
+        "heading": "Leadership",
+        "body": "Technical roadmap, pilot scoping, and investor negotiations. Teams on an Agile, Lean, and Kanban cadence. Open source under Apache-2.0, and continuous learning that is not tied to one tool."
       }
     },
     "experience": {
       "heading": "Experience"
     },
-    "aivoinko": {
-      "title": "Founder & AI Consultant",
-      "dates": "Aivoinko · 2024 – Present",
-      "li1": "Provided specialized AI architecture and development consulting for complex technical and enterprise problems.",
-      "li2": "Architected domain-specific GenAI workflows, custom pipelines, and black-box optimization microservices (Live industrial pilot currently underway under NDA).",
-      "li3": "Delivered cloud AI consultation focused on Databricks and Azure architectures."
-    },
     "louhi": {
-      "title": "Co-Founder & CTO / AI Architect",
+      "title": "Founder, CTO, and Chief AI Platform Architect",
       "dates": "Louhi Cognitive Technologies Oy · 2026 – Present",
-      "li1": "Architected and developed enterprise-grade hybrid AI and multi-agent platforms from concept to 100% production-ready deployment with modular design. Engineered for cross-domain synthesis and analysis of complex technical and regulatory data.",
-      "li2": "Engineered secure, air-gapped local AI environments (running on local NVIDIA Spark ARM clusters) to ensure complete data confidentiality and zero external API dependencies for sensitive business data.",
-      "li3": "Led core technical strategy while actively collaborating on funding, investor relations, and strategic technical negotiations with partners and enterprise clients. (Live pilots currently underway)."
+      "note": "The core architectures run on their own momentum. Available full-time, with no conflict of interest.",
+      "li1": "Set the technical roadmap, enterprise architecture, and LLMOps standards for a sovereign on-premises GPU RAG and multi-agent workspace (flagship 01). Led enterprise-client pilots, solution scoping, and investor negotiations.",
+      "li2": "Architected production local language-model serving (vLLM, NVIDIA Triton, MLflow, GitOps, Kubernetes GPU limits), dual vector and graph retrieval, PostgreSQL-backed agent orchestration, and OpenTelemetry and Langfuse observability.",
+      "li3": "Included an EU AI Act Articles 12–14 audit trail and cryptographic provenance."
     },
     "gold": {
-      "title": "Co-Founder & RDI + CTO",
+      "title": "Founder, CTO, and RDI Lead",
       "dates": "Gold Digger Technologies Oy · 2025 – Present",
-      "li1": "Designed and built targeted AI/ML solutions and automation architectures focused on industrial applications on cloud.",
-      "li2": "Led software architecture and algorithmic modeling from proof-of-concept to active industrial pilot testing."
+      "note": "The core architectures run on their own momentum. Available full-time.",
+      "li1": "Designed, implemented, and shipped cloud AI, machine-learning, and intelligent-automation architectures from concept to an active industrial pilot.",
+      "li2": "Owned the software architecture, algorithmic modeling, production reliability, and industrial workflow integration."
+    },
+    "aivoinko": {
+      "title": "Founder and Lead AI / ML Architecture Consultant",
+      "dates": "Aivoinko · 2024 – Present",
+      "li1": "Delivered hands-on, platform-agnostic AI and cloud-architecture consulting on Azure, Databricks, and AWS. Integrated language-model and statistical machine-learning pipelines into enterprise data platforms and production APIs.",
+      "li2": "Architected, deployed, and released under Apache-2.0 a stateless multi-objective Bayesian-optimization microservice (GPyTorch, BoTorch, FastAPI, CPU and CUDA Docker; flagship 03). It supports industrial research pilots and cross-domain black-box optimization.",
+      "li3": "Delivers air-gapped local language-model deployments and enablement for executives and engineering teams."
+    },
+    "independent": {
+      "title": "Independent full-stack and quantitative-systems builder, educator, and community founder",
+      "dates": "Multidisciplinary record · multi-year history",
+      "li1": "Built complete production systems from scratch, independently and alongside senior engineering leads. Independent work includes Trolldom, a polyglot quantitative research platform (Tradegoren, flagship 04). Collaborators include Jesse Juvonen, Lead Software Developer at the City of Helsinki. The base is TDD, CI/CD, and a disciplined AI-SDLC.",
+      "li2": "Wrote original curricula and lectured for universities, festivals, and companies on AI, the psychology of continuous learning, philosophy, creative stoicism, and agile networking.",
+      "li3": "Co-founded digital communities around psychology, philosophy, and neuroscience and grew them organically: in 2018, from zero to more than 9,000 members, with self-regulating governance."
     },
     "education": {
-      "heading": "Education & Academic Achievements",
+      "heading": "Education and research",
       "msc": {
-        "title": "Master of Science in Technology (M.Sc. Tech / DI)",
-        "dates": "Tampere University · Graduated 2026",
-        "major": "Major: Biomedical Informatics (Biotechnology and Biomedical Engineering). Specialization: Artificial Intelligence, Deep Learning, Informatics, Data Analysis, Signal Processing.",
-        "thesis": "Master’s Thesis: Grade 5/5. Topic: Minimization of Hallucinations in Custom RegTech AI Systems Using Agentic Architectures. Conducted in partnership with ABB and Taipuva. Evaluated by: Prof. Joni Kämäräinen (AI/Computer Vision) and Research Director Alpo Värri (Health Technology).",
-        "coursework": "Advanced Coursework: Synthetic Biology, Gene Technology, Pharmacology, and Biomaterials."
+        "title": "Master of Science in Technology",
+        "dates": "Tampere University · graduated May 2026",
+        "major": "Major: Biomedical Informatics (Biotechnology and Biomedical Engineering). Specialization: artificial intelligence, deep learning, machine learning, signal processing, and data analysis.",
+        "thesis": "Master's thesis, grade 5/5: \"From Hallucinations to Control: Development and Testing of an Experimental Compound Artificial Intelligence System in a Healthcare Context.\" Carried out with ABB and Taipuva Consulting Oy. Examiners: Professor Joni Kämäräinen, Research Director Alpo Värri, and Lead Solution Architect Petri Näppi.",
+        "grant": "Research grant, secured by direct outreach: the Technology Industries of Finland Centennial Foundation (Teknologiateollisuuden 100-vuotissäätiö). It funded the applied-AI thesis research and the software development.",
+        "coursework": "Selected M.Sc. studies: Introduction to Neuroinformatics, Small Samples Data Analysis, Deep Learning, Introduction to Machine Learning, Advanced Signal Processing, Processing of Biosignals, Fundamentals of Mobile Robots, Health Software Development Project, and Standards, Interoperability and Regulations in Health Informatics.",
+        "studies": "Management, security, and cognition: Basics of Management and Organizations (LITO, University of Vaasa), Cyber Security I: Fundamentals, and Neuro- and Cognitive Psychology."
       },
       "bsc": {
-        "title": "Bachelor of Science in Technology (B.Sc. Tech)",
-        "dates": "Tampere University",
-        "thesis": "Bachelor's Thesis: Tissue Modeling and Simulation, conducted within the Neuroscience Research Group."
+        "title": "Bachelor of Science in Technology and a vocational foundation",
+        "dates": "Tampere University and a machine-shop background",
+        "thesis": "Bachelor's thesis in the Neuroscience Research Group: wet-lab tissue modeling, with AI-driven optimization applied to the experimental workflow. Advanced studies: synthetic biology, gene technology, pharmacology, and biomaterials.",
+        "vocational": "An earlier vocational qualification and hands-on work in CNC precision machining, CAD/CAM modeling, and metalwork. It ties software, optimization, and mathematical modeling to physical industrial work."
       },
       "mentor": {
-        "heading": "Key Mentorship & Training",
-        "body": "Advanced AI & Machine Learning Architecture under the instruction of Pekka Abrahamsson, Joni Kämäräinen and Tuomas Virtanen.",
-        "network": "Interdisciplinary Sparring Network: Continuously enriched by an active, high-caliber peer network spanning computational medicine, chemistry, and cutting-edge software development."
+        "heading": "Academic mentorship",
+        "body": "Advanced AI and machine-learning architecture under Professor Pekka Abrahamsson, Professor Joni Kämäräinen, and Professor Tuomas Virtanen (Tampere University)."
       }
     },
     "projects": {
-      "heading": "Notable Projects & Technical Highlights",
-      "regtech": {
-        "title": "Local-First Compound RegTech AI Engine",
-        "body": "Built a fully offline Compound AI platform for regulatory compliance analysis. Engineered a deterministic-to-generative pipeline featuring clustering neural network, graphs, hybrid retrieval (HNSW + BM25), BGE pairwise batch reranking, DeBERTa-v3 directional NLI logic, and bipartite matching, eliminating hallucinations in regulated contexts and generating automated regulatory impact matrices. (Commercial scaling & continued development under NDA)."
+      "heading": "Flagship architectures",
+      "sovereign": {
+        "title": "01 Sovereign on-premises GPU RAG and multi-agent enterprise platform",
+        "status": "Louhi Cognitive Technologies Oy · production, enterprise pilots live",
+        "body": "A FastAPI and SvelteKit enterprise workspace for bare-metal NVIDIA DGX Spark (GB10, ARM64), x86 CUDA, and AMD GPUs. The architecture is derived from Open WebUI. Multi-profile Docker Compose, Caddy, and Kubernetes GPU limits. OpenAI-compatible inference: local vLLM (Mistral Small 4, 119B, NVFP4, 262k context, prefix cache, and thinking-token isolation; Qwen2.5-Instruct), NVIDIA Triton, and an optional cloud. Feature-flagged dual retrieval: Docling and Unstructured, hierarchical and RAPTOR chunking, InfiniFlow Infinity, PostgreSQL 16, Apache AGE and pgvector, LightRAG, and sentence-level cosine grounding for citations. A durable Plan-Act-Observe loop on a PostgreSQL queue, MCP, OpenAPI, and workspace Python tools, a sandbox, RBAC, and EU AI Act Articles 12–14 audit snapshots. Telemetry can be switched off entirely."
       },
-      "edge": {
-        "title": "Autonomous Edge AI Cluster",
-        "body": "Configured and deployed localized high-performance inference pipelines on NVIDIA GB10 ARM Spark hardware, achieving ultra-low latency and full offline data privacy. Engineered an autonomous multi-agent core featuring audit-grade, compliance-by-design telemetry and logging with modular design. Query expansion fans one prompt into a structured set of probes; those probes then run concurrently as distinct professional personas on different models—physician, counsel, and peers answering the same question at once rather than in a single voice."
+      "regtech": {
+        "title": "02 Local-first compound RegTech AI engine",
+        "status": "ABB and Taipuva Consulting · production-ready prototype, commercial scaling under NDA · thesis 5/5",
+        "body": "A fully local containerized stack: Next.js with SSE, FastAPI, PostgreSQL, Celery and Redis, Docker. Funded by the Technology Industries of Finland Centennial Foundation. The constraint is GDPR and healthcare data sovereignty. The pipeline runs from deterministic to generative: PyMuPDF and python-docx, HNSW and BM25, a pairwise batch BGE cross-encoder (about 5–10×), greedy bipartite 1:1 alignment, word-level diff, and bidirectional DeBERTa-v3 NLI. An ISO/IEC 27001 version comparison finished in about 13 minutes on a mid-range local GPU (NVIDIA RTX 2060 Super). On a blind random validation sample, alignment accuracy was 100 percent, including true negatives for removed clauses, and the trail is anchored to the source."
       },
       "bayes": {
-        "title": "Multi-Objective Bayesian Optimization Engine",
-        "body": "Architected a black-box optimization microservice for industrial formulations. Significantly reducing experimental iterations while maintaining regulatory parameter bounds (Architecture and proprietary details protected under NDA)."
+        "title": "03 Industrial multi-objective Bayesian optimization microservice",
+        "status": "Aivoinko · open source, Apache-2.0 · production microservice and an active industrial pilot",
+        "body": "A machine-learning engine without a language model, Python and PyTorch (GPyTorch, BoTorch): expensive continuous black-box functions with few experiments. Matérn 5/2 and RBF kernels with ARD lengthscales, float64 stabilization, Sobol multi-start, Pareto and hypervolume, and the acquisition functions qEI, qPI, qUCB, qEHVI, qNEHVI (qNoisyEHVI), and ParEGO (Chebyshev). PCA latent space and SciPy SLSQP map back to the original physical variables under mixture, ratio, and bound constraints. Checked on formulation, coating, emulsion, tablet, and battery-electrolyte demos. A stateless FastAPI microservice, CPU and CUDA Docker, constant-time API-key authentication, pytest, Ruff, and GitHub Actions."
       },
-      "backtest": {
-        "title": "AI-Assisted Automatic Backtester & Trading Platform",
-        "body": "Architected an AI-assisted automatic backtesting and execution-research platform for a short-biased systematic book. The signal grammar is Ichimoku Kinko Hyo treated as a full equilibrium map, not a single oscillator: the kumo is future consensus, and shorts arm only when price trades beneath that cloud, Tenkan and Kijun have crossed and aligned bearish, and Chikou is clear of both price and kumo—with Kijun as the invalidation and trailing spine. A multi-model layer (Ichimoku parameter families, timeframes, and complementary regime filters) votes on each setup; an assistant expands the market query and withholds size unless the ensemble can jointly defend the short. The backtester walks history forward without look-ahead, applying fill and slippage, and emits expectancy, drawdown, and hit-rate so the book is audited before capital is at risk."
+      "tradegoren": {
+        "title": "04 Tradegoren — polyglot quantitative trading and wealth-management research platform",
+        "status": "Independent production core · implemented",
+        "body": "A local monorepo: Python 3.10 or newer, C# / .NET 9–10, Rust (Tauri 2), TypeScript, and React 19. JSON Schema contracts hold the language boundary, and Polygon is an isolated adapter. An idempotent YAML pipeline writes Lean-format OHLCV series, corporate actions, and SHA-256 lineage. QuantConnect Lean and Python.NET run Python and C# strategies through Rust IPC on a Tauri desktop. US equity strategies: SMA/ATR, mean reversion, Opening Range Breakout, and the Minervini Trend Template with VCP. Position size, ATR stops, participation caps, partial take-profit, and commission and slippage. Secrets stay in .env isolation."
       }
     },
-    "title": "CV",
-    "sep": " · "
+    "stance": {
+      "heading": "Paradigm, learning, and references",
+      "paradigm": "The starting point is the problem. Each domain gets the cleanest verifiable paradigm: a deterministic algorithm, a Gaussian process, event-driven simulation, or a sovereign local language model and multi-agent system.",
+      "community": "Community architecture in 2018: organic growth from zero to more than 9,000 active members around applied psychology, neuroscience, and creative stoicism. Self-regulating governance, decentralized moderation, and high-trust discourse.",
+      "reference": "Technical reference: Jesse Juvonen, Lead Software Developer, City of Helsinki. Contact details on request. Academic mentorship: Professor Pekka Abrahamsson, Professor Joni Kämäräinen, and Professor Tuomas Virtanen.",
+      "clearance": "Ready for security clearance and drug screening for defense, financial, and regulated mandates. Available full-time."
+    }
   },
   "diy": {
     "title": "Khaeos Metalogs",
