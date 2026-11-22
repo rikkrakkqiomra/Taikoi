@@ -926,13 +926,16 @@
     }
   },
   "bio": {
-    "description": "Riku Richard Multimieli: neljä muotokuvaa, minämuotoinen kaivo ja linkit työhön.",
+    "description": "Riku Richard Multimieli: kaksi muotokuvaa, minämuotoinen kaivo ja linkit työhön.",
     "band": "Multimieli",
     "name": "Riku Richard Multimieli",
     "epithet": {
       "father": "Isä Unheimlich",
+      "void": "Tyhjyys",
+      "echo": "Muistojen kaikukoppa",
       "licker": "kaikkien taajuuksien nuoleskelija",
-      "flayer": "jumalten nylkijä"
+      "flayer": "jumalten nylkijä",
+      "alpha": "Alfa mielenvääntäjä"
     },
     "tie": {
       "heading": "Tie",
@@ -944,14 +947,7 @@
     "chronicles": {
       "i": {
         "label": "Chronicles I"
-      },
-      "ii": {
-        "label": "Chronicles II"
-      },
-      "iii": {
-        "label": "Chronicles III"
-      },
-      "sealed": "Mustetta ei ole vielä laskettu."
+      }
     },
     "minusta": {
       "heading": "Minusta",
@@ -962,20 +958,6 @@
       "p5": "Olen kulkenut kahden kuukauden matkoja, Baliin, Italiaan, Thaimaahan ja Meksikoon, ja ammentanut sieluani muinaisraunioista ja taiteesta. Rauniot eivät olleet nähtävyyksiä. Ne olivat peilejä, jotka muistivat minut ennen minua.",
       "p6": "Kahdenkymmenen ikävuoteni tienoilla vedin kymmenentuhannen ihmisen aivokemian ryhmää. Sen tarkoitus oli psykonautiikka ja itsetutkiskelu: yhteinen yritys katsoa sisäänpäin niin pitkälle, että kartta alkaa vastata.",
       "coda": "Saaga jatkuu."
-    },
-    "kaari": {
-      "heading": "Kaari",
-      "quote": "Läheisyys ei ole vaakuna.",
-      "p1": "Kahden posken välissä on kaari, joka ei tarvitse kattoa. Toiset kasvot jäävät nimettömiksi, koska nimi olisi jo etäisyys.",
-      "p2": "Hän pitää ne vieressään niin kuin pitää taajuutta: hiljaa, poski poskea vasten.",
-      "alt": "Riku Richard Multimieli kaaren alla"
-    },
-    "vesi": {
-      "heading": "Vesi",
-      "quote": "Suu on ovi, josta jumala yritti lähteä.",
-      "p1": "Rannassa vartalo suostuu olemaan ranta. Parta on sää. Ääni avautuu, ja vesi ottaa sen vastaan ilman alttaria.",
-      "p2": "Nylkeminen ei tapahdu veitsellä. Se tapahtuu sillä, että nauru kieltäytyy pyhyydestä.",
-      "alt": "Riku Richard Multimieli rannassa"
     },
     "metsa": {
       "heading": "Metsä",

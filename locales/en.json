@@ -926,13 +926,16 @@
     }
   },
   "bio": {
-    "description": "Riku Richard Multimieli: four portraits, a first-person well, and links to the work.",
+    "description": "Riku Richard Multimieli: two portraits, a first-person well, and links to the work.",
     "band": "Multimieli",
     "name": "Riku Richard Multimieli",
     "epithet": {
       "father": "Father Unheimlich",
+      "void": "Void",
+      "echo": "sounding-box of memories",
       "licker": "licker of every frequency",
-      "flayer": "flayer of gods"
+      "flayer": "flayer of gods",
+      "alpha": "Alpha mind-twister"
     },
     "tie": {
       "heading": "Road",
@@ -944,14 +947,7 @@
     "chronicles": {
       "i": {
         "label": "Chronicles I"
-      },
-      "ii": {
-        "label": "Chronicles II"
-      },
-      "iii": {
-        "label": "Chronicles III"
-      },
-      "sealed": "Ink has not yet been laid."
+      }
     },
     "minusta": {
       "heading": "Of Me",
@@ -962,20 +958,6 @@
       "p5": "I have made two-month journeys, to Bali, Italy, Thailand, and Mexico, and drawn my soul from ancient ruins and from art. The ruins were not attractions. They were mirrors that remembered me before I was.",
       "p6": "Around the age of twenty I led a brain-chemistry group of ten thousand people. Its purpose was psychonautics and self-inquiry: a shared attempt to look inward until the map begins to answer.",
       "coda": "The saga continues."
-    },
-    "kaari": {
-      "heading": "Arch",
-      "quote": "Nearness is not a coat of arms.",
-      "p1": "Between two cheeks there is an arch that needs no roof. The other face stays unnamed, because a name would already be distance.",
-      "p2": "He keeps that face beside him the way he keeps a frequency: quietly, cheek to cheek.",
-      "alt": "Riku Richard Multimieli under the arch"
-    },
-    "vesi": {
-      "heading": "Water",
-      "quote": "The mouth is a door a god tried to leave by.",
-      "p1": "On the shore the body agrees to be a shore. The beard is weather. The voice opens, and the water receives it without an altar.",
-      "p2": "The flaying is not done with a knife. It is done by laughter refusing holiness.",
-      "alt": "Riku Richard Multimieli on the shore"
     },
     "metsa": {
       "heading": "Forest",
