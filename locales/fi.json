@@ -926,7 +926,7 @@
     }
   },
   "bio": {
-    "description": "Riku Richard Multimieli: kaksi muotokuvaa, minämuotoinen kaivo ja linkit työhön.",
+    "description": "Riku Richard Multimieli: kolme muotokuvaa, minämuotoinen kaivo ja linkit työhön.",
     "band": "Multimieli",
     "name": "Riku Richard Multimieli",
     "epithet": {
@@ -967,6 +967,13 @@
       "p1": "Hiukset ovat sää, joka kieltäytyi loppumasta. Täällä tuttu ja vieras asuvat samassa rungossa.",
       "p2": "Isä Unheimlich ei hallitse lehtoa. Hän seisoo siinä, kunnes puut muistavat nimen hänen puolestaan.",
       "alt": "Riku Richard Multimieli metsässä"
+    },
+    "yo": {
+      "heading": "Yö",
+      "quote": "Sormus on kynsi, jonka yö lainasi.",
+      "p1": "Hän nojaa hyllyyn, lasi silmillä, kuulokkeet korvilla. Käsi tekee kehyksen suun ympärille, eikä suu ano.",
+      "p2": "Kirjat jäävät selän taa. Yö ei sytytä niitä. Taajuus tulee sisältä.",
+      "alt": "Riku Richard Multimieli yössä"
     },
     "verkko": {
       "heading": "Verkko",

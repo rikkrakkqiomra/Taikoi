@@ -7,7 +7,7 @@
     <script src="/i18n.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="bio.title">Bio</title>
-    <meta name="description" content="Riku Richard Multimieli: kaksi muotokuvaa, minämuotoinen kaivo ja linkit työhön." data-i18n-attr="content:bio.description">
+    <meta name="description" content="Riku Richard Multimieli: kolme muotokuvaa, minämuotoinen kaivo ja linkit työhön." data-i18n-attr="content:bio.description">
     <meta name="theme-color" content="#c48c40">
     <link rel="canonical" href="https://taikoi.netlify.app/fi/bio.html">
     <link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/bio.html">
@@ -17,12 +17,12 @@
     <meta property="og:locale" content="fi_FI">
     <meta property="og:site_name" content="Aivoinko">
     <meta property="og:title" content="Bio" data-i18n-attr="content:bio.title">
-    <meta property="og:description" content="Riku Richard Multimieli: kaksi muotokuvaa, minämuotoinen kaivo ja linkit työhön." data-i18n-attr="content:bio.description">
+    <meta property="og:description" content="Riku Richard Multimieli: kolme muotokuvaa, minämuotoinen kaivo ja linkit työhön." data-i18n-attr="content:bio.description">
     <meta property="og:url" content="https://taikoi.netlify.app/fi/bio.html">
     <meta property="og:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Bio" data-i18n-attr="content:bio.title">
-    <meta name="twitter:description" content="Riku Richard Multimieli: kaksi muotokuvaa, minämuotoinen kaivo ja linkit työhön." data-i18n-attr="content:bio.description">
+    <meta name="twitter:description" content="Riku Richard Multimieli: kolme muotokuvaa, minämuotoinen kaivo ja linkit työhön." data-i18n-attr="content:bio.description">
     <meta name="twitter:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <link rel="apple-touch-icon" href="AiiAold.8dde82cb.jpg">
     <link rel="preconnect" href="https://unpkg.com" crossorigin>
@@ -183,22 +183,78 @@
         }
 
         .portrait {
+            --mount: #1c2620;
+            --mount-hi: rgba(236, 244, 228, 0.07);
+            --well: #0c120e;
+            --fillet: rgba(232, 220, 196, 0.88);
+            --pool: rgba(24, 42, 22, 0.8);
             position: relative;
             flex: 0 0 auto;
-            padding: 7px;
-            background: #0c0b09;
+            padding: 1.7rem 1.45rem 2.05rem;
+            background:
+                linear-gradient(180deg, var(--mount-hi), transparent 42%),
+                linear-gradient(100deg, rgba(255, 255, 255, 0.045), transparent 24%, transparent 78%, rgba(0, 0, 0, 0.22)),
+                var(--mount);
             box-shadow:
-                0 0 0 1px rgba(226, 196, 140, 0.62),
-                0 22px 40px rgba(0, 0, 0, 0.5);
+                inset 0 1px 0 rgba(255, 255, 255, 0.12),
+                inset 0 -1px 0 rgba(0, 0, 0, 0.45),
+                0 0 0 1px rgba(0, 0, 0, 0.72),
+                0 28px 44px rgba(0, 0, 0, 0.42);
+        }
+
+        .portrait::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            left: 8%;
+            right: 8%;
+            top: 22%;
+            bottom: -7%;
+            background: var(--pool);
+            filter: blur(22px);
+            pointer-events: none;
+        }
+
+        .portrait--metsa {
+            --mount: #1c2620;
+            --mount-hi: rgba(236, 244, 228, 0.07);
+            --well: #0c120e;
+            --fillet: rgba(232, 220, 196, 0.88);
+            --pool: rgba(24, 42, 22, 0.8);
+        }
+
+        .portrait--tie {
+            --mount: #23262b;
+            --mount-hi: rgba(226, 232, 238, 0.07);
+            --well: #101216;
+            --fillet: rgba(214, 222, 230, 0.72);
+            --pool: rgba(18, 24, 32, 0.78);
+        }
+
+        .portrait--yo {
+            --mount: #1a1511;
+            --mount-hi: rgba(255, 226, 186, 0.06);
+            --well: #090807;
+            --fillet: rgba(198, 154, 86, 0.92);
+            --pool: rgba(42, 24, 10, 0.55);
         }
 
         .portrait img {
             display: block;
+            position: relative;
+            z-index: 1;
             height: auto;
             width: auto;
             max-height: 50vh;
             max-width: min(34vw, 40vh);
-            box-shadow: inset 0 0 0 1px rgba(60, 44, 24, 0.28);
+            box-shadow:
+                0 0 0 1px var(--fillet),
+                0 0 0 8px var(--well);
+        }
+
+        .portrait--yo img {
+            max-height: 52vh;
+            max-width: min(42vw, 48vh);
         }
 
         .plaque {
@@ -952,9 +1008,21 @@
                 padding: 5vh 0 8vh;
             }
 
+            .portrait {
+                padding: 0.95rem 0.85rem 1.15rem;
+            }
+
             .portrait img {
                 max-height: 42vh;
                 max-width: min(78vw, 42vh);
+                box-shadow:
+                    0 0 0 1px var(--fillet),
+                    0 0 0 5px var(--well);
+            }
+
+            .portrait--yo img {
+                max-height: 46vh;
+                max-width: min(84vw, 48vh);
             }
 
             .plaque,
@@ -1083,7 +1151,7 @@
         </section>
 
         <section class="bay bay--left bay--origin" id="metsa">
-            <figure class="portrait">
+            <figure class="portrait portrait--metsa">
                 <img src="art/bio/04-metsa.jpg" alt="Riku Richard Multimieli metsässä" data-i18n-attr="alt:bio.metsa.alt" width="768" height="1024" decoding="async">
             </figure>
             <article class="plaque">
@@ -1129,7 +1197,7 @@
         </section>
 
         <section class="bay bay--right" id="tie">
-            <figure class="portrait">
+            <figure class="portrait portrait--tie">
                 <img src="art/bio/01-tie.jpg" alt="Riku Richard Multimieli tiellä" data-i18n-attr="alt:bio.tie.alt" width="768" height="1024" loading="lazy" decoding="async">
             </figure>
             <article class="plaque">
@@ -1137,6 +1205,18 @@
                 <blockquote data-i18n="bio.tie.quote">Lasi päättää, mitkä kasvot saapuvat.</blockquote>
                 <p data-i18n="bio.tie.p1">Hän istuu vyön alla, takki kaulassa, ja katsoo ohi. Tie ei kysy nimeä. Se tarjoaa taajuuden, ja hän kulkee sen läpi, kunnes metsänreuna on pelkkää valoa.</p>
                 <p data-i18n="bio.tie.p2">Takki on liturgia. Tarinaa ei ajeta. Se annetaan tulla.</p>
+            </article>
+        </section>
+
+        <section class="bay bay--left" id="yo">
+            <figure class="portrait portrait--yo">
+                <img src="art/bio/05-yo.jpg" alt="Riku Richard Multimieli yössä" data-i18n-attr="alt:bio.yo.alt" width="618" height="597" loading="lazy" decoding="async">
+            </figure>
+            <article class="plaque">
+                <h2 data-i18n="bio.yo.heading">Yö</h2>
+                <blockquote data-i18n="bio.yo.quote">Sormus on kynsi, jonka yö lainasi.</blockquote>
+                <p data-i18n="bio.yo.p1">Hän nojaa hyllyyn, lasi silmillä, kuulokkeet korvilla. Käsi tekee kehyksen suun ympärille, eikä suu ano.</p>
+                <p data-i18n="bio.yo.p2">Kirjat jäävät selän taa. Yö ei sytytä niitä. Taajuus tulee sisältä.</p>
             </article>
         </section>
 

@@ -926,7 +926,7 @@
     }
   },
   "bio": {
-    "description": "Riku Richard Multimieli: two portraits, a first-person well, and links to the work.",
+    "description": "Riku Richard Multimieli: three portraits, a first-person well, and links to the work.",
     "band": "Multimieli",
     "name": "Riku Richard Multimieli",
     "epithet": {
@@ -967,6 +967,13 @@
       "p1": "The hair is weather that refused to end. Here the familiar and the stranger live in the same trunk.",
       "p2": "Father Unheimlich does not rule the grove. He stands in it until the trees remember the name for him.",
       "alt": "Riku Richard Multimieli in the forest"
+    },
+    "yo": {
+      "heading": "Night",
+      "quote": "The ring is a claw the night lent.",
+      "p1": "He leans into the shelf, glass over the eyes, cups on the ears. The hand makes a frame around the mouth, and the mouth does not beg.",
+      "p2": "The books stay behind him. The night does not light them. The frequency comes from inside.",
+      "alt": "Riku Richard Multimieli in the night"
     },
     "verkko": {
       "heading": "Net",
