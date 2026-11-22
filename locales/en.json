@@ -1077,7 +1077,7 @@
     "independent": {
       "title": "Independent full-stack and quantitative-systems builder, educator, and community founder",
       "dates": "Multidisciplinary record · multi-year history",
-      "li1": "Built complete production systems from scratch, independently and alongside senior engineering leads. Independent work includes Trolldom, a polyglot quantitative research platform (Tradegoren, flagship 04). Collaborators include Jesse Juvonen, Lead Software Developer at the City of Helsinki. The base is TDD, CI/CD, and a disciplined AI-SDLC.",
+      "li1": "Built complete production systems from scratch, independently and alongside senior engineering leads. Independent work includes Trolldom, a polyglot quantitative research platform (Tradegoren, flagship 04). The base is TDD, CI/CD, and a disciplined AI-SDLC.",
       "li2": "Wrote original curricula and lectured for universities, festivals, and companies on AI, the psychology of continuous learning, philosophy, creative stoicism, and agile networking.",
       "li3": "Co-founded digital communities around psychology, philosophy, and neuroscience and grew them organically: in 2018, from zero to more than 9,000 members, with self-regulating governance."
     },
@@ -1127,10 +1127,10 @@
       }
     },
     "stance": {
-      "heading": "Paradigm, learning, and references",
+      "heading": "Paradigm, learning, and mentorship",
       "paradigm": "The starting point is the problem. Each domain gets the cleanest verifiable paradigm: a deterministic algorithm, a Gaussian process, event-driven simulation, or a sovereign local language model and multi-agent system.",
       "community": "Community architecture in 2018: organic growth from zero to more than 9,000 active members around applied psychology, neuroscience, and creative stoicism. Self-regulating governance, decentralized moderation, and high-trust discourse.",
-      "reference": "Technical reference: Jesse Juvonen, Lead Software Developer, City of Helsinki. Contact details on request. Academic mentorship: Professor Pekka Abrahamsson, Professor Joni Kämäräinen, and Professor Tuomas Virtanen.",
+      "reference": "Academic mentorship: Professor Pekka Abrahamsson, Professor Joni Kämäräinen, and Professor Tuomas Virtanen.",
       "clearance": "Ready for security clearance and drug screening for defense, financial, and regulated mandates. Available full-time."
     }
   },

@@ -1077,7 +1077,7 @@
     "independent": {
       "title": "Itsenäinen full-stack- ja kvantitatiivisten järjestelmien rakentaja, kouluttaja ja yhteisön perustaja",
       "dates": "Monialainen näyttö · usean vuoden historia",
-      "li1": "Rakensi kokonaisia tuotantojärjestelmiä alusta asti, itsenäisesti ja vanhempien ohjelmistovetäjien rinnalla. Itsenäisiin töihin kuuluu Trolldom, polyglotti kvantitatiivinen tutkimusalusta (Tradegoren, lippuarkkitehtuuri 04). Yhteistyökumppaneihin kuuluu Helsingin kaupungin johtava ohjelmistokehittäjä Jesse Juvonen. Pohja on TDD, CI/CD ja kurinalainen tekoäly-SDLC.",
+      "li1": "Rakensi kokonaisia tuotantojärjestelmiä alusta asti, itsenäisesti ja vanhempien ohjelmistovetäjien rinnalla. Itsenäisiin töihin kuuluu Trolldom, polyglotti kvantitatiivinen tutkimusalusta (Tradegoren, lippuarkkitehtuuri 04). Pohja on TDD, CI/CD ja kurinalainen tekoäly-SDLC.",
       "li2": "Kirjoitti alkuperäisiä kurssisisältöjä ja luennoi yliopistoille, festivaaleille ja yrityksille tekoälystä, jatkuvan oppimisen psykologiasta, filosofiasta, luovasta stoalaisuudesta ja ketterästä verkostoitumisesta.",
       "li3": "Perusti yhdessä muiden kanssa digitaalisia yhteisöjä psykologian, filosofian ja neurotieteen ympärille ja kasvatti ne orgaanisesti: vuonna 2018 nollasta yli 9 000 jäseneen, itseohjautuvalla hallinnalla."
     },
@@ -1127,10 +1127,10 @@
       }
     },
     "stance": {
-      "heading": "Paradigma, oppiminen ja suosittelijat",
+      "heading": "Paradigma, oppiminen ja mentorointi",
       "paradigm": "Lähtökohta on ongelma. Kullekin alueelle valitaan puhtain todennettava paradigma: deterministinen algoritmi, gaussinen prosessi, tapahtumapohjainen simulaatio tai suvereeni paikallinen kielimalli ja moniagenttijärjestelmä.",
       "community": "Yhteisöarkkitehtuuri vuonna 2018: orgaaninen kasvu nollasta yli 9 000 aktiiviseen jäseneen soveltavan psykologian, neurotieteen ja luovan stoalaisuuden ympärillä. Itseohjautuva hallinta, hajautettu moderointi ja korkean luottamuksen keskustelu.",
-      "reference": "Tekninen suosittelija: Jesse Juvonen, johtava ohjelmistokehittäjä, Helsingin kaupunki. Yhteystiedot pyydettäessä. Akateeminen mentorointi: professori Pekka Abrahamsson, professori Joni Kämäräinen ja professori Tuomas Virtanen.",
+      "reference": "Akateeminen mentorointi: professori Pekka Abrahamsson, professori Joni Kämäräinen ja professori Tuomas Virtanen.",
       "clearance": "Valmis turvallisuusselvitykseen ja huumausainetestaukseen puolustuksen, rahoituksen ja säänneltyjen toimeksiantojen tehtäviin. Käytettävissä täysin kokoaikaisesti."
     }
   },
