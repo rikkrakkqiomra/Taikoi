@@ -935,7 +935,9 @@
       "echo": "Muistojen kaikukoppa",
       "licker": "kaikkien taajuuksien nuoleskelija",
       "flayer": "jumalten nylkijä",
-      "alpha": "Alfa mielenvääntäjä"
+      "alpha": "Alfa mielenvääntäjä",
+      "whip": "Konevaljakon ruoskija",
+      "destroyer": "Vääräuskoisten tuhoaja"
     },
     "tie": {
       "heading": "Tie",
