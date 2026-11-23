@@ -221,13 +221,18 @@
             padding: 1.2rem 1.4rem 1.25rem 1.3rem;
             border-left: 2px solid var(--sun);
             background: var(--glass);
-            column-count: 2;
-            column-gap: 2.6rem;
             color: #d7e1ea;
             font-size: 1.16rem;
             font-weight: 500;
             line-height: 1.5;
-            hyphens: auto;
+        }
+
+        .lede p {
+            max-width: 68ch;
+        }
+
+        .lede p + p {
+            margin-top: 0.85rem;
         }
 
         .vita {
@@ -430,10 +435,6 @@
                 padding-bottom: 2.4rem;
             }
 
-            .lede {
-                column-count: 1;
-            }
-
             .mast-line,
             .atlas-head {
                 flex-direction: column;
@@ -486,7 +487,11 @@
                     <p class="role" data-i18n="services.role">Tekoälyarkkitehti ja teknologiajohtaja</p>
                     <p class="place" data-i18n="services.place">Pirkanmaa, Suomi</p>
                 </div>
-                <p class="lede" data-i18n="services.lede">Neljä puhdasta toimeksiantoa, tarjoamme: yrityksen brändin nahanluonti ja visionäärinen uudistuminen, yksityinen privaatti tekoälykielimalli alusta / suvereenin, sensuurivapaan tekoälyn perehdytys, psykofilosofian kurssi mielen rajoitteista ja uskomuksista, viimeisenä tuotteena markkinointi/GEO konsultointi. Kesto toimeksiannoille 4- 8kk. Palkkio sovitaan, kun aloitamme - Aivoinko voi tehdä mitä ikinä halutaan.</p>
+                <div class="lede">
+                    <p data-i18n="services.intro.p1">Tampereella työskentelevä taiteilija, tieteilijä, isä, yrittäjä ja stoalainen mieli, omistautunut psykologialle, neurobiologialle ja tekoälylle. Ongelmanratkaisu on oma taiteenlajinsa. Luovuus ratkaisee ongelman; tieto on jo täällä. Tietämättömyys on valinta.</p>
+                    <p data-i18n="services.intro.p2">Tekoäly ja lohkoketju ovat nyt tutkimuksen kärki. Tavoitteena on kokonainen ymmärrys näistä kentistä, avoimen lähdekoodin mielessä, omaa taitoa jatkuvasti uudistaen. Vuosien varrella olen kirjoittanut kurssisisältöjä ja luennoinut yliopistoille, festivaaleille ja yritysmaailmaan. Työ itsessään on tuotantoarkkitehtuuria: suvereeneja järjestelmiä, jotka yritys voi omistaa, ja koneoppimista, joka ansaitsee paikkansa ennen kuin sitä kasvatetaan.</p>
+                    <p data-i18n="services.intro.p3">Olen perustanut ja johtanut digitaalisia yhteisöjä. Osa niistä saavutti psykologian ja filosofian ympärillä lähes kultinomaisen aseman. Sosiaaliset liikkeet opettivat ketterän verkostoitumisen ja luovan stoalaisuuden, niitä opetan tänään.</p>
+                </div>
                 <p class="vita">
                     <a href="tel:+358405056974">+358 40 505 6974</a>
                     <a href="mailto:Aivoinko@gmail.com">Aivoinko@gmail.com</a>

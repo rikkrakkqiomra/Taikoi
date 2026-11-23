@@ -84,7 +84,11 @@
     "kicker": "Palvelut",
     "role": "Tekoälyarkkitehti ja teknologiajohtaja",
     "place": "Pirkanmaa, Suomi",
-    "lede": "Neljä puhdasta toimeksiantoa, tarjoamme: yrityksen brändin nahanluonti ja visionäärinen uudistuminen, yksityinen privaatti tekoälykielimalli alusta / suvereenin, sensuurivapaan tekoälyn perehdytys, psykofilosofian kurssi mielen rajoitteista ja uskomuksista, viimeisenä tuotteena markkinointi/GEO konsultointi. Kesto toimeksiannoille 4- 8kk. Palkkio sovitaan, kun aloitamme - Aivoinko voi tehdä mitä ikinä halutaan.",
+    "intro": {
+      "p1": "Tampereella työskentelevä taiteilija, tieteilijä, isä, yrittäjä ja stoalainen mieli, omistautunut psykologialle, neurobiologialle ja tekoälylle. Ongelmanratkaisu on oma taiteenlajinsa. Luovuus ratkaisee ongelman; tieto on jo täällä. Tietämättömyys on valinta.",
+      "p2": "Tekoäly ja lohkoketju ovat nyt tutkimuksen kärki. Tavoitteena on kokonainen ymmärrys näistä kentistä, avoimen lähdekoodin mielessä, omaa taitoa jatkuvasti uudistaen. Vuosien varrella olen kirjoittanut kurssisisältöjä ja luennoinut yliopistoille, festivaaleille ja yritysmaailmaan. Työ itsessään on tuotantoarkkitehtuuria: suvereeneja järjestelmiä, jotka yritys voi omistaa, ja koneoppimista, joka ansaitsee paikkansa ennen kuin sitä kasvatetaan.",
+      "p3": "Olen perustanut ja johtanut digitaalisia yhteisöjä. Osa niistä saavutti psykologian ja filosofian ympärillä lähes kultinomaisen aseman. Sosiaaliset liikkeet opettivat ketterän verkostoitumisen ja luovan stoalaisuuden, niitä opetan tänään."
+    },
     "workHeading": "Neljä toimeksiantoa",
     "workNote": "Avaa yksi, niin näet koko toimeksiannon.",
     "roomsLabel": "Liiketoimintastrategia ja yhteys",

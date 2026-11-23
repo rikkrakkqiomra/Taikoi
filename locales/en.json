@@ -84,7 +84,11 @@
     "kicker": "Services",
     "role": "Enterprise AI Solution Architect & CTO",
     "place": "Pirkanmaa, Finland",
-    "lede": "Four engagements: the company’s public face, a working course in judgment, a private AI on your machines, and how the company is found. Duration is written here. The fee is agreed when we begin.",
+    "intro": {
+      "p1": "A Tampere-based artist, scientist, father, entrepreneur, and stoic mind, devoted to psychology, neurobiology, and artificial intelligence. Problem-solving is an art in itself. Creativity solves problems; knowledge is already here. Ignorance is a choice.",
+      "p2": "Artificial intelligence and blockchain are the focus of the research. The aim is a whole understanding of these fields, in an open-source mind, with the skills kept continuously current. Over the years I have written course content and lectured for universities, festivals, and business. The work itself is production architecture: sovereign systems a company can own, and machine learning that earns its place before it is scaled.",
+      "p3": "I have co-founded and led digital communities. Some reached a cult-like standing around psychology and philosophy. Social movements taught the agile networking and the creative stoicism I teach today."
+    },
     "workHeading": "Four engagements",
     "workNote": "Open one for the full brief.",
     "roomsLabel": "Business Strategy and Contact",
