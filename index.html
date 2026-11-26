@@ -3,6 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta name="color-scheme" content="dark">
+  <style>html{background:#000;color-scheme:dark}</style>
   <link rel="stylesheet" href="/i18n.css">
   <script src="/i18n.js"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
@@ -94,6 +96,7 @@
       width: 100%;
       height: 100%;
       z-index: 1;
+      background: #000;
     }
 
     .glass {
@@ -1567,7 +1570,8 @@
 
     let renderer;
     try {
-      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+      renderer.setClearColor(0x000000, 1);
       renderer.setSize(window.innerWidth, window.innerHeight);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
       container.appendChild(renderer.domElement);
@@ -2246,7 +2250,10 @@
       }
     }
 
+    let entryGen = 0;
+
     function entryAnimation() {
+      const gen = ++entryGen;
       const header = document.querySelector('header');
       const footer = document.querySelector('footer');
       const nodeRail = document.getElementById('node-rail');
@@ -2269,6 +2276,7 @@
       const duration = 1500;
 
       function entryLoop() {
+        if (gen !== entryGen) return;
         const elapsed = Date.now() - startTime;
         const progress = Math.min(elapsed / duration, 1);
         const ease = 1 - Math.pow(1 - progress, 3);
@@ -2289,7 +2297,7 @@
       entryLoop();
     }
 
-    window.addEventListener('pageshow', () => {
+    window.addEventListener('pageshow', (event) => {
       isTransitioning = false;
       controls.enabled = true;
       camera.position.copy(homeCamPos);
@@ -2309,7 +2317,7 @@
         disposeWarp(warpState);
         warpState = null;
       }
-      entryAnimation();
+      if (event.persisted) entryAnimation();
     });
 
     function startTransition() {
@@ -2573,6 +2581,7 @@
       renderer.setSize(window.innerWidth, window.innerHeight);
     });
 
+    entryAnimation();
     startLoop(animate);
 
     document.addEventListener('visibilitychange', () => {

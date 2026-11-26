@@ -294,15 +294,16 @@
     }
 
     root.classList.add('i18n-pending');
-    setTimeout(show, 1500);
     var chosen = guess();
-    var probe = langPath(chosen);
-    fetch(probe, { method: 'HEAD', credentials: 'same-origin' })
-        .then(function (res) {
-            if (res.ok) redirectTo(chosen);
-            else boot(chosen, false);
-        })
-        .catch(function () {
-            boot(chosen, false);
-        });
+    var settled = false;
+    function settle(redirect) {
+        if (settled) return;
+        settled = true;
+        if (redirect) redirectTo(chosen);
+        else boot(chosen, false);
+    }
+    setTimeout(function () { settle(false); }, 1500);
+    fetch(langPath(chosen), { method: 'HEAD', credentials: 'same-origin' })
+        .then(function (res) { settle(!!res.ok); })
+        .catch(function () { settle(false); });
 })();
