@@ -208,7 +208,7 @@
   },
   "gallery": {
     "title": "Gallery",
-    "description": "Gallery: sixteen framed hangings on a black starfield, from The Elder to The Reliquary.",
+    "description": "Gallery: seventeen framed hangings on a black starfield, from The Elder to The Halo.",
     "returnTitle": "Gallery",
     "elder": {
       "alt": "The Elder",
@@ -321,6 +321,13 @@
       "quote": "The shrine does not keep a saint. It keeps the pause.",
       "p1": "Bone and conduit are one weather. The eyes are shut so the niche can remain a room.",
       "p2": "An unsigned workshop note: do not wake what was built to hold still."
+    },
+    "halo": {
+      "alt": "The Halo",
+      "title": "The Halo",
+      "quote": "The ring is not a crown. It is the thing that does not move when everything else pulls.",
+      "p1": "Violet glass keeps the smoke out of the gaze. The sword is longer than the room, so the room became a field.",
+      "p2": "An unsigned field note: the chain holds the crowd. The ring holds one."
     }
   },
   "physicalus": {

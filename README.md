@@ -13,7 +13,7 @@ A public artistic site. The home page is an interactive 3D solar system. Service
 | `branding.html` | The Work brochure. Four service sands on the starfield. Return goes to Services. |
 | `business_strategy.html` | Business Strategy. Centered scroll: vision and four instruments. Return goes to Services. |
 | `contact.html` | Contact. Enquiry form, phone, email, and LinkedIn. Return goes to Services. |
-| `gallery.html` | Sixteen framed hangings on a black starfield. |
+| `gallery.html` | Seventeen framed hangings on a black starfield. |
 | `physicalus.html` | Side hall of the gallery. Workshop photographs. |
 | `cartomancy.html` | Cartomancy. The suit of Beliefs: thirteen cards, from Imagination to Freedom. |
 | `bio.html` | Multimieli. Finnish copy, portraits, and outbound work links. |

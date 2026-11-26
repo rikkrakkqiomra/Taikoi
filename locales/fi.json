@@ -208,7 +208,7 @@
   },
   "gallery": {
     "title": "Galleria",
-    "description": "Galleria: kuusitoista kehystettyä teosta mustalla tähtikentällä, Vanhimmasta Relikvaarioon.",
+    "description": "Galleria: seitsemäntoista kehystettyä teosta mustalla tähtikentällä, Vanhimmasta Sädekehään.",
     "returnTitle": "Galleria",
     "elder": {
       "alt": "Vanhin",
@@ -321,6 +321,13 @@
       "quote": "Pyhäkkö ei säilytä pyhimystä. Se säilyttää pysähdyksen.",
       "p1": "Luu ja kanava ovat yksi sää. Silmät ovat kiinni, jotta syvennys voi pysyä huoneena.",
       "p2": "Allekirjoittamaton pajamerkintä: älä herätä sitä, mikä rakennettiin pysymään paikallaan."
+    },
+    "halo": {
+      "alt": "Sädekehä",
+      "title": "Sädekehä",
+      "quote": "Rengas ei ole kruunu. Se on se, mikä ei liiku, kun kaikki muu vetää.",
+      "p1": "Violetti lasi pitää savun poissa katseesta. Miekka on pitempi kuin huone, joten huoneesta tuli kenttä.",
+      "p2": "Allekirjoittamaton kenttämerkintä: ketju pitää joukon. Rengas pitää yhden."
     }
   },
   "physicalus": {

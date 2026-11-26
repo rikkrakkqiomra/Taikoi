@@ -7,7 +7,7 @@
     <script src="/i18n.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="gallery.title">Galleria</title>
-    <meta name="description" data-i18n-attr="content:gallery.description" content="Galleria: kuusitoista kehystettyä teosta mustalla tähtikentällä, Vanhimmasta Relikvaarioon.">
+    <meta name="description" data-i18n-attr="content:gallery.description" content="Galleria: seitsemäntoista kehystettyä teosta mustalla tähtikentällä, Vanhimmasta Sädekehään.">
     <meta name="theme-color" content="#c48c40">
     <link rel="canonical" href="https://taikoi.netlify.app/fi/gallery.html">
     <link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/gallery.html">
@@ -16,12 +16,12 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Aivoinko">
     <meta property="og:title" data-i18n-attr="content:gallery.title" content="Galleria">
-    <meta property="og:description" data-i18n-attr="content:gallery.description" content="Galleria: kuusitoista kehystettyä teosta mustalla tähtikentällä, Vanhimmasta Relikvaarioon.">
+    <meta property="og:description" data-i18n-attr="content:gallery.description" content="Galleria: seitsemäntoista kehystettyä teosta mustalla tähtikentällä, Vanhimmasta Sädekehään.">
     <meta property="og:url" content="https://taikoi.netlify.app/fi/gallery.html">
     <meta property="og:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" data-i18n-attr="content:gallery.title" content="Galleria">
-    <meta name="twitter:description" data-i18n-attr="content:gallery.description" content="Galleria: kuusitoista kehystettyä teosta mustalla tähtikentällä, Vanhimmasta Relikvaarioon.">
+    <meta name="twitter:description" data-i18n-attr="content:gallery.description" content="Galleria: seitsemäntoista kehystettyä teosta mustalla tähtikentällä, Vanhimmasta Sädekehään.">
     <meta name="twitter:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <link rel="apple-touch-icon" href="AiiAold.8dde82cb.jpg">
     <link rel="preconnect" href="https://unpkg.com" crossorigin>
@@ -355,6 +355,10 @@
             filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.62)) drop-shadow(0 0 18px rgba(168, 176, 184, 0.22));
         }
 
+        .hanging--halo img {
+            filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.62)) drop-shadow(0 0 14px rgba(168, 132, 72, 0.16));
+        }
+
         .hanging--grown img {
             filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.58)) drop-shadow(0 0 16px rgba(160, 110, 50, 0.2)) drop-shadow(0 0 10px rgba(212, 160, 70, 0.12));
         }
@@ -512,7 +516,8 @@
             .hanging--large,
             .hanging--square,
             .hanging--monument,
-            .hanging--pewter {
+            .hanging--pewter,
+            .hanging--halo {
                 position: relative;
                 z-index: 1;
                 flex: 0 0 auto;
@@ -751,6 +756,18 @@
                 <p data-i18n="gallery.reliquary.p2">Allekirjoittamaton pajamerkintä: älä herätä sitä, mikä rakennettiin pysymään paikallaan.</p>
             </article>
         </section>
+        <section class="bay bay--left">
+            <figure class="hanging hanging--large hanging--halo">
+                <img src="art/hangings/25-halo-steel.png" alt="Sädekehä" data-i18n-attr="alt:gallery.halo.alt" width="708" height="942" loading="lazy" decoding="async">
+            </figure>
+            <article class="plaque">
+                <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                <h2 data-i18n="gallery.halo.title">Sädekehä</h2>
+                <blockquote data-i18n="gallery.halo.quote">Rengas ei ole kruunu. Se on se, mikä ei liiku, kun kaikki muu vetää.</blockquote>
+                <p data-i18n="gallery.halo.p1">Violetti lasi pitää savun poissa katseesta. Miekka on pitempi kuin huone, joten huoneesta tuli kenttä.</p>
+                <p data-i18n="gallery.halo.p2">Allekirjoittamaton kenttämerkintä: ketju pitää joukon. Rengas pitää yhden.</p>
+            </article>
+        </section>
         <footer class="hall-closer" id="realm-title">
             <h1 data-i18n="gallery.returnTitle">Galleria</h1>
             <button type="button" id="hall-return" class="hall-return" data-i18n-attr="aria-label:seal.return" aria-label="Palaa">
@@ -866,6 +883,10 @@
             pewterReliquary: {
                 src: 'art/frames/pewter-reliquary.png',
                 inset: { top: '21.4%', right: '19.6%', bottom: '16.9%', left: '19.8%' }
+            },
+            steelHalo: {
+                src: 'art/frames/steel-halo.png',
+                inset: { top: '6.1%', right: '7.9%', bottom: '6.1%', left: '7.9%' }
             }
         };
 
@@ -965,6 +986,12 @@
                 altKey: 'gallery.reliquary.alt',
                 alt: 'Relikvaario',
                 frame: 'pewterReliquary'
+            },
+            {
+                src: 'art/hangings/25-halo-steel.png',
+                altKey: 'gallery.halo.alt',
+                alt: 'Sädekehä',
+                frame: 'steelHalo'
             }
         ];
 
