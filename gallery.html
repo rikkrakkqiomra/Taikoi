@@ -504,7 +504,7 @@
             max-height: min(88vh, 44rem);
             max-height: min(88dvh, 44rem);
             overflow: auto;
-            background: rgba(16, 12, 8, 0.94);
+            background: #100c08;
             border: 1px solid rgba(196, 140, 64, 0.48);
             box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
             color: #efe6d4;
@@ -530,8 +530,12 @@
 
         .order-lines li {
             display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 0.35rem 0.8rem;
+            grid-template-columns: minmax(0, 1fr) auto;
+            grid-template-areas:
+                "name remove"
+                "meta remove";
+            gap: 0.2rem 1rem;
+            align-items: center;
             padding-bottom: 0.7rem;
             border-bottom: 1px solid rgba(196, 140, 64, 0.22);
         }
@@ -547,15 +551,82 @@
             color: #f3ead8;
         }
 
+        .order-line-name {
+            grid-area: name;
+        }
+
         .order-line-meta {
-            grid-column: 1;
+            grid-area: meta;
             font-family: 'Cormorant Garamond', serif;
             color: #d8cfbe;
         }
 
         .order-remove {
-            grid-row: 1 / span 2;
-            align-self: center;
+            grid-area: remove;
+            width: auto;
+            justify-self: end;
+            white-space: nowrap;
+            padding: 0.4rem 0.75rem;
+        }
+
+        @media (min-width: 769px) {
+            html.order-ready #order-sheet.is-open {
+                padding: 2.5rem;
+            }
+
+            .order-panel {
+                width: min(52rem, 92vw);
+                max-height: min(86vh, 56rem);
+                padding: 2.1rem 2.3rem 2.3rem;
+            }
+
+            .order-panel h2 {
+                font-size: 0.92rem;
+                margin-bottom: 1.25rem;
+            }
+
+            .order-panel label {
+                font-size: 0.62rem;
+                gap: 0.42rem;
+            }
+
+            .order-panel select,
+            .order-panel input,
+            .order-panel textarea {
+                font-size: 1.28rem;
+                padding: 0.7rem 0.8rem;
+            }
+
+            .order-line-name,
+            .order-sum,
+            .order-done p,
+            .order-panel .consent {
+                font-size: 1.35rem;
+            }
+
+            .order-line-meta {
+                font-size: 1.15rem;
+            }
+
+            .order-lines {
+                gap: 1rem;
+                margin-bottom: 1.1rem;
+            }
+
+            .order-actions {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.85rem;
+            }
+
+            .order-form {
+                grid-template-columns: 1fr 1fr;
+                column-gap: 1rem;
+                row-gap: 0.95rem;
+            }
+
+            .order-form > :not(label[for="order-postal"]):not(label[for="order-city"]) {
+                grid-column: 1 / -1;
+            }
         }
 
         .order-sum {
