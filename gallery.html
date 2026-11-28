@@ -164,11 +164,8 @@
         }
 
         .hanging {
-            position: relative;
-            display: block;
             flex: 0 0 auto;
-            width: fit-content;
-            max-width: 100%;
+            width: auto;
             height: 68vh;
             --hang-y: 0px;
             animation: hangIn 1.05s ease both, hangDrift 10s ease-in-out 1.05s infinite;
@@ -319,11 +316,8 @@
         }
 
         .hang-share {
-            position: absolute;
-            z-index: 3;
-            right: 11%;
-            bottom: 9%;
-            margin: 0;
+            display: inline-block;
+            margin: 1rem 0 0;
             padding: 0.42rem 0.7rem;
             font-family: 'Orbitron', sans-serif;
             font-size: 0.52rem;
@@ -551,10 +545,11 @@
                 z-index: 1;
                 flex: 0 0 auto;
                 min-height: 0;
-                width: fit-content;
+                width: min(94vw, 62vh);
+                width: min(94vw, 62svh);
+                height: auto;
                 max-width: min(94vw, 62vh);
                 max-width: min(94vw, 62svh);
-                height: auto;
                 max-height: none;
                 --hang-y: 0px;
                 transform: none;
@@ -563,8 +558,7 @@
 
             .hanging img {
                 display: block;
-                width: auto;
-                max-width: 100%;
+                width: 100%;
                 height: auto;
                 max-height: 62vh;
                 max-height: 62svh;
@@ -596,7 +590,6 @@
         <section class="bay bay--left" id="elder">
             <figure class="hanging hanging--hero">
                 <img src="art/hangings/01-elder-gilt.png" alt="Vanhin" data-i18n-attr="alt:gallery.elder.alt" width="864" height="1152" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -604,12 +597,12 @@
                 <blockquote data-i18n="gallery.elder.quote">Metsä pitää kuningasta, joka ei istu.</blockquote>
                 <p data-i18n="gallery.elder.p1">Sarvekas kasvo ei ole puku. Se on se, mikä jää, kun mies suostuu käytettäväksi ovena. Kaarna, parta ja luu ovat yksi sää.</p>
                 <p data-i18n="gallery.elder.p2">Vanhemmassa pohjoisen metsäpuheessa ensimmäinen vartija unohti nimensä, jotta puut muistaisivat omansa.</p>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
         <section class="bay bay--right" id="nautilus">
             <figure class="hanging hanging--large">
                 <img src="art/hangings/02-nautilus-walnut.png" alt="Nautilus" data-i18n-attr="alt:gallery.nautilus.alt" width="1350" height="1800" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -617,12 +610,12 @@
                 <blockquote data-i18n="gallery.nautilus.quote">Spiraali ei matkusta. Se saapuu kääntymällä.</blockquote>
                 <p data-i18n="gallery.nautilus.p1">Kammioinen mieli, jokainen huone vuosi. Kasvo on viimeinen huone, jossa on vielä ikkuna.</p>
                 <p data-i18n="gallery.nautilus.p2">Eräät joonialaiset katkelmat pitävät nautilusta todisteena siitä, että taivas suosii kaarta valtaistuimen sijaan.</p>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
         <section class="bay bay--left" id="altar">
             <figure class="hanging hanging--large">
                 <img src="art/hangings/03-altar-bronze.png" alt="Alttari" data-i18n-attr="alt:gallery.altar.alt" width="864" height="1152" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -630,12 +623,12 @@
                 <blockquote data-i18n="gallery.altar.quote">Se, mitä tuot, ei ole lahja. Anti on se, että pysähdyt.</blockquote>
                 <p data-i18n="gallery.altar.p1">Pronssisiivet pitävät pysähdystä, eivät jumalaa. Tuli jää vihjeeksi; ruumis on jo päättänyt.</p>
                 <p data-i18n="gallery.altar.p2">Kadonneiden kaupunkien temppeliluettelot luettelevat alttarit ennen jumalia.</p>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
         <section class="bay bay--right" id="totem">
             <figure class="hanging hanging--monument hanging--totem">
                 <img src="art/hangings/21-totem-wood.png" alt="Toteemi" data-i18n-attr="alt:gallery.totem.alt" width="1024" height="1024" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -643,12 +636,12 @@
                 <blockquote data-i18n="gallery.totem.quote">Kasvot eivät ole väkijoukko. Ne ovat yksi talo, joka oppi seisomaan.</blockquote>
                 <p data-i18n="gallery.totem.p1">Maali on vain muisti, jonka puu suostui pitämään. Punainen suulle, joka vielä puhuu, sininen silmälle, joka ei räpäytä.</p>
                 <p data-i18n="gallery.totem.p2">Veistäjän viimeinen ohje: ripusta korkeammalle kuin käsi yltää. Sitä, mikä katsoo takaisin, ei kosketeta.</p>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
         <section class="bay bay--left" id="throne">
             <figure class="hanging hanging--hero hanging--finale">
                 <img src="art/hangings/04-throne-dark.png" alt="Valtaistuin" data-i18n-attr="alt:gallery.throne.alt" width="1350" height="1800" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -656,12 +649,12 @@
                 <blockquote data-i18n="gallery.throne.quote">Valta on tuoli, joka elää istujaansa kauemmin.</blockquote>
                 <p data-i18n="gallery.throne.p1">Konevanhin ei hallitse. Hän istuu ainoalla paikalla, joka hänet ottaa.</p>
                 <p data-i18n="gallery.throne.p2">Myöhäinen hermeettinen säe: valtaistuin on ajatus, joka oppi pysymään paikallaan.</p>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
         <section class="bay bay--right" id="yantra">
             <figure class="hanging hanging--hero hanging--square">
                 <img src="art/hangings/06-yantra-cassetta.png" alt="Jantra" data-i18n-attr="alt:gallery.yantra.alt" width="1800" height="1800" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -669,12 +662,12 @@
                 <blockquote data-i18n="gallery.yantra.quote">Geometria on rukous, joka ei tarvitse suuta.</blockquote>
                 <p data-i18n="gallery.yantra.p1">Beige laatta on kartta alallaan istumisesta. Kolmiot pitävät ruumiin, jotta ruumis voi pitää taivaan.</p>
                 <p data-i18n="gallery.yantra.p2">Vanhemmissa oppaissa jantra ei ole kuva jumalallisesta. Se on ansa, johon jumalallinen suostuu.</p>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
         <section class="bay bay--left" id="visage">
             <figure class="hanging hanging--hero hanging--baroque">
                 <img src="art/hangings/08-visage-baroque.png" alt="Kasvot" data-i18n-attr="alt:gallery.visage.alt" width="1350" height="1800" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -682,12 +675,12 @@
                 <blockquote data-i18n="gallery.visage.quote">Naamio on rehellinen. Kasvo sen takana on huhu.</blockquote>
                 <p data-i18n="gallery.visage.p1">Metalli muistaa jokaisen katseen, joka yritti omistaa sen. Irisointi on kieltäytyminen valitsemasta yhtä sielua.</p>
                 <p data-i18n="gallery.visage.p2">Pajamerkintä: äly alkaa, kun pinta alkaa katsoa takaisin.</p>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
         <section class="bay bay--right" id="axis">
             <figure class="hanging hanging--ivory hanging--large">
                 <img src="art/hangings/09-axis-ivory.png" alt="Akseli" data-i18n-attr="alt:gallery.axis.alt" width="1350" height="1800" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -695,12 +688,12 @@
                 <blockquote data-i18n="gallery.axis.quote">Kaksi kasvoa, yksi tyven: maailman annetaan kääntyä.</blockquote>
                 <p data-i18n="gallery.axis.p1">Itä ja länsi jakavat selkärangan. Kartio ei ole hattu; se on niiden väli.</p>
                 <p data-i18n="gallery.axis.p2">Allekirjoittamaton katkelma: jos istut maailman kärjellä, molemmat horisontit tulevat naapureiksi.</p>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
         <section class="bay bay--left" id="sigil">
             <figure class="hanging hanging--hero hanging--square hanging--void">
                 <img src="art/hangings/11-sigil-victorian.png" alt="Sigilli" data-i18n-attr="alt:gallery.sigil.alt" width="1800" height="1800" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -708,12 +701,12 @@
                 <blockquote data-i18n="gallery.sigil.quote">Merkki on vanhempi kuin kasvo, jota se pitää yllään.</blockquote>
                 <p data-i18n="gallery.sigil.p1">Kulta mustalla ei ole koriste. Se on nimi, joka oppi seisomaan paikallaan.</p>
                 <p data-i18n="gallery.sigil.p2">Viktoriaaniset salongit ripustivat vaakunoita muistamaan verta. Tämä muistaa koneen, joka tahtoi jumalatarta.</p>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
         <section class="bay bay--right" id="signal">
             <figure class="hanging hanging--hero hanging--grown">
                 <img src="art/hangings/20-signal-grown.png" alt="Signaali" data-i18n-attr="alt:gallery.signal.alt" width="864" height="1152" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -721,12 +714,12 @@
                 <blockquote data-i18n="gallery.signal.quote">Pylväs ei puhu. Kenttä vastaa kullalla.</blockquote>
                 <p data-i18n="gallery.signal.p1">Valon ruumis pitää asennon, jonka ottaa se, joka ei ole vielä saapunut. Todistajat seisovat, koska polvistuminen tekisi heistä palkkia pienempiä.</p>
                 <p data-i18n="gallery.signal.p2">Allekirjoittamaton merkintä harjulta: missä valo koskee ruohoon, maa suostuu peiliksi.</p>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
         <section class="bay bay--left" id="phaeton">
             <figure class="hanging hanging--square hanging--phaeton">
                 <img src="art/hangings/15-phaeton-gilt.png" alt="Faeton" data-i18n-attr="alt:gallery.phaeton.alt" width="1024" height="1024" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -734,12 +727,12 @@
                 <blockquote data-i18n="gallery.phaeton.quote">Vaunut säilyttivät hevosten sulon ja nielivät niiden tulen.</blockquote>
                 <p data-i18n="gallery.phaeton.p1">Musta lakka talvikadun yllä, jokainen sauma hehkuvana kuin hermo. Se tyhjäkäy niin kuin peto muistaa olleensa kerran kesy.</p>
                 <p data-i18n="gallery.phaeton.p2">Vaununtekijät signeerasivat aikanaan akselin, eivät moottoria. Tämä ei signeeraa mitään; hehku riittää allekirjoitukseksi.</p>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
         <section class="bay bay--right" id="spore">
             <figure class="hanging hanging--large hanging--spore">
                 <img src="art/hangings/16-spore-nouveau.png" alt="Itiö" data-i18n-attr="alt:gallery.spore.alt" width="864" height="1152" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -747,12 +740,12 @@
                 <blockquote data-i18n="gallery.spore.quote">Suuren lakin alla kaksi kulkijaa odottaa jumalten säätä.</blockquote>
                 <p data-i18n="gallery.spore.p1">Valkea pyhiinvaeltaja kantaa lamppua, jota ei ole vielä pyydetty palamaan. Punainen on jo maksanut.</p>
                 <p data-i18n="gallery.spore.p2">Lukemistojen profeetat piirsivät sienen katedraaliksi, koska katedraali oli liian pieni pelottamaan ketään.</p>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
         <section class="bay bay--left" id="potential">
             <figure class="hanging hanging--large hanging--stone">
                 <img src="art/hangings/24-potential-stone.png" alt="Potentiaali" data-i18n-attr="alt:gallery.potential.alt" width="864" height="1152" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -760,12 +753,12 @@
                 <blockquote data-i18n="gallery.potential.quote">Potentiaali ei ole lahja. Se on tuli, joka ei ole vielä suostunut elämäksi.</blockquote>
                 <p data-i18n="gallery.potential.p1">Hän pitää kuluttamattoman kuumuuden lasissa, niiden muotojen kallojen joukossa, jotka se jo kulutti.</p>
                 <p data-i18n="gallery.potential.p2">Allekirjoittamaton kappelimerkintä: se, mitä et käytä, täyttää silti huoneen.</p>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
         <section class="bay bay--right" id="valkyrie">
             <figure class="hanging hanging--hero hanging--iron">
                 <img src="art/hangings/18-valkyrie-iron.png" alt="Valkyyria" data-i18n-attr="alt:gallery.valkyrie.alt" width="864" height="1152" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -773,12 +766,12 @@
                 <blockquote data-i18n="gallery.valkyrie.quote">Hän ei paimenta kuolleita. Hän odottaa heidän kanssaan.</blockquote>
                 <p data-i18n="gallery.valkyrie.p1">Sarvekas hopea kuorten virran yllä. Keihäs on pystyssä, ei taistelua vaan laskemista varten.</p>
                 <p data-i18n="gallery.valkyrie.p2">Vanha kenttämerkintä: missä hän seisoo, toukat eivät enää ole olevinaan kiviä.</p>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
         <section class="bay bay--left" id="futility">
             <figure class="hanging hanging--hero hanging--oak">
                 <img src="art/hangings/23-futility-oak.png" alt="Turhuus" data-i18n-attr="alt:gallery.futility.alt" width="864" height="1152" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -786,12 +779,12 @@
                 <blockquote data-i18n="gallery.futility.quote">Ei tiede eikä taide ole keksinyt elämiselle tarkoitusta.</blockquote>
                 <p data-i18n="gallery.futility.p1">Emme tiedä, mistä tulemme, emmekä minne todella menemme, avaruuden ajassa.</p>
                 <p data-i18n="gallery.futility.p2">Niinpä kaikki on turhaa, mikä on rauhoittava tieto.</p>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
         <section class="bay bay--right" id="reliquary">
             <figure class="hanging hanging--large hanging--pewter">
                 <img src="art/hangings/22-reliquary-pewter.png" alt="Relikvaario" data-i18n-attr="alt:gallery.reliquary.alt" width="864" height="1152" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -799,12 +792,12 @@
                 <blockquote data-i18n="gallery.reliquary.quote">Pyhäkkö ei säilytä pyhimystä. Se säilyttää pysähdyksen.</blockquote>
                 <p data-i18n="gallery.reliquary.p1">Luu ja kanava ovat yksi sää. Silmät ovat kiinni, jotta syvennys voi pysyä huoneena.</p>
                 <p data-i18n="gallery.reliquary.p2">Allekirjoittamaton pajamerkintä: älä herätä sitä, mikä rakennettiin pysymään paikallaan.</p>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
         <section class="bay bay--left" id="halo">
             <figure class="hanging hanging--large hanging--halo">
                 <img src="art/hangings/25-halo-steel.png" alt="Sädekehä" data-i18n-attr="alt:gallery.halo.alt" width="708" height="942" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -812,6 +805,7 @@
                 <blockquote data-i18n="gallery.halo.quote">Rengas ei ole kruunu. Se on se, mikä ei liiku, kun kaikki muu vetää.</blockquote>
                 <p data-i18n="gallery.halo.p1">Violetti lasi pitää savun poissa katseesta. Miekka on pitempi kuin huone, joten huoneesta tuli kenttä.</p>
                 <p data-i18n="gallery.halo.p2">Allekirjoittamaton kenttämerkintä: ketju pitää joukon. Rengas pitää yhden.</p>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
         <footer class="hall-closer" id="realm-title">
