@@ -448,6 +448,7 @@
                 min-height: 100%;
                 overflow-x: clip;
                 overflow-y: auto;
+                overflow-anchor: none;
                 -webkit-text-size-adjust: 100%;
                 text-size-adjust: 100%;
             }
@@ -478,6 +479,7 @@
                 min-height: 100vh;
                 min-height: 100dvh;
                 overflow: visible;
+                overflow-anchor: none;
                 padding: 0 3vw 0;
                 touch-action: pan-y;
                 -webkit-text-size-adjust: 100%;
@@ -587,7 +589,7 @@
         <header>
             <img src="AiiAold.8dde82cb.jpg" alt="Aivoinkon logo" data-i18n-attr="alt:common.logoAlt" width="120" height="120" fetchpriority="high" decoding="async">
         </header>
-        <section class="bay bay--left" id="elder">
+        <section class="bay bay--left" data-work="elder">
             <figure class="hanging hanging--hero">
                 <img src="art/hangings/01-elder-gilt.png" alt="Vanhin" data-i18n-attr="alt:gallery.elder.alt" width="864" height="1152" decoding="async">
             </figure>
@@ -600,7 +602,7 @@
                 <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
-        <section class="bay bay--right" id="nautilus">
+        <section class="bay bay--right" data-work="nautilus">
             <figure class="hanging hanging--large">
                 <img src="art/hangings/02-nautilus-walnut.png" alt="Nautilus" data-i18n-attr="alt:gallery.nautilus.alt" width="1350" height="1800" loading="lazy" decoding="async">
             </figure>
@@ -613,7 +615,7 @@
                 <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
-        <section class="bay bay--left" id="altar">
+        <section class="bay bay--left" data-work="altar">
             <figure class="hanging hanging--large">
                 <img src="art/hangings/03-altar-bronze.png" alt="Alttari" data-i18n-attr="alt:gallery.altar.alt" width="864" height="1152" loading="lazy" decoding="async">
             </figure>
@@ -626,7 +628,7 @@
                 <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
-        <section class="bay bay--right" id="totem">
+        <section class="bay bay--right" data-work="totem">
             <figure class="hanging hanging--monument hanging--totem">
                 <img src="art/hangings/21-totem-wood.png" alt="Toteemi" data-i18n-attr="alt:gallery.totem.alt" width="1024" height="1024" loading="lazy" decoding="async">
             </figure>
@@ -639,7 +641,7 @@
                 <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
-        <section class="bay bay--left" id="throne">
+        <section class="bay bay--left" data-work="throne">
             <figure class="hanging hanging--hero hanging--finale">
                 <img src="art/hangings/04-throne-dark.png" alt="Valtaistuin" data-i18n-attr="alt:gallery.throne.alt" width="1350" height="1800" loading="lazy" decoding="async">
             </figure>
@@ -652,7 +654,7 @@
                 <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
-        <section class="bay bay--right" id="yantra">
+        <section class="bay bay--right" data-work="yantra">
             <figure class="hanging hanging--hero hanging--square">
                 <img src="art/hangings/06-yantra-cassetta.png" alt="Jantra" data-i18n-attr="alt:gallery.yantra.alt" width="1800" height="1800" loading="lazy" decoding="async">
             </figure>
@@ -665,7 +667,7 @@
                 <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
-        <section class="bay bay--left" id="visage">
+        <section class="bay bay--left" data-work="visage">
             <figure class="hanging hanging--hero hanging--baroque">
                 <img src="art/hangings/08-visage-baroque.png" alt="Kasvot" data-i18n-attr="alt:gallery.visage.alt" width="1350" height="1800" loading="lazy" decoding="async">
             </figure>
@@ -678,7 +680,7 @@
                 <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
-        <section class="bay bay--right" id="axis">
+        <section class="bay bay--right" data-work="axis">
             <figure class="hanging hanging--ivory hanging--large">
                 <img src="art/hangings/09-axis-ivory.png" alt="Akseli" data-i18n-attr="alt:gallery.axis.alt" width="1350" height="1800" loading="lazy" decoding="async">
             </figure>
@@ -691,7 +693,7 @@
                 <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
-        <section class="bay bay--left" id="sigil">
+        <section class="bay bay--left" data-work="sigil">
             <figure class="hanging hanging--hero hanging--square hanging--void">
                 <img src="art/hangings/11-sigil-victorian.png" alt="Sigilli" data-i18n-attr="alt:gallery.sigil.alt" width="1800" height="1800" loading="lazy" decoding="async">
             </figure>
@@ -704,7 +706,7 @@
                 <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
-        <section class="bay bay--right" id="signal">
+        <section class="bay bay--right" data-work="signal">
             <figure class="hanging hanging--hero hanging--grown">
                 <img src="art/hangings/20-signal-grown.png" alt="Signaali" data-i18n-attr="alt:gallery.signal.alt" width="864" height="1152" loading="lazy" decoding="async">
             </figure>
@@ -717,7 +719,7 @@
                 <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
-        <section class="bay bay--left" id="phaeton">
+        <section class="bay bay--left" data-work="phaeton">
             <figure class="hanging hanging--square hanging--phaeton">
                 <img src="art/hangings/15-phaeton-gilt.png" alt="Faeton" data-i18n-attr="alt:gallery.phaeton.alt" width="1024" height="1024" loading="lazy" decoding="async">
             </figure>
@@ -730,7 +732,7 @@
                 <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
-        <section class="bay bay--right" id="spore">
+        <section class="bay bay--right" data-work="spore">
             <figure class="hanging hanging--large hanging--spore">
                 <img src="art/hangings/16-spore-nouveau.png" alt="Itiö" data-i18n-attr="alt:gallery.spore.alt" width="864" height="1152" loading="lazy" decoding="async">
             </figure>
@@ -743,7 +745,7 @@
                 <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
-        <section class="bay bay--left" id="potential">
+        <section class="bay bay--left" data-work="potential">
             <figure class="hanging hanging--large hanging--stone">
                 <img src="art/hangings/24-potential-stone.png" alt="Potentiaali" data-i18n-attr="alt:gallery.potential.alt" width="864" height="1152" loading="lazy" decoding="async">
             </figure>
@@ -756,7 +758,7 @@
                 <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
-        <section class="bay bay--right" id="valkyrie">
+        <section class="bay bay--right" data-work="valkyrie">
             <figure class="hanging hanging--hero hanging--iron">
                 <img src="art/hangings/18-valkyrie-iron.png" alt="Valkyyria" data-i18n-attr="alt:gallery.valkyrie.alt" width="864" height="1152" loading="lazy" decoding="async">
             </figure>
@@ -769,7 +771,7 @@
                 <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
-        <section class="bay bay--left" id="futility">
+        <section class="bay bay--left" data-work="futility">
             <figure class="hanging hanging--hero hanging--oak">
                 <img src="art/hangings/23-futility-oak.png" alt="Turhuus" data-i18n-attr="alt:gallery.futility.alt" width="864" height="1152" loading="lazy" decoding="async">
             </figure>
@@ -782,7 +784,7 @@
                 <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
-        <section class="bay bay--right" id="reliquary">
+        <section class="bay bay--right" data-work="reliquary">
             <figure class="hanging hanging--large hanging--pewter">
                 <img src="art/hangings/22-reliquary-pewter.png" alt="Relikvaario" data-i18n-attr="alt:gallery.reliquary.alt" width="864" height="1152" loading="lazy" decoding="async">
             </figure>
@@ -795,7 +797,7 @@
                 <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
-        <section class="bay bay--left" id="halo">
+        <section class="bay bay--left" data-work="halo">
             <figure class="hanging hanging--large hanging--halo">
                 <img src="art/hangings/25-halo-steel.png" alt="Sädekehä" data-i18n-attr="alt:gallery.halo.alt" width="708" height="942" loading="lazy" decoding="async">
             </figure>
@@ -1064,22 +1066,36 @@
         }
         function bayFromHash() {
             const id = decodeURIComponent((window.location.hash || '').replace(/^#/, ''));
-            if (!id) return null;
-            const bay = document.getElementById(id);
-            if (!bay || !bay.classList.contains('bay')) return null;
-            return bay;
+            if (!id || !/^[a-z0-9-]+$/i.test(id)) return null;
+            const bay = hall.querySelector('.bay[data-work="' + id + '"]');
+            return bay || null;
         }
         let focusIndex = readFocusQuery();
+        let hallUserMoved = false;
+        let pinningHall = false;
+        function onHallScroll() {
+            if (!pinningHall) hallUserMoved = true;
+        }
+        window.addEventListener('scroll', onHallScroll, { passive: true });
+        hall.addEventListener('scroll', onHallScroll, { passive: true });
+        try {
+            history.scrollRestoration = 'manual';
+        } catch (err) {
+            /* file: or sandboxed history */
+        }
         function scrollHallToFocus() {
+            if (hallUserMoved) return;
             const bay = bayFromHash() || (focusIndex > 0 ? bays[focusIndex] : null);
             if (!bay) return;
+            pinningHall = true;
             if (isMobile()) {
                 const top = bay.getBoundingClientRect().top + window.scrollY;
                 window.scrollTo(0, Math.max(0, top));
-                return;
+            } else {
+                const top = bay.offsetTop - Math.max(0, (hall.clientHeight - bay.offsetHeight) / 2);
+                hall.scrollTop = Math.max(0, top);
             }
-            const top = bay.offsetTop - Math.max(0, (hall.clientHeight - bay.offsetHeight) / 2);
-            hall.scrollTop = Math.max(0, top);
+            pinningHall = false;
         }
         function shareText(key, fallback) {
             const api = window.__aivoinkoI18n;
@@ -1130,8 +1146,9 @@
             const button = event.target.closest('.hang-share');
             if (!button) return;
             const bay = button.closest('.bay');
-            if (!bay || !bay.id) return;
-            const url = workShareUrl(bay.id);
+            const work = bay && bay.getAttribute('data-work');
+            if (!work) return;
+            const url = workShareUrl(work);
             const titleEl = bay.querySelector('h2');
             const title = titleEl && titleEl.textContent ? titleEl.textContent.trim() : document.title;
             if (navigator.share) {
@@ -1468,8 +1485,11 @@
             header.style.opacity = '0';
             titleEl.style.opacity = '0';
             hall.style.opacity = '';
+            pinningHall = true;
             hall.scrollTop = 0;
             window.scrollTo(0, 0);
+            pinningHall = false;
+            hallUserMoved = false;
             camera.fov = 92;
             camera.updateProjectionMatrix();
             pointMesh.visible = false;
@@ -1557,7 +1577,6 @@
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
-            applyHallLayout();
         });
     </script>
 </body>
