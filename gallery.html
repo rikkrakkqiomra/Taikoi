@@ -7,7 +7,7 @@
     <script src="/i18n.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="gallery.title">Galleria</title>
-    <meta name="description" data-i18n-attr="content:gallery.description" content="Galleria: seitsemäntoista kehystettyä teosta mustalla tähtikentällä, Vanhimmasta Sädekehään.">
+    <meta name="description" data-i18n-attr="content:gallery.description" content="Galleria: kahdeksantoista kehystettyä teosta mustalla tähtikentällä, Vanhimmasta Liittoon.">
     <meta name="theme-color" content="#c48c40">
     <link rel="canonical" href="https://taikoi.netlify.app/fi/gallery.html">
     <link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/gallery.html">
@@ -16,12 +16,12 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Aivoinko">
     <meta property="og:title" data-i18n-attr="content:gallery.title" content="Galleria">
-    <meta property="og:description" data-i18n-attr="content:gallery.description" content="Galleria: seitsemäntoista kehystettyä teosta mustalla tähtikentällä, Vanhimmasta Sädekehään.">
+    <meta property="og:description" data-i18n-attr="content:gallery.description" content="Galleria: kahdeksantoista kehystettyä teosta mustalla tähtikentällä, Vanhimmasta Liittoon.">
     <meta property="og:url" content="https://taikoi.netlify.app/fi/gallery.html">
     <meta property="og:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" data-i18n-attr="content:gallery.title" content="Galleria">
-    <meta name="twitter:description" data-i18n-attr="content:gallery.description" content="Galleria: seitsemäntoista kehystettyä teosta mustalla tähtikentällä, Vanhimmasta Sädekehään.">
+    <meta name="twitter:description" data-i18n-attr="content:gallery.description" content="Galleria: kahdeksantoista kehystettyä teosta mustalla tähtikentällä, Vanhimmasta Liittoon.">
     <meta name="twitter:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <link rel="apple-touch-icon" href="AiiAold.8dde82cb.jpg">
     <link rel="preconnect" href="https://unpkg.com" crossorigin>
@@ -715,6 +715,10 @@
             filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.62)) drop-shadow(0 0 14px rgba(168, 132, 72, 0.16));
         }
 
+        .hanging--covenant img {
+            filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.62)) drop-shadow(0 0 16px rgba(196, 120, 48, 0.18));
+        }
+
         .hanging--grown img {
             filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.58)) drop-shadow(0 0 16px rgba(160, 110, 50, 0.2)) drop-shadow(0 0 10px rgba(212, 160, 70, 0.12));
         }
@@ -875,7 +879,8 @@
             .hanging--square,
             .hanging--monument,
             .hanging--pewter,
-            .hanging--halo {
+            .hanging--halo,
+            .hanging--covenant {
                 position: relative;
                 z-index: 1;
                 flex: 0 0 auto;
@@ -1143,6 +1148,19 @@
                 <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </article>
         </section>
+        <section class="bay bay--right" data-work="covenant">
+            <figure class="hanging hanging--large hanging--covenant">
+                <img src="art/hangings/26-covenant-steel.png" alt="Liitto" data-i18n-attr="alt:gallery.covenant.alt" width="764" height="1106" loading="lazy" decoding="async">
+            </figure>
+            <article class="plaque">
+                <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+                <h2 data-i18n="gallery.covenant.title">Liitto</h2>
+                <blockquote data-i18n="gallery.covenant.quote">Käsi ei kesytä. Se muistaa, kenen jalka tämä on.</blockquote>
+                <p data-i18n="gallery.covenant.p1">Teräs pitää aavikon poissa iholta. Silmä palaa, jotta toinen voi seistä sen alla.</p>
+                <p data-i18n="gallery.covenant.p2">Allekirjoittamaton kenttämerkintä: peto ei ole ratsu. Se on se, joka jäi.</p>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
+            </article>
+        </section>
         <footer class="hall-closer" id="realm-title">
             <h1 data-i18n="gallery.returnTitle">Galleria</h1>
             <button type="button" id="hall-return" class="hall-return" data-i18n-attr="aria-label:seal.return" aria-label="Palaa">
@@ -1212,6 +1230,7 @@
                             <option value="futility" data-i18n="gallery.futility.title">Turhuus</option>
                             <option value="reliquary" data-i18n="gallery.reliquary.title">Relikvaario</option>
                             <option value="halo" data-i18n="gallery.halo.title">Sädekehä</option>
+                            <option value="covenant" data-i18n="gallery.covenant.title">Liitto</option>
                         </select>
                     </label>
                     <label for="order-format"><span data-i18n="gallery.order.format">Muoto</span>
@@ -1752,6 +1771,10 @@
             steelHalo: {
                 src: 'art/frames/steel-halo.png',
                 inset: { top: '6.1%', right: '7.9%', bottom: '6.1%', left: '7.9%' }
+            },
+            steelCovenant: {
+                src: 'art/frames/steel-covenant.png',
+                inset: { top: '5.1%', right: '7.3%', bottom: '5.1%', left: '7.3%' }
             }
         };
 
@@ -1857,6 +1880,12 @@
                 altKey: 'gallery.halo.alt',
                 alt: 'Sädekehä',
                 frame: 'steelHalo'
+            },
+            {
+                src: 'art/hangings/26-covenant-steel.png',
+                altKey: 'gallery.covenant.alt',
+                alt: 'Liitto',
+                frame: 'steelCovenant'
             }
         ];
 

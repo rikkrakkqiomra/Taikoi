@@ -208,7 +208,7 @@
   },
   "gallery": {
     "title": "Galleria",
-    "description": "Galleria: seitsemäntoista kehystettyä teosta mustalla tähtikentällä, Vanhimmasta Sädekehään.",
+    "description": "Galleria: kahdeksantoista kehystettyä teosta mustalla tähtikentällä, Vanhimmasta Liittoon.",
     "returnTitle": "Galleria",
     "share": "Kopioi jakolinkki",
     "shared": "Linkki kopioitu",
@@ -365,6 +365,13 @@
       "quote": "Rengas ei ole kruunu. Se on se, mikä ei liiku, kun kaikki muu vetää.",
       "p1": "Violetti lasi pitää savun poissa katseesta. Miekka on pitempi kuin huone, joten huoneesta tuli kenttä.",
       "p2": "Allekirjoittamaton kenttämerkintä: ketju pitää joukon. Rengas pitää yhden."
+    },
+    "covenant": {
+      "alt": "Liitto",
+      "title": "Liitto",
+      "quote": "Käsi ei kesytä. Se muistaa, kenen jalka tämä on.",
+      "p1": "Teräs pitää aavikon poissa iholta. Silmä palaa, jotta toinen voi seistä sen alla.",
+      "p2": "Allekirjoittamaton kenttämerkintä: peto ei ole ratsu. Se on se, joka jäi."
     }
   },
   "physicalus": {
