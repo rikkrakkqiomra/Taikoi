@@ -210,9 +210,9 @@
     "title": "Galleria",
     "description": "Galleria: seitsemäntoista kehystettyä teosta mustalla tähtikentällä, Vanhimmasta Sädekehään.",
     "returnTitle": "Galleria",
-    "share": "Jaa",
-    "shared": "Kopioitu",
-    "shareLabel": "Jaa tämä teos",
+    "share": "Kopioi jakolinkki",
+    "shared": "Linkki kopioitu",
+    "shareLabel": "Kopioi tämän teoksen jakolinkki",
     "elder": {
       "alt": "Vanhin",
       "title": "Vanhin",

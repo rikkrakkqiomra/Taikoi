@@ -165,8 +165,10 @@
 
         .hanging {
             position: relative;
+            display: block;
             flex: 0 0 auto;
-            width: auto;
+            width: fit-content;
+            max-width: 100%;
             height: 68vh;
             --hang-y: 0px;
             animation: hangIn 1.05s ease both, hangDrift 10s ease-in-out 1.05s infinite;
@@ -318,17 +320,18 @@
 
         .hang-share {
             position: absolute;
-            z-index: 2;
-            right: 10%;
-            bottom: 8%;
+            z-index: 3;
+            right: 11%;
+            bottom: 9%;
             margin: 0;
-            padding: 0.38rem 0.72rem;
+            padding: 0.42rem 0.7rem;
             font-family: 'Orbitron', sans-serif;
-            font-size: 0.58rem;
-            letter-spacing: 0.22em;
+            font-size: 0.52rem;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
+            white-space: nowrap;
             color: #c48c40;
-            background: rgba(16, 12, 8, 0.82);
+            background: rgba(16, 12, 8, 0.88);
             border: 1px solid rgba(196, 140, 64, 0.48);
             box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
             cursor: pointer;
@@ -548,11 +551,10 @@
                 z-index: 1;
                 flex: 0 0 auto;
                 min-height: 0;
-                width: min(94vw, 62vh);
-                width: min(94vw, 62svh);
-                height: auto;
+                width: fit-content;
                 max-width: min(94vw, 62vh);
                 max-width: min(94vw, 62svh);
+                height: auto;
                 max-height: none;
                 --hang-y: 0px;
                 transform: none;
@@ -561,7 +563,8 @@
 
             .hanging img {
                 display: block;
-                width: 100%;
+                width: auto;
+                max-width: 100%;
                 height: auto;
                 max-height: 62vh;
                 max-height: 62svh;
@@ -593,7 +596,7 @@
         <section class="bay bay--left" id="elder">
             <figure class="hanging hanging--hero">
                 <img src="art/hangings/01-elder-gilt.png" alt="Vanhin" data-i18n-attr="alt:gallery.elder.alt" width="864" height="1152" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Jaa teos">Jaa</button>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -606,7 +609,7 @@
         <section class="bay bay--right" id="nautilus">
             <figure class="hanging hanging--large">
                 <img src="art/hangings/02-nautilus-walnut.png" alt="Nautilus" data-i18n-attr="alt:gallery.nautilus.alt" width="1350" height="1800" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Jaa teos">Jaa</button>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -619,7 +622,7 @@
         <section class="bay bay--left" id="altar">
             <figure class="hanging hanging--large">
                 <img src="art/hangings/03-altar-bronze.png" alt="Alttari" data-i18n-attr="alt:gallery.altar.alt" width="864" height="1152" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Jaa teos">Jaa</button>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -632,7 +635,7 @@
         <section class="bay bay--right" id="totem">
             <figure class="hanging hanging--monument hanging--totem">
                 <img src="art/hangings/21-totem-wood.png" alt="Toteemi" data-i18n-attr="alt:gallery.totem.alt" width="1024" height="1024" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Jaa teos">Jaa</button>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -645,7 +648,7 @@
         <section class="bay bay--left" id="throne">
             <figure class="hanging hanging--hero hanging--finale">
                 <img src="art/hangings/04-throne-dark.png" alt="Valtaistuin" data-i18n-attr="alt:gallery.throne.alt" width="1350" height="1800" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Jaa teos">Jaa</button>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -658,7 +661,7 @@
         <section class="bay bay--right" id="yantra">
             <figure class="hanging hanging--hero hanging--square">
                 <img src="art/hangings/06-yantra-cassetta.png" alt="Jantra" data-i18n-attr="alt:gallery.yantra.alt" width="1800" height="1800" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Jaa teos">Jaa</button>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -671,7 +674,7 @@
         <section class="bay bay--left" id="visage">
             <figure class="hanging hanging--hero hanging--baroque">
                 <img src="art/hangings/08-visage-baroque.png" alt="Kasvot" data-i18n-attr="alt:gallery.visage.alt" width="1350" height="1800" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Jaa teos">Jaa</button>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -684,7 +687,7 @@
         <section class="bay bay--right" id="axis">
             <figure class="hanging hanging--ivory hanging--large">
                 <img src="art/hangings/09-axis-ivory.png" alt="Akseli" data-i18n-attr="alt:gallery.axis.alt" width="1350" height="1800" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Jaa teos">Jaa</button>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -697,7 +700,7 @@
         <section class="bay bay--left" id="sigil">
             <figure class="hanging hanging--hero hanging--square hanging--void">
                 <img src="art/hangings/11-sigil-victorian.png" alt="Sigilli" data-i18n-attr="alt:gallery.sigil.alt" width="1800" height="1800" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Jaa teos">Jaa</button>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -710,7 +713,7 @@
         <section class="bay bay--right" id="signal">
             <figure class="hanging hanging--hero hanging--grown">
                 <img src="art/hangings/20-signal-grown.png" alt="Signaali" data-i18n-attr="alt:gallery.signal.alt" width="864" height="1152" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Jaa teos">Jaa</button>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -723,7 +726,7 @@
         <section class="bay bay--left" id="phaeton">
             <figure class="hanging hanging--square hanging--phaeton">
                 <img src="art/hangings/15-phaeton-gilt.png" alt="Faeton" data-i18n-attr="alt:gallery.phaeton.alt" width="1024" height="1024" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Jaa teos">Jaa</button>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -736,7 +739,7 @@
         <section class="bay bay--right" id="spore">
             <figure class="hanging hanging--large hanging--spore">
                 <img src="art/hangings/16-spore-nouveau.png" alt="Itiö" data-i18n-attr="alt:gallery.spore.alt" width="864" height="1152" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Jaa teos">Jaa</button>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -749,7 +752,7 @@
         <section class="bay bay--left" id="potential">
             <figure class="hanging hanging--large hanging--stone">
                 <img src="art/hangings/24-potential-stone.png" alt="Potentiaali" data-i18n-attr="alt:gallery.potential.alt" width="864" height="1152" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Jaa teos">Jaa</button>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -762,7 +765,7 @@
         <section class="bay bay--right" id="valkyrie">
             <figure class="hanging hanging--hero hanging--iron">
                 <img src="art/hangings/18-valkyrie-iron.png" alt="Valkyyria" data-i18n-attr="alt:gallery.valkyrie.alt" width="864" height="1152" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Jaa teos">Jaa</button>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -775,7 +778,7 @@
         <section class="bay bay--left" id="futility">
             <figure class="hanging hanging--hero hanging--oak">
                 <img src="art/hangings/23-futility-oak.png" alt="Turhuus" data-i18n-attr="alt:gallery.futility.alt" width="864" height="1152" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Jaa teos">Jaa</button>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -788,7 +791,7 @@
         <section class="bay bay--right" id="reliquary">
             <figure class="hanging hanging--large hanging--pewter">
                 <img src="art/hangings/22-reliquary-pewter.png" alt="Relikvaario" data-i18n-attr="alt:gallery.reliquary.alt" width="864" height="1152" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Jaa teos">Jaa</button>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -801,7 +804,7 @@
         <section class="bay bay--left" id="halo">
             <figure class="hanging hanging--large hanging--halo">
                 <img src="art/hangings/25-halo-steel.png" alt="Sädekehä" data-i18n-attr="alt:gallery.halo.alt" width="708" height="942" loading="lazy" decoding="async">
-                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Jaa teos">Jaa</button>
+                <button type="button" class="hang-share" data-i18n="gallery.share" data-i18n-attr="aria-label:gallery.shareLabel" aria-label="Kopioi jakolinkki">Kopioi jakolinkki</button>
             </figure>
             <article class="plaque">
                 <span class="plaque-corners" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -1097,10 +1100,10 @@
         }
         let shareTimer = 0;
         function markShared(button) {
-            button.textContent = shareText('gallery.shared', 'Kopioitu');
+            button.textContent = shareText('gallery.shared', 'Linkki kopioitu');
             window.clearTimeout(shareTimer);
             shareTimer = window.setTimeout(() => {
-                button.textContent = shareText('gallery.share', 'Jaa');
+                button.textContent = shareText('gallery.share', 'Kopioi jakolinkki');
             }, 2000);
         }
         function fallbackCopy(url, done) {
