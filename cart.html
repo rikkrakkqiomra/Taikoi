@@ -353,6 +353,35 @@
             margin-top: 0.28rem;
         }
 
+        .cart-form .privacy {
+            margin: 0.15rem 0 0.2rem;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.02rem;
+            line-height: 1.45;
+            letter-spacing: 0.01em;
+            text-transform: none;
+            color: rgba(239, 230, 212, 0.72);
+        }
+
+        .cart-form .privacy a {
+            display: inline-block;
+            margin-left: 0.35rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.56rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #c48c40;
+            border-bottom: 1px solid rgba(196, 140, 64, 0.45);
+            padding-bottom: 0.08rem;
+        }
+
+        .cart-form .privacy a:hover,
+        .cart-form .privacy a:focus-visible {
+            color: #efe6d4;
+            outline: none;
+        }
+
         .cart-form button,
         .cart-remove {
             font-family: 'Orbitron', sans-serif;
@@ -547,6 +576,7 @@
                         <input id="order-consent" name="consent" type="checkbox" value="yes" required>
                         <span data-i18n="gallery.order.consent">Lähetän tilauksen. Maksu on MobilePay, ei kortti tällä sivulla.</span>
                     </label>
+                    <p class="privacy"><span data-i18n="privacy.cartNote">Nimeä, osoitetta ja tilausta käytetään vain tähän toimitukseen.</span> <a href="privacy.html" data-i18n="privacy.link">Tietoseloste</a></p>
                     <button type="submit" id="order-submit"><span data-i18n="gallery.order.submit">Lähetä tilaus</span></button>
                     <p id="order-fail" class="form-fail" role="alert" tabindex="-1" hidden data-i18n="gallery.order.error">Lähetys ei onnistunut. Yritä uudelleen.</p>
                 </form>

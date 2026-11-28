@@ -13,6 +13,7 @@ A public artistic site. The home page is an interactive 3D solar system. Service
 | `branding.html` | The Work brochure. Four service sands on the starfield. Return goes to Services. |
 | `business_strategy.html` | Business Strategy. Centered scroll: vision and four instruments. Return goes to Services. |
 | `contact.html` | Contact. Enquiry form, phone, email, and LinkedIn. Return goes to Services. |
+| `privacy.html` | Privacy notice. Static. Linked from the enquiry form and the gallery order. Not in the home nav or the seal. |
 | `gallery.html` | Eighteen framed hangings on a black starfield. |
 | `cart.html` | Order scroll. The cart lines and the delivery form. Return goes to the gallery. |
 | `physicalus.html` | Side hall of the gallery. Workshop photographs. |

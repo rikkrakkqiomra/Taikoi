@@ -201,6 +201,65 @@
     "invalidEmail": "Kirjoita sähköpostiosoite.",
     "tooShort": "Kirjoita viesti vähän pidempänä."
   },
+  "privacy": {
+    "title": "Tietosuoja",
+    "description": "Tietosuoja. Rekisterinpitäjä on Riku Korpiaho / Aivoinko. Yhteydenotto ja galleriatilaus, Netlify, säilytys ja oikeudet.",
+    "date": "28.11.2026",
+    "back": "Palaa",
+    "link": "Tietoseloste",
+    "cartNote": "Nimeä, osoitetta ja tilausta käytetään vain tähän toimitukseen.",
+    "lead": "Tämä seloste kertoo, mitä tämä sivusto tallentaa, miksi, ja kuinka kauan.",
+    "controller": {
+      "heading": "Rekisterinpitäjä",
+      "body": "Rekisterinpitäjä on Riku Korpiaho / Aivoinko, Pirkanmaa, Suomi. Tämä seloste koskee vain sivustoa taikoi.netlify.app. Louhi Cognitive Technologies Oy ja Gold Digger Technologies Oy eivät ole tämän sivuston rekisterinpitäjiä.",
+      "contact": "Yhteys: "
+    },
+    "enquiry": {
+      "heading": "Yhteydenotto",
+      "fields": "Lomake contact kerää nimen, sähköpostin, valinnaisen organisaation, aiheen, viestin ja suostumuksen. Täytetty honeypot hylätään. Sitä ei tallenneta.",
+      "basis": "Viestiä käytetään vain tähän yhteydenottoon vastaamiseen. Ei markkinointia. Peruste on sopimusta edeltävät toimet henkilön pyynnöstä, tietosuoja-asetuksen 6 artiklan 1 kohdan b alakohta."
+    },
+    "order": {
+      "heading": "Galleriatilaus",
+      "fields": "Lomake gallery-order kerää nimen, sähköpostin, puhelimen, katuosoitteen, postinumeron, kaupungin, maan, valinnaisen viestin, teokset, muodon, kappalemäärän, summan, viitteen ja suostumuksen.",
+      "basis": "Tietoja käytetään tilauksen toimittamiseen. Peruste on sopimus, 6 artiklan 1 kohdan b alakohta. Myyntikirjaus säilytetään kirjanpitovelvollisuuden vuoksi, 6 artiklan 1 kohdan c alakohta."
+    },
+    "payment": {
+      "heading": "Maksu",
+      "body": "Sivusto ei veloita korttia eikä saa MobilePay-tunnistetta. Maksu tapahtuu MobilePayssa tämän sivun ulkopuolella. Sivusto näkee tilauksen, ei maksuvälinettä."
+    },
+    "browser": {
+      "heading": "Selain",
+      "none": "Sivusto ei aseta evästeitä. Ei analytiikkaa, ei profilointia, ei automaattisia päätöksiä.",
+      "lang": "Kielivalinta säilyy selaimessa localStorage-avaimessa taikoi.lang arvona fi tai en. Sitä ei lähetetä palvelimelle.",
+      "cart": "Ostoskorin rivit ovat sessionStorage-avaimessa taikoi.gallery.order, kunnes lähetys onnistuu tai välilehti sulkeutuu. Ne eivät ole profiili."
+    },
+    "processors": {
+      "heading": "Käsittelijät",
+      "netlify": "Netlify säilyttää lomakkeet ja lähettää niistä sähköposti-ilmoituksen rekisterinpitäjälle. Netlify on yhdysvaltalainen yhtiö. Siirto EU:n ulkopuolelle tapahtuu Netlifyn sopimusehtojen ja vakiosopimuslausekkeiden nojalla.",
+      "cdn": "Sivut lataavat kirjasimet Google Fontsista. Visuaaliset sivut lataavat Three.js-kirjaston unpkgista. Nämä haut välittävät yhteyden IP-osoitteen kyseiselle palvelulle. Tämä tietosuojasivu ei lataa Three.js:ää.",
+      "sale": "Tietoja ei myydä eikä luovuteta markkinointiin."
+    },
+    "retention": {
+      "heading": "Säilytys",
+      "enquiry": "Yhteydenotto säilyy Netlifyn lomakearkistossa ja sähköpostikopiossa asian käsittelyn ajan. Se poistetaan viimeistään 24 kuukauden kuluttua viimeisestä viestistä.",
+      "order": "Tilauksen toimitustietoja käytetään lähetykseen. Myyntikirjausta säilytetään kuusi vuotta ja poistetaan sen jälkeen.",
+      "bound": "Nämä ajat ovat tämän selosteen sitovat ajat. Ne eivät ole Netlifyn oletus."
+    },
+    "rights": {
+      "heading": "Oikeudet",
+      "body": "Sinulla on oikeus tarkastaa tiedot, pyytää oikaisua tai poistoa, rajoittaa käsittelyä ja vastustaa käsittelyä. Sopimukseen perustuvat tiedot voit pyytää siirrettävässä muodossa.",
+      "ask": "Pyyntö osoitteeseen Aivoinko@gmail.com. Valituksen voi tehdä tietosuojavaltuutetulle, tietosuoja.fi."
+    },
+    "children": {
+      "heading": "Lapset",
+      "body": "Sivusto ei ole suunnattu lapsille."
+    },
+    "updated": {
+      "heading": "Päiväys",
+      "body": "Tämä on voimassa oleva seloste. Päivitetty 28.11.2026."
+    }
+  },
   "notFound": {
     "title": "Ei löydy",
     "description": "Tätä polkua ei ole Aivoinkon sivustolla.",

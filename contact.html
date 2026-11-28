@@ -446,6 +446,30 @@
             color: #aaa;
         }
 
+        .privacy-link {
+            margin-top: 0.55rem;
+            margin-bottom: 0;
+        }
+
+        .privacy-link a {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #8a8a8a;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.35);
+            padding-bottom: 0.12rem;
+        }
+
+        .privacy-link a:hover,
+        .privacy-link a:focus-visible {
+            color: #00f3ff;
+            border-bottom-color: #00f3ff;
+            outline: none;
+        }
+
         .hp {
             display: none;
         }
@@ -541,6 +565,7 @@
                     <p id="contact-fail" class="form-fail" role="alert" tabindex="-1" hidden data-i18n="contact.error">Lähetys ei onnistunut. Käytä sähköpostia tai yritä uudelleen.</p>
                 </form>
                 <p class="privacy" data-i18n="contact.privacy">Rekisterinpitäjä on Riku Korpiaho / Aivoinko. Viestiä käytetään vain tähän yhteydenottoon. Ei markkinointia. Se säilyy Netlifyn lomakearkistossa ja lähtee sähköposti-ilmoituksena. Lomake kulkee Netlifyn kautta, ei teidän koneidenne kautta.</p>
+                <p class="privacy-link"><a href="privacy.html" data-i18n="privacy.link">Tietoseloste</a></p>
             </div>
             <div id="contact-done" hidden>
                 <h2 id="contact-done-title" tabindex="-1" data-i18n="contact.success">Viesti on perillä.</h2>

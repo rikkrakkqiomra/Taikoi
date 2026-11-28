@@ -72,6 +72,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/contact.html"/>
   </url>
   <url>
+    <loc>https://taikoi.netlify.app/fi/privacy.html</loc>
+    <lastmod>2026-11-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://taikoi.netlify.app/en/privacy.html</loc>
+    <lastmod>2026-11-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/privacy.html"/>
+  </url>
+  <url>
     <loc>https://taikoi.netlify.app/fi/gallery.html</loc>
     <lastmod>2026-11-17</lastmod>
     <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/gallery.html"/>

@@ -201,6 +201,65 @@
     "invalidEmail": "Write an email address.",
     "tooShort": "Write the message a little longer."
   },
+  "privacy": {
+    "title": "Privacy",
+    "description": "Privacy. The controller is Riku Korpiaho / Aivoinko. Enquiries and gallery orders, Netlify, retention, and rights.",
+    "date": "28 November 2026",
+    "back": "Return",
+    "link": "Privacy notice",
+    "cartNote": "The name, address, and order are used only for this delivery.",
+    "lead": "This notice says what this site stores, why, and for how long.",
+    "controller": {
+      "heading": "Controller",
+      "body": "The controller is Riku Korpiaho / Aivoinko, Pirkanmaa, Finland. This notice covers only the site at taikoi.netlify.app. Louhi Cognitive Technologies Oy and Gold Digger Technologies Oy are not the controller of this site.",
+      "contact": "Contact: "
+    },
+    "enquiry": {
+      "heading": "Enquiry",
+      "fields": "The form named contact collects a name, an email address, an optional organization, a subject, a message, and consent. A filled honeypot is discarded. It is not stored.",
+      "basis": "The message is used only to answer this enquiry. Not for marketing. The basis is steps taken at the person’s request before a contract, Article 6(1)(b) of the GDPR."
+    },
+    "order": {
+      "heading": "Gallery order",
+      "fields": "The form named gallery-order collects a name, an email address, a phone number, a street address, a postal code, a city, a country, an optional note, the works, the format, the quantity, the total, a reference, and consent.",
+      "basis": "The data is used to fulfil the order. The basis is a contract, Article 6(1)(b). The sales record is kept because bookkeeping requires it, Article 6(1)(c)."
+    },
+    "payment": {
+      "heading": "Payment",
+      "body": "The site does not charge a card and does not receive a MobilePay identifier. Payment happens in MobilePay, outside this page. The site sees the order, not the payment instrument."
+    },
+    "browser": {
+      "heading": "The browser",
+      "none": "The site sets no cookies. No analytics, no profiling, and no automated decisions.",
+      "lang": "The language choice stays in the browser under the localStorage key taikoi.lang, as fi or en. It is not sent to the server.",
+      "cart": "Cart lines stay in the sessionStorage key taikoi.gallery.order until the send succeeds or the tab closes. They are not a profile."
+    },
+    "processors": {
+      "heading": "Processors",
+      "netlify": "Netlify stores the forms and emails a notification to the controller. Netlify is a United States company. A transfer outside the EU relies on Netlify’s terms and standard contractual clauses.",
+      "cdn": "Pages load typefaces from Google Fonts. The visual pages load the Three.js library from unpkg. Those requests pass the connection’s IP address to that service. This privacy page does not load Three.js.",
+      "sale": "Data is not sold and is not passed on for marketing."
+    },
+    "retention": {
+      "heading": "Retention",
+      "enquiry": "An enquiry stays in Netlify’s form archive and in the email copy while the matter is open. It is deleted within 24 months of the last message.",
+      "order": "Delivery details are used for the shipment. The sales record is kept for six years and deleted after that.",
+      "bound": "These periods are the ones this notice binds. They are not Netlify’s default."
+    },
+    "rights": {
+      "heading": "Rights",
+      "body": "You may access the data, ask for correction or erasure, restrict the processing, and object to it. Data that rests on a contract may be requested in a portable form.",
+      "ask": "Send the request to Aivoinko@gmail.com. A complaint may be lodged with the Office of the Data Protection Ombudsman at tietosuoja.fi."
+    },
+    "children": {
+      "heading": "Children",
+      "body": "The site is not directed at children."
+    },
+    "updated": {
+      "heading": "Date",
+      "body": "This is the notice in force. Updated 28 November 2026."
+    }
+  },
   "notFound": {
     "title": "Not Found",
     "description": "This path is not on the Aivoinko site.",
