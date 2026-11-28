@@ -86,6 +86,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/gallery.html"/>
   </url>
   <url>
+    <loc>https://taikoi.netlify.app/fi/cart.html</loc>
+    <lastmod>2026-11-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/cart.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/cart.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/cart.html"/>
+  </url>
+  <url>
+    <loc>https://taikoi.netlify.app/en/cart.html</loc>
+    <lastmod>2026-11-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/cart.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/cart.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/cart.html"/>
+  </url>
+  <url>
     <loc>https://taikoi.netlify.app/fi/physicalus.html</loc>
     <lastmod>2026-11-17</lastmod>
     <xhtml:link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/physicalus.html"/>

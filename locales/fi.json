@@ -22,6 +22,7 @@
     "cartomancy": "Kartomantia",
     "musicalTheatre": "Musiikkiteatteri",
     "mineralogy": "Mineralogia",
+    "cart": "Ostoskori",
     "liber": "Liber / Valmis",
     "manuscript": "Käsikirjoitus / Raakavedokset",
     "metalog": "Metalogi",
@@ -205,6 +206,11 @@
     "description": "Tätä polkua ei ole Aivoinkon sivustolla.",
     "body": "Tätä polkua ei ole sivustolla.",
     "home": "Palaa kotiin"
+  },
+  "cart": {
+    "title": "Ostoskori",
+    "heading": "Ostoskori",
+    "description": "Ostoskori. Kerätyt teokset ja tilauslomake yhdellä kääröllä."
   },
   "gallery": {
     "title": "Galleria",

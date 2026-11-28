@@ -4,7 +4,8 @@
         { key: 'seal.artificialArts', label: 'Keinotekoiset taiteet', href: 'gallery.html' },
         { key: 'seal.cartomancy', label: 'Kartomantia', href: 'cartomancy.html' },
         { key: 'seal.musicalTheatre', label: 'Musiikkiteatteri' },
-        { key: 'seal.mineralogy', label: 'Mineralogia' }
+        { key: 'seal.mineralogy', label: 'Mineralogia' },
+        { key: 'seal.cart', label: 'Ostoskori', href: 'cart.html' }
     ];
 
     var LIBRARY_REALMS = [
@@ -43,7 +44,7 @@
     }
 
     var stem = pageStem();
-    var REALMS = (stem === 'gallery' || stem === 'physicalus' || stem === 'cartomancy')
+    var REALMS = (stem === 'gallery' || stem === 'physicalus' || stem === 'cartomancy' || stem === 'cart')
         ? GALLERY_REALMS
         : (stem === 'diy_realities' || stem === 'gate_left' || stem === 'gate_right')
             ? LIBRARY_REALMS

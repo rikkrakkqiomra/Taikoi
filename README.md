@@ -14,6 +14,7 @@ A public artistic site. The home page is an interactive 3D solar system. Service
 | `business_strategy.html` | Business Strategy. Centered scroll: vision and four instruments. Return goes to Services. |
 | `contact.html` | Contact. Enquiry form, phone, email, and LinkedIn. Return goes to Services. |
 | `gallery.html` | Eighteen framed hangings on a black starfield. |
+| `cart.html` | Order scroll. The cart lines and the delivery form. Return goes to the gallery. |
 | `physicalus.html` | Side hall of the gallery. Workshop photographs. |
 | `cartomancy.html` | Cartomancy. The suit of Beliefs: thirteen cards, from Imagination to Freedom. |
 | `bio.html` | Multimieli. Finnish copy, portraits, and outbound work links. |
@@ -22,7 +23,7 @@ A public artistic site. The home page is an interactive 3D solar system. Service
 | `gate_left.html` | Left Aperture. Entered from the left seal. |
 | `gate_right.html` | Fragmenta Apocrypha. Entered from the right seal. |
 
-The subpages share `seal-menu.css` and `seal-menu.js`. The seal opens an index. Return reverse-warps home. From Physicalus and Cartomancy, Return reverse-warps to the gallery. From The Work, Business Strategy, and Contact, Return reverse-warps to Services. From CV, Return reverse-warps to Bio. Each public subpage ends with an in-flow closer: the page name and the obsidian return stone. The Hollow overlays a compact closer on the chamber because there is no scroll hall. The stone is the same Return as the seal. The vaulted manifesto has no closer. The Hollow is not listed in other halls' seals.
+The subpages share `seal-menu.css` and `seal-menu.js`. The seal opens an index. Return reverse-warps home. From Physicalus and Cartomancy, Return reverse-warps to the gallery. From The Work, Business Strategy, and Contact, Return reverse-warps to Services. From CV, Return reverse-warps to Bio. Each public subpage ends with an in-flow closer: the page name and the obsidian return stone. The cart scroll does not; its seal Return goes back to the gallery. The Hollow overlays a compact closer on the chamber because there is no scroll hall. The stone is the same Return as the seal. The vaulted manifesto has no closer. The Hollow is not listed in other halls' seals.
 
 Artwork stills, frames, and hangings live under `art/`. The live logo, favicon, and sun sprite are `AiiAold.8dde82cb.jpg`.
 

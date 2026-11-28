@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="fi">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/i18n.css">
+    <script src="/i18n.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="cart.title">Ostoskori</title>
+    <meta name="description" data-i18n-attr="content:cart.description" content="Ostoskori. Kerätyt teokset ja tilauslomake yhdellä kääröllä.">
+    <meta name="theme-color" content="#00f3ff">
+    <link rel="canonical" href="https://taikoi.netlify.app/fi/cart.html">
+    <link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/cart.html">
+    <link rel="alternate" hreflang="en" href="https://taikoi.netlify.app/en/cart.html">
+    <link rel="alternate" hreflang="x-default" href="https://taikoi.netlify.app/fi/cart.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Aivoinko">
+    <meta property="og:title" data-i18n-attr="content:cart.title" content="Ostoskori">
+    <meta property="og:description" data-i18n-attr="content:cart.description" content="Ostoskori. Kerätyt teokset ja tilauslomake yhdellä kääröllä.">
+    <meta property="og:url" content="https://taikoi.netlify.app/fi/cart.html">
+    <meta property="og:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" data-i18n-attr="content:cart.title" content="Ostoskori">
+    <meta name="twitter:description" data-i18n-attr="content:cart.description" content="Ostoskori. Kerätyt teokset ja tilauslomake yhdellä kääröllä.">
+    <meta name="twitter:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
+    <link rel="apple-touch-icon" href="AiiAold.8dde82cb.jpg">
+    <link rel="preconnect" href="https://unpkg.com" crossorigin>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
+    <link rel="modulepreload" href="https://unpkg.com/three@0.160.0/build/three.module.js" crossorigin>
+    <script>
+        (function () {
+            function revealUi() {
+                if (window.__aivoinko3d) return;
+                document.documentElement.classList.add('ui-ready');
+            }
+            window.__aivoinkoReveal = revealUi;
+            window.addEventListener('error', function () { revealUi(); }, true);
+            window.addEventListener('unhandledrejection', function () { revealUi(); });
+            setTimeout(revealUi, 2500);
+        })();
+    </script>
+    <link rel="icon" type="image/jpeg" href="AiiAold.8dde82cb.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Orbitron:wght@700&family=Rajdhani:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="seal-menu.css">
+    <script src="seal-menu.js" defer></script>
+    <style>
+        :root {
+            --text-color: #ffffff;
+            --accent-color: #00f3ff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #000;
+            font-family: 'Rajdhani', sans-serif;
+            color: var(--text-color);
+        }
+
+        #canvas-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .floating-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            pointer-events: auto;
+            overflow-y: auto;
+            padding-top: 8px;
+            padding-bottom: 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        header {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            flex-shrink: 0;
+            padding-top: 20px;
+            text-align: center;
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        header img {
+            max-width: 150px;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .cart-scroll {
+            position: relative;
+            isolation: isolate;
+            width: min(44rem, 92vw);
+            padding: 3.55rem 2.15rem 0;
+            opacity: 0;
+            transform: translateY(24px);
+        }
+
+        .cart-scroll::before {
+            content: "";
+            position: absolute;
+            z-index: 0;
+            left: 0;
+            right: 0;
+            top: 18px;
+            bottom: 16px;
+            pointer-events: none;
+            background: rgba(18, 12, 6, 0.97);
+            -webkit-mask-image:
+                linear-gradient(180deg, transparent 0, #000 18px, #000 calc(100% - 16px), transparent 100%),
+                linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+            -webkit-mask-composite: source-in;
+            mask-image:
+                linear-gradient(180deg, transparent 0, #000 18px, #000 calc(100% - 16px), transparent 100%),
+                linear-gradient(90deg, transparent 0, #000 16px, #000 calc(100% - 16px), transparent 100%);
+            mask-composite: intersect;
+        }
+
+        .scroll-roll {
+            position: absolute;
+            z-index: 2;
+            left: 0;
+            width: 100%;
+            height: auto;
+            max-width: none;
+            pointer-events: none;
+            object-fit: fill;
+            filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.45));
+        }
+
+        .scroll-roll--top { top: 0; }
+        .scroll-roll--bottom { bottom: 0; }
+
+        .scroll-rail {
+            position: absolute;
+            z-index: 2;
+            top: 2.6rem;
+            bottom: 2.9rem;
+            width: 1px;
+            pointer-events: none;
+            background: linear-gradient(
+                to bottom,
+                rgba(184, 138, 74, 0),
+                rgba(212, 168, 96, 0.72) 14%,
+                rgba(212, 168, 96, 0.72) 86%,
+                rgba(184, 138, 74, 0)
+            );
+        }
+
+        .scroll-rail--left { left: 0.5rem; }
+        .scroll-rail--right { right: 0.5rem; }
+
+        .scroll-field {
+            position: relative;
+            z-index: 3;
+            color: #d8d2c6;
+            padding-bottom: calc(100% * 217 / 1149 + 0.6rem);
+        }
+
+        .scroll-gem {
+            display: block;
+            width: 6px;
+            height: 6px;
+            margin: 0 auto 0.95rem;
+            background: #d4a45a;
+            transform: rotate(45deg);
+            box-shadow: 0 0 8px rgba(212, 164, 90, 0.55);
+        }
+
+        .scroll-kicker {
+            margin-bottom: 0.7rem;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 0.62rem;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            text-align: center;
+            color: #c48c40;
+        }
+
+        .scroll-field h1 {
+            margin-bottom: 1.4rem;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: clamp(1.7rem, 3.4vw, 2.25rem);
+            line-height: 1.18;
+            letter-spacing: 0.01em;
+            text-align: center;
+            text-wrap: balance;
+            color: #f3ead8;
+            text-shadow: 0 0 16px rgba(0, 0, 0, 0.95), 0 1px 2px rgba(0, 0, 0, 0.9);
+        }
+
+        .cart-empty,
+        .cart-sum,
+        .cart-done p,
+        .cart-more {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.12rem;
+            line-height: 1.45;
+            color: #f3ead8;
+        }
+
+        .cart-empty {
+            text-align: center;
+            margin-bottom: 0.4rem;
+        }
+
+        .cart-lines {
+            list-style: none;
+            display: grid;
+            gap: 0.85rem;
+            margin: 0 0 1rem;
+        }
+
+        .cart-lines li {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            grid-template-areas:
+                "name remove"
+                "meta remove";
+            gap: 0.15rem 1rem;
+            align-items: center;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(196, 140, 64, 0.28);
+        }
+
+        .cart-line-name {
+            grid-area: name;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.28rem;
+            color: #f3ead8;
+        }
+
+        .cart-line-meta {
+            grid-area: meta;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.05rem;
+            color: #d8cfbe;
+        }
+
+        .cart-remove {
+            grid-area: remove;
+            justify-self: end;
+            width: auto;
+            white-space: nowrap;
+        }
+
+        .cart-sum {
+            margin: 0.15rem 0 1.15rem;
+            text-align: right;
+        }
+
+        .cart-more {
+            margin: 0 0 1.35rem;
+            text-align: center;
+        }
+
+        .cart-more a {
+            color: #c48c40;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(196, 140, 64, 0.45);
+        }
+
+        .cart-more a:hover,
+        .cart-more a:focus-visible {
+            color: #f3ead8;
+            outline: none;
+        }
+
+        .cart-form {
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .cart-form label {
+            display: grid;
+            gap: 0.28rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.56rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #c48c40;
+        }
+
+        .cart-form select,
+        .cart-form input,
+        .cart-form textarea {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.15rem;
+            letter-spacing: 0;
+            text-transform: none;
+            color: #efe6d4;
+            background: rgba(8, 6, 4, 0.72);
+            border: 1px solid rgba(196, 140, 64, 0.48);
+            padding: 0.5rem 0.6rem;
+            width: 100%;
+        }
+
+        .cart-form textarea {
+            min-height: 5.5rem;
+            resize: vertical;
+        }
+
+        .cart-form .consent {
+            display: flex;
+            gap: 0.55rem;
+            align-items: flex-start;
+            letter-spacing: 0.02em;
+            text-transform: none;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.08rem;
+            color: #efe6d4;
+        }
+
+        .cart-form .consent input {
+            width: auto;
+            margin-top: 0.28rem;
+        }
+
+        .cart-form button,
+        .cart-remove {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.56rem;
+            letter-spacing: 0.08em;
+            line-height: 1.45;
+            text-transform: uppercase;
+            color: #c48c40;
+            background: rgba(16, 12, 8, 0.88);
+            border: 1px solid rgba(196, 140, 64, 0.48);
+            padding: 0.55rem 0.75rem;
+            cursor: pointer;
+        }
+
+        .cart-form button:hover,
+        .cart-form button:focus-visible,
+        .cart-remove:hover,
+        .cart-remove:focus-visible {
+            color: #f3ead8;
+            border-color: #d4a45a;
+            outline: none;
+        }
+
+        .cart-hp {
+            position: absolute;
+            left: -9999px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+        }
+
+        .form-fail {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 1.08rem;
+            color: #e7b07a;
+        }
+
+        .cart-done h2 {
+            margin-bottom: 0.7rem;
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: 1.6rem;
+            text-align: center;
+            color: #f3ead8;
+        }
+
+        .cart-done p {
+            margin-bottom: 0.55rem;
+        }
+
+        .cart-done a {
+            color: #f3ead8;
+        }
+
+        @media (min-width: 769px) {
+            .cart-form {
+                grid-template-columns: 1fr 1fr;
+                column-gap: 1rem;
+                row-gap: 0.9rem;
+            }
+
+            .cart-form > :not(label[for="order-postal"]):not(label[for="order-city"]) {
+                grid-column: 1 / -1;
+            }
+
+            .cart-form select,
+            .cart-form input,
+            .cart-form textarea {
+                font-size: 1.28rem;
+                padding: 0.65rem 0.75rem;
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .cart-scroll { transform: none; }
+        }
+
+        html.ui-ready header,
+        html.ui-ready .floating-container,
+        html.ui-ready .cart-scroll {
+            opacity: 1 !important;
+            transform: none;
+        }
+
+        .floating-container::-webkit-scrollbar { width: 8px; }
+        .floating-container::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.3); }
+        .floating-container::-webkit-scrollbar-thumb { background: var(--accent-color); border-radius: 4px; }
+    </style>
+    <noscript>
+        <style>
+            html, body { overflow: auto !important; height: auto !important; }
+            .floating-container { position: relative; height: auto; }
+            .cart-only-js { display: none !important; }
+            #gallery-order-form { display: grid !important; }
+            .cart-scroll { opacity: 1; transform: none; }
+        </style>
+    </noscript>
+</head>
+
+<body>
+    <div id="canvas-container"></div>
+    <div class="floating-container">
+        <header>
+            <img src="AiiAold.8dde82cb.jpg" alt="Aivoinkon logo" data-i18n-attr="alt:common.logoAlt" width="150" height="150" fetchpriority="high" decoding="async">
+        </header>
+        <article class="cart-scroll">
+            <img class="scroll-roll scroll-roll--top" src="art/seal-scroll-top.png" alt="" width="1161" height="194" decoding="async">
+            <i class="scroll-rail scroll-rail--left" aria-hidden="true"></i>
+            <i class="scroll-rail scroll-rail--right" aria-hidden="true"></i>
+            <div class="scroll-field">
+                <i class="scroll-gem" aria-hidden="true"></i>
+                <p class="scroll-kicker">Aivoinko</p>
+                <h1 data-i18n="cart.heading">Ostoskori</h1>
+                <p id="cart-empty" class="cart-empty cart-only-js" hidden data-i18n="gallery.order.empty">Kori on tyhjä.</p>
+                <ul id="cart-lines" class="cart-lines cart-only-js"></ul>
+                <p id="cart-sum" class="cart-sum cart-only-js" hidden></p>
+                <p class="cart-more cart-only-js"><a href="gallery.html" data-i18n="gallery.order.more">Kerää talteen muitakin teoksia</a></p>
+                <form id="gallery-order-form" class="cart-form" name="gallery-order" method="post" action="/cart.html" data-netlify="true" netlify-honeypot="bot-field" accept-charset="utf-8" hidden>
+                    <input type="hidden" name="form-name" value="gallery-order">
+                    <p class="cart-hp" aria-hidden="true">
+                        <label>Älä täytä tätä <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+                    </p>
+                    <div class="cart-fallback">
+                        <label for="order-work"><span data-i18n="gallery.order.work">Teos</span>
+                            <select id="order-work" name="work" required>
+                                <option value="elder" data-i18n="gallery.elder.title">Vanhin</option>
+                                <option value="nautilus" data-i18n="gallery.nautilus.title">Nautilus</option>
+                                <option value="altar" data-i18n="gallery.altar.title">Alttari</option>
+                                <option value="totem" data-i18n="gallery.totem.title">Toteemi</option>
+                                <option value="throne" data-i18n="gallery.throne.title">Valtaistuin</option>
+                                <option value="yantra" data-i18n="gallery.yantra.title">Jantra</option>
+                                <option value="visage" data-i18n="gallery.visage.title">Kasvot</option>
+                                <option value="axis" data-i18n="gallery.axis.title">Akseli</option>
+                                <option value="sigil" data-i18n="gallery.sigil.title">Sigilli</option>
+                                <option value="signal" data-i18n="gallery.signal.title">Signaali</option>
+                                <option value="phaeton" data-i18n="gallery.phaeton.title">Faeton</option>
+                                <option value="spore" data-i18n="gallery.spore.title">Itiö</option>
+                                <option value="potential" data-i18n="gallery.potential.title">Potentiaali</option>
+                                <option value="valkyrie" data-i18n="gallery.valkyrie.title">Valkyyria</option>
+                                <option value="futility" data-i18n="gallery.futility.title">Turhuus</option>
+                                <option value="reliquary" data-i18n="gallery.reliquary.title">Relikvaario</option>
+                                <option value="halo" data-i18n="gallery.halo.title">Sädekehä</option>
+                                <option value="covenant" data-i18n="gallery.covenant.title">Liitto</option>
+                            </select>
+                        </label>
+                        <label for="order-format"><span data-i18n="gallery.order.format">Muoto</span>
+                            <select id="order-format" name="format" required>
+                                <option value="print" data-offer="print" data-i18n="gallery.order.print">Valokuva 10×15</option>
+                                <option value="framed" data-offer="framed" data-i18n="gallery.order.framed">Valokuva 10×15, hopeiset muinaiskehykset</option>
+                            </select>
+                        </label>
+                        <label for="order-quantity"><span data-i18n="gallery.order.qty">Kappalemäärä</span>
+                            <input id="order-quantity" name="quantity" type="number" min="1" max="20" value="1" required inputmode="numeric">
+                        </label>
+                    </div>
+                    <textarea id="order-body" name="order" hidden></textarea>
+                    <input type="hidden" name="total" id="order-total-field">
+                    <input type="hidden" name="reference" id="order-reference-field">
+                    <label for="order-name"><span data-i18n="gallery.order.name">Nimi</span>
+                        <input id="order-name" name="name" type="text" required maxlength="200" autocomplete="name">
+                    </label>
+                    <label for="order-email"><span data-i18n="gallery.order.email">Sähköposti</span>
+                        <input id="order-email" name="email" type="email" required maxlength="200" autocomplete="email">
+                    </label>
+                    <label for="order-phone"><span data-i18n="gallery.order.phone">Puhelin</span>
+                        <input id="order-phone" name="phone" type="tel" required maxlength="40" autocomplete="tel">
+                    </label>
+                    <label for="order-street"><span data-i18n="gallery.order.street">Katuosoite</span>
+                        <input id="order-street" name="street" type="text" required maxlength="200" autocomplete="address-line1">
+                    </label>
+                    <label for="order-postal"><span data-i18n="gallery.order.postal">Postinumero</span>
+                        <input id="order-postal" name="postal" type="text" required maxlength="20" autocomplete="postal-code">
+                    </label>
+                    <label for="order-city"><span data-i18n="gallery.order.city">Kaupunki</span>
+                        <input id="order-city" name="city" type="text" required maxlength="80" autocomplete="address-level2">
+                    </label>
+                    <label for="order-country"><span data-i18n="gallery.order.country">Maa</span>
+                        <input id="order-country" name="country" type="text" required maxlength="80" autocomplete="country-name" value="Suomi">
+                    </label>
+                    <label for="order-note"><span data-i18n="gallery.order.note">Viesti</span>
+                        <textarea id="order-note" name="note" maxlength="2000"></textarea>
+                    </label>
+                    <label class="consent">
+                        <input id="order-consent" name="consent" type="checkbox" value="yes" required>
+                        <span data-i18n="gallery.order.consent">Lähetän tilauksen. Maksu on MobilePay, ei kortti tällä sivulla.</span>
+                    </label>
+                    <button type="submit" id="order-submit"><span data-i18n="gallery.order.submit">Lähetä tilaus</span></button>
+                    <p id="order-fail" class="form-fail" role="alert" tabindex="-1" hidden data-i18n="gallery.order.error">Lähetys ei onnistunut. Yritä uudelleen.</p>
+                </form>
+                <div id="cart-done" class="cart-done" hidden>
+                    <h2 id="cart-done-title" tabindex="-1" data-i18n="gallery.order.successLead">Tilaus on perillä.</h2>
+                    <div id="cart-done-body"></div>
+                </div>
+            </div>
+            <img class="scroll-roll scroll-roll--bottom" src="art/seal-scroll-bottom.png" alt="" width="1149" height="217" decoding="async">
+        </article>
+    </div>
+
+    <script>
+        (function () {
+            var OFFER_CENTS = { print: 858, framed: 2234 };
+            var MOBILEPAY_NUMBER = '';
+            var KEY = 'taikoi.gallery.order';
+            var MAX = 20;
+            var WORKS = ['elder', 'nautilus', 'altar', 'totem', 'throne', 'yantra', 'visage', 'axis', 'sigil', 'signal', 'phaeton', 'spore', 'potential', 'valkyrie', 'futility', 'reliquary', 'halo', 'covenant'];
+            var lines = [];
+            var receipt = null;
+            var form = document.getElementById('gallery-order-form');
+            var done = document.getElementById('cart-done');
+            if (!form) return;
+
+            function text(key, fallback) {
+                var api = window.__aivoinkoI18n;
+                var value = api && typeof api.t === 'function' ? api.t(key) : '';
+                return value || fallback;
+            }
+
+            function money(cents) {
+                var lang = window.__aivoinkoI18n && window.__aivoinkoI18n.lang === 'en' ? 'en-GB' : 'fi-FI';
+                return new Intl.NumberFormat(lang, { style: 'currency', currency: 'EUR' }).format(cents / 100);
+            }
+
+            function offerKey(id) {
+                return id === 'framed' ? 'gallery.order.framed' : 'gallery.order.print';
+            }
+
+            function workTitle(slug) {
+                var fallback = slug;
+                var option = document.querySelector('#order-work option[value="' + slug + '"]');
+                if (option && option.textContent) fallback = option.textContent.trim();
+                return text('gallery.' + slug + '.title', fallback);
+            }
+
+            function load() {
+                lines = [];
+                try {
+                    var raw = sessionStorage.getItem(KEY);
+                    var data = raw ? JSON.parse(raw) : null;
+                    if (!data || !Array.isArray(data.lines)) return;
+                    data.lines.forEach(function (line) {
+                        if (!line || !OFFER_CENTS[line.offer]) return;
+                        if (WORKS.indexOf(line.work) < 0) return;
+                        var qty = Math.round(Number(line.qty));
+                        if (qty < 1) return;
+                        lines.push({ work: line.work, offer: line.offer, qty: Math.min(MAX, qty) });
+                    });
+                } catch (err) {
+                    lines = [];
+                }
+            }
+
+            function save() {
+                try {
+                    sessionStorage.setItem(KEY, JSON.stringify({ lines: lines }));
+                } catch (err) {
+                    /* private mode */
+                }
+            }
+
+            function clearCart() {
+                lines = [];
+                try {
+                    sessionStorage.removeItem(KEY);
+                } catch (err) {
+                    /* private mode */
+                }
+            }
+
+            function totalCents() {
+                return lines.reduce(function (sum, line) {
+                    return sum + OFFER_CENTS[line.offer] * line.qty;
+                }, 0);
+            }
+
+            function labelOptions() {
+                document.querySelectorAll('option[data-offer]').forEach(function (opt) {
+                    var id = opt.getAttribute('data-offer');
+                    if (!OFFER_CENTS[id]) return;
+                    var fallback = id === 'framed'
+                        ? 'Valokuva 10×15, hopeiset muinaiskehykset'
+                        : 'Valokuva 10×15';
+                    opt.textContent = text(offerKey(id), fallback) + ' — ' + money(OFFER_CENTS[id]);
+                });
+            }
+
+            function renderLines() {
+                var list = document.getElementById('cart-lines');
+                var empty = document.getElementById('cart-empty');
+                var sum = document.getElementById('cart-sum');
+                list.innerHTML = '';
+                empty.hidden = lines.length > 0;
+                sum.hidden = lines.length === 0;
+                form.hidden = lines.length === 0;
+                lines.forEach(function (line, index) {
+                    var item = document.createElement('li');
+                    var name = document.createElement('span');
+                    name.className = 'cart-line-name';
+                    name.textContent = workTitle(line.work);
+                    var meta = document.createElement('span');
+                    meta.className = 'cart-line-meta';
+                    meta.textContent = text(offerKey(line.offer), line.offer) + ' × ' + line.qty + ' — ' + money(OFFER_CENTS[line.offer] * line.qty);
+                    var remove = document.createElement('button');
+                    remove.type = 'button';
+                    remove.className = 'cart-remove';
+                    remove.setAttribute('data-index', String(index));
+                    remove.textContent = text('gallery.order.remove', 'Poista');
+                    item.appendChild(name);
+                    item.appendChild(meta);
+                    item.appendChild(remove);
+                    list.appendChild(item);
+                });
+                sum.textContent = text('gallery.order.total', 'Yhteensä') + ' ' + money(totalCents());
+            }
+
+            function orderText() {
+                return lines.map(function (line) {
+                    return workTitle(line.work) + ' (' + line.work + ') — ' + text(offerKey(line.offer), line.offer) + ' × ' + line.qty + ' — ' + money(OFFER_CENTS[line.offer] * line.qty);
+                }).join('\n') + '\n' + text('gallery.order.total', 'Yhteensä') + ' ' + money(totalCents());
+            }
+
+            function payParagraphs(code, cents) {
+                var body = document.getElementById('cart-done-body');
+                body.innerHTML = '';
+                function add(value) {
+                    var p = document.createElement('p');
+                    p.textContent = value;
+                    body.appendChild(p);
+                }
+                add(text('gallery.order.payAmount', 'Maksa MobilePaylla') + ' ' + money(cents) + '.');
+                add(text('gallery.order.payRef', 'Kirjoita viitteeksi') + ' ' + code + '.');
+                if (MOBILEPAY_NUMBER) {
+                    var p = document.createElement('p');
+                    var link = document.createElement('a');
+                    link.href = 'tel:' + MOBILEPAY_NUMBER.replace(/\s+/g, '');
+                    link.textContent = MOBILEPAY_NUMBER;
+                    p.textContent = text('gallery.order.payNumber', 'Numero') + ' ';
+                    p.appendChild(link);
+                    body.appendChild(p);
+                } else {
+                    add(text('gallery.order.payLater', 'Numero tulee tilausvahvistukseen.'));
+                }
+            }
+
+            function showDone() {
+                document.getElementById('cart-lines').hidden = true;
+                document.getElementById('cart-sum').hidden = true;
+                document.getElementById('cart-empty').hidden = true;
+                document.querySelector('.cart-more').hidden = true;
+                form.hidden = true;
+                done.hidden = false;
+                if (receipt) payParagraphs(receipt.code, receipt.cents);
+                document.getElementById('cart-done-title').focus({ preventScroll: true });
+            }
+
+            function code() {
+                var alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+                var bytes = new Uint8Array(6);
+                if (window.crypto && crypto.getRandomValues) crypto.getRandomValues(bytes);
+                else for (var i = 0; i < bytes.length; i++) bytes[i] = Math.floor(Math.random() * 256);
+                var out = '';
+                for (var n = 0; n < bytes.length; n++) out += alphabet[bytes[n] % alphabet.length];
+                return out;
+            }
+
+            load();
+            document.querySelectorAll('.cart-fallback').forEach(function (node) { node.hidden = true; });
+            document.querySelectorAll('.cart-fallback select, .cart-fallback input').forEach(function (input) {
+                input.required = false;
+                input.disabled = true;
+            });
+            labelOptions();
+            renderLines();
+
+            document.getElementById('cart-lines').addEventListener('click', function (event) {
+                var button = event.target.closest('.cart-remove');
+                if (!button) return;
+                var index = Number(button.getAttribute('data-index'));
+                if (!lines[index]) return;
+                lines.splice(index, 1);
+                save();
+                renderLines();
+            });
+
+            var country = document.getElementById('order-country');
+            country.addEventListener('input', function () { country.dataset.touched = '1'; });
+
+            document.addEventListener('aivoinko:lang', function () {
+                labelOptions();
+                if (country.dataset.touched !== '1') country.value = text('gallery.order.countryDefault', 'Suomi');
+                if (!done.hidden && receipt) payParagraphs(receipt.code, receipt.cents);
+                else if (done.hidden) renderLines();
+            });
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                var fail = document.getElementById('order-fail');
+                fail.hidden = true;
+                if (!lines.length) {
+                    renderLines();
+                    return;
+                }
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return;
+                }
+                var honey = form.querySelector('[name="bot-field"]');
+                var ref = code();
+                document.getElementById('order-body').value = orderText() + '\n' + text('gallery.order.payRef', 'Kirjoita viitteeksi') + ' ' + ref;
+                document.getElementById('order-total-field').value = money(totalCents());
+                document.getElementById('order-reference-field').value = ref;
+                receipt = { code: ref, cents: totalCents() };
+                if (honey && honey.value) {
+                    clearCart();
+                    showDone();
+                    return;
+                }
+                var submit = document.getElementById('order-submit');
+                var label = submit.querySelector('span');
+                submit.disabled = true;
+                label.textContent = text('gallery.order.sending', 'Lähetetään…');
+                fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(new FormData(form)).toString()
+                }).then(function (res) {
+                    if (!res.ok) throw new Error('form');
+                    clearCart();
+                    showDone();
+                }).catch(function () {
+                    fail.hidden = false;
+                    submit.disabled = false;
+                    label.textContent = text('gallery.order.submit', 'Lähetä tilaus');
+                    fail.focus({ preventScroll: true });
+                });
+            });
+        })();
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+
+        window.__aivoinko3d = true;
+
+        const FRAME_MS = 1000 / 60;
+        const scene = new THREE.Scene();
+        scene.fog = new THREE.FogExp2(0x000000, 0.002);
+
+        const container = document.getElementById('canvas-container');
+        const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(0, 0, 100);
+
+        let renderer;
+        try {
+            renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            container.appendChild(renderer.domElement);
+        } catch (err) {
+            console.warn('WebGL unavailable', err);
+            window.__aivoinko3d = false;
+            if (typeof window.__aivoinkoReveal === 'function') window.__aivoinkoReveal();
+            throw err;
+        }
+
+        let rafId = 0;
+        function startLoop(fn) {
+            if (renderer.setAnimationLoop) {
+                renderer.setAnimationLoop(fn);
+                return;
+            }
+            function tick(t) {
+                fn(t);
+                rafId = requestAnimationFrame(tick);
+            }
+            rafId = requestAnimationFrame(tick);
+        }
+        function stopLoop() {
+            if (renderer.setAnimationLoop) {
+                renderer.setAnimationLoop(null);
+                return;
+            }
+            cancelAnimationFrame(rafId);
+        }
+
+        const starsGeometry = new THREE.BufferGeometry();
+        const starsCount = 5000;
+        const posArray = new Float32Array(starsCount * 3);
+        for (let i = 0; i < starsCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 500;
+        }
+        starsGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const starsMaterial = new THREE.PointsMaterial({
+            size: 0.2,
+            color: 0xffffff,
+            transparent: true,
+            opacity: 0.8
+        });
+        const starMesh = new THREE.Points(starsGeometry, starsMaterial);
+        scene.add(starMesh);
+
+        scene.scale.set(0.001, 0.001, 0.001);
+        const header = document.querySelector('header');
+        const floatingContainer = document.querySelector('.floating-container');
+        const scroll = document.querySelector('.cart-scroll');
+        header.style.opacity = '0';
+        floatingContainer.style.opacity = '0';
+        header.style.transition = 'opacity 2s ease';
+        floatingContainer.style.transition = 'opacity 2s ease';
+
+        const startTime = Date.now();
+        const duration = 1500;
+        function entryLoop() {
+            const elapsed = Date.now() - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const ease = 1 - Math.pow(1 - progress, 3);
+            scene.scale.set(ease, ease, ease);
+            scene.rotation.z = (1 - ease) * 1.0;
+            if (progress < 1) {
+                requestAnimationFrame(entryLoop);
+            } else {
+                scene.scale.set(1, 1, 1);
+                scene.rotation.z = 0;
+                header.style.opacity = '1';
+                floatingContainer.style.opacity = '1';
+                if (scroll) scroll.style.animation = 'fadeIn 1s ease forwards';
+            }
+        }
+        entryLoop();
+
+        window.__aivoinkoSealExit = function () {
+            const back = window.__aivoinkoHistoryExit;
+            if (typeof back === 'function') back('gallery.html');
+            else window.location.href = 'gallery.html';
+        };
+
+        let lastFrameTime = 0;
+        function animate(time) {
+            const deltaMs = lastFrameTime ? time - lastFrameTime : FRAME_MS;
+            lastFrameTime = time;
+            const dt = Math.min(deltaMs, 50) / FRAME_MS;
+            starMesh.rotation.y += 0.0005 * dt;
+            renderer.render(scene, camera);
+        }
+        startLoop(animate);
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                stopLoop();
+                lastFrameTime = 0;
+            } else {
+                startLoop(animate);
+            }
+        });
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+
+</html>

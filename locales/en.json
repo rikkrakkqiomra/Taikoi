@@ -22,6 +22,7 @@
     "cartomancy": "Cartomancy",
     "musicalTheatre": "Musical Theatre",
     "mineralogy": "Mineralogy",
+    "cart": "Cart",
     "liber": "Liber / Ready",
     "manuscript": "Manuscript / Foul Papers",
     "metalog": "Metalog",
@@ -205,6 +206,11 @@
     "description": "This path is not on the Aivoinko site.",
     "body": "This path is not on the site.",
     "home": "Return home"
+  },
+  "cart": {
+    "title": "Cart",
+    "heading": "Cart",
+    "description": "Cart. The collected works and the order form on one scroll."
   },
   "gallery": {
     "title": "Gallery",
