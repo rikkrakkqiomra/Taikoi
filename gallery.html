@@ -315,9 +315,16 @@
             filter: drop-shadow(10px 16px 14px rgba(0, 0, 0, 0.55)) drop-shadow(0 0 16px rgba(196, 140, 64, 0.12));
         }
 
+        .plaque-actions {
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            margin-top: 1rem;
+        }
+
         .hang-share {
             display: inline-block;
-            margin: 1rem 0 0;
+            margin: 0;
             padding: 0.42rem 0.7rem;
             font-family: 'Orbitron', sans-serif;
             font-size: 0.52rem;
@@ -338,12 +345,65 @@
             outline: none;
         }
 
-        .order-offer {
-            margin-top: 1.05rem;
-            padding-top: 0.9rem;
-            border-top: 1px solid rgba(196, 140, 64, 0.28);
+        .hang-cart,
+        .order-tab {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.05rem;
+            height: 2.05rem;
+            padding: 0;
+            flex: 0 0 auto;
+            line-height: 0;
+        }
+
+        .hang-cart svg,
+        .order-tab svg {
+            width: 1.05rem;
+            height: 1.05rem;
+            display: block;
+        }
+
+        .order-tab {
+            position: fixed;
+            z-index: 30;
+            right: 1rem;
+            bottom: 1rem;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+        }
+
+        .order-tab-count {
+            position: absolute;
+            top: -0.35rem;
+            right: -0.35rem;
+            min-width: 1rem;
+            height: 1rem;
+            padding: 0 0.2rem;
+            border-radius: 999px;
+            background: #c48c40;
+            color: #140e08;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.48rem;
+            letter-spacing: 0;
+            line-height: 1rem;
+            text-align: center;
+        }
+
+        #order-pick:not([hidden]) {
+            margin: 0 0 1rem;
+            padding-bottom: 0.9rem;
+            border-bottom: 1px solid rgba(196, 140, 64, 0.28);
             display: grid;
             gap: 0.65rem;
+        }
+
+        #order-pick-title {
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.64rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #c48c40;
         }
 
         .order-offer label,
@@ -380,8 +440,9 @@
             color: #f3ead8;
         }
 
-        .order-offer button,
+        .hang-cart,
         .order-tab,
+        #order-pick button,
         .order-panel button {
             font-family: 'Orbitron', sans-serif;
             font-size: 0.56rem;
@@ -395,8 +456,8 @@
             cursor: pointer;
         }
 
-        .order-offer button:hover,
-        .order-offer button:focus-visible,
+        .hang-cart:hover,
+        .hang-cart:focus-visible,
         .order-tab:hover,
         .order-tab:focus-visible,
         .order-panel button:hover,
@@ -411,12 +472,17 @@
             cursor: default;
         }
 
+        .hang-cart,
+        .order-tab {
+            position: relative;
+            padding: 0;
+            letter-spacing: 0;
+            line-height: 0;
+            text-transform: none;
+        }
+
         .order-tab {
             position: fixed;
-            z-index: 30;
-            right: 1rem;
-            bottom: 1rem;
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
         }
 
         #order-sheet {
@@ -1027,11 +1093,25 @@
     <div id="order-sheet">
         <div class="order-panel" role="dialog" aria-modal="true" aria-labelledby="order-title">
             <h2 id="order-title" tabindex="-1" data-i18n="gallery.order.title">Tilaus</h2>
+            <form id="order-pick" class="order-only-js" hidden>
+                <p id="order-pick-title"></p>
+                <label><span data-i18n="gallery.order.format">Muoto</span>
+                    <select class="order-format">
+                        <option value="print" data-offer="print" selected data-i18n="gallery.order.print">Valokuva 10×15</option>
+                        <option value="framed" data-offer="framed" data-i18n="gallery.order.framed">Valokuva 10×15, hopeiset muinaiskehykset</option>
+                    </select>
+                </label>
+                <p class="order-price"></p>
+                <label><span data-i18n="gallery.order.qty">Kappalemäärä</span>
+                    <input class="order-qty" type="number" min="1" max="20" value="1" inputmode="numeric">
+                </label>
+                <button type="submit" data-i18n="gallery.order.add">Lisää tilaukseen</button>
+            </form>
             <div id="order-cart" class="order-only-js">
                 <p id="order-empty" data-i18n="gallery.order.empty">Kori on tyhjä.</p>
                 <ul id="order-lines" class="order-lines"></ul>
                 <p id="order-sum" class="order-sum"></p>
-                <div class="order-actions">
+                <div id="order-actions" class="order-actions">
                     <button type="button" id="order-more" data-i18n="gallery.order.more">Kerää talteen muitakin teoksia</button>
                     <button type="button" id="order-checkout" data-i18n="gallery.order.checkout">Jatka tilaukseen</button>
                 </div>
@@ -1113,7 +1193,7 @@
             </div>
         </div>
     </div>
-    <button type="button" id="order-tab" class="order-tab order-only-js" hidden>Tilaus</button>
+    <button type="button" id="order-tab" class="order-tab order-only-js" hidden aria-label="Tilaus"></button>
 
     <script>
         (function () {
@@ -1210,26 +1290,26 @@
                 });
             }
 
-            function mountOffers() {
-                hall.querySelectorAll('.plaque').forEach(function (plaque) {
-                    if (plaque.querySelector('.order-offer')) return;
-                    var bay = plaque.closest('.bay');
+            var CART_ICON = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 7h15l-1.4 8.2H8.2L6 7z" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M6 7L5 3.5H2.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="9" cy="20" r="1.3" fill="currentColor"/><circle cx="17.5" cy="20" r="1.3" fill="currentColor"/></svg>';
+
+            function mountCarts() {
+                hall.querySelectorAll('.hang-share').forEach(function (share) {
+                    if (share.parentNode.classList.contains('plaque-actions')) return;
+                    var bay = share.closest('.bay');
                     var work = bay && bay.getAttribute('data-work');
                     if (!work) return;
-                    var offer = document.createElement('form');
-                    offer.className = 'order-offer';
-                    offer.setAttribute('data-work', work);
-                    offer.innerHTML = ''
-                        + '<label><span data-i18n="gallery.order.format">Muoto</span>'
-                        + '<select class="order-format">'
-                        + '<option value="print" data-offer="print" selected data-i18n="gallery.order.print">Valokuva 10×15</option>'
-                        + '<option value="framed" data-offer="framed" data-i18n="gallery.order.framed">Valokuva 10×15, hopeiset muinaiskehykset</option>'
-                        + '</select></label>'
-                        + '<p class="order-price"></p>'
-                        + '<label><span data-i18n="gallery.order.qty">Kappalemäärä</span>'
-                        + '<input class="order-qty" type="number" min="1" max="20" value="1" inputmode="numeric"></label>'
-                        + '<button type="submit" data-i18n="gallery.order.add">Lisää tilaukseen</button>';
-                    plaque.appendChild(offer);
+                    var row = document.createElement('div');
+                    row.className = 'plaque-actions';
+                    share.parentNode.insertBefore(row, share);
+                    row.appendChild(share);
+                    var button = document.createElement('button');
+                    button.type = 'button';
+                    button.className = 'hang-cart';
+                    button.setAttribute('data-work', work);
+                    button.setAttribute('data-i18n-attr', 'aria-label:gallery.order.cart');
+                    button.setAttribute('aria-label', 'Tilaa tämä teos');
+                    button.innerHTML = CART_ICON;
+                    row.appendChild(button);
                 });
             }
 
@@ -1240,7 +1320,11 @@
                     return;
                 }
                 tab.hidden = false;
-                tab.textContent = text('gallery.order.tab', 'Tilaus') + ' · ' + count;
+                if (!tab.querySelector('svg')) {
+                    tab.innerHTML = CART_ICON + '<span class="order-tab-count"></span>';
+                }
+                tab.querySelector('.order-tab-count').textContent = String(count);
+                tab.setAttribute('aria-label', text('gallery.order.tab', 'Tilaus') + ' ' + count);
             }
 
             function renderLines() {
@@ -1249,8 +1333,10 @@
                 var sum = document.getElementById('order-sum');
                 var checkout = document.getElementById('order-checkout');
                 list.innerHTML = '';
-                empty.hidden = lines.length > 0;
+                var pickOpen = !document.getElementById('order-pick').hidden;
+                empty.hidden = lines.length > 0 || pickOpen;
                 checkout.disabled = lines.length === 0;
+                document.getElementById('order-actions').hidden = lines.length === 0;
                 lines.forEach(function (line, index) {
                     var item = document.createElement('li');
                     var name = document.createElement('span');
@@ -1302,20 +1388,36 @@
                 }
             }
 
+            var pick = document.getElementById('order-pick');
+
             function showDone() {
                 cart.hidden = true;
                 form.hidden = true;
+                pick.hidden = true;
                 done.hidden = false;
                 if (receipt) payParagraphs(receipt.code, receipt.cents);
                 document.getElementById('order-done-title').focus({ preventScroll: true });
             }
 
-            function openSheet(step) {
+            function openSheet(step, work) {
                 sheet.classList.add('is-open');
                 done.hidden = step === 'done' ? false : true;
                 if (step === 'done') {
                     showDone();
+                } else if (step === 'pick') {
+                    cart.hidden = false;
+                    form.hidden = true;
+                    done.hidden = true;
+                    pick.hidden = false;
+                    pick.setAttribute('data-work', work || '');
+                    document.getElementById('order-pick-title').textContent = workTitle(work);
+                    pick.querySelector('.order-format').value = 'print';
+                    pick.querySelector('.order-qty').value = '1';
+                    labelOptions();
+                    renderLines();
+                    pick.querySelector('.order-format').focus({ preventScroll: true });
                 } else {
+                    pick.hidden = true;
                     cart.hidden = false;
                     form.hidden = step !== 'form';
                     renderLines();
@@ -1340,7 +1442,7 @@
                 return out;
             }
 
-            mountOffers();
+            mountCarts();
             load();
             form.hidden = true;
             document.querySelectorAll('.order-fallback').forEach(function (node) { node.hidden = true; });
@@ -1351,15 +1453,7 @@
             labelOptions();
             renderLines();
 
-            hall.addEventListener('submit', function (event) {
-                var offer = event.target;
-                if (!offer.classList || !offer.classList.contains('order-offer')) return;
-                event.preventDefault();
-                var work = offer.getAttribute('data-work');
-                var select = offer.querySelector('.order-format');
-                var qtyInput = offer.querySelector('.order-qty');
-                var kind = select.value;
-                var qty = Math.round(Number(qtyInput.value));
+            function addLine(work, kind, qty) {
                 if (!OFFER_CENTS[kind] || !work) return;
                 if (!qty || qty < 1) qty = 1;
                 if (qty > MAX) qty = MAX;
@@ -1370,14 +1464,28 @@
                 if (found) found.qty = Math.min(MAX, found.qty + qty);
                 else lines.push({ work: work, offer: kind, qty: qty });
                 save();
-                lastAdd = offer.querySelector('button');
+            }
+
+            hall.addEventListener('click', function (event) {
+                var button = event.target.closest('.hang-cart');
+                if (!button || !hall.contains(button)) return;
+                lastAdd = button;
+                openSheet('pick', button.getAttribute('data-work'));
+            });
+
+            pick.addEventListener('submit', function (event) {
+                event.preventDefault();
+                var select = pick.querySelector('.order-format');
+                var qty = Math.round(Number(pick.querySelector('.order-qty').value));
+                addLine(pick.getAttribute('data-work'), select.value, qty);
+                lastAdd = hall.querySelector('.hang-cart[data-work="' + pick.getAttribute('data-work') + '"]') || lastAdd;
                 openSheet('cart');
             });
 
-            hall.addEventListener('change', function (event) {
+            pick.addEventListener('change', function (event) {
                 var select = event.target;
                 if (!select.classList || !select.classList.contains('order-format')) return;
-                var price = select.form && select.form.querySelector('.order-price');
+                var price = pick.querySelector('.order-price');
                 if (price) price.textContent = money(OFFER_CENTS[select.value] || 0);
             });
 
@@ -1409,6 +1517,9 @@
 
             document.addEventListener('aivoinko:lang', function () {
                 labelOptions();
+                if (!pick.hidden) {
+                    document.getElementById('order-pick-title').textContent = workTitle(pick.getAttribute('data-work'));
+                }
                 if (country.dataset.touched !== '1') country.value = text('gallery.order.countryDefault', 'Suomi');
                 if (sheet.classList.contains('is-open') && !done.hidden && receipt) payParagraphs(receipt.code, receipt.cents);
                 else renderLines();
