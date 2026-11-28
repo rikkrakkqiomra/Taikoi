@@ -338,6 +338,202 @@
             outline: none;
         }
 
+        .order-offer {
+            margin-top: 1.05rem;
+            padding-top: 0.9rem;
+            border-top: 1px solid rgba(196, 140, 64, 0.28);
+            display: grid;
+            gap: 0.65rem;
+        }
+
+        .order-offer label,
+        .order-panel label {
+            display: grid;
+            gap: 0.28rem;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.52rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: #c48c40;
+        }
+
+        .order-offer select,
+        .order-offer input,
+        .order-panel select,
+        .order-panel input,
+        .order-panel textarea {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            letter-spacing: 0;
+            text-transform: none;
+            color: #efe6d4;
+            background: rgba(8, 6, 4, 0.72);
+            border: 1px solid rgba(196, 140, 64, 0.48);
+            padding: 0.45rem 0.55rem;
+            width: 100%;
+        }
+
+        .order-price {
+            margin: 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: #f3ead8;
+        }
+
+        .order-offer button,
+        .order-tab,
+        .order-panel button {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.56rem;
+            letter-spacing: 0.08em;
+            line-height: 1.45;
+            text-transform: uppercase;
+            color: #c48c40;
+            background: rgba(16, 12, 8, 0.88);
+            border: 1px solid rgba(196, 140, 64, 0.48);
+            padding: 0.55rem 0.7rem;
+            cursor: pointer;
+        }
+
+        .order-offer button:hover,
+        .order-offer button:focus-visible,
+        .order-tab:hover,
+        .order-tab:focus-visible,
+        .order-panel button:hover,
+        .order-panel button:focus-visible {
+            color: #f3ead8;
+            border-color: #d4a45a;
+            outline: none;
+        }
+
+        .order-panel button:disabled {
+            opacity: 0.45;
+            cursor: default;
+        }
+
+        .order-tab {
+            position: fixed;
+            z-index: 30;
+            right: 1rem;
+            bottom: 1rem;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+        }
+
+        #order-sheet {
+            display: none;
+        }
+
+        html.order-ready #order-sheet.is-open {
+            display: grid;
+            position: fixed;
+            inset: 0;
+            z-index: 40;
+            place-items: center;
+            padding: 1.2rem;
+            background: rgba(0, 0, 0, 0.55);
+        }
+
+        .order-panel {
+            width: min(32rem, 100%);
+            max-height: min(88vh, 44rem);
+            max-height: min(88dvh, 44rem);
+            overflow: auto;
+            background: rgba(16, 12, 8, 0.94);
+            border: 1px solid rgba(196, 140, 64, 0.48);
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+            color: #efe6d4;
+            padding: 1.25rem 1.2rem 1.35rem;
+        }
+
+        .order-panel h2,
+        .order-panel h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.72rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: #c48c40;
+            margin-bottom: 0.85rem;
+        }
+
+        .order-lines {
+            list-style: none;
+            display: grid;
+            gap: 0.75rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .order-lines li {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 0.35rem 0.8rem;
+            padding-bottom: 0.7rem;
+            border-bottom: 1px solid rgba(196, 140, 64, 0.22);
+        }
+
+        .order-line-name,
+        .order-sum,
+        .order-done p,
+        .order-panel .field-error,
+        .order-panel .form-fail {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.08rem;
+            line-height: 1.4;
+            color: #f3ead8;
+        }
+
+        .order-line-meta {
+            grid-column: 1;
+            font-family: 'Cormorant Garamond', serif;
+            color: #d8cfbe;
+        }
+
+        .order-remove {
+            grid-row: 1 / span 2;
+            align-self: center;
+        }
+
+        .order-sum {
+            margin: 0.2rem 0 0.8rem;
+        }
+
+        .order-actions,
+        .order-form {
+            display: grid;
+            gap: 0.7rem;
+        }
+
+        .order-panel .consent {
+            display: flex;
+            gap: 0.55rem;
+            align-items: flex-start;
+            letter-spacing: 0.04em;
+            text-transform: none;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            color: #efe6d4;
+        }
+
+        .order-panel .consent input {
+            width: auto;
+            margin-top: 0.25rem;
+        }
+
+        .order-hp {
+            position: absolute;
+            left: -9999px;
+            height: 0;
+            overflow: hidden;
+        }
+
+        .order-panel .field-error,
+        .order-panel .form-fail {
+            color: #e7b07a;
+        }
+
+        .order-done p + p {
+            margin-top: 0.45rem;
+        }
+
         .hanging--hero img {
             filter: drop-shadow(12px 20px 18px rgba(0, 0, 0, 0.62)) drop-shadow(0 0 20px rgba(168, 142, 88, 0.18));
         }
@@ -817,6 +1013,451 @@
             </button>
         </footer>
     </div>
+
+    <noscript>
+        <style>
+            html, body { overflow: auto !important; height: auto !important; }
+            #hall { position: relative !important; height: auto !important; overflow: visible !important; }
+            #order-sheet { display: block; position: relative; z-index: 6; padding: 2rem 1rem 4rem; }
+            #order-sheet .order-panel { margin: 0 auto; }
+            .order-only-js { display: none !important; }
+        </style>
+    </noscript>
+
+    <div id="order-sheet">
+        <div class="order-panel" role="dialog" aria-modal="true" aria-labelledby="order-title">
+            <h2 id="order-title" tabindex="-1" data-i18n="gallery.order.title">Tilaus</h2>
+            <div id="order-cart" class="order-only-js">
+                <p id="order-empty" data-i18n="gallery.order.empty">Kori on tyhjä.</p>
+                <ul id="order-lines" class="order-lines"></ul>
+                <p id="order-sum" class="order-sum"></p>
+                <div class="order-actions">
+                    <button type="button" id="order-more" data-i18n="gallery.order.more">Kerää talteen muitakin teoksia</button>
+                    <button type="button" id="order-checkout" data-i18n="gallery.order.checkout">Jatka tilaukseen</button>
+                </div>
+            </div>
+            <form id="gallery-order-form" class="order-form" name="gallery-order" method="post" action="/gallery.html" data-netlify="true" netlify-honeypot="bot-field" accept-charset="utf-8">
+                <input type="hidden" name="form-name" value="gallery-order">
+                <p class="order-hp" aria-hidden="true">
+                    <label>Älä täytä tätä <input name="bot-field" tabindex="-1" autocomplete="off"></label>
+                </p>
+                <div class="order-fallback">
+                    <label for="order-work"><span data-i18n="gallery.order.work">Teos</span>
+                        <select id="order-work" name="work" required>
+                            <option value="elder" data-i18n="gallery.elder.title">Vanhin</option>
+                            <option value="nautilus" data-i18n="gallery.nautilus.title">Nautilus</option>
+                            <option value="altar" data-i18n="gallery.altar.title">Alttari</option>
+                            <option value="totem" data-i18n="gallery.totem.title">Toteemi</option>
+                            <option value="throne" data-i18n="gallery.throne.title">Valtaistuin</option>
+                            <option value="yantra" data-i18n="gallery.yantra.title">Jantra</option>
+                            <option value="visage" data-i18n="gallery.visage.title">Kasvot</option>
+                            <option value="axis" data-i18n="gallery.axis.title">Akseli</option>
+                            <option value="sigil" data-i18n="gallery.sigil.title">Sigilli</option>
+                            <option value="signal" data-i18n="gallery.signal.title">Signaali</option>
+                            <option value="phaeton" data-i18n="gallery.phaeton.title">Faeton</option>
+                            <option value="spore" data-i18n="gallery.spore.title">Itiö</option>
+                            <option value="potential" data-i18n="gallery.potential.title">Potentiaali</option>
+                            <option value="valkyrie" data-i18n="gallery.valkyrie.title">Valkyyria</option>
+                            <option value="futility" data-i18n="gallery.futility.title">Turhuus</option>
+                            <option value="reliquary" data-i18n="gallery.reliquary.title">Relikvaario</option>
+                            <option value="halo" data-i18n="gallery.halo.title">Sädekehä</option>
+                        </select>
+                    </label>
+                    <label for="order-format"><span data-i18n="gallery.order.format">Muoto</span>
+                        <select id="order-format" name="format" required>
+                            <option value="print" data-offer="print" data-i18n="gallery.order.print">Valokuva 10×15</option>
+                            <option value="framed" data-offer="framed" data-i18n="gallery.order.framed">Valokuva 10×15, hopeiset muinaiskehykset</option>
+                        </select>
+                    </label>
+                    <label for="order-quantity"><span data-i18n="gallery.order.qty">Kappalemäärä</span>
+                        <input id="order-quantity" name="quantity" type="number" min="1" max="20" value="1" required inputmode="numeric">
+                    </label>
+                </div>
+                <textarea id="order-body" name="order" hidden></textarea>
+                <input type="hidden" name="total" id="order-total-field">
+                <input type="hidden" name="reference" id="order-reference-field">
+                <label for="order-name"><span data-i18n="gallery.order.name">Nimi</span>
+                    <input id="order-name" name="name" type="text" required maxlength="200" autocomplete="name">
+                </label>
+                <label for="order-email"><span data-i18n="gallery.order.email">Sähköposti</span>
+                    <input id="order-email" name="email" type="email" required maxlength="200" autocomplete="email">
+                </label>
+                <label for="order-phone"><span data-i18n="gallery.order.phone">Puhelin</span>
+                    <input id="order-phone" name="phone" type="tel" required maxlength="40" autocomplete="tel">
+                </label>
+                <label for="order-street"><span data-i18n="gallery.order.street">Katuosoite</span>
+                    <input id="order-street" name="street" type="text" required maxlength="200" autocomplete="address-line1">
+                </label>
+                <label for="order-postal"><span data-i18n="gallery.order.postal">Postinumero</span>
+                    <input id="order-postal" name="postal" type="text" required maxlength="20" autocomplete="postal-code">
+                </label>
+                <label for="order-city"><span data-i18n="gallery.order.city">Kaupunki</span>
+                    <input id="order-city" name="city" type="text" required maxlength="80" autocomplete="address-level2">
+                </label>
+                <label for="order-country"><span data-i18n="gallery.order.country">Maa</span>
+                    <input id="order-country" name="country" type="text" required maxlength="80" autocomplete="country-name" value="Suomi">
+                </label>
+                <label for="order-note"><span data-i18n="gallery.order.note">Viesti</span>
+                    <textarea id="order-note" name="note" maxlength="2000"></textarea>
+                </label>
+                <label class="consent">
+                    <input id="order-consent" name="consent" type="checkbox" value="yes" required>
+                    <span data-i18n="gallery.order.consent">Lähetän tilauksen. Maksu on MobilePay, ei kortti tällä sivulla.</span>
+                </label>
+                <button type="submit" id="order-submit"><span data-i18n="gallery.order.submit">Lähetä tilaus</span></button>
+                <p id="order-fail" class="form-fail" role="alert" tabindex="-1" hidden data-i18n="gallery.order.error">Lähetys ei onnistunut. Yritä uudelleen.</p>
+            </form>
+            <div id="order-done" hidden>
+                <h2 id="order-done-title" tabindex="-1" data-i18n="gallery.order.successLead">Tilaus on perillä.</h2>
+                <div id="order-done-body"></div>
+            </div>
+        </div>
+    </div>
+    <button type="button" id="order-tab" class="order-tab order-only-js" hidden>Tilaus</button>
+
+    <script>
+        (function () {
+            var OFFER_CENTS = { print: 858, framed: 2234 };
+            var MOBILEPAY_NUMBER = '';
+            var KEY = 'taikoi.gallery.order';
+            var MAX = 20;
+            var lines = [];
+            var receipt = null;
+            var lastAdd = null;
+            var sheet = document.getElementById('order-sheet');
+            var cart = document.getElementById('order-cart');
+            var form = document.getElementById('gallery-order-form');
+            var done = document.getElementById('order-done');
+            var tab = document.getElementById('order-tab');
+            var hall = document.getElementById('hall');
+            if (!sheet || !form || !hall) return;
+            document.documentElement.classList.add('order-ready');
+
+            function text(key, fallback) {
+                var api = window.__aivoinkoI18n;
+                var value = api && typeof api.t === 'function' ? api.t(key) : '';
+                return value || fallback;
+            }
+
+            function money(cents) {
+                var lang = window.__aivoinkoI18n && window.__aivoinkoI18n.lang === 'en' ? 'en-GB' : 'fi-FI';
+                return new Intl.NumberFormat(lang, { style: 'currency', currency: 'EUR' }).format(cents / 100);
+            }
+
+            function offerKey(id) {
+                return id === 'framed' ? 'gallery.order.framed' : 'gallery.order.print';
+            }
+
+            function workTitle(slug) {
+                var node = document.querySelector('.bay[data-work="' + slug + '"] h2');
+                return node && node.textContent ? node.textContent.trim() : slug;
+            }
+
+            function load() {
+                lines = [];
+                try {
+                    var raw = sessionStorage.getItem(KEY);
+                    var data = raw ? JSON.parse(raw) : null;
+                    if (!data || !Array.isArray(data.lines)) return;
+                    data.lines.forEach(function (line) {
+                        if (!line || !OFFER_CENTS[line.offer]) return;
+                        var qty = Math.round(Number(line.qty));
+                        if (!line.work || qty < 1) return;
+                        lines.push({ work: String(line.work), offer: line.offer, qty: Math.min(MAX, qty) });
+                    });
+                } catch (err) {
+                    lines = [];
+                }
+            }
+
+            function save() {
+                try {
+                    sessionStorage.setItem(KEY, JSON.stringify({ lines: lines }));
+                } catch (err) {
+                    /* private mode */
+                }
+            }
+
+            function clearCart() {
+                lines = [];
+                try {
+                    sessionStorage.removeItem(KEY);
+                } catch (err) {
+                    /* private mode */
+                }
+            }
+
+            function totalCents() {
+                return lines.reduce(function (sum, line) {
+                    return sum + OFFER_CENTS[line.offer] * line.qty;
+                }, 0);
+            }
+
+            function labelOptions() {
+                document.querySelectorAll('option[data-offer]').forEach(function (opt) {
+                    var id = opt.getAttribute('data-offer');
+                    if (!OFFER_CENTS[id]) return;
+                    var fallback = id === 'framed'
+                        ? 'Valokuva 10×15, hopeiset muinaiskehykset'
+                        : 'Valokuva 10×15';
+                    opt.textContent = text(offerKey(id), fallback) + ' — ' + money(OFFER_CENTS[id]);
+                });
+                document.querySelectorAll('.order-price').forEach(function (node) {
+                    var parent = node.closest('form');
+                    var select = parent && parent.querySelector('.order-format');
+                    var id = select ? select.value : 'print';
+                    node.textContent = money(OFFER_CENTS[id] || 0);
+                });
+            }
+
+            function mountOffers() {
+                hall.querySelectorAll('.plaque').forEach(function (plaque) {
+                    if (plaque.querySelector('.order-offer')) return;
+                    var bay = plaque.closest('.bay');
+                    var work = bay && bay.getAttribute('data-work');
+                    if (!work) return;
+                    var offer = document.createElement('form');
+                    offer.className = 'order-offer';
+                    offer.setAttribute('data-work', work);
+                    offer.innerHTML = ''
+                        + '<label><span data-i18n="gallery.order.format">Muoto</span>'
+                        + '<select class="order-format">'
+                        + '<option value="print" data-offer="print" selected data-i18n="gallery.order.print">Valokuva 10×15</option>'
+                        + '<option value="framed" data-offer="framed" data-i18n="gallery.order.framed">Valokuva 10×15, hopeiset muinaiskehykset</option>'
+                        + '</select></label>'
+                        + '<p class="order-price"></p>'
+                        + '<label><span data-i18n="gallery.order.qty">Kappalemäärä</span>'
+                        + '<input class="order-qty" type="number" min="1" max="20" value="1" inputmode="numeric"></label>'
+                        + '<button type="submit" data-i18n="gallery.order.add">Lisää tilaukseen</button>';
+                    plaque.appendChild(offer);
+                });
+            }
+
+            function renderTab() {
+                var count = lines.reduce(function (sum, line) { return sum + line.qty; }, 0);
+                if (!count || sheet.classList.contains('is-open')) {
+                    tab.hidden = true;
+                    return;
+                }
+                tab.hidden = false;
+                tab.textContent = text('gallery.order.tab', 'Tilaus') + ' · ' + count;
+            }
+
+            function renderLines() {
+                var list = document.getElementById('order-lines');
+                var empty = document.getElementById('order-empty');
+                var sum = document.getElementById('order-sum');
+                var checkout = document.getElementById('order-checkout');
+                list.innerHTML = '';
+                empty.hidden = lines.length > 0;
+                checkout.disabled = lines.length === 0;
+                lines.forEach(function (line, index) {
+                    var item = document.createElement('li');
+                    var name = document.createElement('span');
+                    name.className = 'order-line-name';
+                    name.textContent = workTitle(line.work);
+                    var meta = document.createElement('span');
+                    meta.className = 'order-line-meta';
+                    meta.textContent = text(offerKey(line.offer), line.offer) + ' × ' + line.qty + ' — ' + money(OFFER_CENTS[line.offer] * line.qty);
+                    var remove = document.createElement('button');
+                    remove.type = 'button';
+                    remove.className = 'order-remove';
+                    remove.setAttribute('data-index', String(index));
+                    remove.textContent = text('gallery.order.remove', 'Poista');
+                    item.appendChild(name);
+                    item.appendChild(meta);
+                    item.appendChild(remove);
+                    list.appendChild(item);
+                });
+                sum.textContent = text('gallery.order.total', 'Yhteensä') + ' ' + money(totalCents());
+                renderTab();
+            }
+
+            function orderText() {
+                return lines.map(function (line) {
+                    return workTitle(line.work) + ' (' + line.work + ') — ' + text(offerKey(line.offer), line.offer) + ' × ' + line.qty + ' — ' + money(OFFER_CENTS[line.offer] * line.qty);
+                }).join('\n') + '\n' + text('gallery.order.total', 'Yhteensä') + ' ' + money(totalCents());
+            }
+
+            function payParagraphs(code, cents) {
+                var body = document.getElementById('order-done-body');
+                body.innerHTML = '';
+                function add(value) {
+                    var p = document.createElement('p');
+                    p.textContent = value;
+                    body.appendChild(p);
+                }
+                add(text('gallery.order.payAmount', 'Maksa MobilePaylla') + ' ' + money(cents) + '.');
+                add(text('gallery.order.payRef', 'Kirjoita viitteeksi') + ' ' + code + '.');
+                if (MOBILEPAY_NUMBER) {
+                    var p = document.createElement('p');
+                    var link = document.createElement('a');
+                    link.href = 'tel:' + MOBILEPAY_NUMBER.replace(/\s+/g, '');
+                    link.textContent = MOBILEPAY_NUMBER;
+                    p.textContent = text('gallery.order.payNumber', 'Numero') + ' ';
+                    p.appendChild(link);
+                    body.appendChild(p);
+                } else {
+                    add(text('gallery.order.payLater', 'Numero tulee tilausvahvistukseen.'));
+                }
+            }
+
+            function showDone() {
+                cart.hidden = true;
+                form.hidden = true;
+                done.hidden = false;
+                if (receipt) payParagraphs(receipt.code, receipt.cents);
+                document.getElementById('order-done-title').focus({ preventScroll: true });
+            }
+
+            function openSheet(step) {
+                sheet.classList.add('is-open');
+                done.hidden = step === 'done' ? false : true;
+                if (step === 'done') {
+                    showDone();
+                } else {
+                    cart.hidden = false;
+                    form.hidden = step !== 'form';
+                    renderLines();
+                    document.getElementById('order-title').focus({ preventScroll: true });
+                }
+                renderTab();
+            }
+
+            function closeSheet() {
+                sheet.classList.remove('is-open');
+                renderTab();
+                if (lastAdd) lastAdd.focus({ preventScroll: true });
+            }
+
+            function code() {
+                var alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+                var bytes = new Uint8Array(6);
+                if (window.crypto && crypto.getRandomValues) crypto.getRandomValues(bytes);
+                else for (var i = 0; i < bytes.length; i++) bytes[i] = Math.floor(Math.random() * 256);
+                var out = '';
+                for (var n = 0; n < bytes.length; n++) out += alphabet[bytes[n] % alphabet.length];
+                return out;
+            }
+
+            mountOffers();
+            load();
+            form.hidden = true;
+            document.querySelectorAll('.order-fallback').forEach(function (node) { node.hidden = true; });
+            document.querySelectorAll('.order-fallback select, .order-fallback input').forEach(function (input) {
+                input.required = false;
+                input.disabled = true;
+            });
+            labelOptions();
+            renderLines();
+
+            hall.addEventListener('submit', function (event) {
+                var offer = event.target;
+                if (!offer.classList || !offer.classList.contains('order-offer')) return;
+                event.preventDefault();
+                var work = offer.getAttribute('data-work');
+                var select = offer.querySelector('.order-format');
+                var qtyInput = offer.querySelector('.order-qty');
+                var kind = select.value;
+                var qty = Math.round(Number(qtyInput.value));
+                if (!OFFER_CENTS[kind] || !work) return;
+                if (!qty || qty < 1) qty = 1;
+                if (qty > MAX) qty = MAX;
+                var found = null;
+                lines.forEach(function (line) {
+                    if (line.work === work && line.offer === kind) found = line;
+                });
+                if (found) found.qty = Math.min(MAX, found.qty + qty);
+                else lines.push({ work: work, offer: kind, qty: qty });
+                save();
+                lastAdd = offer.querySelector('button');
+                openSheet('cart');
+            });
+
+            hall.addEventListener('change', function (event) {
+                var select = event.target;
+                if (!select.classList || !select.classList.contains('order-format')) return;
+                var price = select.form && select.form.querySelector('.order-price');
+                if (price) price.textContent = money(OFFER_CENTS[select.value] || 0);
+            });
+
+            document.getElementById('order-lines').addEventListener('click', function (event) {
+                var button = event.target.closest('.order-remove');
+                if (!button) return;
+                var index = Number(button.getAttribute('data-index'));
+                if (!lines[index]) return;
+                lines.splice(index, 1);
+                save();
+                renderLines();
+            });
+
+            document.getElementById('order-more').addEventListener('click', closeSheet);
+            document.getElementById('order-checkout').addEventListener('click', function () {
+                if (!lines.length) return;
+                openSheet('form');
+            });
+            tab.addEventListener('click', function () { openSheet('cart'); });
+            sheet.addEventListener('click', function (event) {
+                if (event.target === sheet) closeSheet();
+            });
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape' && sheet.classList.contains('is-open')) closeSheet();
+            });
+
+            var country = document.getElementById('order-country');
+            country.addEventListener('input', function () { country.dataset.touched = '1'; });
+
+            document.addEventListener('aivoinko:lang', function () {
+                labelOptions();
+                if (country.dataset.touched !== '1') country.value = text('gallery.order.countryDefault', 'Suomi');
+                if (sheet.classList.contains('is-open') && !done.hidden && receipt) payParagraphs(receipt.code, receipt.cents);
+                else renderLines();
+            });
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                var fail = document.getElementById('order-fail');
+                fail.hidden = true;
+                if (!lines.length) {
+                    openSheet('cart');
+                    return;
+                }
+                if (!form.checkValidity()) {
+                    form.reportValidity();
+                    return;
+                }
+                var honey = form.querySelector('[name="bot-field"]');
+                var ref = code();
+                document.getElementById('order-body').value = orderText() + '\n' + text('gallery.order.payRef', 'Kirjoita viitteeksi') + ' ' + ref;
+                document.getElementById('order-total-field').value = money(totalCents());
+                document.getElementById('order-reference-field').value = ref;
+                receipt = { code: ref, cents: totalCents() };
+                if (honey && honey.value) {
+                    clearCart();
+                    openSheet('done');
+                    return;
+                }
+                var submit = document.getElementById('order-submit');
+                var label = submit.querySelector('span');
+                submit.disabled = true;
+                label.textContent = text('gallery.order.sending', 'Lähetetään…');
+                fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(new FormData(form)).toString()
+                }).then(function (res) {
+                    if (!res.ok) throw new Error('form');
+                    clearCart();
+                    openSheet('done');
+                }).catch(function () {
+                    fail.hidden = false;
+                    submit.disabled = false;
+                    label.textContent = text('gallery.order.submit', 'Lähetä tilaus');
+                    fail.focus({ preventScroll: true });
+                });
+            });
+        })();
+    </script>
 
     <script type="module">
         import * as THREE from 'three';
