@@ -11,7 +11,8 @@
     var LIBRARY_REALMS = [
         { key: 'seal.liber', label: 'Liber / Valmis', href: 'gate_left.html' },
         { key: 'seal.manuscript', label: 'Käsikirjoitus / Raakavedokset', href: 'gate_right.html' },
-        { key: 'seal.metalog', label: 'Metalogi', href: 'diy_realities.html' }
+        { key: 'seal.metalog', label: 'Metalogi', href: 'diy_realities.html' },
+        { key: 'seal.math', label: 'Matematiikka', href: 'gate_left.html#matematiikka' }
     ];
 
     var SECTION_REALMS = [
@@ -260,10 +261,20 @@
     }
 
     function isHere(href) {
+        var raw = String(href);
+        var hashAt = raw.indexOf('#');
+        var hash = '';
+        if (hashAt >= 0) {
+            hash = raw.slice(hashAt);
+            raw = raw.slice(0, hashAt);
+        }
         var path = window.location.pathname.replace(/\\/g, '/');
-        var file = String(href).split('/').pop();
+        var file = raw.split('/').pop();
         var stem = file.replace(/\.html$/, '');
-        return path.endsWith('/' + file) || path.endsWith('/' + stem);
+        var same = path.endsWith('/' + file) || path.endsWith('/' + stem);
+        if (!same) return false;
+        if (hash) return window.location.hash === hash;
+        return true;
     }
 
     function onItem(item) {
@@ -279,6 +290,14 @@
         var href = item.getAttribute('data-href');
         if (!href) return;
         if (isHere(href)) {
+            var hashAt = href.indexOf('#');
+            if (hashAt >= 0) {
+                close({ scroll: false, focus: false });
+                var next = href.slice(hashAt);
+                if (location.hash !== next) location.hash = next;
+                else if (typeof window.__aivoinkoOpenHash === 'function') window.__aivoinkoOpenHash(next);
+                return;
+            }
             close({ scroll: true, focus: true });
             return;
         }

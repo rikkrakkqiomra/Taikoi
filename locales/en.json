@@ -26,6 +26,7 @@
     "liber": "Liber / Ready",
     "manuscript": "Manuscript / Foul Papers",
     "metalog": "Metalog",
+    "math": "Mathematics",
     "offerings": "Offerings",
     "strategy": "Business Strategy",
     "contact": "Contact",
@@ -1315,10 +1316,25 @@
       "abstract": "A local RAG and NLI compound reads versions of ISO standards without the cloud. Mere vector similarity goes blind to nearly identical normative text; directed logical inference sees where a requirement shrinks. Healthcare data stays on the machine.",
       "open": "Open 2026 thesis, Hallusinaatioista hallintaan"
     },
+    "math": {
+      "year": "Mathematics",
+      "name": "Multimieli",
+      "open": "Open the mathematics scroll, Multimieli",
+      "kicker": "Mathematics Multimieli",
+      "l1": "Part 1",
+      "n1": "(The universe's source code)",
+      "a1": "Open lecture: Part 1, The universe's source code",
+      "l2": "Part 2",
+      "n2": "(The power of emptiness)",
+      "a2": "Open lecture: Part 2, The power of emptiness",
+      "l3": "Part 3",
+      "n3": "(Algebra)",
+      "a3": "Open lecture: Part 3, Algebra"
+    },
     "read": "Read",
     "download": "Download full",
     "close": "Close",
-    "description": "Left Aperture: two sealed theses beyond the Codex Operum seal."
+    "description": "Left Aperture: two sealed theses and the mathematics scroll series."
   },
   "gateRight": {
     "title": "Fragmenta Apocrypha",

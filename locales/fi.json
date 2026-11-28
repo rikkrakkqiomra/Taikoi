@@ -26,6 +26,7 @@
     "liber": "Liber / Valmis",
     "manuscript": "Käsikirjoitus / Raakavedokset",
     "metalog": "Metalogi",
+    "math": "Matematiikka",
     "offerings": "Tarjonta",
     "strategy": "Liiketoimintastrategia",
     "contact": "Yhteys",
@@ -1315,10 +1316,25 @@
       "abstract": "Paikallinen RAG- ja NLI-yhdistelmä lukee ISO-standardien versioita ilman pilveä. Pelkkä vektorisimilaarisuus sokeutuu lähes samalle normitekstille; suunnattu looginen päättely näkee, missä vaatimus kutistuu. Terveydenhuollon data jää koneelle.",
       "open": "Avaa vuoden 2026 opinnäyte, Hallusinaatioista hallintaan"
     },
+    "math": {
+      "year": "Matematiikka",
+      "name": "Multimieli",
+      "open": "Avaa matematiikan käärö, Multimieli",
+      "kicker": "Matematiikka Multimieli",
+      "l1": "Osa 1",
+      "n1": "(Universumin lähdekoodi)",
+      "a1": "Avaa luento: Osa 1, Universumin lähdekoodi",
+      "l2": "Osa 2",
+      "n2": "(Tyhjyyden voima)",
+      "a2": "Avaa luento: Osa 2, Tyhjyyden voima",
+      "l3": "Osa 3",
+      "n3": "(Algebra)",
+      "a3": "Avaa luento: Osa 3, Algebra"
+    },
     "read": "Lue",
     "download": "Lataa kokonaan",
     "close": "Sulje",
-    "description": "Vasen krypta: kaksi sinetöityä opinnäytettä Codex Operum -sinetin tuolla puolen."
+    "description": "Vasen krypta: kaksi sinetöityä opinnäytettä ja matematiikan käärösarja."
   },
   "gateRight": {
     "title": "Fragmenta Apocrypha",

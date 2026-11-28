@@ -7,7 +7,7 @@
     <script src="/i18n.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="gateLeft.title">Vasen krypta</title>
-    <meta name="description" content="Vasen krypta: kaksi sinetöityä opinnäytettä Codex Operum -sinetin tuolla puolen." data-i18n-attr="content:gateLeft.description">
+    <meta name="description" content="Vasen krypta: kaksi sinetöityä opinnäytettä ja matematiikan käärösarja." data-i18n-attr="content:gateLeft.description">
     <meta name="theme-color" content="#ff2d55">
     <link rel="canonical" href="https://taikoi.netlify.app/fi/gate_left.html">
     <link rel="alternate" hreflang="fi" href="https://taikoi.netlify.app/fi/gate_left.html">
@@ -16,12 +16,12 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Aivoinko">
     <meta property="og:title" content="Vasen krypta" data-i18n-attr="content:gateLeft.title">
-    <meta property="og:description" content="Vasen krypta: kaksi sinetöityä opinnäytettä Codex Operum -sinetin tuolla puolen." data-i18n-attr="content:gateLeft.description">
+    <meta property="og:description" content="Vasen krypta: kaksi sinetöityä opinnäytettä ja matematiikan käärösarja." data-i18n-attr="content:gateLeft.description">
     <meta property="og:url" content="https://taikoi.netlify.app/fi/gate_left.html">
     <meta property="og:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Vasen krypta" data-i18n-attr="content:gateLeft.title">
-    <meta name="twitter:description" content="Vasen krypta: kaksi sinetöityä opinnäytettä Codex Operum -sinetin tuolla puolen." data-i18n-attr="content:gateLeft.description">
+    <meta name="twitter:description" content="Vasen krypta: kaksi sinetöityä opinnäytettä ja matematiikan käärösarja." data-i18n-attr="content:gateLeft.description">
     <meta name="twitter:image" content="https://github.com/rikkrakkqiomra/Taikoi/raw/main/AiiAold.8dde82cb.jpg">
     <link rel="apple-touch-icon" href="AiiAold.8dde82cb.jpg">
     <link rel="preconnect" href="https://unpkg.com" crossorigin>
@@ -622,6 +622,22 @@
             transform: scaleX(1);
         }
 
+        .tomb-act.lecture {
+            flex-wrap: wrap;
+            row-gap: 0.1rem;
+        }
+
+        .lecture-name {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-style: italic;
+            font-weight: 500;
+            font-size: 1.2rem;
+            letter-spacing: 0.01em;
+            text-transform: none;
+            color: #f3ead8;
+            text-shadow: 0 0 14px rgba(0, 0, 0, 0.95), 0 1px 2px rgba(0, 0, 0, 0.9);
+        }
+
         html.ui-ready header,
         html.ui-ready #liber-stage { opacity: 1 !important; }
         html.ui-ready #warp-flash { opacity: 0 !important; }
@@ -784,6 +800,57 @@
                     </div>
                 </div>
             </article>
+            <div class="crypt-well" aria-hidden="true"><i></i></div>
+            <article class="tomb" id="matematiikka" data-codex="math">
+                <button type="button" class="tomb-seal" aria-expanded="false" aria-controls="sheet-math" aria-label="Avaa matematiikan käärö, Multimieli" data-i18n-attr="aria-label:gateLeft.math.open">
+                    <span class="tomb-drum">
+                        <img class="tomb-roll" src="art/seal-scroll-top.png" alt="" width="1161" height="194" decoding="async">
+                        <span class="tomb-wax" aria-hidden="true"></span>
+                    </span>
+                    <span class="tomb-meta">
+                        <span class="tomb-year" data-i18n="gateLeft.math.year">Matematiikka</span>
+                        <span class="tomb-name" data-i18n="gateLeft.math.name">Multimieli</span>
+                    </span>
+                </button>
+                <div class="tomb-sheet" id="sheet-math" aria-hidden="true">
+                    <div class="tomb-sheet-clip">
+                        <div class="tomb-sheet-body">
+                            <img class="tomb-sheet-roll tomb-sheet-roll--bottom" src="art/seal-scroll-bottom.png" alt="" width="1149" height="217" decoding="async">
+                            <i class="tomb-sheet-rail tomb-sheet-rail--left" aria-hidden="true"></i>
+                            <i class="tomb-sheet-rail tomb-sheet-rail--right" aria-hidden="true"></i>
+                            <div class="tomb-field" lang="fi" data-i18n-lang>
+                                <i class="tomb-gem" style="--i:0" aria-hidden="true"></i>
+                                <p class="tomb-kicker" style="--i:0" data-i18n="gateLeft.math.kicker">Matematiikka Multimieli</p>
+                                <div class="tomb-actions">
+                                    <span class="tomb-rule" style="--i:1" aria-hidden="true"><i></i></span>
+                                    <a class="tomb-act lecture" style="--i:2" href="art/matematiikka/multimieli-1.pdf" target="_blank" rel="noopener noreferrer" aria-label="Avaa luento: Osa 1, Universumin lähdekoodi" data-i18n-attr="aria-label:gateLeft.math.a1">
+                                        <i class="tomb-spark" aria-hidden="true"></i>
+                                        <span class="tomb-label" data-i18n="gateLeft.math.l1">Osa 1</span>
+                                        <span class="lecture-name" data-i18n="gateLeft.math.n1">(Universumin lähdekoodi)</span>
+                                    </a>
+                                    <span class="tomb-rule" style="--i:3" aria-hidden="true"><i></i></span>
+                                    <a class="tomb-act lecture" style="--i:4" href="art/matematiikka/multimieli-2.pdf" target="_blank" rel="noopener noreferrer" aria-label="Avaa luento: Osa 2, Tyhjyyden voima" data-i18n-attr="aria-label:gateLeft.math.a2">
+                                        <i class="tomb-spark" aria-hidden="true"></i>
+                                        <span class="tomb-label" data-i18n="gateLeft.math.l2">Osa 2</span>
+                                        <span class="lecture-name" data-i18n="gateLeft.math.n2">(Tyhjyyden voima)</span>
+                                    </a>
+                                    <span class="tomb-rule" style="--i:5" aria-hidden="true"><i></i></span>
+                                    <a class="tomb-act lecture" style="--i:6" href="art/matematiikka/multimieli-3.pdf" target="_blank" rel="noopener noreferrer" aria-label="Avaa luento: Osa 3, Algebra" data-i18n-attr="aria-label:gateLeft.math.a3">
+                                        <i class="tomb-spark" aria-hidden="true"></i>
+                                        <span class="tomb-label" data-i18n="gateLeft.math.l3">Osa 3</span>
+                                        <span class="lecture-name" data-i18n="gateLeft.math.n3">(Algebra)</span>
+                                    </a>
+                                    <span class="tomb-rule" style="--i:7" aria-hidden="true"><i></i></span>
+                                    <button type="button" class="tomb-act" style="--i:8" data-liber-close>
+                                        <i class="tomb-spark" aria-hidden="true"></i>
+                                        <span class="tomb-label" data-i18n="gateLeft.close">Sulje</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
         </div>
 
         <footer class="hall-closer">
@@ -897,8 +964,21 @@
                 closeAll({ focus: true });
             });
 
+            function openFromHash() {
+                if (location.hash !== '#matematiikka') return;
+                var codex = document.getElementById('matematiikka');
+                if (codex) show(codex);
+            }
+
+            window.__aivoinkoOpenHash = function (hash) {
+                if (hash === '#matematiikka') openFromHash();
+            };
+
+            window.addEventListener('hashchange', openFromHash);
+
             window.addEventListener('pageshow', function () {
                 closeAll({ focus: false });
+                openFromHash();
             });
 
             root.querySelectorAll('.tomb-sheet').forEach(function (sheet) {
